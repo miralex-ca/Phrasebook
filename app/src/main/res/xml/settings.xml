@@ -65,7 +65,7 @@
             android:summary="Доступ к полной версии приложения">
             <intent
                 android:targetPackage="@string/applicationId"
-                android:targetClass="com.online.languages.study.studymaster.GetPremium"/>
+                android:targetClass="com.online.languages.study.lang.GetPremium"/>
         </Preference>
 
 
@@ -166,7 +166,7 @@
             android:summary="Синхронизация, резервная копия">
             <intent
                 android:targetPackage="@string/applicationId"
-                android:targetClass="com.online.languages.study.studymaster.BackupActivity"/>
+                android:targetClass="com.online.languages.study.lang.BackupActivity"/>
         </PreferenceScreen>
 
 

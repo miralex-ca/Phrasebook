@@ -44,7 +44,7 @@ android {
 
         buildConfigField ("boolean", "SIMPLIFIED", "false")
         buildConfigField ("boolean", "HOMECARDS", "false")
-        buildConfigField ("boolean", "GALLERY", "true")
+        buildConfigField ("boolean", "GALLERY", "false")
 
 
     }
@@ -60,37 +60,15 @@ android {
     productFlavors {
         master {
             dimension "mode"
-            resConfigs 'ru'
         }
 
-        history {
+        develop {
             dimension "mode"
             applicationId 'com.online.languages.study.ruhistory'
             resValue("string", "applicationId", applicationId)
-            signingConfig signingConfigs.config
-            buildConfigField ("String", "DBNAME", "\"userPrgress\"")
-            resConfigs 'ru'
 
         }
 
-        simplified {
-            dimension "mode"
-            applicationId 'com.online.languages.study.simplified'
-            resValue("string", "applicationId", applicationId)
-            buildConfigField ("boolean", "SIMPLIFIED", "true")
-            buildConfigField ("boolean", "HOMECARDS", "true")
-        }
-
-        ancient {
-            dimension "mode"
-            //applicationId 'com.online.languages.study.ancienthistory'
-            applicationId 'com.online.languages.study.ancient.simple'
-            versionName 'debug'
-            resValue("string", "applicationId", applicationId)
-            buildConfigField ("String", "SKU", "\"premium_upgrade\"")
-            resConfigs 'ru'
-
-        }
 
         apptest {
             dimension "mode"

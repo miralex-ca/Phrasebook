@@ -67,7 +67,7 @@
                         android:paddingRight="@dimen/flash_padding_side"
                         android:orientation="vertical" >
 
-                        <com.online.languages.study.studymaster.adapters.CustomViewPager
+                        <com.online.languages.study.lang.adapters.CustomViewPager
                             android:id="@+id/testPager"
                             android:layout_width="match_parent"
                             android:animateLayoutChanges="true"

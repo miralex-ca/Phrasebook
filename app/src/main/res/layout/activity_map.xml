@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="#000000"
-    tools:context="com.online.languages.study.studymaster.SubSectionActivity">
+    tools:context="com.online.languages.study.lang.SubSectionActivity">
 
     <include layout="@layout/content_map" />
 

@@ -263,7 +263,7 @@
                     />
 
 
-                <com.online.languages.study.studymaster.adapters.WrapContentViewPager
+                <com.online.languages.study.lang.adapters.WrapContentViewPager
                     android:id="@+id/tabContainer"
                     android:layout_marginTop="0dp"
                     android:layout_width="match_parent"
