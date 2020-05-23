@@ -1,0 +1,24 @@
+<resources>
+
+
+    <style name="WhiteBase" parent="DefaultTheme">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <color name="colorPrimaryDark_white">#ffffff</color>
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

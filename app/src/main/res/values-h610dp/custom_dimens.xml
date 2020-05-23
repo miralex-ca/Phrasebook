@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dimens for phones 5 inch by height -->
+    <string name="dimen_size_h">h610dp</string>
+
+
+    <integer name="home_card_pics_count">5</integer>
+
+    <dimen name="_gallery_card_img_size">180dp</dimen>
+
+    <!-- exercise -->
+
+    <dimen name="_detail_image_height">460dp</dimen>
+    <dimen name="_detail_image_appbar_height">280dp</dimen>
+
+    <dimen name="_detail_card_height">470dp</dimen>
+    <dimen name="_detail_appbar_height">250dp</dimen>
+
+    <integer name="_search_dialog_height">430</integer>
+    <integer name="_search_dialog_img_height">260</integer>
+
+    <dimen name="_flash_card_height">340dp</dimen>
+    <dimen name="_flash_text_box_height">120dp</dimen>
+    <dimen name="_flash_translate_box_height">160dp</dimen>
+    <dimen name="_flash_translate_box_mirror_height">90dp</dimen>
+    <dimen name="_flash_text_box_mirror_height">110dp</dimen>
+    <dimen name="_flash_text_wrap_mirror_height">0dp</dimen>
+
+    <dimen name="_ex_card_field_minheight">475dp</dimen>
+
+    <dimen name="_test_img_size">170dp</dimen>
+    <integer name="_ex_text_wrap">185</integer>
+    <integer name="_ex_text_wrap_high">215</integer>
+
+
+    <dimen name="test_img_width_tablet">320dp</dimen>
+
+    <integer name="_ex_card_wrap">337</integer>
+    <integer name="_ex_card_wrap_high">375</integer>
+
+    <dimen name="_ex_opt_short_txt_min_height">42dp</dimen>
+
+    <integer name="_ex_text_long_num_sw600">70</integer>
+
+    <dimen name="_cat_stat_title_txt_size">21sp</dimen>
+    <dimen name="_cat_stat_data_padding">20dp</dimen>
+
+    <dimen name="_ex_link_padding_top">14dp</dimen>
+    <dimen name="_ex_link_padding_btm">16dp</dimen>
+
+    <string name="section_content_title_short">Содержание раздела</string>
+
+
+</resources>

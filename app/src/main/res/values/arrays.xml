@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <string-array name="themes">
+        <item>@string/set_theme_default_name</item>
+        <item>@string/set_theme_dark_name</item>
+        <item>@string/set_theme_smoky_name</item>
+        <item>@string/set_theme_red_name</item>
+        <item>@string/set_theme_white_name</item>
+        <item>@string/set_theme_ww_name</item>
+    </string-array>
+
+
+    <string-array name="themes_values">
+        <item>default</item>
+        <item>dark</item>
+        <item>smoky</item>
+        <item>red</item>
+        <item>white</item>
+        <item>westworld</item>
+    </string-array>
+
+
+
+    <string name="set_theme_default">default</string>
+
+
+    <string-array name="set_control_tests_list">
+        <item>@string/set_control_tests_one</item>
+        <item>@string/set_control_tests_two</item>
+        <item>@string/set_control_tests_three</item>
+    </string-array>
+
+    <string-array name="control_tests_list_values">
+        <item>1</item>
+        <item>2</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="set_data_control_tests_list">
+        <item>@string/set_data_control_dates</item>
+        <item>@string/set_data_control_all</item>
+    </string-array>
+
+
+    <string-array name="set_test_all_limit_list">
+        <item>@string/set_test_all_limit_1</item>
+        <item>@string/set_test_all_limit_2</item>
+        <item>@string/set_test_all_limit_3</item>
+    </string-array>
+
+    <string-array name="set_test_all_limit_values">
+        <item>@string/set_test_all_limit_default</item>
+        <item>60</item>
+        <item>100</item>
+    </string-array>
+
+    <string name="set_test_all_limit_default">30</string>
+
+
+    <string-array name="set_sort_pers_list">
+        <item>@string/set_sort_pers_1</item>
+        <item>@string/set_sort_pers_2</item>
+    </string-array>
+
+    <string-array name="set_sort_pers_values">
+        <item>@string/set_sort_pers_default</item>
+        <item>alphabet</item>
+    </string-array>
+
+    <string name="set_sort_pers_default">chrono</string>
+
+
+    <string-array name="data_control_tests_list_values">
+        <item>dates</item>
+        <item>all</item>
+    </string-array>
+
+
+    <string-array name="set_show_status_list">
+        <item>@string/set_show_status_one</item>
+        <item>@string/set_show_status_two</item>
+        <item>@string/set_show_status_three</item>
+    </string-array>
+
+    <string-array name="set_show_status_values">
+        <item>1</item>
+        <item>2</item>
+        <item>0</item>
+    </string-array>
+
+
+    <string-array name="set_btm_nav_list">
+    <item>@string/set_btm_nav_1</item>
+     <item>@string/set_btm_nav_4</item>
+    <item>@string/set_btm_nav_2</item>
+    <item>@string/set_btm_nav_3</item>
+
+    </string-array>
+
+    <string-array name="set_btm_nav_values">
+        <item>@string/set_btm_nav_value_1</item>
+        <item>@string/set_btm_nav_value_4</item>
+        <item>@string/set_btm_nav_value_2</item>
+        <item>@string/set_btm_nav_value_3</item>
+
+    </string-array>
+
+
+    <string-array name="set_detail_txt_list">
+        <item>@string/set_detail_txt_small</item>
+        <item>@string/set_detail_txt_medium</item>
+        <item>@string/set_detail_txt_large</item>
+    </string-array>
+
+    <string-array name="set_detail_txt_values">
+        <item>small</item>
+        <item>medium</item>
+        <item>large</item>
+    </string-array>
+
+
+    <string-array name="set_data_mode_list">
+        <item>@string/set_data_mode_easy</item>
+        <item>@string/set_data_mode_default</item>
+    </string-array>
+
+
+    <string-array name="set_data_mode_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
+
+    <string-array name="modes">
+        <item>@string/set_mode_default_name</item>
+        <item>@string/set_mode_full_name</item>
+    </string-array>
+
+    <string-array name="modes_values">
+        <item>default</item>
+        <item>full</item>
+    </string-array>
+
+    <string name="set_mode_default">default</string>
+    <string name="set_mode_sum">Текущий: %s</string>
+
+    <string name="set_mode_default_name">Основной</string>
+    <string name="set_mode_full_name">Полная версия</string>
+
+
+    <string-array name="home_card_1">
+        <item>varyagi.jpg</item>
+        <item>ivan_4_oprichniki.jpg</item>
+        <item>battle_athos.jpg</item>
+        <item>battle_borodino.jpg</item>
+        <item>alaska_purchase.jpg</item>
+
+    </string-array>
+
+    <string-array name="home_card_2">
+        <item>aleksandr_nevskiy.jpg</item>
+        <item>petr_1.jpg</item>
+        <item>ekaterina_2_3.jpg</item>
+        <item>aleksandr_1_2.jpg</item>
+        <item>nikolay_2_0.jpg</item>
+    </string-array>
+
+    <string-array name="home_card_3">
+        <item>gallery/arch/sobor_blazhenniy.jpg</item>
+        <item>gallery/monument/monument_nikolay_1.jpg</item>
+        <item>russia_gerb_2.jpg</item>
+        <item>jandarm.jpg</item>
+        <item>gallery/paint/devochka_s_persikami.jpg</item>
+    </string-array>
+
+</resources>

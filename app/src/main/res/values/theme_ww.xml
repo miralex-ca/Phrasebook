@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark_ww">#010010</color>
+
+    <color name="colorPrimary_ww">#14141e</color>
+    <color name="colorToolbarText_ww">#40C4FF</color>
+    <color name="colorToolbarSecText_ww">#bb40c4ff</color>
+    <color name="colorTabIndicator_ww">@color/colorToolbarText_ww</color>
+
+    <color name="colorToolbarIcon_ww">@color/colorToolbarText_ww</color>
+
+    <color name="colorBaseBg_ww">#010010</color>
+    <color name="colorCardBg_ww">#010010</color>
+    <color name="colorCardWidgetBg_ww">#14141e</color>
+    <color name="colorBannerBg_ww">#1B1B29</color>
+    <color name="colorBtmNavBg_ww">#1B1B29</color>
+
+    <color name="colorAccent_ww">#00E5FF</color>
+    <color name="colorBtmNav_inactive_ww">#B700E5FF</color>
+
+    <color name="colorMainText_ww">#90ffff</color>
+    <color name="colorMainTextDisabled_ww">#7990ffff</color>
+
+    <color name="colorSecondaryText_ww">#00E5FF</color>
+
+
+    <!-- color name="colorSecondaryText_ww">#02c4e1</color -->
+
+    <color name="colorExOptionTxt_ww">#00E5FF</color>
+    <color name="colorExDisabledTxt_ww">#9200e5ff</color>
+    <color name="colorExAccent_ww">#A7FFEB</color>
+
+
+    <color name="colorDrawerMenuBg_ww">#14141e</color>
+
+
+    <color name="colorDrawerMenuTxt_ww">#18FFFF</color>
+    <color name="colorDrawerMenuTxtActive_ww">#000000</color>
+    <color name="colorDrawerDivider_ww">#2cffffff</color>
+
+
+    <color name="colorMultipaneMenuBg_ww">#14141e</color>
+
+    <color name="colorMenuBg_ww">#5effffff</color>
+    <color name="colorMenuSelected_ww">#26ffffff</color>
+
+    <color name="colorMultipaneMenuTxt_ww">#18ffff</color>
+
+
+    <color name="colorButtonNormal_ww">#0f2a2e</color>
+    <color name="colorControlHighlight_ww">#62c4ffff</color>
+
+    <color name="colorDialogBg_ww">#2e2e3e</color>
+    <color name="colorMenu_ww">#2b2b38</color>
+
+    <color name="colorNavBgStart_ww">#233445</color>
+    <color name="colorNavBgCenter_ww">#233445</color>
+    <color name="colorNavBgEnd_ww">#152433</color>
+
+    <color name="colorNavHeaderTxt_ww">#4FC3F7</color>
+
+    <color name="colorDetail_ww">#323241</color>
+
+    <color name="colorStarIcon_ww">#CCFF90</color> <!-- for stars in lists -->
+    <color name="colorStarIconBord_ww">#8AFC03</color>
+
+    <color name="colorStarButton_ww">#444454</color>  <!-- used for star button -->
+    <color name="colorStarButtonIcon_ww">@color/colorStarIcon_ww</color> <!-- used for active star color -->
+    <color name="colorStarButtonInactive_ww">#a6b494</color> <!-- used for inactive star color -->
+
+    <color name="ex_icon_ww">#1DE9B6</color>
+    <color name="ex_link_result_ww">#18FFFF</color>
+
+    <color name="colorContactIcon_ww">#1DE9B6</color>
+
+    <color name="colorMenuIcon_ww">#1DE9B6</color>
+
+    <color name="colorMapTitleBox_ww">#78021223</color>
+
+
+    <style name="WestworldTheme.TransparentStatus" />
+
+
+    <style name="WestworldTheme" parent="DarkTheme">
+
+        <item name="colorPrimary">@color/colorPrimary_ww</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_ww</item>
+        <item name="colorAccent">@color/colorAccent_ww</item>
+
+        <item name="colorMainText">@color/colorMainText_ww</item>
+        <item name="colorMainTextDisabled">@color/colorMainTextDisabled_ww</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText_ww</item>
+
+        <item name="colorButtonNormal">@color/colorButtonNormal_ww</item>
+        <item name="colorControlHighlight">@color/colorControlHighlight_ww</item>
+
+        <item name="colorBaseBg">@color/colorBaseBg_ww</item>
+        <item name="colorCardBg">@color/colorCardBg_ww</item>
+        <item name="colorCardWidgetBg">@color/colorCardWidgetBg_ww</item>
+
+        <item name="colorBannerBg">@color/colorBannerBg_ww</item>
+
+        <item name="colorBtmNavBg">@color/colorBtmNavBg_ww</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_inactive_ww</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_ww</item>
+
+        <item name="cardMargin">@dimen/card_margin_default</item>
+
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme_ww</item>
+        <item name="alertDialogTheme">@style/AppCompatAlert_ww</item>
+
+        <item name="colorDialogBg">@color/colorDialogBg_ww</item>
+
+        <item name="colorDrawerItemBg">@color/colorDrawerMenuBg_ww</item>
+
+        <item name="colorNavHeaderTxt">@color/colorNavHeaderTxt_ww</item>
+        <item name="colorDrawerItemTxt">@color/colorDrawerMenuTxt_ww</item>
+        <item name="colorDrawerItemTxtActive">@color/colorDrawerMenuTxtActive_ww</item>
+        <item name="colorDrawerDivider">@color/colorDrawerDivider_ww</item>
+        <item name="navigationStyle">@style/NavigationWW</item>
+
+
+        <item name="colorMultipaneMenuBg">@color/colorDrawerMenuBg_ww</item>
+        <item name="colorMenuBg">@color/colorMenuBg_ww</item>
+        <item name="colorMenuSelected">@color/colorMenuSelected_ww</item>
+        <item name="colorMultipaneMenuTxt">@color/colorMultipaneMenuTxt_ww</item>
+        <item name="multipane_menu_item_active_bg">@drawable/list_ripple_ww</item>
+
+        <item name="colorMenuIconColor">@color/colorMenuIcon_ww</item>
+
+        <item name="colorExBottomDivider">@color/colorExBottomDivider</item>
+        <item name="deviderStyle">@style/deviderStyle_ww</item>
+
+        <item name="colorMapTitleBox">@color/colorMapTitleBox_ww</item>
+
+        <item name="colorStarIcon">@color/colorStarIcon_ww</item>
+
+        <item name="colorExIconBg">@color/ex_icon_ww</item>
+        <item name="colorExResult">@color/ex_link_result_ww</item>
+        <item name="iconCarousel">@drawable/ic_ex_cards</item>
+
+        <item name="colorKnown">@color/colorKnown_ww</item>
+        <item name="colorStudied">@color/colorStudied_ww</item>
+
+        <item name="colorContactIcon">@color/colorContactIcon_ww</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_ww</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_ww</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_ww</item>
+
+
+        <item name="ToolBarStyle">@style/ToolBarStyle_ww</item>
+        <item name="colorToolbarIcon">@color/colorToolbarIcon_ww</item>
+        <item name="colorTabIndicator">@color/colorTabIndicator_ww</item>
+
+        <item name="CardViewBorder">@style/CardViewBorder_ww</item>
+
+        <item name="colorExOptionTxt">@color/colorExOptionTxt_ww</item>
+        <item name="colorExDisabledTxt">@color/colorExDisabledTxt_ww</item>
+        <item name="colorExActiveTxt">@color/colorExAccent_ww</item>
+        <item name="colorRadioAccent">@color/colorExAccent_ww</item>
+
+        <item name="colorBtnText">@color/color_text_btn_ww</item>
+
+
+    </style>
+
+
+    <color name="colorKnown_ww">#4eadf9</color>
+    <color name="colorStudied_ww">#02ef64</color>
+
+    <style name="ToolBarStyle_ww">
+        <item name="android:textColorPrimary">@color/colorToolbarText_ww</item>
+        <item name="android:textColorSecondary">@color/colorToolbarSecText_ww</item>
+    </style>
+
+    <style name="NavigationWW">
+        <item name="android:listDivider">?attr/colorDrawerDivider</item>
+        <item name="colorControlHighlight">@color/colorDrawerMenuTxt_ww</item>
+    </style>
+
+    <style name="CardViewBorder_ww">
+        <item name="android:background">@drawable/card_edge</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+
+    <style name="WestworldTheme.UserDialog" parent="DarkTheme.UserDialog">
+        <item name="colorPrimary">@color/colorPrimary_ww</item>
+        <item name="colorDialogBackground">@color/colorDetail_ww</item>
+
+        <item name="colorMainText">@color/colorMainText_ww</item>
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+
+        <item name="colorAccent">@color/colorStarButton_ww</item>
+        <item name="colorStarButton">@color/colorStarButton_ww</item>
+        <item name="colorStarButtonIcon">@color/colorStarButtonIcon_ww</item>
+        <item name="starButtonIconInactive">@drawable/ic_star_border</item>
+        <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive_ww</item>
+        <item name="DetailTextTheme">@style/DetailTextTheme.WW</item>
+
+    </style>
+
+
+    <style name="DetailTextTheme.WW">
+        <item name="colorAccent">@color/colorAccent_ww</item>
+    </style>
+
+    <style name="deviderStyle_ww">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
+    <style name="PopupOverlayTheme_ww" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/colorMenu_ww</item>
+    </style>
+
+    <!-- Alert Dialog Theme -->
+    <style name="AppCompatAlert_ww" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">?attr/colorDialogBg</item>
+        <item name="colorAccent">@color/colorAccent_ww</item>
+
+    </style>
+
+
+
+</resources>

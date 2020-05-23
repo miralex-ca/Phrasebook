@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="10dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="0dp"
+    android:orientation="vertical"
+    android:gravity="top"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlHardcoded"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/starred_confirm_desc"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:text="@string/dont_ask_again"
+            android:id="@+id/checkbox"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+
+</LinearLayout>
+

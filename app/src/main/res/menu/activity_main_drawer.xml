@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/grp1" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_nav_home"
+            android:title="@string/nav_home_txt" />
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_nav_gallery"
+            android:title="@string/nav_gallery_txt" />
+
+        <item
+            android:id="@+id/nav_starred"
+            android:icon="@drawable/ic_nav_star"
+            android:title="@string/nav_starred_txt" />
+
+        <item
+            android:id="@+id/nav_statistic"
+            android:icon="@drawable/ic_nav_stats"
+            android:title="@string/nav_stats_txt" />
+
+    </group>
+
+    <group android:id="@+id/grp2" android:checkableBehavior="single" >
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_nav_settings"
+            android:title="@string/nav_settings_txt" />
+
+        <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_nav_info"
+            android:title="@string/nav_info_txt" />
+
+        <item
+            android:id="@+id/nav_contact"
+            android:icon="@drawable/ic_nav_send"
+            android:title="@string/nav_contact_txt" />
+
+        <item
+            android:id="@+id/footer_spacer_1"
+            android:checkable="false"
+            android:enabled="false"
+            android:orderInCategory="200"
+            android:title="" />
+
+    </group>
+
+</menu>

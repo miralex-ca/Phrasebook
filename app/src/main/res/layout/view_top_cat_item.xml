@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:focusable="true"
+    android:clickable="true"
+
+    android:onClick="openTopCat"
+
+    android:id="@+id/topCatWrap"
+
+    android:background="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        >
+
+        <TextView
+            android:id="@+id/sectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="18sp"
+            android:padding="10dp"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_above="@+id/sectionTitle"
+            android:id="@+id/sectionDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="?attr/colorSecondaryText"
+            android:textSize="11sp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/catProgressBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/catProgressCircle"
+                app:srcCompat="@drawable/ic_cat_progress" />
+
+
+            <TextView
+                android:id="@+id/catProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                tools:text="100%"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="?attr/colorCatProgressTxt"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/catGroupCountBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_cat_group" />
+
+
+            <TextView
+                android:id="@+id/catGroupCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
+                android:textSize="16sp"
+                tools:text="0"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dimen_size">h800dp</string>
+    <!-- home grid 4 cards -->
+
+  <!-- home grid 4 cards -->
+
+    <dimen name="_cat_card_hight">500dp</dimen>
+
+    <dimen name="card_main_min_height">650dp</dimen>
+
+    <dimen name="_ex_links_list_padding_top">20dp</dimen>
+
+
+
+    <dimen name="_ex_card_field_minheight">670dp</dimen>
+
+    <integer name="_ex_text_wrap">280</integer>
+    <integer name="_ex_text_wrap_high">310</integer>
+
+    <dimen name="_test_img_size">240dp</dimen>
+    <dimen name="test_img_width_tablet">360dp</dimen>
+
+
+    <integer name="_ex_card_wrap">540</integer>
+    <integer name="_ex_card_wrap_high">578</integer>
+
+
+    <dimen name="_ex_opt_short_txt_min_height">55dp</dimen>
+
+    <integer name="_ex_quest_txt_size_norm">21</integer>
+    <integer name="_ex_quest_short_txt_size_norm">22</integer>   <!-- ex1 opt -->
+    <integer name="_ex_quest_short_txt_size_small">24</integer>      <!-- ex2 -->
+
+
+    <dimen name="_flash_card_height">500dp</dimen>
+
+    <!-- dimen name="_flash_card_height">330dp</dimen -->
+
+
+    <dimen name="_flash_text_box_height">180dp</dimen>
+    <dimen name="_flash_translate_box_height">180dp</dimen>
+
+    <dimen name="_flash_translate_box_mirror_height">160dp</dimen>
+    <dimen name="_flash_text_box_mirror_height">160dp</dimen>
+
+
+    <dimen name="_home_card_image_width">180dp</dimen>
+    <dimen name="_home_card_image_height">130dp</dimen>
+    <dimen name="_home_card_padding">6dp</dimen>
+
+    <dimen name="_home_card_title_txt_size">19sp</dimen>
+    <dimen name="_home_card_title_bottom">12dp</dimen>
+
+    <dimen name="_home_card_image_width_4">180dp</dimen>
+    <dimen name="_home_card_image_height_4">155dp</dimen>
+
+    <style name="homeCardTitleStyle">
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <dimen name="_detail_image_height">500dp</dimen>
+    <dimen name="_detail_image_appbar_height">320dp</dimen>
+
+    <dimen name="_detail_card_height">600dp</dimen>
+    <dimen name="_detail_appbar_height">330dp</dimen>
+
+    <integer name="_search_dialog_height">500</integer>
+    <integer name="_search_dialog_img_height">300</integer>
+
+
+    <dimen name="_cat_stat_data_padding">30dp</dimen>
+
+    <dimen name="_card_stats_top">16dp</dimen>
+    <dimen name="_card_stats_btm">24dp</dimen>
+
+    <dimen name="_cat_list_item_padding">11dp</dimen>
+
+</resources>

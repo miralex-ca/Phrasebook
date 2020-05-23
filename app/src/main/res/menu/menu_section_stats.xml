@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.online.languages.study.studymaster.ScrollingActivity">
+
+
+    <item
+        android:id="@+id/easy_mode"
+        android:orderInCategory="100"
+        android:icon="?attr/iconSchool"
+        android:title="@string/menu_easy_mode"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/stats_info"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_item_info"
+        app:showAsAction="always" />
+</menu>

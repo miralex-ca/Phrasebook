@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/ContactItem"
+            android:onClick="sendFeedback"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_contact_mail"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_feedback"
+                    style="@style/ContactText"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/ContactItem"
+            android:onClick="sendReport"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_contact_message"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_error"
+                    style="@style/ContactText"
+
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:visibility="gone"
+
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/ContactItem"
+            android:onClick="visitSite"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_contact_web"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_website"
+                    style="@style/ContactText"
+
+                    />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/rateAppLink"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/ContactItem"
+            android:onClick="rateApp"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_contact_google_play"
+                     />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_rate"
+                    style="@style/ContactText"
+
+                    />
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

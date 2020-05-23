@@ -1,0 +1,145 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'languageapp'
+            keyPassword 'ghbdtn60'
+            storeFile file('/Users/231/android/my_keystore.jks')
+            storePassword 'ghbdtn60'
+        }
+
+        lintOptions {
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.online.languages.study.studymaster2"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 59
+        versionName '5.4.1'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        signingConfig signingConfigs.config
+        resValue("string", "applicationId", applicationId)
+        buildConfigField ("String", "DBNAME", "\"userProgress\"")
+        buildConfigField ("String", "SKU", "\"premium_version\"")
+
+        buildConfigField ("boolean", "SIMPLIFIED", "false")
+        buildConfigField ("boolean", "HOMECARDS", "false")
+        buildConfigField ("boolean", "GALLERY", "true")
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "mode"
+
+    productFlavors {
+        master {
+            dimension "mode"
+            resConfigs 'ru'
+        }
+
+        history {
+            dimension "mode"
+            applicationId 'com.online.languages.study.ruhistory'
+            resValue("string", "applicationId", applicationId)
+            signingConfig signingConfigs.config
+            buildConfigField ("String", "DBNAME", "\"userPrgress\"")
+            resConfigs 'ru'
+
+        }
+
+        simplified {
+            dimension "mode"
+            applicationId 'com.online.languages.study.simplified'
+            resValue("string", "applicationId", applicationId)
+            buildConfigField ("boolean", "SIMPLIFIED", "true")
+            buildConfigField ("boolean", "HOMECARDS", "true")
+        }
+
+        ancient {
+            dimension "mode"
+            //applicationId 'com.online.languages.study.ancienthistory'
+            applicationId 'com.online.languages.study.ancient.simple'
+            versionName 'debug'
+            resValue("string", "applicationId", applicationId)
+            buildConfigField ("String", "SKU", "\"premium_upgrade\"")
+            resConfigs 'ru'
+
+        }
+
+        apptest {
+            dimension "mode"
+            applicationId 'com.online.languages.study.tester'
+            resValue("string", "applicationId", applicationId)
+            buildConfigField ("boolean", "SIMPLIFIED", "true")
+            buildConfigField ("boolean", "HOMECARDS", "true")
+            buildConfigField ("boolean", "GALLERY", "false")
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url "http://dl.bintray.com/lukaville/maven"
+        }
+    }
+}
+
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.robolectric:robolectric:4.3'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:preference-v14:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation group: 'com.opencsv', name: 'opencsv', version: '4.1'
+    implementation 'com.nbsp:library:1.8'
+
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:3.0.2"
+}

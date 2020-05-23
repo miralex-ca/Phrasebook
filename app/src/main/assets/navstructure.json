@@ -1,0 +1,312 @@
+{
+  "params": {
+    "simplified": false,
+    "homecards": false,
+    "gallery": true
+  },
+
+  "sections":
+  [
+    {"tag": "dates1", "title": "IX-XIII века", "id": "10010",
+      "desc": "Образование, расцвет и распад Древнеруccкого государства.",
+      "title_short": "IX-XIII века",
+      "desc_short": "Образование, расцвет и распад Древнеруccкого государства.",
+      "image": "varyagi.jpg",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "10010020", "title": "IX-X века", "desc": "Образование Древней Руси."},
+        {"parent": "root", "type": "simple", "id": "10010030", "title": "X-XII века", "desc": "Расцвет Древнеруccкого государства."},
+        {"parent": "root", "type": "simple", "id": "10010040", "title": "XII-XIII века", "desc": "Удельная раздробленность Руси."},
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10010200", "title": "Исторические личности", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_1_1", "title": "Термины и понятия", "desc": ""},
+
+        {"parent": "group_1_1", "type": "extra", "spec": "term", "id": "10010300", "title": "Термины", "desc": "Общие термины", "review": "false"},
+        {"parent": "group_1_1", "type": "extra", "spec": "term", "id": "10010320", "title": "Восточные славяне", "desc": "Славянские племена и их соседи", "review": "false"},
+        {"parent": "group_1_1", "type": "extra", "spec": "term", "id": "10010330", "title": "Культура и быт", "desc": "Искусство, быт, религия", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_1_2", "spec": "maps", "title": "Карты", "desc": ""},
+
+        {"parent": "group_1_2", "type": "page", "spec": "map", "id": "10010510", "title": "Славянские племена", "desc": "Славяне и их соседи в VII-VIII вв."},
+        {"parent": "group_1_2", "type": "page", "spec": "map", "id": "10010520", "title": "Русь в XI в.", "desc": "Киевская Русь в 1015-1113 гг."},
+        {"parent": "group_1_2", "type": "page", "spec": "map", "id": "10010530", "title": "Русь в XII в.", "desc": "Княжества поздней Киевской Руси"},
+        {"parent": "group_1_2", "type": "page", "spec": "map", "id": "10020510", "title": "Русь в 1-й пол. XIII в.", "desc": "Карта Киевской Руси в 1237 г."}
+
+
+      ]
+    },
+
+    {"tag": "dates2", "title": "XIII–XV века", "id": "10020",
+      "desc": "Начало объединения русских земель и Московское царство.",
+      "title_short": "XIII-XV века",
+      "desc_short": "Начало объединения русских земель и Московское царство.",
+      "image": "aleksandr_nevskiy.jpg",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10020010", "title": "XIII век", "desc": "Борьба с внешней агрессией."},
+        {"parent": "root", "type": "simple", "id": "10020020", "title": "XIII–XIV века", "desc": "Возвышение Москвы."},
+        {"parent": "root", "type": "simple", "id": "10020030", "title": "XIV–XV века", "desc": "Формирование единого государства."},
+
+        {"parent": "root", "type": "set", "id": "set_2_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10020200", "title": "Исторические личности", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10020300", "title": "Термины и понятия", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_2_1", "spec": "maps", "title": "Карты", "desc": ""},
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020510", "title": "Русь в 1-й пол. XIII в.", "desc": "Карта Киевской Руси в 1237 г."},
+
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020515", "title": "Борьба Руси в XIII в.", "desc": "Борьба Руси против иноземных захватчиков."},
+
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020520", "title": "1239-1245 гг.", "desc": "Отражение внешней агрессии А. Невским."},
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020530", "title": "Возвышение Москвы", "desc": "Московское княжество в 1300-1462 гг."},
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020540", "title": "Куликовская битва", "desc": "Схема Куликовской битвы в 1380 г."},
+        {"parent": "group_2_1", "type": "page", "spec": "map", "id": "10020550", "title": "Конец XIV в.", "desc": "Русские земли в 1389 году."}
+
+      ]
+    },
+
+    {"tag": "dates3", "title": "XV–XVII века", "id": "10030",
+      "desc": "Становление единого Российского государства.",
+      "title_short": "XV–XVII века",
+      "desc_short": "Становление единого Российского государства.",
+      "image": "ivan_4.jpg",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "10030010", "title": "XV–XVI века", "desc": "Объединение русских земель."},
+        {"parent": "root", "type": "simple", "id": "10030020", "title": "XVI век", "desc": "Правление Ивана IV Грозного."},
+        {"parent": "root", "type": "simple", "id": "10030030", "title": "1598-1613 гг.", "desc": "Правление Годунова и Смутное время."},
+        {"parent": "root", "type": "simple", "id": "10030040", "title": "XVII век", "desc": "Россия при первых Романовых."},
+
+        {"parent": "root", "type": "set", "id": "set_3_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10030200", "title": "Исторические личности", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10030300", "title": "Термины и понятия", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_3_1", "spec": "maps", "title": "Карты", "desc": ""},
+        {"parent": "group_3_1", "type": "page", "spec": "map", "id": "10030510", "title": "Московское княжество", "desc": "Московское княжество в нач. XVI в."},
+        {"parent": "group_3_1", "type": "page", "spec": "map", "id": "10030520", "title": "2-я половина XVI в.", "desc": "Результат Ливонской войны."},
+        {"parent": "group_3_1", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+        {"parent": "group_3_1", "type": "page", "spec": "map", "id": "10030550", "title": "Восстание Степана Разина", "desc": "Крестьянская война 1667—1671 гг."}
+
+
+      ]
+    },
+
+    {"tag": "dates4", "title": "XVIII век", "id": "10040",
+      "desc": "Становление и расцвет Российской империи.",
+      "title_short": "XVIII век",
+      "desc_short": "Становление и расцвет Российской империи.",
+      "image": "petr_1.jpg",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10040010", "title": "1689-1725 гг.", "desc": "Эпоха Петра I Великого."},
+        {"parent": "root", "type": "simple", "id": "10040020", "title": "1725-1762 гг.", "desc": "Эпоха дворцовых переворотов."},
+        {"parent": "root", "type": "simple", "id": "10040030", "title": "1762-1796 гг.", "desc": "Эпоха Екатерины II Великой."},
+
+        {"parent": "root", "type": "set", "id": "set_4_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10040200", "title": "Исторические личности", "desc": "", "review": "false"},
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10040300", "title": "Термины и понятия", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_4_1", "spec": "maps", "title": "Карты", "desc": ""},
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10040510", "title": "Губернии в 1708 г.", "desc": "Административное деление в нач. XVIII в."},
+
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10040520", "title": "Северная война", "desc": "Война с против Швецией в 1700–1721 гг."},
+
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10040530", "title": "Полтавская битва", "desc": "Битва 27 июня 1709 г."},
+
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10040540", "title": "Семилетняя война", "desc": "Война 1756—1763 гг."},
+
+
+        {"parent": "group_4_1", "type": "page", "spec": "map", "id": "10040550", "title": "Восстание Пугачева", "desc": "Крестьянская война 1773—1775 гг."}
+
+
+
+      ]
+    },
+
+    {"tag": "dates5", "title": "XIX век", "id": "10050",
+      "desc": "Российская империя в XIX веке.",
+      "title_short": "XIX век",
+      "desc_short": "Российская империя в XIX веке.",
+      "image": "aleksandr_1.jpg",
+      "unlocked": "false",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10050010", "title": "1801-1825 гг.", "desc": "Царствование Александра I."},
+        {"parent": "root", "type": "simple", "id": "10050020", "title": "1825-1855 гг.", "desc": "Царствование Николая I."},
+        {"parent": "root", "type": "simple", "id": "10050030", "title": "1855-1881 гг.", "desc": "Царствование Александра II."},
+
+        {"parent": "root", "type": "set", "id": "set_5_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10050200", "title": "Исторические личности", "desc": "", "review": "false"},
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10050300", "title": "Термины и понятия", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_5_1", "spec": "maps", "title": "Карты", "desc": ""},
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10050510", "title": "Нашествие Наполеона", "desc": "Начальный период войны 1812 г."},
+
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10050520", "title": "Бородинское сражение", "desc": "Сражения у д. Бородино 26 августа 1812 г."},
+
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10050550", "title": "Крымская война", "desc": "Русско-турецкая война 1853—1856 гг."},
+
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10050560", "title": "Война с Турцией 1877–1878 гг.", "desc": "Русско-турецкая война 1877–1878 гг."},
+
+        {"parent": "group_5_1", "type": "page", "spec": "map", "id": "10050580", "title": "Сан-Стефанский мир", "desc": "Границы балканских государств и России."}
+
+      ]
+    },
+
+    {"tag": "dates6", "title": "1881-1917 гг.", "id": "10060",
+      "desc": "Кризис и конец Российской империи.",
+      "title_short": "1881-1917 гг.",
+      "desc_short": "Кризис и конец Российской империи.",
+      "image": "nikolay_2_0.jpg",
+      "unlocked": "false",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10060010", "title": "1881-1894 г.", "desc": "Царствование Александра III."},
+        {"parent": "root", "type": "simple", "id": "10060020", "title": "1894-1905 гг.", "desc": "Начало царствования Николая II."},
+        {"parent": "root", "type": "simple", "id": "10060030", "title": "1905-1917 гг.", "desc": "Конец Российской империи."},
+
+        {"parent": "root", "type": "set", "id": "set_6_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10060200", "title": "Исторические личности", "desc": "", "review": "false"},
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10060300", "title": "Термины и понятия", "desc": "", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_6_1", "spec": "maps", "title": "Карты", "desc": ""},
+        {"parent": "group_6_1", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+
+        {"parent": "group_6_1", "type": "page", "spec": "map", "id": "10060510", "title": "Российская империя", "desc": "Карта Российской империи конца XIX века."},
+        {"parent": "group_6_1", "type": "page", "spec": "map", "id": "10060520", "title": "Русско-японская война", "desc": "Карта боевых действий в 1904–1905 гг."},
+        {"parent": "group_6_1", "type": "page", "spec": "map", "id": "10060530", "title": "Оборона Порт-Артура", "desc": "Карта военных действий с июля по декабрь 1904 г."}
+      ]
+    },
+
+
+    {"tag": "dates7", "title": "1917–1985 гг.", "id": "10070",
+      "desc": "Советское государство.",
+      "title_short": "1917–1985 гг.",
+      "desc_short": "Советское государство.",
+      "image": "lenin.jpg",
+      "unlocked": "false",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "10070010", "title": "1917-1920 гг.", "desc": "Революция и гражданская война."},
+        {"parent": "root", "type": "simple", "id": "10070020", "title": "1920–1930-е гг.", "desc": "СССР: первые 20 лет."},
+        {"parent": "root", "type": "simple", "id": "10070030", "title": "1941-1945 гг.", "desc": "Великая Отечественная война."},
+        {"parent": "root", "type": "simple", "id": "10070040", "title": "1945-1964 гг.", "desc": "Послевоенные годы и Оттепель."},
+        {"parent": "root", "type": "simple", "id": "10070050", "title": "1964-1985 гг.", "desc": "Эпоха «развитого социализма»."},
+
+
+        {"parent": "root", "type": "set", "id": "set_7_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10070200", "title": "Исторические личности", "desc": "", "review": "false"},
+        {"parent": "root", "type": "group", "id": "group_7_1", "title": "Термины и понятия", "desc": ""},
+
+        {"parent": "group_7_1", "type": "extra", "spec": "term", "id": "10070310", "title": "Термины: 1917-1940 гг.", "desc": "Гражданская война, довоенные годы.", "review": "false"},
+        {"parent": "group_7_1", "type": "extra", "spec": "term", "id": "10070320", "title": "Термины: 1941-1985 гг.", "desc": "Периоды: ВОВ, «Оттепель», «Застой».", "review": "false"},
+
+        {"parent": "root", "type": "group", "id": "group_7_2", "spec": "maps", "title": "Карты", "desc": ""},
+
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070520", "title": "Гражданская война", "desc": "Карта военных действий в 1918-1920 г."},
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070540", "title": "ВОВ 1941-1942 гг.", "desc": "Первые годы войны."},
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070550", "title": "Сталинградская битва", "desc": "Контрнаступление советских войск."},
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070560", "title": "Курская битва", "desc": "Военные действия с 5 июля по 23 августа 1943 г."},
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070570", "title": "ВОВ 1942-1945 гг.", "desc": "Переломный период и заключительный этап войны."},
+        {"parent": "group_7_2", "type": "page", "spec": "map", "id": "10070590", "title": "СССР", "desc": "Карта СССР в послевоенный период."}
+
+      ]
+    },
+
+    {"tag": "dates8", "title": "С 1985 г.", "id": "10080",
+      "desc": "Распад СССР и Российская Федерация.",
+      "title_short": "С 1985 г.",
+      "desc_short": "Распад СССР и Российская Федерация.",
+      "image": "gorby_el.jpg",
+      "unlocked": "false",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10080010", "title": "1985-1992 гг.", "desc": "Перестройка и распад СССР."},
+        {"parent": "root", "type": "simple", "id": "10080020", "title": "C 1992 г. по наши дни", "desc": "Современный период."},
+
+        {"parent": "root", "type": "set", "id": "set_8_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "extra", "spec": "pers", "id": "10080200", "title": "Исторические личности", "desc": "", "review": "false"},
+        {"parent": "root", "type": "extra", "spec": "term", "id": "10080300", "title": "Термины и понятия", "desc": "", "review": "false"}
+
+
+      ]
+    },
+
+    {"tag": "dates9", "title": "Всемирная история", "id": "10090",
+      "desc": "С древних веков по настоящее время.",
+      "title_short": "Мировая история",
+      "desc_short": "С древних веков по настоящее время.",
+      "image": "columb_ship.jpg",
+      "spec": "world",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10090010", "title": "До 476 г. н. э.", "desc": "История Древнего мира."},
+        {"parent": "root", "type": "simple", "id": "10090020", "title": "V-XV вв.", "desc": "История Средних веков."},
+        {"parent": "root", "type": "simple", "id": "10090030", "title": "XV-XVII вв.", "desc": "Эпоха Возрождения, Реформация."},
+        {"parent": "root", "type": "simple", "id": "10090040", "title": "XVII-XVIII в.", "desc": "Раннее Новое время."},
+        {"parent": "root", "type": "simple", "id": "10090050", "title": "XIX в. и начало XX в.", "desc": "События Нового времени."},
+        {"parent": "root", "type": "simple", "id": "10090060", "title": "С 1918 г. ", "desc": "Новейшее время"}
+
+
+      ]
+    },
+
+    {"tag": "cat10", "title": "Галерея", "id": "10100",
+      "desc": "Артефакты, предметы быта, науки, искусства",
+      "title_short": "Личности",
+      "desc_short": "Даты основных событий",
+      "image": "moskva_kreml.jpg",
+      "type": "gallery",
+      "spec": "nav_gallery",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "gone", "desc": ""},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10100100", "title": "Архитектура", "desc": "Храмы, дворцы, исторические сооружения и т.п.", "image":  "gallery/arch/sobor_blazhenniy.jpg", "param":  "img_test"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10100200", "title": "Памятники", "desc": "Самые знаменитые памятники и монументы.", "image":  "gallery/monument/medniy_vsadnik.jpg", "param":  "img_test"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10100300", "title": "Изобразительное искусство", "desc": "Наиболее известные работы русских художников.", "image":  "gallery/paint/utro_v_lesu.jpg", "param":  "img_test"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10100500", "title": "Выдающиеся личности", "desc": "Видные деятели науки, культуры и искусства.", "image":  "gallery/pers/pers_chekhov.jpg", "param":  "img_test"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10100600", "title": "Гербы и флаги", "desc": "Стяги, знамена, гербы, флаги.", "image":  "russia_gerb_1.jpg"},
+
+        {"parent": "root", "type": "group", "id": "group_1_5", "spec": "maps", "title": "Карты", "desc": "Карты русских княжеств, российского государства, СССР.", "image":  "map_ussr.jpg"},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10010510", "title": "Славянские племена", "desc": "Славяне и их соседи в VII-VIII вв."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10010520", "title": "Русь в XI в.", "desc": "Киевская Русь в 1015-1113 гг."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10020510", "title": "Русь в 1-й пол. XIII в.", "desc": "Карта Киевской Руси в 1237 г."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10020530", "title": "Возвышение Москвы", "desc": "Московское княжество в 1300-1462 гг."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10020550", "title": "Конец XIV в.", "desc": "Русские земли в 1389 году."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10030510", "title": "Московское княжество", "desc": "Московское княжество в нач. XVI в."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10060510", "title": "Российская империя", "desc": "Карта Российской империи конца XIX века."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10070590", "title": "СССР", "desc": "Карта СССР в послевоенный период."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10080510", "title": "Карта РФ", "desc": "Карта России после падения СССР."}
+      ]
+    }
+
+  ]
+
+
+}
+

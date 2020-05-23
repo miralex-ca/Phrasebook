@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- dimens for tablets 9 inch by landscape -->
+
+    <dimen name="multipane_menu_width">280dp</dimen>
+    <dimen name="multipane_right_margin">270dp</dimen>
+
+</resources>

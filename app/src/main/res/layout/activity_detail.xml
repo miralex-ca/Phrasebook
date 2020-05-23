@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/coordinator"
+
+    style="@style/DetailSize.Width"
+
+    android:background="?attr/colorDialogBackground"
+
+    android:fitsSystemWindows="true"
+    tools:context="com.online.languages.study.studymaster.ScrollingActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_appbar_height"
+        android:fitsSystemWindows="true"
+        android:theme="?attr/DialogAppBarOverlayTheme">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+
+            app:expandedTitleMarginStart="@dimen/md_keylines"
+            app:expandedTitleMarginEnd="@dimen/detail_appbar_exp_text_right"
+            app:expandedTitleMarginBottom="@dimen/detail_appbar_exp_text_bottom"
+
+            app:expandedTitleTextAppearance="@style/ExpText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+
+            <View
+                android:id="@+id/screem_btm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_appbar_screem_height"
+                android:layout_gravity="bottom"
+                android:layout_alignBottom="@+id/image"
+                android:background="@drawable/screem_bottom"/>
+
+
+            <TextView
+                android:id="@+id/titleHelper"
+                tools:text="Text"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/md_keylines"
+                android:layout_marginBottom="20dp"
+                android:textSize="@dimen/detail_appbar_exp_text_size_small"
+                android:textColor="#F2FFFFFF"
+                android:visibility="gone"
+                android:maxLines="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:paddingRight="14dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/content_scrolling" />
+
+    </RelativeLayout>
+
+    <View
+        android:background="?attr/colorDialogBackground"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin_right"
+
+        app:layout_anchor="@id/app_bar"
+
+        app:layout_anchorGravity="bottom|end"
+        app:fabSize="normal"
+
+        app:srcCompat="@drawable/ic_star_dialog" />
+
+
+</android.support.design.widget.CoordinatorLayout>

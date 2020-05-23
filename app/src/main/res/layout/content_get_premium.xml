@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="?attr/colorBaseBg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/getPremiumMsg"
+        android:gravity="center"
+        style="@style/PurchaseMsg.Width">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/purchase_txt"
+            android:id="@+id/textBuyView"
+            android:maxWidth="400dp"
+            android:gravity="center"
+            android:textColor="#333333"
+            android:lineSpacingExtra="8dp"
+            android:textSize="22sp"
+            android:padding="15dp"
+            android:fontFamily="sans-serif-light"
+            />
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_premium_buy"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:minWidth="190dp"
+            android:onClick="purchase"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textAllCaps="false"
+            android:singleLine="true"
+            android:id="@+id/purchaseButton"
+            android:theme="@style/MyButton"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getPremiumMsg"
+        android:id="@+id/thanksMsg"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        style="@style/ThanksMsg.Width"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_premium_thank"
+            android:id="@+id/textThankView"
+            android:gravity="center"
+            android:textColor="#333333"
+            android:lineSpacingExtra="8dp"
+            android:textSize="25sp"
+            android:padding="15dp"
+            android:fontFamily="sans-serif-light"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/purchased_txt"
+            android:id="@+id/textContinueView"
+            android:gravity="center"
+            android:maxWidth="400dp"
+            android:textColor="#333333"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="italic"
+            android:textSize="18sp"
+            android:padding="15dp"
+            android:fontFamily="sans-serif-light"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_txt"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:minWidth="180dp"
+            android:onClick="continueAfterBuy"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:textAllCaps="false"
+            android:singleLine="true"
+            android:id="@+id/continueButton"
+            android:theme="@style/MyButton"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/getPremiumMsg"
+        android:id="@+id/fullversionMsg"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:minHeight="250dp"
+        style="@style/ThanksMsg.Width"
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fullversion_desc_txt"
+            android:gravity="center"
+            android:maxWidth="400dp"
+            android:textColor="#333333"
+            android:lineSpacingExtra="4dp"
+            android:textStyle="italic"
+            android:textSize="21sp"
+            android:padding="15dp"
+            android:fontFamily="sans-serif-light"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

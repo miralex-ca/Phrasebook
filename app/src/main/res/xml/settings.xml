@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    app:iconSpaceReserved="false"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="interface"
+        android:title="@string/set_interface"
+        app:iconSpaceReserved="false"
+        >
+        <ListPreference
+            android:key="theme"
+            android:title="@string/set_app_theme_title"
+            android:summary="@string/set_starred_save_sum"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes_values"
+            android:defaultValue="@string/set_theme_default"
+            app:iconSpaceReserved="false"
+            android:dialogTitle="@string/set_app_theme_title" />
+
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="night_mode"
+            android:title="@string/set_night_theme"
+            android:summaryOff ="@string/set_night_theme_off"
+            android:summaryOn ="@string/set_night_theme_on"
+            android:defaultValue="false" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="btm_nav"
+            android:title="@string/set_btm_nav_title"
+            android:summary="@string/set_btm_nav_summary"
+            android:entries="@array/set_btm_nav_list"
+            android:entryValues="@array/set_btm_nav_values"
+            android:defaultValue="@string/set_btm_nav_value_default"
+            android:dialogTitle="@string/set_btm_nav_dialog_title" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="detail_txt_size"
+            android:title="@string/set_detail_txt"
+            android:summary="@string/set_detail_txt_summary"
+            android:entries="@array/set_detail_txt_list"
+            android:entryValues="@array/set_detail_txt_values"
+            android:defaultValue="small"
+            android:dialogTitle="@string/set_detail_txt_dialog_title" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="show_status"
+            android:title="@string/set_show_status"
+            android:summary="@string/set_show_status_summary"
+            android:entries="@array/set_show_status_list"
+            android:entryValues="@array/set_show_status_values"
+            android:defaultValue="1"
+            android:dialogTitle="@string/set_show_status_dialog_title" />
+
+
+        <Preference
+            app:iconSpaceReserved="false"
+            android:key="version"
+            android:title="Полная версия"
+            android:summary="Доступ к полной версии приложения">
+            <intent
+                android:targetPackage="@string/applicationId"
+                android:targetClass="com.online.languages.study.studymaster.GetPremium"/>
+        </Preference>
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="data"
+        android:title="НАСТРОЙКИ ДАННЫХ"
+        android:summary="НАСТРОЙКИ ДАННЫХ"
+        >
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="data_mode"
+            android:title="@string/set_data_mode_title"
+            android:summary="@string/set_data_mode_summary"
+            android:entries="@array/set_data_mode_list"
+            android:entryValues="@array/set_data_mode_values"
+            android:defaultValue="2"
+            android:dialogTitle="@string/set_data_mode_dialog_title" />
+
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="data_select"
+            android:title="@string/set_data_control_title"
+            android:summary="@string/set_data_control_summary"
+            android:entries="@array/set_data_control_tests_list"
+            android:entryValues="@array/data_control_tests_list_values"
+            android:defaultValue="dates"
+            android:dialogTitle="@string/set_data_control_dialog_title" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="world_section"
+            android:title="Раздел Мировой истории"
+            android:summaryOff ="Не отображается"
+            android:summaryOn ="Добавлен в список разделов"
+            android:defaultValue="false" />
+
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="favorites"
+        android:enabled="true"
+        android:title="@string/set_starred_section">
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="starred_sort_type"
+            android:title="@string/set_starred_sort_title"
+            android:summary="@string/set_starred_sort_sum"
+            android:defaultValue="0"
+            android:entries="@array/starred_list_sort"
+            android:entryValues="@array/starred_list_sort_values"
+            android:dialogTitle="@string/set_starred_sort_title_dialog" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="starred_save_type"
+            android:title="@string/set_starred_save_title"
+            android:summary="@string/set_starred_save_sum"
+            android:defaultValue="0"
+            android:entries="@array/starred_list_save"
+            android:entryValues="@array/starred_list_save_values"
+            android:dialogTitle="@string/set_starred_save_title_dialog" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="show_starred_results"
+            android:title="@string/starred_lessons_results"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_starred_confirm"
+            android:title="@string/starred_confirm_title"
+            android:summary = "@string/set_starred_confirm_summary"
+            android:defaultValue="true" />
+
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="misc"
+        android:title="РАЗНОЕ"
+        android:summary="РАЗНОЕ"
+        >
+
+        <PreferenceScreen
+            app:iconSpaceReserved="false"
+            android:title="Импорт и экпорт данных"
+            android:summary="Синхронизация, резервная копия">
+            <intent
+                android:targetPackage="@string/applicationId"
+                android:targetClass="com.online.languages.study.studymaster.BackupActivity"/>
+        </PreferenceScreen>
+
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="test_all_limit"
+            android:title="@string/set_test_all_limit_title"
+            android:summary="@string/set_test_all_limit_summary"
+            android:dialogTitle="@string/set_test_all_limit_dialog_title"
+            android:entries="@array/set_test_all_limit_list"
+            android:entryValues="@array/set_test_all_limit_values"
+            android:defaultValue="@string/set_test_all_limit_default"
+            />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="sort_pers"
+            android:title="@string/set_sort_pers_title"
+            android:summary="@string/set_sort_pers_summary"
+            android:dialogTitle="@string/set_sort_pers_dialog_title"
+
+            android:entries="@array/set_sort_pers_list"
+            android:entryValues="@array/set_sort_pers_values"
+            android:defaultValue="@string/set_sort_pers_default"
+            />
+
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="control_tests"
+            android:title="@string/set_control_title"
+            android:summary="@string/set_control_summary"
+            android:entries="@array/set_control_tests_list"
+            android:entryValues="@array/control_tests_list_values"
+            android:defaultValue="1"
+            android:dialogTitle="@string/set_control_dialog_title" />
+
+    </PreferenceCategory>
+
+
+
+    <PreferenceCategory
+        android:key="hidden"
+        android:title="">
+
+        <SwitchPreferenceCompat
+            android:visibility="gone"
+            android:key="ex_buttons_show"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:visibility="gone"
+            android:key="card_buttons_show"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:visibility="gone"
+            android:key="test_all_save"
+            android:defaultValue="true" />
+
+
+        <SwitchPreferenceCompat
+            android:key="full_version"
+            android:title="Full version"
+            android:defaultValue="false" />
+
+
+        <SwitchPreferenceCompat
+            android:key="show_ad"
+            android:title="Show ads"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="download_notification"
+            android:title="Оповещение о загрузке"
+            android:summaryOff ="Не отображается"
+            android:summaryOn ="Отображается в строке состояния"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

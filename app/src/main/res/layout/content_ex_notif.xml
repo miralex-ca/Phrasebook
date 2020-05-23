@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/exStarNotif"
+    android:visibility="gone"
+    android:padding="20dp"
+    >
+
+        <TextView
+
+            android:text="@string/starred_ex_notif"
+            android:textStyle="bold"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            />
+
+
+</LinearLayout>

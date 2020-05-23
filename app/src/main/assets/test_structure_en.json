@@ -1,0 +1,96 @@
+{
+  "params": {
+    "simplified": true,
+    "homecards": true,
+    "gallery": true
+  },
+
+  "sections":
+  [
+	{"tag": "section1", "title": "First Section", "id": "10010",
+      "desc": "Full description of the first section",
+      "title_short": "Section 1",
+      "desc_short": "Short section description",
+      "image": "picto/pers_red_l.png",
+      "categories":
+        [
+          {"parent": "root", "type": "simple", "spec": "misc", "id": "10010010", "title": "Category: Blue objects", "desc": "Category description"},
+          {"parent": "root", "type": "simple", "spec": "misc", "id": "10010020", "title": "Category: Red objects", "desc": "Category description"},
+          {"parent": "root", "type": "set", "id": "set_1_2", "title": "none", "desc": ""},
+          {"parent": "root", "type": "simple", "id": "10010030", "title": "Category: Green objects", "desc": "", "review":  "false"},
+
+
+          {"parent": "root", "type": "group", "id": "group_1_1", "title": "Group: Terms of objects", "desc": ""},
+
+          {"parent": "group_1_1", "type": "simple", "spec": "term", "id": "10010110", "title": "Category: Terms of objects", "desc": "Описание темы", "review": "false"}
+        ]
+	},
+
+    {"tag": "section2", "title": "Second section", "id": "10020",
+      "desc": "Full description of the second section",
+      "title_short": "Section 2",
+      "desc_short": "Short section description",
+      "image": "picto/pers_blue_l.png",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10020010", "title": "Category: Blue persons", "desc": "Category description"}
+      ]
+    },
+
+    {"tag": "section3", "title": "Gallery", "id": "10030",
+      "desc": "Full description of the gallery",
+      "title_short": "Section 3",
+      "desc_short": "Short description of the gallery",
+      "image": "picto/shape_blue_l.png",
+      "type": "gallery",
+      "categories":
+      [
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "gone", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030010", "title": "Category: Blue pics", "desc": "Category description", "image":  "picto/flower_blue_l.png"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030020", "title": "Category: Red pics", "desc": "Category description", "image":  "picto/flower_red_l.png"},
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030030", "title": "Category: Green pics", "desc": "Category description", "image":  "picto/flower_green_l.png"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030040", "title": "Category: Gray pics", "desc": "Category description", "image":  "picto/flower_gray_l.png"}
+      ]
+    },
+
+    {"tag": "section4", "title": "Navigation gallery", "id": "10040",
+      "desc": "Full description of the gallery",
+      "title_short": "Gallery",
+      "desc_short": "Short description of the gallery",
+      "image": "picto/image_blue_l.png",
+      "type": "gallery",
+      "spec": "nav_gallery",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "gone", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10040010", "title": "Category: Blue images", "desc": "Category description", "image":  "picto/image_blue_l.png"},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10040020", "title": "Category: Red images", "desc": "Category description", "image":  "picto/image_red_l.png"},
+
+        {"parent": "root", "type": "group", "id": "group_4_1", "spec": "gallery", "title": "Group of images", "desc": "Category description", "image":  "picto/image_gray_l.png"},
+
+        {"parent": "group_4_1", "type": "simple", "spec": "image_list", "id": "10040040", "title": "Category: Gray images", "desc": "Category description", "image":  "picto/image_gray_l.png"},
+        {"parent": "group_4_1", "type": "simple", "spec": "image_list", "id": "10040050", "title": "Category: Black images", "desc": "Category description", "image":  "picto/image_black_l.png"},
+
+
+        {"parent": "root", "type": "group", "id": "group_4_2", "spec": "maps", "title": "Group of maps", "desc": "Description of maps", "image":  "picto/image_green_l.png"},
+
+        {"parent": "group_4_2", "type": "page", "spec": "map", "id": "100400300010", "title": "Green map", "desc": "Map description"},
+        {"parent": "group_4_2", "type": "page", "spec": "map", "id": "100400300020", "title": "Gray map", "desc": "Map description"}
+
+
+      ]
+    }
+
+  ]
+
+
+}
+

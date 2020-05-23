@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    android:id="@+id/status_wrap"
+
+    android:visibility="gone"
+
+
+    android:layout_marginTop="9dp"
+    >
+
+
+
+    <RelativeLayout
+        android:layout_marginRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:visibility="gone"
+            android:paddingTop="0dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
+            android:text="@string/item_status_unknown"
+            android:id="@+id/statusUnknown"
+            android:textColor="#fff"
+            android:textSize="11sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_round_gray_bg_v1"
+
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:paddingTop="0dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
+            android:text="@string/item_status_familiar"
+            android:id="@+id/statusKnown"
+            android:textColor="#fff"
+            android:textSize="11sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_round_blue_bg_v1"
+
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:paddingTop="0dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
+            android:text="@string/item_status_studied"
+            android:id="@+id/statusStudied"
+            android:textColor="#fff"
+            android:textSize="11sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_round_green_bg_v1"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:paddingTop="0dp"
+        android:paddingBottom="2dp"
+        android:paddingRight="6dp"
+        android:paddingLeft="6dp"
+        android:id="@+id/errorsCount"
+        android:textColor="#fff"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textSize="11sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/cat_list_item_info"
+
+        android:background="@drawable/text_round_red_bg_v1"
+
+        />
+
+
+</LinearLayout>

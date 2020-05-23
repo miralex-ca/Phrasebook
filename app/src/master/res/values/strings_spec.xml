@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_spec">master-</string>
+    <string name="app_name">История</string>
+    <string name="backup_file_name">Backup_MD.csv</string>
+    <string name="title_main_txt">История России</string>
+</resources>

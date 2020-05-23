@@ -1,0 +1,17 @@
+{
+  "details":
+  [
+
+    {"id": "100102100010",
+      "title": "Карта 1",
+      "desc": "Описание карты 1",
+      "image": "picto/image_green_l.png",
+      "img_info": "#"},
+    {"id": "100102100020",
+      "title": "Карта 2",
+      "desc": "Описание карты 2",
+      "image": "picto/image_green_l.png",
+      "img_info": "#"}
+
+  ]
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_reference_file" translatable="false">reference</string>
+    <string name="backup_file_format" translatable="false">rhdb</string>
+
+    <integer name="section_id_length">8</integer>
+
+
+    <style name="DefaultNightThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_n</item>
+        <item name="colorAccent">@color/colorAccent_n</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_n</item>
+    </style>
+
+
+
+    <string-array name="data_files">
+        <item>data.json</item>
+        <!-- item>test_data.json</item -->
+    </string-array>
+
+
+</resources>

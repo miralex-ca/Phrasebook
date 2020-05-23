@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="_card_wrap_padding">16dp</dimen>
+
+    <dimen name="detail_appbar_height_land">250dp</dimen>
+
+    <dimen name="detail_appbar_height">@dimen/detail_appbar_height_land</dimen>
+
+</resources>

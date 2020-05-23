@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="night_mode">true</bool>
+
+
+    <style name="DefaultThemeModes" parent="DefaultNightThemeModes" />
+
+    <style name="DefaultThemeModes.Detail" parent="NightTheme.UserDialog" />
+
+    <style name="RedThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_red_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_red_n</item>
+        <item name="colorAccent">@color/colorAccent_red_n</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_red_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_red_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
+
+        <item name="cardCorner">@dimen/cardCornerDefault_red</item>
+
+    </style>
+    <style name="RedThemeModes.Detail" parent="NightTheme.UserDialog" />
+
+
+    <style name="WhiteThemeModes" parent="NightTheme">
+        <item name="cardCorner">@dimen/cardCornerDefault_white</item>
+    </style>
+    <style name="WhiteThemeModes.Detail" parent="NightTheme.UserDialog" />
+
+
+    <!-- colors -->
+
+    <style name="ToolBarStyle_n">
+        <item name="android:textColorPrimary">@color/colorToolbarText_n</item>
+        <item name="android:textColorSecondary">@color/colorToolbarSecText_n</item>
+    </style>
+
+    <style name="ToolBarStyle_red_n">
+        <item name="android:textColorPrimary">@color/colorToolbarText_red_n</item>
+        <item name="android:textColorSecondary">@color/colorToolbarSecText_red_n</item>
+    </style>
+
+
+
+
+
+</resources>

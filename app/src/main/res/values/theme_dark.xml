@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary_dark">#151515</color>
+    <color name="colorPrimaryDark_dark">#000</color>
+
+    <color name="colorDialogBg">#3D3D3D</color>
+    <color name="colorMenu_dark">#313131</color>
+
+    <color name="colorAccent_dk">#fcfcfc</color>    <!-- used for star button -->
+
+    <color name="colorBtmNav_inactive_dark">#A1FCFCFC</color>
+
+
+    <color name="colorExAccent_dk">#B0BEC5</color>
+
+    <color name="ex_icon_dark">#BDBDBD</color>
+    <color name="ex_link_result_dark">#B0BEC5</color>
+
+    <color name="colorContactIcon_dark">#F5F5F5</color>
+
+    <color name="colorDetailBar_dark">#222</color>
+    <color name="colorDetail_dark">#444</color>
+
+
+    <color name="colorNavBgStart_dark">#263238</color>
+    <color name="colorNavBgCenter_dark">#455A64</color>
+    <color name="colorNavBgEnd_dark">#263238</color>
+
+
+    <color name="colorStarIcon_dark">#FFFF00</color>
+    <color name="colorStarIconBord_dark">#E9FFFFFF</color> <!-- for stars in lists - - >
+
+    <color name="colorStarButton_dark">#FFD600</color>  <!- - used for star button - - >
+    <color name="colorStarButtonIcon_dark">#fff</color> <!- - used for active star color - - >
+    <color name="colorStarButtonInactive_dark">#fff</color> <!- - used for inactive star color -->
+
+    <color name="colorStarButton_dark">#FFD600</color>  <!-- changed in v21 --> <!-- used for star button -->
+    <color name="colorStarButtonIcon_dark">#FFFF00</color> <!-- used for active star color -->
+    <color name="colorStarButtonInactive_dark">#cecec4</color> <!-- used for inactive star color -->
+
+
+    <color name="colorCardBg_dark">#000</color>
+    <color name="colorBaseBg_dark">#000</color>
+    <color name="colorCardWidgetBg_dark">#151515</color>
+    <color name="colorBannerBg_dark">#222222</color>
+    <color name="colorBtmNavBg_dark">#222222</color>
+
+    <color name="colorMainText_dark">#fff</color>
+    <color name="colorSecondaryText_dark">#b4ffffff</color>
+
+
+    <color name="colorDrawerMenuBg_dark">#222</color>
+    <color name="colorMultipaneMenuBg_dark">#212121</color>
+    <color name="colorDrawerMenuTxt_dark">#abffffff</color>
+    <color name="colorDrawerMenuTxtActive_dark">#ffffff</color>
+    <color name="colorDrawerDivider_dark">#2cffffff</color>
+
+    <color name="colorMenuBg_dark">#5effffff</color>
+    <color name="colorMenuSelected_dark">#26ffffff</color>
+    <color name="colorMultipaneMenuTxt_dark">#9affffff</color>
+
+    <color name="colorMenuIconColor_dark">#ffffff</color>
+
+    <color name="colorStudiedBox_dark">#01ae09</color>
+    <color name="colorKnownBox_dark">#0283d2</color>
+    <color name="colorUnknownBox_dark">#546E7A</color>
+    <color name="colorErrorBox_dark">#ca3232</color>
+
+
+    <color name="colorCatProgressPerfect_dark">#00E676</color>
+    <color name="colorCatProgressGreat_dark">#1DE9B6</color>
+    <color name="colorCatProgressGood_dark">#00E5FF</color>
+    <color name="colorCatProgressBad_dark">#FF6E40</color>
+    <color name="colorCatProgressLow_dark">#ff5959</color>
+
+    <color name="colorProgressTxt_dark">#000</color>
+
+    <color name="colorErrors_dark">#FF1744</color>
+    <color name="colorUnknown_dark">#ffffff</color>
+    <color name="colorKnown_dark">#4188e4</color>
+    <color name="colorStudied_dark">#00C853</color>
+
+
+    <color name="colorIconArrow_dark">#f9c871</color>
+    <color name="colorIconArrowBg_dark">#2affcc80</color>
+    <color name="colorIconHistory_dark">#18FFFF</color>
+    <color name="colorIconHistoryBg_dark">#2200e5ff</color>
+    <color name="colorIconReview_dark">#8adafd</color>
+    <color name="colorIconReviewBg_dark">#3c80d8ff</color>
+    <color name="colorIconTest_dark">#1DE9B6</color>
+    <color name="colorIconTestBg_dark">#281de9b6</color>
+
+
+    <color name="colorExOptionTxt_dark">#ffffff</color>
+    <color name="colorMapTitleBox_dark">#78000000</color>
+
+
+    <dimen name="card_margin_default_dark">0dp</dimen>
+
+    <color name="colorExBottomDivider_dark">#00b3b3b3</color>
+
+    <item name="mapThumbAlpha_dark" format="float" type="dimen">.9</item>
+
+    <style name="DarkTheme.TransparentStatus">
+    </style>
+
+    <style name="DarkBase" parent="Theme.AppCompat.NoActionBar" />
+
+    <style name="DarkTheme" parent="DarkBase">
+
+        <item name="colorPrimary">@color/colorPrimary_dark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_dark</item>
+
+
+        <item name="colorAccent">@color/colorAccent_dk</item>
+
+        <item name="colorStarIcon">@color/colorStarIcon_dark</item>
+        <item name="colorStarIconBord">?attr/colorStarIcon</item>
+
+        <item name="colorStarButton">@color/colorStarButton_dark</item>
+
+        <item name="colorExIconBg">@color/ex_icon_dark</item>
+        <item name="colorExResult">@color/ex_link_result_dark</item>
+
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_dark</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_dark</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_dark</item>
+
+
+        <item name="colorBaseBg">@color/colorBaseBg_dark</item>
+        <item name="colorCardBg">@color/colorCardBg_dark</item>
+        <item name="colorCardWidgetBg">@color/colorCardWidgetBg_dark</item>
+        <item name="colorMainText">@color/colorMainText_dark</item>
+        <item name="colorBannerBg">@color/colorBannerBg_dark</item>
+
+        <item name="colorBtmNavBg">@color/colorBtmNavBg_dark</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_dark</item>
+
+        <item name="cardMargin">@dimen/card_margin_default_dark</item>
+
+        <item name="colorErrors">@color/colorErrors_dark</item>
+        <item name="colorUnknown">@color/colorUnknown_dark</item>
+        <item name="colorKnown">@color/colorKnown_dark</item>
+        <item name="colorStudied">@color/colorStudied_dark</item>
+
+
+        <item name="colorDetailBar">@color/colorDetailBar</item>
+        <item name="colorPrimaryDarkDetail">@color/colorPrimaryDark_dark</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText_dark</item>
+
+        <item name="colorStarredSecondaryText">?attr/colorSecondaryText</item>
+
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme_dark</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDark</item>
+
+        <item name="deviderStyle">@style/deviderStyle_dark</item>
+
+        <item name="colorDialogBg">@color/colorDialogBg</item>
+
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+
+        <item name="colorContactIcon">@color/colorContactIcon_dark</item>
+
+
+        <item name="colorDrawerItemBg">@color/colorDrawerMenuBg_dark</item>
+        <item name="colorDrawerItemTxt">@color/colorDrawerMenuTxt_dark</item>
+        <item name="colorDrawerItemTxtActive">@color/colorDrawerMenuTxtActive_dark</item>
+        <item name="colorDrawerDivider">@color/colorDrawerDivider_dark</item>
+
+
+        <item name="colorMultipaneMenuBg">@color/colorMultipaneMenuBg_dark</item>
+        <item name="colorMenuBg">@color/colorMenuBg_dark</item>
+        <item name="colorMenuSelected">@color/colorMenuSelected_dark</item>
+        <item name="colorMultipaneMenuTxt">@color/colorMultipaneMenuTxt_dark</item>
+        <item name="multipane_menu_item_active_bg">@drawable/list_ripple_dark</item>
+
+
+        <item name="colorMenuIconHome">?attr/colorMenuIconColor</item>
+        <item name="colorMenuIconStar">?attr/colorMenuIconColor</item>
+        <item name="colorMenuIconHistory">?attr/colorMenuIconColor</item>
+        <item name="colorMenuIconSetting">?attr/colorMenuIconColor</item>
+        <item name="colorMenuIconInfo">?attr/colorMenuIconColor</item>
+        <item name="colorMenuIconContact">?attr/colorMenuIconColor</item>
+
+
+        <item name="colorMenuIconColor">@color/colorMenuIconColor_dark</item>
+
+
+        <item name="colorExOptionTxt">@color/colorExOptionTxt_dark</item>
+        <item name="colorExDisabledTxt">@color/colorExDisabledTxt</item>
+        <item name="colorExActiveTxt">@color/colorExAccent_dk</item>
+
+        <item name="colorRadioAccent">@color/colorExAccent_dk</item>
+
+        <item name="colorExBottomDivider">@color/colorExBottomDivider_dark</item>
+
+
+        <item name="colorStudiedBox">@color/colorStudiedBox_dark</item>
+        <item name="colorKnownBox">@color/colorKnownBox_dark</item>
+        <item name="colorUnknownBox">@color/colorUnknownBox_dark</item>
+        <item name="colorErrorBox">@color/colorErrorBox_dark</item>
+
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_dark</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_dark</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_dark</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_dark</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_dark</item>
+        <item name="colorCatProgressTxt">@color/colorProgressTxt_dark</item>
+
+
+        <item name="colorIconArrow">@color/colorIconArrow_dark</item>
+        <item name="colorIconArrowBg">@color/colorIconArrowBg_dark</item>
+        <item name="colorIconHistory">@color/colorIconHistory_dark</item>
+        <item name="colorIconHistoryBg">@color/colorIconHistoryBg_dark</item>
+        <item name="colorIconReview">@color/colorIconReview_dark</item>
+        <item name="colorIconReviewBg">@color/colorIconReviewBg_dark</item>
+        <item name="colorIconTest">@color/colorIconTest_dark</item>
+        <item name="colorIconTestBg">@color/colorIconTestBg_dark</item>
+
+        <item name="map_thumbnail_alpha">@dimen/mapThumbAlpha_dark</item>
+        <item name="colorMapTitleBox">@color/colorMapTitleBox_dark</item>
+
+    </style>
+
+    <style name="PopupOverlayTheme_dark" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/colorMenu_dark</item>
+    </style>
+
+    <style name="deviderStyle_dark">
+        <item name="android:visibility">visible</item>
+    </style>
+
+
+    <style name="DarkTheme.UserDialog" parent="AppTheme.Dialog.Dark">
+        <item name="colorPrimary">@color/colorDetailBar_dark</item>
+
+        <item name="colorMainText">@color/colorMainText_dark</item>
+        <item name="colorMainTextDisabled">@color/colorMainTextDisabled</item>
+
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+        <item name="colorDialogBackground">@color/colorDetail_dark</item>
+
+        <item name="colorAccent">@color/colorStarButton_dark</item>
+        <item name="colorStarButton">@color/colorStarButton_dark</item>
+        <item name="colorStarButtonIcon">@color/colorStarButtonIcon_dark</item>
+        <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
+        <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive_dark</item>
+    </style>
+
+
+
+    <!-- Alert Dialog Theme -->
+    <style name="AppCompatAlertDark" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMainText_dark</item>
+        <!-- Used for the background -->
+        <item name="android:background">?attr/colorDialogBg</item>
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorAccent_dk</item>
+
+        <!--item name="colorControlHighlight">@color/dialog_control_highlight</item -->
+
+        <!-- item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item -->
+
+    </style>
+
+
+
+
+
+    <!-- color name="colorDialogBg">#455A64</color>
+    <color name="colorPrimary_dark">#546E7A</color>
+    <color name="colorPrimaryDark_dark">#455A64</color>
+    <color name="colorAccent_dark">#03ae96</color>
+    <color name="colorMenu_dark">#607D8B</color>
+
+    <color name="colorCardBg_dark">#607D8B</color>
+    <color name="colorBaseBg_dark">#455A64</color>
+
+    <color name="colorDrawerMenuTxt_dark">#abffffff</color>
+    <color name="colorDrawerMenuTxtActive_dark">#ffffff</color>
+    <color name="colorDrawerMenuBg_dark">#546E7A</color>
+    <color name="colorDrawerDivider_dark">#2cffffff</color -->
+
+
+
+
+</resources>

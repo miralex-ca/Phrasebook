@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#1E88E5</color>
+    <color name="colorButtonNormal">#e1e1e1</color>
+
+
+    <color name="colorBtmNav_active">#0A7BDD</color>
+    <color name="colorBtmNav_inactive">#3B95E6</color>
+
+    <color name="colorDetailBar">@color/colorAccent</color>
+    <color name="colorPrimaryDarkDetail">#26327c</color>
+
+    <color name="colorPrimaryDialog">#607D8B</color>
+    <color name="colorDetailMainText">#444</color>
+
+
+    <color name="colorNavBgStart">#2087ec</color>
+    <color name="colorNavBgCenter">#1976d2</color>
+    <color name="colorNavBgEnd">#0e5eac</color>
+
+    <color name="ex_icon">#78909C</color>
+    <color name="ex_link_result">#e1e7ea</color>
+    <color name="ex_link_result_txt">#000000</color>
+
+    <color name="colorExActiveTxt">#546e7a</color>
+
+    <color name="colorContactIcon">#78909C</color>
+
+
+    <color name="colorTransparent">#00000000</color>
+
+    <!--
+
+    <color name="colorPrimary">#444</color>
+    <color name="colorPrimaryDark">#343434</color>
+    <color name="colorAccent">#555</color>
+    <color name="colorButtonNormal">#e1e1e1</color>
+
+    <color name="colorDetailBar">@color/colorAccent</color>
+    <color name="colorPrimaryDarkDetail">#26327c</color>
+
+    <color name="colorPrimaryDialog">#607D8B</color>
+    <color name="colorDetailMainText">#444</color>
+
+    <color name="colorNavBgStart">#90A4AE</color>
+    <color name="colorNavBgCenter">#607D8B</color>
+    <color name="colorNavBgEnd">#455A64</color>
+
+    <color name="ex_icon">#9E9E9E</color>
+    <color name="ex_link_result">#e1e7ea</color>
+    <color name="ex_link_result_txt">#000000</color>
+
+    <color name="colorExActiveTxt">#546e7a</color>
+
+    <color name="colorContactIcon">#8c8c8c</color>
+
+-->
+    <!-- standard colors for dark white interface -->
+
+    <color name="colorStarIcon">#FDF223</color>
+    <color name="colorStarIconBord">#77FAD415</color>
+
+    <color name="colorStarButton">#FFD600</color> <!-- changed in v21-->
+    <color name="colorStarButtonIcon">#ffea00</color>
+    <color name="colorStarButtonInactive">#cacaca</color>
+
+
+    <color name="colorBaseBg">#eeeeee</color>
+    <color name="colorCardBg">#fff</color>
+    <color name="colorCardDivider">#72818181</color>
+    <color name="colorMainText">#333</color>
+    <color name="colorMainTextDisabled">#c08e8e8e</color>
+
+    <color name="colorSecondaryText">#bd333333</color>
+
+
+    <color name="colorDrawerMenuTxt">#777</color>
+    <color name="colorDrawerMenuTxtActive">#222</color>
+    <color name="colorDrawerDivider">#2c000000</color>
+    <color name="colorDrawerMenuBg">#fff</color>
+
+    <color name="colorMenuIconHome">#455A64</color>
+    <color name="colorMenuIconStar">#ffeb3b</color>
+    <color name="colorMenuIconHistory">#03a9f4</color>
+    <color name="colorMenuIconSetting">@color/colorMenuIconDefalt</color>
+    <color name="colorMenuIconInfo">@color/colorMenuIconDefalt</color>
+    <color name="colorMenuIconContact">@color/colorMenuIconDefalt</color>
+    <color name="colorMenuIconDefalt">#455A64</color>
+
+    <color name="colorMultipaneMenuBg">@color/colorCardBg</color>
+    <color name="colorMultipaneMenuTxt">#666666</color>
+
+    <color name="colorMenuSelected">#1e030303</color>
+    <color name="colorMenuBg">#25030303</color>
+
+    <color name="colorListTxt">#444444</color>
+
+    <color name="colorMultiMenuDevider">#cccccc</color>
+
+    <color name="translucent_scrim_top">#63000000</color>
+    <color name="translucent_scrim_top_center">#20000000</color>
+
+    <color name="translucent_scrim_bottom">#82000000</color>
+    <color name="translucent_scrim_bottom_center">#0D000000</color>
+
+    <color name="red_snack">#FF1744</color>
+    <color name="red_snack_txt">#FFFFFF</color>
+    <color name="green_snack">#00E676</color>
+    <color name="green_snack_txt">#000000</color>
+    <color name="radio_disabled">#888888</color>
+    <color name="radio_correct">#2E7D32</color>
+    <color name="answer_good">#2196F3</color>
+    <color name="answer_verygood">#009688</color>
+    <color name="answer_excellent">#19d401</color>
+    <color name="answer_satisfactory">#F4511E</color>
+    <color name="answer_bad">#FF1744</color>
+    <color name="ex_radio_txt_active">#1565C0</color>
+    <color name="ex_radio_btn_active">#1E88E5</color>
+
+    <color name="progress_excellent">#19d401</color>
+    <color name="progress_verygood">#00BFA5</color>
+    <color name="progress_good">#00B8D4</color>
+    <color name="progress_bad">#FF3D00</color>
+    <color name="progress_verybad">#FF1744</color>
+
+    <color name="colorExOptionTxt">#000000</color>
+    <color name="colorExDisabledTxt">#888888</color>
+
+    <color name="colorExBottomDivider">#45b3b3b3</color>
+    <color name="colorExBottomBox">#00aeaeae</color>
+
+    <color name="colorVeryBadText">#FF1744</color>
+    <color name="colorBadText">#F4511E</color>
+    <color name="colorGoodText">#2196F3</color>
+    <color name="colorVeryGoodText">#00BFA5</color>
+    <color name="colorGreatText">#19d401</color>
+
+    <color name="colorVeryBadTextCat">#D50000</color>
+    <color name="colorBadTextCat">#e26202</color>
+    <color name="colorGoodTextCat">#0180ce</color>
+    <color name="colorVeryGoodTextCat">#019681</color>
+    <color name="colorGreatTextCat">#01a344</color>
+
+    <color name="colorCatProgressPerfect">#00b94d</color>
+    <color name="colorCatProgressGreat">#00ab93</color>
+    <color name="colorCatProgressGood">#01a2ba</color>
+    <color name="colorCatProgressBad">#FF3D00</color>
+    <color name="colorCatProgressLow">#FF1744</color>
+
+    <color name="colorProgressTxt">#fff</color>
+    <color name="colorCatGroup">#30a8adaf</color>
+
+    <color name="colorCatProgressPerfect_default">#00b94d</color>
+    <color name="colorCatProgressGreat_default">#00ab93</color>
+    <color name="colorCatProgressGood_default">#01a2ba</color>
+    <color name="colorCatProgressBad_default">#FF3D00</color>
+    <color name="colorCatProgressLow_default">#FF1744</color>
+
+    <color name="colorErrors">#FF1744</color>
+
+    <color name="colorUnknown">#c1000000</color>
+    <color name="colorKnown">#2772f1</color>
+    <color name="colorStudied">#02a445</color>
+
+    <color name="colorStudiedBox">#00C853</color>
+    <color name="colorKnownBox">#0091EA</color>
+    <color name="colorUnknownBox">#78909C</color>
+
+    <color name="colorStudiedBoxTxt">#fff</color>
+    <color name="colorKnownBoxTxt">#fff</color>
+    <color name="colorUnknownBoxTxt">#fff</color>
+
+    <color name="colorKnownProgress">#0091EA</color>
+    <color name="colorStudiedProgress">#00C853</color>
+
+    <color name="colorErrorBox">#f55555</color>
+    <color name="colorErrorBoxTxt">#FFFFFF</color>
+
+    <color name="colorTestBox">#00897B</color>
+    <color name="colorOpenBox">#0097A7</color>
+    <color name="colorIconArrow">#EF6C00</color>
+    <color name="colorIconArrowBg">#7cffcc80</color>
+    <color name="colorIconHistory">#0097A7</color>
+    <color name="colorIconHistoryBg">#3100e5ff</color>
+    <color name="colorIconReview">#039BE5</color>
+    <color name="colorIconReviewBg">#4e80d8ff</color>
+    <color name="colorIconTest">#26A69A</color>
+    <color name="colorIconTestBg">#491de9b6</color>
+    <color name="white">#fff</color>
+    <color name="screem_img_center">#0f000000</color>
+    <color name="screem_img_btm">#20000000</color>
+    <color name="colorMapTitleBox">#ffffff</color>
+    <color name="colorToolbarIcon">#ffffff</color>
+    <color name="colorNavHeaderTxt">#ffffff</color>
+    <color name="colorTabIndicator">#ffffff</color>
+    <color name="colorDrawerHeadDivider">#00000000</color>
+    <color name="colorImageTitleBox">#54000000</color>
+
+
+
+    <color name="colorToolbarText_n">@color/colorToolbarText_blue_n</color>
+    <color name="colorToolbarSecText_n">@color/colorToolbarSecText_blue_n</color>
+    <color name="colorAccent_n">@color/colorAccent_blue_n</color>
+    <color name="colorBtmNav_active_n">@color/colorBtmNav_active_blue_n</color>
+    <color name="colorBtmNav_inactive_n">@color/colorBtmNav_inactive_blue_n</color>
+
+    <color name="colorNavBgStart_n">@color/colorNavBgStart_blue_n</color>
+    <color name="colorNavBgCenter_n">@color/colorNavBgCenter_blue_n</color>
+    <color name="colorNavBgEnd_n">@color/colorNavBgEnd_blue_n</color>
+
+    <color name="colorToolbarText_blue_n">#64b5f6</color>
+    <color name="colorToolbarSecText_blue_n">#C664B5F6</color>
+    <color name="colorAccent_blue_n">#4DC7FF</color>
+    <color name="colorBtmNav_active_blue_n">#8BCFFD</color>
+    <color name="colorBtmNav_inactive_blue_n">#BEFFFFFF</color>
+
+    <color name="colorNavBgStart_blue_n">#004B86</color>
+    <color name="colorNavBgCenter_blue_n">#004072</color>
+    <color name="colorNavBgEnd_blue_n">#013055</color>
+
+    <color name="colorToolbarText_red_n">#FF8181</color>
+    <color name="colorToolbarSecText_red_n">#B5FF8181</color>
+
+    <color name="colorAccent_red_n">#FF6C5F</color>
+    <color name="colorBtmNav_active_red_n">#FD8585</color>
+    <color name="colorBtmNav_inactive_red_n">#BEFFFFFF</color>
+
+    <color name="colorNavBgStart_red_n">#9C1414</color>
+    <color name="colorNavBgCenter_red_n">#860F0F</color>
+    <color name="colorNavBgEnd_red_n">#740B0B</color>
+    <color name="colorDialogBg_lite">#fff</color>
+
+
+</resources>

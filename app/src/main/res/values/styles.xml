@@ -1,0 +1,994 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="preferenceTheme">@style/AppTheme.CustomPreferenceThemeOverlay</item>
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">@color/colorButtonNormal</item>
+        <item name="colorBtnText">@color/color_text_btn</item>
+
+        <item name="colorMenuIconHome">@color/colorMenuIconHome</item>
+        <item name="colorMenuIconStar">@color/colorMenuIconStar</item>
+        <item name="colorMenuIconHistory">@color/colorMenuIconHistory</item>
+        <item name="colorMenuIconSetting">@color/colorMenuIconSetting</item>
+        <item name="colorMenuIconInfo">@color/colorMenuIconInfo</item>
+        <item name="colorMenuIconContact">@color/colorMenuIconContact</item>
+
+        <item name="colorDialogBg">@color/colorDialogBg_lite</item>
+
+
+        <item name="navBg">@drawable/side_nav_bar</item>
+        <item name="colorNavBgStart">@color/colorNavBgStart</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd</item>
+
+        <item name="navigationStyle">@style/Navigation</item>
+        <item name="colorDrawerDivider">@color/colorDrawerDivider</item>
+
+        <item name="colorDrawerItemBg">@color/colorDrawerMenuBg</item>
+        <item name="colorDrawerItemTxtDrawable">@drawable/drawer_item</item>
+        <item name="colorDrawerItemTxt">@color/colorDrawerMenuTxt</item>
+        <item name="colorDrawerItemTxtActive">@color/colorDrawerMenuTxtActive</item>
+
+        <item name="AppBarOverlayTheme">@style/AppBarOverlayTheme</item>
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme</item>
+
+        <item name="cardViewStyle">@style/CardViewStyle</item>
+        <item name="deviderStyle">@style/deviderStyle</item>
+
+        <item name="cardMargin">@dimen/card_margin_default</item>  <!--  margin    -->
+
+        <item name="colorBaseBg">@color/colorBaseBg</item>
+        <item name="colorSettingsBg">?attr/colorCardBg</item>
+
+        <item name="colorCardBg">@color/colorCardBg</item>
+        <item name="colorCardWidgetBg">@color/colorCardBg</item>
+        <item name="colorCardDivider">@color/colorCardDivider</item>
+        <item name="colorMainText">@color/colorMainText</item>
+        <item name="colorMainTextDisabled">@color/colorMainTextDisabled</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText</item>
+
+        <item name="colorBannerBg">?attr/colorCardWidgetBg</item>
+        <item name="colorBtmNavBg">?attr/colorCardWidgetBg</item>
+
+        <item name="colorBtmNav_active">?attr/colorAccent</item>
+        <item name="colorBtmNav_inactive">?attr/colorBtmNav_active</item>
+
+        <item name="colorHomeSecondaryText">?attr/colorSecondaryText</item>
+        <item name="colorCatSecondaryText">?attr/colorSecondaryText</item>
+        <item name="colorStarredSecondaryText">?attr/colorMainText</item>
+        <item name="colorCardShowText">?attr/colorSecondaryText</item>
+        <item name="colorStatsSecondaryText">?attr/colorSecondaryText</item>
+
+
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+
+        <item name="colorContactIcon">@color/colorContactIcon</item>
+
+        <item name="colorMultipaneMenuBg">?attr/colorCardBg</item>
+        <item name="colorMultipaneMenuTxt">@color/colorMultipaneMenuTxt</item>
+
+        <item name="colorMenuBg">@color/colorMenuBg</item>
+        <item name="colorMenuSelected">@color/colorMenuSelected</item>
+
+
+        <item name="multipane_menu_item_active_bg">@drawable/list_ripple</item>
+
+        <item name="colorMultiMenuDevider">@color/colorMultiMenuDevider</item>
+
+        <item name="colorListTxt">@color/colorListTxt</item>
+
+        <item name="colorDetailBar">@color/colorDetailBar</item>
+        <item name="colorPrimaryDarkDetail">@color/colorPrimaryDarkDetail</item>
+
+
+        <item name="colorStarIcon">@color/colorStarIcon</item>   <!-- for stars in lists-->
+        <item name="colorStarIconBord">@color/colorStarIconBord</item>
+
+        <item name="colorStarButton">@color/colorStarButton</item>
+        <item name="colorStarButtonIcon">@color/colorStarButtonIcon</item>
+        <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
+        <item name="colorStarButtonIconInactive">@color/colorStarButtonIcon</item>
+
+        <item name="colorExIconBg">@color/ex_icon</item>
+        <item name="colorExResult">@color/ex_link_result</item>
+        <item name="colorExListResultTxt">@color/ex_link_result_txt</item>
+
+
+        <item name="colorExOptionTxt">@color/colorExOptionTxt</item>
+        <item name="colorExDisabledTxt">@color/colorExDisabledTxt</item>
+
+        <item name="colorExActiveTxt">@color/colorExActiveTxt</item>
+        <item name="colorRadioAccent">@color/colorExActiveTxt</item>
+
+        <item name="colorExBottomDivider">@color/colorExBottomDivider</item>
+        <item name="colorExBottomBox">@color/colorExBottomBox</item>
+
+
+        <item name="colorVeryBadText">@color/colorVeryBadText</item>
+        <item name="colorBadText">@color/colorBadText</item>
+        <item name="colorGoodText">@color/colorGoodText</item>
+        <item name="colorVeryGoodText">@color/colorVeryGoodText</item>
+        <item name="colorGreatText">@color/colorGreatText</item>
+
+
+        <item name="colorVeryBadTextCat">?attr/colorCatProgressTxt</item>
+        <item name="colorBadTextCat">?attr/colorCatProgressTxt</item>
+        <item name="colorGoodTextCat">?attr/colorCatProgressTxt</item>
+        <item name="colorVeryGoodTextCat">?attr/colorCatProgressTxt</item>
+        <item name="colorGreatTextCat">?attr/colorCatProgressTxt</item>
+
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect</item>
+
+
+        <item name="colorCatProgressTxt">@color/colorProgressTxt</item>
+        <item name="colorCatGroup">@color/colorCatGroup</item>
+
+
+        <item name="colorErrors">@color/colorErrors</item>
+        <item name="colorUnknown">@color/colorUnknown</item>
+        <item name="colorKnown">@color/colorKnown</item>
+        <item name="colorStudied">@color/colorStudied</item>
+
+        <item name="colorStudiedBox">@color/colorStudiedBox</item>
+        <item name="colorKnownBox">@color/colorKnownBox</item>
+        <item name="colorUnknownBox">@color/colorUnknownBox</item>
+
+        <item name="colorStudiedBoxTxt">@color/colorStudiedBoxTxt</item>
+        <item name="colorKnownBoxTxt">@color/colorKnownBoxTxt</item>
+        <item name="colorUnknownBoxTxt">@color/colorUnknownBoxTxt</item>
+
+        <item name="colorKnownProgress">@color/colorKnownProgress</item>
+        <item name="colorStudiedProgress">@color/colorStudiedProgress</item>
+
+        <item name="colorErrorBox">@color/colorErrorBox</item>
+        <item name="colorErrorBoxTxt">@color/colorErrorBoxTxt</item>
+
+        <item name="colorTestBox">@color/colorTestBox</item>
+        <item name="colorOpenBox">@color/colorOpenBox</item>
+
+
+        <item name="colorIconArrow">@color/colorIconArrow</item>
+        <item name="colorIconArrowBg">@color/colorIconArrowBg</item>
+        <item name="colorIconHistory">@color/colorIconHistory</item>
+        <item name="colorIconHistoryBg">@color/colorIconHistoryBg</item>
+        <item name="colorIconReview">@color/colorIconReview</item>
+        <item name="colorIconReviewBg">@color/colorIconReviewBg</item>
+        <item name="colorIconTest">@color/colorIconTest</item>
+        <item name="colorIconTestBg">@color/colorIconTestBg</item>
+
+
+        <item name="alertDialogTheme">@style/AppCompatAlert</item>
+
+        <item name="map_thumbnail_alpha">@dimen/mapThumbAlpha</item>
+        <item name="colorMapTitleBox">@color/colorMapTitleBox</item>
+
+        <item name="colorToolbarIcon">@color/colorToolbarIcon</item>
+
+        <item name="colorNavHeaderTxt">@color/colorNavHeaderTxt</item>
+
+        <item name="colorTabIndicator">@color/colorTabIndicator</item>
+
+        <item name="heightTabIndicator">@dimen/heightTabIndicator</item>
+
+        <item name="iconSchool">@drawable/ic_school</item>
+        <item name="iconList">@drawable/ic_view_list</item>
+        <item name="iconGrid">@drawable/ic_view_grid</item>
+        <item name="iconGrid2">@drawable/ic_view_grid_2</item>
+        <item name="iconTest">@drawable/ic_ex_assignment</item>
+        <item name="iconCarousel">@drawable/ic_ex_carousel</item>
+
+        <item name="cardCorner">@dimen/cardCornerDefault</item>
+        <item name="cardCornerSpec">@dimen/cardCornerSpec</item>
+
+        <item name="colorDrawerHeadDivider">@color/colorDrawerHeadDivider</item>
+
+        <item name="ToolBarStyle">@style/ToolBarStyle</item>
+
+        <item name="CardViewBorder">@style/CardViewBorder</item>
+        <item name="DetailTextTheme">@style/DetailTextTheme</item>
+    </style>
+
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+
+    <style name="map_img_style">
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+
+    <style name="ToolBarStyle">
+
+    </style>
+
+
+
+    <style name="MapToolBarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorToolbarIcon">@color/white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="DetailText">
+    </style>
+
+
+    <style name="AppTheme.CustomPreferenceThemeOverlay" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceFragmentListStyle">@style/AppTheme.FixForPreferenceFragmentList</item>
+        <item name="preferenceFragmentCompatStyle">@style/AppPreferenceFragmentCompatStyle</item>
+        <item name="preferenceCategoryStyle">@style/CustomPreferenceCategory</item>
+        <!-- item name="colorControlHighlight">@color/colorAccent</item -->
+
+    </style>
+
+    <style name="CustomPreferenceCategory" parent="MyTextViewStyle">
+        <item name="android:layout">@layout/custom_preference_category</item>
+    </style>
+
+    <style name="CustomPreferenceCategoryText" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+
+    <style name="Preference_TextAppearanceMaterialSubhead">
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="AppPreferenceFragmentCompatStyle">
+        <item name="android:layout">@layout/pref_screen</item>
+        <!-- item name="android:divider">?attr/settingsDivider</item -->
+
+
+    </style>
+
+    <style name="AppTheme.FixForPreferenceFragmentList">
+        <!-- item name="android:layout_marginRight">@dimen/prefs_margin_side</item>
+        <item name="android:layout_marginLeft">@dimen/prefs_margin_side</item>
+        <item name="android:paddingLeft">@dimen/prefs_padding_side</item>
+        <item name="android:paddingRight">@dimen/prefs_padding_side</item -->
+        <item name="android:background">?attr/colorSettingsBg</item>
+
+
+    </style>
+
+
+    <style name="AppCompatDialog" parent="Theme.AppCompat.Dialog">
+        <!-- Used for the title and text -->
+        <!-- item name="android:textColorPrimary">@color/dialog_text</item -->
+        <!-- Used for the background -->
+        <item name="android:background">?attr/colorDialogBg</item>
+
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- item name="colorControlHighlight">@color/dialog_control_highlight</item -->
+
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
+    </style>
+
+
+
+
+
+
+    <!-- Alert Dialog Theme -->
+    <style name="AppCompatAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Used for the background -->
+        <!-- item name="android:background">?attr/colorDialogBg</item -->
+        <!-- Used for the buttons -->
+
+
+        <!--item name="colorControlHighlight">@color/dialog_control_highlight</item -->
+
+        <!-- item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item -->
+
+    </style>
+
+
+    <style name="ImageDetail" parent="AppTheme">
+
+        <!--
+        <item name="colorPrimary">@color/colorImageDetailPrimary</item>
+        <item name="colorPrimaryDark">@color/colorImageDetailPrimary</item>
+
+        <item name="android:actionBarStyle">@style/ThemeActionBar</item>
+        &lt;!&ndash; Support library compatibility &ndash;&gt;
+        <item name="actionBarStyle">@style/ThemeActionBar</item>
+
+-->
+    </style>
+
+
+    <style name="ThemeActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/colorImageDetailPrimary</item>
+        <!-- Support library compatibility -->
+        <item name="background">@color/colorImageDetailPrimary</item>
+    </style>
+
+    <color name="colorImageDetailPrimary">#017ff5</color>
+    <color name="colortTransparentBar">#41000000</color>
+
+
+    <style name="DefaultTheme">
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme</item>
+        <item name="AppBarOverlayTheme">@style/AppBarOverlayTheme</item>
+
+        <item name="colorBtmNav_active">@color/colorBtmNav_active</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive</item>
+
+    </style>
+
+    <!--  Styles for night mode  -->
+    <style name="DefaultThemeModes" parent="DefaultTheme" />
+    <style name="DefaultThemeModes.Detail" parent="DefaultTheme.UserDialog" />
+
+
+
+    <style name="AppBarOverlayTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlayTheme" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarTheme">
+
+    </style>
+
+
+    <style name="MyTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/color_text</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="deviderStyle">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardBackgroundColor">?attr/colorCardBg</item>
+        <item name="android:layout_margin">?attr/cardMargin</item>
+        <item name="android:maxWidth">700dp</item>
+        <item name="cardCornerRadius">?attr/cardCorner</item>
+    </style>
+
+
+    <style name="MenuDialog">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="CardViewStyle.Widget">
+        <item name="cardBackgroundColor">?attr/colorCardWidgetBg</item>
+        <item name="android:layout_margin">@dimen/card_margin_default</item>
+    </style>
+
+
+    <style name="CardViewBorder">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="RadioTheme">
+        <item name="colorAccent">?attr/colorRadioAccent</item>
+        <item name="android:textColorSecondary">?attr/colorExOptionTxt</item>
+    </style>
+
+
+    <style name="PrefsContainer">
+        <!--item name="android:layout_marginRight">@dimen/prefs_container_margin_side</item>
+        <item name="android:layout_marginLeft">@dimen/prefs_container_margin_side</item>
+        <item name="android:paddingRight">@dimen/prefs_container_padding_side</item>
+        <item name="android:paddingLeft">@dimen/prefs_container_padding_side</item>
+        <item name="android:background">@color/colorBaseBg</item -->
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="PrefsContainer.Width">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+
+    <style name="Navigation">
+        <item name="android:listDivider">?attr/colorDrawerDivider</item>
+    </style>
+
+
+    <style name="ContactItem">
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="ContactText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginLeft">22dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+
+    <style name="CardWrapper">
+        <item name="android:padding">@dimen/card_wrap_padding</item>
+    </style>
+
+    <style name="CardWrapper.Width">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="catListItemBox">
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:gravity">left|center</item>
+    </style>
+
+    <style name="cat_list_item_title">
+        <item name="android:textSize">@dimen/cat_item_title_txt_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="cat_list_item_info">
+        <item name="android:textSize">@dimen/cat_item_info_txt_size</item>
+    </style>
+
+
+    <style name="cat_item_status">
+
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:visibility">gone</item>
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textSize">10sp</item>
+        <!-- item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">bold</item -->
+
+
+    </style>
+
+
+    <style name="CatListTitle">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="CatListDesc">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="InfoDialog">
+
+    </style>
+
+    <style name="InfoDialog.Width">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+
+    <style name="MyToolBar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorPrimary">?attr/colorDetailBar</item>
+    </style>
+
+    <style name="MyTheme">
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="ExpText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">@dimen/detail_appbar_exp_text_size</item>
+    </style>
+
+    <style name="ExpTextSmall" parent="ExpText">
+        <item name="android:textSize">@dimen/detail_appbar_exp_text_size_small</item>
+    </style>
+
+
+    <style name="UserDialog">
+
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="UserDialogD">
+
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="DialogAppBarOverlayTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.MinWidth">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="DialogAppBarOverlayTheme">@style/DialogAppBarOverlayTheme</item>
+        <item name="colorPrimary">@color/colorPrimaryDialog</item>
+        <item name="colorDialogBackground">@color/colorBaseBg</item>
+
+        <item name="colorCardDivider">@color/colorCardDivider</item>
+
+        <item name="windowFixedWidthMajor">@dimen/detail_card_width_max</item> <!-- landscape-->
+        <item name="windowFixedWidthMinor">@dimen/detail_card_width_min</item> <!-- portrait-->
+
+        <item name="DetailTextTheme">@style/DetailTextTheme</item>
+    </style>
+
+
+    <style name="AppTheme.Dialog.Dark" parent="Theme.AppCompat.Dialog.MinWidth">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="DialogAppBarOverlayTheme">@style/DialogAppBarOverlayTheme</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <item name="colorDialogBackground">@color/colorDialogBg</item>
+        <item name="colorCardDivider">@color/colorCardDivider</item>
+
+        <item name="windowFixedWidthMajor">@dimen/detail_card_width_max</item> <!-- landscape-->
+        <item name="windowFixedWidthMinor">@dimen/detail_card_width_min</item> <!-- portrait-->
+
+        <item name="colorVeryBadText">@color/colorVeryBadText</item>
+        <item name="colorBadText">@color/colorBadText</item>
+        <item name="colorGoodText">@color/colorGoodText</item>
+        <item name="colorVeryGoodText">@color/colorVeryGoodText</item>
+        <item name="colorGreatText">@color/colorGreatText</item>
+        <item name="DetailTextTheme">@style/DetailTextThemeDark</item>
+
+    </style>
+
+
+
+
+
+    <style name="DefaultTheme.UserDialog" parent="AppTheme.Dialog">
+
+        <item name="colorStarIcon">@color/colorStarIcon</item>
+        <item name="colorStarIconBord">@color/colorStarIconBord</item>
+
+        <item name="android:textViewStyle">@style/MyTextViewStyle</item>
+        <item name="colorMainText">@color/colorDetailMainText</item>
+        <item name="colorMainTextDisabled">@color/colorMainTextDisabled</item>
+
+        <item name="colorAccent">@color/colorStarButton</item>
+        <item name="colorStarButton">@color/colorStarButton</item>
+        <item name="colorStarButtonIcon">@color/colorStarButtonIcon</item>
+        <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
+        <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive</item>
+
+
+        <item name="colorVeryBadText">@color/colorVeryBadText</item>
+        <item name="colorBadText">@color/colorBadText</item>
+        <item name="colorGoodText">@color/colorGoodText</item>
+        <item name="colorVeryGoodText">@color/colorVeryGoodText</item>
+        <item name="colorGreatText">@color/colorGreatText</item>
+
+
+    </style>
+
+
+
+
+    <style name="AppTheme.Finder" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorFinderPrimary</item>
+        <item name="colorPrimaryDark">@color/colorFinderPrimaryDark</item>
+        <item name="colorAccent">@color/colorFinderAccent</item>
+        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>
+    </style>
+
+    <color name="colorFinderPrimary">#424242</color>
+    <color name="colorFinderPrimaryDark">#212121</color>
+    <color name="colorFinderAccent">#757575</color>
+
+    <color name="colorFinderWindowBg">#ECECEC</color>
+    <color name="colorFinderText">#444</color>
+
+
+    <style name="AppTheme.FinderDialog" parent="Theme.AppCompat.Light.DialogWhenLarge">
+        <item name="colorPrimary">@color/colorFinderPrimary</item>
+        <item name="colorPrimaryDark">@color/colorFinderPrimaryDark</item>
+        <item name="colorAccent">@color/colorFinderAccent</item>
+        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>
+
+        <!-- item name="android:windowBackground">@color/colorFinderWindowBg</item -->
+        <item name="android:textColor">@color/colorFinderText</item>
+
+        <!-- item name="android:textViewStyle">@style/FinderTextViewStyle</item -->
+        <item name="colorControlHighlight">#75B1B1B1</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+    </style>
+
+    <style name="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorFinderText</item>
+    </style>
+
+
+    <style name="DetailTextTheme">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DetailTextThemeDark">
+        <item name="colorAccent">@color/colorAccent_dk</item>
+    </style>
+
+
+
+    <style name="exItemIcon">
+        <item name="android:layout_width">43dp</item>
+        <item name="android:layout_height">43dp</item>
+        <item name="android:layout_gravity">left|center</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="exLinkListItemTxt">
+        <item name="android:textSize">20sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="exLinkListItemDesc">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingTop">3dp</item>
+    </style>
+
+    <!-- flashcard styles -->
+
+    <style name="fCountInfoBox">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="fTextWrap">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:minHeight">@dimen/flash_text_box_height</item>
+    </style>
+
+
+    <style name="fTextBox">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+
+    <style name="fShowMsgBox">
+        <item name="android:textSize">@dimen/flash_show_msg_txt_size</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:alpha">0.7</item>
+    </style>
+
+
+    <style name="fAnswerBox">
+        <item name="android:textSize">17sp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="fAnswerBox.Height">
+        <item name="android:minHeight">@dimen/flash_translate_box_height</item>
+    </style>
+
+
+    <style name="fAnswerMirror">
+        <item name="android:minHeight">@dimen/flash_translate_box_mirror_height</item>
+    </style>
+    <!-- height of the text field -->
+    <style name="fTextBoxMirror">
+        <item name="android:minHeight">@dimen/flash_text_box_mirror_height</item>
+    </style>
+
+    <!-- height of the text and transcript box -->
+    <style name="fTextWrapMirror">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:minHeight">@dimen/flash_text_wrap_mirror_height</item>
+    </style>
+
+    <style name="fTranscriptBox">
+        <item name="android:textSize">16sp</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="fBtnWrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="fBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_weight">.4</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+    <!-- flashcard styles end -->
+
+
+    <style name="exQuestWrapper">
+        <item name="android:minHeight">90dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="exTextBox">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="buttonControl">
+        <item name="android:textColor">?attr/colorBtnText</item>
+    </style>
+
+    <style name="exImageWrapper">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="exBtns" parent="buttonControl">
+        <item name="android:paddingTop">@dimen/ex_btn_padding</item>
+        <item name="android:paddingBottom">@dimen/ex_btn_padding</item>
+        <item name="android:layout_marginTop">@dimen/ex_btn_container_padding</item>
+        <item name="android:layout_marginBottom">@dimen/ex_btn_container_padding</item>
+    </style>
+
+    <style name="exBtns.Left">
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+    <style name="exBtns.Right">
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+
+
+    <style name="exBtns.ShowRslt">
+        <item name="android:paddingLeft">@dimen/ex_btn_rslt_side</item>
+        <item name="android:paddingRight">@dimen/ex_btn_rslt_side</item>
+    </style>
+
+    <style name="exMarkTxt">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#2196F3</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/ex_mark_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/ex_mark_margin_bottom</item>
+        <item name="android:textSize">@dimen/ex_mark_txt_size</item>
+    </style>
+
+    <style name="exResultBox">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:minHeight">200dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="exResultTxt">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:lineSpacingExtra">15dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="exResultTxt.Phrase">
+        <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="exBtnRestart">
+        <item name="android:layout_marginTop">@dimen/ex_btn_rslt_margin_top</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:paddingLeft">35dp</item>
+        <item name="android:paddingRight">35dp</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
+        <item name="android:textSize">@dimen/ex_btn_rslt_txt_size</item>
+    </style>
+
+
+    <style name="exRadioGroup">
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+
+    <style name="exRadioBtn">
+        <item name="android:textSize">@dimen/ex_radio_txt_size_ex2</item>
+        <item name="android:minHeight">@dimen/ex_radio_txt_min_height_ex2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">8dp</item>
+
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+
+        <item name="android:textColor">?attr/colorMainText</item>
+
+    </style>
+
+    <style name="exRadioBtn.Short">
+        <item name="android:textSize">@dimen/ex_opt_short_txt_size_norm</item>
+        <item name="android:minHeight">@dimen/ex_opt_short_txt_min_height</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
+    <style name="exRadioBtn.Normal">
+        <item name="android:minHeight">@dimen/ex_opt_norm_txt_min_height</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
+
+    <style name="exRadioBtn.Long">
+        <item name="android:minHeight">@dimen/ex_opt_long_txt_min_height</item>
+    </style>
+
+
+    <style name="exRadioBtn.Tr">
+        <item name="android:textSize">30sp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">15dp</item>
+    </style>
+
+
+    <style name="exSelectRadioBtn">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
+    <style name="exRadioBtnColor">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="DetailSize">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/detail_card_height</item>
+    </style>
+
+    <style name="DetailSize.Width"></style>
+
+    <style name="homeCardTitleStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="homeCardDescStyle">
+        <item name="android:textColor">?attr/colorHomeSecondaryText</item>
+    </style>
+
+
+    <style name="ResultInfoText">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="ResultInfoText.Right">
+        <item name="android:textStyle">bold</item>
+        <item name="android:minWidth">50dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+
+    <style name="nav_footer"></style>
+
+
+    <style name="ThanksMsg">
+        <item name="android:background">#ffffff</item>
+        <item name="android:padding">30dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <style name="ThanksMsg.Width">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="MyButton">
+        <item name="colorButtonNormal">#00C853</item>
+        <item name="colorControlHighlight">#69F0AE</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="PurchaseMsg">
+        <item name="android:background">#ffffff</item>
+        <item name="android:padding">30dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <style name="PurchaseMsg.Width">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+
+        <!-- set the rounded drawable as background to your bottom sheet -->
+        <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+            <item name="android:background">@drawable/bottom_sheet_bg</item>
+        </style>
+
+        <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+            <item name="android:windowIsFloating">false</item>
+            <item name="bottomSheetStyle">@style/BottomSheet</item>
+        </style>
+
+        <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+
+
+</resources>

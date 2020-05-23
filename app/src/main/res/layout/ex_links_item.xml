@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+
+    android:paddingLeft="@dimen/ex_link_padding_left"
+    android:paddingRight="@dimen/ex_link_padding_right"
+
+    android:paddingTop="@dimen/ex_link_padding_top"
+    android:paddingBottom="@dimen/ex_link_padding_btm"
+
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+
+    android:gravity="center_vertical" >
+
+
+    <ImageView
+
+        style="@style/exItemIcon"
+        android:id="@+id/exLinksIconRight"
+        app:srcCompat="?attr/iconTest" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/exLinkTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/exLinkListItemTxt"/>
+
+            <TextView
+                android:id="@+id/exLinkDesc"
+                android:textColor="?attr/colorSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/exLinkListItemDesc"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/exProgressBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_ex_circle" />
+
+
+            <TextView
+                android:id="@+id/exProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                tools:text="100%"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="?attr/colorExListResultTxt"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

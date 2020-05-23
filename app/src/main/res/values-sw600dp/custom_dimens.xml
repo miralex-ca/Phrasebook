@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="set_btm_nav_value_default">@string/set_btm_nav_value_1</string>
+
+    <dimen name="card_margin_default_dark">@dimen/card_margin_default</dimen>
+    <dimen name="_card_wrap_padding">22dp</dimen>
+    <dimen name="_card_stats_side">25dp</dimen>
+
+    <color name="colorCardBg_dark">@color/colorCardWidgetBg_dark</color>
+
+    <style name="deviderStyle_dark">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <dimen name="_card_margin_default">5dp</dimen>
+
+    <dimen name="_tab_width">200dp</dimen>
+
+    <item name="button_width" format="float" type="dimen">0.35</item>
+
+    <dimen name="_starred_preview_padding">28dp</dimen>
+
+
+    <dimen name="_home_card_title_left">24dp</dimen>
+    <integer name="home_card_pics_count">5</integer>
+
+    <style name="homeCardTitleStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <dimen name="_image_list_pic_height">180dp</dimen>
+
+    <style name="homeCardDescStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <dimen name="_home_card_desc_txt_size">14sp</dimen>
+
+    <dimen name="_home_image_height">100dp</dimen>
+
+
+    <style name="InfoDialog.Width">
+        <item name="android:layout_width">450dp</item>
+    </style>
+
+    <color name="colorExBottomDivider">#78c1c1c1</color>
+    <color name="colorExBottomBox">#15aeaeae</color>
+    <color name="colorExBottomDivider_dark">#45b3b3b3</color>
+
+
+    <dimen name="_cat_item_pic_size">70dp</dimen>
+    <dimen name="_cat_item_pic_left">30dp</dimen>
+    <dimen name="_cat_item_txt_left">100dp</dimen>
+
+    <dimen name="_cat_item_txt_left_nopic">25dp</dimen>
+
+    <dimen name="_cat_item_txt_right">45dp</dimen>
+    <dimen name="_cat_item_star_right">25dp</dimen>
+
+    <dimen name="_cat_item_padding_top">10dp</dimen>
+    <dimen name="_cat_item_padding_bottom">8dp</dimen>
+
+    <dimen name="_cat_item_title_txt_size">18sp</dimen>
+    <dimen name="_cat_item_info_txt_size">16sp</dimen>
+
+
+    <dimen name="_home_card_side">18dp</dimen>
+
+    <dimen name="_card_padding">34dp</dimen>
+
+    <style name="DetailSize.Width">
+    </style>
+
+    <dimen name="_detail_card_width">350dp</dimen>
+
+    <dimen name="design_fab_size_normal">52dp</dimen>
+    <dimen name="fab_margin_right">26dp</dimen>
+
+    <dimen name="_gallery_card_img_size">230dp</dimen>
+    <dimen name="_gallery_item_padding">14dp</dimen>
+    <dimen name="_gallery_item_pic_size">90dp</dimen>
+    <dimen name="_gallery_item_pic_left">2dp</dimen>
+    <dimen name="_gallery_item_pic_right">12dp</dimen>
+    <dimen name="_gallery_item_title_txt_size">18sp</dimen>
+    <dimen name="_gallery_item_desc_txt_size">15sp</dimen>
+    <dimen name="_gallery_item_desc_top">5dp</dimen>
+
+    <dimen name="_detail_card_width_max">450dp</dimen>
+    <dimen name="_detail_card_width_min">480dp</dimen>
+
+    <dimen name="_flash_txt_padding_side">35dp</dimen>
+
+    <dimen name="_ex_links_list_padding_side">20dp</dimen>
+    <dimen name="_ex_link_padding_left">20dp</dimen>
+    <dimen name="_ex_link_padding_right">15dp</dimen>
+
+    <dimen name="_ex_link_padding_top">18dp</dimen>
+    <dimen name="_ex_link_padding_btm">18dp</dimen>
+
+
+    <style name="ThanksMsg.Width">
+        <item name="android:layout_width">500dp</item>
+    </style>
+
+    <style name="PurchaseMsg.Width">
+        <item name="android:layout_width">500dp</item>
+    </style>
+
+    <string name="fab_size">normal</string>
+
+
+
+    <integer name="ex_text_long_num">@integer/_ex_text_long_num_sw600</integer>
+
+    <dimen name="_stats_diagram_ext_size">120dp</dimen>
+    <dimen name="_stats_diagram_int_size">90dp</dimen>
+
+
+    <dimen name="_cat_stat_title_txt_left">40dp</dimen>
+
+
+    <string name="section_content_title_short">Содержание раздела</string>
+
+    <string name="persons_title">Исторические личности</string>
+
+
+    <style name="exImageWrapper">
+        <item name="android:layout_width">@dimen/test_img_width_tablet</item>
+    </style>
+
+
+    <style name="BottomNav.Inactive">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="BottomNav.Active">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MenuDialog">
+        <item name="android:layout_width">430dp</item>
+    </style>
+
+
+
+</resources>

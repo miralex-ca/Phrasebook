@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="11dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="20dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+    >
+
+        <RelativeLayout
+            android:layout_marginRight="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/progressBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/pb"
+                android:layout_width="14dp"
+                android:layout_height="40dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progress_vertical_blue"
+
+                />
+            <ProgressBar
+                android:layout_toRightOf="@+id/pb"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/pbKnown"
+                android:layout_width="14dp"
+                android:layout_height="40dp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progress_vertical_green"
+
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:maxLines="1"
+                android:textSize="17sp"
+                android:textAllCaps="true"
+                android:id="@+id/title"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:minWidth="100dp"
+                    android:paddingRight="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+
+                        android:background="?attr/colorKnownProgress"
+                        android:layout_marginRight="6dp"
+                        android:layout_width="9dp"
+                        android:layout_height="9dp" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/kanjiStatus"
+                        android:text=" \u2B24 "
+                        android:textColor="?attr/colorKnownBox"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textColor="?attr/colorSecondaryText"
+                        android:id="@+id/knownTxtProgress"
+                        android:text="@string/progress_familiar_label"
+                        android:textSize="11sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:background="?attr/colorStudiedProgress"
+                        android:layout_marginRight="6dp"
+                        android:layout_width="9dp"
+                        android:layout_height="9dp" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:text=" \u2B24 "
+                        android:textColor="?attr/colorStudiedBox"
+                        android:textSize="13sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textColor="?attr/colorSecondaryText"
+                        android:id="@+id/studiedTxtProgress"
+                        android:text="@string/progress_studied_label"
+                        android:textSize="11sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:paddingLeft="10dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:background="?attr/colorCatGroup"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="12dp"
+                        android:layout_height="8dp" />
+
+                    <TextView
+                        android:id="@+id/unknownTxtProgress"
+                        android:text="@string/progress_unknown_label"
+                        android:textSize="11sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+

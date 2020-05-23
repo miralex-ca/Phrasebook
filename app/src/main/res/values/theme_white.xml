@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="colorPrimary_white">#FFFFFF</color>
+    <color name="colorPrimaryDark_white">#cacaca</color>
+    <color name="colorAccent_white">#0579fb</color>
+    <color name="colorBtmNav_inactive_white">#AE0579FB</color>
+
+
+
+    <color name="ex_icon_white">#5e5e5e</color>
+    <color name="ex_link_result_white">#10000000</color>
+
+    <color name="colorContactIcon_white">#515151</color>
+
+    <color name="colorDetailBar_white">#757575</color>
+
+
+    <color name="colorNavBgStart_white">#ffffff</color>
+    <color name="colorNavBgCenter_white">#ffffff</color>
+    <color name="colorNavBgEnd_white">#fff</color>
+
+    <color name="colorNavHeaderTxt_white">#1E88E5</color>
+
+    <color name="colorToolbarIcon_white">#000000</color>
+
+
+    <color name="colorBaseBg_white">#f9f9f9</color>
+    <dimen name="cardCornerDefault_white">8dp</dimen>
+
+
+
+    <color name="colorTabIndicator_white">#606060</color>
+
+    <dimen name="heightTabIndicator_white">2dp</dimen>
+
+    <color name="whiteNavBar">#45ffffff</color>
+
+
+    <color name="colorStudiedBox_light">#c9fdd9</color>
+    <color name="colorKnownBox_light">#c2ebfd</color>
+    <color name="colorUnknownBox_light">#d6dee1</color>
+
+    <color name="colorStudiedBoxTxt_light">#00712f</color>
+    <color name="colorKnownBoxTxt_light">#006aab</color>
+    <color name="colorUnknownBoxTxt_light">#455A64</color>
+
+    <color name="colorCatProgressPerfect_light">#67b9f6ca</color>
+    <color name="colorCatProgressGreat_light">#66a7ffeb</color>
+    <color name="colorCatProgressGood_light">#5c80d8ff</color>
+    <color name="colorCatProgressBad_light">#66ffd180</color>
+    <color name="colorCatProgressLow_light">#68ff8a80</color>
+
+
+    <color name="colorVeryBadTextCat_light">#9c0000</color>
+    <color name="colorBadTextCat_light">#b74f01</color>
+    <color name="colorGoodTextCat_light">#015e97</color>
+    <color name="colorVeryGoodTextCat_light">#017060</color>
+    <color name="colorGreatTextCat_light">#017412</color>
+
+
+    <color name="colorErrorBox_light">#fddde1</color>
+    <color name="colorErrorBoxTxt_light">#c90000</color>
+
+    <color name="colorDrawerHeadDivider_white">#3b3b3b</color>
+
+
+
+    <style name="WhiteBase" parent="DefaultTheme">
+
+    </style>
+
+    <style name="WhiteTheme" parent="WhiteBase">
+        <item name="colorPrimary">@color/colorPrimary_white</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_white</item>
+        <item name="colorAccent">@color/colorAccent_white</item>
+
+
+        <item name="AppBarOverlayTheme">@style/AppBarOverlayTheme_white</item>
+
+        <item name="colorExIconBg">@color/ex_icon_white</item>
+        <item name="colorExResult">@color/ex_link_result_white</item>
+        <item name="colorContactIcon">@color/colorContactIcon_white</item>
+
+        <item name="alertDialogTheme">@style/AppCompatAlert_white</item>
+
+        <item name="colorBtmNav_active">@color/colorAccent_white</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_white</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_white</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_white</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_white</item>
+
+        <item name="colorToolbarIcon">@color/colorToolbarIcon_white</item>
+
+        <item name="colorBaseBg">@color/colorBaseBg_white</item>
+        <item name="colorNavHeaderTxt">@color/colorNavHeaderTxt_white</item>
+
+        <item name="colorTabIndicator">@color/colorTabIndicator_white</item>
+        <item name="heightTabIndicator">@dimen/heightTabIndicator_white</item>
+
+        <item name="colorErrors">@color/colorErrors</item>
+
+
+        <item name="colorStudiedBox">@color/colorStudiedBox_light</item>
+        <item name="colorKnownBox">@color/colorKnownBox_light</item>
+        <item name="colorUnknownBox">@color/colorUnknownBox_light</item>
+
+        <item name="colorStudiedBoxTxt">@color/colorStudiedBoxTxt_light</item>
+        <item name="colorKnownBoxTxt">@color/colorKnownBoxTxt_light</item>
+        <item name="colorUnknownBoxTxt">@color/colorUnknownBoxTxt_light</item>
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_light</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_light</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_light</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_light</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_light</item>
+
+        <item name="colorVeryBadTextCat">@color/colorVeryBadTextCat_light</item>
+        <item name="colorBadTextCat">@color/colorBadTextCat_light</item>
+        <item name="colorGoodTextCat">@color/colorGoodTextCat_light</item>
+        <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_light</item>
+        <item name="colorGreatTextCat">@color/colorGreatTextCat_light</item>
+
+        <item name="colorErrorBox">@color/colorErrorBox_light</item>
+        <item name="colorErrorBoxTxt">@color/colorErrorBoxTxt_light</item>
+
+        <item name="iconSchool">@drawable/ic_school_outline</item>
+        <item name="iconList">@drawable/ic_view_list_outline</item>
+        <item name="iconGrid">@drawable/ic_view_grid_outline</item>
+        <item name="iconGrid2">@drawable/ic_view_grid_2_outline</item>
+        <item name="iconTest">@drawable/ic_ex_assignment_outline</item>
+        <item name="iconCarousel">@drawable/ic_ex_carousel_outline</item>
+
+        <item name="cardCorner">@dimen/cardCornerDefault_white</item>
+
+        <item name="colorDrawerHeadDivider">@color/colorDrawerHeadDivider_white</item>
+        <item name="DetailTextTheme">@style/DetailTextTheme.White</item>
+
+    </style>
+
+
+    <style name="DetailTextTheme.White">
+        <item name="colorAccent">@color/colorAccent_white</item>
+    </style>
+
+
+    <style name="WhiteThemeMap" parent="WhiteTheme">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+
+    <style name="AppBarOverlayTheme_white" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+
+    <style name="AppCompatAlert_white" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="colorAccent">@color/colorAccent_white</item>
+    </style>
+
+
+    <style name="WhiteTheme.Detail" parent="DefaultTheme.UserDialog">
+        <item name="colorPrimary">@color/colorDetailBar_white</item>
+    </style>
+
+    <style name="WhiteThemeModes" parent="WhiteTheme" />
+    <style name="WhiteThemeModes.Detail" parent="WhiteTheme.Detail" />
+
+
+
+</resources>

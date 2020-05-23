@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <attr name="colorBaseBg" format="reference" />
+
+    <attr name="colorMenuIconHome" format="reference" />
+    <attr name="colorMenuIconStar" format="reference" />
+    <attr name="colorMenuIconHistory" format="reference" />
+    <attr name="colorMenuIconSetting" format="reference" />
+    <attr name="colorMenuIconInfo" format="reference" />
+    <attr name="colorMenuIconContact" format="reference" />
+    <attr name="colorMenuIconColor" format="reference" />
+
+    <!-- drawer -->
+
+    <attr name="colorDrawerBg" format="reference" />
+    <attr name="colorDrawerTxt" format="reference" />
+
+
+    <attr name="navigationStyle" format="reference" />
+
+    <attr name="navBg" format="reference" />
+    <attr name="colorNavBgStart" format="reference" />
+    <attr name="colorNavBgCenter" format="reference" />
+    <attr name="colorNavBgEnd" format="reference" />
+
+    <attr name="colorDrawerItemTxtDrawable" format="reference" />
+    <attr name="colorDrawerItemTxt" format="reference" />
+    <attr name="colorDrawerItemTxtActive" format="reference" />
+    <attr name="colorDrawerDivider" format="reference" />
+    <attr name="colorDrawerItemBg" format="reference" />
+
+
+    <attr name="colorToolbarText" format="reference" />
+
+    <attr name="colorMultipaneMenuBg" format="reference" />
+
+    <attr name="colorMultiMenuDevider" format="reference" />
+    <attr name="colorMultipaneMenuTxt" format="reference" />
+    <attr name="colorListTxt" format="reference" />
+    <attr name="multipane_menu_item_active_bg" format="reference" />
+
+    <attr name="colorMenuBg" format="reference" />
+    <attr name="colorMenuSelected" format="reference" />
+
+
+
+    <attr name="colorDialogBg" format="reference" />
+
+
+    <attr name="AppBarOverlayTheme" format="reference" />
+    <attr name="PopupOverlayTheme" format="reference" />
+
+    <attr name="cardViewStyle" format="reference" />
+    <attr name="colorCardBg" format="reference" />
+    <attr name="colorCardWidgetBg" format="reference" />
+    <attr name="cardMargin" format="reference" />
+    <attr name="colorCardDivider" format="reference" />
+    <attr name="colorMainText" format="reference" />
+    <attr name="colorSecondaryText" format="reference" />
+
+    <attr name="colorHomeSecondaryText" format="reference" />
+    <attr name="colorCatSecondaryText" format="reference" />
+
+    <attr name="colorStarredSecondaryText" format="reference" />
+
+    <attr name="colorCardShowText" format="reference" />
+    <attr name="colorStatsSecondaryText" format="reference" />
+
+
+    <attr name="deviderStyle" format="reference" />
+
+
+    <attr name="colorSettingsBg" format="reference" />
+    <attr name="colorContactIcon" format="reference" />
+
+    <attr name="colorStarIcon" format="reference" />
+    <attr name="colorStarIconBord" format="reference" />
+    <attr name="colorStarButton" format="reference" />
+    <attr name="colorStarButtonIcon" format="reference" />
+
+    <attr name="starButtonIconInactive" format="reference" />
+    <attr name="colorStarButtonIconInactive" format="reference" />
+
+
+
+    <!-- details -->
+    <attr name="colorDetailTopBar" format="reference" />
+    <attr name="colorDetailStatus" format="reference" />
+    <attr name="colorPrimaryDarkDetail" format="reference" />
+    <attr name="colorDetailBar" format="reference" />
+
+    <attr name="DialogTheme" format="reference" />
+    <attr name="colorDialogBackground" format="reference" />
+
+
+
+    <attr name="DialogAppBarOverlayTheme" format="reference" />
+
+    <attr name="colorExIconBg" format="reference" />
+    <attr name="colorExResult" format="reference" />
+    <attr name="colorExListResultTxt" format="reference" />
+
+
+
+    <attr name="colorExOptionTxt" format="reference" />
+
+    <attr name="colorExDisabledTxt" format="reference" />
+    <attr name="colorExActiveTxt" format="reference" />
+    <attr name="colorRadioAccent" format="reference" />
+
+    <attr name="colorExBottomDivider" format="reference" />
+    <attr name="colorExBottomBox" format="reference" />
+
+    <attr name="colorCatProgressLow" format="reference" />
+    <attr name="colorCatProgressBad" format="reference" />
+    <attr name="colorCatProgressGood" format="reference" />
+    <attr name="colorCatProgressGreat" format="reference" />
+    <attr name="colorCatProgressPerfect" format="reference" />
+    <attr name="colorCatProgressTxt" format="reference" />
+    <attr name="colorCatGroup" format="reference" />
+
+    <attr name="colorVeryBadText" format="reference" />
+    <attr name="colorBadText" format="reference" />
+    <attr name="colorGoodText" format="reference" />
+    <attr name="colorVeryGoodText" format="reference" />
+    <attr name="colorGreatText" format="reference" />
+
+
+    <attr name="colorVeryBadTextCat" format="reference" />
+    <attr name="colorBadTextCat" format="reference" />
+    <attr name="colorGoodTextCat" format="reference" />
+    <attr name="colorVeryGoodTextCat" format="reference" />
+    <attr name="colorGreatTextCat" format="reference" />
+
+
+    <attr name="colorErrors" format="reference" />
+    <attr name="colorUnknown" format="reference" />
+    <attr name="colorKnown" format="reference" />
+    <attr name="colorStudied" format="reference" />
+
+    <attr name="colorStudiedBox" format="reference" />
+    <attr name="colorKnownBox" format="reference" />
+    <attr name="colorUnknownBox" format="reference" />
+
+    <attr name="colorStudiedBoxTxt" format="reference" />
+    <attr name="colorKnownBoxTxt" format="reference" />
+    <attr name="colorUnknownBoxTxt" format="reference" />
+
+
+    <attr name="colorStudiedProgress" format="reference" />
+    <attr name="colorKnownProgress" format="reference" />
+
+
+    <attr name="colorErrorBox" format="reference" />
+    <attr name="colorErrorBoxTxt" format="reference" />
+
+
+    <attr name="colorTestBox" format="reference" />
+    <attr name="colorOpenBox" format="reference" />
+
+
+    <attr name="colorIconArrow" format="reference" />
+    <attr name="colorIconArrowBg" format="reference" />
+    <attr name="colorIconHistory" format="reference" />
+    <attr name="colorIconHistoryBg" format="reference" />
+    <attr name="colorIconReview" format="reference" />
+    <attr name="colorIconReviewBg" format="reference" />
+    <attr name="colorIconTest" format="reference" />
+    <attr name="colorIconTestBg" format="reference" />
+
+    <attr name="map_thumbnail_alpha" format="reference" />
+    <attr name="colorMapTitleBox" format="reference" />
+
+    <attr name="colorToolbarIcon" format="reference" />
+    <attr name="colorNavHeaderTxt" format="reference" />
+
+    <attr name="colorTabIndicator" format="reference" />
+    <attr name="heightTabIndicator" format="reference" />
+
+    <attr name="iconSchool" format="reference" />
+    <attr name="iconList" format="reference" />
+    <attr name="iconGrid" format="reference" />
+    <attr name="iconGrid2" format="reference" />
+    <attr name="iconTest" format="reference" />
+    <attr name="iconCarousel" format="reference" />
+
+    <attr name="cardCorner" format="reference" />
+    <attr name="cardCornerSpec" format="reference" />
+    <attr name="ToolBarStyle" format="reference" />
+
+
+    <attr name="colorBtnText" format="reference" />
+    <attr name="colorMainTextDisabled" format="reference" />
+
+    <attr name="colorBannerBg" format="reference" />
+    <attr name="colorBtmNavBg" format="reference" />
+
+    <attr name="colorBtmNav_active" format="reference" />
+    <attr name="colorBtmNav_inactive" format="reference" />
+
+    <attr name="CardViewBorder" format="reference" />
+
+    <attr name="colorDrawerHeadDivider" format="reference" />
+
+    <attr name="DetailTextTheme" format="reference" />
+
+
+    <declare-styleable name="TouchImageView">
+        <attr name="zoom_enabled" format="boolean" />
+    </declare-styleable>
+
+
+
+
+
+</resources>

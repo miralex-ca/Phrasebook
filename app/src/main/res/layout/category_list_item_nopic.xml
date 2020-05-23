@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cat_item_wrap"
+
+    android:paddingTop="@dimen/cat_item_padding_top"
+    android:paddingBottom="@dimen/cat_item_padding_bottom"
+
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/animObj"
+        android:transitionName="profile"
+        />
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/itemImage"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:layout_marginLeft="20dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp" />
+
+    <LinearLayout
+
+        android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
+
+        android:layout_marginRight="@dimen/cat_item_txt_right"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/catListItemBox"
+        >
+
+        <TextView
+            android:id="@+id/itemText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="@style/cat_list_item_title"
+            />
+
+        <TextView
+            android:id="@+id/itemInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorCatSecondaryText"
+            style="@style/cat_list_item_info"
+            />
+
+        <include layout="@layout/category_list_item_status_include" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/cat_item_star_right"
+        app:srcCompat="@drawable/ic_star_borded"
+        android:id="@+id/voclistStar"
+        android:visibility="invisible"
+        android:layout_width="23dp"
+        android:layout_height="23dp" />
+
+
+
+</RelativeLayout>

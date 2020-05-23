@@ -1,0 +1,78 @@
+
+    body {padding: 0em; font-size: 1em}
+
+    p {font-size: 0.9em; text-align: justify}
+
+    .links {font-size: 0.8em;  word-wrap:break-word; }
+
+    </style>
+ </head>
+ <body>
+
+
+<p>
+<b style="font-size: 1.5em;">Список интернет-ресурсов </b>
+
+<br/>
+<br/>
+https://wikipedia.org/
+<br/>
+http://dic.academic.ru/
+<br/>
+https://5-ege.ru/
+<br/>
+https://ria.ru/
+<br/>
+http://hrono.ru/
+<br/>
+https://history.wikireading.ru/
+<br/>
+https://istoriarusi.ru/
+<br/>
+https://www.prlib.ru/
+<br/>
+https://histrf.ru/
+<br/>
+http://www.calend.ru/
+<br/>
+http://historic.ru/
+<br/>
+http://historykratko.com/
+<br/>
+http://rabochaya-tetrad-uchebnik.com/
+<br/>
+http://student-hist.ru/
+<br/>
+http://historynotes.ru/
+<br/>
+https://www.ruistor.ru/
+<br/>
+http://www.1543.ru/
+<br/>
+https://istoriarusi.ru/
+<br/>
+http://bibliotekar.ru/
+<br/>
+http://www.krugosvet.ru/
+<br/>
+
+
+</p>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+ </body>
+<html>

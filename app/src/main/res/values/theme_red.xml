@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary_red">#F44336</color>
+    <color name="colorPrimaryDark_red">#D32F2F</color>
+    <color name="colorAccent_red">#FF9800</color>
+
+    <color name="colorBtmNav_active_red">#444</color>
+    <color name="colorBtmNav_inactive_red">#777</color>
+
+    <color name="ex_icon_red">#9E9E9E</color>
+    <color name="ex_link_result_red">#7dfcc808</color>
+
+    <color name="colorContactIcon_red">#8e8d8d</color>
+
+    <color name="colorDetailBar_red">#757575</color>
+
+    <color name="colorNavBgStart_red">#fa6562</color>
+    <color name="colorNavBgCenter_red">#dc403d</color>
+    <color name="colorNavBgEnd_red">#c71e1b</color>
+
+    <color name="colorProgressTxt_red">#000</color>
+
+    <color name="colorCatProgressPerfect_red">#b8b5ff90</color>
+    <color name="colorCatProgressGreat_red">#e9a7ffd6</color>
+    <color name="colorCatProgressGood_red">#5e7cd5fd</color>
+    <color name="colorCatProgressBad_red">#74ff6d00</color>
+    <color name="colorCatProgressLow_red">#a9ff8a80</color>
+    <dimen name="cardCornerDefault_red">6dp</dimen>
+
+
+
+    <style name="RedTheme" parent="DefaultTheme">
+        <item name="colorPrimary">@color/colorPrimary_red</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_red</item>
+        <item name="colorAccent">@color/colorAccent_red</item>
+
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_red</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</item>
+
+        <item name="colorExIconBg">@color/ex_icon_red</item>
+        <item name="colorExResult">@color/ex_link_result_red</item>
+        <item name="colorContactIcon">@color/colorContactIcon_red</item>
+
+        <item name="alertDialogTheme">@style/AppCompatAlert_red</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_red</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_red</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_red</item>
+
+        <item name="colorCatProgressTxt">@color/colorProgressTxt_red</item>
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_red</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_red</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_red</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_red</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_red</item>
+
+        <item name="cardCorner">@dimen/cardCornerDefault_red</item>
+        <item name="DetailTextTheme">@style/DetailTextTheme.Red</item>
+
+    </style>
+
+    <style name="DetailTextTheme.Red">
+        <item name="colorAccent">@color/colorAccent_red</item>
+    </style>
+
+
+    <style name="AppCompatAlert_red" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="colorAccent">@color/colorAccent_red</item>
+    </style>
+
+
+    <style name="RedTheme.Detail" parent="DefaultTheme.UserDialog">
+        <item name="colorPrimary">@color/colorDetailBar_red</item>
+    </style>
+
+
+    <!--  Styles for night mode  -->
+    <style name="RedThemeModes" parent="RedTheme" />
+    <style name="RedThemeModes.Detail" parent="RedTheme.Detail" />
+
+
+
+</resources>

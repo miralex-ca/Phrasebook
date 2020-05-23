@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CardWrapper.Width">
+        <item name="android:layout_width">670dp</item>
+    </style>
+
+
+    <style name="exImageWrapper">
+        <item name="android:layout_width">300dp</item>
+    </style>
+
+    <style name="PurchaseMsg.Width">
+        <item name="android:layout_width">680dp</item>
+    </style>
+    <style name="ThanksMsg.Width">
+        <item name="android:layout_width">680dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,447 @@
+
+
+<resources>
+
+
+
+    <string name="app_name">Russian history</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="contact_error">Report an error</string>
+    <string name="contact_feedback">Send feedback</string>
+    <string name="contact_pro">PRO version</string>
+    <string name="contact_rate">Rate the app</string>
+    <string name="contact_website">Visit website</string>
+
+    <string name="nav_home_txt">Home</string>
+    <string name="nav_gallery_txt">Gallery</string>
+    <string name="nav_starred_txt">Starred</string>
+    <string name="nav_stats_txt">Statistics</string>
+    <string name="nav_settings_txt">Settings</string>
+    <string name="nav_info_txt">Info</string>
+    <string name="nav_contact_txt">Contacts/feedback</string>
+
+    <string name="title_home_txt">Home</string>
+    <string name="title_gallery_txt">Gallery</string>
+    <string name="title_starred_txt">Starred</string>
+    <string name="title_stats_txt">Statistics</string>
+    <string name="title_settings_txt">Settings</string>
+    <string name="title_info_txt">Info</string>
+    <string name="title_contact_txt">Contacts/feedback</string>
+
+
+    <string name="title_test_txt">Test</string>
+    <string name="title_card_txt">Flashcards</string>
+
+    <string name="title_starred_activity">Starred</string>
+    <string name="title_errors_txt">Errors</string>
+    <string name="title_custom_txt">List</string>
+
+    <string name="title_activity_cat">CatActivity</string>
+    <string name="section_tab1_title">Listing</string>
+    <string name="section_tab2_title">Training</string>
+    <string name="title_activity_sample">SampleActivity</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="voc_ex_link_card_title">Flashcards</string>
+    <string name="voc_ex_link_first_title">Test 1</string>
+    <string name="voc_ex_link_second_title">Test 2</string>
+
+    <string name="starred_ex_link_title">Test with starred items</string>
+
+    <string name="voc_ex_link_first_desc">Test: Event / Date</string>
+    <string name="voc_ex_link_second_desc">Test: Date / Event</string>
+
+    <string name="section_ex_link_title_1">General test 1</string>
+    <string name="section_ex_link_title_2">General test 2</string>
+    <string name="section_ex_link_title_3">General test 3</string>
+
+    <string name="section_ex_link_desc_3">Test with persons and terms</string>
+
+    <string name="voc_ex_link_third_title">Test 3</string>
+    <string name="voc_ex_link_card_desc">Study items one by one</string>
+
+
+    <string name="voc_ex_link_third_desc">Test with multiple options</string>
+    <string name="title_activity_cards">CardsActivity</string>
+
+
+    <!-- flashcard -->
+    <string name="f_menu_show_translate">Show answer</string>
+    <string name="f_menu_shuffle">Shuffle cards</string>
+    <string name="f_menu_reflect">Reverse information</string>
+    <string name="f_menu_restart">Restart</string>
+    <string name="f_activity_title">Flashcards</string>
+    <string name="f_counter_txt">%1$d / %2$d</string>
+    <string name="f_show_translate_txt">SHOW ANSWER</string>
+    <string name="f_back_btn_txt">Back</string>
+    <string name="f_next_btn_txt">Next</string>
+
+    <string name="ex_menu_buttons">Buttons</string>
+
+    <string name="set_ex_buttons">Show buttons</string>
+    <!-- helper -->
+    <string name="ex_text_foo">Text</string>
+    <string name="image_desc">Image</string>
+    <string name="title_activity_exericse">ExericseActivity</string>
+
+    <!-- exercise -->
+
+    <string name="ex_menu_restart">Restart</string>
+    <string name="ex_counter_txt">%1$d / %2$d</string>
+    <string name="ex_option_foo">Option</string>
+    <string name="ex_txt_title">Exercise</string>
+    <string name="ex_txt_correct">CORRECT</string>
+    <string name="ex_txt_incorrect">WRONG</string>
+    <string name="ex_check_btn_txt">Check</string>
+    <string name="ex_show_result_btn_txt">Show results</string>
+    <string name="ex_restart_btn_txt">Restart</string>
+    <string name="ex_next_btn_txt">Next</string>
+    <string name="ex_result_txt_excellent">EXCELLENT!</string>
+    <string name="ex_result_txt_verygood">VERY GOOD!</string>
+    <string name="ex_result_txt_good">GOOD!</string>
+    <string name="ex_result_txt_bad">BADLY</string>
+    <string name="ex_result_txt_verybad">VERY BADLY!</string>
+    <string name="ex_result_txt">Correct: %1$d from %2$d \n Result:\u00A0\u00A0\u00A0 %3$d%%</string>
+
+    <string name="title_activity_user_list">UserListActivity</string>
+
+    <string name="starred_ex_notif">Exercises will be available once new items are added to the Starred list.</string>
+    <string name="title_activity_cat_stats">CatStatsActivity</string>
+    <string name="title_activity_cat_data_stats">CatDataStatsActivity</string>
+    <string name="title_activity_custom_data_list">CustomDataListActivity</string>
+
+
+    <string name="starred_limit">Failed to add. Limit is reached.</string>
+    <string name="dialog_close_txt">Close</string>
+    <string name="continue_txt">Continue</string>
+    <string name="menu_item_info">Info</string>
+
+    <string name="starred_lessons_results">Show test results</string>
+    <string name="set_starred_result_summary">Test results display</string>
+
+
+    <string name="set_interface">INTERFACE</string>
+    <string name="set_app_theme_title">App theme</string>
+
+    <string name="set_theme_default_name">Default</string>
+    <string name="set_theme_dark_name">Black</string>
+    <string name="set_theme_smoky_name">Dark</string>
+    <string name="set_theme_red_name">Red</string>
+    <string name="set_theme_white_name">White</string>
+    <string name="set_theme_ww_name">Contrast</string>
+
+    <string name="set_starred_sort_title">Starred list sorting</string>
+    <string name="set_starred_sort_sum">Current: %s</string>
+    <string name="set_starred_sort_title_dialog">Change sorting</string>
+    <string name="set_starred_section">STARRED</string>
+
+
+    <string-array name="starred_list_sort">
+        <item>Newest first </item>
+        <item>Oldest first</item>
+        <item>In lessons order</item>
+    </string-array>
+
+
+    <string name="set_starred_save_title">Save tests results</string>
+    <string name="set_starred_save_sum">Current: %s</string>
+    <string name="set_starred_save_title_dialog">Save results</string>
+
+    <string-array name="starred_list_save">
+        <item>Latest results </item>
+        <item>Best results</item>
+    </string-array>
+
+    <string name="set_control_title">Section tests results</string>
+    <string name="set_control_summary">Included in general stats: %s</string>
+    <string name="set_control_dialog_title">Include in stats</string>
+
+    <string name="set_control_tests_one">If results are better</string>
+    <string name="set_control_tests_two">Always</string>
+    <string name="set_control_tests_three">Never</string>
+
+    <string name="set_test_all_limit_title">General test tasks count</string>
+    <string name="set_test_all_limit_summary">Maximum: %s</string>
+    <string name="set_test_all_limit_dialog_title">General test</string>
+
+    <string name="set_test_all_limit_1">30 tasks</string>
+    <string name="set_test_all_limit_2">60 tasks</string>
+    <string name="set_test_all_limit_3">100 tasks</string>
+
+    <string name="set_btm_nav_title">Display bottom navigation</string>
+    <string name="set_btm_nav_summary">%s</string>
+    <string name="set_btm_nav_dialog_title">Bottom navigation</string>
+
+    <string name="set_btm_nav_1">Display and remove items from menu</string>
+    <string name="set_btm_nav_2">Display and leave items in menu</string>
+    <string name="set_btm_nav_3">Hide</string>
+
+    <string name="set_data_control_title">Data for stats</string>
+    <string name="set_data_control_summary">Include in section stats: %s</string>
+    <string name="set_data_control_dialog_title">Include in section stats</string>
+
+    <string name="set_data_control_dates">Only events</string>
+    <string name="set_data_control_all">Events, persons, terms</string>
+
+    <string name="set_data_mode_title">Mode</string>
+    <string name="set_data_mode_summary">Current: %s</string>
+    <string name="set_data_mode_dialog_title">Choose mode</string>
+
+    <string name="set_data_mode_default">Standard</string>
+    <string name="set_data_mode_easy">Simplified (only basic info)</string>
+
+    <string name="set_show_status">Status in listings</string>
+    <string name="set_show_status_summary">Display: %s</string>
+    <string name="set_show_status_dialog_title">Status display</string>
+
+    <string name="set_show_status_one">Auto</string>
+    <string name="set_show_status_two">Always</string>
+    <string name="set_show_status_three">Hide in listings</string>
+
+    <string name="set_detail_txt">Font size in details</string>
+    <string name="set_detail_txt_summary">Current: %s</string>
+    <string name="set_detail_txt_dialog_title">Font size</string>
+
+    <string name="set_detail_txt_small">Small</string>
+    <string name="set_detail_txt_medium">Medium</string>
+    <string name="set_detail_txt_large">Large</string>
+
+    <string name="stats_info_txt">Info about stats</string>
+    <string name="starred_lessons_remove">Reset results</string>
+
+    <string name="title_activity_reference">Reference</string>
+
+
+    <string name="app_market_link" translatable="false">com.online.languages.study.ruhistory</string>
+    <!-- string name="app_market_link">@string/app_market_link_pro</string -->
+
+    <string name="msg_sending_mail">Send feedback &#8230;</string>
+    <string name="msg_no_mail_client">Mail client is not installed.</string>
+    <string name="msg_mail_subject">Feedback</string>
+    <string name="msg_mail_subject_error">Error report</string>
+    <string name="msg_no_browser">Browser is not installed.</string>
+    <string name="no_data_msg">No data saved</string>
+    <string name="nav_header_txt">History of Russia</string>
+    <string name="correct_errors">Correct errors</string>
+    <string name="errors_box_title">Errors from tests</string>
+
+
+    <string name="section_stats_info">Для того, чтобы раздел считался полностью изученным, недостаточно только выполнить тесты. Также необходимо, чтобы были изучены записи раздела, и это будет зависеть от их статуса изученности (см. Справку). Такая система позволяет точнее определить уровень знания материала.  \n\nОбщий результат раздела зависит от результата тестов, количества пройденных записей и количества изученных записей. Каждый из этих показателей может максимально добавить к результату следующее количество процентов: \n\n- Результат теста: +50% (если тесты выполнены на 100%) \n- Пройденный материал: +30% (если пройдены все записи)
+    \n- Изученный материал: +20% (если изучены все записи)\n</string>
+
+    <string name="progress_info">Здесь представлена статистика степени изученности записей в целом приложении, а также в каждом разделе. Результаты тестов раздела или темы не учитываются. Сепень изученности выражена процентной частью записей со статусом «пройдено» и «изучено».
+        \n\nСтатус записи соответствует оценке, которая присваивается записи при выполнении тестов. Оценка вычисляется по следующей системе: +1 балл при правильном ответе, -1 балл при неправильном ответе. Максимальная оценка – 4 балла. В соответствии с количеством баллов записи присваивается один из следующих статусов:
+        \n\n — Не пройдено (0 баллов)\n — Пройдено (1-2 балла)\n — Изучено (3-4 балла) </string>
+
+
+    <string name="easy_mode_dialog_title">Simplified mode</string>
+
+    <string name="easy_mode_info">\nНа данный момент активен Упрощенный режим, в котором представлены только основные исторические события, факты, личности, термины.
+    \n\nИзменить режим на стандартный можно в разделе:
+        \n\n
+        Настройки > Настройки данных > Режим.
+        \n
+    </string>
+
+    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только основные исторические события, факты, личности, термины.
+        \n\n
+     Активный режим может повлиять на статистику, поскольку она учитывает изученность только тех записей, которые присутствуют в данном режиме. Смена режима не влияет на результаты тестов, поиска, статистику ошибок, а также на избранные записи.\n</string>
+
+
+    <string name="get_premium_txt">Full version</string>
+    <string name="title_activity_get_premium">Full version</string>
+
+    <string name="get_premium_activity">Full version</string>
+    <string name="purchase_txt">Get the full version of the app and remove ads</string>
+    <string name="get_premium_thank">Thank you!</string>
+    <string name="get_premium_continue">Продолжить</string>
+    <string name="get_premium_buy">Buy</string>
+    <string name="get_premium_buy_price">Buy for %s</string>
+    <string name="purchased_txt">Click «Continue» to go to the home page</string>
+    <string name="fullversion_desc_txt">You have the full version of the application.</string>
+
+
+    <string name="ex_save_stats">Save stats</string>
+
+    <string name="stats_test_all_desc">Test with items from all categories</string>
+    <string name="stats_test_old_desc">Test with known and familiar items</string>
+
+    <string name="ex_link_desc_pers_1">Test: Description / Person</string>
+    <string name="ex_link_desc_pers_2">Test: Person / Description</string>
+
+    <string name="ex_link_desc_term_1">Test: Definition / Term</string>
+    <string name="ex_link_desc_term_2">Test: Term / Definition</string>
+
+    <string name="ex_link_desc_misc_1">Test: Description / Item</string>
+    <string name="ex_link_desc_misc_2">Test: Item/ Description</string>
+
+    <string name="ex_link_desc_star_1">Test: Description / Item</string>
+    <string name="ex_link_desc_star_2">Test: Item / Description</string>
+
+
+    <string name="cat_progress_txt">Average tests \nтresult</string>
+
+    <string name="section_content_title">Section overview</string>
+    <string name="section_content_title_short">Contents</string>
+    <string name="persons_title">Persons</string>
+
+    <string name="detail_img_info_txt">Image: %s</string>
+
+    <string name="backup_info"><![CDATA[
+<br/>
+<b>Export your data</b>
+<br/><br/>
+
+You can export your data and have a copy of it safely stored in case you change phone or you need to reset it. This will take a snapshot of your current data and export it as a file <strong> %s </strong>. The backup file is saved by default in <b>Download</b> folder, but the path to this folder may differ depending on your device.
+
+<br/><br/>
+<strong>Restore/Import your data</strong>
+<br/><br/>
+
+This will allow to restore your data from a previous backup. Note that this will errase all the current data and replace it by the new import, so make sure this is what you want before proceeding. We are doing our best to ensure the data import on any device but we cannot guarantee that it will be successful in all cases. If you have any difficulty, please contact us through Contact page and let us know about the issue.
+
+<br/><br/>
+
+    ]]></string>
+
+
+    <string name="info_txt">Info</string>
+    <string name="backup_page_title">Export/Import</string>
+    <string name="no_import_data">data unavailable</string>
+    <string name="last_import_dat">Last import: %s</string>
+    <string name="no_access">Action not permitted</string>
+    <string name="export_title">Export your data</string>
+    <string name="export_desc">
+        <![CDATA[ You can export your data and have a copy of it safely stored on your device. This will take a snapshot of your current data and export it as a file <b> %s </b>. ]]>
+    </string>
+    <string name="export_btn">Export as file</string>
+    <string name="import_title">Restore/Import your data</string>
+    <string name="import_desc">Restore your data from a previous backup. This will errase all the current data.</string>
+    <string name="import_btn">Restore from file</string>
+    <string name="import_last_desc">Last import</string>
+    <string name="import_last_info">"Last import: "</string>
+
+    <string name="cancel_txt">Cancel</string>
+    <string name="starred_confirm_title">Подтверждение удаления</string>
+    <string name="set_starred_confirm_summary">Подтверждать удаление из избранного</string>
+    <string name="starred_confirm_desc">Запись будет удалена из списка избранных. Продолжить?</string>
+    <string name="dont_ask_again">Больше не спрашивать</string>
+    <string name="confirmation_txt">Подтверждение</string>
+
+
+    <string name="info_star_txt">\nДля дополнительной работы отдельные записи можно добавить в избранное. В избранное можно добавить, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне, а также долгим нажатием на элемент списка. Максимально в избранное можно добавить 30 записей.\n</string>
+
+    <string name="starred_menu_info">Info</string>
+    <string name="starred_words_info">В избранное можно добавить в списке раздела или темы (не более %1$d записей).</string>
+    <string name="starred_gallery_info">В избранное можно добавить в разделе Галерея (не более %1$d записей).</string>
+
+    <string name="info_gallery_txt">\nВ галерее представлены различные материалы для дополнительного изучения. Записи из галереи можно добавить в избранное, при этом они появятся в отдельной вкладке в разделе Избранное. Записи и темы из галереи, как правило, не включены в тесты и упражнения.  \n</string>
+
+    <string name="info_img_starred">\nУдалить записи из избранного можно, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне, а также долгим нажатием на элемент списка.\n</string>
+
+    <string name="maps_info">\nНа этой странице представлен список карт по темам раздела.\n</string>
+    <string name="info_menu_map">\nКарты можно открыть на новой странице и увеличить жестом или двойным касанием.\n</string>
+
+    <string name="menu_easy_mode">Simplified mode</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_layout">Layout</string>
+    <string name="menu_fullscreen">Fullscreen</string>
+    <string name="menu_open_cat">Open the category</string>
+    <string name="menu_sort">Sort list</string>
+    <string name="stats_page_activity">Section stats</string>
+    <string name="stats_total">TOTAL: %d%%</string>
+    <string name="stats_tests">TESTS:   %d%% * 0.5</string>
+    <string name="stats_familiar">Familiar: %d%% * 0.3</string>
+    <string name="stats_studied">Known:  %d%%  * 0.2</string>
+    <string name="no_entries_msg">No data</string>
+    <string name="total_result">Total result</string>
+    <string name="stats_percent">+ %d%%</string>
+    <string name="stats_studied_percent">Known: %d%%</string>
+    <string name="stats_familier_percent">Familiar: %d%%</string>
+    <string name="stats_unknown_percent">Unknown: %d%%</string>
+    <string name="section_studied_title">Known items in the section</string>
+    <string name="section_familiar_title">Familiar items in the section</string>
+    <string name="section_unknown_title">Unknown items in the section</string>
+    <string name="status_studied">status «KNOWN»</string>
+    <string name="status_familiar">status «KNOWN» or «FAMILIAR»</string>
+    <string name="status_unknown">status «UNKNOWN»</string>
+    <string name="pro_content">Available in full version</string>
+    <string name="section_tests_titile">Section tests</string>
+    <string name="subsection_title">Subsection</string>
+    <string name="starred_title">Starred (%d)</string>
+    <string name="section_review_title">Section overview</string>
+    <string name="stats_progress_title">Progress stats</string>
+    <string name="search_hint">Search</string>
+    <string name="no_search_result"><![CDATA[No results found for: <br> <b><i>%s</i></b>]]></string>
+    <string name="load_more">Show %d more from %d</string>
+    <string name="pic_name_label">Image: %s</string>
+    <string name="pic_info_title">Image info</string>
+    <string name="starred_pic_title">Starred (%d)</string>
+    <string name="test_result_title">Test result</string>
+    <string name="total_tasks">Tasks count: %d</string>
+    <string name="test_errors">Errors: %d</string>
+    <string name="tasks_missed">Skipped: %d</string>
+    <string name="entries_updated">Updated items: %d</string>
+    <string name="studied_tab">Known</string>
+    <string name="familiar_tab">Familiar</string>
+    <string name="unknown_tab">Unknown</string>
+    <string name="errors_label">Errors: %d</string>
+    <string name="section_errors_label">Errors: %d</string>
+    <string name="cats_studied">Catigories studied:</string>
+    <string name="result_task_count">Tasks: %d</string>
+    <string name="result_incorrect_count">Incorrect: %d</string>
+    <string name="item_status_unknown">Status: unknown</string>
+    <string name="item_status_familiar">Status: familiar</string>
+    <string name="item_status_studied">Status: known</string>
+    <string name="cats_data_list_title">Stats by categories</string>
+    <string name="loading">Loading …</string>
+    <string name="stats_test_result">Tests result:</string>
+    <string name="stats_familiar_label">Familiar:</string>
+    <string name="stats_studied_label">Known:</string>
+    <string name="stats_general_result">Total result</string>
+    <string name="studied_btn_txt">Known</string>
+    <string name="familiar_btn_txt">Familiar</string>
+    <string name="unknown_btn_txt">Unknown</string>
+    <string name="stats_open_section">Open section</string>
+    <string name="stats_open_section_list">Section items overview</string>
+    <string name="stats_open_list_desc">List of items from categories of the section</string>
+    <string name="stats_open_tests">Section tests</string>
+    <string name="stats_open_tests_desc">Test with items from all categories</string>
+    <string name="open_results_details">Resul detailed info</string>
+    <string name="circle_familiar_lbl">Familiar</string>
+    <string name="circle_studied_lbl">Known</string>
+    <string name="result_errors_info">ERRORS STATS</string>
+    <string name="result_total_info">Total result</string>
+    <string name="search_no_result">Not found</string>
+    <string name="search_load_more">Show more</string>
+    <string name="section_list_title">Overview</string>
+    <string name="section_list_desc">All items list</string>
+    <string name="section_tests_title">Tests</string>
+    <string name="sections_title_desc">All section items</string>
+    <string name="pic_link">Reference</string>
+    <string name="image_info_title">Image</string>
+    <string name="image_info_desc">Description</string>
+    <string name="cat_stats_title">Category stats</string>
+    <string name="cat_stats_total_items">Total items:</string>
+    <string name="cat_stats_familliar_count">Familiar</string>
+    <string name="cat_stats_studied_count">Known</string>
+    <string name="reference_title">Reference</string>
+    <string name="open_reference">Open info</string>
+    <string name="starred_items_title">Items added to starred</string>
+    <string name="open_starred">REVIEW STARRED ITEMS</string>
+    <string name="recently_starred">RECENTLY STARRED </string>
+    <string name="sections_stats_title">Sections stats</string>
+    <string name="stats_general_test">General test</string>
+    <string name="stats_revision">Revision</string>
+    <string name="progress_studied_label">Known</string>
+    <string name="progress_familiar_label">Familiar</string>
+    <string name="progress_unknown_label">Unknown</string>
+    <string name="result_skipped_task">Skipped tasks</string>
+    <string name="starred_tab_info">Info</string>
+    <string name="starred_tab_gallery">Gallery</string>
+    <string name="starrd_tab_info_count">Info (%d)</string>
+    <string name="starrd_tab_gallery_count">Gallery (%d)</string>
+
+
+</resources>

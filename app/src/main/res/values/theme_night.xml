@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary_night">#212121</color>
+    <color name="colorPrimaryDark_night">#111111</color>
+
+    <color name="colorBaseBg_night">#171717</color>
+    <color name="colorCardBg_night">#252525</color>
+    <color name="colorCardWidgetBg_night">#252525</color>
+
+    <color name="colorBannerBg_night">#292929</color>
+    <color name="colorBtmNavBg_night">#292929</color>
+    <color name="colorDrawerMenuBg_night">#272727</color>
+
+
+    <color name="colorMenu_night">#303030</color>
+
+
+    <style name="NightTheme" parent="DarkTheme">
+
+        <item name="colorPrimary">@color/colorPrimary_night</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_night</item>
+
+        <item name="colorBaseBg">@color/colorBaseBg_night</item>
+        <item name="colorCardBg">@color/colorCardBg_night</item>
+        <item name="colorCardWidgetBg">@color/colorCardWidgetBg_night</item>
+
+
+        <item name="colorBannerBg">@color/colorBannerBg_night</item>
+        <item name="colorBtmNavBg">@color/colorBtmNavBg_night</item>
+        <item name="colorDrawerItemBg">@color/colorDrawerMenuBg_night</item>
+        <item name="colorMultipaneMenuBg">@color/colorDrawerMenuBg_night</item>
+
+
+        <item name="cardMargin">@dimen/card_margin_default</item>
+        <item name="colorExBottomDivider">@color/colorExBottomDivider</item>
+
+        <item name="deviderStyle">@style/deviderStyle_night</item>
+
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme_night</item>
+
+    </style>
+
+
+    <style name="PopupOverlayTheme_night" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/colorMenu_night</item>
+    </style>
+
+
+    <style name="deviderStyle_night">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
+
+    <style name="NightTheme.UserDialog" parent="DarkTheme.UserDialog">
+
+    </style>
+
+
+
+
+
+
+</resources>

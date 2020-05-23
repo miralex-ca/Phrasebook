@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cat_item_wrap"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/itemImage"
+        android:layout_marginLeft="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <LinearLayout
+        android:layout_marginLeft="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="50dp"
+        >
+
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:id="@+id/itemText"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            tools:text="Title"
+            android:textSize="12sp"
+            android:id="@+id/itemInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="?attr/colorStarredSecondaryText"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/cat_item_star_right"
+        app:srcCompat="@drawable/ic_star_borded"
+        android:id="@+id/voclistStar"
+        android:visibility="visible"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+
+
+
+</RelativeLayout>

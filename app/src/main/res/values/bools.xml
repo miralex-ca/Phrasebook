@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="night_mode">false</bool>
+    <bool name="portrait_only">true</bool>
+    <bool name="small_height">true</bool> <!-- change for more 560dp -->
+    <bool name="normal_height">false</bool>
+    <bool name="wide_width">false</bool>
+    <bool name="tablet">false</bool>
+    <bool name="multipane">false</bool>
+    <bool name="bottom_nav_default">false</bool>
+    <bool name="hide_rate">true</bool>
+    <bool name="wide">false</bool>
+
+</resources>

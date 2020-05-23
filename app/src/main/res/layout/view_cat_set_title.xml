@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/divider"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorCardDivider"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sectionItemBox"
+
+        android:paddingLeft="18dp"
+        >
+
+        <TextView
+            android:id="@+id/sectionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="sans-serif-light"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textColor="?attr/colorSecondaryText"
+            android:paddingBottom="10dp"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_above="@+id/sectionTitle"
+            android:id="@+id/sectionDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="?attr/colorSecondaryText"
+            android:textSize="11sp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/catProgressBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/catProgressCircle"
+                app:srcCompat="@drawable/ic_cat_progress" />
+
+
+            <TextView
+                android:id="@+id/catProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                tools:text="100%"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="?attr/colorCatProgressTxt"
+                android:gravity="center"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/catGroupCountBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_cat_group" />
+
+
+            <TextView
+                android:id="@+id/catGroupCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="30dp"
+                android:textSize="16sp"
+                tools:text="0"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/catLockedBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_lock" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

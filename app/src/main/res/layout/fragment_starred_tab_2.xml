@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/card_main_min_height"
+        >
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/starred_zero"
+                    android:gravity="center_horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        android:layout_margin="12dp"
+                        >
+
+                        <TextView
+                            android:text="@string/starred_items_title"
+                            android:textSize="18sp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="0/30"
+                            android:id="@+id/starred_count_preview"
+                            android:textStyle="bold"
+                            android:textSize="25sp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="12dp"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/starred_zero_desc"
+                        android:text="@string/starred_gallery_info"
+                        android:textSize="14sp"
+                        android:gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="4dp"
+                        android:maxWidth="400dp"
+                        android:paddingTop="18dp"
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:id="@+id/starred_info"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+
+                        style="@style/Widget.AppCompat.Button.Borderless"
+
+                        android:onClick="openStarredGallery"
+
+                        android:gravity="center"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="16dp"
+
+                        android:paddingLeft="18dp"
+                        android:paddingRight="18dp"
+
+
+                        android:layout_margin="12dp"
+                        >
+
+                        <TextView
+                            android:text="@string/starred_items_title"
+                            android:textSize="18sp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:text="10/30"
+                            android:id="@+id/starred_count"
+                            android:textStyle="bold"
+                            android:textSize="25sp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="4dp"
+                            android:paddingTop="12dp"
+                            />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:gravity="center"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="7dp"
+                            android:paddingLeft="17dp"
+                            android:paddingRight="12dp"
+
+                            >
+
+                            <TextView
+                                android:text="@string/open_starred"
+                                android:textSize="13sp"
+                                android:id="@+id/exBtnNextTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="3dp"
+                                />
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_arrow_forward"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/starredWords"
+                            android:text="0"
+                            android:textSize="16sp"
+                            android:visibility="gone"
+                            android:paddingLeft="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="20dp"
+                            android:paddingTop="30dp"
+                            />
+
+
+                    </LinearLayout>
+
+                    <View
+                            android:id="@+id/starredDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?attr/colorCardDivider"
+                            />
+
+                    <TextView
+                            android:padding="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/recently_starred"
+                            android:textSize="14sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/starred_preview_list"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:layout_marginBottom="20dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="openStarredGallery"
+                        android:padding="@dimen/starred_preview_padding"
+                         >
+
+                        </LinearLayout>
+
+                </LinearLayout>
+
+</LinearLayout>
+

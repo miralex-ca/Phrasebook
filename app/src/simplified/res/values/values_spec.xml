@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name_spec">simplified-</string>
+    <string name="app_name">Просто История</string>
+    <string name="backup_file_name">Backup_simple.csv</string>
+
+    <string name="app_structure_file">simple_structure.json</string>
+
+    <string name="app_data_file">data_simple.json</string>
+    <string name="app_detail_file">details_simple.json</string>
+    <bool name="hide_rate">false</bool>
+
+    <dimen name="home_card_image_width">@dimen/_home_card_image_width_4</dimen>
+    <dimen name="home_card_image_height">@dimen/_home_card_image_height_4</dimen>
+    <dimen name="home_card_title_bottom">@dimen/_home_card_title_bottom_4</dimen>
+    <dimen name="home_card_title_txt_size">@dimen/_home_card_title_txt_size_4</dimen>
+    <dimen name="home_card_desc_txt_size">@dimen/_home_card_desc_txt_size_4</dimen>
+
+</resources>

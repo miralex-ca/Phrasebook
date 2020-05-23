@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/easy_mode"
+        android:orderInCategory="50"
+        android:icon="?attr/iconSchool"
+        android:title="@string/menu_easy_mode"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/open_cat"
+        android:orderInCategory="100"
+        android:title="@string/menu_open_cat"
+        app:showAsAction="never" />
+
+</menu>

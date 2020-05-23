@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:gravity="center_horizontal"
+    android:background="?attr/colorBaseBg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/main_card_top"
+        style="@style/CardWrapper.Width"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exCard"
+            style="?attr/cardViewStyle"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:minHeight="@dimen/card_main_min_height"
+                android:gravity="center_horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minHeight="150dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:layout_centerInParent="true"
+                                >
+
+                                <TextView
+                                    android:id="@+id/customListTile"
+                                    android:textSize="15sp"
+                                    android:layout_marginBottom="4dp"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:text="55"
+                                    android:id="@+id/sectionCustomDataCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="55sp"
+                                    android:textAlignment="center"
+                                    android:gravity="center"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/customListDesc"
+
+                                    tools:text="статус «изучено»"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textAlignment="center"
+                                    android:gravity="center"
+                                    android:layout_marginTop="4dp"
+                                    />
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="?attr/colorCardDivider"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="24dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:text="@string/cats_data_list_title"
+                            android:layout_width="match_parent"
+                            android:textAllCaps="true"
+                            android:textSize="15sp"
+                            android:paddingLeft="5dp"
+                            android:paddingBottom="32dp"
+                            android:layout_height="wrap_content" />
+
+                        <RelativeLayout
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingBottom="16dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="@string/loading"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="90dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:id="@+id/textView2" />
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:animateLayoutChanges="false"
+                                android:nestedScrollingEnabled="false"
+                                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

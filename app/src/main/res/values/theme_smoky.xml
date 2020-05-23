@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary_smoky">#2c3d4e</color>
+    <color name="colorPrimaryDark_smoky">#212e3b</color>
+
+    <color name="colorBaseBg_smoky">#25303c</color>
+    <color name="colorCardBg_smoky">#2f4153</color>
+    <color name="colorCardWidgetBg_smoky">#2f4153</color>
+    <color name="colorBannerBg_smoky">#394E64</color>
+    <color name="colorBtmNavBg_smoky">#364B5F</color>
+
+
+    <color name="colorAccent_smoky">#80D8FF</color>
+    <color name="colorBtmNav_inactive_smoky">#AB80D8FF</color>
+
+
+    <color name="colorDrawerMenuBg_smoky">#2c3d4e</color>
+
+    <color name="colorButtonNormal_smoky">#3e5a74</color>
+    <color name="colorControlHighlight_smoky">#62809c</color>
+
+    <color name="colorDialogBg_smoky">#3d546b</color>
+    <color name="colorMenu_smoky">#3d546b</color>
+
+    <color name="colorNavBgStart_smoky">#233445</color>
+    <color name="colorNavBgCenter_smoky">#233445</color>
+    <color name="colorNavBgEnd_smoky">#152433</color>
+
+    <color name="colorNavHeaderTxt_smoky">#aedaed</color>
+
+
+    <color name="colorDetail_smoky">#3e5061</color>
+
+    <color name="colorStarIcon_smoky">#9CE0FF</color> <!-- for stars in lists -->
+    <color name="colorStarIconBord_smoky">#03ACF8</color>
+
+    <color name="colorStarButton_smoky">#51687c</color>  <!-- used for star button -->
+    <color name="colorStarButtonIcon_smoky">@color/colorStarIcon_smoky</color> <!-- used for active star color -->
+    <color name="colorStarButtonInactive_smoky">@color/colorStarIcon_smoky</color> <!-- used for inactive star color -->
+
+
+    <color name="ex_icon_smoky">#7dbbd7</color>
+    <color name="ex_link_result_smoky">#B3E5FC</color>
+
+    <color name="colorContactIcon_smoky">#7dbbd7</color>
+
+    <color name="colorMenuIcon_smoky">#ffffff</color>
+
+    <color name="colorMainText_smoky">#eff5fc</color>
+    <color name="colorSecondaryText_smoky">#c2d3e9</color>
+
+    <color name="colorMapTitleBox_smoky">#78021223</color>
+
+    <dimen name="cardCornerDefault_smoky">6dp</dimen>
+
+
+    <style name="SmokyTheme.TransparentStatus" />
+
+
+    <style name="SmokyTheme" parent="DarkTheme">
+        <item name="colorPrimary">@color/colorPrimary_smoky</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_smoky</item>
+        <item name="colorAccent">@color/colorAccent_smoky</item>
+
+        <item name="colorMainText">@color/colorMainText_smoky</item>
+        <item name="colorSecondaryText">@color/colorSecondaryText_smoky</item>
+
+        <item name="colorButtonNormal">@color/colorButtonNormal_smoky</item>
+        <!-- item name="colorControlHighlight">@color/colorControlHighlight_smoky</item -->
+
+        <item name="colorBaseBg">@color/colorBaseBg_smoky</item>
+        <item name="colorCardBg">@color/colorCardBg_smoky</item>
+        <item name="colorCardWidgetBg">@color/colorCardWidgetBg_smoky</item>
+
+        <item name="colorBannerBg">@color/colorBannerBg_smoky</item>
+        <item name="colorBtmNavBg">@color/colorBtmNavBg_smoky</item>
+
+        <item name="colorBtmNav_active">@color/colorAccent_smoky</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_smoky</item>
+
+        <item name="cardMargin">@dimen/card_margin_default</item>
+
+        <item name="PopupOverlayTheme">@style/PopupOverlayTheme_smoky</item>
+        <item name="alertDialogTheme">@style/AppCompatAlert_smoky</item>
+
+        <item name="colorDialogBg">@color/colorDialogBg_smoky</item>
+
+        <item name="colorDrawerItemBg">@color/colorDrawerMenuBg_smoky</item>
+
+        <item name="colorMultipaneMenuBg">@color/colorDrawerMenuBg_smoky</item>
+        <item name="colorMenuIconColor">@color/colorMenuIcon_smoky</item>
+
+        <item name="colorExBottomDivider">@color/colorExBottomDivider</item>
+
+        <item name="deviderStyle">@style/deviderStyle_smoky</item>
+
+        <item name="colorMapTitleBox">@color/colorMapTitleBox_smoky</item>
+
+        <item name="colorStarIcon">@color/colorStarIcon_smoky</item>
+
+        <item name="cardCorner">@dimen/cardCornerDefault_smoky</item>
+
+        <item name="colorExIconBg">@color/ex_icon_smoky</item>
+        <item name="colorExResult">@color/ex_link_result_smoky</item>
+        <item name="iconCarousel">@drawable/ic_ex_cards</item>
+
+        <item name="colorKnown">@color/colorKnown_smoky</item>
+        <item name="colorStudied">@color/colorStudied_smoky</item>
+
+        <item name="colorContactIcon">@color/colorContactIcon_smoky</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_smoky</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_smoky</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_smoky</item>
+
+        <item name="colorNavHeaderTxt">@color/colorNavHeaderTxt_smoky</item>
+
+    </style>
+
+
+    <color name="colorKnown_smoky">#4eadf9</color>
+    <color name="colorStudied_smoky">#02ef64</color>
+
+
+    <style name="SmokyTheme.UserDialog" parent="DarkTheme.UserDialog">
+        <item name="colorPrimary">@color/colorPrimary_smoky</item>
+        <item name="colorDialogBackground">@color/colorDetail_smoky</item>
+
+
+        <item name="colorAccent">@color/colorStarButton_smoky</item>
+        <item name="colorStarButton">@color/colorStarButton_smoky</item>
+        <item name="colorStarButtonIcon">@color/colorStarButtonIcon_smoky</item>
+        <item name="starButtonIconInactive">@drawable/ic_star_border</item>
+        <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive_smoky</item>
+        <item name="DetailTextTheme">@style/DetailTextTheme.Dark</item>
+
+    </style>
+
+    <style name="DetailTextTheme.Dark">
+        <item name="colorAccent">@color/colorAccent_smoky</item>
+    </style>
+
+    <style name="deviderStyle_smoky">
+        <item name="android:visibility">gone</item>
+    </style>
+
+
+    <style name="PopupOverlayTheme_smoky" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/colorMenu_smoky</item>
+    </style>
+
+    <!-- Alert Dialog Theme -->
+    <style name="AppCompatAlert_smoky" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:background">?attr/colorDialogBg</item>
+        <item name="colorAccent">@color/colorAccent_smoky</item>
+
+    </style>
+
+
+
+</resources>

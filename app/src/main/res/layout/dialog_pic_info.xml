@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:gravity="center_horizontal">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="top"
+
+    android:padding="20dp"
+
+    >
+
+
+    <TextView
+
+        android:id="@+id/picTitle"
+        android:textSize="14sp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/image_info_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:id="@+id/picInfo"
+        android:textSize="14sp"
+        android:text="@string/image_info_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+
+        android:id="@+id/webLink"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingRight="12dp"
+
+        android:focusable="true"
+        android:clickable="true"
+        android:onClick="openWebLink"
+
+        android:background="?android:attr/selectableItemBackground"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:paddingRight="12dp"
+            app:srcCompat="@drawable/ic_open_browser" />
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="@string/pic_link"
+            android:textSize="16sp"
+            android:id="@+id/resultSection"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

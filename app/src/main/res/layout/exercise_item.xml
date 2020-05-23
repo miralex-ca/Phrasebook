@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/fCardContent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/exQuest"
+        style="@style/exQuestWrapper">
+
+        <RelativeLayout
+            style="@style/exImageWrapper"
+            android:visibility="gone"
+            android:id="@+id/exImageWrapper"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/exImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/test_img_size"/>
+
+            <TextView
+                android:id="@+id/exImgCounter"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+
+                android:background="@drawable/test_img_icon_bg"
+                android:layout_alignTop="@+id/exImage"
+                android:layout_alignLeft="@+id/exImage"
+                android:text="0/0"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:id="@+id/exTextWrapper"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fCardText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/exTextBox"/>
+
+        <TextView
+            android:id="@+id/fTranscriptBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/fTranscriptBox"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:weightSum="1"
+            >
+            <!-- difference with ph in layout_weight -->
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="0dp"
+                android:layout_weight=".89"
+                android:layout_height = "wrap_content"
+                android:theme="@style/RadioTheme"
+                android:minHeight = "@dimen/ex_radiogroup_min_height"
+                style="@style/exRadioGroup" >
+
+                <!-- difference with ph in minHeight and count -->
+                <RadioButton
+                    android:id="@+id/radioBtn1"
+                    android:text="@string/ex_option_foo"
+                    style="@style/exRadioBtn.Short" />
+
+                <RadioButton
+                    android:id="@+id/radioBtn2"
+                    android:text="@string/ex_option_foo"
+                    style="@style/exRadioBtn.Short" />
+
+                <RadioButton
+                    android:id="@+id/radioBtn3"
+                    android:text="@string/ex_option_foo"
+                    style="@style/exRadioBtn.Short" />
+
+                <RadioButton
+                    android:id="@+id/radioBtn4"
+                    android:text="OPt"
+                    style="@style/exRadioBtn.Short" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+

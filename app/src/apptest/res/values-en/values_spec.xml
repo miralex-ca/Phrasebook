@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_structure_file">test_structure_en.json</string>
+    <string name="app_data_file">test_data_en.json</string>
+    <string name="app_detail_file">details_simple.json</string>
+
+</resources>

@@ -1,0 +1,63 @@
+{
+  "sections":
+  [
+	{"tag": "section1", "title": "Первый раздел", "id": "10010",
+      "desc": "Полное описание первого раздела",
+      "title_short": "Раздел 1",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/shape_blue_l.png",
+      "type": "simple",
+      "categories":
+        [
+          {"parent": "root", "type": "simple", "spec": "misc", "id": "10010010", "title": "Тема: Синие объекты", "desc": "Описание темы"}
+        ]
+	},
+
+    {"tag": "section2", "title": "Второй раздел", "id": "10020",
+      "desc": "Полное описание второго раздела",
+      "title_short": "Раздел 2",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/pers_blue_l.png",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10020010", "title": "Тема: Синие личности", "desc": "Описание темы"}
+      ]
+    },
+
+    {"tag": "section3", "title": "Третий раздел", "id": "10030",
+      "desc": "Полное описание галереи",
+      "title_short": "Раздел 3",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/shape_red_l.png",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "spec": "misc", "id": "10010020", "title": "Тема: Красные объекты", "desc": "Описание темы"}
+      ]
+    },
+
+    {"tag": "section4", "title": "Четвертый раздел", "id": "10040",
+      "desc": "Полное описание галереи",
+      "title_short": "Раздел 4",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/shape_green_l.png",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "spec": "misc", "id": "10010110", "title": "Тема: Термины из объектов", "desc": "Описание темы"}
+      ]
+    }
+
+
+
+
+
+      ]
+    }
+
+  ]
+
+
+}
+

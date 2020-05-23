@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.online.languages.study.studymaster.ScrollingActivity">
+
+
+    <item
+        android:id="@+id/list_layout"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_view_list"
+        android:title="@string/menu_layout"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/info_from_menu"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/test_from_menu"
+        android:visible="false"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_img_test"
+        app:showAsAction="never" />
+
+</menu>

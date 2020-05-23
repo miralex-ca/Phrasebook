@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/sectionBox"
+                android:onClick="openView"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="6dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:maxLines="1"
+                        android:id="@+id/sectionTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:maxLines="1"
+                            android:id="@+id/tasksCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            />
+
+                        <TextView
+                            android:layout_marginLeft="20dp"
+                            android:maxLines="1"
+                            android:id="@+id/errorsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13sp"
+                            android:textColor="@color/red_snack"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/expIcon"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_chevron_down"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:alpha="0"
+                android:id="@+id/sectionContent"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:alpha="0.6"
+                    android:textSize="13sp"
+                    android:text="@string/result_skipped_task"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</RelativeLayout>

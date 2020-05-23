@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="multipane">true</bool>
+    <bool name="wide_width">true</bool>
+</resources>

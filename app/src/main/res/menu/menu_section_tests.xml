@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <item
+        android:id="@+id/starred_del_results"
+        android:orderInCategory="100"
+        android:title="@string/starred_lessons_remove"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/easy_mode"
+        android:orderInCategory="50"
+        android:icon="?attr/iconSchool"
+        android:title="@string/menu_easy_mode"
+        android:visible="false"
+        app:showAsAction="always" />
+
+</menu>

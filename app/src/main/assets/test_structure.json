@@ -1,0 +1,114 @@
+{
+  "params": {
+    "simplified": true,
+    "homecards": true,
+    "gallery": false,
+    "stats": false
+  },
+
+  "sections":
+  [
+	{"tag": "section1", "title": "Первый раздел", "id": "10010",
+      "desc": "Полное описание первого раздела",
+      "title_short": "Раздел 1",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/pers_red_l.png",
+      "categories":
+        [
+          {"parent": "root", "type": "simple", "spec": "misc", "id": "10010010", "title": "Тема: Синие объекты", "desc": "Описание темы"},
+          {"parent": "root", "type": "simple", "spec": "misc", "id": "10010020", "title": "Тема: Красные объекты", "desc": "Описание темы"},
+          {"parent": "root", "type": "set", "id": "set_1_2", "title": "none", "desc": ""},
+          {"parent": "root", "type": "simple", "id": "10010030", "title": "Тема: Зелёные объекты", "desc": "", "review":  "false"},
+          {"parent": "root", "type": "simple", "spec": "items_list", "id": "10010040", "title": "Тема: Серые объекты", "desc": "", "review":  "false"},
+          {"parent": "root", "type": "group", "id": "group_1_1", "title": "Группа: Термины объектов", "desc": ""},
+          {"parent": "group_1_1", "type": "simple", "spec": "term", "id": "10010110", "title": "Тема: Термины объектов", "desc": "Описание темы", "review": "false"},
+          {"parent": "root", "type": "set", "id": "set_1_3", "title": "none", "desc": ""},
+          {"parent": "root", "type": "simple", "spec": "text", "id": "reference", "title": "Текстовая страница", "desc": "", "review":  "false"},
+          {"parent": "root", "type": "simple", "spec": "maps_list", "id": "10010210", "title": "Карты", "desc": "", "review":  "false"}
+        ]
+	},
+
+    {"tag": "section2", "title": "Второй раздел", "id": "10020",
+      "desc": "Полное описание второго раздела",
+      "title_short": "Раздел 2",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/image_green_l.png",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "10020010", "title": "Тема: Синие личности", "desc": "Описание темы"}
+      ]
+    },
+
+    {"tag": "section3", "title": "Галерея", "id": "10030",
+      "desc": "Полное описание галереи",
+      "title_short": "Раздел 3",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/shape_blue_l.png",
+      "type": "gallery",
+      "categories":
+      [
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "gone", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030010", "title": "Тема: Синие фото", "desc": "Описание темы", "image":  "picto/flower_blue_l.png"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030020", "title": "Тема: Красные фото", "desc": "Описание темы", "image":  "picto/flower_red_l.png"},
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "none", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030030", "title": "Тема: Зеленые фото", "desc": "Описание темы", "image":  "picto/flower_green_l.png"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030040", "title": "Тема: Серые фото", "desc": "Описание темы", "image":  "picto/flower_gray_l.png"}
+      ]
+    },
+
+    {"tag": "section4", "title": "Страница изображений", "id": "10040",
+      "desc": "",
+      "title_short": "Раздел 3",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/shape_blue_l.png",
+      "type": "gallery",
+      "spec": "gallery_simple",
+
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10030010", "title": "Тема: Синие фото", "desc": "Описание темы", "image":  "picto/flower_blue_l.png"}
+
+        ]
+    },
+
+
+    {"tag": "section10", "title": "Галерея навигации", "id": "10100",
+      "desc": "Полное описание галереи из навигации",
+      "title_short": "Галерея",
+      "desc_short": "Краткое описание раздела",
+      "image": "picto/image_blue_l.png",
+      "type": "gallery",
+      "spec": "nav_gallery",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "gone", "desc": ""},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10040010", "title": "Тема: Синие изображения", "desc": "Описание темы", "image":  "picto/image_blue_l.png"},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10040020", "title": "Тема: Красные изображения", "desc": "Описание темы", "image":  "picto/image_red_l.png"},
+
+        {"parent": "root", "type": "group", "id": "group_4_1", "spec": "gallery", "title": "Группа изображений", "desc": "Описание группы", "image":  "picto/image_gray_l.png"},
+
+        {"parent": "group_4_1", "type": "simple", "spec": "image_list", "id": "10040040", "title": "Тема: Серые изображения", "desc": "Описание темы", "image":  "picto/image_gray_l.png"},
+        {"parent": "group_4_1", "type": "simple", "spec": "image_list", "id": "10040050", "title": "Тема: Черные изображения", "desc": "Описание темы", "image":  "picto/image_black_l.png"},
+
+        {"parent": "root", "type": "group", "id": "group_4_2", "spec": "maps", "title": "Группа карт", "desc": "Разные карты", "image":  "picto/image_green_l.png"},
+
+        {"parent": "group_4_2", "type": "page", "spec": "map", "id": "100400300010", "title": "Зеленые карты", "desc": "Описание темы"},
+        {"parent": "group_4_2", "type": "page", "spec": "map", "id": "100400300020", "title": "Серые карты", "desc": "Описание темы"}
+
+
+      ]
+    }
+
+  ]
+
+
+}
+

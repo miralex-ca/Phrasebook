@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_height="wrap_content"
+        app:contentPadding="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        style="@style/CardViewStyle.Widget"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?attr/CardViewBorder"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:paddingLeft="@dimen/card_stats_side"
+            android:paddingRight="@dimen/card_stats_side"
+
+            android:paddingBottom="18dp"
+
+            android:minHeight="160dp"
+
+
+            android:focusable="true"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+
+            android:onClick="openProgressStats"
+            >
+
+            <TextView
+                android:visibility="visible"
+                android:gravity="center"
+
+
+                android:text="@string/stats_progress_title"
+                android:textSize="15sp"
+
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="18dp"
+                android:paddingTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+
+                android:layout_gravity="center"
+                android:paddingRight="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <include layout="@layout/fragment_stats_diagram_include" />
+
+                <LinearLayout
+                    android:layout_marginLeft="23dp"
+                    android:paddingTop="20dp"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/progressBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="12dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:background="?attr/colorStudiedProgress"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="16dp"
+                            android:layout_height="8dp" />
+
+                        <TextView
+                            android:id="@+id/studiedTxtProgress"
+                            android:text="@string/progress_studied_label"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingLeft="10dp"
+                        android:paddingBottom="12dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:background="?attr/colorKnownProgress"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="16dp"
+                            android:layout_height="8dp" />
+
+                        <TextView
+                            android:id="@+id/knownTxtProgress"
+                            android:text="@string/progress_familiar_label"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingLeft="10dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:background="?attr/colorCatGroup"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="16dp"
+                            android:layout_height="8dp" />
+
+                        <TextView
+                            android:id="@+id/unknownTxtProgress"
+                            android:text="@string/progress_unknown_label"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

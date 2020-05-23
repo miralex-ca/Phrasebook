@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dimen_size">h560dp</string>
+
+
+    <dimen name="_card_margin_default">4dp</dimen>
+    <dimen name="_card_main_min_height">400dp</dimen>
+    <dimen name="_card_padding">16dp</dimen>
+
+    <dimen name="_home_card_image_width">100dp</dimen>
+
+    <dimen name="nav_header_height">130dp</dimen>
+
+    <dimen name="_detail_image_height">420dp</dimen>
+    <dimen name="_detail_image_appbar_height">260dp</dimen>
+
+    <dimen name="_detail_card_height">458dp</dimen>
+    <dimen name="_detail_appbar_height">240dp</dimen>
+
+    <integer name="_search_dialog_height">420</integer>
+    <integer name="_search_dialog_img_height">250</integer>
+
+
+    <dimen name="_detail_appbar_screem_height">@dimen/_detail_appbar_height</dimen>
+
+    <dimen name="detail_appbar_height_land">220dp</dimen>
+
+    <dimen name="_detail_appbar_exp_text_size">25sp</dimen>
+    <dimen name="_detail_appbar_exp_text_size_small">21sp</dimen>
+    <dimen name="_detail_appbar_exp_text_bottom">30dp</dimen>
+    <dimen name="_design_fab_size_normal">43dp</dimen>
+
+
+    <item name="button_width" format="float" type="dimen">0.4</item>
+
+    <dimen name="_gallery_card_img_size">180dp</dimen>
+
+
+    <!--  cat item -->
+
+    <dimen name="_cat_item_pic_size">45dp</dimen>
+    <dimen name="_cat_item_pic_left">12dp</dimen>
+    <dimen name="_cat_item_txt_left">55dp</dimen>
+    <dimen name="_cat_item_txt_right">20dp</dimen>
+    <dimen name="_cat_item_star_right">8dp</dimen>
+
+    <dimen name="_cat_item_info_txt_size">13sp</dimen>
+
+
+    <!--  flashcard dimens -->
+
+    <dimen name="_flash_card_height">320dp</dimen>
+    <dimen name="_flash_text_box_height">100dp</dimen>
+    <dimen name="_flash_translate_box_height">160dp</dimen>
+    <dimen name="_flash_translate_box_mirror_height">90dp</dimen>
+    <dimen name="_flash_text_box_mirror_height">110dp</dimen>
+    <dimen name="_flash_text_wrap_mirror_height">0dp</dimen>
+
+
+    <dimen name="_flash_padding_side">0dp</dimen>
+
+    <dimen name="_flash_show_msg_txt_size">17sp</dimen>
+    <dimen name="_flash_txt_size">25sp</dimen>
+    <dimen name="_flash_txt_size_mirror">21sp</dimen>
+
+    <dimen name="_flash_txt_padding_side">18dp</dimen>
+
+    <integer name="f_item_txt_size_norm">25</integer>
+    <integer name="f_item_txt_size_medium">24</integer>
+    <integer name="f_item_txt_size_small">23</integer>
+
+    <!-- exercise -->
+    <dimen name="_test_img_max_width">150dp</dimen>
+
+    <dimen name="test_img_width_tablet">300dp</dimen>
+
+    <dimen name="_ex_card_field_minheight">440dp</dimen>
+    <dimen name="_test_img_size">140dp</dimen>
+
+    <integer name="_ex_text_wrap">150</integer>
+    <integer name="_ex_text_wrap_high">180</integer>
+
+
+
+    <integer name="_ex_card_wrap">322</integer>
+    <integer name="_ex_card_wrap_high">360</integer>
+
+    <integer name="_ex_text_wrap_ex1">120</integer>
+    <integer name="_ex_text_wrap_ex1_high">160</integer>
+
+    <dimen name="_ex_opt_short_txt_size_norm">18sp</dimen>
+    <dimen name="_ex_opt_short_txt_min_height">45dp</dimen>
+
+
+    <integer name="_ex_quest_txt_size_norm">18</integer>
+    <integer name="_ex_quest_short_txt_size_norm">20</integer>   <!-- ex1 opt -->
+    <integer name="_ex_quest_short_txt_size_small">25</integer>      <!-- ex2 -->
+    <integer name="_ex_quest_txt_size_medium">16</integer>
+    <integer name="_ex_quest_txt_size_small">15</integer>
+    <integer name="_ex_quest_txt_size_smallest">13</integer>
+
+
+    <integer name="_ex_opt_txt_size_norm">16</integer>
+    <integer name="_ex_opt_txt_size_small">14</integer>
+    <integer name="_ex_opt_txt_size_smallest">13</integer>
+
+    <integer name="ex_text_long_num">40</integer>
+
+    <dimen name="_ex_quest_wrap_padding_side">16dp</dimen>
+
+
+
+    <dimen name="_ex_link_padding_top">12dp</dimen>
+    <dimen name="_ex_link_padding_btm">13dp</dimen>
+
+
+</resources>

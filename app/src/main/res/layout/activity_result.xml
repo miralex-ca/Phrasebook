@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/coordinator"
+
+    style="@style/DetailSize.Width"
+
+    android:background="?attr/colorDialogBackground"
+
+    android:fitsSystemWindows="true"
+    tools:context="com.online.languages.study.studymaster.ScrollingActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="?attr/DialogAppBarOverlayTheme">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/content_result" />
+
+    </RelativeLayout>
+
+    <View
+        android:background="?attr/colorDialogBackground"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+
+</android.support.design.widget.CoordinatorLayout>

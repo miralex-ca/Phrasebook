@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorFinderWindowBg">#3F3F3F</color>
+    <color name="colorFinderText">#ffffff</color>
+    <color name="colorFinderPrimary">#222</color>
+    <color name="colorFinderPrimaryDark">#000000</color>
+
+</resources>

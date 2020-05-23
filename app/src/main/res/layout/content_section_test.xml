@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:gravity="center_horizontal"
+    android:background="?attr/colorBaseBg"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/main_card_top"
+
+        style="@style/CardWrapper.Width"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/exCard"
+            style="@style/CardViewStyle"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:paddingLeft="@dimen/ex_links_list_padding_side"
+                android:paddingRight="@dimen/ex_links_list_padding_side"
+
+                android:paddingTop="@dimen/ex_links_list_padding_top"
+                android:paddingBottom="@dimen/ex_links_list_padding_top"
+
+                android:minHeight="300dp"
+                android:gravity="center_horizontal">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:textAllCaps="true"
+                    android:textSize="15sp"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="12dp"
+
+                    android:visibility="gone"
+
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/testOne"
+                        android:onClick="testOne"
+                        android:paddingLeft="@dimen/ex_link_padding_left"
+                        android:paddingRight="@dimen/ex_link_padding_right"
+                        android:paddingTop="@dimen/ex_link_padding_top"
+                        android:paddingBottom="@dimen/ex_link_padding_btm"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical" >
+
+
+                    <ImageView
+                        style="@style/exItemIcon"
+                        android:id="@+id/exLinksIconRight"
+                        app:srcCompat="?attr/iconTest" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/exLinkTitle"
+                                android:text="@string/section_ex_link_title_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/exLinkListItemTxt"/>
+
+                            <TextView
+                                android:text="@string/voc_ex_link_first_desc"
+                                android:id="@+id/exLinkDesc"
+                                android:textColor="?attr/colorSecondaryText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/exLinkListItemDesc"
+                                />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/exProgressBox"
+                            android:visibility="gone"
+                            android:tag="testIconBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+                            >
+
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_ex_circle" />
+
+                            <TextView
+                                android:id="@+id/exProgress"
+                                android:tag="testResultTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                tools:text="100%"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:textAlignment="center"
+                                android:textColor="?attr/colorExListResultTxt"
+                                android:gravity="center"
+                                />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/ex_link_padding_left"
+                    android:paddingRight="@dimen/ex_link_padding_right"
+                    android:paddingTop="@dimen/ex_link_padding_top"
+                    android:paddingBottom="@dimen/ex_link_padding_btm"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="testTwo"
+                    android:id="@+id/testTwo"
+                    android:gravity="center_vertical" >
+
+
+                    <ImageView
+
+                        style="@style/exItemIcon"
+                        app:srcCompat="?attr/iconTest" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:text="@string/section_ex_link_title_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/exLinkListItemTxt"/>
+                            <TextView
+                                android:text="@string/voc_ex_link_second_desc"
+                                android:textColor="?attr/colorSecondaryText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/exLinkListItemDesc"
+                                />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:tag="testIconBox"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+                            >
+
+                            <ImageView
+                                android:layout_width="37dp"
+                                android:layout_height="37dp"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_ex_circle" />
+
+
+                            <TextView
+                                android:tag="testResultTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                tools:text="100%"
+                                android:textStyle="bold"
+                                android:layout_centerInParent="true"
+                                android:textAlignment="center"
+                                android:textColor="?attr/colorExListResultTxt"
+                                android:gravity="center"
+                                />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/ex_link_padding_left"
+                        android:paddingRight="@dimen/ex_link_padding_right"
+                        android:paddingTop="@dimen/ex_link_padding_top"
+                        android:paddingBottom="@dimen/ex_link_padding_btm"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:onClick="testAll"
+                        android:id="@+id/testAll"
+                        android:gravity="center_vertical" >
+
+
+                        <ImageView
+                            style="@style/exItemIcon"
+                            app:srcCompat="?attr/iconTest" />
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:text="@string/section_ex_link_title_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    style="@style/exLinkListItemTxt"/>
+                                <TextView
+                                    android:text="@string/section_ex_link_desc_3"
+                                    android:textColor="?attr/colorSecondaryText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/exLinkListItemDesc"
+                                    />
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:tag="testIconBox"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+                                >
+
+                                <ImageView
+                                    android:layout_width="37dp"
+                                    android:layout_height="37dp"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_ex_circle" />
+
+
+                                <TextView
+                                    android:tag="testResultTxt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="10sp"
+                                    tools:text="100%"
+                                    android:textStyle="bold"
+                                    android:layout_centerInParent="true"
+                                    android:textAlignment="center"
+                                    android:textColor="?attr/colorExListResultTxt"
+                                    android:gravity="center"
+                                    />
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

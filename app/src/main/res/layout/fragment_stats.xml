@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:gravity="center_horizontal"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/main_card_top"
+
+        style="@style/CardWrapper.Width"
+        >
+
+        <include layout="@layout/fragment_stats_progress_widgets_include" />
+
+
+        <android.support.v7.widget.CardView
+            android:layout_height="wrap_content"
+            app:contentPadding="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            style="@style/CardViewStyle.Widget"
+
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/card_stats_side"
+                android:paddingRight="@dimen/card_stats_side"
+                android:minHeight="200dp"
+                >
+
+                <TextView
+                    android:visibility="gone"
+                    android:text="@string/sections_stats_title"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:paddingTop="12dp"
+                   android:paddingBottom="12dp"
+                   android:orientation="vertical">
+
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:padding="10dp"
+                       >
+
+                       <android.support.v7.widget.RecyclerView
+                           android:id="@+id/recycler_stats"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:animateLayoutChanges="false"
+                           android:nestedScrollingEnabled="false"
+                           />
+
+                   </RelativeLayout>
+
+               </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+
+
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                app:cardBackgroundColor="?attr/colorStudiedBox"
+                android:layout_width="0dp"
+                android:layout_weight=".33"
+                style="@style/CardViewStyle.Widget"
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="openStudiedBySections"
+                    android:minHeight="100dp"
+                    >
+
+                    <TextView
+                        android:text="@string/studied_btn_txt"
+                        android:textSize="12sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/studiedCountTxt"
+                        android:text="45"
+                        android:textSize="35sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                app:cardBackgroundColor="?attr/colorKnownBox"
+                android:layout_width="0dp"
+                android:layout_weight=".34"
+                style="@style/CardViewStyle.Widget"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+
+                    android:gravity="center"
+
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="openKnownBySections"
+
+                    android:minHeight="100dp"
+
+                    >
+
+                    <TextView
+                        android:text="@string/familiar_btn_txt"
+                        android:textSize="12sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="50"
+                        android:id="@+id/knownCountTxt"
+                        android:textSize="35sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                app:cardBackgroundColor="?attr/colorUnknownBox"
+                android:layout_width="0dp"
+                android:layout_weight=".33"
+                style="@style/CardViewStyle.Widget"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:onClick="openUnknownBySections"
+                    android:minHeight="100dp"
+                    >
+
+                    <TextView
+                        android:text="@string/unknown_btn_txt"
+                        android:textSize="12sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:text="50"
+                        android:id="@+id/unknownCountTxt"
+                        android:textSize="35sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorErrorBox"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:id="@+id/errorsCard"
+            style="@style/CardViewStyle.Widget"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:onClick="openErrors"
+                android:minHeight="100dp"
+                >
+
+                <TextView
+                    android:text="@string/errors_box_title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="?attr/colorErrorBoxTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/recentErrors"
+                        android:lineSpacingExtra="1dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="?attr/colorErrorBoxTxt"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginLeft="30dp"
+                        android:id="@+id/recentErrors2"
+                        android:lineSpacingExtra="1dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="?attr/colorErrorBoxTxt"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                app:cardBackgroundColor="?attr/colorTestBox"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                style="@style/CardViewStyle.Widget"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:onClick="testAllPage"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:minHeight="60dp"
+                    >
+
+                    <TextView
+                        android:gravity="center"
+                        android:text="@string/stats_general_test"
+                        android:textSize="16sp"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                app:cardBackgroundColor="?attr/colorOpenBox"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                style="@style/CardViewStyle.Widget"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:minHeight="60dp"
+                    android:onClick="testOldstPage"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    >
+
+                    <TextView
+                        android:text="@string/stats_revision"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:textColor="#fff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_height="wrap_content"
+            app:contentPadding="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:minHeight="150dp"
+            style="@style/CardViewStyle.Widget"
+
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="10dp"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:gravity="left|center"
+                    android:onClick="testAllPage"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        >
+
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            app:srcCompat="@drawable/ic_stats_test_bg" />
+
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            app:srcCompat="@drawable/ic_stats_test" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                            <TextView
+                                android:text="@string/stats_general_test"
+                                android:textSize="16sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                />
+
+                            <TextView
+                            android:text="@string/stats_test_all_desc"
+
+                            android:textSize="12sp"
+                            android:textColor="?attr/colorSecondaryText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:gravity="left|center"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:onClick="testOldstPage"
+                    android:background="?android:attr/selectableItemBackground"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        >
+
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            app:srcCompat="@drawable/ic_stats_history_bg" />
+
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:paddingRight="2dp"
+                            app:srcCompat="@drawable/ic_stats_history" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:text="@string/stats_revision"
+                            android:textSize="16sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <TextView
+                            android:text="@string/stats_test_old_desc"
+                            android:textSize="12sp"
+                            android:textColor="?attr/colorSecondaryText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

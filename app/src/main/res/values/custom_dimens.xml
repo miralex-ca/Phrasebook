@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="dimen_size">default</string>
+
+    <dimen name="_tab_width">0dp</dimen>
+
+
+    <dimen name="_cat_card_hight">350dp</dimen>
+
+    <dimen name="_card_wrap_top">0dp</dimen>
+
+
+    <dimen name="_ex_card_top">0dp</dimen>
+
+    <dimen name="sw720_card_top">20dp</dimen>
+    <dimen name="_ex_card_top_wide">30dp</dimen>
+
+
+    <dimen name="_main_card_top">0dp</dimen>
+    <dimen name="_card_main_min_height">350dp</dimen>
+
+    <dimen name="_card_padding">8dp</dimen>
+
+    <dimen name="_card_stats_side">0dp</dimen>
+
+    <dimen name="_image_list_pic_height">110dp</dimen>
+
+
+    <dimen name="_dialog_card_height">440dp</dimen>
+    <dimen name="_dialog_card_img_height">200dp</dimen>
+
+    <integer name="_search_dialog_height">400</integer>
+    <integer name="_search_dialog_img_height">240</integer>
+
+
+    <dimen name="_ex_links_list_padding_side">10dp</dimen>
+    <dimen name="_ex_links_list_padding_top">10dp</dimen>
+
+    <dimen name="_ex_link_padding_left">0dp</dimen>
+    <dimen name="_ex_link_padding_right">0dp</dimen>
+
+    <dimen name="_ex_link_padding_top">14dp</dimen>
+    <dimen name="_ex_link_padding_btm">16dp</dimen>
+
+    <dimen name="_ex_links_icon_margin_right">6dp</dimen>
+
+
+    <dimen name="_card_margin_default">4dp</dimen>
+
+    <dimen name="_card_wrap_padding">8dp</dimen>
+
+
+    <dimen name="_home_card_image_width">85dp</dimen>
+    <dimen name="_home_card_image_height">@dimen/_home_card_image_width</dimen>
+    <dimen name="_home_card_title_bottom">10dp</dimen> <!-- change for 4 items -->
+    <dimen name="_home_card_title_txt_size">18sp</dimen>
+    <dimen name="_home_card_desc_txt_size">12sp</dimen>
+    <integer name="_home_card_desc_maxlines">2</integer>
+
+
+    <dimen name="_home_card_image_width_4">@dimen/_home_card_image_width</dimen>
+    <dimen name="_home_card_image_height_4">@dimen/_home_card_image_height</dimen>
+    <dimen name="_home_card_title_bottom_4">@dimen/_home_card_title_bottom</dimen>
+    <dimen name="_home_card_title_txt_size_4">@dimen/_home_card_title_txt_size</dimen>
+    <dimen name="_home_card_desc_txt_size_4">@dimen/_home_card_desc_txt_size</dimen>
+    <integer name="_home_card_desc_maxlines_4">2</integer>
+
+    <dimen name="_home_card_side">0dp</dimen>
+
+    <dimen name="_gallery_card_img_size">170dp</dimen>
+    <dimen name="_gallery_item_padding">10dp</dimen>
+    <dimen name="_gallery_item_pic_size">60dp</dimen>
+    <dimen name="_gallery_item_pic_left">2dp</dimen>
+    <dimen name="_gallery_item_pic_right">16dp</dimen>
+    <dimen name="_gallery_item_title_txt_size">16sp</dimen>
+    <dimen name="_gallery_item_desc_txt_size">13sp</dimen>
+    <dimen name="_gallery_item_desc_top">2dp</dimen>
+
+
+
+    <dimen name="_home_card_padding">2dp</dimen>
+    <dimen name="_home_card_title_left">18dp</dimen>
+
+    <dimen name="_home_image_height">77dp</dimen>
+
+
+    <dimen name="_cat_item_pic_size">45dp</dimen>
+    <dimen name="_cat_item_pic_left">5dp</dimen>
+    <dimen name="_cat_item_txt_left">45dp</dimen>
+    <dimen name="_cat_item_txt_right">10dp</dimen>
+
+
+
+    <dimen name="_cat_item_txt_left_nopic">0dp</dimen>
+    <dimen name="_cat_item_star_right">4dp</dimen>
+    <dimen name="_cat_item_info_txt_size">12sp</dimen>
+    <dimen name="_cat_item_title_txt_size">16sp</dimen>
+
+    <dimen name="_cat_item_padding_top">12dp</dimen>
+    <dimen name="_cat_item_padding_bottom">14dp</dimen>
+
+
+    <dimen name="_cat_list_item_padding">9dp</dimen>
+
+    <dimen name="_section_list_txt_size">18sp</dimen>
+    <dimen name="_section_list_txt_left">12dp</dimen>
+    <dimen name="_section_list_img_left">0dp</dimen>
+
+
+    <dimen name="_section_title_txt_size">23sp</dimen>
+    <dimen name="_section_desc_txt_size">12sp</dimen>
+    <dimen name="_section_desc_txt_top">6dp</dimen>
+
+
+    <dimen name="_card_stats_top">3dp</dimen>
+    <dimen name="_card_stats_btm">9dp</dimen>
+
+
+    <dimen name="_detail_card_width">300dp</dimen>
+
+
+    <dimen name="_detail_card_width_max">65%</dimen>
+    <dimen name="_detail_card_width_min">98%</dimen>
+
+
+    <dimen name="_detail_card_height">430dp</dimen>
+    <dimen name="_detail_image_height">400dp</dimen>
+    <dimen name="_detail_image_appbar_height">240dp</dimen>
+
+    <dimen name="_detail_appbar_height">220dp</dimen>
+
+    <dimen name="detail_appbar_height_land">220dp</dimen>
+
+    <dimen name="_detail_appbar_screem_height">110dp</dimen>
+    <dimen name="_detail_appbar_exp_text_size">25sp</dimen>
+    <dimen name="_detail_appbar_exp_text_size_small">18sp</dimen>
+
+    <dimen name="_detail_appbar_exp_text_bottom">25dp</dimen>
+
+    <dimen name="_design_fab_size_normal">40dp</dimen>
+
+    <dimen name="_detail_text_size" >13sp</dimen>
+
+
+    <integer name="detail_text_size_small" >13</integer>
+    <integer name="detail_text_size_medium" >15</integer>
+    <integer name="detail_text_size_large" >18</integer>
+
+
+    <dimen name="_starred_preview_padding">10dp</dimen>
+
+
+    <dimen name="_stats_diagram_ext_size">120dp</dimen>
+    <dimen name="_stats_diagram_int_size">90dp</dimen>
+
+
+    <!--  flashcard dimens -->
+    <dimen name="_flash_card_height">290dp</dimen>
+
+    <dimen name="_flash_text_box_height">100dp</dimen>
+    <dimen name="_flash_translate_box_height">140dp</dimen>
+
+    <dimen name="_flash_translate_box_mirror_height">90dp</dimen>
+    <dimen name="_flash_text_box_mirror_height">100dp</dimen>
+    <dimen name="_flash_text_wrap_mirror_height">0dp</dimen>
+
+
+    <dimen name="_flash_padding_side">0dp</dimen>
+
+    <dimen name="_flash_show_msg_txt_size">17sp</dimen>
+    <dimen name="_flash_txt_size">23sp</dimen>
+    <dimen name="_flash_txt_size_mirror">21sp</dimen>
+
+    <dimen name="_flash_txt_padding_side">2dp</dimen>
+
+    <!-- card text sizes -->
+    <integer name="f_item_txt_size_norm">24</integer>
+    <integer name="f_item_txt_size_medium">23</integer>
+    <integer name="f_item_txt_size_small">22</integer>
+
+
+    <integer name="_f_info_txt_size_norm">18</integer>
+    <integer name="_f_info_txt_size_mid">16</integer>
+    <integer name="_f_info_txt_size_small">15</integer>
+    <integer name="_f_info_txt_size_smallest">14</integer>
+
+    <integer name="_f_info_txt_size_norm_opt">18</integer>
+    <integer name="_f_info_txt_size_mid_opt">16</integer>
+    <!-- card text sizes -->
+    <dimen name="_f_btn_padding_top_btm">15dp</dimen>
+    <dimen name="_f_btn_margin_side">15dp</dimen>
+
+    <dimen name="_test_img_max_width">300dp</dimen>
+
+    <dimen name="_ex_card_field_minheight">420dp</dimen>
+
+
+
+    <dimen name="test_img_width_tablet">280dp</dimen>
+
+    <dimen name="_test_img_size">120dp</dimen>
+
+    <integer name="_ex_text_wrap">140</integer>
+    <integer name="_ex_text_wrap_high">170</integer>
+
+
+    <integer name="_ex_card_wrap">300</integer>
+    <integer name="_ex_card_wrap_high">338</integer>
+
+
+    <integer name="_ex_ph_txt_size">24</integer>
+    <integer name="_ex_ph_txt_medium">23</integer>
+    <integer name="_ex_ph_txt_small">24</integer>
+
+    <dimen name="_ex_sheet_padding_top">0dp</dimen>
+    <dimen name="_ex_sheet_padding_side">8dp</dimen>
+
+
+
+    <dimen name="_ex_btn_padding">15dp</dimen>
+
+    <dimen name="_ex_btn_padding_top">0dp</dimen>
+
+    <dimen name="_ex_btn_container_padding">7dp</dimen>
+
+
+    <dimen name="_ex_box_margin_top">0dp</dimen>
+    <dimen name="_ex_quest_wrap_padding_side">8dp</dimen>
+
+
+
+    <dimen name="_ex_opt_short_txt_min_height">40dp</dimen>
+    <dimen name="_ex_opt_norm_txt_min_height">48dp</dimen>
+    <dimen name="_ex_opt_long_txt_min_height">58dp</dimen>
+
+
+    <dimen name="_ex_radio_txt_size_ex2">15sp</dimen>
+    <dimen name="_ex_radio_txt_min_height_ex2">45dp</dimen>
+
+
+
+    <integer name="_ex_opt_txt_size_bigger">19</integer>
+    <integer name="_ex_opt_txt_size_big">16</integer>
+
+
+    <integer name="_ex_quest_short_txt_size_norm">23</integer>
+    <integer name="_ex_quest_short_txt_size_small">25</integer>
+
+    <integer name="_ex_quest_txt_size_norm">18</integer>
+    <integer name="_ex_quest_txt_size_medium">16</integer>
+    <integer name="_ex_quest_txt_size_small">15</integer>
+    <integer name="_ex_quest_txt_size_smallest">13</integer>
+
+
+    <dimen name="_ex_opt_short_txt_size_norm">20sp</dimen>
+    <integer name="_ex_opt_short_txt_size_small">16</integer>
+
+    <integer name="_ex_opt_txt_size_norm">15</integer>
+    <integer name="_ex_opt_txt_size_small">14</integer>
+    <integer name="_ex_opt_txt_size_smallest">13</integer>
+
+
+    <integer name="_ex_text_long_num_sw720">70</integer>
+    <integer name="_ex_text_long_num_sw600">50</integer>
+
+    <dimen name="_cat_stat_title_txt_size">15sp</dimen>
+    <dimen name="_cat_stat_title_txt_left">22dp</dimen>
+
+
+    <dimen name="_cat_stat_data_padding">22dp</dimen>
+
+    <dimen name="cardCornerDefault">2dp</dimen>
+    <dimen name="cardCornerSpec">2dp</dimen>
+
+    <integer name="_ex_text_wrap_ex1">120</integer>
+    <integer name="_ex_text_wrap_ex1_high">160</integer>
+    <string name="fab_size">normal</string>
+
+
+</resources>

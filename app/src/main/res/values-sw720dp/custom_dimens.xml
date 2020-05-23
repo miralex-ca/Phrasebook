@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="_ex_card_top">@dimen/_ex_card_top_wide</dimen>
+
+    <dimen name="_main_card_top">@dimen/sw720_card_top</dimen>
+
+    <integer name="ex_text_long_num">@integer/_ex_text_long_num_sw720</integer>
+
+</resources>

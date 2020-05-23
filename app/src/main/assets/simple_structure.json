@@ -1,0 +1,74 @@
+{
+  "params": {
+    "simplified": true,
+    "homecards": true,
+    "gallery": false
+  },
+
+
+  "sections":
+  [
+	{"tag": "cat1", "title": "Хронология", "id": "10010020",
+      "desc": "Даты основных событий в истории России.",
+      "title_short": "Хронология",
+      "desc_short": "Даты основных событий",
+      "type": "simple",
+      "image": "varyagi.jpg",
+      "categories":
+        [
+          {"parent": "root", "type": "simple", "id": "10010100", "title": "Даты и события", "desc": "Основные события"}
+        ]
+	},
+
+    {"tag": "cat2", "title": "Исторические личности", "id": "10010200",
+      "desc": "Государственные и политические деятели",
+      "title_short": "Личности",
+      "desc_short": "Даты основных событий",
+      "image": "aleksandr_nevskiy.jpg",
+      "type": "simple",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "spec": "pers", "id": "10010200", "title": "Исторические личности", "desc": "Государственные и политические деятели"}
+      ]
+    },
+
+
+    {"tag": "cat3", "title": "Галерея", "id": "gallery",
+      "desc": "Артефакты, предметы быта, науки, искусства",
+      "title_short": "Галерея",
+      "desc_short": "Артефакты, предметы быта, науки, искусства",
+      "image": "moskva_kreml.jpg",
+      "type": "gallery",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "gone", "desc": ""},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10020100", "title": "Архитектура", "desc": "Храмы, дворцы, исторические сооружения и т.п.", "image":  "gallery/arch/sobor_blazhenniy.jpg"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10020200", "title": "Памятники", "desc": "Самые знаменитые памятники и монументы.", "image":  "gallery/monument/medniy_vsadnik.jpg"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10020300", "title": "Изобразительное искусство", "desc": "Наиболее известные работы русских художников.", "image":  "gallery/paint/utro_v_lesu.jpg"},
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10020500", "title": "Выдающиеся личности", "desc": "Видные деятели искусства и науки.", "image":  "gallery/pers/pers_chekhov.jpg"},
+
+        {"parent": "root", "type": "simple", "spec": "image_list", "id": "10020600", "title": "Гербы и флаги", "desc": "Стяги, знамена, гербы, флаги", "image":  "russia_gerb_1.jpg"},
+
+        {"parent": "root", "type": "group", "id": "group_1_5", "spec": "maps", "title": "Карты", "desc": "Карты русских княжеств, российского государства, СССР.", "image":  "moskva_yaroslavl.jpg"},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10010510", "title": "Славянские племена", "desc": "Славяне и их соседи в VII-VIII вв."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10010520", "title": "Русь в XI в.", "desc": "Киевская Русь в 1015-1113 гг."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10010530", "title": "Русь в XII в.", "desc": "Княжества поздней Киевской Руси"},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10020510", "title": "Русь в 1-й пол. XIII в.", "desc": "Карта Киевской Руси в 1237 г."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10020550", "title": "Конец XIV в.", "desc": "Русские земли в 1389 году."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10030510", "title": "Московское княжество", "desc": "Московское княжество в нач. XVI в."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10030540", "title": "Россия в 1613-1914 гг.", "desc": "Расширение территории России."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10060510", "title": "Российская империя", "desc": "Карта Российской империи конца XIX века."},
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10070590", "title": "СССР", "desc": "Карта СССР в послевоенный период."},
+
+        {"parent": "group_1_5", "type": "page", "spec": "map", "id": "10080510", "title": "Карта РФ", "desc": "Карта России после падения СССР."}
+      ]
+    }
+
+  ]
+
+
+}
+
