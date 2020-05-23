@@ -18,6 +18,7 @@
     <string name="app_data_file">data.json</string>
     <string name="app_detail_file">details.json</string>
     <string name="app_structure_file">navstructure.json</string>
+
     <string name="tabs_starred_order" translatable="false">normal</string>
     <string name="tabs_starred_display" translatable="false">item_prior</string>
 

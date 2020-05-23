@@ -30,11 +30,11 @@ android {
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.online.languages.study.studymaster2"
+        applicationId "com.study.languages.master"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 59
-        versionName '5.4.1'
+        versionCode 10
+        versionName '1.0.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -64,7 +64,7 @@ android {
 
         develop {
             dimension "mode"
-            applicationId 'com.online.languages.study.ruhistory'
+            applicationId 'com.study.languages.develop'
             resValue("string", "applicationId", applicationId)
 
         }
@@ -72,7 +72,7 @@ android {
 
         apptest {
             dimension "mode"
-            applicationId 'com.online.languages.study.tester'
+            applicationId 'com.study.languages.tester'
             resValue("string", "applicationId", applicationId)
             buildConfigField ("boolean", "SIMPLIFIED", "true")
             buildConfigField ("boolean", "HOMECARDS", "true")
