@@ -10,7 +10,7 @@
     <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuHpMkp0RqQJ4CzsokYgM0kkzAXgffvRI9aQCS5KYGsSe6RIAZHqvZurxjWjQNkpKHwRa5IdDHZD7BUsA1+pooJtyPRZLEvCAlXf1XNY93clF9UEHz77fp29RuzTEGtlZysUk56Do5++FKKcwa4UEJkobyObTCzo6e+jVMy23gFX2A0HP25aP4RUfX5UsPjFpPMydGgGyLZoD5TcQVB1aLvUSCCdTuQpgkEEB4Cdqd09VlYXSrgJqDg4f0+ZbDM06UvE63XEmtnj79ivu5adm9S1NLNHkFor9DbTrMgNWvvcFCIMPkMxlcRYS0ewdFptA8mKmDABMBEq12rCkjOFSSwIDAQAB</string>
 
 
-    <string name="app_name">История России</string>
+    <string name="app_name">Иностранный язык</string>
     <string name="app_backup_activity">.BackupActivity</string>
 
     <string name="app_name_spec"> </string>
@@ -21,6 +21,8 @@
 
     <string name="tabs_starred_order" translatable="false">normal</string>
     <string name="tabs_starred_display" translatable="false">item_prior</string>
+
+    <string name="backup_file_name">backup_lang.csv</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -58,7 +60,7 @@
         <item>@string/title_contact_txt</item>
     </string-array>
 
-    <string name="title_main_txt">@string/app_name</string>
+    <string name="title_main_txt">@string/title_home_txt</string>
     <string name="title_home_txt">Главная</string>
     <string name="title_gallery_txt">Галерея</string>
     <string name="title_starred_txt">Избранное</string>
@@ -395,7 +397,7 @@
     ]]></string>
 
 
-    <string name="backup_file_name">Backup_stats.rhdb</string>
+
 
     <string name="info_txt">Справка</string>
     <string name="title_activity_finder">FinderActivity</string>
@@ -538,7 +540,7 @@
     <string name="number_percent">%d%%</string>
     <string name="maps_list_title">Карты</string>
 
-    <string name="msg_version_name">(ИР, версия %s)</string>
+    <string name="msg_version_name">(LA, версия %s)</string>
     <string name="menu_img_test">Пройти тест</string>
     <string name="menu_sort">Сортировка</string>
     <string name="sort_pers_dialog_title">Сортировка личностей</string>

@@ -2,6 +2,9 @@
 <resources>
 
 
+    <string name="title_main_txt">@string/title_home_txt</string>
+
+
     <style name="BottomNav.Inactive">
     </style>
 

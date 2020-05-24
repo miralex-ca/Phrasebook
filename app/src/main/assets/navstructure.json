@@ -11,12 +11,15 @@
       "desc": "Общение: описание",
       "title_short": "Общение",
       "desc_short": "Общение: описание",
-      "image": "picto/pers_blue.png",
+      "image": "picto/pers_blue_l.png",
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "10010020", "title": "IX-X века", "desc": "Тема"},
-        {"parent": "root", "type": "simple", "id": "10010030", "title": "X-XII века", "desc": "Тема."}
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Словарь"},
+        {"parent": "root", "type": "simple", "id": "10010200", "title": "Общение"},
+        {"parent": "root", "type": "simple", "id": "10010300", "title": "Семья"},
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "Фразы"},
+        {"parent": "root", "type": "simple", "id": "10010200", "title": "Общение"}
 
       ]
     },
@@ -25,12 +28,40 @@
       "desc": "Дом: описание",
       "title_short": "Дом",
       "desc_short": "Дом: описание",
-      "image": "picto/shape_red.png",
+      "image": "picto/shape_gray_l.png",
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "10010020", "title": "IX-X века", "desc": "Тема"},
-        {"parent": "root", "type": "simple", "id": "10010030", "title": "X-XII века", "desc": "Тема."}
+        {"parent": "root", "type": "simple", "id": "10010200", "title": "Общение", "desc": "Тема"},
+        {"parent": "root", "type": "simple", "id": "10010300", "title": "Семья", "desc": "Тема."}
+
+      ]
+    },
+
+    {"tag": "section_3", "title": "Город", "id": "10030",
+      "desc": "Город: описание",
+      "title_short": "Город",
+      "desc_short": "Город: описание",
+      "image": "picto/image_red_l.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "10010200", "title": "Общение", "desc": "Тема"},
+        {"parent": "root", "type": "simple", "id": "10010300", "title": "Семья", "desc": "Тема."}
+
+      ]
+    },
+
+    {"tag": "section_4", "title": "Природа", "id": "10040",
+      "desc": "Природа: описание",
+      "title_short": "Природа",
+      "desc_short": "Природа: описание",
+      "image": "picto/flower_green_l.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "10010200", "title": "Общение", "desc": "Тема"},
+        {"parent": "root", "type": "simple", "id": "10010300", "title": "Семья", "desc": "Тема."}
 
       ]
     }
