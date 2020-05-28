@@ -1,5 +1,7 @@
 package com.online.languages.study.lang;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,6 +33,11 @@ import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 
 import java.util.ArrayList;
+
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.IMG_LIST_LAYOUT;
 
 
 public class CatActivity extends BaseActivity {
@@ -64,7 +71,10 @@ public class CatActivity extends BaseActivity {
 
     MenuItem sortMenuItem;
 
+
     DataManager dataManager;
+    private MenuItem changeLayoutBtn;
+    private View changeLayoutBtnView;
 
 
 
@@ -83,6 +93,7 @@ public class CatActivity extends BaseActivity {
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
         dataModeDialog = new DataModeDialog(this);
         dataManager = new DataManager(this, true);
+
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
@@ -126,6 +137,8 @@ public class CatActivity extends BaseActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+
+               /// checkIconDisplay(tab.getPosition());
             }
 
             @Override
@@ -158,6 +171,37 @@ public class CatActivity extends BaseActivity {
         });
 
         checkAdShow();
+
+    }
+
+    private void  checkIconDisplay(int position) {
+
+        View button =  changeLayoutBtnView;
+
+        if (position == 1) {
+           if (button != null) {
+               button.animate().alpha(0f).setDuration(800).setListener(new AnimatorListenerAdapter() {
+                   @Override
+                   public void onAnimationEnd(Animator animation) {
+                       changeLayoutBtn.setVisible(false);
+                   }
+               });
+           } else {
+               changeLayoutBtn.setVisible(false);
+           }
+
+        } else {
+
+            if (button != null) {
+                button.setAlpha(0f);
+                changeLayoutBtn.setVisible(true);
+                button.animate().alpha(1.0f).setDuration(800);
+
+            } else {
+                changeLayoutBtn.setVisible(true);
+            }
+
+        }
 
     }
 
@@ -234,6 +278,7 @@ public class CatActivity extends BaseActivity {
 
 
 
+
     public void showAlertDialog(View view, int position) {
 
         String id = view.getTag().toString();
@@ -257,15 +302,14 @@ public class CatActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_category, menu);
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        sortMenuItem = menu.findItem(R.id.sort_from_menu);
 
+        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
         if (easy_mode) modeMenuItem.setVisible(true);
 
-        if (catSpec.equals("pers")) {
-            chekMenuItem();
-            if (!dataManager.simplified)  sortMenuItem.setVisible(true);
-        }
+        changeLayoutBtn = menu.findItem(R.id.list_layout);
+        changeLayoutBtnView = findViewById(R.id.list_layout);
+
+        applyLayoutStatus();
 
         return true;
     }
@@ -285,12 +329,49 @@ public class CatActivity extends BaseActivity {
             case R.id.sort_from_menu:
                 sortDialog();
                 return true;
+            case R.id.list_layout:
+                changeLayoutStatus();
+                return true;
             case R.id.info_from_menu:
                 infoMessage();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+    private void applyLayoutStatus() {
+
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
+        } else {
+            changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
+        }
+    }
+
+    public void changeLayoutStatus() {
+
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+        if (listType.equals(CAT_LIST_VIEW_NORM)) {
+            listType = CAT_LIST_VIEW_COMPACT;
+        } else if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            listType = CAT_LIST_VIEW_NORM;
+        }
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putString(CAT_LIST_VIEW, listType);
+        editor.apply();
+
+        CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
+        if (fragment != null)   fragment.updateLayoutStatus();
+
+        applyLayoutStatus();
+    }
+
+
 
 
     private void infoMessage() {

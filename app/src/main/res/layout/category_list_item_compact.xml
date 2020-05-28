@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cat_item_wrap"
+
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <View
+        android:id="@+id/catItemDivider"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2C8D8D8D"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/animObj"
+        />
+
+    <RelativeLayout
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+
+            android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
+
+            android:layout_marginRight="@dimen/cat_item_txt_right"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            style="@style/catListItemBox"
+            >
+
+            <TextView
+                android:id="@+id/itemText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="3dp"
+                style="@style/cat_list_item_title.norm"
+                />
+
+            <TextView
+                android:id="@+id/itemInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorCatSecondaryText"
+                style="@style/cat_list_item_info"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/category_list_item_status_include" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/cat_item_star_right"
+            app:srcCompat="@drawable/ic_star_borded"
+            android:id="@+id/voclistStar"
+            android:visibility="invisible"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -74,7 +74,10 @@
 
     <style name="RedTheme.Detail" parent="DefaultTheme.UserDialog">
         <item name="colorPrimary">@color/colorDetailBar_red</item>
+
     </style>
+
+
 
 
     <!--  Styles for night mode  -->

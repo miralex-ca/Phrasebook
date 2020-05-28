@@ -13,7 +13,7 @@
     <dimen name="_detail_image_height">460dp</dimen>
     <dimen name="_detail_image_appbar_height">280dp</dimen>
 
-    <dimen name="_detail_card_height">470dp</dimen>
+    <dimen name="_detail_card_height">440dp</dimen>
     <dimen name="_detail_appbar_height">250dp</dimen>
 
     <integer name="_search_dialog_height">430</integer>
@@ -29,8 +29,9 @@
     <dimen name="_ex_card_field_minheight">475dp</dimen>
 
     <dimen name="_test_img_size">170dp</dimen>
+
     <integer name="_ex_text_wrap">185</integer>
-    <integer name="_ex_text_wrap_high">215</integer>
+    <integer name="_ex_text_wrap_high">195</integer>
 
 
     <dimen name="test_img_width_tablet">320dp</dimen>

@@ -36,7 +36,6 @@ public class ThemeAdapter {
     public ThemeAdapter(Context _context, String _theme, Boolean transparent) {
         appSettings = PreferenceManager.getDefaultSharedPreferences(_context);
         setTheme(_context, _theme, transparent, false);
-
     }
 
     private void setTheme(Context _context, String _theme, Boolean transparent, Boolean _dialog) {
@@ -44,17 +43,9 @@ public class ThemeAdapter {
         context = _context;
         transparentStatus = transparent;
         appSettings = PreferenceManager.getDefaultSharedPreferences(_context);
-
         dialog = _dialog;
-
         styleTheme = getThemeStyleName(_theme);
         colorListTxt = getColorFromAttr(R.attr.colorListTxt);
-
-
-       // Toast.makeText(context, "Dialog: "+ dialog, Toast.LENGTH_SHORT).show();
-
-
-
 
     }
 

@@ -84,6 +84,7 @@
 
 
     <dimen name="cat_item_title_txt_size">@dimen/_cat_item_title_txt_size</dimen>
+    <dimen name="cat_item_title_txt_size_norm">@dimen/_cat_item_title_txt_size_norm</dimen>
     <dimen name="cat_item_info_txt_size">@dimen/_cat_item_info_txt_size</dimen>
 
 

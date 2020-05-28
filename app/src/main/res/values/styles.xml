@@ -20,6 +20,8 @@
         <item name="colorMenuIconInfo">@color/colorMenuIconInfo</item>
         <item name="colorMenuIconContact">@color/colorMenuIconContact</item>
 
+        <item name="colorStarDetail">@color/colorStarDetail</item>
+
         <item name="colorDialogBg">@color/colorDialogBg_lite</item>
 
 
@@ -86,7 +88,7 @@
 
         <item name="colorDetailBar">@color/colorDetailBar</item>
         <item name="colorPrimaryDarkDetail">@color/colorPrimaryDarkDetail</item>
-
+        <item name="colorDetailTopBg">?attr/colorCardWidgetBg</item>
 
         <item name="colorStarIcon">@color/colorStarIcon</item>   <!-- for stars in lists-->
         <item name="colorStarIconBord">@color/colorStarIconBord</item>
@@ -95,6 +97,7 @@
         <item name="colorStarButtonIcon">@color/colorStarButtonIcon</item>
         <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
         <item name="colorStarButtonIconInactive">@color/colorStarButtonIcon</item>
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon</item>
 
         <item name="colorExIconBg">@color/ex_icon</item>
         <item name="colorExResult">@color/ex_link_result</item>
@@ -140,6 +143,10 @@
         <item name="colorUnknown">@color/colorUnknown</item>
         <item name="colorKnown">@color/colorKnown</item>
         <item name="colorStudied">@color/colorStudied</item>
+
+        <item name="colorStatusUnknown">@color/colorStatusUnknown</item>
+        <item name="colorStatusKnown">@color/colorStatusKnown</item>
+        <item name="colorStatusStudied">@color/colorStatusStudied</item>
 
         <item name="colorStudiedBox">@color/colorStudiedBox</item>
         <item name="colorKnownBox">@color/colorKnownBox</item>
@@ -198,6 +205,9 @@
 
         <item name="CardViewBorder">@style/CardViewBorder</item>
         <item name="DetailTextTheme">@style/DetailTextTheme</item>
+
+
+
     </style>
 
 
@@ -214,7 +224,6 @@
     <style name="ToolBarStyle">
 
     </style>
-
 
 
     <style name="MapToolBarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -456,6 +465,10 @@
         <item name="android:layout_marginBottom">5dp</item>
     </style>
 
+    <style name="cat_list_item_title.norm">
+        <item name="android:textSize">@dimen/cat_item_title_txt_size_norm</item>
+    </style>
+
     <style name="cat_list_item_info">
         <item name="android:textSize">@dimen/cat_item_info_txt_size</item>
     </style>
@@ -479,6 +492,16 @@
 
     </style>
 
+    <style name="cat_item_status.detail">
+
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+
+    </style>
+
 
     <style name="CatListTitle">
         <item name="android:textSize">18sp</item>
@@ -496,7 +519,6 @@
     <style name="InfoDialog.Width">
         <item name="android:layout_width">wrap_content</item>
     </style>
-
 
     <style name="MyToolBar" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorPrimary">?attr/colorDetailBar</item>
@@ -540,7 +562,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-
     <style name="DialogAppBarOverlayTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
@@ -548,8 +569,11 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="DialogAppBarOverlayTheme">@style/DialogAppBarOverlayTheme</item>
+        <item name="DetailAppBarOverlayTheme">@style/DetailAppBarOverlayTheme</item>
+        <item name="DetailToolbar">@style/DetailToolBar</item>
+
         <item name="colorPrimary">@color/colorPrimaryDialog</item>
-        <item name="colorDialogBackground">@color/colorBaseBg</item>
+        <item name="colorDialogBackground">@color/colorDialogBackground</item>
 
         <item name="colorCardDivider">@color/colorCardDivider</item>
 
@@ -557,6 +581,25 @@
         <item name="windowFixedWidthMinor">@dimen/detail_card_width_min</item> <!-- portrait-->
 
         <item name="DetailTextTheme">@style/DetailTextTheme</item>
+
+        <item name="colorStarDetail">@color/colorStarDetail</item>
+        <item name="colorStarIconBord">@color/colorStarIconBord</item>
+
+
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon</item>
+
+        <item name="colorDetailTopBg">@color/colorCardBg</item>
+        <item name="colorDetailDivider">@color/colorDetailDivider</item>
+        <item name="colorDetailBtmBg">@color/colorDialogBackground</item>
+
+        <item name="colorDetailTopTxt">@color/colorDetailTopBg_dark</item>
+        <item name="colorDetailBtmTxt">@color/colorDetailTopBg_dark</item>
+
+        <item name="colorErrors">@color/colorErrors</item>
+        <item name="colorUnknown">@color/colorUnknown</item>
+        <item name="colorKnown">@color/colorKnown</item>
+        <item name="colorStudied">@color/colorStudied</item>
+
     </style>
 
 
@@ -564,9 +607,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="DialogAppBarOverlayTheme">@style/DialogAppBarOverlayTheme</item>
+        <item name="DetailAppBarOverlayTheme">@style/DetailAppBarOverlayTheme</item>
+        <item name="DetailToolbar">@style/DetailToolBar</item>
+
         <item name="colorPrimary">@color/colorPrimary</item>
 
-        <item name="colorDialogBackground">@color/colorDialogBg</item>
+
         <item name="colorCardDivider">@color/colorCardDivider</item>
 
         <item name="windowFixedWidthMajor">@dimen/detail_card_width_max</item> <!-- landscape-->
@@ -577,11 +623,28 @@
         <item name="colorGoodText">@color/colorGoodText</item>
         <item name="colorVeryGoodText">@color/colorVeryGoodText</item>
         <item name="colorGreatText">@color/colorGreatText</item>
+        <item name="colorDialogBackground">@color/colorDetailBg</item>
+
         <item name="DetailTextTheme">@style/DetailTextThemeDark</item>
 
+        <item name="colorStarDetail">@color/colorStarDetail_dark</item>
+        <item name="colorStarIconBord">@color/transparent</item>
+
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_dark</item>
+
+        <item name="colorDetailTopBg">@color/colorDetailTopBg_dark</item>
+        <item name="colorDetailBtmBg">@color/colorDetailBtmBg_dark</item>
+        <item name="colorDetailDivider">@color/colorDetailDivider_dark</item>
+
+        <item name="colorDetailTopTxt">@color/colorDetailTopTxt_dark</item>
+        <item name="colorDetailBtmTxt">@color/colorDetailBtmTxt_dark</item>
+
+        <item name="colorErrors">@color/colorErrors_dark</item>
+        <item name="colorUnknown">@color/colorUnknown_dark</item>
+        <item name="colorKnown">@color/colorKnown_dark</item>
+        <item name="colorStudied">@color/colorStudied_dark</item>
+
     </style>
-
-
 
 
 
@@ -600,17 +663,23 @@
         <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
         <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive</item>
 
-
         <item name="colorVeryBadText">@color/colorVeryBadText</item>
         <item name="colorBadText">@color/colorBadText</item>
         <item name="colorGoodText">@color/colorGoodText</item>
         <item name="colorVeryGoodText">@color/colorVeryGoodText</item>
         <item name="colorGreatText">@color/colorGreatText</item>
 
-
     </style>
 
 
+
+    <style name="DetailAppBarOverlayTheme" parent="Theme.AppCompat.Light">
+    </style>
+
+    <style name="DetailToolBar">
+        <item name="android:textColorPrimary">@color/colorDetailToolbarText</item>
+        <item name="android:textColorSecondary">@color/colorDetailToolbarSecText</item>
+    </style>
 
 
     <style name="AppTheme.Finder" parent="Theme.AppCompat.Light.NoActionBar">
@@ -660,8 +729,6 @@
     <style name="DetailTextThemeDark">
         <item name="colorAccent">@color/colorAccent_dk</item>
     </style>
-
-
 
     <style name="exItemIcon">
         <item name="android:layout_width">43dp</item>

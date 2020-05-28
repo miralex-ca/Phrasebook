@@ -489,6 +489,11 @@
     <string name="item_status_unknown">Статус: не пройдено</string>
     <string name="item_status_familiar">Статус: пройдено</string>
     <string name="item_status_studied">Статус: изучено</string>
+
+    <string name="item_status_unknown_short">Не пройдено</string>
+    <string name="item_status_familiar_short">✓ Пройдено</string>
+    <string name="item_status_studied_short">✓ Изучено</string>
+
     <string name="cats_data_list_title">Информация по темам</string>
     <string name="loading">Загрузка</string>
     <string name="stats_test_result">"Результат тестов: "</string>

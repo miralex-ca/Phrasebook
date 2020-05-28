@@ -1243,6 +1243,34 @@ public class DBHelper extends SQLiteOpenHelper {
         return  dataItem;
     }
 
+    public DataItem getDataItemDBById(String detail_id) {
+
+        DataItem dataItem = new DataItem();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+
+        String query = "SELECT * FROM "
+                +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA +" b ON a.item_id=b.user_item_id"
+                +" WHERE a."+ KEY_ITEM_ID +" = " + detail_id;
+
+
+        Cursor cursor = db.rawQuery(query, null);
+
+
+        if ( cursor.moveToFirst() ) {
+            dataItem = getItemFromCursor(cursor);
+        } else {
+            dataItem.item = "not found";
+            dataItem.info = "This entry doesn't exist";
+        }
+
+        cursor.close();
+        db.close();
+
+        return  dataItem;
+    }
+
 
 
 

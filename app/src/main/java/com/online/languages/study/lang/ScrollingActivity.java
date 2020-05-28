@@ -2,21 +2,20 @@ package com.online.languages.study.lang;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.speech.tts.TextToSpeech;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +23,13 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailItem;
-import com.squareup.picasso.Picasso;
+
+import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
 
-public class ScrollingActivity extends BaseActivity {
+public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnInitListener {
 
 
     DetailItem detailItem;
@@ -48,6 +48,12 @@ public class ScrollingActivity extends BaseActivity {
 
     FloatingActionButton floatingActionButton;
 
+    private TextToSpeech myTTS;
+    private int MY_DATA_CHECK_CODE = 0;
+    View speakBtn;
+    boolean speaking;
+    MenuItem starMenuItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +70,10 @@ public class ScrollingActivity extends BaseActivity {
 
         starrable = getIntent().getBooleanExtra("starrable", false);
 
-
         sourceType = getIntent().getIntExtra("source", 0); // 0 - list, 1 - search
 
+
+        Drawable background = getWindow().getDecorView().getBackground();  background.setAlpha(0);
 
 
         if (appSettings.getBoolean(Constants.SET_VERSION_TXT, false)) starrable = true;
@@ -79,9 +86,11 @@ public class ScrollingActivity extends BaseActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String tag = getIntent().getStringExtra("id");
 
+        setTitle("");
 
         final DataManager dataManager = new DataManager(this);
 
@@ -89,19 +98,16 @@ public class ScrollingActivity extends BaseActivity {
 
         dataItem = dbHelper.getDataItemById(tag);
 
-
         if (detailItem.title.equals("not found")) {
-            DataItem dataItem =  dataManager.getDataItemFromDB(tag);
             detailItem  = new DetailItem(dataItem);
-            sourceType = 1; // the same height as in search
+           // sourceType = 1; // the same height as in search
         }
 
 
         TextView infoT = findViewById(R.id.lbl_text);
-        TextView imgIfo = findViewById(R.id.lbl_img_desc);
+
 
         View appbar = findViewById(R.id.app_bar);
-        View screem = findViewById(R.id.screem_btm);
         View coordinator = findViewById(R.id.coordinator);
 
 
@@ -110,15 +116,6 @@ public class ScrollingActivity extends BaseActivity {
             int imgHeight = getResources().getInteger(R.integer.search_dialog_img_height);
             changeDialogSize(coordinator, appbar, dialogHeight, imgHeight);
         }
-
-        if (detailItem.image.equals("none")) {
-            changeDialogSize(coordinator, appbar, 380, 130);
-            screem.setVisibility(View.GONE);
-            imgIfo.setVisibility(View.GONE);
-        }
-
-
-        CollapsingToolbarLayout collapsingToolbar = findViewById(R.id.toolbar_layout);
 
 
         floatingActionButton = findViewById(R.id.fab);
@@ -140,98 +137,111 @@ public class ScrollingActivity extends BaseActivity {
 
         itemPostion = getIntent().getIntExtra("position", 0);
 
-        manageTitle(collapsingToolbar, detailItem.title);
 
+        TextView txt = findViewById(R.id.itemTxt);
+
+        txt.setText(detailItem.title);
         infoT.setText(detailItem.desc);
 
         infoT.setTextSize(getInfoTxtSize());
 
-        imgIfo.setText(String.format(getString(R.string.detail_img_info_txt), detailItem.img_info));
-
-        if (detailItem.img_info.equals("")) {
-            imgIfo.setVisibility(View.INVISIBLE);
-        }
-
-        ImageView placePicutre = findViewById(R.id.image);
-
-        //*/
-        Picasso.with(this)
-                //.load(R.drawable.f)
-                //.load(R.raw.e)
-                .load("file:///android_asset/pics/"+detailItem.image)
-                .fit()
-                .centerCrop()
-                .into(placePicutre);
-
-        if (themeTitle.equals("westworld")) {
-            if (Constants.DEBUG)  placePicutre.setColorFilter(Color.argb(255, 50, 255, 240), PorterDuff.Mode.MULTIPLY);
-        }
-
-        checkStarStatus(detailItem.id, floatingActionButton);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                changeStarStatus(detailItem.id, floatingActionButton);
-                starStatusChanged = true;
-
-                floatingActionButton.hide();
-                floatingActionButton.show();
-
+                speakReading();
             }
         });
+
+
+        //check for TTS data
+        //speakBtn = findViewById(R.id.speakBtn);
+
+        speaking = appSettings.getBoolean("set_speak", true);
+
+        if (speaking) {
+            Intent checkTTSIntent = new Intent();
+            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        }
+
+        measureHeights();
+
+
+        //enableScroll();
+
+        View statusView = findViewById(R.id.status_wrap);
+        dataItem = dbHelper.getDataItemDBById(dataItem.id);
+        int showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
+
+        statusInfoDisplay(showStatus, statusView, dataItem);
+
+
     }
 
+    private void measureHeights() {
 
-    private void manageTitle(CollapsingToolbarLayout collapsingToolbar, String title) {
+        final View appBar= findViewById(R.id.app_bar);
+        final View infoBox= findViewById(R.id.lbl_text);
 
-        TextView textHelper = collapsingToolbar.findViewById(R.id.titleHelper);
+        appBar.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                appBar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int h = appBar.getHeight();
+                checkScrollByAppBar(h);
+            }
+        });
 
-        if (title.equals("")) {
-            collapsingToolbar.setTitle(" ");
-        } else {
-            collapsingToolbar.setTitle(title);
-        }
+        infoBox.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                infoBox.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int h = infoBox.getHeight();
+                checkScrollByText(h);
+            }
+        });
 
+    }
 
-        if (title.length() > 20) collapsingToolbar.setExpandedTitleTextAppearance(R.style.ExpTextSmall);
+    private void checkScrollByAppBar(int height) {
+        int minHeight = (int) (getResources().getDimension(R.dimen.detail_card_height) / getResources().getDisplayMetrics().density);
+        minHeight = minHeight * 75/100;
+        if ( pxToDp(height)  > minHeight)  enableScroll();
+    }
 
-        if (title.length() > 25) {
+    private void checkScrollByText(int height) {
+        int minHeight = 130;
+        if ( pxToDp(height)  > minHeight)  enableScroll();
+    }
 
-            collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(getResources().getColor(R.color.transparent)));
-            textHelper.setText(title);
-            textHelper.setVisibility(View.VISIBLE);
-        }
+    private void enableScroll() {
+        View collapsingToolbar = findViewById(R.id.toolbar_layout);
+        AppBarLayout.LayoutParams params = (AppBarLayout.LayoutParams) collapsingToolbar.getLayoutParams();
+        params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+                    | AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
 
     }
 
     private void changeDialogSize(View coordinator, View appbar, int coordHeight, int barHeight) {
-
-        appbar.getLayoutParams().height = convertDimen(barHeight);
-        appbar.setLayoutParams(appbar.getLayoutParams());
-
         coordinator.getLayoutParams().height = convertDimen(coordHeight);
         coordinator.setLayoutParams(coordinator.getLayoutParams());
 
     }
 
-
-
     private int getInfoTxtSize() {
 
-        int infoSize = getResources().getInteger(R.integer.detail_text_size_small);
-        String txtVal = appSettings.getString("detail_txt_size", "small");
-
-        if (txtVal.equals("medium")) infoSize = getResources().getInteger(R.integer.detail_text_size_medium);
-        if (txtVal.equals("large")) infoSize = getResources().getInteger(R.integer.detail_text_size_large);
-
-        return infoSize;
+        int size = getResources().getInteger(R.integer.detail_text_size_large);
+        return 23;
     }
-
 
     public int convertDimen(int dimen) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimen, getResources().getDisplayMetrics());
+    }
+
+    public int pxToDp(int px) {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
 
@@ -258,12 +268,11 @@ public class ScrollingActivity extends BaseActivity {
 
 
     public void limitMessage() {
-
         Toast.makeText(this, R.string.starred_limit, Toast.LENGTH_SHORT).show();
         // Snackbar.make(mask, R.string.starred_limit, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
     }
 
-    private void changeStarStatus(String tag, FloatingActionButton button) {
+    private void changeStarStatus(String tag) {
 
         Boolean starred = checkStarred(tag);
 
@@ -271,72 +280,174 @@ public class ScrollingActivity extends BaseActivity {
         if (dataItem.filter.contains(GALLERY_TAG)) filter = GALLERY_TAG;
 
         int status = dbHelper.setStarred(tag, !starred, filter); // id to id
+        starStatusChanged = true;
 
         if (status == 0) {
             limitMessage();
         }
 
-        checkStarStatus(tag, button);
+        checkStarStatus(tag);
     }
 
 
-    private void checkStarStatus(String tag, FloatingActionButton button) {
-
+    private void checkStarStatus(String tag) {
         Boolean starred = checkStarred(tag);
 
-        int styleTheme = themeAdapter.styleTheme;
-
-        TypedArray attr = getTheme().obtainStyledAttributes(styleTheme, new int[] {R.attr.starButtonIconInactive});
-        int starIconInactive = attr.getResourceId(0, 0);
-        attr.recycle();
-
-
-        Drawable d;
-
         if (starred) {
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-
-                d = this.getDrawable(R.drawable.ic_star_dialog);
-
-            }else{
-                d = VectorDrawableCompat.create(this.getResources(), R.drawable.ic_star_dialog_older, null);
-            }
-
+            starMenuItem.setIcon(R.drawable.ic_star_detail);
         } else {
-
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                //  button.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_star_border));
-                d = this.getDrawable(starIconInactive);
-            }else{
-                d = VectorDrawableCompat.create(this.getResources(), R.drawable.ic_star_border_older, null);
-            }
+            starMenuItem.setIcon(R.drawable.ic_star_detail_inactive);
         }
-
-
-        // issue with fab icon - https://issuetracker.google.com/issues/117476935
-
-
-
-        //Toast.makeText(this, "Test: " + starred, Toast.LENGTH_SHORT).show();
-        //button.setImageResource(R.drawable.ic_star_border_older);
-       // floatingActionButton.setImageResource(R.drawable.ic_star_border_older);
-
-        final Drawable f= d;
-
-        floatingActionButton.setImageDrawable(d);
-
-
-
-
-
-
     }
 
 
     private Boolean checkStarred(String text) {
-
         Boolean starred = dbHelper.checkStarred(text);
         return starred;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detailed, menu);
+        starMenuItem = menu.findItem(R.id.star);
+        checkStarStatus(detailItem.id);
+
+        return true;
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+            case R.id.star:
+                changeStarStatus(detailItem.id);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    //// TTS integration
+
+    public void speakReading() {
+        String text = dataItem.item;
+        speakWords(text);
+    }
+
+
+    private void speakWords(String speech) {
+        //speak straight away
+        myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    //act on result of TTS data check
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == MY_DATA_CHECK_CODE) {
+
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                //the user has the necessary data - create the TTS
+                myTTS = new TextToSpeech(this, this, "com.google.android.tts");
+            }
+            else {
+                //no data - install it now
+                Intent installTTSIntent = new Intent();
+                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installTTSIntent);
+            }
+        }
+    }
+
+    //setup TTS
+    public void onInit(int initStatus) {
+
+        //check for successful instantiation
+        if (initStatus == TextToSpeech.SUCCESS) {
+            if(myTTS.isLanguageAvailable(Locale.FRENCH)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(Locale.FRENCH);
+          //  speakBtn.setVisibility(View.VISIBLE);
+        }
+        else if (initStatus == TextToSpeech.ERROR) {
+            //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void openStatus(Boolean show, View statusView, DataItem dataItem) {
+
+        if (show) {
+            statusView.setVisibility(View.VISIBLE);
+            manageStatusView(statusView, dataItem.rate);
+            manageErrorsView(statusView, dataItem.errors);
+
+        } else {
+            statusView.setVisibility(View.GONE);
+        }
+    }
+
+
+    private void manageStatusView(View statusBox, int result) {
+        View unknown = statusBox.findViewById(R.id.statusUnknown);
+        View known = statusBox.findViewById(R.id.statusKnown);
+        View studied = statusBox.findViewById(R.id.statusStudied);
+
+        unknown.setVisibility(View.GONE);
+        known.setVisibility(View.GONE);
+        studied.setVisibility(View.GONE);
+
+        if (result > 2) {
+            studied.setVisibility(View.VISIBLE);
+        } else if ( result > 0) {
+            known.setVisibility(View.VISIBLE);
+        } else {
+            unknown.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void manageErrorsView(View statusBox, int errorsCount) {
+        TextView errorsTxt = statusBox.findViewById(R.id.errorsCount);
+        errorsTxt.setText(String.format("✘ %d", errorsCount));
+
+        if (errorsCount > 0) {
+            errorsTxt.setVisibility(View.VISIBLE);
+        } else {
+            errorsTxt.setVisibility(View.GONE);
+        }
+    }
+
+
+    private void statusInfoDisplay(int displayStatus, View statusView, DataItem dataItem) {
+
+        switch (displayStatus) {
+
+            case (1): /// auto
+
+                if (dataItem.rate > 0 || dataItem.errors > 0) {
+                    openStatus(true, statusView, dataItem);
+                } else {
+                    openStatus(false, statusView, dataItem);
+                }
+
+                break;
+
+            case (2):  /// always
+                openStatus(true, statusView, dataItem);
+                break;
+
+            case (0):  /// never
+                openStatus(false, statusView, dataItem);
+                break;
+
+        }
 
     }
 

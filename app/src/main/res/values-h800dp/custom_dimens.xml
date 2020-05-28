@@ -11,12 +11,10 @@
 
     <dimen name="_ex_links_list_padding_top">20dp</dimen>
 
-
-
     <dimen name="_ex_card_field_minheight">670dp</dimen>
 
     <integer name="_ex_text_wrap">280</integer>
-    <integer name="_ex_text_wrap_high">310</integer>
+    <integer name="_ex_text_wrap_high">290</integer>
 
     <dimen name="_test_img_size">240dp</dimen>
     <dimen name="test_img_width_tablet">360dp</dimen>
@@ -45,24 +43,26 @@
     <dimen name="_flash_text_box_mirror_height">160dp</dimen>
 
 
-    <dimen name="_home_card_image_width">180dp</dimen>
-    <dimen name="_home_card_image_height">130dp</dimen>
+    <dimen name="_home_card_image_width">135dp</dimen>
+    <dimen name="_home_card_image_height">125dp</dimen>
+
     <dimen name="_home_card_padding">6dp</dimen>
 
-    <dimen name="_home_card_title_txt_size">19sp</dimen>
+    <dimen name="_home_card_title_txt_size">24sp</dimen>
+    <dimen name="_home_card_desc_txt_size">16sp</dimen>
     <dimen name="_home_card_title_bottom">12dp</dimen>
 
     <dimen name="_home_card_image_width_4">180dp</dimen>
     <dimen name="_home_card_image_height_4">155dp</dimen>
 
     <style name="homeCardTitleStyle">
-        <item name="android:textStyle">normal</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <dimen name="_detail_image_height">500dp</dimen>
     <dimen name="_detail_image_appbar_height">320dp</dimen>
 
-    <dimen name="_detail_card_height">600dp</dimen>
+    <dimen name="_detail_card_height">550dp</dimen>
     <dimen name="_detail_appbar_height">330dp</dimen>
 
     <integer name="_search_dialog_height">500</integer>

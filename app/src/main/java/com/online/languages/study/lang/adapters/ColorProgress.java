@@ -39,6 +39,12 @@ public class ColorProgress {
             R.attr.colorStudied
     };
 
+    private int[] colorStatus = {
+            R.attr.colorStatusUnknown,
+            R.attr.colorStatusKnown,
+            R.attr.colorStatusStudied
+    };
+
 
     public int[] statusBg = {
             R.drawable.text_round_bg,
@@ -130,10 +136,17 @@ public class ColorProgress {
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
 
-        theme.resolveAttribute( defineStatusColorByResult(result), typedValue, true);
+        theme.resolveAttribute( getStatusColorByResult(result), typedValue, true);
 
         @ColorInt int color = typedValue.data;
 
+        return color;
+    }
+
+    private int getStatusColorByResult(int result) {
+        int color = colorStatus[0];
+        if (result > 0) color = colorStatus[1];
+        if (result > 2) color = colorStatus[2];
         return color;
     }
 
@@ -163,10 +176,8 @@ public class ColorProgress {
 
     private int defineStatusColorByResult(int result) {
         int color = statusColors[0];
-
         if (result > 0) color = statusColors[1];
         if (result > 2) color = statusColors[2];
-
         return color;
     }
 

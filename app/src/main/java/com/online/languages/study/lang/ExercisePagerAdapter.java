@@ -128,7 +128,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         int paddingPixel = (int)(paddingDp * density);
 
 
-        if (type == 1 ) radioGroup.setPadding(paddingPixel,0,0,0);
+        radioGroup.setPadding(paddingPixel,0,0,0);  //// left paadding for options
 
         lessOptions = false;
         int longCount = 0;
@@ -243,7 +243,7 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         RadioButton radio;
 
-        if (type == 1 || type == EX_IMG_TYPE) {
+        if (type == EX_IMG_TYPE) {
             exOpt = exOptTitleShort;
         } else {
             exOpt = exOptTitleLong;
@@ -276,14 +276,14 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     private void setTextStyle(TextView textView, String text) {
 
-        if (type == 1) {
+        if (type == 2) {
             textView.setTypeface(null, Typeface.NORMAL);
         } else {
             textView.setTypeface(null, Typeface.BOLD);
         }
 
 
-        if (type == 2) {
+        if (type == -1) {
 
             int questShortTextSize = context.getResources().getInteger(R.integer.ex_quest_short_txt_size_small);
 
@@ -323,15 +323,13 @@ class ExercisePagerAdapter extends PagerAdapter {
 
             RadioButton radio = (RadioButton) radiogroup.getChildAt(i);
 
-            if ( type == 1 || type == EX_IMG_TYPE ) {
+            if ( type==2 || type == EX_IMG_TYPE ) {
                 radio.setTypeface(null, Typeface.BOLD);
-                if (optionTxt.length() > 20)
-                    radio.setTextSize(context.getResources().getInteger(R.integer.ex_opt_short_txt_size_small));
             } else {
                 radio.setTypeface(null, Typeface.NORMAL);
-                radio.setTextSize(optionTextSize(optionTxt));
             }
 
+            radio.setTextSize(optionTextSize(optionTxt));
             radio.setText(optionTxt);
 
         }

@@ -4,13 +4,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:paddingTop="@dimen/cat_item_padding_top"
     android:paddingBottom="@dimen/cat_item_padding_bottom"
 
     android:id="@+id/cat_item_wrap"
     android:focusable="true"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
+
+
+
 
     <View
         android:layout_width="match_parent"

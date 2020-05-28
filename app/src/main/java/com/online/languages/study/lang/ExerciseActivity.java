@@ -234,8 +234,8 @@ public class ExerciseActivity extends BaseActivity {
 
 
         if (exType == 2) {
-            exTxtHeight -= 20;
-            exTxtMoreHeight -= 30;
+          //  exTxtHeight -= 0;
+          //  exTxtMoreHeight -= 0;
         }
 
         viewPager = findViewById(R.id.testPager);

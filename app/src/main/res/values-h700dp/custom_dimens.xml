@@ -10,11 +10,13 @@
     <dimen name="_ex_card_top_wide">40dp</dimen>
 
 
-    <dimen name="_home_card_image_width">120dp</dimen>
-    <dimen name="_home_card_image_height">105dp</dimen> <!-- change for 4 items-->
+    <dimen name="_home_card_image_width">110dp</dimen>
+    <dimen name="_home_card_image_height">85dp</dimen> <!-- change for 4 items-->
     <dimen name="_home_card_title_bottom">10dp</dimen> <!-- change for 4 items-->
-    <dimen name="_home_card_title_txt_size">20sp</dimen>
-    <dimen name="_home_card_desc_txt_size">13sp</dimen>
+    <dimen name="_home_card_title_txt_size">21sp</dimen>
+    <dimen name="_home_card_desc_txt_size">14sp</dimen>
+
+    <dimen name="_home_card_title_left">24dp</dimen>
 
 
     <dimen name="_home_card_image_width_4">120dp</dimen>
@@ -28,10 +30,10 @@
     <dimen name="_gallery_item_pic_size">70dp</dimen>
 
 
-    <dimen name="_detail_card_height">488dp</dimen>
+    <dimen name="_detail_card_height">350dp</dimen>
     <dimen name="_detail_appbar_height">250dp</dimen>
 
-    <integer name="_search_dialog_height">440</integer>
+    <integer name="_search_dialog_height">350</integer>
     <integer name="_search_dialog_img_height">260</integer>
 
     <dimen name="_detail_appbar_exp_text_size">26sp</dimen>
@@ -45,6 +47,7 @@
     <integer name="detail_text_size_large" >18</integer>
 
     <dimen name="_cat_item_title_txt_size">17sp</dimen>
+    <dimen name="_cat_item_title_txt_size_norm">20sp</dimen>
     <dimen name="_cat_item_info_txt_size">15sp</dimen>
 
     <dimen name="_flash_card_height">410dp</dimen>
@@ -76,10 +79,8 @@
     <dimen name="_ex_card_field_minheight">560dp</dimen>
 
 
-
-
-    <integer name="_ex_text_wrap">210</integer>
-    <integer name="_ex_text_wrap_high">240</integer>
+    <integer name="_ex_text_wrap">190</integer>
+    <integer name="_ex_text_wrap_high">210</integer>
 
     <dimen name="_test_img_size">190dp</dimen>
     <dimen name="test_img_width_tablet">350dp</dimen>
@@ -95,24 +96,24 @@
     <integer name="_ex_quest_short_txt_size_norm">24</integer>
     <integer name="_ex_quest_short_txt_size_small">27</integer>
 
-    <integer name="_ex_quest_txt_size_norm">20</integer>
-    <integer name="_ex_quest_txt_size_medium">18</integer>
-    <integer name="_ex_quest_txt_size_small">16</integer>
-    <integer name="_ex_quest_txt_size_smallest">14</integer>
+    <integer name="_ex_quest_txt_size_norm">28</integer>
+    <integer name="_ex_quest_txt_size_medium">25</integer>
+    <integer name="_ex_quest_txt_size_small">23</integer>
+    <integer name="_ex_quest_txt_size_smallest">21</integer>
 
     <dimen name="_ex_opt_short_txt_min_height">52dp</dimen>
     <dimen name="_ex_opt_norm_txt_min_height">62dp</dimen>
     <dimen name="_ex_opt_long_txt_min_height">75dp</dimen>
 
-    <dimen name="_ex_opt_short_txt_size_norm">21sp</dimen>
-    <integer name="_ex_opt_short_txt_size_small">20</integer>
+    <dimen name="_ex_opt_short_txt_size_norm">23sp</dimen>
+    <integer name="_ex_opt_short_txt_size_small">21</integer>
 
     <integer name="ex_opt_txt_length_long">50</integer>
     <integer name="ex_opt_txt_length_longest">65</integer>
 
-    <integer name="_ex_opt_txt_size_norm">17</integer>
-    <integer name="_ex_opt_txt_size_small">16</integer>
-    <integer name="_ex_opt_txt_size_smallest">15</integer>
+    <integer name="_ex_opt_txt_size_norm">21</integer>
+    <integer name="_ex_opt_txt_size_small">19</integer>
+    <integer name="_ex_opt_txt_size_smallest">18</integer>
 
     <integer name="ex_text_long_num">60</integer>
 

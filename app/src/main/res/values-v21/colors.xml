@@ -5,5 +5,7 @@
     <color name="colorStarButton">#ffffff</color>
     <color name="colorStarButton_dark">#707070</color>
 
+    <color name="colorDetailDivider">#00020202</color>
+
 
 </resources>

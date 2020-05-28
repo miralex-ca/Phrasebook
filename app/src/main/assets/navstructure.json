@@ -8,9 +8,9 @@
   "sections":
   [
     {"tag": "section_1", "title": "Общение", "id": "10010",
-      "desc": "Общение: описание",
+      "desc": "Общение: обычное описание",
       "title_short": "Общение",
-      "desc_short": "Общение: описание",
+      "desc_short": "Общение: короткое описание",
       "image": "picto/pers_blue_l.png",
       "categories":
       [

@@ -5,41 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:scrollbars="vertical"
     tools:context="com.online.languages.study.lang.ScrollingActivity"
     tools:showIn="@layout/activity_detail">
 
 
     <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/detail_status_include" />
+
+        </RelativeLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/infoBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:theme="?attr/DetailTextTheme"
-        android:paddingTop="30dp">
-
+        >
 
         <TextView
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:gravity="center"
             android:textIsSelectable="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/detail_text_size"
+            android:textColor="?attr/colorDetailBtmTxt"
+            android:minHeight="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/lbl_text" />
 
-
-        <TextView
-            android:textIsSelectable="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:textStyle="italic"
-            android:id="@+id/lbl_img_desc"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="20dp" />
 
     </LinearLayout>
 
 
+    </LinearLayout>
 
 
 </android.support.v4.widget.NestedScrollView>

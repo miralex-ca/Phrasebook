@@ -200,8 +200,20 @@
         <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive_ww</item>
         <item name="DetailTextTheme">@style/DetailTextTheme.WW</item>
 
+        <item name="DetailAppBarOverlayTheme">@style/DetailAppBarOverlayTheme.Dark.WW</item>
+        <item name="DetailToolbar">@style/DetailToolBar.Dark.WW</item>
+        <item name="colorStarDetail">@color/colorToolbarText_ww</item>
+
     </style>
 
+    <style name="DetailAppBarOverlayTheme.Dark.WW" parent="Theme.AppCompat.Dialog">
+        <item name="colorControlHighlight">@color/colorControlHighlight_ww</item>
+    </style>
+
+    <style name="DetailToolBar.Dark.WW">
+        <item name="android:textColorPrimary">@color/colorToolbarText_ww</item>
+        <item name="android:textColorSecondary">@color/colorToolbarSecText_ww</item>
+    </style>
 
     <style name="DetailTextTheme.WW">
         <item name="colorAccent">@color/colorAccent_ww</item>

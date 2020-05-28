@@ -6,15 +6,12 @@
     <color name="colorAccent_white">#0579fb</color>
     <color name="colorBtmNav_inactive_white">#AE0579FB</color>
 
-
-
     <color name="ex_icon_white">#5e5e5e</color>
     <color name="ex_link_result_white">#10000000</color>
 
     <color name="colorContactIcon_white">#515151</color>
 
     <color name="colorDetailBar_white">#757575</color>
-
 
     <color name="colorNavBgStart_white">#ffffff</color>
     <color name="colorNavBgCenter_white">#ffffff</color>
@@ -27,7 +24,6 @@
 
     <color name="colorBaseBg_white">#f9f9f9</color>
     <dimen name="cardCornerDefault_white">8dp</dimen>
-
 
 
     <color name="colorTabIndicator_white">#606060</color>
@@ -65,7 +61,6 @@
     <color name="colorDrawerHeadDivider_white">#3b3b3b</color>
 
 
-
     <style name="WhiteBase" parent="DefaultTheme">
 
     </style>
@@ -74,7 +69,6 @@
         <item name="colorPrimary">@color/colorPrimary_white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark_white</item>
         <item name="colorAccent">@color/colorAccent_white</item>
-
 
         <item name="AppBarOverlayTheme">@style/AppBarOverlayTheme_white</item>
 
@@ -100,7 +94,6 @@
         <item name="heightTabIndicator">@dimen/heightTabIndicator_white</item>
 
         <item name="colorErrors">@color/colorErrors</item>
-
 
         <item name="colorStudiedBox">@color/colorStudiedBox_light</item>
         <item name="colorKnownBox">@color/colorKnownBox_light</item>

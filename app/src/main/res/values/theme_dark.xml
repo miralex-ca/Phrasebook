@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <color name="colorPrimary_dark">#151515</color>
     <color name="colorPrimaryDark_dark">#000</color>
 
     <color name="colorDialogBg">#3D3D3D</color>
+
     <color name="colorMenu_dark">#313131</color>
 
     <color name="colorAccent_dk">#fcfcfc</color>    <!-- used for star button -->
 
     <color name="colorBtmNav_inactive_dark">#A1FCFCFC</color>
-
 
     <color name="colorExAccent_dk">#B0BEC5</color>
 
@@ -23,6 +22,21 @@
     <color name="colorDetailBar_dark">#222</color>
     <color name="colorDetail_dark">#444</color>
 
+    <color name="colorDetailBg">#3D3D3D</color>
+
+    <color name="colorStarDetail_dark">#fff</color>
+
+
+    <color name="colorDetailToolbarText_dark">#fff</color>
+    <color name="colorDetailToolbarSecText_dark">#fff</color>
+    <color name="colorSpeakerIcon_dark">#fff</color>
+
+    <color name="colorDetailTopBg_dark">#555555</color>
+    <color name="colorDetailDivider_dark">#32818181</color>
+    <color name="colorDetailBtmBg_dark">#3D3D3D</color>
+
+    <color name="colorDetailTopTxt_dark">#fff</color>
+    <color name="colorDetailBtmTxt_dark">#E4E4E4</color>
 
     <color name="colorNavBgStart_dark">#263238</color>
     <color name="colorNavBgCenter_dark">#455A64</color>
@@ -36,10 +50,9 @@
     <color name="colorStarButtonIcon_dark">#fff</color> <!- - used for active star color - - >
     <color name="colorStarButtonInactive_dark">#fff</color> <!- - used for inactive star color -->
 
-    <color name="colorStarButton_dark">#FFD600</color>  <!-- changed in v21 --> <!-- used for star button -->
+    <color name="colorStarButton_dark">#707070</color>  <!-- changed in v21 --> <!-- used for star button -->
     <color name="colorStarButtonIcon_dark">#FFFF00</color> <!-- used for active star color -->
     <color name="colorStarButtonInactive_dark">#cecec4</color> <!-- used for inactive star color -->
-
 
     <color name="colorCardBg_dark">#000</color>
     <color name="colorBaseBg_dark">#000</color>
@@ -77,10 +90,10 @@
 
     <color name="colorProgressTxt_dark">#000</color>
 
-    <color name="colorErrors_dark">#FF1744</color>
-    <color name="colorUnknown_dark">#ffffff</color>
+    <color name="colorErrors_dark">#C3FF1744</color>
+    <color name="colorUnknown_dark">#D7FFFFFF</color>
     <color name="colorKnown_dark">#4188e4</color>
-    <color name="colorStudied_dark">#00C853</color>
+    <color name="colorStudied_dark">#DD00C853</color>
 
 
     <color name="colorIconArrow_dark">#f9c871</color>
@@ -118,6 +131,8 @@
 
         <item name="colorStarIcon">@color/colorStarIcon_dark</item>
         <item name="colorStarIconBord">?attr/colorStarIcon</item>
+
+
 
         <item name="colorStarButton">@color/colorStarButton_dark</item>
 
@@ -223,6 +238,7 @@
 
         <item name="map_thumbnail_alpha">@dimen/mapThumbAlpha_dark</item>
         <item name="colorMapTitleBox">@color/colorMapTitleBox_dark</item>
+        <item name="colorStarDetail">@color/colorStarDetail_dark</item>
 
     </style>
 
@@ -249,6 +265,13 @@
         <item name="colorStarButtonIcon">@color/colorStarButtonIcon_dark</item>
         <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
         <item name="colorStarButtonIconInactive">@color/colorStarButtonInactive_dark</item>
+
+        <item name="DetailAppBarOverlayTheme">@style/DetailAppBarOverlayTheme.Dark</item>
+        <item name="DetailToolbar">@style/DetailToolBar.Dark</item>
+        <item name="colorStarDetail">@color/colorStarDetail_dark</item>
+
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_dark</item>
+
     </style>
 
 
@@ -269,7 +292,13 @@
     </style>
 
 
+    <style name="DetailAppBarOverlayTheme.Dark" parent="Theme.AppCompat.Dialog">
+    </style>
 
+    <style name="DetailToolBar.Dark">
+        <item name="android:textColorPrimary">@color/colorDetailToolbarText_dark</item>
+        <item name="android:textColorSecondary">@color/colorDetailToolbarSecText_dark</item>
+    </style>
 
 
     <!-- color name="colorDialogBg">#455A64</color>

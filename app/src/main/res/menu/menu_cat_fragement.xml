@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/list_layout"
+        android:orderInCategory="100"
+        android:visible="false"
+        android:icon="@drawable/ic_view_list_big"
+        android:title="@string/menu_layout"
+        app:showAsAction="always" />
+
+</menu>

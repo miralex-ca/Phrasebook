@@ -206,6 +206,26 @@
 
     <attr name="DetailTextTheme" format="reference" />
 
+    <attr name="colorStarDetail" format="reference" />
+
+    <attr name="DetailAppBarOverlayTheme" format="reference" />
+    <attr name="DetailToolbar" format="reference" />
+
+
+    <attr name="colorDetailTopBg" format="reference" />
+    <attr name="colorDetailDivider" format="reference" />
+    <attr name="colorDetailBtmBg" format="reference" />
+
+    <attr name="colorDetailTopTxt" format="reference" />
+    <attr name="colorDetailBtmTxt" format="reference" />
+
+    <attr name="colorSpeakerIcon" format="reference" />
+
+
+    <attr name="colorStatusUnknown" format="reference" />
+    <attr name="colorStatusKnown" format="reference" />
+    <attr name="colorStatusStudied" format="reference" />
+
 
     <declare-styleable name="TouchImageView">
         <attr name="zoom_enabled" format="boolean" />

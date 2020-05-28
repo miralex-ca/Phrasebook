@@ -63,9 +63,9 @@
     <color name="colorStarIcon">#FDF223</color>
     <color name="colorStarIconBord">#77FAD415</color>
 
-    <color name="colorStarButton">#FFD600</color> <!-- changed in v21-->
+    <color name="colorStarButton">#ffffff</color> <!-- changed in v21-->
     <color name="colorStarButtonIcon">#ffea00</color>
-    <color name="colorStarButtonInactive">#cacaca</color>
+    <color name="colorStarButtonInactive">#727272</color>
 
 
     <color name="colorBaseBg">#eeeeee</color>
@@ -165,6 +165,10 @@
     <color name="colorKnown">#2772f1</color>
     <color name="colorStudied">#02a445</color>
 
+    <color name="colorStatusUnknown">#A48C9EA7</color>
+    <color name="colorStatusKnown">#D70091EA</color>
+    <color name="colorStatusStudied">#D700C853</color>
+
     <color name="colorStudiedBox">#00C853</color>
     <color name="colorKnownBox">#0091EA</color>
     <color name="colorUnknownBox">#78909C</color>
@@ -199,8 +203,6 @@
     <color name="colorDrawerHeadDivider">#00000000</color>
     <color name="colorImageTitleBox">#54000000</color>
 
-
-
     <color name="colorToolbarText_n">@color/colorToolbarText_blue_n</color>
     <color name="colorToolbarSecText_n">@color/colorToolbarSecText_blue_n</color>
     <color name="colorAccent_n">@color/colorAccent_blue_n</color>
@@ -233,5 +235,17 @@
     <color name="colorNavBgEnd_red_n">#740B0B</color>
     <color name="colorDialogBg_lite">#fff</color>
 
+
+    <color name="colorStarDetail">#ffea00</color>
+    <color name="colorDetailToolbarText">#5E5E5E</color>
+    <color name="colorDetailToolbarSecText">#5E5E5E</color>
+    <color name="colorSpeakerIcon">#444444</color>
+    <color name="colorDialogBackground">#F3F3F3</color>
+
+    <color name="colorDetailTopTxt">#333333</color>
+    <color name="colorDetailBtmTxt">#111111</color>
+
+
+    <color name="colorDetailDivider">#22020202</color>
 
 </resources>

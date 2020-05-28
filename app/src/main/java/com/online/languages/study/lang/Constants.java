@@ -119,5 +119,9 @@ public class Constants {
 
     public static final String STARRED_TABS = "gallery";
 
+    public static final String CAT_LIST_VIEW = "cat_list_view";
+    public static final String CAT_LIST_VIEW_NORM = "normal";
+    public static final String CAT_LIST_VIEW_COMPACT = "COMPACT";
+
 
 }

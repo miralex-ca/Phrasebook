@@ -61,7 +61,7 @@ public class InfoDataListAdapter extends RecyclerView.Adapter<InfoDataListAdapte
         View itemView;
 
         if (viewType == 2) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_nopic, parent, false);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_compact_2, parent, false);
         } else if (viewType == 3) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_divider, parent, false);
 

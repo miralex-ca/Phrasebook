@@ -230,7 +230,7 @@ public class ExerciseDataCollect {
 
 
         for (DataItem dataItem1: options) {
-            String txt = getTextByExType(dataItem1, 2);; /// TODO  getting data for the task
+            String txt = getTextByExType(dataItem1, 2);
             optionsTxt.add(txt);
         }
 
@@ -259,15 +259,17 @@ public class ExerciseDataCollect {
 
     private String getTextByExType(DataItem dataItem, int taskDataType) {
 
+        /// data type 1 - quest, 2 - options
+
         String txt = "";
 
         if (exType == 2) {
             switch (taskDataType) {
                 case 1:
-                    txt = dataItem.item;
+                    txt = dataItem.info;
                     break;
                 case 2:
-                    txt = dataItem.info;
+                    txt = dataItem.item;
                     break;
             }
         } else if (exType == EX_IMG_TYPE) {
@@ -285,10 +287,10 @@ public class ExerciseDataCollect {
 
             switch (taskDataType) {
                 case 1:
-                    txt = dataItem.info;
+                    txt = dataItem.item;
                     break;
                 case 2:
-                    txt = dataItem.item;
+                    txt = dataItem.info;
                     break;
             }
         }

@@ -69,7 +69,7 @@ public class UserListTabFragment1 extends Fragment {
         vAdapter = new ContentAdapter(getActivity(), data, showStatus, theme);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
+        //recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
         recyclerView.setAdapter(vAdapter);
 
         openView(recyclerView);

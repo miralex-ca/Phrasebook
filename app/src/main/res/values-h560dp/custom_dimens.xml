@@ -8,14 +8,14 @@
     <dimen name="_card_main_min_height">400dp</dimen>
     <dimen name="_card_padding">16dp</dimen>
 
-    <dimen name="_home_card_image_width">100dp</dimen>
+    <dimen name="_home_card_image_width">80dp</dimen>
 
     <dimen name="nav_header_height">130dp</dimen>
 
     <dimen name="_detail_image_height">420dp</dimen>
     <dimen name="_detail_image_appbar_height">260dp</dimen>
 
-    <dimen name="_detail_card_height">458dp</dimen>
+    <dimen name="_detail_card_height">430dp</dimen>
     <dimen name="_detail_appbar_height">240dp</dimen>
 
     <integer name="_search_dialog_height">420</integer>
@@ -42,8 +42,8 @@
     <dimen name="_cat_item_pic_size">45dp</dimen>
     <dimen name="_cat_item_pic_left">12dp</dimen>
     <dimen name="_cat_item_txt_left">55dp</dimen>
-    <dimen name="_cat_item_txt_right">20dp</dimen>
-    <dimen name="_cat_item_star_right">8dp</dimen>
+    <dimen name="_cat_item_txt_right">12dp</dimen>
+    <dimen name="_cat_item_star_right">4dp</dimen>
 
     <dimen name="_cat_item_info_txt_size">13sp</dimen>
 
@@ -79,8 +79,7 @@
     <dimen name="_test_img_size">140dp</dimen>
 
     <integer name="_ex_text_wrap">150</integer>
-    <integer name="_ex_text_wrap_high">180</integer>
-
+    <integer name="_ex_text_wrap_high">160</integer>
 
 
     <integer name="_ex_card_wrap">322</integer>
@@ -93,7 +92,7 @@
     <dimen name="_ex_opt_short_txt_min_height">45dp</dimen>
 
 
-    <integer name="_ex_quest_txt_size_norm">18</integer>
+    <integer name="_ex_quest_txt_size_norm">22</integer>
     <integer name="_ex_quest_short_txt_size_norm">20</integer>   <!-- ex1 opt -->
     <integer name="_ex_quest_short_txt_size_small">25</integer>      <!-- ex2 -->
     <integer name="_ex_quest_txt_size_medium">16</integer>
@@ -101,9 +100,9 @@
     <integer name="_ex_quest_txt_size_smallest">13</integer>
 
 
-    <integer name="_ex_opt_txt_size_norm">16</integer>
-    <integer name="_ex_opt_txt_size_small">14</integer>
-    <integer name="_ex_opt_txt_size_smallest">13</integer>
+    <integer name="_ex_opt_txt_size_norm">18</integer>
+    <integer name="_ex_opt_txt_size_small">16</integer>
+    <integer name="_ex_opt_txt_size_smallest">15</integer>
 
     <integer name="ex_text_long_num">40</integer>
 

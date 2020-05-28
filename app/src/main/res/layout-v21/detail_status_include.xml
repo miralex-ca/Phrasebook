@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/status_wrap"
+    android:visibility="gone"
+    android:layout_marginTop="9dp"
+    >
+
+
+    <RelativeLayout
+        android:layout_marginRight="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:alpha=".8"
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_unknown_short"
+            android:id="@+id/statusUnknown"
+            android:textColor="?attr/colorUnknown"
+            android:background="@drawable/status_gray_bg"
+            />
+
+        <TextView
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_familiar_short"
+            android:id="@+id/statusKnown"
+            android:textColor="?attr/colorKnown"
+            android:background="@drawable/status_blue_bg"
+            />
+
+        <TextView
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_studied_short"
+            android:id="@+id/statusStudied"
+            android:textColor="?attr/colorStudied"
+            android:background="@drawable/status_green_bg"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:visibility="gone"
+        style="@style/cat_item_status.detail"
+        android:ellipsize="middle"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:id="@+id/errorsCount"
+        android:textColor="?attr/colorErrors"
+        android:background="@drawable/status_red_bg"
+        />
+
+
+</LinearLayout>

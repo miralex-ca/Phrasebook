@@ -1,21 +1,23 @@
 package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHolder> {
@@ -24,15 +26,15 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     Context context;
     private int showStatus;
     private String theme;
+    private String layoutType;
+    ColorProgress colorProgress;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt, translate;
+        TextView txt, translate, status;
         View helperView;
 
-        ImageView image;
-        View starIcon, statusView;;
-
+        View starIcon, statusView, divider;;
 
 
         MyViewHolder(View view) {
@@ -41,10 +43,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             txt = itemView.findViewById(R.id.itemText);
             translate = itemView.findViewById(R.id.itemInfo);
             helperView =  itemView.findViewById(R.id.animObj);
-            image = itemView.findViewById(R.id.itemImage);
             starIcon = itemView.findViewById(R.id.voclistStar);
             statusView = itemView.findViewById(R.id.status_wrap);
-
+            divider = itemView.findViewById(R.id.catItemDivider);
+            status = itemView.findViewById(R.id.itemStatus);
         }
     }
 
@@ -54,6 +56,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         context = _context;
         showStatus = _show_status;
         theme = _theme;
+        colorProgress = new ColorProgress(context);
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(_context);
+        layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
     }
 
     @Override
@@ -62,12 +68,13 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         View itemView;
 
         if (viewType == 2) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_nopic, parent, false);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_compact_2, parent, false);
         } else if (viewType == 3) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_divider, parent, false);
 
         }else {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item, parent, false);
+
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_norm, parent, false);
         }
 
         return new MyViewHolder(itemView);
@@ -76,9 +83,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     @Override
     public int getItemViewType(int position) {
         int type = 1;
-        if (dataList.get(position).image.equals("none")) type = 2;
-        if (dataList.get(position).type.equals("divider")) type = 3;
 
+        if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) type = 2;
+        if (dataList.get(position).type.equals("divider")) type = 3;
         return type;
     }
 
@@ -90,6 +97,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         holder.txt.setText( dataItem.item);
         holder.translate.setText( dataItem.info);
         holder.helperView.setTag(dataItem.id);
+
+        if (position == 0) holder.divider.setVisibility(View.INVISIBLE);
 
         if (dataItem.starred == 1) {
             holder.starIcon.setVisibility(View.VISIBLE);
@@ -106,22 +115,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         }
 
 
-        String pic = dataItem.image;
-
-
-        Picasso.with(context )
-                .load("file:///android_asset/pics/"+ pic )
-                .transform(new RoundedTransformation(0,0))
-                .fit()
-                .centerCrop()
-                .into(holder.image);
-
-
-        if (theme.equals("westworld")) {
-            holder.image.setColorFilter(Color.argb(255, 50, 250, 240), PorterDuff.Mode.MULTIPLY);
-        }
-
         statusInfoDisplay(showStatus, holder.statusView, dataItem);
+        statusTxt(holder.status, dataItem);
 
     }
 
@@ -136,6 +131,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         notifyItemRemoved(position);
     }
 
+    private void statusTxt(TextView txt, DataItem dataItem) {
+        txt.setTextColor(colorProgress.getStatusColorFromAttr(dataItem.rate));
+    }
 
 
     private void statusInfoDisplay(int displayStatus, View statusView, DataItem dataItem) {
@@ -144,7 +142,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
             case (1): /// auto
 
-                if (dataItem.errors > 0 || dataItem.rate > 0) {
+                if (dataItem.rate > 0) {
                     openStatus(true, statusView, dataItem);
                 } else {
                     openStatus(false, statusView, dataItem);
@@ -168,8 +166,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
         if (show) {
             statusView.setVisibility(View.VISIBLE);
-            manageStatusView(statusView, dataItem.rate);
-            manageErrorsView(statusView, dataItem.errors);
+           // manageStatusView(statusView, dataItem.rate);
+           // manageErrorsView(statusView, dataItem.errors);
 
         } else {
             statusView.setVisibility(View.GONE);
