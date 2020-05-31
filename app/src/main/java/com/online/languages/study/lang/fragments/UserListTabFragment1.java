@@ -10,8 +10,10 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
@@ -26,6 +30,7 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UserListActivity;
 import com.online.languages.study.lang.adapters.ContentAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
+import com.online.languages.study.lang.adapters.ImageListAdapter;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataItem;
 
@@ -33,18 +38,26 @@ import com.online.languages.study.lang.data.DataItem;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+
 
 public class UserListTabFragment1 extends Fragment {
 
     ArrayList<DataItem> data = new ArrayList<>();
     SharedPreferences appSettings;
-    Boolean compactLayout;
-
-
-    RecyclerView recyclerView;
     DBHelper dbHelper;
 
-    ContentAdapter vAdapter;
+
+    ContentAdapter adapter, adapterCompact;
+    RecyclerView recyclerView, recyclerViewCompact;
+    View listWrapper, listWrapperCompact;
+
+    RelativeLayout  itemsList, itemsListCompact;
+
+    int showStatus;
+    String theme;
 
     Boolean showDialog = true;
     Boolean comeBack = true;
@@ -55,37 +68,47 @@ public class UserListTabFragment1 extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_cat_1, container, false);
 
+
         dbHelper = new DBHelper(getActivity());
-
         data = ((UserListActivity) getActivity()).topicData;
-
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        int showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
-        String theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
+        showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
+
+        theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
+
+
+        listWrapper = rootView.findViewById(R.id.listContainer);
+        listWrapperCompact = rootView.findViewById(R.id.listContainerCompact);
+
+        itemsList = rootView.findViewById(R.id.itemListWrap);
+        itemsListCompact = rootView.findViewById(R.id.itemListWrapCompact);
 
         recyclerView = rootView.findViewById(R.id.my_recycler_view);
-        vAdapter = new ContentAdapter(getActivity(), data, showStatus, theme);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        //recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
-        recyclerView.setAdapter(vAdapter);
+        recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
 
-        openView(recyclerView);
+        recyclerViewCompact = rootView.findViewById(R.id.my_recycler_view_compact);
+        RecyclerView.LayoutManager mLayoutManagerCompact = new LinearLayoutManager(getActivity());
+        recyclerViewCompact.setLayoutManager(mLayoutManagerCompact);
+        recyclerViewCompact.addItemDecoration( new DividerItemDecoration(getActivity()) );
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+        ViewCompat.setNestedScrollingEnabled(recyclerViewCompact, false);
+
+        updateLayoutStatus();
+
+        openView(recyclerView);
+        openView(recyclerViewCompact); // TODO improve
 
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 View animObj = view.findViewById(R.id.animObj);
-
-                // Toast.makeText(getActivity(), "Dialog OnClick", Toast.LENGTH_SHORT).show();
-
                 onItemClick(animObj, position);
-
             }
             @Override
             public void onLongClick(View view, int position) {
@@ -94,14 +117,25 @@ public class UserListTabFragment1 extends Fragment {
         }));
 
 
+        recyclerViewCompact.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerViewCompact, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                View animObj = view.findViewById(R.id.animObj);
+                onItemClick(animObj, position);
+            }
+            @Override
+            public void onLongClick(View view, int position) {
+                confirmChange(position);
+            }
+        }));
+
         return rootView;
     }
 
 
-    public void confirmChange(int position) {
+    public void confirmChange(int position) { /// TODO check
 
         boolean confirm = appSettings.getBoolean("set_starred_confirm", true);
-
 
         if (confirm) {
             openConfirmDialog(position);
@@ -115,6 +149,32 @@ public class UserListTabFragment1 extends Fragment {
         v.vibrate(vibLen);
     }
 
+
+    public void updateLayoutStatus() {
+
+        String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+
+        setWrapContentHeight(itemsList);
+        setWrapContentHeight(itemsListCompact);
+
+        itemsList.setMinimumHeight(0);
+        itemsListCompact.setMinimumHeight(0);
+
+
+        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.VISIBLE);
+        } else {
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapper.setVisibility(View.VISIBLE);
+        }
+
+        updateList();
+    }
+
+
+
     public void openConfirmDialog(final int position) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -123,7 +183,7 @@ public class UserListTabFragment1 extends Fragment {
         View content = inflater.inflate(R.layout.dialog_confirm_remove, null);
 
 
-        CheckBox checkBox = (CheckBox) content.findViewById(R.id.checkbox);
+        CheckBox checkBox = content.findViewById(R.id.checkbox);
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
@@ -161,21 +221,14 @@ public class UserListTabFragment1 extends Fragment {
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putBoolean("set_starred_confirm", checked);
         editor.apply();
-
     }
 
     public void changeStarred(int position) {   /// check just one item
-
         String id = data.get(position).id;
-
         Boolean starred = dbHelper.checkStarred(id);
-
         dbHelper.setStarred(id, !starred); // id to id
-
         checkStarred();
-
     }
-
 
 
 
@@ -193,7 +246,6 @@ public class UserListTabFragment1 extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 view.setVisibility(View.VISIBLE);
             }
         }, 40);
@@ -206,7 +258,8 @@ public class UserListTabFragment1 extends Fragment {
 
         if (comeBack) {
             data = checkList(data);
-            vAdapter.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
+            adapterCompact.notifyDataSetChanged();
         } else {
             comeBack = true;
         }
@@ -246,8 +299,6 @@ public class UserListTabFragment1 extends Fragment {
     }
 
 
-
-
     private void checkWordsLength() {
         int size = data.size();
 
@@ -255,64 +306,113 @@ public class UserListTabFragment1 extends Fragment {
     }
 
 
-
     private void findRemoved(ArrayList<DataItem> wordList) {
 
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
 
-        if (wordList == null) {
 
-           // Toast.makeText(getActivity(), "Null", Toast.LENGTH_SHORT).show();
-
-        } else {
-
+        if (wordList != null) {
 
             wordList = dbHelper.checkStarredList(wordList);
 
-            recyclerView.setMinimumHeight(recyclerView.getHeight());
 
-            for (int i = 0; i < wordList.size(); i++) {
-                if (wordList.get(i).starred < 1) {
+            if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
 
-                    try {
-                        int count = recyclerView.getChildCount();
-                        int height = 0;
+                removeFromList(wordList, recyclerViewCompact, itemsListCompact, adapterCompact);
+                adapter.notifyDataSetChanged();
+                setWrapContentHeight(itemsList);
 
-                        if (count > 0) {
-                            for (int r = 0; r < count; r++) {
-                                if (recyclerView.getChildAt(r) != null) {
-                                    height = height + recyclerView.getChildAt(r).getHeight();
-                                }
-                            }
-
-                            setHR(height);
-                        }
-                    } finally {
-
-                        vAdapter.remove(i);
-
-                    }
-                }
             }
-        }
 
-        checkWordsLength();
+
+            if (listType.equals(CAT_LIST_VIEW_NORM)) {
+
+                removeFromList(wordList, recyclerView, itemsList, adapter);
+                adapterCompact.notifyDataSetChanged();
+                setWrapContentHeight(itemsListCompact);
+            }
+
+
+            checkWordsLength();
+        }
     }
 
 
-    private void setHR(final int height) {
+    private void removeFromList(ArrayList<DataItem> wordList, RecyclerView recyclerView, View helper, ContentAdapter adapter) {
+
+        helper.setMinimumHeight(recyclerView.getHeight());  /// TODO lisst
+
+        for (int i = 0; i < wordList.size(); i++) {
+            if (wordList.get(i).starred < 1) {
+
+                try {
+                    int count = recyclerView.getChildCount();
+
+                    if (count > 0) {
+                        setHR(recyclerView, helper);
+                    }
+                } finally {
+                    adapter.remove(i);
+                }
+            }
+        }
+    }
+
+    private void setHR(final RecyclerView recycler, final View helper) {
+
+        recycler.setMinimumHeight(recycler.getHeight());
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ResizeHeight resizeHeight = new ResizeHeight(recyclerView, height);
-                resizeHeight.setDuration(400);
-                recyclerView.startAnimation(resizeHeight);
-                recyclerView.setMinimumHeight(recyclerView.getHeight());
+                recyclerView.setMinimumHeight(0);
+                recyclerViewCompact.setMinimumHeight(0);
+            }
+        }, 450);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                int h = recycler.getHeight();
+                ResizeHeight resizeHeight = new ResizeHeight(helper, h);
+                resizeHeight.setDuration(300);
+                helper.startAnimation(resizeHeight);
 
             }
-        }, 600);
+        }, 550);
 
     }
+
+
+    public void updateList() {
+
+        adapter = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_NORM);
+        adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_COMPACT);
+
+
+        setWrapContentHeight(itemsList);
+        setWrapContentHeight(itemsListCompact);
+
+        itemsList.setMinimumHeight(0);
+        itemsListCompact.setMinimumHeight(0);
+
+        recyclerView.setMinimumHeight(0);
+
+        recyclerView.setAdapter(adapter);
+        recyclerViewCompact.setAdapter(adapterCompact);
+
+    }
+
+    private void setWrapContentHeight(View view) {
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        view.setLayoutParams(params);
+
+    }
+
 
 
 

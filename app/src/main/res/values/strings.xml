@@ -92,8 +92,8 @@
 
     <string name="starred_ex_link_title">Тест с избранными</string>
 
-    <string name="voc_ex_link_first_desc">Тест: Событие / Дата</string>
-    <string name="voc_ex_link_second_desc">Тест: Дата / Событие</string>
+    <string name="voc_ex_link_first_desc">Выбор перевода</string>
+    <string name="voc_ex_link_second_desc">Выбор перевода</string>
 
     <string name="section_ex_link_title_1">Общий тест 1</string>
     <string name="section_ex_link_title_2">Общий тест 2</string>

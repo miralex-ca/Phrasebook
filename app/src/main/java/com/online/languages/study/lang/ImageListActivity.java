@@ -375,8 +375,6 @@ public class ImageListActivity extends BaseActivity {
                 }
             }
         }
-
-
     }
 
 

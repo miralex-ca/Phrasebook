@@ -20,65 +20,116 @@
 
 
 
+
         <RelativeLayout
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/listContainer"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            style="?attr/cardViewStyle"
-            app:cardCornerRadius="?attr/cardCornerSpec"
-            >
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="?attr/CardViewBorder"
-                />
-
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:minHeight="@dimen/cat_card_hight"
-                >
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/my_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:nestedScrollingEnabled="false"
-                    android:clipToPadding="false"
-
-                    android:visibility="gone"
-                    android:scrollbars="vertical" />
-
-            </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
-
-            <RelativeLayout
-                android:visibility="gone"
-                android:id="@+id/cardsContainer"
+                android:id="@+id/listContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/my_recycler_view_cards"
+
+                <android.support.v7.widget.CardView
+
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                style="?attr/cardViewStyle"
+                app:cardCornerRadius="?attr/cardCornerSpec"
+                >
+
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:nestedScrollingEnabled="false"
-                    android:clipToPadding="false"
-                    android:visibility="gone"
-                    android:scrollbars="vertical" />
+                    style="?attr/CardViewBorder"
+                    />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    >
+
+                    <RelativeLayout
+                        android:id="@+id/itemListWrap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/my_recycler_view"
+                            android:layout_width="match_parent"
+                            android:animateLayoutChanges="false"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="false"
+                            android:clipToPadding="false"
+                            android:visibility="gone"
+                            android:scrollbars="vertical" />
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_below="@+id/listContainer"
+                android:id="@+id/listContainerCompact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.CardView
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    style="?attr/cardViewStyle"
+                    app:cardCornerRadius="?attr/cardCornerSpec"
+                    >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="?attr/CardViewBorder"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="6dp"
+                        android:paddingRight="6dp"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/itemListWrapCompact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/my_recycler_view_compact"
+                                android:layout_width="match_parent"
+                                android:animateLayoutChanges="false"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                android:clipToPadding="false"
+                                android:visibility="gone"
+                                android:scrollbars="vertical" />
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
 
 
         </RelativeLayout>

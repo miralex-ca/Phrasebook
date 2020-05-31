@@ -39,46 +39,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:gravity="center_vertical"
+        android:minHeight="30dp"
         style="@style/catListItemBox"
+
         >
 
         <TextView
-
+            android:textStyle="bold"
+            android:layout_weight=".50"
+            android:maxLines="2"
             android:focusable="false"
             android:clickable="false"
-
-            android:textSize="14sp"
+            android:minHeight="0dp"
+            android:ellipsize="end"
+            android:textSize="15sp"
             android:id="@+id/itemText"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            style="@style/cat_list_item_title"
+            android:layout_width="0dp"
+
             />
 
 
         <TextView
 
+            android:layout_weight=".50"
+            android:maxLines="2"
             android:focusable="false"
             android:clickable="false"
 
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:id="@+id/itemInfo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:maxLines="2"
+            android:minHeight="0dp"
             android:ellipsize="end"
 
             android:textColor="?attr/colorStarredSecondaryText"
 
             android:layout_marginRight="28dp"
-            style="@style/cat_list_item_info"
+
             />
 
     </LinearLayout>
 
     <ImageView
-
 
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"

@@ -3,6 +3,7 @@ package com.online.languages.study.lang;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -16,13 +17,17 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UserListViewPagerAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment2;
 
 import java.util.ArrayList;
 
-public class UserListActivity extends BaseActivity {
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
+public class UserListActivity extends BaseActivity {
 
 
     ThemeAdapter themeAdapter;
@@ -43,6 +48,8 @@ public class UserListActivity extends BaseActivity {
     public static Boolean showRes;
 
     OpenActivity openActivity;
+
+    private MenuItem changeLayoutBtn;
 
 
     @Override
@@ -90,6 +97,8 @@ public class UserListActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 checkEx();
+
+                checkIconDisplay(tab.getPosition());
             }
 
             @Override
@@ -192,7 +201,9 @@ public class UserListActivity extends BaseActivity {
                 finish();
                 openActivity.pageBackTransition();
                 return true;
-
+            case R.id.list_layout:
+                changeLayoutStatus();
+                return true;
             case R.id.starred_del_results:
                 deleteStarredExResults();
                 return true;
@@ -203,8 +214,68 @@ public class UserListActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_starred, menu);
+
+        changeLayoutBtn = menu.findItem(R.id.list_layout);
+        applyLayoutStatus();
+
         return true;
     }
+
+
+    private void applyLayoutStatus() {
+
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
+        } else {
+            changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
+        }
+    }
+
+    public void changeLayoutStatus() {
+
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+        if (listType.equals(CAT_LIST_VIEW_NORM)) {
+            listType = CAT_LIST_VIEW_COMPACT;
+        } else if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            listType = CAT_LIST_VIEW_NORM;
+        }
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putString(CAT_LIST_VIEW, listType);
+        editor.apply();
+
+        UserListTabFragment1 fragment = (UserListTabFragment1) adapter.getFragmentOne();
+        if (fragment != null)   fragment.updateLayoutStatus();
+
+        applyLayoutStatus();
+    }
+
+    private void  checkIconDisplay(int position) {
+
+        if (position == 1) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeLayoutBtn.setVisible(false);
+                }
+            }, 400);
+
+        } else {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeLayoutBtn.setVisible(true);
+                }
+            }, 400);
+
+        }
+
+    }
+
 
 
     private  void deleteStarredExResults() {
@@ -221,7 +292,6 @@ public class UserListActivity extends BaseActivity {
         }
 
     }
-
 
 
 

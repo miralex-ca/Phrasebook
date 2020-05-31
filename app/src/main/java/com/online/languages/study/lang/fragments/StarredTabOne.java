@@ -106,7 +106,7 @@ public class StarredTabOne extends Fragment {
 
         starredCount.setText(count);
 
-        int displayLimit = 4;
+        int displayLimit = 6;
 
         if (words.size() < displayLimit) displayLimit = words.size();
 
@@ -134,7 +134,7 @@ public class StarredTabOne extends Fragment {
             View item;
 
             if (getTabType () == 2 ) item = inflater.inflate(R.layout.starred_gallery_item, previewList, false);
-            else item = inflater.inflate(R.layout.starred_list_item, null);
+            else item = inflater.inflate(R.layout.starred_list_item_col2, null);
 
             TextView txt = item.findViewById(R.id.itemText);
             TextView  desc = item.findViewById(R.id.itemInfo);

@@ -19,8 +19,68 @@
         android:transitionName="profile"
         />
 
+
+    <RelativeLayout
+        android:paddingLeft="2dp"
+        android:id="@+id/status_wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:id="@+id/itemStatus"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="1dp"
+                android:layout_marginLeft="1dp"
+                android:id="@+id/statusUnknown"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_tick_circle_empty"
+                android:layout_width="17dp"
+                android:layout_height="17dp" />
+
+            <ImageView
+                android:id="@+id/statusKnown"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_tick_circle"
+                android:layout_width="18dp"
+                android:layout_height="18dp" />
+
+            <ImageView
+                android:id="@+id/statusStudied"
+                app:srcCompat="@drawable/ic_tick_circle_green"
+                android:layout_width="18dp"
+                android:layout_height="18dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="@drawable/text_round_red_bg_er"
+            android:layout_below="@+id/itemStatus"
+            android:layout_marginTop="9dp"
+            android:layout_marginLeft="4dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="3dp"
+            android:paddingBottom="2dp"
+            android:id="@+id/errorsCount"
+            android:text="1"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorErrors"
+            android:minWidth="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
     <LinearLayout
-        android:paddingLeft="20dp"
+        android:paddingLeft="32dp"
 
         android:layout_marginRight="@dimen/cat_item_txt_right"
 
@@ -46,8 +106,6 @@
             android:textColor="?attr/colorSecondaryText"
             style="@style/cat_list_item_info"
             />
-
-        <include layout="@layout/category_list_item_status_include" />
 
     </LinearLayout>
 

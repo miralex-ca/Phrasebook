@@ -16,6 +16,13 @@
     <color name="colorBannerBg_ww">#1B1B29</color>
     <color name="colorBtmNavBg_ww">#1B1B29</color>
 
+
+    <color name="colorSpeakerIcon_ww">#B70AE4FD</color>
+    <color name="colorDetailDivider_ww">#3253678B</color>
+    <color name="colorDetailTopBg_ww">#2b2b38</color>
+    <color name="colorDetailBtmBg_ww">#252531</color>
+
+
     <color name="colorAccent_ww">#00E5FF</color>
     <color name="colorBtmNav_inactive_ww">#B700E5FF</color>
 
@@ -203,6 +210,15 @@
         <item name="DetailAppBarOverlayTheme">@style/DetailAppBarOverlayTheme.Dark.WW</item>
         <item name="DetailToolbar">@style/DetailToolBar.Dark.WW</item>
         <item name="colorStarDetail">@color/colorToolbarText_ww</item>
+
+
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_ww</item>
+        <item name="colorDetailTopBg">@color/colorDetailTopBg_ww</item>
+        <item name="colorDetailBtmBg">@color/colorDetailBtmBg_ww</item>
+        <item name="colorDetailDivider">@color/colorDetailDivider_ww</item>
+
+        <item name="colorDetailTopTxt">@color/colorMainText_ww</item>
+        <item name="colorDetailBtmTxt">@color/colorSecondaryText_ww</item>
 
     </style>
 

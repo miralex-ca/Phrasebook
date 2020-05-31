@@ -153,7 +153,7 @@ public class CustomDataListAdapter extends RecyclerView.Adapter<CustomDataListAd
 
     private void manageErrorsView(View statusBox, int errorsCount) {
         TextView errorsTxt = statusBox.findViewById(R.id.errorsCount);
-        errorsTxt.setText(String.format(errorsLabel, errorsCount));
+        errorsTxt.setText(String.valueOf(errorsCount));
 
         if (errorsCount > 0) {
             errorsTxt.setVisibility(View.VISIBLE);

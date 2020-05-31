@@ -166,6 +166,7 @@
                     <TextView
                             android:padding="10dp"
                             android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
                             android:text="@string/recently_starred"
                             android:textSize="14sp"
                             android:layout_width="match_parent"

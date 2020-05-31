@@ -74,8 +74,6 @@ public class CatActivity extends BaseActivity {
 
     DataManager dataManager;
     private MenuItem changeLayoutBtn;
-    private View changeLayoutBtnView;
-
 
 
     @Override
@@ -138,7 +136,8 @@ public class CatActivity extends BaseActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
 
-               /// checkIconDisplay(tab.getPosition());
+                checkIconDisplay(tab.getPosition());
+
             }
 
             @Override
@@ -176,30 +175,24 @@ public class CatActivity extends BaseActivity {
 
     private void  checkIconDisplay(int position) {
 
-        View button =  changeLayoutBtnView;
 
         if (position == 1) {
-           if (button != null) {
-               button.animate().alpha(0f).setDuration(800).setListener(new AnimatorListenerAdapter() {
-                   @Override
-                   public void onAnimationEnd(Animator animation) {
-                       changeLayoutBtn.setVisible(false);
-                   }
-               });
-           } else {
-               changeLayoutBtn.setVisible(false);
-           }
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeLayoutBtn.setVisible(false);
+                }
+            }, 400);
 
         } else {
 
-            if (button != null) {
-                button.setAlpha(0f);
-                changeLayoutBtn.setVisible(true);
-                button.animate().alpha(1.0f).setDuration(800);
-
-            } else {
-                changeLayoutBtn.setVisible(true);
-            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    changeLayoutBtn.setVisible(true);
+                }
+            }, 400);
 
         }
 
@@ -307,8 +300,6 @@ public class CatActivity extends BaseActivity {
         if (easy_mode) modeMenuItem.setVisible(true);
 
         changeLayoutBtn = menu.findItem(R.id.list_layout);
-        changeLayoutBtnView = findViewById(R.id.list_layout);
-
         applyLayoutStatus();
 
         return true;

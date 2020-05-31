@@ -270,7 +270,8 @@ public class StarredFragment extends Fragment {
 
         for (DataItem dataItem: dataItems) {
 
-            View item = inflater.inflate(R.layout.starred_list_item, null);
+            View item = inflater.inflate(R.layout.starred_list_item_col2, null);
+
             TextView txt = item.findViewById(R.id.itemText);
             TextView  desc = item.findViewById(R.id.itemInfo);
             txt.setText( dataItem.item);

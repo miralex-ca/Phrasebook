@@ -32,43 +32,89 @@
             android:id="@+id/status_wrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <TextView
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="4dp"
+
+            <RelativeLayout
                 android:id="@+id/itemStatus"
-                android:text="●"
-                tools:visibility="visible"
-                android:textColor="#D5999999"
-                android:textSize="16sp"
+                android:layout_marginTop="19dp"
+                android:layout_marginLeft="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/statusUnknown"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_tick_circle_empty"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+
+                <ImageView
+                    android:id="@+id/statusKnown"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_tick_circle"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp" />
+
+                <ImageView
+                    android:id="@+id/statusStudied"
+                    app:srcCompat="@drawable/ic_tick_circle_green"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:gravity="center"
+                android:background="@drawable/text_round_red_bg_er"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="2dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:id="@+id/errorsCount"
+                android:text="1"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorErrors"
+                android:minWidth="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-        </RelativeLayout>
+            <ImageView
+                android:layout_marginTop="19dp"
+                android:visibility="gone"
+                android:layout_marginLeft="2dp"
+                android:id="@+id/errorIcon"
+                app:srcCompat="@drawable/ic_tick_circle_error"
+                android:layout_width="14dp"
+                android:layout_height="14dp" />
 
+        </RelativeLayout>
 
         <LinearLayout
 
-            android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
-            android:layout_marginRight="@dimen/cat_item_txt_right"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="20dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1"
-
             style="@style/catListItemBox"
             >
 
             <TextView
-                android:layout_weight=".52"
+                android:layout_weight=".53"
                 android:id="@+id/itemText"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
+                android:layout_marginRight="3dp"
                 android:layout_marginBottom="0dp"
                 style="@style/cat_list_item_title"
                 />
 
             <TextView
-                android:layout_weight=".48"
+                android:layout_weight=".47"
                 android:id="@+id/itemInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -82,7 +128,7 @@
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/cat_item_star_right"
+            android:layout_marginRight="2dp"
             app:srcCompat="@drawable/ic_star_borded"
             android:id="@+id/voclistStar"
             android:visibility="invisible"

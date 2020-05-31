@@ -8,6 +8,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
@@ -44,35 +45,28 @@ public class CatTabFragment1 extends Fragment {
 
 
     ArrayList<DataItem> data = new ArrayList<>();
-    ContentAdapter adapter;
     DataManager dataManager;
-
     SharedPreferences appSettings;
 
-    RecyclerView recyclerView;
-    RecyclerView recyclerCards;
-
+    ContentAdapter adapter, adapterCompact;
+    RecyclerView recyclerView, recyclerViewCompact;
+    View listWrapper, listWrapperCompact;
 
     int showStatus;
     String theme;
 
-    String listType;
-    private MenuItem changeLayoutBtn;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_cat_1, container, false);
 
-        //setHasOptionsMenu(true);
-
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
         showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         dataManager = new DataManager(getActivity());
-
-        listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
 
 
         String forceStatus = "no";
@@ -83,40 +77,47 @@ public class CatTabFragment1 extends Fragment {
         if (forceStatus.equals("always")) showStatus = 2;
 
 
-        //DataItem d = data.get(0);
-        // String s  = "ID: " + d.id + "; item: " + d.item + " ; desc: "+ d.info;
-        // Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+        listWrapper = rootView.findViewById(R.id.listContainer);
+        listWrapperCompact = rootView.findViewById(R.id.listContainerCompact);
 
         recyclerView = rootView.findViewById(R.id.my_recycler_view);
-
-
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        RecyclerView.LayoutManager cardsLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerViewCompact = rootView.findViewById(R.id.my_recycler_view_compact);
+        RecyclerView.LayoutManager mLayoutManagerCompact = new LinearLayoutManager(getActivity());
+        recyclerViewCompact.setLayoutManager(mLayoutManagerCompact);
 
-
-        recyclerCards = rootView.findViewById(R.id.my_recycler_view_cards);
-        recyclerCards.setLayoutManager(cardsLayoutManager);
-
-        //recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
-
-        updateList();
+        updateLayoutStatus();
 
         openView(recyclerView);
+        openView(recyclerViewCompact); // TODO improve
 
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
-
-
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
-        ViewCompat.setNestedScrollingEnabled(recyclerCards, false);
+
+        ((SimpleItemAnimator) recyclerViewCompact.getItemAnimator()).setSupportsChangeAnimations(false);
+        ViewCompat.setNestedScrollingEnabled(recyclerViewCompact, false);
+
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 View animObj = view.findViewById(R.id.animObj);
                 onItemClick(animObj, position);
+            }
+            @Override
+            public void onLongClick(View view, int position) {
+                changeStarred(position);
+            }
+        }));
 
+
+        recyclerViewCompact.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerViewCompact, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                View animObj = view.findViewById(R.id.animObj);
+                onItemClick(animObj, position);
             }
             @Override
             public void onLongClick(View view, int position) {
@@ -127,27 +128,30 @@ public class CatTabFragment1 extends Fragment {
         return rootView;
     }
 
-
     public void updateLayoutStatus() {
+
+      String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.VISIBLE);
+        } else {
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapper.setVisibility(View.VISIBLE);
+        }
+
         updateList();
-    }
-
-
-    private int getDrawableIcon(int iconAttr) {
-        TypedValue typedValue = new TypedValue();
-        getActivity().getTheme().resolveAttribute(iconAttr, typedValue, true);
-        int drawableRes = typedValue.resourceId;
-        return drawableRes;
     }
 
 
     private void updateList() {
 
         getDataList();
-        adapter = new ContentAdapter(getActivity(), data, showStatus, theme);
+        adapter = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_NORM);
         recyclerView.setAdapter(adapter);
-        recyclerCards.setAdapter(adapter);
 
+        adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_COMPACT);
+        recyclerViewCompact.setAdapter(adapterCompact);
     }
 
     public void updateSort() {
@@ -165,22 +169,14 @@ public class CatTabFragment1 extends Fragment {
 
     }
 
+
     public void getDataList() {
-
         String id = CatActivity.categoryID;
-
-        String sort = appSettings.getString("sort_pers", getString(R.string.set_sort_pers_default));
-
         data = dataManager.getCatDBList(id);
-
-        if (sort.equals("chrono") && CatActivity.catSpec.contains("pers")) data = dataManager.chronoOrder(data);
-
         data = insertDivider(data);
-
     }
 
     public void changeStarred(int position) {   /// check just one item
-
 
         String id = data.get(position).id;
         boolean starred = dataManager.checkStarStatusById(id );
@@ -226,7 +222,6 @@ public class CatTabFragment1 extends Fragment {
     }
 
 
-
     private void openView(final View view) {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -246,15 +241,7 @@ public class CatTabFragment1 extends Fragment {
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-
     public void checkDataList() {   /// check all items
-
-        // Toast.makeText(getActivity(), "Update list", Toast.LENGTH_SHORT).show();
 
         data = dataManager.checkDataItemsData(data);
 
@@ -262,6 +249,7 @@ public class CatTabFragment1 extends Fragment {
             @Override
             public void run() {
                 adapter.notifyDataSetChanged();
+                adapterCompact.notifyDataSetChanged();
             }
         }, 80);
     }
@@ -274,6 +262,7 @@ public class CatTabFragment1 extends Fragment {
             @Override
             public void run() {
                 adapter.notifyItemChanged(result);
+                adapterCompact.notifyItemChanged(result);
             }
         }, 200);
     }

@@ -2,7 +2,6 @@ package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,15 +26,15 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private int showStatus;
     private String theme;
     private String layoutType;
-    ColorProgress colorProgress;
+    private ColorProgress colorProgress;
+    private boolean autoDivider;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt, translate, status;
+        TextView txt, translate;
         View helperView;
 
-        View starIcon, statusView, divider;;
-
+        View starIcon, statusView, divider;
 
         MyViewHolder(View view) {
             super(view);
@@ -46,20 +45,38 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             starIcon = itemView.findViewById(R.id.voclistStar);
             statusView = itemView.findViewById(R.id.status_wrap);
             divider = itemView.findViewById(R.id.catItemDivider);
-            status = itemView.findViewById(R.id.itemStatus);
+
         }
     }
 
 
-    public ContentAdapter(Context _context, ArrayList<DataItem> _dataList, int _show_status, String _theme) {
+    public ContentAdapter(Context _context, ArrayList<DataItem> _dataList,
+                          int _show_status, String _theme, boolean divider, String _layoutType) {
+
+
         dataList = _dataList;
         context = _context;
         showStatus = _show_status;
         theme = _theme;
         colorProgress = new ColorProgress(context);
-
+        autoDivider = divider;
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(_context);
-        layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+        if (_layoutType.equals("auto")) {
+            layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        } else {
+            layoutType = _layoutType;
+        }
+
+    }
+
+
+    public ContentAdapter(Context _context, ArrayList<DataItem> _dataList, int _show_status, String _theme) {
+        this(_context, _dataList, _show_status, _theme, false, "auto");
+    }
+
+    public ContentAdapter(Context _context, ArrayList<DataItem> _dataList, int _show_status, String _theme, boolean divider) {
+        this(_context, _dataList, _show_status, _theme, divider, "auto");
     }
 
     @Override
@@ -73,9 +90,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_divider, parent, false);
 
         }else {
-
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_norm, parent, false);
         }
+
 
         return new MyViewHolder(itemView);
     }
@@ -85,6 +102,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         int type = 1;
 
         if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) type = 2;
+
         if (dataList.get(position).type.equals("divider")) type = 3;
         return type;
     }
@@ -98,7 +116,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         holder.translate.setText( dataItem.info);
         holder.helperView.setTag(dataItem.id);
 
-        if (position == 0) holder.divider.setVisibility(View.INVISIBLE);
+        if (position == 0 || autoDivider) holder.divider.setVisibility(View.INVISIBLE);
 
         if (dataItem.starred == 1) {
             holder.starIcon.setVisibility(View.VISIBLE);
@@ -116,7 +134,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
 
         statusInfoDisplay(showStatus, holder.statusView, dataItem);
-        statusTxt(holder.status, dataItem);
+
 
     }
 
@@ -142,7 +160,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
             case (1): /// auto
 
-                if (dataItem.rate > 0) {
+                if (dataItem.rate > 0 || dataItem.errors > 0) {
                     openStatus(true, statusView, dataItem);
                 } else {
                     openStatus(false, statusView, dataItem);
@@ -157,7 +175,6 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             case (0):  /// never
                 openStatus(false, statusView, dataItem);
                 break;
-
         }
 
     }
@@ -166,8 +183,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
         if (show) {
             statusView.setVisibility(View.VISIBLE);
-           // manageStatusView(statusView, dataItem.rate);
-           // manageErrorsView(statusView, dataItem.errors);
+            manageStatusView(statusView, dataItem.rate);
+            manageErrorsView(statusView, dataItem.errors);
 
         } else {
             statusView.setVisibility(View.GONE);
@@ -193,14 +210,35 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     }
 
     private void manageErrorsView(View statusBox, int errorsCount) {
+
         TextView errorsTxt = statusBox.findViewById(R.id.errorsCount);
-        errorsTxt.setText(String.format(context.getString(R.string.errors_label), errorsCount));
+        errorsTxt.setText( String.valueOf(errorsCount));
+        View statuses = statusBox.findViewById(R.id.itemStatus);
+
 
         if (errorsCount > 0) {
             errorsTxt.setVisibility(View.VISIBLE);
+            statuses.setVisibility(View.GONE);
+
+
+            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+                errorsTxt.setVisibility(View.GONE);
+                errorIcon.setVisibility(View.VISIBLE);
+            }
+
         } else {
             errorsTxt.setVisibility(View.GONE);
+            statuses.setVisibility(View.VISIBLE);
+
+
+            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+                errorIcon.setVisibility(View.GONE);
+            }
         }
+
+
     }
 
 

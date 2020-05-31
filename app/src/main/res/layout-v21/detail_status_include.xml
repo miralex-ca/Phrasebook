@@ -45,7 +45,7 @@
         android:visibility="gone"
         style="@style/cat_item_status.detail"
         android:ellipsize="middle"
-        android:textStyle="bold"
+
         android:singleLine="true"
         android:id="@+id/errorsCount"
         android:textColor="?attr/colorErrors"

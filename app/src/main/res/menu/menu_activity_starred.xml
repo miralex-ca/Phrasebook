@@ -9,4 +9,11 @@
         android:title="@string/starred_lessons_remove"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/list_layout"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_view_list_big"
+        android:title="@string/menu_layout"
+        app:showAsAction="always" />
+
 </menu>

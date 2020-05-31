@@ -3,12 +3,15 @@
 
 
     <string name="title_main_txt">@string/title_home_txt</string>
-
+    <string name="tabs_starred_display" translatable="false">item_prior</string>
 
     <style name="BottomNav.Inactive">
     </style>
 
     <style name="BottomNav.Active">
     </style>
+
+    <string name="voc_ex_link_first_desc">Франко-русский перевод.</string>
+    <string name="voc_ex_link_second_desc">Русско-французский перевод.</string>
 
 </resources>

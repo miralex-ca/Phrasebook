@@ -390,7 +390,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
             manageErrorsView(statusView, dataItem.errors);
 
         } else {
-            statusView.setVisibility(View.GONE);
+            statusView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -415,7 +415,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void manageErrorsView(View statusBox, int errorsCount) {
         TextView errorsTxt = statusBox.findViewById(R.id.errorsCount);
-        errorsTxt.setText(String.format("✘ %d", errorsCount));
+        errorsTxt.setText(String.format("Ошибки: %d", errorsCount));
 
         if (errorsCount > 0) {
             errorsTxt.setVisibility(View.VISIBLE);

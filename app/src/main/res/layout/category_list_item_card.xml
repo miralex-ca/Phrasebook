@@ -32,8 +32,6 @@
             android:layout_height="wrap_content">
 
 
-
-
             <View
                 android:visibility="gone"
                 android:id="@+id/catItemDivider"
@@ -51,55 +49,69 @@
 
             <RelativeLayout
                 android:paddingTop="12dp"
-                android:paddingBottom="16dp"
+                android:paddingBottom="8dp"
                 android:paddingLeft="8dp"
                 android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
+
                 <LinearLayout
-
-                    android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
-
-                    android:layout_marginRight="@dimen/cat_item_txt_right"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-
-                    style="@style/catListItemBox"
                     >
 
-                    <TextView
-                        android:fontFamily="sans-serif-light"
-                        android:id="@+id/itemText"
-                        android:layout_height="wrap_content"
+                        <LinearLayout
+                            android:layout_marginLeft="28dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:minHeight="40dp"
+                                android:fontFamily="sans-serif-light"
+                                android:id="@+id/itemText"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+
+                                android:textSize="25sp"
+                                android:layout_marginBottom="16dp"
+                                style="@style/cat_list_item_title.norm"
+
+                                />
+
+                            <TextView
+                                android:minHeight="40dp"
+                                android:id="@+id/itemInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:textColor="?attr/colorCatSecondaryText"
+                                style="@style/cat_list_item_info"
+
+                                android:textSize="19sp"
+                                />
+
+                        </LinearLayout>
+
+                    <RelativeLayout
+                        android:minHeight="20dp"
                         android:layout_width="wrap_content"
-
-                        style="@style/cat_list_item_title.norm"
-
-                        android:textSize="23sp"
-                        android:layout_marginBottom="8dp"
-
-                        />
-
-                    <TextView
-                        android:id="@+id/itemInfo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="?attr/colorCatSecondaryText"
-                        style="@style/cat_list_item_info"
-
-                        android:textSize="20sp"
-                        />
+                        android:layout_height="wrap_content">
+                            <include layout="@layout/category_list_item_status_include" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
 
+
+
                 <ImageView
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
+
                     android:layout_marginRight="@dimen/cat_item_star_right"
 
                     app:srcCompat="@drawable/ic_star_borded"
@@ -110,14 +122,18 @@
                     android:layout_height="20dp" />
 
 
-                <RelativeLayout
-                    android:visibility="gone"
+                <ImageView
                     android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <include layout="@layout/category_list_item_status_include" />
+                    android:layout_marginRight="@dimen/cat_item_star_right"
 
-                </RelativeLayout>
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/ic_speaker"
+                    android:id="@+id/speakerIcon"
+                    android:alpha="0.8"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp" />
+
+
 
             </RelativeLayout>
 

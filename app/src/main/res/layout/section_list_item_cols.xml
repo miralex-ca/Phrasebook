@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cat_item_wrap"
+
     android:focusable="true"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
@@ -23,13 +25,8 @@
         />
 
     <RelativeLayout
-        android:paddingTop="14dp"
-        android:paddingBottom="16dp"
-        android:paddingLeft="2dp"
-        android:paddingRight="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <RelativeLayout
             android:id="@+id/status_wrap"
@@ -38,8 +35,8 @@
 
             <RelativeLayout
                 android:id="@+id/itemStatus"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="0dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginLeft="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -47,71 +44,82 @@
                     android:id="@+id/statusUnknown"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_tick_circle_empty"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
 
                 <ImageView
                     android:id="@+id/statusKnown"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/ic_tick_circle"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    app:srcCompat="@drawable/ic_tick_circle_blue"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp" />
 
                 <ImageView
                     android:id="@+id/statusStudied"
                     app:srcCompat="@drawable/ic_tick_circle_green"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp" />
+                    android:layout_width="14dp"
+                    android:layout_height="14dp" />
 
             </RelativeLayout>
-
 
             <TextView
                 android:gravity="center"
                 android:background="@drawable/text_round_red_bg_er"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="20dp"
                 android:paddingLeft="2dp"
                 android:paddingRight="3dp"
                 android:paddingBottom="2dp"
                 android:id="@+id/errorsCount"
                 android:text="1"
-                android:textSize="9sp"
+                android:textSize="8sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorErrors"
                 android:minWidth="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-
+            <ImageView
+                android:layout_marginTop="19dp"
+                android:visibility="gone"
+                android:layout_marginLeft="2dp"
+                android:id="@+id/errorIcon"
+                app:srcCompat="@drawable/ic_tick_circle_error"
+                android:layout_width="14dp"
+                android:layout_height="14dp" />
 
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
-            android:layout_marginRight="@dimen/cat_item_txt_right"
+
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="20dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:weightSum="1"
             style="@style/catListItemBox"
             >
 
             <TextView
+                android:layout_weight=".53"
                 android:id="@+id/itemText"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="7dp"
-                style="@style/cat_list_item_title.norm"
-                android:textSize="21sp"
+                android:layout_width="0dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="0dp"
+                style="@style/cat_list_item_title"
                 />
 
             <TextView
+                android:layout_weight=".47"
                 android:id="@+id/itemInfo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorCatSecondaryText"
                 style="@style/cat_list_item_info"
-                android:textSize="18sp"
                 />
 
         </LinearLayout>
@@ -120,12 +128,12 @@
         <ImageView
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/cat_item_star_right"
+            android:layout_marginRight="2dp"
             app:srcCompat="@drawable/ic_star_borded"
             android:id="@+id/voclistStar"
             android:visibility="invisible"
-            android:layout_width="22dp"
-            android:layout_height="22dp" />
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
 
     </RelativeLayout>
 

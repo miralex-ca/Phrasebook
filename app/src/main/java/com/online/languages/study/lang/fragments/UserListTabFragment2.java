@@ -114,8 +114,8 @@ public class UserListTabFragment2 extends Fragment {
 
 
         exLinkDesc.add(getString(R.string.voc_ex_link_card_desc));
-        exLinkDesc.add(getString(R.string.ex_link_desc_star_1));
-        exLinkDesc.add(getString(R.string.ex_link_desc_star_2));
+        exLinkDesc.add(getString(R.string.voc_ex_link_first_desc));
+        exLinkDesc.add(getString(R.string.voc_ex_link_second_desc));
 
        // exLinkTitles.add(getString(R.string.voc_ex_link_third_title));
        // exLinkDesc.add(getString(R.string.voc_ex_link_third_desc));

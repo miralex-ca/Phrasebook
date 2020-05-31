@@ -13,6 +13,7 @@ import com.online.languages.study.lang.data.DataItem;
 import java.util.ArrayList;
 
 import static com.online.languages.study.lang.App.getAppContext;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 
 
 public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.MyViewHolder> {
@@ -20,6 +21,7 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
     private ArrayList<DataItem> dataList;
     private int showStatus;
     private String errorsLabel;
+    String layoutType;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -43,6 +45,7 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         dataList = _dataList;
         showStatus = _show_status;
         errorsLabel = getAppContext().getString(R.string.section_errors_label);
+        layoutType  = CAT_LIST_VIEW_COMPACT;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
         if (viewType == 2 ) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_list_title, parent, false);
         } else {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_list_item, parent, false);
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_list_item_cols, parent, false);
         }
 
         return new MyViewHolder(itemView);
@@ -151,13 +154,34 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
 
     private void manageErrorsView(View statusBox, int errorsCount) {
         TextView errorsTxt = statusBox.findViewById(R.id.errorsCount);
-        errorsTxt.setText(String.format(errorsLabel, errorsCount));
+        errorsTxt.setText(String.valueOf(errorsCount));
+
+        View statuses = statusBox.findViewById(R.id.itemStatus);
+
 
         if (errorsCount > 0) {
             errorsTxt.setVisibility(View.VISIBLE);
+            statuses.setVisibility(View.GONE);
+
+
+            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+                errorsTxt.setVisibility(View.GONE);
+                errorIcon.setVisibility(View.VISIBLE);
+            }
+
         } else {
             errorsTxt.setVisibility(View.GONE);
+            statuses.setVisibility(View.VISIBLE);
+
+
+            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+                errorIcon.setVisibility(View.GONE);
+            }
         }
+
+
     }
 
 
