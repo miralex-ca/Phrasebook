@@ -235,11 +235,11 @@
     <color name="colorNavBgEnd_red_n">#740B0B</color>
     <color name="colorDialogBg_lite">#fff</color>
 
-
     <color name="colorStarDetail">#ffea00</color>
     <color name="colorDetailToolbarText">#5E5E5E</color>
     <color name="colorDetailToolbarSecText">#5E5E5E</color>
     <color name="colorSpeakerIcon">#444444</color>
+    <color name="colorSpeakerIcon_fl">#555555</color>
     <color name="colorDialogBackground">#F3F3F3</color>
 
     <color name="colorDetailTopTxt">#333333</color>

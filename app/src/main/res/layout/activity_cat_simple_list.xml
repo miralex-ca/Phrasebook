@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context="com.online.languages.study.lang.CatActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/AppBarOverlayTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+
+            android:background="?attr/colorPrimary"
+            app:theme="?attr/ToolBarStyle"
+
+            app:contentInsetStartWithNavigation="0dp"
+
+            app:popupTheme="?attr/PopupOverlayTheme" />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <android.support.v4.widget.NestedScrollView
+
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:scrollbars="vertical"
+        android:background="?attr/colorBaseBg">
+
+        <LinearLayout
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+
+            style="@style/CardWrapper.Width"
+            >
+
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/listContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <android.support.v7.widget.CardView
+
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        style="?attr/cardViewStyle"
+                        app:cardCornerRadius="?attr/cardCornerSpec"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="?attr/CardViewBorder"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="6dp"
+                            android:paddingRight="6dp"
+                            >
+
+                            <RelativeLayout
+                                android:id="@+id/itemListWrap"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/my_recycler_view"
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="false"
+                                    android:layout_height="wrap_content"
+                                    android:nestedScrollingEnabled="false"
+                                    android:clipToPadding="false"
+                                    android:visibility="gone"
+                                    android:scrollbars="vertical" />
+
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_below="@+id/listContainer"
+                    android:id="@+id/listContainerCompact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        style="?attr/cardViewStyle"
+                        app:cardCornerRadius="?attr/cardCornerSpec"
+                        >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="?attr/CardViewBorder"
+                            />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            >
+
+                            <RelativeLayout
+                                android:id="@+id/itemListWrapCompact"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <android.support.v7.widget.RecyclerView
+                                    android:id="@+id/my_recycler_view_compact"
+                                    android:layout_width="match_parent"
+                                    android:animateLayoutChanges="false"
+                                    android:layout_height="wrap_content"
+                                    android:nestedScrollingEnabled="false"
+                                    android:clipToPadding="false"
+                                    android:visibility="gone"
+                                    android:scrollbars="vertical" />
+
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="110dp" />
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/adContainer"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:focusable="true"
+                android:clickable="true"
+                android:id="@+id/adCard"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                app:cardElevation="20dp"
+                app:cardCornerRadius="0dp"
+                app:cardBackgroundColor="?attr/colorBannerBg"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:background="#1B858585"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+
+                <RelativeLayout
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:minHeight="50dp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <ImageView
+                        android:src="@drawable/banner_1"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:layout_centerInParent="true"
+                        android:id="@+id/placeholder"
+                        android:layout_width="300dp"
+                        android:layout_height="50dp" />
+
+                    <com.google.android.gms.ads.AdView
+                        android:id="@+id/adView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+
+                        android:visibility="gone"
+                        ads:adSize="BANNER"
+                        ads:adUnitId="@string/banner_ad_unit_id">
+
+
+                    </com.google.android.gms.ads.AdView>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

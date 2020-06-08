@@ -2,10 +2,15 @@ package com.online.languages.study.lang;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.CardsPagerAdapter;
 import com.online.languages.study.lang.adapters.DataModeDialog;
@@ -23,8 +29,11 @@ import com.online.languages.study.lang.data.DataManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
-public class CardsActivity extends BaseActivity {
+import static com.online.languages.study.lang.App.getAppContext;
+
+public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitListener  {
 
     ThemeAdapter themeAdapter;
     SharedPreferences appSettings;
@@ -45,6 +54,7 @@ public class CardsActivity extends BaseActivity {
     private MenuItem fRemixStatusCheckbox;
     private MenuItem fReverseDataCheck;
     private MenuItem exShowBtnRadio;
+    private MenuItem autoplayMenuItem;
 
     public static Boolean fShowTranslate;
     public static Boolean fMixWords;
@@ -63,6 +73,12 @@ public class CardsActivity extends BaseActivity {
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
+
+    private static TextToSpeech myTTS;
+    private int MY_DATA_CHECK_CODE = 0;
+    boolean speaking;
+    static int initSpeak = 0;
+    String autoPlay;
 
 
     @Override
@@ -84,6 +100,9 @@ public class CardsActivity extends BaseActivity {
 
         setTitle(R.string.title_card_txt);
 
+        initSpeak = 0;
+        autoPlay = appSettings.getString("set_flash_autoplay", getString(R.string.set_flash_autoplay_default));
+
         topicTag = getIntent().getStringExtra(Constants.EXTRA_CAT_TAG);
 
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
@@ -91,8 +110,15 @@ public class CardsActivity extends BaseActivity {
 
         if (topicTag.equals(Constants.STARRED_CAT_TAG)) easy_mode = false;
 
-
         topicTag = "dates";
+
+        speaking = appSettings.getBoolean("set_speak", true);
+
+        if (speaking) {
+            Intent checkTTSIntent = new Intent();
+            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        }
 
 
         openActivity = new OpenActivity(this);
@@ -142,6 +168,7 @@ public class CardsActivity extends BaseActivity {
         });
 
 
+
     }
 
 
@@ -177,6 +204,9 @@ public class CardsActivity extends BaseActivity {
             case R.id.exBtnSettings:
                 changeExBtnStatus();
                 return true;
+            case R.id.fAutoplay:
+                autoPlayDialog();
+                return true;
             case R.id.easy_mode:
                 dataModeDialog.openDialog();
                 return true;
@@ -195,6 +225,10 @@ public class CardsActivity extends BaseActivity {
         fShowTranslateCheck =  menu.findItem(R.id.fShowTranslate);
         fRemixStatusCheckbox = menu.findItem(R.id.fRemixWords);
         fReverseDataCheck = menu.findItem(R.id.fReflectInfo);
+
+        autoplayMenuItem = menu.findItem(R.id.fAutoplay);
+        if (speaking) autoplayMenuItem.setVisible(true);
+        else autoplayMenuItem.setVisible(false);
 
         applyShowTranslateStatus(fShowTranslate, false);
         applyFRemixStatus(fMixWords);
@@ -230,7 +264,7 @@ public class CardsActivity extends BaseActivity {
 
     private void applyShowTranslateStatus(Boolean translateStatus, Boolean animation) {
         fShowTranslateCheck.setChecked(translateStatus);
-        updateFlashcard(animation);
+        updateFlashcard(animation, false);
     }
 
     private void changeReverseDataStatus() {
@@ -239,11 +273,12 @@ public class CardsActivity extends BaseActivity {
         editor.putBoolean("f_reverse", fRevertData);
         editor.apply();
         applyReverseDataStatus(fRevertData, true);
+
     }
 
     private void applyReverseDataStatus(Boolean reverseDataStatus, Boolean animation) {
         fReverseDataCheck.setChecked(reverseDataStatus);
-        updateFlashcard(animation);
+        updateFlashcard(animation, true);
     }
 
     private void changeFRemixStatus() {
@@ -315,8 +350,9 @@ public class CardsActivity extends BaseActivity {
 
     }
 
-    private void updateFlashcard(Boolean animation) {
+    private void updateFlashcard(Boolean animation, final boolean checkSound) {
         final int current = viewPager.getCurrentItem();
+
 
         if (animation) {
 
@@ -327,7 +363,10 @@ public class CardsActivity extends BaseActivity {
                         @Override
                         public void onAnimationEnd(Animator animation) {
 
+                            if (checkSound && current == 0) autoPlay(current);
+
                             viewPager.setAdapter(viewPagerAdapter);
+
                             viewPager.setCurrentItem(current, false);
 
                             viewPager.animate()
@@ -345,6 +384,9 @@ public class CardsActivity extends BaseActivity {
 
 
     private void showPage(int position) {
+
+        //Toast.makeText(this, "Show Page", Toast.LENGTH_SHORT).show();
+
         String counterTxt = String.format(getResources().getString(R.string.f_counter_txt), position+1, wordListLength);
         fCounterInfoBox.setText(counterTxt);
 
@@ -356,11 +398,54 @@ public class CardsActivity extends BaseActivity {
         } else if (position >=  (wordListLength-1) ){
             nextButton.setEnabled(false);
         }
+
+
+         autoPlay(position);
+
+    }
+
+    private void autoPlay(final int position) {
+
+        if (autoPlay.equals("none")) return;
+        if (!speaking) return;
+
+        if (fRevertData) {
+            if (!fShowTranslate)  return;
+        }
+
+        final String text = wordList.get(position).item;
+
+        if (position == 0 ) {
+
+            if (initSpeak == 0 ) {
+
+                new android.os.Handler().postDelayed(new Runnable() {
+                    public void run() {
+
+                       if (initSpeak == 0) speakWords(text);
+
+                    }
+                }, 600);
+
+            } else {
+
+                speakWords(text);
+
+            }
+
+        } else {
+
+            speakWords(text);
+        }
+
+
     }
 
     public void vPrev(View view) {
         viewPager.setCurrentItem(viewPager.getCurrentItem()-1, true );
     }
+
+
 
     public void vNext(View view) {
         viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true );
@@ -382,6 +467,110 @@ public class CardsActivity extends BaseActivity {
 
     }
 
+
+    private void autoPlayDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        autoPlay = appSettings.getString("set_flash_autoplay", getString(R.string.set_flash_autoplay_default));
+
+        int checkedItem = 0;
+
+        if (autoPlay.equals("none"))  checkedItem = 1;
+
+        builder.setTitle(getString(R.string.set_flash_autoplay_dialog_title))
+
+                .setSingleChoiceItems(R.array.set_flash_autoplay_list, checkedItem, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        saveAutoplay(which);
+                        dialog.dismiss();
+                    }
+                })
+
+                .setCancelable(true)
+
+                .setNegativeButton(R.string.dialog_close_txt,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
+    private void saveAutoplay(int num) {
+
+        String orderValue = getResources().getStringArray(R.array.set_flash_autoplay_values)[0];
+        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_flash_autoplay_values)[1];
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putString("set_flash_autoplay", orderValue);
+        editor.apply();
+
+        autoPlay = orderValue;
+
+
+    }
+
+
+
+    //// TTS integration
+
+
+    static public void speak(String text) {
+        speakWords(text);
+    }
+
+
+    private static void speakWords(String speech) {
+        //speak straight away
+
+       if (myTTS != null) {
+           myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+           initSpeak++;
+       }
+
+    }
+
+    //act on result of TTS data check
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == MY_DATA_CHECK_CODE) {
+
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                //the user has the necessary data - create the TTS
+                myTTS = new TextToSpeech(this, this);
+            }
+            else {
+                //no data - install it now
+                Intent installTTSIntent = new Intent();
+                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installTTSIntent);
+            }
+        }
+    }
+
+    //setup TTS
+    public void onInit(int initStatus) {
+
+        //check for successful instantiation
+
+        //Locale locale = new Locale("en", "US");
+
+        if (initStatus == TextToSpeech.SUCCESS) {
+            if(myTTS.isLanguageAvailable(Locale.ENGLISH)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(Locale.ENGLISH);
+            //  speakBtn.setVisibility(View.VISIBLE);
+        }
+        else if (initStatus == TextToSpeech.ERROR) {
+            //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
+        }
+    }
 
 
 }

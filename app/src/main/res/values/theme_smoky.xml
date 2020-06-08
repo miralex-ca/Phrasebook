@@ -121,6 +121,8 @@
 
         <item name="colorNavHeaderTxt">@color/colorNavHeaderTxt_smoky</item>
 
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_smoky</item>
+
     </style>
 
 

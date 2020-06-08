@@ -2,6 +2,8 @@ package com.online.languages.study.lang.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 import com.online.languages.study.lang.CardsActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.data.DataManager;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -23,18 +28,23 @@ public class CardsPagerAdapter extends PagerAdapter {
     Context context;
     ArrayList<DataItem> wordList = new ArrayList<>();
 
-    Boolean showTranslate;
-    Boolean mixWords;
-    Boolean showTranscript;
-    Boolean reverseData;
-
+    private Boolean showTranslate;
+    private Boolean mixWords;
+    private Boolean showTranscript;
+    private Boolean reverseData;
+    private DataManager dataManager;
 
     int count = 4;
+    private boolean speaking;
 
 
     public CardsPagerAdapter(Context _context, ArrayList<DataItem> words) {
-        this.context = _context;
+        context = _context;
         wordList = words;
+        dataManager = new DataManager(context);
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        speaking = appSettings.getBoolean("set_speak", true);
 
     }
 
@@ -75,7 +85,10 @@ public class CardsPagerAdapter extends PagerAdapter {
 
 
         TextView text = itemView.findViewById(R.id.fCardText);
+        TextView transcript = itemView.findViewById(R.id.fCardTrascript);
+
         RelativeLayout answerBox = itemView.findViewById(R.id.fAnswerBox);
+
         final TextView showMsg = itemView.findViewById(R.id.showMsg);
         final TextView answer = itemView.findViewById(R.id.fCardAnswer);
 
@@ -85,7 +98,7 @@ public class CardsPagerAdapter extends PagerAdapter {
         RelativeLayout answerBoxMirror = itemView.findViewById(R.id.fAnswerBoxMirror);
         final TextView showMsgMirror = itemView.findViewById(R.id.showMsgMirror);
         final TextView answerMirror = itemView.findViewById(R.id.fCardAnswerMirror);
-
+        TextView transcriptMirror = itemView.findViewById(R.id.fCardTrascriptMirror);
 
         if (showTranslate){
             showMsg.setVisibility(View.GONE);
@@ -96,12 +109,63 @@ public class CardsPagerAdapter extends PagerAdapter {
 
         }
 
+        String transcriptTxt = dataManager.getTranscriptFromData(wordData) ;
+
+        if (transcriptTxt.equals("")) {
+
+            transcript.setVisibility(View.GONE);
+            transcriptMirror.setVisibility(View.GONE);
+
+        } else {
+            transcript.setVisibility(View.VISIBLE);
+            transcriptMirror.setVisibility(View.VISIBLE);
+
+            transcriptTxt = String.format("[ %s ]", transcriptTxt) ;
+        }
+
         text.setText( wordData.item );
         text.setTextSize(itemTextSize(wordData.item));
+        transcript.setText(transcriptTxt);
+
 
         int infoSize = textSize( wordData.info );
         answer.setText(wordData.info);
         answer.setTextSize( infoSize );
+
+
+        View speakBtn = itemView.findViewById(R.id.speakBtn);
+
+        View speakBtnMirror = itemView.findViewById(R.id.speakBtnMirror);
+
+        if (speaking) {
+            speakBtn.setVisibility(View.VISIBLE);
+            speakBtnMirror.setVisibility(View.VISIBLE);
+        } else {
+            speakBtn.setVisibility(View.GONE);
+            speakBtnMirror.setVisibility(View.GONE);
+        }
+
+        final String speakTxt = wordData.item;
+
+
+        speakBtn.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             CardsActivity.speak(speakTxt);
+                                         }
+                                     }
+
+        );
+
+        speakBtnMirror.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            CardsActivity.speak(speakTxt);
+                                        }
+                                    }
+
+        );
+
 
 
 
@@ -119,15 +183,23 @@ public class CardsPagerAdapter extends PagerAdapter {
         textMirror.setText( wordData.item );
         textMirror.setTextSize(itemMirrorTextSize( wordData.item ));
 
+
+
         int infoSizeMirror = textSizeMirror( wordData.info );
         answerMirror.setText(wordData.info);
         answerMirror.setTextSize( infoSizeMirror );
+
+
+
+        transcriptMirror.setText(transcriptTxt);
 
         answerBoxMirror.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
                  showMsgMirror.setVisibility(View.GONE);
                   fTextMirrorBox.setVisibility(View.VISIBLE);
+
+                  CardsActivity.speak(speakTxt);
               }
         }
 

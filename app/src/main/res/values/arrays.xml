@@ -73,11 +73,22 @@
     <string name="set_sort_pers_default">chrono</string>
 
 
+    <string-array name="set_flash_autoplay_list">
+        <item>@string/set_flash_autoplay_1</item>
+        <item>@string/set_flash_autoplay_2</item>
+    </string-array>
+
+    <string-array name="set_flash_autoplay_values">
+        <item>@string/set_flash_autoplay_default</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="set_flash_autoplay_default">auto</string>
+
     <string-array name="data_control_tests_list_values">
         <item>dates</item>
         <item>all</item>
     </string-array>
-
 
     <string-array name="set_show_status_list">
         <item>@string/set_show_status_one</item>
@@ -129,6 +140,22 @@
     <string-array name="set_data_mode_values">
         <item>1</item>
         <item>2</item>
+    </string-array>
+
+
+    <string-array name="set_transcript_values">
+        <item>ipa</item>
+        <item>ru</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="set_transcript_default">ipa</string>
+
+
+    <string-array name="set_transcript_list">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_2</item>
+        <item>@string/set_transcript_0</item>
     </string-array>
 
 

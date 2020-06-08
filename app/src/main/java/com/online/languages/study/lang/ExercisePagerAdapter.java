@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.util.TypedValue;
@@ -18,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
@@ -29,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 
 class ExercisePagerAdapter extends PagerAdapter {
@@ -179,6 +183,13 @@ class ExercisePagerAdapter extends PagerAdapter {
             insertImage(exerciseTask, itemView, position);
         }
 
+
+
+
+        if (type == EX_AUDIO_TYPE ) {
+             insertAudio(exerciseTask, itemView, position);
+        }
+
         setExOptions(radioGroup, exerciseTask);
 
 
@@ -209,7 +220,16 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         itemView.setTag("myview" + position);
         container.addView(itemView);
+
+
+
+
+
         return itemView;
+
+
+
+
     }
 
 
@@ -471,6 +491,35 @@ class ExercisePagerAdapter extends PagerAdapter {
                 .fit()
                 .centerCrop()
                 .into(image);
+
+    }
+
+
+    private void insertAudio (ExerciseTask task, View itemView, int position) {
+
+
+        View textWrapper = itemView.findViewById(R.id.exTextWrapper);
+
+        View audioWrapper = itemView.findViewById(R.id.exAudioWrapper);
+
+        textWrapper.setVisibility(View.GONE);
+
+        audioWrapper.setVisibility(View.VISIBLE);
+
+
+        final String speakTxt = exerciseTask.quest;
+
+
+        audioWrapper.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            ExerciseActivity.speak(speakTxt);
+                                        }
+                                    }
+
+        );
+
+
 
     }
 

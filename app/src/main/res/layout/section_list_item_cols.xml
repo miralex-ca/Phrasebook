@@ -11,6 +11,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <View
+        android:visibility="invisible"
         android:id="@+id/catItemDivider"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
             <RelativeLayout
                 android:id="@+id/itemStatus"
                 android:layout_marginTop="19dp"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -82,7 +83,7 @@
             <ImageView
                 android:layout_marginTop="19dp"
                 android:visibility="gone"
-                android:layout_marginLeft="2dp"
+                android:layout_marginLeft="1dp"
                 android:id="@+id/errorIcon"
                 app:srcCompat="@drawable/ic_tick_circle_error"
                 android:layout_width="14dp"
@@ -92,34 +93,40 @@
 
         <LinearLayout
 
-            android:layout_marginLeft="22dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:paddingRight="2dp"
             android:paddingLeft="2dp"
+            android:paddingTop="13dp"
+            android:paddingBottom="15dp"
+            android:gravity="top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1"
-            style="@style/catListItemBox"
             >
 
             <TextView
+                android:gravity="top|left"
                 android:layout_weight=".53"
                 android:id="@+id/itemText"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="0dp"
-                style="@style/cat_list_item_title"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 />
 
             <TextView
+                android:gravity="top|left"
                 android:layout_weight=".47"
                 android:id="@+id/itemInfo"
                 android:layout_width="0dp"
+                android:textSize="16sp"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorCatSecondaryText"
-                style="@style/cat_list_item_info"
+
                 />
 
         </LinearLayout>

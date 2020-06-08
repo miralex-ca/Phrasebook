@@ -157,7 +157,7 @@ public class SectionStatsActivity extends BaseActivity {
                 .centerCrop()
                 .into(placePicutre);
 
-        if (themeTitle.equals("westworld")) placePicutre.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
+       // if (themeTitle.equals("westworld")) placePicutre.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
 
     }
 

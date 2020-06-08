@@ -3,15 +3,18 @@ package com.online.languages.study.lang;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.TypedValue;
@@ -40,10 +43,12 @@ import com.online.languages.study.lang.data.ExerciseTask;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 
-public class ExerciseActivity extends BaseActivity {
+public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnInitListener {
 
     ThemeAdapter themeAdapter;
     SharedPreferences appSettings;
@@ -132,6 +137,13 @@ public class ExerciseActivity extends BaseActivity {
     OpenActivity openActivity;
 
 
+    private static TextToSpeech myTTS;
+    private int MY_DATA_CHECK_CODE = 0;
+    boolean speaking = false;
+    static int initSpeak = 0;
+    String autoPlay;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,6 +180,9 @@ public class ExerciseActivity extends BaseActivity {
 
 
         topicTag = getIntent().getStringExtra(Constants.EXTRA_CAT_TAG);
+
+        initSpeak = 0;
+        autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default)); // TODO
 
 
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
@@ -298,6 +313,21 @@ public class ExerciseActivity extends BaseActivity {
             @Override
             public void onPageScrollStateChanged(int state) {}
         });
+
+
+
+
+        if (exType == EX_AUDIO_TYPE) {
+            speaking = true;
+        } else {
+            speaking = false;
+        }
+
+        if (speaking) {
+            Intent checkTTSIntent = new Intent();
+            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        }
 
 
     }
@@ -612,6 +642,12 @@ public class ExerciseActivity extends BaseActivity {
         }
 
        // if (resultShow) exGoToResult();
+
+
+
+        if (position <  (wordListLength) ){
+            autoPlay(position);
+        }
     }
 
     public void clickToNext(View view) {
@@ -746,7 +782,9 @@ public class ExerciseActivity extends BaseActivity {
         DBHelper dbHelper = new DBHelper(context);
 
         dbHelper.setTestResult(tag, ex_type, result, forceSave);
+
         dbHelper.updateCatResult(tag, Constants.CAT_TESTS_NUM); // TODO check test count for cat
+
 
 
     }
@@ -792,6 +830,10 @@ public class ExerciseActivity extends BaseActivity {
 
 
         exShowBtnRadio.setChecked(exButtonShow);
+
+        MenuItem autoplayMenuItem = menu.findItem(R.id.fAutoplay);
+        if (speaking) autoplayMenuItem.setVisible(true);
+        else autoplayMenuItem.setVisible(false);
 
         // if (tablet) manageCardHeightAndButtons();
        // else applyExBtnStatus(exButtonShow, false);
@@ -844,7 +886,6 @@ public class ExerciseActivity extends BaseActivity {
             case R.id.restart_from_menu:
 
                 restartFromMenu();
-
                 return true;
             case R.id.exBtnSettings:
                 changeExBtnStatus();
@@ -852,7 +893,9 @@ public class ExerciseActivity extends BaseActivity {
             case R.id.test_save:
                 changeSaveStatsStatus();
                 return true;
-
+            case R.id.fAutoplay:
+                autoPlayDialog();
+                return true;
             case R.id.easy_mode:
                 dataModeDialog.openDialog();
                 return true;
@@ -947,5 +990,148 @@ public class ExerciseActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
 
     }
+
+
+
+
+    //// TTS integration
+
+
+    static public void speak(String text) {
+        speakWords(text);
+    }
+
+
+    private static void speakWords(String speech) {
+        //speak straight away
+
+        if (myTTS != null) {
+            myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+            initSpeak++;
+        }
+
+    }
+
+    //act on result of TTS data check
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == MY_DATA_CHECK_CODE) {
+
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                //the user has the necessary data - create the TTS
+                myTTS = new TextToSpeech(this, this);
+            }
+            else {
+                //no data - install it now
+                Intent installTTSIntent = new Intent();
+                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installTTSIntent);
+            }
+        }
+    }
+
+    //setup TTS
+    public void onInit(int initStatus) {
+
+        //check for successful instantiation
+
+        //Locale locale = new Locale("en", "US");
+
+        if (initStatus == TextToSpeech.SUCCESS) {
+            if(myTTS.isLanguageAvailable(Locale.ENGLISH)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(Locale.ENGLISH);
+            //  speakBtn.setVisibility(View.VISIBLE);
+        }
+        else if (initStatus == TextToSpeech.ERROR) {
+            //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+
+    private void autoPlay(final int position) {
+
+        if (autoPlay.equals("none")) return;
+        if (!speaking) return;
+
+
+        final String text = exerciseController.tasks.get(position).quest;
+
+        if (position == 0 ) {
+
+            if (initSpeak == 0 ) {
+
+                new android.os.Handler().postDelayed(new Runnable() {
+                    public void run() {
+
+                        if (initSpeak == 0) speakWords(text);
+
+                    }
+                }, 500);
+
+            } else {
+
+                speakWords(text);
+
+            }
+
+        } else {
+
+            speakWords(text);
+        }
+
+
+    }
+
+
+    private void autoPlayDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default));
+
+        int checkedItem = 0;
+
+        if (autoPlay.equals("none"))  checkedItem = 1;
+
+        builder.setTitle(getString(R.string.set_flash_autoplay_dialog_title))
+
+                .setSingleChoiceItems(R.array.set_flash_autoplay_list, checkedItem, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        saveAutoplay(which);
+                        dialog.dismiss();
+                    }
+                })
+
+                .setCancelable(true)
+
+                .setNegativeButton(R.string.dialog_close_txt,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
+    private void saveAutoplay(int num) {
+
+        String orderValue = getResources().getStringArray(R.array.set_flash_autoplay_values)[0];
+        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_flash_autoplay_values)[1];
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putString("set_test_autoplay", orderValue);
+        editor.apply();
+
+        autoPlay = orderValue;
+
+
+    }
+
 
 }

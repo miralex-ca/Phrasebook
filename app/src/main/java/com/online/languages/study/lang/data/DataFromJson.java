@@ -392,6 +392,19 @@ public class DataFromJson {
                 dataItem.item_info_1 = dataItem.item;
             }
 
+            if (itemInfo.has("ipa")) {
+                dataItem.trans1 =  itemInfo.getString("ipa");
+            } else {
+                dataItem.trans1 =  "";
+            }
+
+            if (itemInfo.has("tr_ru")) {
+                dataItem.trans2 =  itemInfo.getString("tr_ru");
+            } else {
+                dataItem.trans2 =  "";
+            }
+
+
             if (itemInfo.has("mode")) {
                 dataItem.mode = Integer.parseInt(itemInfo.getString("mode"));
             } else {

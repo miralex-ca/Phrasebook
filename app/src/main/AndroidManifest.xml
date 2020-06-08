@@ -12,9 +12,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_test"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:name="com.online.languages.study.lang.App"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
@@ -39,6 +38,10 @@
             android:name="com.online.languages.study.lang.CatActivity"
             android:label="@string/title_activity_cat"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.online.languages.study.lang.CatSimpleListActivity"
+            android:theme="@style/AppTheme" />
+
         <activity
             android:name="com.online.languages.study.lang.SampleActivity"
             android:label="@string/title_activity_sample"

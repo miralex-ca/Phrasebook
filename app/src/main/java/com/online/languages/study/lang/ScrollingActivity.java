@@ -106,6 +106,8 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         TextView infoT = findViewById(R.id.lbl_text);
 
+        speaking = appSettings.getBoolean("set_speak", true);
+
 
         View appbar = findViewById(R.id.app_bar);
         View coordinator = findViewById(R.id.coordinator);
@@ -129,10 +131,19 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
                 public void run() {
 
                     if ( dataItem.filter.contains(INFO_TAG) && !inStarred ) { }
-                    else  floatingActionButton.show();
+                    else  {
+                            // TODO CHECK STAR
+                    }
                 }
             }, 350);
         }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                    if (speaking) floatingActionButton.show();
+            }
+        }, 350);
 
 
         itemPostion = getIntent().getIntExtra("position", 0);
@@ -145,6 +156,16 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         infoT.setTextSize(getInfoTxtSize());
 
+        TextView trans = findViewById(R.id.itemTxtTrans);
+
+
+        String  transcript = dataManager.getTranscriptFromData(dataItem);
+
+        if (transcript.equals("")) trans.setVisibility(View.GONE);
+        else trans.setVisibility(View.VISIBLE);
+
+        trans.setText(String.format("[ %s ]", transcript));
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,11 +174,10 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
             }
         });
 
-
         //check for TTS data
         //speakBtn = findViewById(R.id.speakBtn);
 
-        speaking = appSettings.getBoolean("set_speak", true);
+
 
         if (speaking) {
             Intent checkTTSIntent = new Intent();
@@ -347,7 +367,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void speakWords(String speech) {
         //speak straight away
-        myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+       if (myTTS != null) myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     //act on result of TTS data check
@@ -357,7 +377,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
-                myTTS = new TextToSpeech(this, this, "com.google.android.tts");
+                myTTS = new TextToSpeech(this, this);
             }
             else {
                 //no data - install it now
@@ -372,9 +392,12 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     public void onInit(int initStatus) {
 
         //check for successful instantiation
+
+        //Locale locale = new Locale("en", "US");
+
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(Locale.FRENCH)==TextToSpeech.LANG_AVAILABLE)
-                myTTS.setLanguage(Locale.FRENCH);
+            if(myTTS.isLanguageAvailable(Locale.ENGLISH)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(Locale.ENGLISH);
           //  speakBtn.setVisibility(View.VISIBLE);
         }
         else if (initStatus == TextToSpeech.ERROR) {
@@ -450,6 +473,8 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         }
 
     }
+
+
 
 
 }

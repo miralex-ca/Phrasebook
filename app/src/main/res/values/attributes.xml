@@ -225,7 +225,7 @@
     <attr name="colorStatusUnknown" format="reference" />
     <attr name="colorStatusKnown" format="reference" />
     <attr name="colorStatusStudied" format="reference" />
-
+    <attr name="colorAudioTestBtn" format="reference" />
 
     <declare-styleable name="TouchImageView">
         <attr name="zoom_enabled" format="boolean" />

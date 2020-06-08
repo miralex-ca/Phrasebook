@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -19,6 +20,50 @@
         android:gravity="center"
         android:id="@+id/exQuest"
         style="@style/exQuestWrapper">
+
+
+        <RelativeLayout
+
+            android:visibility="gone"
+
+            android:id="@+id/exAudioWrapper"
+
+            android:layout_marginTop="35dp"
+            android:focusable="true"
+            android:clickable="true"
+
+            android:minHeight="105dp"
+            android:theme="@style/audioTest"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/img"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_speaker"
+                android:background="?selectableItemBackgroundBorderless"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <android.support.design.widget.FloatingActionButton
+
+
+                android:id="@+id/fab"
+                app:elevation="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                app:fabCustomSize="85dp"
+                android:scaleType="center"
+
+                app:maxImageSize="45dp"
+                app:srcCompat="@drawable/ic_speaker_test" />
+
+
+        </RelativeLayout>
 
         <RelativeLayout
             style="@style/exImageWrapper"

@@ -27,6 +27,7 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
     private String theme;
     int type;
     int count = 5;
+    boolean shortDesc = false;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -74,7 +75,9 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         NavSection section = sections.get(position);
 
         holder.title.setText(section.title);
-        holder.desc.setText(section.desc);
+
+        if (shortDesc) holder.desc.setText(section.desc_short);
+        else holder.desc.setText(section.desc);
 
         Picasso.with( context )
                 .load("file:///android_asset/pics/"+ section.image )
@@ -111,7 +114,6 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
                 item.setLayoutParams(param);
 
 
-
                 ImageView image = item.findViewById(R.id.image);
 
                 Picasso.with( context )
@@ -121,7 +123,7 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
                         .centerCrop()
                         .into(image);
 
-                if (theme.equals("westworld"))  image.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
+             //   if (theme.equals("westworld"))  image.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
 
                 holder.imageWrapper.addView(item);
             }
@@ -131,9 +133,8 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         }
 
 
-
         if (theme.equals("westworld")) {
-            holder.icon.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
+           // holder.icon.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);
         }
 
     }

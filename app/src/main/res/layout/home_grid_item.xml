@@ -10,7 +10,7 @@
       android:layout_margin="3dp"
       android:layout_height="wrap_content"
       app:contentPadding="0dp"
-      app:cardCornerRadius="3dp"
+      app:cardCornerRadius="?attr/cardCornerSpec"
 
       style="@style/CardViewStyle"
       >
@@ -60,7 +60,7 @@
                     style="@style/homeCardTitleStyle"
 
                     tools:text="Title"
-
+                    android:ellipsize="end"
                     android:layout_marginBottom="@dimen/home_card_title_bottom"
                     android:textSize="@dimen/home_card_title_txt_size" />
 
@@ -72,7 +72,7 @@
                     android:gravity="start"
 
                     style="@style/homeCardDescStyle"
-
+                    android:ellipsize="end"
                     android:maxLines="@integer/home_card_desc_maxlines"
                     android:textSize="@dimen/home_card_desc_txt_size"
                     android:layout_width="match_parent"

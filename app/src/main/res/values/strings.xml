@@ -100,8 +100,9 @@
     <string name="section_ex_link_title_3">Общий тест 3</string>
 
 
-    <string name="section_ex_link_desc_3">Тест на личности и термины</string>
+    <string name="section_ex_link_desc_3">Тест аудио</string>
 
+    
 
     <string name="voc_ex_link_third_title">Упражнение 3</string>
     <string name="voc_ex_link_card_desc">Изучение отдельных записей</string>
@@ -552,5 +553,20 @@
     <string name="nav_more">Ещё</string>
     <string name="nav_more_version">Другое</string>
 
+    <string name="set_transcript_1">IPA</string>
+    <string name="set_transcript_2">RU</string>
+    <string name="set_transcript_0">Не отображать</string>
+
+
+    <string name="set_flash_autoplay_title">Воспроизведение</string>
+    <string name="set_flash_autoplay_summary">Текущая: %s</string>
+    <string name="set_flash_autoplay_dialog_title">Звук</string>
+
+    <string name="set_flash_autoplay_1">Проигрывать звук автоматически</string>
+    <string name="set_flash_autoplay_2">Запускать звук только вручную</string>
+
+    <string name="set_speak_title">Включить аудио</string>
+    <string name="set_speak_on">Используется синтезатор речи</string>
+    <string name="set_speak_off">Аудио отключено</string>
 
 </resources>

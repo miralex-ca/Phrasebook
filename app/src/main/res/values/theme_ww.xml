@@ -170,6 +170,7 @@
 
         <item name="colorBtnText">@color/color_text_btn_ww</item>
 
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_ww</item>
 
     </style>
 

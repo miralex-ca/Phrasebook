@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.online.languages.study.lang.adapters.Computer;
 import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
@@ -63,6 +64,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_ITEM_FILTER = "item_filter";
     private static final String KEY_ITEM_MODE = "item_mode";
 
+    private static final String KEY_ITEM_TRANS1 = "item_trans1";
+    private static final String KEY_ITEM_TRANS2 = "item_trans2";
+
 
     //// cats table
     private static final String KEY_CAT_ID = "cat_id";
@@ -101,6 +105,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_ITEM_TITLE + " TEXT,"
             + KEY_ITEM_DESC + " TEXT,"
             + KEY_ITEM_IMAGE + " TEXT,"
+            + KEY_ITEM_TRANS1 + " TEXT,"
+            + KEY_ITEM_TRANS2+ " TEXT,"
             + KEY_ITEM_INFO_1+ " TEXT,"
             + KEY_ITEM_FILTER + " TEXT,"
             + KEY_ITEM_MODE + "  INTEGER DEFAULT 0,"
@@ -167,6 +173,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private int data_mode = 0;
+    private boolean speaking_mode;
 
 
     public DBHelper(Context context) {
@@ -175,6 +182,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         data_mode = Integer.parseInt(appSettings.getString("data_mode", "2"));
+        speaking_mode = appSettings.getBoolean("set_speak", true);
 
     }
 
@@ -238,6 +246,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_ITEM_DIVIDER, item.divider);
                 values.put(KEY_ITEM_FILTER, item.filter);
                 values.put(KEY_ITEM_MODE, item.mode);
+                values.put(KEY_ITEM_TRANS1, item.trans1);
+                values.put(KEY_ITEM_TRANS2, item.trans2);
 
                 db.insert(TABLE_ITEMS_DATA, null, values);
             }
@@ -1018,7 +1028,6 @@ public class DBHelper extends SQLiteOpenHelper {
         section.allDataCount = allDataCount;
         section.errorsCount = errorsCount;
 
-
         return section;
     }
 
@@ -1345,6 +1354,53 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public Map<String, String> getTestsByCatId(ArrayList<String> catIds ) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Map<String, String> testsByCatId = getTestsByCatId(catIds, db );
+
+        db.close();
+
+
+        return testsByCatId;
+
+
+
+    }
+
+
+    public Map<String, String> getTestsByCatId(ArrayList<String> catIds, SQLiteDatabase db ) {
+
+        StringBuilder conditions = new StringBuilder("WHERE ");  /// build request for all required tests
+
+        for (int i = 0; i < catIds.size(); i++) {
+            String condition = KEY_TEST_TAG + " LIKE '" + catIds.get(i) + "%' ";
+            if (i != 0) condition = "OR " + condition;
+            conditions.append(condition);
+        }
+
+        String query = "SELECT * FROM " + TABLE_TESTS_DATA + " " + conditions;
+        Cursor cursor = db.rawQuery(query, null);
+
+        Map<String,String> myMap = new HashMap<>();
+
+        try {
+            while (cursor.moveToNext()) {
+                myMap.put(cursor.getString(cursor.getColumnIndex(KEY_TEST_TAG)),
+                        cursor.getString(cursor.getColumnIndex(KEY_TEST_PROGRESS)));
+
+            }
+        } finally {
+            cursor.close();
+        }
+
+
+
+        return myMap;
+
+    }
+
 
 
 
@@ -1465,7 +1521,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-
     Section checkSectionStatsDB(Section section) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1497,37 +1552,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Section getSectionTestsResults(SQLiteDatabase db, Section section) {
 
-        int testsResults = 0;
-        section.stadiedCatsCount = 0;
 
-        StringBuilder conditions = new StringBuilder("WHERE ");
+        //section.testResults = getSectionCatsTestsResults(db, section);
 
-        for (int i = 0; i < section.checkCatIds.size(); i++) {
-            String condition = KEY_CAT_ID+ " = '" + section.checkCatIds.get(i) + "' ";
-            if (i != 0) condition = "OR " + condition;
-            conditions.append(condition);
-        }
-
-        //// getting section tests results
-
-        String query = "SELECT * FROM " + TABLE_CAT_DATA + " " + conditions;
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        try {
-            while (cursor.moveToNext()) {
-                int result = Integer.valueOf(cursor.getString(cursor.getColumnIndex(KEY_CAT_PROGRESS)));
-                testsResults += result;
-                if (result > 50) section.stadiedCatsCount ++;
-            }
-        } finally {
-            cursor.close();
-        }
-
-        section.testResults = testsResults / section.checkCatIds.size() ;
+        section.testResults = getSectionCatsExResults(db, section);
 
 
-        query = "SELECT * FROM " + TABLE_TESTS_DATA + " WHERE "+KEY_TEST_TAG
+        String  query = "SELECT * FROM " + TABLE_TESTS_DATA + " WHERE "+KEY_TEST_TAG
                 +" LIKE '"+Constants.SECTION_TEST_PREFIX + section.id + "%'";
 
         Cursor tcursor = db.rawQuery(query, null);
@@ -1558,6 +1589,80 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return section;
     }
+
+    private int getSectionCatsTestsResults(SQLiteDatabase db, Section section) {
+
+        int testsResults = 0;
+        section.stadiedCatsCount = 0;
+
+        StringBuilder conditions = new StringBuilder("WHERE ");
+
+        for (int i = 0; i < section.checkCatIds.size(); i++) {
+            String condition = KEY_CAT_ID+ " = '" + section.checkCatIds.get(i) + "' ";
+            if (i != 0) condition = "OR " + condition;
+            conditions.append(condition);
+        }
+
+        //// getting section tests results
+
+        String query = "SELECT * FROM " + TABLE_CAT_DATA + " " + conditions;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try {
+            while (cursor.moveToNext()) {
+                int result = Integer.valueOf(cursor.getString(cursor.getColumnIndex(KEY_CAT_PROGRESS)));
+                testsResults += result;
+                if (result > 50) section.stadiedCatsCount ++;
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return  testsResults / section.checkCatIds.size() ;
+
+    }
+
+
+
+    private int getSectionCatsExResults(SQLiteDatabase db, Section section) {
+
+
+        ///  get section average result
+        // - get section cats average result list
+        /// - SUM cats results list
+        //// - divide SUM by cats size
+
+        Computer computer = new Computer();
+        int testsResults = 0;
+        ArrayList<String> checkCatIds = section.checkCatIds;
+        boolean speaking = speaking_mode;
+
+        // getting section all tests results from db
+        Map<String, ArrayList<String>> exResults = computer.getCatExResults(checkCatIds, getTestsByCatId(checkCatIds, db));
+
+        ///
+        Map<String, String> catsProgressMap = computer.getCatProgress(checkCatIds, speaking, exResults);
+
+        for (String catId: checkCatIds) {
+
+            int catProgress = 0;
+
+            if (catsProgressMap.containsKey(catId) ) {
+                catProgress = Integer.parseInt(catsProgressMap.get(catId));
+            }
+
+            testsResults += catProgress;
+
+        }
+
+
+
+        return  testsResults / checkCatIds.size() ;
+
+    }
+
+
 
 
 
@@ -1849,6 +1954,9 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TITLE));
         dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DESC));
         dataItem.image = cursor.getString(cursor.getColumnIndex(KEY_ITEM_IMAGE));
+        dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TRANS1));
+        dataItem.trans2= cursor.getString(cursor.getColumnIndex(KEY_ITEM_TRANS2));
+
         dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_INFO_1));
         dataItem.divider = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DIVIDER));
         dataItem.filter = cursor.getString(cursor.getColumnIndex(KEY_ITEM_FILTER));
@@ -1864,6 +1972,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.starred = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_STARRED));
         dataItem.rate = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_SCORE));
         dataItem.errors = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_ERRORS));
+        dataItem.mode = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_MODE));
 
         dataItem.db_filter = cursor.getString(cursor.getColumnIndex(KEY_ITEM_INFO));
 

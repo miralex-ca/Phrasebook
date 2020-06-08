@@ -10,6 +10,9 @@ public class DataItem implements Parcelable {
     public String id = "";
     public String image = "";
 
+    public String trans1 = "";
+    public String trans2 = "";
+
     public String divider = "";
     public int mode = 0;
 
@@ -65,6 +68,9 @@ public class DataItem implements Parcelable {
         this.info = parcel.readString();
         this.id = parcel.readString();
         this.image = parcel.readString();
+        this.trans1 = parcel.readString();
+        this.trans2 = parcel.readString();
+
         this.item_info_1 = parcel.readString();
         this.filter = parcel.readString();
         this.db_filter = parcel.readString();
@@ -85,6 +91,9 @@ public class DataItem implements Parcelable {
         dest.writeString(info);
         dest.writeString(id);
         dest.writeString(image);
+        dest.writeString(trans1);
+        dest.writeString(trans2);
+
         dest.writeString(item_info_1);
         dest.writeString(filter);
         dest.writeString(db_filter);

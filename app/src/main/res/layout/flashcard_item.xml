@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -25,6 +26,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/fTextBox"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/fCardTrascript"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+
+
+            <RelativeLayout
+
+                android:id="@+id/speakBtn"
+
+                android:layout_marginTop="8dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?selectableItemBackgroundBorderless"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    app:srcCompat="@drawable/ic_speaker"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 
@@ -150,6 +182,40 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/flash_txt_size_mirror"
                         style="@style/fTextBox"/>
+
+                    <TextView
+
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="sans-serif-light"
+                        android:id="@+id/fCardTrascriptMirror"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <RelativeLayout
+
+                        android:id="@+id/speakBtnMirror"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+
+                        android:focusable="true"
+                        android:clickable="true"
+
+                        android:background="?selectableItemBackgroundBorderless"
+
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            app:srcCompat="@drawable/ic_speaker"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp" />
+
+
+                    </RelativeLayout>
 
                 </LinearLayout>
 

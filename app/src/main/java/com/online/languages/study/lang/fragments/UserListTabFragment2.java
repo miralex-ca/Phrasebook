@@ -2,8 +2,10 @@ package com.online.languages.study.lang.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +36,8 @@ public class UserListTabFragment2 extends Fragment {
     ArrayList<String> exLinkDesc;
     int[] exResults = {0,0,0,0};
 
+    boolean speaking;
+
 
 
     @Override
@@ -46,6 +50,9 @@ public class UserListTabFragment2 extends Fragment {
 
         View divide = rootView.findViewById(R.id.carDivider);
         divide.setVisibility(View.GONE);
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        speaking = appSettings.getBoolean("set_speak", true);
 
         fillData();
 
@@ -104,6 +111,7 @@ public class UserListTabFragment2 extends Fragment {
 
             exResults[1] = dbHelper.getTestResult(Constants.STARRED_CAT_TAG+"_1");
             exResults[2] = dbHelper.getTestResult(Constants.STARRED_CAT_TAG+"_2");
+            exResults[3] = dbHelper.getTestResult(Constants.STARRED_CAT_TAG+"_3");
 
         }
 
@@ -117,8 +125,10 @@ public class UserListTabFragment2 extends Fragment {
         exLinkDesc.add(getString(R.string.voc_ex_link_first_desc));
         exLinkDesc.add(getString(R.string.voc_ex_link_second_desc));
 
-       // exLinkTitles.add(getString(R.string.voc_ex_link_third_title));
-       // exLinkDesc.add(getString(R.string.voc_ex_link_third_desc));
+        if (speaking) {
+            exLinkTitles.add("Тест 3");
+            exLinkDesc.add("Тест аудио");
+        }
 
     }
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import com.online.languages.study.lang.CatActivity;
+import com.online.languages.study.lang.CatSimpleListActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.GalleryActivity;
 import com.online.languages.study.lang.ImageListActivity;
@@ -128,9 +129,14 @@ public class OpenActivity  {
     }
 
     public void openCatList(NavStructure navStructure, String sectionID, String catID, String title) {
-        Intent i = createIntent(context, InfoListActivity.class);
-        i.putExtra("title", title);
-        callSubActivity(i, navStructure, sectionID, catID);
+
+        //Intent i = createIntent(context, CatSimpleListActivity.class);
+        //i.putExtra("title", title);
+        //callSubActivity(i, navStructure, sectionID, catID);
+
+        Intent i = createIntent(context, CatSimpleListActivity.class);
+        callActivity( catIntent(i, catID, title, "pers") );
+
     }
 
     public void openTextPage(NavStructure navStructure, String sectionID, String catID, String title) {

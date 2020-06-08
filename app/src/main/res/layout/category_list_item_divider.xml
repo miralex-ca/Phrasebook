@@ -11,6 +11,14 @@
     >
 
     <View
+        android:id="@+id/catItemDivider"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2C8D8D8D"
+        />
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:id="@+id/animObj"

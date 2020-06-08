@@ -143,7 +143,6 @@ public class CatTabFragment1 extends Fragment {
         updateList();
     }
 
-
     private void updateList() {
 
         getDataList();
@@ -197,7 +196,6 @@ public class CatTabFragment1 extends Fragment {
         assert v != null;
         v.vibrate(vibLen);
     }
-
 
     private ArrayList<DataItem> insertDivider(ArrayList<DataItem> data) {
 

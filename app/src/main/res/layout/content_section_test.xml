@@ -252,8 +252,8 @@
                         android:focusable="true"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="testAll"
-                        android:id="@+id/testAll"
+                        android:onClick="testAudio"
+                        android:id="@+id/testAudio"
                         android:gravity="center_vertical" >
 
 

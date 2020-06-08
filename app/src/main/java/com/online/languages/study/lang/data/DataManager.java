@@ -8,10 +8,14 @@ import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.DBHelper;
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.adapters.Computer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.online.languages.study.lang.Constants.FILTER_CHRONO;
@@ -28,11 +32,13 @@ public class DataManager {
     public DBHelper dbHelper;
     public ArrayList<NavCategory> navCategories;
     public SharedPreferences appSettings;
+    private Computer computer;
 
 
     public DataManager(Context _context) {
         context = _context;
         dbHelper = new DBHelper(context);
+        computer = new Computer();
         appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         getParams();
     }
@@ -62,6 +68,31 @@ public class DataManager {
 
     public ArrayList<DataItem> getSectionDBList(NavSection navSection) {
         return dbHelper.getAllDataItems(navSection.uniqueCategories);
+    }
+
+
+    public String getTranscriptType() {
+
+       String type = "ipa";
+
+        if (context.getResources().getBoolean(R.bool.changeTranscript)) {
+            type = appSettings.getString("set_transript", "ipa");
+        }
+
+        return type;
+    }
+
+    public String getTranscriptFromData(DataItem dataItem) {
+
+        String type = getTranscriptType();
+
+        String text = dataItem.trans1;
+
+        if (type.equals("ru")) text = dataItem.trans2;
+
+        if (type.equals("none")) text = "";
+
+        return text;
     }
 
 
@@ -114,6 +145,23 @@ public class DataManager {
         return dataItems;
     }
 
+
+    public ArrayList<DataItem> getDataForSectionReview(ArrayList<DataItem> dataItems) {
+
+        ArrayList<DataItem> checkedData = new ArrayList<>();
+
+
+        for (DataItem dataItem: dataItems) {
+
+            if (dataItem.mode == -1  || dataItem.type.equals("group_title")) {
+
+                checkedData.add(dataItem);
+            }
+
+        }
+
+        return checkedData;
+    }
 
     public ArrayList<DataItem> getCatCustomList(ArrayList<NavCategory> categories, int type) {
 
@@ -185,22 +233,35 @@ public class DataManager {
         return resultDataItems;
     }
 
+
+
+
+
     public Map<String, String> getCatProgress(ArrayList<String> catIds) {
 
-        return dbHelper.checkCatProgressDB(catIds);
-    }
+        boolean speaking = appSettings.getBoolean("set_speak", true);
 
-    public ArrayList<DataItem> chronoOrder(ArrayList<DataItem> dataItems) {
+        String mode = "sound";
+        if (!speaking) mode = "nosound";
 
-        for (DataItem dataItem: dataItems) {
-            String orderTxt = getFilterValue(dataItem, FILTER_CHRONO);
-            dataItem.order = Integer.parseInt(orderTxt);
+        Map<String, String> catMapWithProgress = new HashMap<>();
+
+        Map<String, ArrayList<String>> catMapWithTests = getExResults(catIds); /// got all tests of the sections
+
+        for (String catId: catIds) {
+
+            ArrayList<String> results = catMapWithTests.get(catId);
+
+            assert results != null;
+            int  progress = calculateProgressByList(results, mode);
+
+            catMapWithProgress.put(catId, String.valueOf(progress));
         }
 
-        Collections.sort(dataItems, new OrderComparator());
-
-        return dataItems;
+        return catMapWithProgress;
     }
+
+
 
     private String getFilterValue(DataItem dataItem, String filterTag) {
 
@@ -290,5 +351,29 @@ public class DataManager {
 
         Toast.makeText(context, "H: " + dpHeight + ": W"+ dpWidth, Toast.LENGTH_SHORT).show();
     }
+
+
+    public Map<String, ArrayList<String>> getExResults(ArrayList<String> catIdsList) {
+        Map<String, String> testsMap =  dbHelper.getTestsByCatId(catIdsList);
+        return getCatExResults(catIdsList, testsMap);
+    }
+
+    private Map<String, ArrayList<String>> getCatExResults(ArrayList<String> catIdsList, Map<String, String> testsMap) {
+        return computer.getCatExResults(catIdsList, testsMap);
+    }
+
+    public int calculateProgressByList(ArrayList<String> results, boolean sound) {
+        String mode = "sound";
+        if (!sound) mode = "nosound";
+        return calculateProgressByList(results, mode);
+    }
+
+
+    public int calculateProgressByList(ArrayList<String> results, String mode) {
+        return computer.calculateProgressByList(results, mode);
+    }
+
+
+
 
 }

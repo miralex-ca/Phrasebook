@@ -17,6 +17,8 @@
 
 
     <RelativeLayout
+        android:alpha="0"
+        android:visibility="gone"
         android:layout_centerVertical="true"
         android:id="@+id/image_wrapper"
         android:layout_width="wrap_content"
@@ -24,6 +26,7 @@
 
 
         <ImageView
+            android:visibility="gone"
             android:layout_marginRight="16dp"
             android:id="@+id/image"
             android:layout_width="40dp"
@@ -57,10 +60,11 @@
     <TextView
 
         android:layout_toRightOf="@+id/image_wrapper"
+        android:layout_marginLeft="28dp"
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:fontFamily="sans-serif-light"
         android:textStyle="bold"
         android:maxLines="1"

@@ -19,6 +19,12 @@
             app:showAsAction="never" />
     </group>
 
+    <item
+        android:id="@+id/fAutoplay"
+        android:orderInCategory="100"
+        android:visible="false"
+        android:title="@string/set_flash_autoplay_title"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/restart_from_menu"

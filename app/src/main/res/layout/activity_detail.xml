@@ -42,18 +42,45 @@
                 android:minHeight="190dp"
                 android:layout_height="wrap_content">
 
-                <TextView
+
+                <LinearLayout
                     android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:textIsSelectable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/colorDetailTopTxt"
-                    android:textSize="25sp"
-                    android:fontFamily="sans-serif-light"
-                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="vertical">
 
-                    android:id="@+id/itemTxt" />
+                    <TextView
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:theme="?attr/DetailTextTheme"
+                        android:gravity="center"
+                        android:textIsSelectable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorDetailTopTxt"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"
+                        android:id="@+id/itemTxt" />
+
+                    <TextView
+                        android:theme="?attr/DetailTextTheme"
+                        android:gravity="center"
+                        android:textIsSelectable="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="?attr/colorDetailTopTxt"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif-light"
+                        android:id="@+id/itemTxtTrans" />
+                </LinearLayout>
+
+
+
+
 
             </RelativeLayout>
 

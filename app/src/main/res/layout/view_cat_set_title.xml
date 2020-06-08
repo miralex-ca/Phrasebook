@@ -24,6 +24,14 @@
         android:paddingLeft="18dp"
         >
 
+        <ImageView
+            android:visibility="gone"
+            android:layout_centerVertical="true"
+            android:id="@+id/itemImage"
+            android:layout_marginLeft="8dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
         <TextView
             android:id="@+id/sectionTitle"
             android:layout_width="wrap_content"

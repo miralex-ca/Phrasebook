@@ -38,10 +38,18 @@
     </group>
 
     <item
+        android:id="@+id/fAutoplay"
+        android:orderInCategory="100"
+        android:title="@string/set_flash_autoplay_title"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/fRestart"
         android:orderInCategory="100"
         android:title="@string/f_menu_restart"
         app:showAsAction="never" />
+
+
 
     <item
         android:id="@+id/easy_mode"

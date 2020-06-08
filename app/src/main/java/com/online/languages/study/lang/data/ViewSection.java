@@ -93,7 +93,8 @@ public class ViewSection {
     public void getProgress() {
 
         categories = getCatProgress(navSection, categories);
-       if (topCategories.size() > 0) topCategories = getCatProgress(navSection, topCategories);
+
+       //if (topCategories.size() > 0) topCategories = getCatProgress(navSection, topCategories);
     }
 
 
@@ -110,6 +111,7 @@ public class ViewSection {
     private ArrayList<ViewCategory> getViewCatsResults(ArrayList<ViewCategory> cats, Map<String, String> map) {
 
         for (ViewCategory viewCategory: cats) {
+
             for (Map.Entry<String, String> entry : map.entrySet()) {
                 String id = entry.getKey();
                 String result = entry.getValue();
@@ -118,6 +120,7 @@ public class ViewSection {
                     viewCategory.progress = Integer.valueOf(result);
                 }
             }
+
         }
 
         return cats;

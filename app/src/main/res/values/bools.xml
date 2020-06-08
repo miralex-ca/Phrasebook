@@ -12,4 +12,7 @@
     <bool name="hide_rate">true</bool>
     <bool name="wide">false</bool>
 
+    <bool name="changeTranscript">true</bool>
+
+
 </resources>

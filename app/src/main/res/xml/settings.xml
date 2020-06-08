@@ -49,6 +49,25 @@
             android:dialogTitle="@string/set_show_status_dialog_title" />
 
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_speak"
+            android:title="@string/set_speak_title"
+            android:summaryOff = "@string/set_speak_off"
+            android:summaryOn = "@string/set_speak_on"
+            android:defaultValue="true" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="set_transript"
+            android:title="Транскрипция"
+            android:summary="Выбрать тип"
+            android:entries="@array/set_transcript_list"
+            android:entryValues="@array/set_transcript_values"
+            android:defaultValue="@string/set_transcript_default"
+            android:dialogTitle="Выбрать тип" />
+
+
         <Preference
             app:iconSpaceReserved="false"
             android:key="version"
@@ -153,6 +172,17 @@
             android:entryValues="@array/set_detail_txt_values"
             android:defaultValue="small"
             android:dialogTitle="@string/set_detail_txt_dialog_title" />
+
+
+        <Preference
+            app:iconSpaceReserved="false"
+            android:key="version"
+            android:title="Настройки синтеза речи"
+            android:summary="Системные настройки">
+
+            <intent android:action="com.android.settings.TTS_SETTINGS" />
+
+        </Preference>
 
 
     </PreferenceCategory>

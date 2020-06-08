@@ -9,8 +9,7 @@
 
     <dimen name="_ex_card_top_wide">40dp</dimen>
 
-
-    <dimen name="_home_card_image_width">110dp</dimen>
+    <dimen name="_home_card_image_width">100dp</dimen>
     <dimen name="_home_card_image_height">85dp</dimen> <!-- change for 4 items-->
     <dimen name="_home_card_title_bottom">10dp</dimen> <!-- change for 4 items-->
     <dimen name="_home_card_title_txt_size">20sp</dimen>
@@ -50,10 +49,11 @@
     <dimen name="_cat_item_info_txt_size">15sp</dimen>
 
     <dimen name="_flash_card_height">410dp</dimen>
-    <dimen name="_flash_text_box_height">160dp</dimen>
-    <dimen name="_flash_translate_box_height">180dp</dimen>
 
-    <dimen name="_flash_translate_box_mirror_height">160dp</dimen>
+    <dimen name="_flash_text_box_height">200dp</dimen>
+    <dimen name="_flash_translate_box_height">160dp</dimen>
+
+    <dimen name="_flash_translate_box_mirror_height">170dp</dimen>
     <dimen name="_flash_text_box_mirror_height">160dp</dimen>
 
     <dimen name="_flash_show_msg_txt_size">20sp</dimen>

@@ -97,7 +97,7 @@
         <item name="colorStarButtonIcon">@color/colorStarButtonIcon</item>
         <item name="starButtonIconInactive">@drawable/ic_star_dialog_inactive</item>
         <item name="colorStarButtonIconInactive">@color/colorStarButtonIcon</item>
-        <item name="colorSpeakerIcon">@color/colorSpeakerIcon</item>
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_fl</item>
 
         <item name="colorExIconBg">@color/ex_icon</item>
         <item name="colorExResult">@color/ex_link_result</item>
@@ -206,7 +206,9 @@
         <item name="CardViewBorder">@style/CardViewBorder</item>
         <item name="DetailTextTheme">@style/DetailTextTheme</item>
 
+        <item name="colorAudioTestBtn">?attr/colorCardWidgetBg</item>
 
+        <!-- item name="android:listDivider">?attr/colorPrimary</item -->
 
     </style>
 
@@ -583,7 +585,6 @@
 
         <item name="colorStarDetail">@color/colorStarDetail</item>
         <item name="colorStarIconBord">@color/colorStarIconBord</item>
-
 
         <item name="colorSpeakerIcon">@color/colorSpeakerIcon</item>
 
@@ -1017,6 +1018,10 @@
         <item name="colorControlHighlight">#69F0AE</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:padding">15dp</item>
+    </style>
+
+    <style name="audioTest">
+        <item name="colorAccent">?attr/colorAudioTestBtn</item>
     </style>
 
     <style name="PurchaseMsg">

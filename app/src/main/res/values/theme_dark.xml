@@ -30,6 +30,7 @@
     <color name="colorDetailToolbarText_dark">#fff</color>
     <color name="colorDetailToolbarSecText_dark">#fff</color>
     <color name="colorSpeakerIcon_dark">#fff</color>
+    <color name="colorSpeakerIcon_dark_fl">#E2FFFFFF</color>
 
     <color name="colorDetailTopBg_dark">#555555</color>
     <color name="colorDetailDivider_dark">#32818181</color>
@@ -239,6 +240,8 @@
         <item name="map_thumbnail_alpha">@dimen/mapThumbAlpha_dark</item>
         <item name="colorMapTitleBox">@color/colorMapTitleBox_dark</item>
         <item name="colorStarDetail">@color/colorStarDetail_dark</item>
+
+        <item name="colorSpeakerIcon">@color/colorSpeakerIcon_dark_fl</item>
 
     </style>
 

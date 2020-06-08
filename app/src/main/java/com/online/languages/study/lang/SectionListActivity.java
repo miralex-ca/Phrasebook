@@ -70,6 +70,7 @@ public class SectionListActivity extends BaseActivity {
         setContentView(R.layout.activity_section_list);
 
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
         dataModeDialog = new DataModeDialog(this);
 
         fullVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
@@ -96,6 +97,8 @@ public class SectionListActivity extends BaseActivity {
 
         DBHelper dbHelper = new DBHelper(this);
         data = dbHelper.getSectionListDataItems( navSection.uniqueCategories );
+
+        data = dataManager.getDataForSectionReview(data);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 

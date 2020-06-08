@@ -61,7 +61,7 @@ public class StatsCatsAdapter extends RecyclerView.Adapter<StatsCatsAdapter.MyVi
 
         View itemView;
 
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.stats_cat_list_item, parent, false);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.stats_cat_list_small, parent, false);
 
         if (sections.size() < 4) itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.stats_cat_list_item_big, parent, false);
 

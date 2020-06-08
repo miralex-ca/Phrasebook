@@ -137,7 +137,7 @@ public class SectionActivity extends BaseActivity {
                 .centerCrop()
                 .into(placePicutre);
 
-        if (themeTitle.equals("westworld")) placePicutre.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);;
+        // if (themeTitle.equals("westworld")) placePicutre.setColorFilter(Color.argb(255, 50, 240, 240), PorterDuff.Mode.MULTIPLY);;
 
         sectionTitle.setText(navSection.title_short);
         sectionDesc.setText(navSection.desc);

@@ -2,8 +2,10 @@ package com.online.languages.study.lang.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.online.languages.study.lang.CatActivity;
@@ -26,7 +29,10 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
+
+import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 
 public class CatTabFragment2 extends Fragment {
 
@@ -41,9 +47,12 @@ public class CatTabFragment2 extends Fragment {
     String catSpec;
 
     TextView catTotalCount, catKnownCount, catStudiedCount, catProgress;
-    DataManager dataManager; /// TODO optimize
+    DataManager dataManager;
     DBHelper dbHelper;
     ColorProgress colorProgress;
+    boolean speaking;
+
+    Map<String, ArrayList<String>> catResults;
 
 
     @Override
@@ -65,6 +74,9 @@ public class CatTabFragment2 extends Fragment {
         catKnownCount = rootView.findViewById(R.id.catKnownCount);
         catStudiedCount = rootView.findViewById(R.id.catStudiedCount);
         catProgress = rootView.findViewById(R.id.catProgress);
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        speaking = appSettings.getBoolean("set_speak", true);
 
 
         fillData();
@@ -131,8 +143,20 @@ public class CatTabFragment2 extends Fragment {
         exLinkDesc = new ArrayList<>();
 
 
-        exResults[1] = dbHelper.getTestResult(CatActivity.categoryID+"_1");
-        exResults[2] = dbHelper.getTestResult(CatActivity.categoryID+"_2");
+        String catId = CatActivity.categoryID;
+
+
+        ArrayList<String> results = new ArrayList<>(Arrays.asList("0", "0", "0"));
+
+        catResults = dataManager.getExResults(new ArrayList<>(Arrays.asList(catId)));
+
+        if (catResults != null && results.size()>0) results = catResults.get(catId);
+
+
+        assert results != null;
+        exResults[1] = Integer.parseInt(results.get(0));
+        exResults[2] = Integer.parseInt(results.get(1));
+        exResults[3] = Integer.parseInt(results.get(2));
 
         //CatData catData = dbHelper.getCatData(getActivity().getIntent().getStringExtra(Constants.EXTRA_CAT_TAG));
 
@@ -146,14 +170,26 @@ public class CatTabFragment2 extends Fragment {
         exLinkTitles.add(getString(R.string.voc_ex_link_second_title));
         exLinkDesc.add(defineDesc (2, catSpec));
 
+
+        if (speaking) {
+            exLinkTitles.add("Тест 3");
+            exLinkDesc.add("Тест аудио");
+        }
+
+
        // exLinkDesc.add(getString(R.string.voc_ex_link_third_desc));
        // exLinkTitles.add(getString(R.string.voc_ex_link_third_title));
 
-        setStats();
+        setStats(results);
+
 
     }
 
-    public void setStats() {
+
+
+
+
+    public void setStats(ArrayList<String> results) {
 
         String catId = CatActivity.categoryID;
 
@@ -165,19 +201,7 @@ public class CatTabFragment2 extends Fragment {
 
         ArrayList<DataItem> data = dataManager.getCatDBList(catId);
 
-
-        ArrayList<String> catIdList = new ArrayList<>();
-        catIdList.add(catId);
-
-        Map<String, String> map = dataManager.getCatProgress( catIdList ); //
-
-        for (Map.Entry<String, String> entry : map.entrySet()) {
-            String id = entry.getKey();
-            String result = entry.getValue();
-            if (id.matches(catId)) {
-                progress = Integer.valueOf(result);
-            }
-        }
+        progress = dataManager.calculateProgressByList(results, speaking);
 
         dataCount = data.size();
 
@@ -209,6 +233,7 @@ public class CatTabFragment2 extends Fragment {
             desc = getString(R.string.voc_ex_link_second_desc);
             if (spec.equals(Constants.CAT_SPEC_PERS)) desc = getString(R.string.ex_link_desc_pers_2);
             if (spec.equals(Constants.CAT_SPEC_TERM)) desc = getString(R.string.ex_link_desc_term_2);
+
             if (spec.equals(Constants.CAT_SPEC_MISC)) desc = getString(R.string.ex_link_desc_misc_2);
         }
 

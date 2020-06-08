@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.ViewCategory;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,7 +41,7 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, progressTxt, catGroupCount, sectionDesc;
         View progressBox, catGroupCountBox, sectionItemBox, setDivider, catLockedBox;
-        ImageView progressCircle;
+        ImageView progressCircle, image;
 
 
         MyViewHolder(View view) {
@@ -58,6 +59,7 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
             catGroupCountBox = view.findViewById(R.id.catGroupCountBox);
             progressCircle = view.findViewById(R.id.catProgressCircle);
             catLockedBox = view.findViewById(R.id.catLockedBox);
+            image = itemView.findViewById(R.id.itemImage);
 
         }
     }
@@ -87,6 +89,8 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
 
         if (viewType == 2 ) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cat_set_title, parent, false);
+        } else if (viewType == 3 ) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cat_item_pic, parent, false);
         } else {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_cat_item, parent, false);
         }
@@ -99,6 +103,7 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
     public int getItemViewType(int position) {
         int type = 1;
         if (categoryArrayList.get(position).type.equals("set")) type = 2;
+        if (!categoryArrayList.get(position).image.equals("none") && !categoryArrayList.get(position).image.equals("")) type = 3;
         return type;
     }
 
@@ -192,6 +197,15 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
            // title += " [" + category.progress + "]";
 
         holder.title.setText(title);
+
+
+
+        Picasso.with(context )
+                .load("file:///android_asset/pics/"+ category.image)
+                // .transform(new RoundedTransformation(0,0))
+                .fit()
+                .centerCrop()
+                .into(holder.image);
 
     }
 

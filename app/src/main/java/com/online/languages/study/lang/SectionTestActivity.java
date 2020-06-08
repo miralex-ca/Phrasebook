@@ -37,7 +37,7 @@ public class SectionTestActivity extends BaseActivity {
 
     View testOneBox;
     View testTwoBox;
-    View testAllBox;
+    View testAudioBox;
 
     ArrayList<DataItem> basicData  = new ArrayList<>();
     ArrayList<DataItem> extraData  = new ArrayList<>();
@@ -49,6 +49,8 @@ public class SectionTestActivity extends BaseActivity {
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
+
+    boolean speaking;
 
 
     @Override
@@ -62,6 +64,9 @@ public class SectionTestActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_test);
+
+        speaking = appSettings.getBoolean("set_speak", true);
+
 
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
         dataModeDialog = new DataModeDialog(this);
@@ -85,7 +90,7 @@ public class SectionTestActivity extends BaseActivity {
 
         testOneBox = findViewById(R.id.testOne);
         testTwoBox = findViewById(R.id.testTwo);
-        testAllBox = findViewById(R.id.testAll);
+        testAudioBox = findViewById(R.id.testAudio);
 
         showExtraTests();
 
@@ -101,10 +106,10 @@ public class SectionTestActivity extends BaseActivity {
             }
         }
 
-        if (haveExtra && dataSelect.equals("all")) {
-            testAllBox.setVisibility(View.VISIBLE);
+        if (speaking) {
+            testAudioBox.setVisibility(View.VISIBLE);
         } else {
-            testAllBox.setVisibility(View.GONE);
+            testAudioBox.setVisibility(View.GONE);
         }
 
     }
@@ -115,11 +120,11 @@ public class SectionTestActivity extends BaseActivity {
 
         exResults[1] = dbHelper.getTestResult(Constants.SECTION_TEST_PREFIX + tSectionID+"_1");
         exResults[2] = dbHelper.getTestResult(Constants.SECTION_TEST_PREFIX + tSectionID+"_2");
-        exResults[3] = dbHelper.getTestResult(Constants.SECTION_TEST_PREFIX + tSectionID+Constants.SECTION_TEST_EXTRA_POSTFIX+"_1");
+        exResults[3] = dbHelper.getTestResult(Constants.SECTION_TEST_PREFIX + tSectionID+"_3");
 
         displayTestData(testOneBox, exResults[1]);
         displayTestData(testTwoBox, exResults[2]);
-        displayTestData(testAllBox, exResults[3]);
+        displayTestData(testAudioBox, exResults[3]);
 
     }
 
@@ -160,7 +165,7 @@ public class SectionTestActivity extends BaseActivity {
 
         topic[0] = Constants.SECTION_TEST_PREFIX + tSectionID+"_1";
         topic[1] = Constants.SECTION_TEST_PREFIX + tSectionID+"_2";
-        topic[2] = Constants.SECTION_TEST_PREFIX + tSectionID + Constants.SECTION_TEST_EXTRA_POSTFIX+"_1";
+        topic[2] = Constants.SECTION_TEST_PREFIX + tSectionID+"_3";
 
 
         dbHelper.deleteExData(topic);
@@ -175,6 +180,10 @@ public class SectionTestActivity extends BaseActivity {
 
     public void testTwo(View view) {
         testPage(2);
+    }
+
+    public void testAudio(View view) {
+        testPage(3);
     }
 
 
@@ -200,8 +209,8 @@ public class SectionTestActivity extends BaseActivity {
         i.putExtra("ex_type", type);
 
         String exTag = Constants.SECTION_TEST_PREFIX + tSectionID;
-        i.putExtra(Constants.EXTRA_CAT_TAG, exTag);
 
+        i.putExtra(Constants.EXTRA_CAT_TAG, exTag);
         i.putParcelableArrayListExtra("dataItems", basicData);
 
         startActivityForResult(i, 1);;
