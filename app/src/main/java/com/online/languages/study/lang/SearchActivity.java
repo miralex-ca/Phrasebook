@@ -195,7 +195,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
         if (requestCode == 1) {
 
-            if(resultCode == CatActivity.RESULT_OK){
+            if(resultCode ==  RESULT_OK){
 
                 int result=data.getIntExtra("result", -1);
 

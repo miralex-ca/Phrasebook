@@ -244,8 +244,12 @@
 
     <color name="colorDetailTopTxt">#333333</color>
     <color name="colorDetailBtmTxt">#111111</color>
-
-
     <color name="colorDetailDivider">#22020202</color>
+
+    <color name="colorCatProgressPerfect_lt">#AEB5FF90</color>
+    <color name="colorCatProgressGreat_lt">#D0A7FFD6</color>
+    <color name="colorCatProgressGood_lt">#5e7cd5fd</color>
+    <color name="colorCatProgressBad_lt">#52FF6D00</color>
+    <color name="colorCatProgressLow_lt">#8AFF8A80</color>
 
 </resources>

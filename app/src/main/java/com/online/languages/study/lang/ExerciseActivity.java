@@ -946,7 +946,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         editor.putBoolean("test_all_save", saveStats);
         editor.apply();
         applySaveStatsStatus(saveStats);
-
     }
 
     private void applySaveStatsStatus(Boolean status) {

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
@@ -89,9 +90,10 @@ public class DBExport {
             if (c.moveToFirst()) {
                 while ( !c.isAfterLast() ) {
 
-                    if (c.getString(0).equals(TABLE_CAT_DATA) ||
-                        c.getString(0).equals(TABLE_USER_DATA) ||
-                        c.getString(0).equals(TABLE_TESTS_DATA)
+                    if (c.getString(0).equals(TABLE_CAT_DATA)
+                            || c.getString(0).equals(TABLE_USER_DATA)
+                            || c.getString(0).equals(TABLE_TESTS_DATA)
+                            || c.getString(0).equals(TABLE_BOOKMARKS_DATA)
                     ) {
                         tables.add(c.getString(0));
                     }

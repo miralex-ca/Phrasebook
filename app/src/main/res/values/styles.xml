@@ -72,6 +72,8 @@
         <item name="android:textViewStyle">@style/MyTextViewStyle</item>
 
         <item name="colorContactIcon">@color/colorContactIcon</item>
+        <item name="colorBookmark">?attr/colorContactIcon</item>
+        <item name="colorBookmarkBorder">?attr/colorBookmark</item>
 
         <item name="colorMultipaneMenuBg">?attr/colorCardBg</item>
         <item name="colorMultipaneMenuTxt">@color/colorMultipaneMenuTxt</item>
@@ -344,6 +346,8 @@
     <color name="colorImageDetailPrimary">#017ff5</color>
     <color name="colortTransparentBar">#41000000</color>
 
+    <color name="colorBookmark_blue">#BC81C784</color>
+    <color name="colorBookmarkBorder_blue">#81C784</color>
 
     <style name="DefaultTheme">
         <item name="PopupOverlayTheme">@style/PopupOverlayTheme</item>
@@ -351,6 +355,18 @@
 
         <item name="colorBtmNav_active">@color/colorBtmNav_active</item>
         <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive</item>
+        <item name="colorBookmark">@color/colorBookmark_blue</item>
+        <item name="colorBookmarkBorder">@color/colorBookmarkBorder_blue</item>
+
+
+        <item name="colorCatProgressTxt">@color/colorProgressTxt_red</item>
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_lt</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_lt</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_lt</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_lt</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_lt</item>
+
 
     </style>
 

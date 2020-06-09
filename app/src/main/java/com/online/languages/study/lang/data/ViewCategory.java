@@ -7,7 +7,7 @@ public class ViewCategory {
     public String id;
     public String desc;
     public int progress;
-    public String type;
+    public String type = "";
     public String parent;
     public String spec;
     public String image;

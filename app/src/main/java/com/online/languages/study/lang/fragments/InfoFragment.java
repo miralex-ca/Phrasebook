@@ -56,7 +56,7 @@ public class InfoFragment extends Fragment {
 
         DataManager dataManager  = new DataManager(getActivity(), true);
 
-        String resName = "info";
+        String resName = "desc";
         if (dataManager.simplified) resName = "info_simplified";
 
         Context context = getActivity().getBaseContext(); //получаем контекст

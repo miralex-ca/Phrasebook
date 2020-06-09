@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
+import com.online.languages.study.lang.fragments.StarredBookmarkTab;
 import com.online.languages.study.lang.fragments.StarredGalleryTab;
 import com.online.languages.study.lang.fragments.StarredTabOne;
 
@@ -35,10 +36,11 @@ public class StarredTabsPagerAdapter extends FragmentStatePagerAdapter {
         if (!tabs.equals("normal")) {
 
             switch (position) {
+
+                case 0:
+                    return new StarredBookmarkTab();
                 case 1:
                     return new StarredTabOne();
-                case 0:
-                    return new StarredGalleryTab();
                 default:
                     return null;
             }
@@ -49,14 +51,12 @@ public class StarredTabsPagerAdapter extends FragmentStatePagerAdapter {
                 case 0:
                     return new StarredTabOne();
                 case 1:
-                    return new StarredGalleryTab();
+                    return new StarredBookmarkTab();
                 default:
                     return null;
             }
 
         }
-
-
     }
 
     @Override

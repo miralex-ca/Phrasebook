@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 
 import com.online.languages.study.lang.adapters.Computer;
+import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
@@ -30,7 +31,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.online.languages.study.lang.Constants.ACTION_DELETE;
+import static com.online.languages.study.lang.Constants.ACTION_INSERT;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
+import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
+import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
+import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
+import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
+import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
@@ -49,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_TESTS_DATA = "tests_data";
     public static final String TABLE_ITEMS_DATA = "items_data";
     public static final String TABLE_DETAILS_DATA = "details_data";
+    public static final String TABLE_BOOKMARKS_DATA = "bookmarks_data";
 
     // common
     private static final String KEY_PRIMARY_ID = "id";
@@ -99,6 +108,15 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_DETAIL_IMG_INFO = "detail_img_imfo";
 
 
+    //// bookmark table columns
+    private static final String KEY_BOOKMARK_ITEM = "bookmark_item";
+    private static final String KEY_BOOKMARK_PARENT = "bookmark_parent";
+    private static final String KEY_BOOKMARK_TIME = "bookmark_time";
+    private static final String KEY_BOOKMARK_TYPE = "bookmark_type";
+    private static final String KEY_BOOKMARK_INFO = "bookmark_info";
+    private static final String KEY_BOOKMARK_FILTER = "bookmark_filter";
+
+
     private static final String TABLE_ITEM_STRUCTURE  = "("
             + KEY_PRIMARY_ID + " INTEGER PRIMARY KEY,"
             + KEY_ITEM_ID + " TEXT,"
@@ -143,6 +161,19 @@ public class DBHelper extends SQLiteOpenHelper {
             + ")";
 
 
+
+    private static final String TABLE_BOOKMARK_STRUCTURE = "("
+            + KEY_BOOKMARK_ITEM + " TEXT,"
+            + KEY_BOOKMARK_PARENT + " TEXT,"
+            + KEY_BOOKMARK_TIME + " INTEGER,"
+            + KEY_BOOKMARK_TYPE + " TEXT,"
+            + KEY_BOOKMARK_INFO + " TEXT,"
+            + KEY_BOOKMARK_FILTER + " TEXT"
+            + ")";
+
+
+
+
     private static final String TABLE_ITEMS_STRUCTURE = TABLE_ITEMS_DATA + TABLE_ITEM_STRUCTURE;
 
     private static final String TABLE_USER_ITEMS_STRUCTURE = TABLE_USER_DATA + TABLE_USER_STRUCTURE;
@@ -170,6 +201,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private static final String CREATE_TESTS_TABLE = "CREATE TABLE " + TABLE_TESTS_DATA + TABLE_TEST_STRUCTURE;
+    private static final String CREATE_BOOKMARKS_TABLE = "CREATE TABLE " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
 
 
     private int data_mode = 0;
@@ -194,6 +226,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_CATDATA_TABLE);
         db.execSQL(CREATE_USER_ITEMS_TABLE);
         db.execSQL(CREATE_TESTS_TABLE);
+        db.execSQL(CREATE_BOOKMARKS_TABLE);
+
     }
 
 
@@ -390,6 +424,135 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.close();
     }
+
+
+    public int setBookmark(String bookmark, String parent, String param) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        String action;
+
+        int status = OUTCOME_NONE;
+
+        Cursor cursor = db.query(TABLE_BOOKMARKS_DATA,  null,
+                KEY_BOOKMARK_ITEM +" = ? AND " + KEY_BOOKMARK_PARENT + " = ?",
+                new String[] { bookmark, parent }, null, null, null);
+
+        if ( cursor.moveToFirst() ) {
+            action = ACTION_DELETE;
+        } else {
+            action = ACTION_INSERT;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_BOOKMARK_ITEM, bookmark);
+        values.put(KEY_BOOKMARK_PARENT, parent);
+        values.put(KEY_BOOKMARK_TIME, System.currentTimeMillis() );
+
+        if (action.equals(ACTION_DELETE)) {
+            db.delete(TABLE_BOOKMARKS_DATA, KEY_BOOKMARK_ITEM +" = ? AND " + KEY_BOOKMARK_PARENT + " = ?",    new String[]{bookmark, parent});
+            status = OUTCOME_REMOVED;
+
+        } else if (action.equals(ACTION_INSERT)){
+
+            if (param.equals(PARAM_LIMIT_REACHED)) {
+                status = OUTCOME_LIMIT;
+            } else {
+                db.insert(TABLE_BOOKMARKS_DATA, null, values);
+                setStarredTab(1);
+                status = OUTCOME_ADDED;
+            }
+
+        }
+
+
+        cursor.close();
+        db.close();
+
+        return status;
+    }
+
+    public ArrayList<BookmarkItem> getBookmarks() {  /// TODO check for available in structure (datamanger)
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ArrayList<BookmarkItem> items = new ArrayList<>();
+
+        Cursor cursor = db.query(TABLE_BOOKMARKS_DATA,  null, null, null, null, null, null);
+
+        try {
+            while (cursor.moveToNext()) {
+                String bookmark = cursor.getString(cursor.getColumnIndex(KEY_BOOKMARK_ITEM));
+                String section = cursor.getString(cursor.getColumnIndex(KEY_BOOKMARK_PARENT));
+
+                BookmarkItem bookmarkItem  = new BookmarkItem(bookmark, section);
+                bookmarkItem.time = cursor.getLong(cursor.getColumnIndex(KEY_BOOKMARK_TIME));
+                items.add(bookmarkItem);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return  items;
+    }
+
+    public boolean checkBookmark(String bookmark, String parent) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        boolean bookmarked = false;
+
+
+        Cursor cursor = db.query(TABLE_BOOKMARKS_DATA,  null,
+                KEY_BOOKMARK_ITEM +" = ? AND " + KEY_BOOKMARK_PARENT + " = ?",
+                new String[] { bookmark, parent }, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+            bookmarked = true;
+        }
+
+        cursor.close();
+        db.close();
+
+        return  bookmarked ;
+    }
+
+
+    private int checkBookmarkSize(SQLiteDatabase db) {
+
+
+        DataManager dataManager = new DataManager(cntx, 1);
+
+        StringBuilder conditionLike = new StringBuilder("");
+
+        for (int i = 0; i < dataManager.navCategories.size(); i++) {
+
+            String like = KEY_BOOKMARK_ITEM + " = '" + dataManager.navCategories.get(i).id + "' ";
+
+            if (i != 0) {
+                like = "OR " + like;
+            }
+            conditionLike.append(like);
+        }
+
+        String query = "SELECT * FROM " + TABLE_BOOKMARKS_DATA
+
+                +" WHERE ("+conditionLike+") " ;
+
+        Cursor checkCursor = db.rawQuery(query, null);
+
+        int size = checkCursor.getCount();
+
+        checkCursor.close();
+
+        return size;
+    }
+
+
+
 
 
     public void updateCatResult(String cat_id, int tests_num) {
@@ -641,6 +804,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return status;
     }
+
+
+
 
 
     private int starredGroupSize(SQLiteDatabase db, String id, String _filter) {
@@ -2191,6 +2357,43 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_TEST_TIME, testData.testTime);
 
         db.insert(TABLE_TESTS_DATA, null, values);
+    }
+
+
+
+    public void importBookmarksData (SQLiteDatabase db, List<DBImport.BookmarkData> list) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKMARKS_DATA);
+        db.execSQL(CREATE_BOOKMARKS_TABLE);
+
+        db.beginTransaction();
+
+        try {
+
+            for (DBImport.BookmarkData item: list) {
+                insertImportedBookmarkData(db, item);
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+    }
+
+
+    private void insertImportedBookmarkData(SQLiteDatabase db, DBImport.BookmarkData bookmarkData) {
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_BOOKMARK_ITEM, bookmarkData.bookmarkItem);
+        values.put(KEY_BOOKMARK_PARENT, bookmarkData.bookmarkParent);
+        values.put(KEY_BOOKMARK_TIME, bookmarkData.bookmarkTime);
+        values.put(KEY_BOOKMARK_TYPE, bookmarkData.bookmarkType);
+        values.put(KEY_BOOKMARK_INFO, bookmarkData.bookmarkInfo);
+        values.put(KEY_BOOKMARK_FILTER, bookmarkData.bookmarkFilter);
+
+        db.insert(TABLE_BOOKMARKS_DATA, null, values);
     }
 
 

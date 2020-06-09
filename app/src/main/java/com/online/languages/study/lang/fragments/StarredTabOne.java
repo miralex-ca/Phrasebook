@@ -10,15 +10,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
+import com.online.languages.study.lang.data.BookmarkItem;
+import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.NavStructure;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
+import static com.online.languages.study.lang.Constants.STARRED_LIMIT;
 
 
 public class StarredTabOne extends Fragment {
@@ -66,12 +73,11 @@ public class StarredTabOne extends Fragment {
 
     private ArrayList<DataItem> updateTitle(ArrayList<DataItem> words) {
 
-        if (getTabType() == 2) words = dataManager.getStarredWords(2,false);
+        if (getTabType() == 2) words = getBookMarks();
         else words = dataManager.getStarredWords(false);
 
         zero.setVisibility(View.GONE);
         infoBox.setVisibility(View.GONE);
-
 
         int total = words.size();
 
@@ -91,9 +97,16 @@ public class StarredTabOne extends Fragment {
         }
 
 
-        int limit = Constants.STARRED_LIMIT;
+        int limit = STARRED_LIMIT;
 
         String descTxt = String.format(getResources().getString(R.string.starred_words_info),  limit);
+        if (getTabType() == 2) {
+
+            limit = BOOKMARKS_LIMIT;
+            descTxt = String.format(getResources().getString(R.string.starred_bookmark_info),  limit);
+
+        }
+
 
         String count = String.format("%d / %d", words.size(), limit);
 
@@ -107,6 +120,7 @@ public class StarredTabOne extends Fragment {
         starredCount.setText(count);
 
         int displayLimit = 6;
+        if (getTabType () == 2) displayLimit = 5;
 
         if (words.size() < displayLimit) displayLimit = words.size();
 
@@ -133,7 +147,7 @@ public class StarredTabOne extends Fragment {
 
             View item;
 
-            if (getTabType () == 2 ) item = inflater.inflate(R.layout.starred_gallery_item, previewList, false);
+            if (getTabType () == 2 ) item = inflater.inflate(R.layout.starred_bookmark_item, previewList, false);
             else item = inflater.inflate(R.layout.starred_list_item_col2, null);
 
             TextView txt = item.findViewById(R.id.itemText);
@@ -156,6 +170,37 @@ public class StarredTabOne extends Fragment {
     }
 
 
+    private ArrayList<DataItem> getBookMarks() {
+
+
+        ArrayList<DataItem> dataItems = new ArrayList<>();
+
+
+        DataFromJson dataFromJson = new DataFromJson(getActivity());
+        NavStructure navStructure = dataFromJson.getStructure();
+
+        ArrayList<BookmarkItem> bookmarkItems = dataManager.getBookmarks(navStructure);
+
+
+
+        for (int i = 0; i < bookmarkItems.size(); i++) {
+
+            BookmarkItem bookmarkItem = bookmarkItems.get(i);
+
+            DataItem dataItem = new DataItem();
+            dataItem.item = bookmarkItem.title;
+            dataItem.info = bookmarkItem.desc;
+            dataItem.id = bookmarkItem.item;
+            dataItem.image = bookmarkItem.image;
+
+            dataItems.add(dataItem);
+
+        }
+
+        return dataItems;
+    }
+
+
     @Override
     public void onResume() {
 
@@ -166,12 +211,6 @@ public class StarredTabOne extends Fragment {
         createPreviewList(words);
 
     }
-
-
-
-
-
-
 
 
 

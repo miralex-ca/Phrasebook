@@ -441,7 +441,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="starred_tab_info">Info</string>
     <string name="starred_tab_gallery">Gallery</string>
     <string name="starrd_tab_info_count">Info (%d)</string>
-    <string name="starrd_tab_gallery_count">Gallery (%d)</string>
+    <string name="starrd_tab_gallery_count">Bookmarks (%d)</string>
 
 
 </resources>

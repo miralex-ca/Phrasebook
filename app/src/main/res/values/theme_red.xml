@@ -26,7 +26,11 @@
     <color name="colorCatProgressGood_red">#5e7cd5fd</color>
     <color name="colorCatProgressBad_red">#74ff6d00</color>
     <color name="colorCatProgressLow_red">#a9ff8a80</color>
+
     <dimen name="cardCornerDefault_red">6dp</dimen>
+
+    <color name="colorBookmark_red">#66020202</color>
+    <color name="colorBookmarkBorder_red">#20050505</color>
 
 
 
@@ -58,6 +62,9 @@
 
         <item name="cardCorner">@dimen/cardCornerDefault_red</item>
         <item name="DetailTextTheme">@style/DetailTextTheme.Red</item>
+
+        <item name="colorBookmark">@color/colorBookmark_red</item>
+        <item name="colorBookmarkBorder">@color/colorBookmarkBorder_red</item>
 
     </style>
 

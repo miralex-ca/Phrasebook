@@ -3,6 +3,7 @@ package com.online.languages.study.lang.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
@@ -12,17 +13,21 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.Computer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.online.languages.study.lang.Constants.FILTER_CHRONO;
+import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
+import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
+import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
 import static com.online.languages.study.lang.Constants.SET_GALLERY;
 import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
+import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
 
 
 public class DataManager {
@@ -236,7 +241,6 @@ public class DataManager {
 
 
 
-
     public Map<String, String> getCatProgress(ArrayList<String> catIds) {
 
         boolean speaking = appSettings.getBoolean("set_speak", true);
@@ -288,6 +292,13 @@ public class DataManager {
         @Override
         public int compare(DataItem o1, DataItem o2) {
             return o1.starred_time <= o2.starred_time ? 1 : -1;
+        }
+    }
+
+    private class TimeBookmarkComparator implements Comparator<BookmarkItem> {
+        @Override
+        public int compare(BookmarkItem o1, BookmarkItem o2) {
+            return o1.time <= o2.time? 1 : -1;
         }
     }
 
@@ -372,6 +383,95 @@ public class DataManager {
     public int calculateProgressByList(ArrayList<String> results, String mode) {
         return computer.calculateProgressByList(results, mode);
     }
+
+    public int setBookmark(String catId, String sectionId, NavStructure navStructure) {
+
+        String param = PARAM_EMPTY;
+
+        int bookmarksSize = getBookmarks(navStructure, PARAM_EMPTY).size();
+
+        if (bookmarksSize >= BOOKMARKS_LIMIT) param = PARAM_LIMIT_REACHED;
+
+        int outcome = dbHelper.setBookmark(catId, sectionId, param );
+
+        if (outcome == OUTCOME_LIMIT) {
+
+            Toast.makeText(context, R.string.starred_limit, Toast.LENGTH_SHORT).show(); /// TODO check for bookmarks
+
+            Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+
+            assert v != null;
+            v.vibrate(VIBRO_FAIL);
+        }
+
+        return outcome;
+
+    }
+
+
+
+    public int getBookmarksSize(NavStructure structure) {
+        ArrayList<BookmarkItem> bookmarkItems = getBookmarks(structure, "");
+        return bookmarkItems.size();
+    }
+
+    public ArrayList<BookmarkItem> getBookmarks(NavStructure structure) {
+        return getBookmarks(structure, PARAM_POPULATE);
+    }
+
+
+    public ArrayList<BookmarkItem> getBookmarks(NavStructure structure, String param) {
+
+        ArrayList<BookmarkItem> bookmarkItems = dbHelper.getBookmarks();
+
+        ArrayList<BookmarkItem> bookmarksToReturn = new ArrayList<>();
+
+        for (BookmarkItem bookmarkItem: bookmarkItems) {
+
+            BookmarkItem bookmark = new BookmarkItem();
+
+            boolean found = false;
+
+            NavSection navSection = structure.getNavSectionByID(bookmarkItem.parent);
+
+            for (NavCategory category: navSection.uniqueCategories){
+
+                if (category.id.equals(bookmarkItem.item)) {
+
+                    bookmark = bookmarkItem;
+
+                    if (param.equals(PARAM_POPULATE)) {
+                        bookmark.item = bookmarkItem.item;
+                        bookmark.parent = bookmarkItem.parent;
+                        bookmark.title = category.title;
+                        bookmark.desc = "Раздел: " + navSection.title;
+                        bookmark.image = navSection.image;
+                        bookmark.navCategory = category;
+                    }
+
+                    found = true;
+                    break;
+
+                }
+            }
+
+            if (found) bookmarksToReturn.add(bookmark);
+
+        }
+
+        Collections.sort(bookmarksToReturn, new TimeBookmarkComparator());
+
+
+        return bookmarksToReturn;
+    }
+
+
+    public NavStructure getNavStructure() {
+
+        DataFromJson dataFromJson = new DataFromJson(context);
+        return dataFromJson.getStructure();
+    }
+
 
 
 

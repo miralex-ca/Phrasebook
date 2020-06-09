@@ -22,12 +22,12 @@ import com.online.languages.study.lang.data.ViewCategory;
 
 import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
 import static com.online.languages.study.lang.Constants.CAT_SPEC_TEXT;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
 
 public class OpenActivity  {
 
     Context context;
-
 
 
     private int requestCode = 1;
@@ -43,8 +43,9 @@ public class OpenActivity  {
     }
 
 
-    public void openCat(String cat_id, String spec, String title) {
+    public void openCat(String cat_id, String spec, String title, String tSectionID) {
         Intent i = createIntent(context, CatActivity.class);
+        i.putExtra(EXTRA_SECTION_ID, tSectionID);
         callActivity( catIntent(i, cat_id, title, spec) );
     }
 
@@ -183,7 +184,7 @@ public class OpenActivity  {
                     openMapList(navStructure, tSectionID, viewCategory.id);
                     break;
                 default:
-                    openCat(viewCategory.id, viewCategory.spec, viewCategory.title);
+                    openCat(viewCategory.id, viewCategory.spec, viewCategory.title, tSectionID);
                     break;
             }
         }

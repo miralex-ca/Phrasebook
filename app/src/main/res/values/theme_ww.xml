@@ -172,6 +172,19 @@
 
         <item name="colorSpeakerIcon">@color/colorSpeakerIcon_ww</item>
 
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_night</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_night</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_night</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_night</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_night</item>
+
+        <item name="colorVeryBadTextCat">@color/colorVeryBadTextCat_night</item>
+        <item name="colorBadTextCat">@color/colorBadTextCat_night</item>
+        <item name="colorGoodTextCat">@color/colorGoodTextCat_night</item>
+        <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_night</item>
+        <item name="colorGreatTextCat">@color/colorGreatTextCat_night</item>
+
     </style>
 
 

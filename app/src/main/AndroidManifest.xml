@@ -145,6 +145,10 @@
             android:theme="@style/AppTheme" />
 
         <activity
+            android:name="com.online.languages.study.lang.StarredBookmarksActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
             android:name="com.online.languages.study.lang.BackupActivity"
             android:theme="@style/AppTheme" />
 

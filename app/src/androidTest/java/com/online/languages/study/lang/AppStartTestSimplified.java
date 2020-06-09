@@ -305,7 +305,7 @@ public class AppStartTestSimplified {
         onView(withId(R.id.nav_view))
                 .perform(NavigationViewActions.navigateTo(R.id.nav_settings));
 
-        // open info fragment
+        // open desc fragment
         waitTime(500);
         onView(withId(R.id.drawer_layout))
                 .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.

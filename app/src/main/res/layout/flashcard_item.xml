@@ -166,7 +166,7 @@
                     style="@style/fShowMsgBox"
                     />
 
-                <!-- original info box, can have min height -->
+                <!-- original desc box, can have min height -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

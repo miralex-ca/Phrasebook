@@ -16,6 +16,23 @@
 
     <color name="colorMenu_night">#303030</color>
 
+    <color name="colorBookmark_night">#BCF5F5F5</color>
+    <color name="colorBookmarkBorder_night">#37F5F5F5</color>
+
+
+    <color name="colorCatProgressPerfect_night">#31B9F6CA</color>
+    <color name="colorCatProgressGreat_night">#27A7FFEB</color>
+    <color name="colorCatProgressGood_night">#2C80D8FF</color>
+    <color name="colorCatProgressBad_night">#2AFFD180</color>
+    <color name="colorCatProgressLow_night">#1EFF8A80</color>
+
+
+    <color name="colorVeryBadTextCat_night">#FF6969</color>
+    <color name="colorBadTextCat_night">#FFAB40</color>
+    <color name="colorGoodTextCat_night">#66D1FF</color>
+    <color name="colorVeryGoodTextCat_night">#64FFDA</color>
+    <color name="colorGreatTextCat_night">#2EFD98</color>
+
 
     <style name="NightTheme" parent="DarkTheme">
 
@@ -41,6 +58,24 @@
         <item name="PopupOverlayTheme">@style/PopupOverlayTheme_night</item>
 
         <item name="colorAudioTestBtn">@color/colorAudioTestBtn_night</item>
+
+        <item name="colorBookmark">@color/colorBookmark_night</item>
+        <item name="colorBookmarkBorder">@color/colorBookmarkBorder_night</item>
+
+
+
+        <item name="colorCatProgressLow">@color/colorCatProgressLow_night</item>
+        <item name="colorCatProgressBad">@color/colorCatProgressBad_night</item>
+        <item name="colorCatProgressGood">@color/colorCatProgressGood_night</item>
+        <item name="colorCatProgressGreat">@color/colorCatProgressGreat_night</item>
+        <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_night</item>
+
+        <item name="colorVeryBadTextCat">@color/colorVeryBadTextCat_night</item>
+        <item name="colorBadTextCat">@color/colorBadTextCat_night</item>
+        <item name="colorGoodTextCat">@color/colorGoodTextCat_night</item>
+        <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_night</item>
+        <item name="colorGreatTextCat">@color/colorGreatTextCat_night</item>
+
 
     </style>
 

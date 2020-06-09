@@ -25,8 +25,10 @@
     <RelativeLayout
         android:paddingTop="14dp"
         android:paddingBottom="16dp"
-        android:paddingLeft="2dp"
+
+        android:paddingLeft="4dp"
         android:paddingRight="4dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -84,8 +86,12 @@
                 android:layout_height="wrap_content" />
 
 
-
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_marginLeft="@dimen/cat_item_txt_left_nopic"
@@ -93,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+
             style="@style/catListItemBox"
             >
 
@@ -115,6 +122,8 @@
                 />
 
         </LinearLayout>
+
+        </RelativeLayout>
 
 
         <ImageView

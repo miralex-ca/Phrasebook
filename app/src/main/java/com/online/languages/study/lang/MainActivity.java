@@ -506,7 +506,7 @@ public class MainActivity extends BaseActivity
 
     public void openPage(int position) {
 
-        String[] tags = {"home", "gallery", "starred", "stats", "prefs", "info", "contact"};
+        String[] tags = {"home", "gallery", "starred", "stats", "prefs", "desc", "contact"};
         String tag = tags[position];
 
         fPages = fragmentManager.beginTransaction();
@@ -683,8 +683,8 @@ public class MainActivity extends BaseActivity
         if (navSection.type.equals("simple")) {
 
             NavCategory cat = navSection.navCategories.get(0);
-            Intent i = new Intent(MainActivity.this, CatActivity.class);
-            openActivity.openCat(i, cat.id, cat.title, cat.spec);
+
+            openActivity.openCat(cat.id, cat.spec, cat.title, navSection.id);
 
         } else {
 
@@ -981,8 +981,8 @@ public class MainActivity extends BaseActivity
         openActivity.pageTransition();
     }
 
-    public void openStarredGallery(View view) {
-        Intent i = new Intent(MainActivity.this, StarredGalleryActivity.class);
+    public void openStarredBookmarks(View view) {
+        Intent i = new Intent(MainActivity.this, StarredBookmarksActivity.class);
         i.putExtra(Constants.EXTRA_CAT_ID, "01010");
         i.putExtra(Constants.EXTRA_SECTION_ID, "01010");
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);

@@ -143,10 +143,11 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
 
         if (show) {
             if (position == 0) progress = 100;
-            if (position == 1) progress = 95;
-            if (position == 2) progress = 76;
-            if (position == 3) progress = 48;
-            if (position == 4) progress = 19;
+            if (position == 1) progress = 100;
+            if (position == 2) progress = 95;
+            if (position == 3) progress = 76;
+            if (position == 4) progress = 48;
+            if (position == 5) progress = 19;
         }
 
 

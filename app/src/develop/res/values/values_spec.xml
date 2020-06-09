@@ -3,7 +3,7 @@
 
 
     <string name="title_main_txt">@string/title_home_txt</string>
-    <string name="tabs_starred_display" translatable="false">item_prior</string>
+    <string name="tabs_starred_display" translatable="false">always</string>
 
     <style name="BottomNav.Inactive">
     </style>

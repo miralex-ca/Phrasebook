@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:background="?attr/colorCardDivider"
+        android:layout_height="1dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+
+        android:id="@+id/sectionItemBox"
+
+        android:focusable="true"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:padding="8dp"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/tagged"
+            android:orientation="vertical"
+            android:layout_marginLeft="74dp"
+            android:paddingTop="4dp"
+            android:paddingLeft="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:id="@+id/sectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textSize="17sp"
+                />
+
+            <TextView
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="14sp"
+                android:visibility="gone"
+                android:layout_marginTop="4dp"
+                android:id="@+id/sectionDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorSecondaryText"
+
+
+                />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_marginLeft="6dp"
+            android:visibility="visible"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            >
+
+            <android.support.v7.widget.CardView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                app:contentPadding="0dp"
+                android:layout_gravity="center_horizontal"
+
+                app:cardElevation="0dp"
+                android:layout_margin="2dp"
+
+                android:layout_centerVertical="true"
+
+                app:cardCornerRadius="8dp"
+                >
+
+
+            <ImageView
+                android:id="@+id/mapImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                 />
+
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/screem_btm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/mapImage"
+                android:layout_gravity="bottom"
+                android:background="@drawable/screem_img_bottom"/>
+
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible"
+                android:id="@+id/starIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_star_bg"
+                    android:layout_width="21dp"
+                    android:layout_height="21dp" />
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_star"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/cat_item_star_right"
+            app:srcCompat="@drawable/ic_bookmark"
+            android:id="@+id/voclistStar"
+            android:visibility="visible"
+            android:layout_width="23dp"
+            android:layout_height="23dp" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

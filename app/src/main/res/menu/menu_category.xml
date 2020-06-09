@@ -18,12 +18,14 @@
         android:title="@string/menu_sort"
         app:showAsAction="ifRoom" />
 
+
+
     <item
         android:id="@+id/list_layout"
         android:orderInCategory="100"
         android:icon="@drawable/ic_view_list_big"
         android:title="@string/menu_layout"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
 
     <item
@@ -31,6 +33,17 @@
         android:orderInCategory="100"
         android:title="@string/menu_item_info"
         app:showAsAction="never" />
+
+
+    <group android:checkableBehavior="all">
+        <item
+            android:icon="@drawable/ic_bookmark"
+            android:id="@+id/bookmark"
+            android:orderInCategory="100"
+            android:title="@string/menu_item_bookmark"
+            android:checked="false"
+            app:showAsAction="never" />
+    </group>
 
 
 

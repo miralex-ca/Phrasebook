@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -29,6 +30,8 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.NavSection;
+import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 
@@ -37,7 +40,9 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.IMG_LIST_LAYOUT;
+import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 
 
 public class CatActivity extends BaseActivity {
@@ -52,10 +57,11 @@ public class CatActivity extends BaseActivity {
     public ArrayList<DataItem> exerciseData = new ArrayList<>();
     public ArrayList<DataItem> cardData = new ArrayList<>();
 
-    public static Section section;
 
     public static String categoryID;
     public static String catSpec;
+
+    public String parentSectionId;
 
     Boolean easy_mode;
     DataModeDialog dataModeDialog;
@@ -70,10 +76,13 @@ public class CatActivity extends BaseActivity {
     OpenActivity openActivity;
 
     MenuItem sortMenuItem;
+    private MenuItem bookmarkRadio;
 
 
     DataManager dataManager;
     private MenuItem changeLayoutBtn;
+
+    NavStructure navStructure;
 
 
     @Override
@@ -90,8 +99,9 @@ public class CatActivity extends BaseActivity {
 
         easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
         dataModeDialog = new DataModeDialog(this);
-        dataManager = new DataManager(this, true);
+        dataManager = new DataManager(this);
 
+        navStructure = dataManager.getNavStructure();
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
@@ -101,12 +111,8 @@ public class CatActivity extends BaseActivity {
 
         String title = getIntent().getStringExtra("cat_title");
 
-        if (catSpec.equals("pers")) {
-            if (easy_mode || !getResources().getBoolean(R.bool.wide))  {
-                if (!getResources().getBoolean(R.bool.tablet))
-                title = getResources().getString(R.string.persons_title);
-            }
-        }
+
+        parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
 
         setTitle(title);
 
@@ -221,7 +227,6 @@ public class CatActivity extends BaseActivity {
                 .setSingleChoiceItems(R.array.set_sort_pers_list, checkedItem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        showSort(which);
                         dialog.dismiss();
                     }
                 })
@@ -241,23 +246,6 @@ public class CatActivity extends BaseActivity {
 
     }
 
-    private void showSort(int num) {
-
-        String orderValue = getResources().getStringArray(R.array.set_sort_pers_values)[0];
-        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_sort_pers_values)[1];
-
-        SharedPreferences.Editor editor = appSettings.edit();
-        editor.putString("sort_pers", orderValue);
-        editor.apply();
-
-
-        CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
-        if (fragment != null) {
-            fragment.updateSort();
-        }
-
-        chekMenuItem();
-    }
 
     private void chekMenuItem() {
 
@@ -268,8 +256,6 @@ public class CatActivity extends BaseActivity {
             sortMenuItem.setIcon(R.drawable.ic_sort);
         }
     }
-
-
 
 
     public void showAlertDialog(View view, int position) {
@@ -291,7 +277,6 @@ public class CatActivity extends BaseActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_category, menu);
@@ -301,6 +286,9 @@ public class CatActivity extends BaseActivity {
 
         changeLayoutBtn = menu.findItem(R.id.list_layout);
         applyLayoutStatus();
+
+        bookmarkRadio = menu.findItem(R.id.bookmark);
+        applyBookmarkStatus();
 
         return true;
     }
@@ -323,6 +311,9 @@ public class CatActivity extends BaseActivity {
             case R.id.list_layout:
                 changeLayoutStatus();
                 return true;
+            case R.id.bookmark:
+                changeBookmark();
+                return true;
             case R.id.info_from_menu:
                 infoMessage();
                 return true;
@@ -331,6 +322,33 @@ public class CatActivity extends BaseActivity {
     }
 
 
+    private void applyBookmarkStatus() {
+
+         boolean status = dataManager.dbHelper.checkBookmark(categoryID, parentSectionId);
+
+        if (status) bookmarkRadio.setIcon(R.drawable.ic_bookmark_active);
+        else bookmarkRadio.setIcon(R.drawable.ic_bookmark_inactive);
+
+         bookmarkRadio.setChecked(status);
+    }
+
+    private void changeBookmark() {
+
+
+        int status = dataManager.setBookmark(categoryID, parentSectionId, navStructure );
+
+        boolean radioChecked;
+
+        if (status == OUTCOME_ADDED) {
+            bookmarkRadio.setIcon(R.drawable.ic_bookmark_active);
+            radioChecked = true;
+        } else {
+            bookmarkRadio.setIcon(R.drawable.ic_bookmark_inactive);
+            radioChecked = false;
+        }
+
+        bookmarkRadio.setChecked(radioChecked);
+    }
 
     private void applyLayoutStatus() {
 
@@ -383,7 +401,7 @@ public class CatActivity extends BaseActivity {
 
         if (requestCode == 1) {
 
-            if(resultCode == CatActivity.RESULT_OK){
+            if(resultCode == RESULT_OK){
 
                 int result=data.getIntExtra("result", -1);
 
@@ -425,7 +443,6 @@ public class CatActivity extends BaseActivity {
         startActivityForResult(i,2);
         openActivity.pageTransition();
     }
-
 
 
     private void checkAdShow() {

@@ -102,7 +102,7 @@
 
     <string name="section_ex_link_desc_3">Тест аудио</string>
 
-    
+
 
     <string name="voc_ex_link_third_title">Упражнение 3</string>
     <string name="voc_ex_link_card_desc">Изучение отдельных записей</string>
@@ -428,7 +428,10 @@
 
     <string name="starred_menu_info">Справка</string>
     <string name="starred_words_info">В избранное можно добавить в списке раздела или темы (не более %1$d записей).</string>
+    <string name="starred_bookmark_info">Закладки можно добавлять из меню темы (не более %1$d закладок).</string>
     <string name="starred_gallery_info">В избранное можно добавить в разделе Галерея (не более %1$d записей).</string>
+
+    <string name="starred_bookmark_header">Добавлено в закладки</string>
 
     <string name="info_gallery_txt">\nВ галерее представлены различные материалы для дополнительного изучения. Записи из галереи можно добавить в избранное, при этом они появятся в отдельной вкладке в разделе Избранное. Записи и темы из галереи, как правило, не включены в тесты и упражнения.  \n</string>
 
@@ -470,6 +473,7 @@
     <string name="pic_name_label">Изображение: %s</string>
     <string name="pic_info_title">Сведения об изображении</string>
     <string name="starred_pic_title">Избранное (%d)</string>
+    <string name="starred_bookmarks_title">Закладки (%d)</string>
     <string name="test_result_title">Результат теста</string>
     <string name="total_tasks">Всего заданий: %d</string>
     <string name="test_errors">Ошибок: %d</string>
@@ -539,10 +543,10 @@
     <string name="progress_familiar_label">Пройдено</string>
     <string name="progress_unknown_label">Не пройдено</string>
     <string name="result_skipped_task">Невыполненные задания</string>
-    <string name="starred_tab_info">Записи</string>
+    <string name="starred_tab_info">Закладки</string>
     <string name="starred_tab_gallery">Галерея</string>
     <string name="starrd_tab_info_count">Записи (%d)</string>
-    <string name="starrd_tab_gallery_count">Галерея (%d)</string>
+    <string name="starrd_tab_gallery_count">Закладки (%d)</string>
     <string name="number_percent">%d%%</string>
     <string name="maps_list_title">Карты</string>
 
@@ -568,5 +572,8 @@
     <string name="set_speak_title">Включить аудио</string>
     <string name="set_speak_on">Используется синтезатор речи</string>
     <string name="set_speak_off">Аудио отключено</string>
+
+    <string name="menu_item_bookmark">Закладка</string>
+
 
 </resources>

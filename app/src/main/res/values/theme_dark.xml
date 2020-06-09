@@ -19,6 +19,8 @@
 
     <color name="colorContactIcon_dark">#F5F5F5</color>
 
+
+
     <color name="colorDetailBar_dark">#222</color>
     <color name="colorDetail_dark">#444</color>
 
@@ -133,8 +135,6 @@
         <item name="colorStarIcon">@color/colorStarIcon_dark</item>
         <item name="colorStarIconBord">?attr/colorStarIcon</item>
 
-
-
         <item name="colorStarButton">@color/colorStarButton_dark</item>
 
         <item name="colorExIconBg">@color/ex_icon_dark</item>
@@ -243,7 +243,11 @@
 
         <item name="colorSpeakerIcon">@color/colorSpeakerIcon_dark_fl</item>
 
+        <item name="colorBookmark">?attr/colorContactIcon</item>
+        <item name="colorBookmarkBorder">?attr/colorContactIcon</item>
+
     </style>
+
 
     <style name="PopupOverlayTheme_dark" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:colorBackground">@color/colorMenu_dark</item>

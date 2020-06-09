@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
@@ -105,13 +106,14 @@ public class DBImport {
         if (! currentTable.tableName.equals("empty")) importedDB.tables.add(currentTable);
 
         if (importedDB.tables.size() < 1) {
-            Toast.makeText(context, "Несовместимый файл.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Несовместимый файл.", Toast.LENGTH_SHORT).show(); // todo check name
             return;
         }
 
         updateCatDataTable(importedDB);
         updateTestsDataTable(importedDB);
         updateUserItemsDataTable(importedDB);
+        updateBookmarksDataTable(importedDB);
     }
 
 
@@ -172,6 +174,7 @@ public class DBImport {
     }
 
 
+
     private void updateUserItemsDataTable(ImportedDB importedDB) {
 
         ImportedTable helpTable = new ImportedTable();
@@ -207,6 +210,38 @@ public class DBImport {
     }
 
 
+    private void updateBookmarksDataTable(ImportedDB importedDB) {
+
+        ImportedTable helpTable = new ImportedTable();
+
+        BookmarkDataTable bookmarkDataTable = new BookmarkDataTable();
+
+        for (ImportedTable table: importedDB.tables) {
+            if (table.tableName.equals(TABLE_BOOKMARKS_DATA)) helpTable = table;
+        }
+
+        for (List<String> line: helpTable.lines) {
+            BookmarkData bookmarkData = new BookmarkData();
+            bookmarkData.bookmarkItem = line.get(0);
+            bookmarkData.bookmarkParent = line.get(1);
+            bookmarkData.bookmarkTime = line.get(2);
+            bookmarkData.bookmarkType = line.get(3);
+            bookmarkData.bookmarkInfo = line.get(4);
+            bookmarkData.bookmarkFilter = line.get(5);
+
+            bookmarkDataTable.lines.add(bookmarkData);
+        }
+
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        dbHelper.importBookmarksData(db, bookmarkDataTable.lines);
+
+        db.close();
+
+    }
+
+
 
     public class CatDataTable {
         ArrayList<CatDataLine> lines = new ArrayList<>();
@@ -219,13 +254,25 @@ public class DBImport {
 
     public class TestsDataTable {
         ArrayList<TestData> lines = new ArrayList<>();
-
     }
 
     public class TestData {
         public String tag;
         public String progress;
         public String testTime;
+    }
+
+    public class BookmarkDataTable {
+        ArrayList<BookmarkData> lines = new ArrayList<>();
+    }
+
+    public class BookmarkData {
+        public String bookmarkItem;
+        public String bookmarkParent;
+        public String bookmarkTime;
+        public String bookmarkType;
+        public String bookmarkInfo;
+        public String bookmarkFilter;
     }
 
 

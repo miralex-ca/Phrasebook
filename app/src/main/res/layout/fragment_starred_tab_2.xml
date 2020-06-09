@@ -32,7 +32,7 @@
                         >
 
                         <TextView
-                            android:text="@string/starred_items_title"
+                            android:text="@string/starred_bookmark_header"
                             android:textSize="18sp"
                             android:gravity="center_horizontal"
                             android:layout_width="wrap_content"
@@ -54,7 +54,6 @@
 
                     <TextView
                         android:id="@+id/starred_zero_desc"
-                        android:text="@string/starred_gallery_info"
                         android:textSize="14sp"
                         android:gravity="center_horizontal"
                         android:layout_width="wrap_content"
@@ -87,7 +86,7 @@
 
                         style="@style/Widget.AppCompat.Button.Borderless"
 
-                        android:onClick="openStarredGallery"
+                        android:onClick="openStarredBookmarks"
 
                         android:gravity="center"
                         android:paddingTop="14dp"
@@ -101,7 +100,7 @@
                         >
 
                         <TextView
-                            android:text="@string/starred_items_title"
+                            android:text="@string/starred_bookmark_header"
                             android:textSize="18sp"
                             android:gravity="center_horizontal"
                             android:layout_width="wrap_content"
@@ -188,7 +187,7 @@
                         android:clickable="true"
                         android:layout_marginBottom="20dp"
                         android:background="?android:attr/selectableItemBackground"
-                        android:onClick="openStarredGallery"
+                        android:onClick="openStarredBookmarks"
                         android:padding="@dimen/starred_preview_padding"
                          >
 

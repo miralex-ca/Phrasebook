@@ -414,7 +414,7 @@ public class SectionStatsActivity extends BaseActivity {
         if (navSection.type.equals("simple")) {
             Category cat = section.categories.get(0);
             Intent i = new Intent(SectionStatsActivity.this, CatActivity.class);
-            openActivity.openCat(i, cat.id, cat.title, cat.spec);
+            openActivity.openCat(cat.id, cat.spec, cat.title, navSection.id);
 
         } else {
 
