@@ -204,6 +204,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_BOOKMARKS_TABLE = "CREATE TABLE " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
 
 
+    private static final String CREATE_BOOKMARKS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
+
     private int data_mode = 0;
     private boolean speaking_mode;
 
@@ -237,6 +239,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         populateDB(db);
         sanitizeDB(db);
+
 
     }
 
