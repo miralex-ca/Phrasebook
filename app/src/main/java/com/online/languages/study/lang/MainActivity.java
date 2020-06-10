@@ -48,6 +48,7 @@ import com.online.languages.study.lang.fragments.ContactFragment;
 import com.online.languages.study.lang.fragments.GalleryFragment;
 import com.online.languages.study.lang.fragments.HomeFragment;
 import com.online.languages.study.lang.fragments.InfoFragment;
+import com.online.languages.study.lang.fragments.NotesFragment;
 import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
@@ -96,6 +97,7 @@ public class MainActivity extends BaseActivity
     ContactFragment contactFragment;
     SectionFragment sectionFragment;
     GalleryFragment galleryFragment;
+    NotesFragment notesFragment;
 
     FragmentTransaction fPages;
     FragmentManager fragmentManager;
@@ -260,7 +262,7 @@ public class MainActivity extends BaseActivity
         contactFragment = new ContactFragment();
         statsFragment = new StatsFragment();
         galleryFragment = new GalleryFragment();
-
+        notesFragment = new NotesFragment();
 
         if (savedInstanceState != null) {
             menuActiveItem = savedInstanceState.getInt(ACITVE_MENU_ITEM, 0);
@@ -506,7 +508,7 @@ public class MainActivity extends BaseActivity
 
     public void openPage(int position) {
 
-        String[] tags = {"home", "gallery", "starred", "stats", "prefs", "desc", "contact"};
+        String[] tags = {"home", "gallery", "starred", "stats", "notes", "prefs", "desc", "contact"};
         String tag = tags[position];
 
         fPages = fragmentManager.beginTransaction();
@@ -536,10 +538,12 @@ public class MainActivity extends BaseActivity
         } else if (position == 3) {
             fPages.replace(R.id.content_fragment, statsFragment, tag);
         } else if (position == 4) {
-            fPages.replace(R.id.content_fragment, prefsFragment, tag);
+            fPages.replace(R.id.content_fragment, notesFragment, tag);
         } else if (position == 5) {
-            fPages.replace(R.id.content_fragment, infoFragment, tag);
+            fPages.replace(R.id.content_fragment, prefsFragment, tag);
         } else if (position == 6) {
+            fPages.replace(R.id.content_fragment, infoFragment, tag);
+        } else if (position == 7) {
             fPages.replace(R.id.content_fragment, contactFragment, tag);
         }
 
@@ -551,7 +555,7 @@ public class MainActivity extends BaseActivity
 
 
     public void updateMenuList(int activePosition) {
-        int[] menuItemsPosition = {0, 1, 2, 3, 4, 5, 6, 7};
+        int[] menuItemsPosition = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         menuActiveItem = activePosition;
 
         if (multipane) {
@@ -840,12 +844,14 @@ public class MainActivity extends BaseActivity
             position  = 2;
         } else if (id == R.id.nav_statistic) {
             position  = 3;
-        } else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_notes) {
             position  = 4;
-        } else if (id == R.id.nav_info) {
+        } else if (id == R.id.nav_settings) {
             position  = 5;
-        } else if (id == R.id.nav_contact) {
+        } else if (id == R.id.nav_info) {
             position  = 6;
+        } else if (id == R.id.nav_contact) {
+            position  = 7;
         }
 
         onMenuItemClicker(position);

@@ -46,6 +46,7 @@
     <string name="nav_gallery_txt">Галерея</string>
     <string name="nav_starred_txt">Избранное</string>
     <string name="nav_stats_txt">Статистика</string>
+    <string name="nav_notes_txt">Заметки</string>
     <string name="nav_settings_txt">Настройки</string>
     <string name="nav_info_txt">Справка</string>
     <string name="nav_contact_txt">Контакты/отзыв</string>
@@ -55,6 +56,7 @@
         <item>@string/title_gallery_txt</item>
         <item>@string/title_starred_txt</item>
         <item>@string/title_stats_txt</item>
+        <item>@string/nav_notes_txt</item>
         <item>@string/title_settings_txt</item>
         <item>@string/title_info_txt</item>
         <item>@string/title_contact_txt</item>

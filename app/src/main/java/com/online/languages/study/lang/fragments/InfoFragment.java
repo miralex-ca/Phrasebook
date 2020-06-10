@@ -56,7 +56,7 @@ public class InfoFragment extends Fragment {
 
         DataManager dataManager  = new DataManager(getActivity(), true);
 
-        String resName = "desc";
+        String resName = "info";
         if (dataManager.simplified) resName = "info_simplified";
 
         Context context = getActivity().getBaseContext(); //получаем контекст
@@ -83,7 +83,6 @@ public class InfoFragment extends Fragment {
 
         TextView versionName = rootview.findViewById(R.id.versionName);
         versionName.setText(versionText());
-
 
 
         return rootview;

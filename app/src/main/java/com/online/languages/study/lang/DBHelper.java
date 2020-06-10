@@ -239,8 +239,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         populateDB(db);
         sanitizeDB(db);
-
-
     }
 
 

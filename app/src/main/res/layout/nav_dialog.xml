@@ -30,8 +30,45 @@
                 android:paddingBottom="0dp"
                 >
 
+
                 <LinearLayout
                     android:id="@+id/navItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/NavDialogItem"
+                    >
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/nav_icon_dialog_size"
+                        android:layout_height="@dimen/nav_icon_dialog_size"
+                        app:srcCompat="@drawable/ic_bookmark"
+                        />
+
+                    <TextView
+
+                        android:layout_gravity="center_vertical"
+                        android:textSize="21sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nav_notes_txt"
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    android:background="#48969696"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp" />
+
+                <LinearLayout
+                    android:id="@+id/navItem2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -67,7 +104,7 @@
                     android:layout_height="1dp" />
 
                 <LinearLayout
-                    android:id="@+id/navItem2"
+                    android:id="@+id/navItem3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -102,7 +139,7 @@
                     android:layout_height="1dp" />
 
                 <LinearLayout
-                    android:id="@+id/navItem3"
+                    android:id="@+id/navItem4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -133,8 +170,6 @@
 
 
                 </LinearLayout>
-
-
 
 
             </LinearLayout>

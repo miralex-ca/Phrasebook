@@ -52,14 +52,6 @@ public class NavigationDialog {
                 message);
     }
 
-    public void openInfoHtmlDialog(String message, Boolean _setMaxHeight) {
-        textType = TextType.HTML;
-        setMaxHeight = _setMaxHeight;
-        createDialog(
-                context.getResources().getString(R.string.info_txt),
-                message);
-    }
-
 
 
 
@@ -76,6 +68,7 @@ public class NavigationDialog {
         View navItem1 = content.findViewById(R.id.navItem1);
         View navItem2 = content.findViewById(R.id.navItem2);
         View navItem3 = content.findViewById(R.id.navItem3);
+        View navItem4 = content.findViewById(R.id.navItem4);
 
         navItem1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -98,6 +91,11 @@ public class NavigationDialog {
         });
 
 
+        navItem4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                dismissDialog(7);
+            }
+        });
 
         //builder.setTitle(title);
 
