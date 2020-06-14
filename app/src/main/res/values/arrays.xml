@@ -205,6 +205,7 @@
 
     <string name="notes_pics_folder" translatable="false">cat/notes/</string>
 
+
     <string-array name="note_pics_list">
         <item>empty.png</item>
         <item>note.png</item>
@@ -217,11 +218,12 @@
         <item>health.png</item>
         <item>house.png</item>
         <item>school.png</item>
+        <item>basketball.png</item>
+        <item>laptop.png</item>
+        <item>book-open.png</item>
         <item>misc.png</item>
         <item>pine-tree.png</item>
         <item>info.png</item>
-
-
     </string-array>
 
 </resources>

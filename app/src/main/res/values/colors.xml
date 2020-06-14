@@ -230,6 +230,9 @@
     <color name="colorBtmNav_active_red_n">#FD8585</color>
     <color name="colorBtmNav_inactive_red_n">#BEFFFFFF</color>
 
+    <color name="colorCreateFabBtn_red_n">#FD8585</color>
+    <color name="colorCreateFabIcon_red_n">#000000</color>
+
     <color name="colorNavBgStart_red_n">#9C1414</color>
     <color name="colorNavBgCenter_red_n">#860F0F</color>
     <color name="colorNavBgEnd_red_n">#740B0B</color>
@@ -251,5 +254,10 @@
     <color name="colorCatProgressGood_lt">#5e7cd5fd</color>
     <color name="colorCatProgressBad_lt">#52FF6D00</color>
     <color name="colorCatProgressLow_lt">#8AFF8A80</color>
+
+
+    <color name="colorCreateFabBtn">#448AFF</color>
+    <color name="colorCreateFabIcon">#FFFFFF</color>
+
 
 </resources>

@@ -216,7 +216,14 @@ public class NoteEditActivity extends BaseActivity {
         String title = titleEditText.getText().toString();
         note.title = textSanitizer(title);
         note.content = contentEditText.getText().toString();
-        note.image = pics[picIndex];
+
+        if (picIndex == -1 ) {
+            note.image = pics[0];
+        } else {
+            note.image = pics[picIndex];
+        }
+
+
 
 
         if (note.title.equals("") && note.content.trim().equals("")) {

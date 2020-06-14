@@ -17,6 +17,7 @@ import java.util.List;
 
 import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_NOTES_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
 
@@ -114,6 +115,8 @@ public class DBImport {
         updateTestsDataTable(importedDB);
         updateUserItemsDataTable(importedDB);
         updateBookmarksDataTable(importedDB);
+        updateNotesDataTable(importedDB);
+
     }
 
 
@@ -241,6 +244,39 @@ public class DBImport {
 
     }
 
+    private void updateNotesDataTable(ImportedDB importedDB) {
+
+        ImportedTable helpTable = new ImportedTable();
+
+        NoteDataTable noteDataTable = new NoteDataTable();
+
+        for (ImportedTable table: importedDB.tables) {
+            if (table.tableName.equals(TABLE_NOTES_DATA)) helpTable = table;
+        }
+
+        for (List<String> line: helpTable.lines) {
+            NoteDataDB noteData = new NoteDataDB();
+            noteData.notePrimaryKey = line.get(0);
+            noteData.noteId = line.get(1);
+            noteData.noteTitle = line.get(2);
+            noteData.noteContent = line.get(3);
+            noteData.noteIcon = line.get(4);
+            noteData.noteInfo = line.get(5);
+            noteData.noteFilter = line.get(6);
+            noteData.noteCreated = line.get(7);
+            noteData.noteUpdated = line.get(8);
+            noteDataTable.lines.add(noteData);
+        }
+
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        dbHelper.importNotesData(db, noteDataTable.lines);
+
+        db.close();
+
+    }
+
 
 
     public class CatDataTable {
@@ -273,6 +309,23 @@ public class DBImport {
         public String bookmarkType;
         public String bookmarkInfo;
         public String bookmarkFilter;
+    }
+
+    public class NoteDataTable {
+        ArrayList<NoteDataDB> lines = new ArrayList<>();
+    }
+
+    public class NoteDataDB {
+        public String notePrimaryKey;
+        public String noteId;
+        public String noteTitle;
+        public String noteContent;
+        public String noteIcon;
+        public String noteFilter;
+        public String noteInfo;
+        public String noteCreated;
+        public String noteUpdated;
+
     }
 
 

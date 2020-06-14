@@ -17,6 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
@@ -53,7 +54,7 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
         data = _data;
         context  = _context;
         theme = _theme;
-        picsNotesFolder = context.getString(R.string.pics_notes_folder);
+        picsNotesFolder = context.getString(R.string.notes_pics_folder);
 
     }
 
@@ -92,14 +93,14 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
 
         if (dataItem.filter.contains(NOTE_TAG)) {
             holder.noteIcon.setVisibility(View.VISIBLE);
-            pic = picsNotesFolder +"/"+pic;
+            pic = picsNotesFolder + pic;
         } else {
             holder.noteIcon.setVisibility(View.GONE);
         }
 
 
         Picasso.with(context )
-                .load("file:///android_asset/pics/"+ pic )
+                .load(FOLDER_PICS + pic )
                 //.transform(new RoundedTransformation(0,0))
                 .fit()
                 .centerCrop()

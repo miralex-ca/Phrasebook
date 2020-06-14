@@ -210,6 +210,10 @@
 
         <item name="colorAudioTestBtn">?attr/colorCardWidgetBg</item>
 
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon</item>
+
         <!-- item name="android:listDivider">?attr/colorPrimary</item -->
 
     </style>
@@ -366,7 +370,6 @@
         <item name="colorCatProgressGood">@color/colorCatProgressGood_lt</item>
         <item name="colorCatProgressGreat">@color/colorCatProgressGreat_lt</item>
         <item name="colorCatProgressPerfect">@color/colorCatProgressPerfect_lt</item>
-
 
     </style>
 
@@ -1040,6 +1043,8 @@
         <item name="colorAccent">?attr/colorAudioTestBtn</item>
     </style>
 
+
+
     <style name="PurchaseMsg">
         <item name="android:background">#ffffff</item>
         <item name="android:padding">30dp</item>
@@ -1077,5 +1082,9 @@
         <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
 
 
+
+    <style name="fabStyle">
+        <item name="colorAccent">?attr/colorCreateFabBtn</item>
+    </style>
 
 </resources>

@@ -66,6 +66,9 @@
         <item name="colorBookmark">@color/colorBookmark_red</item>
         <item name="colorBookmarkBorder">@color/colorBookmarkBorder_red</item>
 
+        <item name="colorCreateFabBtn">?attr/colorAccent</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon</item>
+
     </style>
 
     <style name="DetailTextTheme.Red">
@@ -83,7 +86,6 @@
         <item name="colorPrimary">@color/colorDetailBar_red</item>
 
     </style>
-
 
 
 

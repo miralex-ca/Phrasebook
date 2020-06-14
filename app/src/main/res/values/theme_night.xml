@@ -33,6 +33,9 @@
     <color name="colorVeryGoodTextCat_night">#64FFDA</color>
     <color name="colorGreatTextCat_night">#2EFD98</color>
 
+    <color name="colorCreateFabBtn_night">#8BCFFD</color>
+    <color name="colorCreateFabIcon_night">#000000</color>
+
 
     <style name="NightTheme" parent="DarkTheme">
 
@@ -75,6 +78,10 @@
         <item name="colorGoodTextCat">@color/colorGoodTextCat_night</item>
         <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_night</item>
         <item name="colorGreatTextCat">@color/colorGreatTextCat_night</item>
+
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_night</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_night</item>
 
 
     </style>

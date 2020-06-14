@@ -185,6 +185,9 @@
         <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_night</item>
         <item name="colorGreatTextCat">@color/colorGreatTextCat_night</item>
 
+        <item name="colorCreateFabBtn">?attr/colorAccent</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_smoky</item>
+
     </style>
 
 

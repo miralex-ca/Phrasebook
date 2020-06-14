@@ -19,6 +19,10 @@
         <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
         <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
 
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_red_n</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_red_n</item>
+
         <item name="cardCorner">@dimen/cardCornerDefault_red</item>
 
     </style>

@@ -2587,6 +2587,28 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public void importNotesData (SQLiteDatabase db, List<DBImport.NoteDataDB> list) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES_DATA);
+        db.execSQL(CREATE_NOTES_TABLE);
+
+        db.beginTransaction();
+
+        try {
+
+            for (DBImport.NoteDataDB item: list) {
+                insertImportedNoteData(db, item);
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+    }
+
+
     private void insertImportedBookmarkData(SQLiteDatabase db, DBImport.BookmarkData bookmarkData) {
 
         ContentValues values = new ContentValues();
@@ -2599,6 +2621,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_BOOKMARKS_DATA, null, values);
     }
+
+    private void insertImportedNoteData(SQLiteDatabase db, DBImport.NoteDataDB noteData) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_NOTE_PRIMARY_ID, noteData.notePrimaryKey);
+        values.put(KEY_NOTE_ID, noteData.noteId);
+        values.put(KEY_NOTE_TITLE, noteData.noteTitle);
+        values.put(KEY_NOTE_TEXT, noteData.noteContent);
+        values.put(KEY_NOTE_ICON, noteData.noteIcon);
+        values.put(KEY_NOTE_INFO, noteData.noteInfo);
+        values.put(KEY_NOTE_FILTER, noteData.noteFilter);
+        values.put(KEY_NOTE_CREATED, noteData.noteCreated);
+        values.put(KEY_NOTE_UPDATED, noteData.noteUpdated);
+
+        db.insert(TABLE_NOTES_DATA, null, values);
+    }
+
 
 
 

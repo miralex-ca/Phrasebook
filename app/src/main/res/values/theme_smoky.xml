@@ -59,6 +59,9 @@
 
     <dimen name="cardCornerDefault_smoky">6dp</dimen>
 
+    <color name="colorCreateFabBtn_smoky">#80D8FF</color>
+    <color name="colorCreateFabIcon_smoky">#051E3A</color>
+
 
     <style name="SmokyTheme.TransparentStatus" />
 
@@ -137,6 +140,9 @@
         <item name="colorVeryGoodTextCat">@color/colorVeryGoodTextCat_night</item>
         <item name="colorGreatTextCat">@color/colorGreatTextCat_night</item>
 
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_smoky</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_smoky</item>
+
     </style>
 
 
@@ -164,6 +170,7 @@
 
         <item name="colorDetailTopTxt">@color/colorDetailTopTxt_dark</item>
         <item name="colorDetailBtmTxt">@color/colorDetailBtmTxt_dark</item>
+
 
 
 

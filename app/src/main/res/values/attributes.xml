@@ -234,7 +234,7 @@
     </declare-styleable>
 
 
-
-
+    <attr name="colorCreateFabBtn" format="reference" />
+    <attr name="colorCreateFabIcon" format="reference" />
 
 </resources>

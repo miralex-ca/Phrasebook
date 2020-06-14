@@ -39,7 +39,6 @@ public class ImgPickerAdapter extends RecyclerView.Adapter<ImgPickerAdapter.MyVi
     }
 
 
-
     public ImgPickerAdapter(Context context, String[] pics, int selected) {
         this.context = context;
         this.pics = pics;

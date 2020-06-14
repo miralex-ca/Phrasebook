@@ -21,6 +21,7 @@ import java.util.List;
 
 import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_NOTES_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
 
@@ -94,6 +95,7 @@ public class DBExport {
                             || c.getString(0).equals(TABLE_USER_DATA)
                             || c.getString(0).equals(TABLE_TESTS_DATA)
                             || c.getString(0).equals(TABLE_BOOKMARKS_DATA)
+                            || c.getString(0).equals(TABLE_NOTES_DATA)
                     ) {
                         tables.add(c.getString(0));
                     }

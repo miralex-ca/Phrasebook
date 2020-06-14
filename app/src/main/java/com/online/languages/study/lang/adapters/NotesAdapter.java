@@ -126,6 +126,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         boolean found = false;
 
+        if (picName == null) picName = "";
+
         for (String name: pics_list) {
             if (picName.equals(name)) found = true;
         }

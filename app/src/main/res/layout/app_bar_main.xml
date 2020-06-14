@@ -29,11 +29,12 @@
 
     <android.support.design.widget.FloatingActionButton
 
+        app:theme="@style/fabStyle"
+
         android:id="@+id/fab_add"
         android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
 
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginLeft="@dimen/fab_margin"
@@ -45,9 +46,9 @@
         app:layout_anchorGravity="right|top"
 
         app:fabCustomSize="56dp"
-        app:maxImageSize="30dp"
+        app:maxImageSize="33dp"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_plus"
+        app:srcCompat="@drawable/ic_plus_fab"
         />
 
 

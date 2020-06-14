@@ -159,6 +159,8 @@ public class NoteActivity extends BaseActivity {
     private String checkImage(String picName) {
 
         boolean found = false;
+        if (picName == null) picName = "";
+
         String img = picName;
 
         for (String pic: note_pics) {

@@ -112,6 +112,9 @@
     <color name="colorExOptionTxt_dark">#ffffff</color>
     <color name="colorMapTitleBox_dark">#78000000</color>
 
+    <color name="colorCreateFabBtn_dark">#313131</color>
+    <color name="colorCreateFabIcon_dark">#FFFFFF</color>
+
 
     <dimen name="card_margin_default_dark">0dp</dimen>
 
@@ -245,6 +248,10 @@
 
         <item name="colorBookmark">?attr/colorContactIcon</item>
         <item name="colorBookmarkBorder">?attr/colorContactIcon</item>
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_dark</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_dark</item>
+
 
     </style>
 
