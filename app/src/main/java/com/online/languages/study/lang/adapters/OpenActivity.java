@@ -58,7 +58,7 @@ public class OpenActivity  {
     }
 
 
-    private void callActivity(Intent intent) {
+    public void callActivity(Intent intent) {
         ((Activity) context).startActivityForResult(intent, requestCode);
         pageTransition();
         requestCode = 1;

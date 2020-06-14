@@ -26,11 +26,46 @@
     <include layout="@layout/content_main" />
 
 
+
+    <android.support.design.widget.FloatingActionButton
+
+        android:id="@+id/fab_add"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_marginBottom="20dp"
+
+        app:layout_anchor="@+id/fab_anchor"
+
+        app:layout_anchorGravity="right|top"
+
+        app:fabCustomSize="56dp"
+        app:maxImageSize="30dp"
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_plus"
+        />
+
+
+
+
+    <RelativeLayout
+        android:paddingTop="40dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/fab_anchor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <android.support.v7.widget.CardView
         android:id="@+id/bottomNavBox"
         app:cardElevation="20dp"
         android:visibility="gone"
         app:cardCornerRadius="0dp"
+        android:layout_marginTop="8dp"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -75,6 +110,8 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
+
+    </RelativeLayout>
 
 
 

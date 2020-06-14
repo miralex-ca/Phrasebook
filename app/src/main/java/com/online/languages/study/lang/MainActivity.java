@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -126,6 +127,8 @@ public class MainActivity extends BaseActivity
 
     public static Boolean hasPrivilege;
 
+    FloatingActionButton fab;
+
 
     public static final String SKU_PREMIUM = BuildConfig.SKU;
 
@@ -231,6 +234,8 @@ public class MainActivity extends BaseActivity
         setSupportActionBar(toolbar);
 
 
+        fab = findViewById(R.id.fab_add);
+
 
         if (multipane) {
             listView = findViewById(R.id.menu_list);
@@ -295,6 +300,15 @@ public class MainActivity extends BaseActivity
         homeFragment.setArguments(bundle);
         statsFragment.setArguments(bundle);
         galleryFragment.setArguments(bundle);
+
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               noteFabClick();
+            }
+        });
 
 
     }
@@ -622,7 +636,40 @@ public class MainActivity extends BaseActivity
             } else {
                 findViewById(R.id.nav_footer).setVisibility(View.VISIBLE);
             }
+
+            if (fab != null) {
+                manageNoteFab(activePosition);
+            }
+
         }
+
+    }
+
+    private void manageNoteFab(int position) {
+
+        if (position == 4 ) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fab.show();
+                }
+            }, 350);
+        }
+        else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fab.hide();
+                }
+            }, 100);
+        }
+
+    }
+
+    private void noteFabClick() {
+
+        NotesFragment fragment = (NotesFragment)fragmentManager.findFragmentByTag("notes");
+        if (fragment!=null) fragment.fabClick();
 
     }
 

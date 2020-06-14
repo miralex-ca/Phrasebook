@@ -114,8 +114,7 @@ public class InfoDialog {
 
 
 
-    private void showCustomDialog(String title, String text) {
-
+    public void showCustomDialog(String title, String text) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View content = inflater.inflate(R.layout.dialog_info, null);
@@ -164,6 +163,27 @@ public class InfoDialog {
 
 
 
+
+    public void simpleDialog(String title, String text) {
+
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setCancelable(true)
+                .setNegativeButton(R.string.dialog_close_txt,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+
+                .setMessage(text);
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
 
 
 

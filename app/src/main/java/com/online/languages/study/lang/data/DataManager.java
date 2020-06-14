@@ -461,7 +461,6 @@ public class DataManager {
 
         Collections.sort(bookmarksToReturn, new TimeBookmarkComparator());
 
-
         return bookmarksToReturn;
     }
 
@@ -470,6 +469,23 @@ public class DataManager {
 
         DataFromJson dataFromJson = new DataFromJson(context);
         return dataFromJson.getStructure();
+    }
+
+
+    public ArrayList<NoteData> getNotes() {
+
+        ArrayList<NoteData> notes = dbHelper.getNotes();
+
+        Collections.sort(notes, new TimeNoteComparator());
+
+        return notes;
+    }
+
+    private class TimeNoteComparator implements Comparator<NoteData> {
+        @Override
+        public int compare(NoteData o1, NoteData o2) {
+            return o1.time_created <= o2.time_created? 1 : -1;
+        }
     }
 
 

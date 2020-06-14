@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:id="@+id/info_item"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+
+    <item
+        android:icon="@drawable/ic_delete_toolbar"
+        android:id="@+id/delete_note"
+        android:orderInCategory="100"
+        android:title="Удалить заметку"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/edit_note"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_edit"
+        android:title="Редактировать"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

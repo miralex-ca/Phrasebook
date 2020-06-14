@@ -175,6 +175,13 @@
             android:theme="@style/AppTheme"
             />
 
+        <activity android:name="com.online.languages.study.lang.NoteActivity"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity android:name="com.online.languages.study.lang.NoteEditActivity"
+            android:theme="@style/AppTheme"
+            />
 
     </application>
 

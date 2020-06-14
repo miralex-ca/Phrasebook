@@ -46,7 +46,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_width="@dimen/nav_icon_dialog_size"
                         android:layout_height="@dimen/nav_icon_dialog_size"
-                        app:srcCompat="@drawable/ic_bookmark"
+                        app:srcCompat="@drawable/ic_nav_notes_dialog"
                         />
 
                     <TextView

@@ -202,4 +202,26 @@
         <item>gallery/paint/devochka_s_persikami.jpg</item>
     </string-array>
 
+
+    <string name="notes_pics_folder" translatable="false">cat/notes/</string>
+
+    <string-array name="note_pics_list">
+        <item>empty.png</item>
+        <item>note.png</item>
+        <item>contacts.png</item>
+        <item>travel.png</item>
+        <item>city.png</item>
+        <item>shop.png</item>
+        <item>food.png</item>
+        <item>nature.png</item>
+        <item>health.png</item>
+        <item>house.png</item>
+        <item>school.png</item>
+        <item>misc.png</item>
+        <item>pine-tree.png</item>
+        <item>info.png</item>
+
+
+    </string-array>
+
 </resources>

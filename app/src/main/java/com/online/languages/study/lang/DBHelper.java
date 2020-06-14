@@ -20,6 +20,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailFromJson;
 import com.online.languages.study.lang.data.DetailItem;
 import com.online.languages.study.lang.data.NavCategory;
+import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.data.UserStats;
 import com.online.languages.study.lang.data.UserStatsData;
@@ -31,9 +32,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
-import static com.online.languages.study.lang.Constants.ACTION_INSERT;
+
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
+import static com.online.languages.study.lang.Constants.INFO_TAG;
+import static com.online.languages.study.lang.Constants.NOTE_TAG;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
@@ -58,6 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_ITEMS_DATA = "items_data";
     public static final String TABLE_DETAILS_DATA = "details_data";
     public static final String TABLE_BOOKMARKS_DATA = "bookmarks_data";
+    public static final String TABLE_NOTES_DATA = "notes_data";
 
     // common
     private static final String KEY_PRIMARY_ID = "id";
@@ -117,6 +122,19 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_BOOKMARK_FILTER = "bookmark_filter";
 
 
+    //// notes table columns
+    private static final String KEY_NOTE_PRIMARY_ID = "note_primary_id";
+    private static final String KEY_NOTE_ID = "note_id";
+    private static final String KEY_NOTE_TITLE = "note_title";
+    private static final String KEY_NOTE_TEXT = "note_text";
+    private static final String KEY_NOTE_ICON = "note_icon";
+    private static final String KEY_NOTE_INFO = "note_info";
+    private static final String KEY_NOTE_FILTER = "note_filter";
+    private static final String KEY_NOTE_CREATED = "note_created";
+    private static final String KEY_NOTE_UPDATED = "note_updated";
+
+
+
     private static final String TABLE_ITEM_STRUCTURE  = "("
             + KEY_PRIMARY_ID + " INTEGER PRIMARY KEY,"
             + KEY_ITEM_ID + " TEXT,"
@@ -172,6 +190,17 @@ public class DBHelper extends SQLiteOpenHelper {
             + ")";
 
 
+    private static final String TABLE_NOTES_STRUCTURE = "("
+            + KEY_NOTE_PRIMARY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_NOTE_ID + " TEXT,"
+            + KEY_NOTE_TITLE + " TEXT,"
+            + KEY_NOTE_TEXT + " TEXT,"
+            + KEY_NOTE_ICON+ " TEXT,"
+            + KEY_NOTE_INFO + " TEXT,"
+            + KEY_NOTE_FILTER + " TEXT,"
+            + KEY_NOTE_CREATED + " INTEGER,"
+            + KEY_NOTE_UPDATED + " INTEGER"
+            + ")";
 
 
     private static final String TABLE_ITEMS_STRUCTURE = TABLE_ITEMS_DATA + TABLE_ITEM_STRUCTURE;
@@ -202,9 +231,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TESTS_TABLE = "CREATE TABLE " + TABLE_TESTS_DATA + TABLE_TEST_STRUCTURE;
     private static final String CREATE_BOOKMARKS_TABLE = "CREATE TABLE " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
+    private static final String CREATE_NOTES_TABLE = "CREATE TABLE " + TABLE_NOTES_DATA + TABLE_NOTES_STRUCTURE;
 
 
     private static final String CREATE_BOOKMARKS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
+
+    private static final String CREATE_NOTES_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_NOTES_DATA + TABLE_NOTES_STRUCTURE;
 
     private int data_mode = 0;
     private boolean speaking_mode;
@@ -229,6 +261,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_USER_ITEMS_TABLE);
         db.execSQL(CREATE_TESTS_TABLE);
         db.execSQL(CREATE_BOOKMARKS_TABLE);
+        db.execSQL(CREATE_NOTES_TABLE);
 
     }
 
@@ -441,7 +474,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if ( cursor.moveToFirst() ) {
             action = ACTION_DELETE;
         } else {
-            action = ACTION_INSERT;
+            action = ACTION_CREATE;
         }
 
         ContentValues values = new ContentValues();
@@ -453,7 +486,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.delete(TABLE_BOOKMARKS_DATA, KEY_BOOKMARK_ITEM +" = ? AND " + KEY_BOOKMARK_PARENT + " = ?",    new String[]{bookmark, parent});
             status = OUTCOME_REMOVED;
 
-        } else if (action.equals(ACTION_INSERT)){
+        } else if (action.equals(ACTION_CREATE)){
 
             if (param.equals(PARAM_LIMIT_REACHED)) {
                 status = OUTCOME_LIMIT;
@@ -471,6 +504,173 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return status;
     }
+
+
+    public void createNote(NoteData note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        long time = System.currentTimeMillis();
+
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_NOTE_ID, "note_created");
+        values.put(KEY_NOTE_TITLE, note.title);
+        values.put(KEY_NOTE_TEXT, note.content);
+        values.put(KEY_NOTE_ICON, note.image);
+        values.put(KEY_NOTE_CREATED, time );
+        values.put(KEY_NOTE_UPDATED, time );
+
+        db.insert(TABLE_NOTES_DATA, null, values);
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
+                KEY_NOTE_CREATED +" = ? AND " + KEY_NOTE_ID + "= ?",
+
+                new String[] { String.valueOf(time), "note_created" }, null, null, null);
+
+        int primary_key = -1;
+
+        while (cursor.moveToNext()) {
+            primary_key = cursor.getInt(cursor.getColumnIndex(KEY_NOTE_PRIMARY_ID));
+        }
+
+
+        ContentValues newValues = new ContentValues();
+
+        newValues.put(KEY_NOTE_ID, "note_" + primary_key);
+
+        db.update(TABLE_NOTES_DATA, newValues,
+                KEY_NOTE_CREATED +" = ? AND " + KEY_NOTE_ID + "= ?",
+                new String[] { String.valueOf(time), "note_created" });
+
+        db.close();
+    }
+
+
+    public void updateNote(NoteData note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
+                KEY_NOTE_PRIMARY_ID +" = ?",
+                new String[] { note.id}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+
+           // Toast.makeText(cntx, "FOUND", Toast.LENGTH_SHORT).show();
+
+
+            ContentValues values = new ContentValues();
+
+            values.put(KEY_NOTE_TITLE, note.title);
+            values.put(KEY_NOTE_TEXT, note.content);
+            values.put(KEY_NOTE_ICON, note.image);
+            values.put(KEY_NOTE_UPDATED, System.currentTimeMillis());
+
+            db.update(TABLE_NOTES_DATA, values, KEY_NOTE_PRIMARY_ID +" = ?", new String[] { note.id });
+        } else {
+           // Toast.makeText(cntx, "NOT FOUND: "+ note.id, Toast.LENGTH_SHORT).show();
+        }
+
+        cursor.close();
+
+
+        db.close();
+    }
+
+    public void deleteNote(NoteData note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
+                KEY_NOTE_PRIMARY_ID +" = ?",
+                new String[] { note.id}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+            db.delete(TABLE_NOTES_DATA, KEY_NOTE_PRIMARY_ID + " = ?", new String[]{note.id});
+        }
+
+        cursor.close();
+
+        db.close();
+
+    }
+
+
+    public ArrayList<NoteData> getNotes() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ArrayList<NoteData> items = new ArrayList<>();
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null, null, null, null, null, null);
+
+        try {
+            while (cursor.moveToNext()) {
+
+                NoteData note  = getNoteFromCursor(cursor);
+                items.add(note);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return  items;
+    }
+
+    public NoteData getNote(String id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        NoteData note = new NoteData();
+        note.title = "not_found";
+
+        //Toast.makeText(cntx, "ID: " + id, Toast.LENGTH_SHORT).show();
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
+                KEY_NOTE_PRIMARY_ID +" = ?",
+                new String[] { id}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+            note  = getNoteFromCursor(cursor);
+        }
+
+        cursor.close();
+
+        db.close();
+
+        return note;
+    }
+
+    private NoteData getNoteFromCursor(Cursor cursor) {
+
+        NoteData note  = new NoteData();
+
+        int id = cursor.getInt(cursor.getColumnIndex(KEY_NOTE_PRIMARY_ID));
+
+        note.id = String.valueOf(id);
+        note.title = cursor.getString(cursor.getColumnIndex(KEY_NOTE_TITLE));
+        note.content = cursor.getString(cursor.getColumnIndex(KEY_NOTE_TEXT));
+        note.image = cursor.getString(cursor.getColumnIndex(KEY_NOTE_ICON));
+
+        note.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_NOTE_UPDATED));
+        note.time_created = cursor.getLong(cursor.getColumnIndex(KEY_NOTE_CREATED));
+
+        return note;
+    }
+
+
+
+
 
     public ArrayList<BookmarkItem> getBookmarks() {  /// TODO check for available in structure (datamanger)
 
@@ -520,38 +720,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return  bookmarked ;
     }
-
-
-    private int checkBookmarkSize(SQLiteDatabase db) {
-
-
-        DataManager dataManager = new DataManager(cntx, 1);
-
-        StringBuilder conditionLike = new StringBuilder("");
-
-        for (int i = 0; i < dataManager.navCategories.size(); i++) {
-
-            String like = KEY_BOOKMARK_ITEM + " = '" + dataManager.navCategories.get(i).id + "' ";
-
-            if (i != 0) {
-                like = "OR " + like;
-            }
-            conditionLike.append(like);
-        }
-
-        String query = "SELECT * FROM " + TABLE_BOOKMARKS_DATA
-
-                +" WHERE ("+conditionLike+") " ;
-
-        Cursor checkCursor = db.rawQuery(query, null);
-
-        int size = checkCursor.getCount();
-
-        checkCursor.close();
-
-        return size;
-    }
-
 
 
 
@@ -926,11 +1094,29 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
 
+        String notesQuery = "SELECT * FROM " +TABLE_NOTES_DATA
+                +" WHERE  ("+KEY_NOTE_TITLE+" LIKE '%"+searchTerm+"%' OR "+KEY_NOTE_TEXT+" LIKE '%" + searchTerm+"%')";
+
+
+        Cursor notesCursor = db.rawQuery(notesQuery, null);
+
+        try {
+            while (notesCursor.moveToNext()) {
+                items.add(getSimpleItemFromNoteCursor(notesCursor));
+            }
+        } finally {
+            notesCursor.close();
+        }
+
+
         db.close();
 
         return items;
 
     }
+
+
+
 
 
     public ArrayList<DataItem> getAllDataItems(ArrayList<NavCategory> navCategories) {
@@ -2114,6 +2300,8 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+
+
     private DataItem getSimpleItemFromCursor(Cursor cursor) {
         DataItem dataItem = new DataItem();
 
@@ -2146,6 +2334,21 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.starred_time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_STARRED));
         dataItem.time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME));
         dataItem.time_errors = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_ERROR));
+
+        return dataItem;
+    }
+
+    private DataItem getSimpleItemFromNoteCursor(Cursor cursor) {
+
+        DataItem dataItem = new DataItem();
+
+        dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_NOTE_PRIMARY_ID));
+        dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_NOTE_TITLE));
+        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_NOTE_TEXT));
+        dataItem.image = cursor.getString(cursor.getColumnIndex(KEY_NOTE_ICON));
+
+        dataItem.db_filter = NOTE_TAG;
+        dataItem.filter = NOTE_TAG;
 
         return dataItem;
     }

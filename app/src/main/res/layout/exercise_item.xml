@@ -58,7 +58,6 @@
 
                 app:fabCustomSize="85dp"
                 android:scaleType="center"
-
                 app:maxImageSize="45dp"
                 app:srcCompat="@drawable/ic_speaker_test" />
 

@@ -4,70 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+    android:scrollbars="vertical"
     android:gravity="center_horizontal"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <LinearLayout
-        android:focusableInTouchMode="true"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <RelativeLayout
         android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/main_card_top"
-        style="@style/CardWrapper.Width"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.CardView
+        <LinearLayout
             android:focusableInTouchMode="true"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_width="match_parent"
-            style="?attr/cardViewStyle"
-            app:cardCornerRadius="?attr/cardCornerSpec"
+            android:layout_marginTop="@dimen/main_card_top"
+            style="@style/CardWrapper.Width"
             >
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="?attr/CardViewBorder"
-                />
-
             <LinearLayout
+                android:id="@+id/list_wrapper"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/card_padding"
-                android:minHeight="@dimen/card_main_min_height"
-                >
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="50dp"
+                android:layout_height="wrap_content">
 
-                <LinearLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:minHeight="400dp"
-                    >
-
-                    <TextView
-                        android:text="Заметки"
-                        android:id="@+id/versionName"
-                        android:textSize="15sp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginTop="10dp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-
-                </LinearLayout>
-
+                    android:paddingBottom="10dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    />
 
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
 
-    </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

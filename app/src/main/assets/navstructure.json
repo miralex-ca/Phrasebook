@@ -108,7 +108,7 @@
       "desc": "Еда: описание",
       "title_short": "Еда",
       "desc_short": "Еда: описание",
-      "image": "cat/food_1.png",
+      "image": "cat/food.png",
       "categories":
       [
 
@@ -182,7 +182,7 @@
       "desc": "Дом: описание",
       "title_short": "Дом",
       "desc_short": "Дом: описание",
-      "image": "cat/house_1.png",
+      "image": "cat/house.png",
       "categories":
       [
 

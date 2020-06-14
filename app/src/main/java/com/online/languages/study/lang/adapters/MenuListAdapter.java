@@ -33,6 +33,7 @@ public class MenuListAdapter extends BaseAdapter {
             R.drawable.ic_nav_gallery,
             R.drawable.ic_nav_star,
             R.drawable.ic_nav_stats,
+            R.drawable.ic_nav_notes,
             R.drawable.ic_nav_settings,
             R.drawable.ic_nav_info,
             R.drawable.ic_nav_send,
@@ -100,7 +101,7 @@ public class MenuListAdapter extends BaseAdapter {
             if (!dataManager.statsSection) view = lInflater.inflate(R.layout.null_item, null);
         }
 
-        if (position==4 || position==7) {
+        if (position==4 || position==8) {
             divider.setVisibility(View.VISIBLE);
         }
 

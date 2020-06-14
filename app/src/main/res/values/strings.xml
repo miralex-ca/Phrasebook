@@ -24,6 +24,10 @@
 
     <string name="backup_file_name">backup_lang.csv</string>
 
+    <string name="pics_notes_folder">cat</string>
+
+
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -577,5 +581,10 @@
 
     <string name="menu_item_bookmark">Закладка</string>
 
+
+
+    <string name="note_title"> Название заметки заметки </string>
+
+    <string name="note_content">Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel. An eam dolor feugait urbanitas. Vim iisque alterum sapientem ut. Autem eleifend nam et, ferri solum est ne, latine prodesset id vix. \n\n Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel.</string>
 
 </resources>

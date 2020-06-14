@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/new_note"
+        android:orderInCategory="50"
+        android:icon="@drawable/ic_plus"
+        android:title="Редактировать"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/delete_note"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+</menu>

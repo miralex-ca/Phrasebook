@@ -25,6 +25,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.SearchDataAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
@@ -32,8 +33,10 @@ import com.online.languages.study.lang.data.NavStructure;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
+import static com.online.languages.study.lang.Constants.NOTE_TAG;
 
 
 public class SearchActivity extends BaseActivity implements SearchView.OnQueryTextListener {
@@ -60,6 +63,8 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
     TextView loadMoreTxt;
 
     NavStructure navStructure;
+    OpenActivity openActivity;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +91,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         setTitle("");
 
         dbHelper = new DBHelper(this);
+        openActivity = new OpenActivity(this);
 
         card = findViewById(R.id.card);
         result = findViewById(R.id.searcTxt);
@@ -114,7 +120,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
             @Override
             public void onLongClick(View view, int position) {
 
-               if (full_version) changeStarred(position);
+                changeStarred(position);
 
             }
         }));
@@ -146,7 +152,10 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         String filter = "";
         if (dataItem.filter.contains(GALLERY_TAG)) filter = GALLERY_TAG;
 
+
         if (dataItem.filter.contains(INFO_TAG)) return;
+        if (dataItem.filter.contains(NOTE_TAG)) return;
+
 
         Boolean starred = dbHelper.checkStarred(id );
 
@@ -202,15 +211,34 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
                 checkStarred(result);
             }
         }
+
+        if (requestCode == 2) {
+
+            //Toast.makeText(this, "Update note", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
 
     public void showAlertDialog(View view, int position) {
 
+        DataItem dataItem =  data.get(position);
+
+        if (dataItem.filter.contains(NOTE_TAG)) {
+
+            Intent i = new Intent(this, NoteActivity.class);
+            i.putExtra(EXTRA_NOTE_ID, dataItem.id );
+            i.putExtra("source", "search" );
+            startActivityForResult(i, 2);
+            openActivity.pageTransition();
+
+            return;
+        }
+
         Intent intent = new Intent(SearchActivity.this, ScrollingActivity.class);
-        intent.putExtra("id", data.get(position).id );
+        intent.putExtra("id", dataItem.id );
         intent.putExtra("position", position);
-        intent.putExtra("item", data.get(position));
+        intent.putExtra("item", dataItem);
         intent.putExtra("source", 1);
 
         startActivityForResult(intent,1);

@@ -17,6 +17,8 @@ public class Constants {
     public static final String SET_GALLERY_LAYOUT = "gallery_layout";
     public static final int SET_GALLERY_LAYOUT_DEFAULT = 1;
 
+    public static final boolean NOTES_LIST_ANIMATION = true;
+
     public static final String LIST_STUDIED = "studied";
 
     public static final int STARRED_LIMIT = 30;
@@ -87,7 +89,8 @@ public class Constants {
     public static final String REVISE_CAT_TAG = "revise";
     public static final int EXPAND_TIME = 920;
 
-    public static final String INFO_TAG = "#desc";
+    public static final String INFO_TAG = "#info";
+    public static final String NOTE_TAG = "#note";
     public static final String GALLERY_TAG = "#gallery";
     public static final String NAV_GALLERY_SPEC = "nav_gallery";
 
@@ -108,13 +111,7 @@ public class Constants {
         UNKNOWN
     }
 
-    public enum OUTCOME {
-        NONE,
-        FAILED,
-        ADDED,
-        REMOVED,
-        LIMIT
-    }
+
 
     public static final int OUTCOME_NONE = 0;
     public static final int OUTCOME_ADDED = 1;
@@ -131,11 +128,19 @@ public class Constants {
     public static final String PARAM_LIMIT_REACHED = "limit_reached";
     public static final String PARAM_LIMIT_UNREACHED = "limit_unreached";
 
+    public static final String ARG_NONE = "none";
+
 
     public static final String ACTION_NONE = "NONE";
-    public static final String ACTION_INSERT = "insert";
+    public static final String ACTION_CREATE = "create";
     public static final String ACTION_UPDATE = "update";
     public static final String ACTION_DELETE = "delete";
+
+
+    public static final String STATUS_NEW = "new";
+    public static final String STATUS_NORM = "norm";
+    public static final String STATUS_DELETED = "deleted";
+    public static final String STATUS_UPDATED = "updated";
 
 
     public static final String TAB_ITEMS = "normal";
@@ -155,6 +160,12 @@ public class Constants {
     public static final String CAT_LIST_VIEW_NORM = "normal";
     public static final String CAT_LIST_VIEW_COMPACT = "COMPACT";
 
+    public static final String EXTRA_NOTE_ID = "note_id";
+    public static final String EXTRA_NOTE_ACTION = "note_action";
+
+    public static final int NOTE_PIC_DEFAULT_INDEX = 1;
+
+    public static final String FOLDER_PICS = "file:///android_asset/pics/";
 
 
 
