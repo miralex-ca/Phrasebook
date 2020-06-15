@@ -237,11 +237,14 @@ public class NoteEditActivity extends BaseActivity {
 
 
 
-        if (noteAction.equals(ACTION_UPDATE)) dataManager.dbHelper.updateNote(note);
+        if (noteAction.equals(ACTION_UPDATE)) {
+            dataManager.dbHelper.updateNote(note);
+            Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
+        }
 
         if (noteAction.equals(ACTION_CREATE)) dataManager.dbHelper.createNote(note);
 
-        Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
+
 
         finish();
     }

@@ -9,51 +9,50 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <RelativeLayout
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <RelativeLayout
             android:focusableInTouchMode="true"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/main_card_top"
             style="@style/CardWrapper.Width"
             >
 
-            <LinearLayout
+            <RelativeLayout
+                android:gravity="center_horizontal"
+                android:paddingBottom="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+            <RelativeLayout
+
                 android:id="@+id/list_wrapper"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_gravity="center_horizontal"
-                android:paddingBottom="50dp"
                 android:layout_height="wrap_content">
+
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"
-
                     android:clipToPadding="false"
                     android:nestedScrollingEnabled="false"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingBottom="10dp"
+                    android:layout_height="wrap_content"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     />
 
 
-            </LinearLayout>
+            </RelativeLayout>
 
 
 
+            </RelativeLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
-
-
-    </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -201,7 +201,6 @@ public class NoteActivity extends BaseActivity {
 
     private void deleteNote() {
         dataManager.dbHelper.deleteNote(note);
-        Toast.makeText(this, "Удалено", Toast.LENGTH_SHORT).show();
         finish();
     }
 

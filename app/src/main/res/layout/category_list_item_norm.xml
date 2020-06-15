@@ -108,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginBottom="7dp"
+                android:fontFamily="sans-serif-light"
                 style="@style/cat_list_item_title.norm"
                 android:textSize="21sp"
                 />

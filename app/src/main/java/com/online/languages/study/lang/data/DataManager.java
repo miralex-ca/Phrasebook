@@ -478,6 +478,8 @@ public class DataManager {
 
         Collections.sort(notes, new TimeNoteComparator());
 
+        // Collections.sort(notes, new TimeUpdateNoteComparator());
+
         return notes;
     }
 
@@ -485,6 +487,13 @@ public class DataManager {
         @Override
         public int compare(NoteData o1, NoteData o2) {
             return o1.time_created <= o2.time_created? 1 : -1;
+        }
+    }
+
+    private class TimeUpdateNoteComparator implements Comparator<NoteData> {
+        @Override
+        public int compare(NoteData o1, NoteData o2) {
+            return o1.time_updated <= o2.time_updated? 1 : -1;
         }
     }
 

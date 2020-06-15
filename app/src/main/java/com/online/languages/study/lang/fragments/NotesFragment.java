@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.DBHelper;
@@ -28,6 +29,7 @@ import com.online.languages.study.lang.NoteEditActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.NotesAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
 
@@ -61,7 +63,12 @@ public class NotesFragment extends Fragment {
     ArrayList<NoteData> notes;
     NotesAdapter adapter;
     RecyclerView recyclerView;
+
+    RelativeLayout helperView;
+
+
     DataManager dataManager;
+
 
 
     public NotesFragment() {
@@ -83,6 +90,7 @@ public class NotesFragment extends Fragment {
         notes = getNotes();
 
         recyclerView = rootview.findViewById(R.id.recycler_view);
+        helperView = rootview.findViewById(R.id.list_wrapper);
 
         adapter = new NotesAdapter(getActivity(), notes);
 
@@ -139,14 +147,14 @@ public class NotesFragment extends Fragment {
 
     private void updateList() {
 
-
         checkList();
-
 
     }
 
 
     private void checkList() {
+
+        setWrapContentHeight(helperView);
 
         if (!NOTES_LIST_ANIMATION) {
             ArrayList<NoteData> newNotes = getNotes();
@@ -212,13 +220,26 @@ public class NotesFragment extends Fragment {
                 NoteData noteData = notes.get(i);
 
                 if (noteData.status.equals(STATUS_UPDATED)) {
-                    adapter.notifyItemChanged(i);
+
+                    // TODO consider sorting by update
+                   // notes = getNotes();
+                   // adapter = new NotesAdapter(getActivity(), notes);
+                   // recyclerView.setAdapter(adapter);
+
+                    
+                    adapter.notifyItemChanged(i); /// normal
+
+
+
                 }
                 if (noteData.status.equals(STATUS_DELETED)) {
-                    recyclerView.setMinimumHeight(recyclerView.getHeight());
+
+
+                    setHR( recyclerView, helperView);
 
                     notes.remove(i);
                     adapter.notifyItemRemoved(i);
+
 
                 }
             }
@@ -239,8 +260,61 @@ public class NotesFragment extends Fragment {
                 }
             }
 
+    }
+
+
+
+    // Deletion process views handling
+    /// Set minheight to recycle and helper view
+    //// Remove item which happens with animation
+    ///// Change recycleview minheight (no animation) in about 400 ms (item removal animation must have finished)
+    ////// Play height animation for helper view
+
+    /// - make sure to return wrap content to helper view (before or after all act)
+
+
+
+    private void setHR(final RecyclerView recycler, final RelativeLayout helper) {
+
+        recycler.setMinimumHeight(recycler.getHeight());
+        helper.setMinimumHeight(recycler.getHeight());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recycler.setMinimumHeight(0);
+
+            }
+        }, 450);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                int h = recycler.getHeight();
+                ResizeHeight resizeHeight = new ResizeHeight(helper, h);
+                resizeHeight.setDuration(300);
+                helper.startAnimation(resizeHeight);
+
+            }
+        }, 550);
+
+
+
+
+
 
     }
+
+    private void setWrapContentHeight(View view) { //// should aply to the target view parent
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        view.setLayoutParams(params);
+
+    }
+
 
 
     public void fabClick() {
