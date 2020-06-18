@@ -6,16 +6,33 @@
     android:layout_height="match_parent"
     android:id="@+id/fragmentWrapper"
 
-    android:background="?attr/colorBaseBg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
     tools:showIn="@layout/app_bar_main">
 
+
+    <View
+        android:alpha="0.0"
+        android:visibility="visible"
+        android:id="@+id/app_bar_shadow"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:elevation="4dp"
+        />
+
+
     <FrameLayout
+        android:elevation="3dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/content_fragment"
         />
+
+
+
+
+
 
 
 </RelativeLayout>

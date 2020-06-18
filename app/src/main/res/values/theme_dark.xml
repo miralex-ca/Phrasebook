@@ -252,6 +252,10 @@
         <item name="colorCreateFabBtn">@color/colorCreateFabBtn_dark</item>
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon_dark</item>
 
+        <item name="colorHomeTabBg">?attr/colorPrimary</item>
+        <item name="colorHomeTabTxt">?attr/colorTabIndicator</item>
+        <item name="colorHomeTabTxtInactive">?attr/colorSecondaryText</item>
+
 
     </style>
 

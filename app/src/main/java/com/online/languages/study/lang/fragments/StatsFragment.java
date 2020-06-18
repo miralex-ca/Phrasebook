@@ -120,8 +120,10 @@ public class StatsFragment extends Fragment {
             }
         }));
 
+
         return rootview;
     }
+
 
 
     @Override

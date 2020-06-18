@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.StarredTabsPagerAdapter;
 import com.online.languages.study.lang.adapters.WrapContentViewPager;
@@ -96,6 +98,9 @@ public class StarredFragment extends Fragment {
 
         return rootView;
     }
+
+
+
 
     private void checkTabsDisplay() {
 

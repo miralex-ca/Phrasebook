@@ -210,7 +210,6 @@ public class NotesFragment extends Fragment {
 
                         break;
                     }
-
                 }
             }
 
@@ -226,9 +225,7 @@ public class NotesFragment extends Fragment {
                    // adapter = new NotesAdapter(getActivity(), notes);
                    // recyclerView.setAdapter(adapter);
 
-                    
                     adapter.notifyItemChanged(i); /// normal
-
 
 
                 }

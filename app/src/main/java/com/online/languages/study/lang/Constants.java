@@ -167,6 +167,10 @@ public class Constants {
 
     public static final String FOLDER_PICS = "file:///android_asset/pics/";
 
+    public static final String HOME_TAB_ACTIVE = "home_tab_active";
+
+    public static final String SAVED_IMG_LINK = "saved_img";
+
 
 
 }

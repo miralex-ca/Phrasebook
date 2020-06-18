@@ -69,6 +69,8 @@
         <item name="colorCreateFabBtn">?attr/colorAccent</item>
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon</item>
 
+
+
     </style>
 
     <style name="DetailTextTheme.Red">

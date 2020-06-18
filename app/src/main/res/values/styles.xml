@@ -25,6 +25,11 @@
         <item name="colorDialogBg">@color/colorDialogBg_lite</item>
 
 
+        <item name="colorHomeTabBg">@color/white</item>
+        <item name="colorHomeTabTxt">?attr/colorMainText</item>
+        <item name="colorHomeTabTxtInactive">?attr/colorSecondaryText</item>
+
+
         <item name="navBg">@drawable/side_nav_bar</item>
         <item name="colorNavBgStart">@color/colorNavBgStart</item>
         <item name="colorNavBgCenter">@color/colorNavBgCenter</item>
@@ -1085,6 +1090,17 @@
 
     <style name="fabStyle">
         <item name="colorAccent">?attr/colorCreateFabBtn</item>
+    </style>
+
+
+    <style name="HomeTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/HomeTabTextAppearance</item>
+        <!--- item name="tabSelectedTextColor">#1e88e5</item -->
+    </style>
+
+    <style name="HomeTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item>
+        <!-- item name="android:textColor">#ffffff</item -->
     </style>
 
 </resources>

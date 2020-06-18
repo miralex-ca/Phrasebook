@@ -1,0 +1,27 @@
+
+
+<android.support.design.widget.TabLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="?attr/colorHomeTabBg"
+    android:id="@+id/tab_layout"
+    android:layout_width="match_parent"
+    android:layout_height="33dp"
+    app:tabMinWidth="@dimen/tab_width"
+    android:paddingTop="0dp"
+    app:tabTextColor="?attr/colorHomeTabTxtInactive"
+    app:tabIndicatorColor="?attr/colorHomeTabTxt"
+    app:tabSelectedTextColor="?attr/colorHomeTabTxt"
+    app:tabIndicatorHeight="1dp"
+
+
+    android:elevation="4dp"
+
+    style="@style/HomeTabLayout"
+
+
+    />
+
+

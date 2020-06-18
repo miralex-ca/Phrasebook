@@ -183,6 +183,11 @@
             android:theme="@style/AppTheme"
             />
 
+        <activity android:name="com.online.languages.study.lang.MyCatEditActivity"
+            android:theme="@style/AppTheme"
+            />
+
+
     </application>
 
 </manifest>

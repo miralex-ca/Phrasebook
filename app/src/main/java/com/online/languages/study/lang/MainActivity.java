@@ -14,9 +14,11 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,6 +33,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -48,6 +52,7 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.ContactFragment;
 import com.online.languages.study.lang.fragments.GalleryFragment;
 import com.online.languages.study.lang.fragments.HomeFragment;
+import com.online.languages.study.lang.fragments.HomeTabsFragment;
 import com.online.languages.study.lang.fragments.InfoFragment;
 import com.online.languages.study.lang.fragments.NotesFragment;
 import com.online.languages.study.lang.fragments.PrefsFragment;
@@ -91,6 +96,7 @@ public class MainActivity extends BaseActivity
     Boolean shouldBack = false;
 
     HomeFragment homeFragment;
+    HomeTabsFragment homeTabsFragment;
     StarredFragment starredFragment;
     StatsFragment statsFragment;
     PrefsFragment prefsFragment;
@@ -128,6 +134,9 @@ public class MainActivity extends BaseActivity
     public static Boolean hasPrivilege;
 
     FloatingActionButton fab;
+    View appbar;
+    String homeFrag = "all";
+    View panelShadow;
 
 
     public static final String SKU_PREMIUM = BuildConfig.SKU;
@@ -155,6 +164,8 @@ public class MainActivity extends BaseActivity
 
         multipane = getResources().getBoolean(R.bool.multipane);
 
+
+
         openActivity = new OpenActivity(this);
         dataManager = new DataManager(this, true);
 
@@ -173,6 +184,8 @@ public class MainActivity extends BaseActivity
 
             setContentView(R.layout.activity_main);
         }
+
+
 
 
         String base64EncodedPublicKey = PUBLIC_KEY_1+PUBLIC_KEY_2+PUBLIC_KEY_3+PUBLIC_KEY_4;
@@ -230,11 +243,17 @@ public class MainActivity extends BaseActivity
             hasPrivilege = true;
         }
 
+        appbar =  findViewById(R.id.app_bar);
+
+        panelShadow = findViewById(R.id.app_bar_shadow);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
         fab = findViewById(R.id.fab_add);
+
+
 
 
         if (multipane) {
@@ -256,10 +275,12 @@ public class MainActivity extends BaseActivity
 
              bottomNavDisplay();
 
+
         }
 
         fragmentManager = getSupportFragmentManager();
         homeFragment = new HomeFragment();
+        homeTabsFragment = new HomeTabsFragment();
         starredFragment = new StarredFragment();
         infoFragment = new InfoFragment();
         prefsFragment = new PrefsFragment();
@@ -274,7 +295,12 @@ public class MainActivity extends BaseActivity
         } else {
 
             fPages = fragmentManager.beginTransaction();
-            fPages.replace(R.id.content_fragment, homeFragment, "home");
+           // fPages.replace(R.id.content_fragment, homeFragment, "home");  /// TODO
+
+
+            if (homeFrag.equals("all")) fPages.replace(R.id.content_fragment, homeTabsFragment, "home");
+            else fPages.replace(R.id.content_fragment, homeFragment, "home");
+
             fPages.disallowAddToBackStack();
             fPages.commit();
         }
@@ -294,10 +320,12 @@ public class MainActivity extends BaseActivity
         Bundle bundle = new Bundle();
 
         bundle.putParcelable("structure", navStructure);
+
         bundle.putString(EXTRA_SECTION_ID, "root");
         bundle.putString(EXTRA_CAT_ID, "root");
 
         homeFragment.setArguments(bundle);
+        homeTabsFragment.setArguments(bundle);
         statsFragment.setArguments(bundle);
         galleryFragment.setArguments(bundle);
 
@@ -312,6 +340,9 @@ public class MainActivity extends BaseActivity
 
 
     }
+
+
+
 
 
     private boolean needCheck() {
@@ -544,7 +575,10 @@ public class MainActivity extends BaseActivity
 
 
         if (position == 0) {
-            fPages.replace(R.id.content_fragment, homeFragment, tag);
+
+            if (homeFrag.equals("all")) fPages.replace(R.id.content_fragment, homeTabsFragment, tag);
+            else fPages.replace(R.id.content_fragment, homeFragment, tag); // TODO check fragment
+
         } else if (position == 1) {
             fPages.replace(R.id.content_fragment, galleryFragment, tag);
         } else if (position == 2) {
@@ -641,9 +675,48 @@ public class MainActivity extends BaseActivity
                 manageNoteFab(activePosition);
             }
 
+            manageBarShadow(activePosition);
+
         }
 
     }
+
+
+    private void manageBarShadow(int position) {
+
+
+        if (multipane) panelShadow.setVisibility(View.GONE);
+
+        if (!homeFrag.equals("all")){
+            panelShadow.setAlpha(1f);
+            return;
+        }
+
+        if (position == 0) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    panelShadow.animate().alpha(0f).setDuration(200);
+                }
+            }, 150);
+
+
+        } else {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    panelShadow.animate().alpha(1f).setDuration(250);
+                }
+            }, 300);
+        }
+
+
+
+
+    }
+
 
     private void manageNoteFab(int position) {
 

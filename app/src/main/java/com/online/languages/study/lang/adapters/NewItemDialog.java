@@ -1,0 +1,276 @@
+package com.online.languages.study.lang.adapters;
+
+
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
+import android.text.Editable;
+import android.text.Html;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.online.languages.study.lang.MyCatEditActivity;
+import com.online.languages.study.lang.R;
+
+
+public class NewItemDialog {
+
+
+
+    Context context;
+
+    private int itemCharMax = 150;
+    private int grammarCharMax = 20;
+    private int infoCharMax = 300;
+
+
+    private EditText itemEditText;
+    private EditText transcriptEditText;
+    private EditText translateEditText;
+    private EditText infoEditText;
+    private EditText grammarEditText;
+
+    private TextView itemCharCounter;
+    private TextView transcriptCharCounter;
+    private TextView translateCharCounter;
+    private TextView infoCharCounter;
+    private TextView grammarCharCounter;
+
+    Button openMore;
+    Button openLess;
+
+    View moreWrap;
+
+
+    MyCatEditActivity activity;
+
+
+
+    public NewItemDialog(Context _context, MyCatEditActivity activity) {
+        context = _context;
+        this.activity = activity;
+    }
+
+
+    public void showCustomDialog(String title) {
+
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View content = inflater.inflate(R.layout.dialog_edit_item, null);
+
+        final View moreView = content.findViewById(R.id.openMore);
+
+        openMore = content.findViewById(R.id.moreBtn);
+        openLess = content.findViewById(R.id.lessBtn);
+        moreWrap = content.findViewById(R.id.moreWrap);
+
+
+        itemEditText = content.findViewById(R.id.editItem);
+        translateEditText = content.findViewById(R.id.editTranslate);
+        transcriptEditText = content.findViewById(R.id.editTrans);
+        grammarEditText = content.findViewById(R.id.editGrammar);
+        infoEditText = content.findViewById(R.id.editAddInfo);
+
+
+        itemCharCounter = content.findViewById(R.id.itemCharCounter);
+        transcriptCharCounter = content.findViewById(R.id.transCharCounter);
+        translateCharCounter = content.findViewById(R.id.translateCharCounter);
+        infoCharCounter = content.findViewById(R.id.addInfoCharCounter);
+        grammarCharCounter = content.findViewById(R.id.grammarCharCounter);
+
+
+        itemEditText.addTextChangedListener(itemEditorWatcher);
+        translateEditText .addTextChangedListener(translateEditorWatcher);
+        transcriptEditText.addTextChangedListener(transcriptEditorWatcher);
+        grammarEditText.addTextChangedListener(grammarEditorWatcher);
+        infoEditText.addTextChangedListener(infoEditorWatcher);
+
+        View speakBtn = content.findViewById(R.id.speakBtn);
+
+
+        speakBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                String text = textSanitizer(itemEditText.getText().toString());
+                activity.speakText(text);
+            }
+        });
+
+        openMore.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                expandView(moreView);
+            }
+        });
+
+        openLess.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                closeView(moreView);
+            }
+        });
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+
+        builder.setTitle(title)
+                .setCancelable(true)
+
+                .setNegativeButton("Отмена",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                .setPositiveButton("Сохранить",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+
+
+                .setView(content);
+
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+
+
+    }
+
+    private void expandView(View view) {
+
+        openMore.setVisibility(View.GONE);
+        openLess.setVisibility(View.VISIBLE);
+
+        view.setVisibility(View.VISIBLE);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                moreWrap.animate().alpha(1.0f).setDuration(250);
+
+            }
+        }, 200);
+
+
+    }
+
+    private void closeView(final View view) {
+
+        openMore.setVisibility(View.VISIBLE);
+        openLess.setVisibility(View.GONE);
+
+        moreWrap.animate().alpha(0f).setDuration(250);
+
+        view.setVisibility(View.GONE);
+
+    }
+
+    private String textSanitizer(String text) {
+
+        text = text.replace("\n", " ").replace("\r", " ");
+
+        text = text.trim();
+        return text;
+    }
+
+
+    public void toast(String text) {
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+    }
+
+    private final TextWatcher itemEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String str = s.length() + "/" + itemCharMax;
+
+            itemCharCounter.setText(str);
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private final TextWatcher translateEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String str = s.length() + "/" + itemCharMax;
+
+            translateCharCounter.setText(str);
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private final TextWatcher transcriptEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String str = s.length() + "/" + itemCharMax;
+
+            transcriptCharCounter.setText(str);
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private final TextWatcher grammarEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String str = s.length() + "/" + grammarCharMax;
+
+            grammarCharCounter.setText(str);
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+    private final TextWatcher infoEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String str = s.length() + "/" + infoCharMax;
+
+            infoCharCounter.setText(str);
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
+
+
+
+    }

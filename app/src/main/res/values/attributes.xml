@@ -237,4 +237,8 @@
     <attr name="colorCreateFabBtn" format="reference" />
     <attr name="colorCreateFabIcon" format="reference" />
 
+    <attr name="colorHomeTabBg" format="reference" />
+    <attr name="colorHomeTabTxt" format="reference" />
+    <attr name="colorHomeTabTxtInactive" format="reference" />
+
 </resources>

@@ -37,6 +37,8 @@ public class HomeFragment extends Fragment {
 
     SharedPreferences appSettings;
 
+    DataManager dataManager;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,7 +53,10 @@ public class HomeFragment extends Fragment {
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        NavStructure navStructure = getArguments().getParcelable("structure");
+        dataManager = new DataManager(getActivity());
+
+        NavStructure navStructure = dataManager.getNavStructure();
+
         ArrayList<NavSection> navSections = checkSections(navStructure.sections);
 
         recyclerView = rootView.findViewById(R.id.recycler_view);

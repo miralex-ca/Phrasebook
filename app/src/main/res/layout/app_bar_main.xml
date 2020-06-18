@@ -4,14 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="?attr/colorBaseBg"
+
+
     tools:context="com.online.languages.study.lang.MainActivity">
 
+
+
+
+
+    <!-- View
+        app:elevation="8dp"
+        android:elevation="8dp"
+
+        android:background="#8BE6E6E6"
+
+        android:layout_marginBottom="10dp"
+
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="4dp" / -->
+
     <android.support.design.widget.AppBarLayout
+
+        android:id="@+id/app_bar"
+
+         app:elevation="0dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="?attr/AppBarOverlayTheme">
 
         <android.support.v7.widget.Toolbar
+
+
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -23,7 +50,10 @@
 
 
 
+
     <include layout="@layout/content_main" />
+
+
 
 
 
