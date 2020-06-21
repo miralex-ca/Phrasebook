@@ -14,13 +14,18 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.Environment;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -31,7 +36,11 @@ import com.google.android.gms.common.util.IOUtils;
 import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.NoteActivity;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.adapters.EditDataListAdapter;
+import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
+import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.DataObject;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -41,8 +50,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
@@ -55,6 +66,11 @@ public class HomeFragment2 extends Fragment   {
     SharedPreferences appSettings;
 
     View rootView;
+
+    DataManager dataManager;
+    EditUCatsListAdapter adapter;
+    RecyclerView recyclerView;
+    ArrayList<DataObject> catsList;
 
     Uri uri;
 
@@ -72,6 +88,7 @@ public class HomeFragment2 extends Fragment   {
         View newCat = rootView.findViewById(R.id.newCatBtn);
 
 
+        dataManager = new DataManager(getActivity());
 
         newCat.setOnClickListener(new View.OnClickListener() {
 
@@ -80,6 +97,7 @@ public class HomeFragment2 extends Fragment   {
                 openNewCat();
             }
         });
+
 
 
 
@@ -109,14 +127,63 @@ public class HomeFragment2 extends Fragment   {
                 .centerCrop()
                 .into(placePicutre);
 
+        recyclerView = rootView.findViewById(R.id.recycler_view);
+
+
+
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        openCat(position);
+                    }
+                }, 50);
+
+
+            }
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+
+
+
+        updateList();
 
         return rootView;
+    }
+
+    public void updateList() {
+
+        catsList  = dataManager.dbHelper.getUCatsList();
+
+
+        adapter = new EditUCatsListAdapter(getActivity(), catsList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapter);
+
+
     }
 
 
 
     public void openNewCat( ) {
         Intent i = new Intent(getActivity(), MyCatEditActivity.class);
+        i.putExtra(EXTRA_CAT_ID, "new");
+        startActivityForResult(i, 10);
+    }
+
+    public void openCat(int position) {
+
+        Intent i = new Intent(getActivity(), MyCatEditActivity.class);
+        i.putExtra(EXTRA_CAT_ID, catsList.get(position).id);
         startActivityForResult(i, 10);
     }
 
@@ -125,6 +192,9 @@ public class HomeFragment2 extends Fragment   {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
+        updateList();
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
 
@@ -235,7 +305,50 @@ public class HomeFragment2 extends Fragment   {
 
 
 
+    public interface ClickListener{
+        void onClick(View view,int position);
+        void onLongClick(View view,int position);
+    }
+    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
 
+        private ClickListener clicklistener;
+        private GestureDetector gestureDetector;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener){
+            this.clicklistener=clicklistener;
+            gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child=recycleView.findChildViewUnder(e.getX(),e.getY());
+                    if(child!=null && clicklistener!=null){
+                        clicklistener.onLongClick(child,recycleView.getChildAdapterPosition(child));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            View child=rv.findChildViewUnder(e.getX(),e.getY());
+            if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
+                clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        }
+    }
 
 
 

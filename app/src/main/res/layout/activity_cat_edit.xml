@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.online.languages.study.lang.NoteEditActivity">
+    >
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
 
 
                     <LinearLayout
-                        android:minHeight="80dp"
+
                         android:layout_marginRight="0dp"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                             android:layout_height="wrap_content" />
 
                         <EditText
+
                             android:inputType="textCapSentences|textMultiLine"
                             android:paddingTop="2dp"
                             android:layout_width="match_parent"
@@ -100,14 +101,51 @@
                     </LinearLayout>
 
 
-                    <Button
-                        android:layout_gravity="right"
-                        android:textColor="?attr/colorAccent"
-                        android:id="@+id/button_send"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="＋ Создать тему"
-                        style="?android:attr/borderlessButtonStyle" />
+                    <RelativeLayout
+                        android:minHeight="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="?attr/colorSecondaryText"
+                            android:textSize="12sp"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/createdDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:visibility="gone"
+                            android:layout_marginTop="12dp"
+                            android:onClick="createUCat"
+                            android:layout_alignParentRight="true"
+                            android:textColor="?attr/colorAccent"
+                            android:id="@+id/createBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Создать тему"
+                            style="?android:attr/borderlessButtonStyle" />
+
+
+                        <Button
+
+
+                            android:visibility="invisible"
+                            android:layout_marginTop="12dp"
+                            android:onClick="updateUCat"
+                            android:layout_alignParentRight="true"
+                            android:textColor="?attr/colorAccent"
+                            android:id="@+id/updateCatBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Сохранить"
+                            style="?android:attr/borderlessButtonStyle" />
+
+
+                    </RelativeLayout>
+
 
 
                 </LinearLayout>
@@ -144,15 +182,12 @@
 
                     <LinearLayout
 
-                        android:alpha="0.2"
-
-                        android:padding="20dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginRight="4dp"
+                        android:padding="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="0dp"
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
 
                         <TextView
 
@@ -166,25 +201,32 @@
                             android:fontFamily="sans-serif-light"
 
                             android:layout_marginBottom="20dp"
-                            android:textSize="22sp"
+
+                            android:textSize="20sp"
                             android:textStyle="bold"
                             android:text="＋ Новая запись"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
 
+
+                        <android.support.v7.widget.RecyclerView
+
+                            android:id="@+id/recycler_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="false"
+                            android:nestedScrollingEnabled="false"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            />
+
+
+
+
                     </LinearLayout>
 
 
-                    <android.support.v7.widget.RecyclerView
 
-                        android:id="@+id/recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:animateLayoutChanges="false"
-                        android:nestedScrollingEnabled="false"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                        />
 
                 </RelativeLayout>
 

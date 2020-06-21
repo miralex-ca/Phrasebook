@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cat_item_wrap"
+    >
+
+
+    <RelativeLayout
+
+        android:id="@+id/wrap"
+        android:paddingTop="11dp"
+        android:paddingBottom="14dp"
+        android:paddingLeft="12dp"
+
+        android:focusable="true"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_marginRight="40dp"
+            >
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:id="@+id/itemText"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:fontFamily="sans-serif-light"
+                />
+
+            <TextView
+
+                android:id="@+id/itemInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorSecondaryText"
+                />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+
+        android:id="@+id/settings"
+        android:focusable="true"
+        android:clickable="true"
+
+        android:paddingTop="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="15dp"
+
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <View
+            android:layout_centerInParent="true"
+            android:id="@+id/position"
+            android:layout_width="1dp"
+            android:layout_height="1dp" />
+
+        <ImageView
+
+            android:id="@+id/img"
+            android:background="?selectableItemBackgroundBorderless"
+
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_dots_menu" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

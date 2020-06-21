@@ -588,5 +588,6 @@
 
     <string name="home_tab_1">Разделы</string>
     <string name="home_tab_2">Мой словарь</string>
+    <string name="menu_delete_ucat">Удалить тему</string>
 
 </resources>

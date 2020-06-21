@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -133,6 +134,8 @@ public class NoteEditActivity extends BaseActivity {
 
         if (noteAction.equals(ACTION_UPDATE)) getNote();
 
+
+
     }
 
 
@@ -195,7 +198,6 @@ public class NoteEditActivity extends BaseActivity {
         switch(id) {
             case android.R.id.home:
                 finish();
-
                 return true;
 
             case R.id.save_note:
@@ -224,8 +226,6 @@ public class NoteEditActivity extends BaseActivity {
         }
 
 
-
-
         if (note.title.equals("") && note.content.trim().equals("")) {
 
             InfoDialog infoDialog = new InfoDialog(this);
@@ -243,7 +243,6 @@ public class NoteEditActivity extends BaseActivity {
         }
 
         if (noteAction.equals(ACTION_CREATE)) dataManager.dbHelper.createNote(note);
-
 
 
         finish();
@@ -367,10 +366,6 @@ public class NoteEditActivity extends BaseActivity {
 
 
     }
-
-
-
-
 
 
 

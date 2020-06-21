@@ -17,6 +17,7 @@ import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.DetailFromJson;
 import com.online.languages.study.lang.data.DetailItem;
 import com.online.languages.study.lang.data.NavCategory;
@@ -26,8 +27,10 @@ import com.online.languages.study.lang.data.UserStats;
 import com.online.languages.study.lang.data.UserStatsData;
 import com.online.languages.study.lang.files.DBImport;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +49,7 @@ import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -63,6 +67,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_DETAILS_DATA = "details_data";
     public static final String TABLE_BOOKMARKS_DATA = "bookmarks_data";
     public static final String TABLE_NOTES_DATA = "notes_data";
+    public static final String TABLE_USER_DATA_CATS = "user_data_cats";
+    public static final String TABLE_USER_DATA_ITEMS = "user_data_items";
+    public static final String TABLE_UCAT_UDATA = "table_ucat_udata";
 
     // common
     private static final String KEY_PRIMARY_ID = "id";
@@ -134,6 +141,40 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_NOTE_UPDATED = "note_updated";
 
 
+    //// user cats table columns
+    private static final String KEY_UCAT_PRIMARY_ID = "ucat_primary_id";
+    private static final String KEY_UCAT_ID = "ucat_id";
+    private static final String KEY_UCAT_TITLE = "ucat_title";
+    private static final String KEY_UCAT_DESC = "ucat_desc";
+    private static final String KEY_UCAT_ICON = "ucat_icon";
+    private static final String KEY_UCAT_INFO = "ucat_info";
+    private static final String KEY_UCAT_STATUS = "ucat_status";
+    private static final String KEY_UCAT_FILTER = "ucat_filter";
+    private static final String KEY_UCAT_CREATED = "ucat_created";
+    private static final String KEY_UCAT_UPDATED = "ucat_updated";
+
+
+    //// user dataitem table columns
+    private static final String KEY_UDATA_PRIMARY_ID = "udata_primary_id";
+    private static final String KEY_UDATA_ID = "udata_id";
+    private static final String KEY_UDATA_TEXT = "udata_text";
+    private static final String KEY_UDATA_TRANSLATE = "udata_translate";
+    private static final String KEY_UDATA_TRANSCRIPT = "udata_transcript";
+    private static final String KEY_UDATA_GRAMMAR = "udata_grammar";
+    private static final String KEY_UDATA_SOUND = "udata_sound";
+    private static final String KEY_UDATA_INFO = "udata_info";
+    private static final String KEY_UDATA_IMAGE = "udata_image";
+    private static final String KEY_UDATA_STATUS = "udata_status";
+    private static final String KEY_UDATA_FILTER = "udata_filter";
+    private static final String KEY_UDATA_CREATED = "udata_created";
+    private static final String KEY_UDATA_UPDATED = "udata_updated";
+
+
+    //// user dataitem table columns
+    private static final String KEY_UDC_UDATA_ID = "udata_id";
+    private static final String KEY_UDC_UCAT_ID = "ucat_id";
+
+
 
     private static final String TABLE_ITEM_STRUCTURE  = "("
             + KEY_PRIMARY_ID + " INTEGER PRIMARY KEY,"
@@ -203,6 +244,43 @@ public class DBHelper extends SQLiteOpenHelper {
             + ")";
 
 
+    private static final String TABLE_USER_DATA_CATS_STRUCTURE = "("
+            + KEY_UCAT_PRIMARY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_UCAT_ID + " TEXT,"
+            + KEY_UCAT_TITLE + " TEXT,"
+            + KEY_UCAT_DESC + " TEXT,"
+            + KEY_UCAT_ICON+ " TEXT,"
+            + KEY_UCAT_INFO + " TEXT,"
+            + KEY_UCAT_STATUS + " TEXT,"
+            + KEY_UCAT_FILTER + " TEXT,"
+            + KEY_UCAT_CREATED + " INTEGER,"
+            + KEY_UCAT_UPDATED + " INTEGER"
+            + ")";
+
+
+    private static final String TABLE_USER_DATA_ITEMS_STRUCTURE = "("
+            + KEY_UDATA_PRIMARY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            + KEY_UDATA_ID + " TEXT,"
+            + KEY_UDATA_TEXT + " TEXT,"
+            + KEY_UDATA_TRANSLATE + " TEXT,"
+            + KEY_UDATA_TRANSCRIPT + " TEXT,"
+            + KEY_UDATA_GRAMMAR + " TEXT,"
+            + KEY_UDATA_SOUND + " TEXT,"
+            + KEY_UDATA_INFO + " TEXT,"
+            + KEY_UDATA_IMAGE + " TEXT,"
+            + KEY_UDATA_STATUS + " TEXT,"
+            + KEY_UDATA_FILTER + " TEXT,"
+            + KEY_UDATA_CREATED + " INTEGER,"
+            + KEY_UDATA_UPDATED + " INTEGER"
+            + ")";
+
+
+    private static final String TABLE_UCAT_UDATA_STRUCTURE = "("
+            + KEY_UDC_UDATA_ID + " TEXT,"
+            + KEY_UDC_UCAT_ID + " TEXT"
+            + ")";
+
+
     private static final String TABLE_ITEMS_STRUCTURE = TABLE_ITEMS_DATA + TABLE_ITEM_STRUCTURE;
 
     private static final String TABLE_USER_ITEMS_STRUCTURE = TABLE_USER_DATA + TABLE_USER_STRUCTURE;
@@ -234,6 +312,12 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_NOTES_TABLE = "CREATE TABLE " + TABLE_NOTES_DATA + TABLE_NOTES_STRUCTURE;
 
 
+
+    private static final String CREATE_UCATS_TABLE = "CREATE TABLE " + TABLE_USER_DATA_CATS + TABLE_USER_DATA_CATS_STRUCTURE;
+    private static final String CREATE_UDATA_TABLE = "CREATE TABLE " + TABLE_USER_DATA_ITEMS+ TABLE_USER_DATA_ITEMS_STRUCTURE;
+    private static final String CREATE_UDC_TABLE = "CREATE TABLE " + TABLE_UCAT_UDATA + TABLE_UCAT_UDATA_STRUCTURE;
+
+
     private static final String CREATE_BOOKMARKS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_BOOKMARKS_DATA + TABLE_BOOKMARK_STRUCTURE;
 
     private static final String CREATE_NOTES_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_NOTES_DATA + TABLE_NOTES_STRUCTURE;
@@ -255,7 +339,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        populateDB(db);
+
+        populateDB(db); //// Adding items and details
 
         db.execSQL(CREATE_CATDATA_TABLE);
         db.execSQL(CREATE_USER_ITEMS_TABLE);
@@ -263,8 +348,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_BOOKMARKS_TABLE);
         db.execSQL(CREATE_NOTES_TABLE);
 
-    }
+        db.execSQL(CREATE_UCATS_TABLE);
+        db.execSQL(CREATE_UDATA_TABLE);
+        db.execSQL(CREATE_UDC_TABLE);
 
+
+    }
 
 
     @Override
@@ -506,13 +595,381 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public void createNote(NoteData note) {
+
+    public String[] createUCat(String catTitle) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
 
         long time = System.currentTimeMillis();
 
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_TITLE, catTitle);
+        values.put(KEY_UCAT_DESC, "");
+        values.put(KEY_UCAT_CREATED, time );
+        values.put(KEY_UCAT_UPDATED, time );
+
+       long cat_id  = db.insert(TABLE_USER_DATA_CATS, null, values);
+
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_PRIMARY_ID +" = ?",
+
+                new String[] { String.valueOf(cat_id)}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+
+            values = new ContentValues();
+            values.put(KEY_UCAT_ID, UC_PREFIX + cat_id);
+
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_PRIMARY_ID +" = ?",
+                    new String[] { String.valueOf(cat_id)});
+
+        }
+
+        cursor.close();
+        db.close();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String date = sdf.format(new Date(time));
+
+        return new String[] { UC_PREFIX + cat_id , date };
+    }
+
+
+    public String[] createUData(DataItem dataItem) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long time = System.currentTimeMillis();
+
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UDATA_TEXT, dataItem.item);
+        values.put(KEY_UDATA_TRANSLATE, dataItem.info);
+        values.put(KEY_UDATA_TRANSCRIPT, dataItem.trans1);
+        values.put(KEY_UDATA_SOUND, dataItem.sound);
+        values.put(KEY_UDATA_GRAMMAR, dataItem.grammar);
+        values.put(KEY_UDATA_INFO, dataItem.item_info_1);
+
+        values.put(KEY_UDATA_CREATED, time );
+        values.put(KEY_UDATA_UPDATED, time );
+
+        long cat_id  = db.insert(TABLE_USER_DATA_ITEMS, null, values);
+
+        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
+                KEY_UDATA_PRIMARY_ID +" = ?",
+
+                new String[] { String.valueOf(cat_id)}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+
+            values = new ContentValues();
+            values.put(KEY_UDATA_ID, "ud_"+cat_id);
+
+            db.update(TABLE_USER_DATA_ITEMS, values,
+                    KEY_UDATA_PRIMARY_ID +" = ?",
+                    new String[] { String.valueOf(cat_id)});
+
+            ContentValues udcValues = new ContentValues();
+
+            udcValues.put(KEY_UDC_UDATA_ID, "ud_"+cat_id);
+            udcValues.put(KEY_UDC_UCAT_ID, dataItem.cat);
+
+            db.insert(TABLE_UCAT_UDATA, null, udcValues);
+
+        }
+
+        cursor.close();
+        db.close();
+
+
+        return new String[] {String.valueOf(cat_id)};
+    }
+
+
+    public DataItem updateUData(DataItem dataItem) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        dataItem.time = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UDATA_TEXT, dataItem.item);
+        values.put(KEY_UDATA_TRANSLATE, dataItem.info);
+        values.put(KEY_UDATA_TRANSCRIPT, dataItem.trans1);
+        values.put(KEY_UDATA_SOUND, dataItem.sound);
+        values.put(KEY_UDATA_GRAMMAR, dataItem.grammar);
+        values.put(KEY_UDATA_INFO, dataItem.item_info_1);
+        values.put(KEY_UDATA_UPDATED, dataItem.time );
+
+        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
+                KEY_UDATA_ID +" = ?",
+                new String[] { dataItem.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_USER_DATA_ITEMS, values,
+                    KEY_UDATA_ID +" = ?",
+                    new String[] { dataItem.id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataItem;
+    }
+
+
+    public DataObject updateUCatTile(DataObject dataObject) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        dataObject.time_updated = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_TITLE, dataObject.title);
+        values.put(KEY_UCAT_UPDATED, dataObject.time_updated );
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_ID +" = ?",
+                    new String[] { dataObject.id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataObject;
+    }
+
+
+    public int deleteData(String id) {
+
+        int deleted = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
+                KEY_UDATA_ID +" = ?",
+                new String[] { id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+           deleted = db.delete(TABLE_USER_DATA_ITEMS, KEY_UDATA_ID +" = ?",  new String[] { id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return deleted;
+    }
+
+
+    public int deleteUCat(String id) {
+
+        int deleted = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+
+        /// delete item from ucats
+        ///// delete all items from udata
+        ////// delete all items from ucats - udata
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+            db.delete(TABLE_USER_DATA_CATS, KEY_UCAT_ID +" = ?",  new String[] { id });
+            deleted = deleteUDataFromUcat(db, id);
+        }
+
+        cursor.close();
+
+
+        db.delete(TABLE_UCAT_UDATA, KEY_UDC_UCAT_ID +" = ?",  new String[] { id });
+
+
+
+        db.close();
+
+        return deleted;
+    }
+
+
+    private int deleteUDataFromUcat(SQLiteDatabase db, String ucat_id) {
+
+        int num = 0;
+
+        String query = "SELECT * FROM "
+                +TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
+                +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+                +" WHERE a." + KEY_UDC_UCAT_ID + " = ? ";
+
+
+        Cursor cursor = db.rawQuery(query, new String[]{ucat_id});
+
+        //Toast.makeText(cntx, "Found: " + cursor.getCount(), Toast.LENGTH_SHORT).show();
+
+
+        try {
+            while (cursor.moveToNext()) {
+
+               String ud_id = cursor.getString(cursor.getColumnIndex(KEY_UDATA_ID));
+
+               int deleted = db.delete(TABLE_USER_DATA_ITEMS, KEY_UDATA_ID +" = ?",  new String[] { ud_id });
+
+               //Toast.makeText(cntx, "Deleted: " + ud_id + " - " + deleted, Toast.LENGTH_SHORT).show();
+
+               num = num + deleted;
+
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+
+
+        ///Toast.makeText(cntx, "Del: " + del, Toast.LENGTH_SHORT).show();
+
+        return num;
+    }
+
+
+
+
+
+    public DataItem getUData(String id) {
+
+        DataItem dataItem = new DataItem();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
+                KEY_UDATA_ID +" = ?",
+
+                new String[] { id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+            dataItem = getDataItemFromUDATA(cursor);
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataItem;
+    }
+
+
+    public DataObject getUCat(String id) {
+
+        DataObject dataObject = new DataObject();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+
+                new String[] { id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+            dataObject = getDataFromUCAT(cursor);
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataObject;
+    }
+
+
+
+
+    public ArrayList<DataItem> getUDataList(String ucat_id) {
+
+        ArrayList<DataItem> dataItems = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM "
+                +TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
+                +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+                +" WHERE a." + KEY_UDC_UCAT_ID + " = ? ORDER BY b." + KEY_UDATA_CREATED + " DESC";
+
+        Cursor cursor = db.rawQuery(query, new String[]{ucat_id});
+
+        try {
+            while (cursor.moveToNext()) {
+
+                dataItems.add(getDataItemFromUDATA(cursor));
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return dataItems;
+    }
+
+
+    public ArrayList<DataObject> getUCatsList() {
+
+        ArrayList<DataObject> categories = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null, null, null, null, KEY_UCAT_CREATED + " DESC");
+
+        try {
+            while (cursor.moveToNext()) {
+
+                DataObject category = new DataObject();
+                category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+                category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+                category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+                categories.add(category);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return categories;
+    }
+
+
+    public void createNote(NoteData note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long time = System.currentTimeMillis();
 
         ContentValues values = new ContentValues();
 
@@ -720,7 +1177,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return  bookmarked ;
     }
-
 
 
 
@@ -1610,14 +2066,12 @@ public class DBHelper extends SQLiteOpenHelper {
         DataItem dataItem = new DataItem();
         SQLiteDatabase db = this.getWritableDatabase();
 
-
-
         String query = "SELECT * FROM "
                 +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA +" b ON a.item_id=b.user_item_id"
-                +" WHERE a."+ KEY_ITEM_ID +" = " + detail_id;
+                +" WHERE a."+ KEY_ITEM_ID +" = ? " ;
 
 
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor cursor = db.rawQuery(query, new String[] {detail_id});
 
 
         if ( cursor.moveToFirst() ) {
@@ -2352,6 +2806,40 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return dataItem;
     }
+
+
+
+    private DataItem getDataItemFromUDATA(Cursor cursor) {
+
+        DataItem dataItem = new DataItem();
+
+        dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_UDATA_ID));
+        dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TEXT));
+        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE));
+        dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSCRIPT));
+        dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_UDATA_GRAMMAR));
+        dataItem.sound = cursor.getString(cursor.getColumnIndex(KEY_UDATA_SOUND));
+        dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_INFO));
+
+        return dataItem;
+    }
+
+
+    private DataObject getDataFromUCAT(Cursor cursor) {
+
+        DataObject dataObject = new DataObject();
+        dataObject.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+        dataObject.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+        dataObject.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+        dataObject.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
+        dataObject.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_UPDATED));
+
+        return dataObject;
+    }
+
+
+
+
 
 
 

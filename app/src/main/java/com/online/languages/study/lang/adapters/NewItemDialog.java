@@ -15,16 +15,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.data.DataItem;
+
+import static com.online.languages.study.lang.Constants.ACTION_CREATE;
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
 
 
 public class NewItemDialog {
-
 
 
     Context context;
@@ -39,6 +45,8 @@ public class NewItemDialog {
     private EditText translateEditText;
     private EditText infoEditText;
     private EditText grammarEditText;
+
+    private CheckBox soundCheck;
 
     private TextView itemCharCounter;
     private TextView transcriptCharCounter;
@@ -55,7 +63,6 @@ public class NewItemDialog {
     MyCatEditActivity activity;
 
 
-
     public NewItemDialog(Context _context, MyCatEditActivity activity) {
         context = _context;
         this.activity = activity;
@@ -63,8 +70,13 @@ public class NewItemDialog {
 
 
     public void showCustomDialog(String title) {
+        showCustomDialog(title, ACTION_CREATE, new DataItem());
+    }
+
+    public void showCustomDialog(String title, final String action, final DataItem dataItem) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         View content = inflater.inflate(R.layout.dialog_edit_item, null);
 
         final View moreView = content.findViewById(R.id.openMore);
@@ -73,13 +85,12 @@ public class NewItemDialog {
         openLess = content.findViewById(R.id.lessBtn);
         moreWrap = content.findViewById(R.id.moreWrap);
 
-
         itemEditText = content.findViewById(R.id.editItem);
         translateEditText = content.findViewById(R.id.editTranslate);
         transcriptEditText = content.findViewById(R.id.editTrans);
         grammarEditText = content.findViewById(R.id.editGrammar);
         infoEditText = content.findViewById(R.id.editAddInfo);
-
+        soundCheck = content.findViewById(R.id.soundOff);
 
         itemCharCounter = content.findViewById(R.id.itemCharCounter);
         transcriptCharCounter = content.findViewById(R.id.transCharCounter);
@@ -96,6 +107,8 @@ public class NewItemDialog {
 
         View speakBtn = content.findViewById(R.id.speakBtn);
 
+
+        if (action.equals(ACTION_UPDATE) )  setData(dataItem) ;
 
         speakBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +142,7 @@ public class NewItemDialog {
         builder.setTitle(title)
                 .setCancelable(true)
 
+
                 .setNegativeButton("Отмена",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -138,19 +152,98 @@ public class NewItemDialog {
                 .setPositiveButton("Сохранить",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+
+                                //Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+
+                .setNeutralButton(" ",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
                             }
                         })
 
 
+
+
                 .setView(content);
+
+
 
         final AlertDialog alert = builder.create();
         alert.show();
 
 
 
+        alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                boolean wantToCloseDialog = false;
+
+                if (itemEditText.getText().toString().trim().equals("")) {
+                    Toast.makeText(context, "Введите текст", Toast.LENGTH_SHORT).show();
+                } else {
+                    wantToCloseDialog = true;
+                }
+
+                if (wantToCloseDialog) {
+
+                    if (action.equals(ACTION_UPDATE)) {
+
+                        DataItem dataFromForm = getDataFromForm();
+                        dataFromForm.id  = dataItem.id;
+
+                        activity.updateDataItem(dataFromForm);
+
+                    }  else  {
+
+                        activity.saveDataItem(getDataFromForm());
+                    }
+
+                    alert.dismiss();
+                }
+            }
+        });
+
     }
+
+
+    private void setData(DataItem dataItem) {
+
+        itemEditText.setText(dataItem.item);
+        translateEditText.setText(dataItem.info);
+        transcriptEditText.setText(dataItem.trans1);
+        if (dataItem.sound.equals(VALUE_SOUND_OFF)) soundCheck.setChecked(true);
+        grammarEditText.setText(dataItem.grammar);
+        infoEditText.setText(dataItem.item_info_1);
+
+    }
+
+
+
+    private DataItem getDataFromForm() {
+
+        DataItem dataItem = new DataItem();
+
+        dataItem.item = textSanitizer(itemEditText.getText().toString());
+        dataItem.info = textSanitizer(translateEditText.getText().toString());
+        dataItem.trans1 = textSanitizer(transcriptEditText.getText().toString());
+        dataItem.grammar = textSanitizer(grammarEditText.getText().toString());
+        dataItem.item_info_1 = infoEditText.getText().toString();
+
+        if (soundCheck.isChecked()) {
+            dataItem.sound = VALUE_SOUND_OFF;
+        }
+
+        return dataItem;
+    }
+
+
+
 
     private void expandView(View view) {
 
@@ -183,10 +276,9 @@ public class NewItemDialog {
     }
 
     private String textSanitizer(String text) {
-
         text = text.replace("\n", " ").replace("\r", " ");
-
         text = text.trim();
+
         return text;
     }
 

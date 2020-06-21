@@ -13,6 +13,9 @@ public class DataItem implements Parcelable {
     public String trans1 = "";
     public String trans2 = "";
 
+    public String sound = "";
+    public String grammar = "";
+
     public String divider = "";
     public int mode = 0;
 
@@ -30,7 +33,6 @@ public class DataItem implements Parcelable {
 
     public long time = 0;
     public long time_errors = 0;
-
 
 
     public String type = "";
@@ -70,6 +72,8 @@ public class DataItem implements Parcelable {
         this.image = parcel.readString();
         this.trans1 = parcel.readString();
         this.trans2 = parcel.readString();
+        this.sound = parcel.readString();
+        this.grammar = parcel.readString();
 
         this.item_info_1 = parcel.readString();
         this.filter = parcel.readString();
@@ -93,6 +97,8 @@ public class DataItem implements Parcelable {
         dest.writeString(image);
         dest.writeString(trans1);
         dest.writeString(trans2);
+        dest.writeString(sound);
+        dest.writeString(grammar);
 
         dest.writeString(item_info_1);
         dest.writeString(filter);

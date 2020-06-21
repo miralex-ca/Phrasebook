@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnInitListener {
 
@@ -97,6 +98,11 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         detailItem = dataManager.getDetailFromDB(tag);
 
         dataItem = dbHelper.getDataItemById(tag);
+
+        if (tag.contains(UD_PREFIX)) {
+            dataItem =  dbHelper.getUData(tag);
+        }
+
 
         if (detailItem.title.equals("not found")) {
             detailItem  = new DetailItem(dataItem);
@@ -191,7 +197,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         //enableScroll();
 
         View statusView = findViewById(R.id.status_wrap);
-        dataItem = dbHelper.getDataItemDBById(dataItem.id);
+        dataItem = dbHelper.getDataItemDBById(dataItem.id); // TODO check for udata
         int showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         statusInfoDisplay(showStatus, statusView, dataItem);

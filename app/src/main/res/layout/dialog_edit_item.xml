@@ -89,7 +89,7 @@
 
 
             <Button
-                android:drawableLeft="@drawable/ic_chevron_down"
+
                 android:id="@+id/moreBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
 
                 <Button
                     android:visibility="gone"
-                    android:drawableLeft="@drawable/ic_chevron_up"
+
                     android:id="@+id/lessBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,6 +163,7 @@
 
                             <CheckBox
 
+                                android:id="@+id/soundOff"
                                 android:maxLines="1"
                                 android:ellipsize="end"
                                 android:layout_marginLeft="20dp"
@@ -208,6 +209,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                             android:layout_marginTop="12dp"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
@@ -267,7 +269,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="60dp" />
+                        android:layout_height="30dp" />
 
 
                 </LinearLayout>

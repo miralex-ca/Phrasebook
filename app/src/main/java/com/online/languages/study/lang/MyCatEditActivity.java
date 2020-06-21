@@ -5,45 +5,45 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.online.languages.study.lang.adapters.ImgPickerAdapter;
+import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.NewItemDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.NoteData;
-import com.squareup.picasso.Picasso;
+import com.online.languages.study.lang.data.DataObject;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
-import static com.online.languages.study.lang.Constants.ACTION_CREATE;
+import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
-import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
-import static com.online.languages.study.lang.Constants.FOLDER_PICS;
-import static com.online.languages.study.lang.Constants.NOTE_PIC_DEFAULT_INDEX;
+import static com.online.languages.study.lang.Constants.ACTION_VIEW;
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnInitListener  {
 
@@ -54,25 +54,35 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     OpenActivity openActivity;
     TextView title, content;
-    ImageView noteIcon;
 
     private TextView titleCharCounter;
-    private TextView itemCharCounter;
 
     private EditText titleEditText;
-    private EditText itemEditText;
 
     int titleCharMax = 60;
-    int itemCharMax = 200;
-    RecyclerView recyclerView;
 
     DataManager dataManager;
+    InfoDialog infoDialog;
 
     NewItemDialog newItemDialog;
 
-
     private TextToSpeech myTTS;
     private int MY_DATA_CHECK_CODE = 0;
+
+    Button createBtn;
+    Button updateCatBtn;
+
+    View newItem;
+    boolean catBtnAction;
+
+    boolean newDataItemAction;
+
+    ArrayList<DataItem> dataItems;
+    EditDataListAdapter adapter;
+    RecyclerView recyclerView;
+
+
+    DataObject categoryObject;
 
 
 
@@ -87,14 +97,27 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         themeAdapter.getTheme();
 
         openActivity = new OpenActivity(this);
-        openActivity.setOrientation();
+        //openActivity.setOrientation();
 
         setContentView(R.layout.activity_cat_edit);
+
+        
+        categoryObject = new DataObject();
+
+        categoryObject.id = getIntent().getStringExtra(EXTRA_CAT_ID);
+
+        if (savedInstanceState != null) {
+            categoryObject = savedInstanceState.getParcelable("categoryObject");
+        }
+
 
         newItemDialog = new NewItemDialog(this, MyCatEditActivity.this);
 
         dataManager = new DataManager(this);
+        infoDialog = new InfoDialog(this);
 
+        catBtnAction = true;
+        newDataItemAction = false;
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -105,42 +128,305 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         setTitle("");
 
         titleCharCounter = findViewById(R.id.titleCharCounter);
-
         titleCharCounter.setText("0/"+titleCharMax);
-
         titleEditText = findViewById(R.id.editTitle);
 
-        titleEditText.addTextChangedListener(titleEditorWatcher);
+        createBtn = findViewById(R.id.createBtn);
+        updateCatBtn = findViewById(R.id.updateCatBtn);
+        newItem =  findViewById(R.id.newItemBtn);
 
-
-        View newItem =  findViewById(R.id.newItemBtn);
-
+        recyclerView = findViewById(R.id.recycler_view);
 
         newItem.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
                 editItem();
-
             }
         });
 
-        titleEditText.requestFocus();
+        prepareCat();
+
+        titleEditText.addTextChangedListener(titleEditorWatcher);
 
 
         Intent checkTTSIntent = new Intent();
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
         startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
+
     }
 
+    public void editClick(final DataItem dataItem, String type) {
+
+        if (type.equals(ACTION_UPDATE)) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    openDataItem(dataItem.id);
+
+                }
+            }, 50);
+
+        }
+
+        if (type.equals(ACTION_DELETE)) confirmDeletion(dataItem.id);
+
+        if (type.equals(ACTION_VIEW)) viewItem(dataItem);
+
+    }
+
+
+    private void confirmDeletion(final String id) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.confirmation_txt);
+
+        builder.setMessage("\nУдалить запись?\n");
+
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteItem(id);
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.show();
+
+    }
+
+    private void deleteItem(String id) {
+        int num = dataManager.dbHelper.deleteData(id);
+        if (num > 0) infoDialog.toast("Удалено");
+        updateItemsList();
+    }
+
+
+    public void prepareCat() {
+
+        if (!categoryObject.id.contains(UC_PREFIX)) {
+
+            titleEditText.requestFocus();
+            createBtn.setVisibility(View.VISIBLE);
+            newDataItemAction = false;
+            newItem.setAlpha(0.3f);
+
+        } else {
+
+            categoryObject  = dataManager.dbHelper.getUCat(categoryObject.id);
+
+            titleEditText.setText(categoryObject.title);
+
+            TextView txt = findViewById(R.id.createdDate);
+            txt.setText("Создано: "+ dataManager.formatTime(categoryObject.time_created));
+            newDataItemAction = true;
+            updateItemsList();
+
+        }
+
+
+    }
+
+
+    private void showCreated(String[] catData) {
+
+        categoryObject.id = catData[0];
+        String time = catData[1];
+
+        createBtn.animate()
+                .alpha(0f)
+                .withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                        createBtn.setVisibility(View.INVISIBLE);
+                    }
+                })
+                .setDuration(450)
+                .start();
+
+
+        TextView txt = findViewById(R.id.createdDate);
+        txt.setText("Создано: "+ time);
+
+        newDataItemAction = true;
+
+        newItem.setAlpha(1.0f);
+
+        titleEditText.clearFocus();
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(titleEditText.getWindowToken(), 0);
+
+    }
+
+
+    public void openDataItem(String id) {
+        DataItem dataItem = dataManager.dbHelper.getUData(id);
+        newItemDialog.showCustomDialog("Редактировать", ACTION_UPDATE, dataItem);
+        titleEditText.clearFocus();
+    }
+
+
+    public void createUCat(View view) {
+
+        if (catBtnAction) {
+
+            String title = titleEditText.getText().toString();
+
+            if (title.trim().equals("")) {
+                infoDialog.simpleDialog("Сохранение темы", "\nВведите название темы.\n");
+
+            } else {
+                catBtnAction = false;
+
+
+                String[] catData = dataManager.dbHelper.createUCat(title);
+                categoryObject.title = title;
+
+                showCreated(catData);
+
+            }
+        }
+    }
+
+
+    public void updateUCat(View view) {
+
+
+            String title = titleEditText.getText().toString();
+
+            if (title.trim().equals("")) {
+
+                infoDialog.simpleDialog("Сохранение темы", "\nВведите название темы.\n");
+
+            } else {
+
+                categoryObject.title = textSanitizer(title);
+                categoryObject = dataManager.dbHelper.updateUCatTile(categoryObject);
+
+                titleEditText.setText(categoryObject.title);
+
+                titleEditText.clearFocus();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(titleEditText.getWindowToken(), 0);
+
+                checkCatTitleChanges(title);
+
+            }
+
+    }
+
+
+    private void checkCatTitleChanges(String str) {
+
+        if (!categoryObject.id.contains(UC_PREFIX)) return;
+
+        if (str.trim().equals(categoryObject.title)) {
+
+            updateCatBtn.setVisibility(View.INVISIBLE);
+
+        } else {
+            updateCatBtn.setVisibility(View.VISIBLE);
+        }
+    };
 
 
     private void editItem() {
-        newItemDialog.showCustomDialog("Новая запись");
+        if (newDataItemAction) {
+            newItemDialog.showCustomDialog("Новая запись");
+            titleEditText.clearFocus();
+        }
     }
 
+
+    public void saveDataItem (DataItem dataItem) {
+        dataItem.cat = categoryObject.id;
+        dataManager.dbHelper.createUData(dataItem);
+        updateItemsList();
+    }
+
+    public void updateDataItem (DataItem dataItem) {
+        dataManager.dbHelper.updateUData(dataItem);
+        updateItemsList();
+    }
+
+
+    private void updateItemsList() {
+
+        dataItems  = dataManager.dbHelper.getUDataList(categoryObject.id);
+        adapter = new EditDataListAdapter(this, dataItems, MyCatEditActivity.this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+
+    private void viewItem(DataItem dataItem) {
+
+        Intent intent = new Intent(this, ScrollingActivity.class);
+
+        intent.putExtra("starrable", true);
+        intent.putExtra("id", dataItem.id );
+        intent.putExtra("position", 0);
+
+        startActivityForResult(intent,10);
+
+        overridePendingTransition(R.anim.slide_in_down, 0);
+
+    }
+
+
+    private void deleteCurrentUcat() {
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.confirmation_txt);
+
+        builder.setMessage("\nУдалить тему со всеми словами?\n");
+
+        builder.setCancelable(false);
+
+        builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                deleteUCat(categoryObject.id);
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.show();
+
+    }
+
+    private void deleteUCat(String id) {
+
+        int num =  dataManager.dbHelper.deleteUCat(id);
+
+        infoDialog.toast("Удалено слов: " + num);
+
+        finish();
+
+    }
 
 
     private String textSanitizer(String text) {
@@ -165,6 +451,15 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
                 finish();
                 return true;
 
+            case R.id.info_item:
+                infoDialog.simpleDialog("Справка", "Справка о редктировании темы");
+                return true;
+
+            case R.id.delete_ucat:
+
+                deleteCurrentUcat();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -173,11 +468,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_simple_info, menu);
+        getMenuInflater().inflate(R.menu.menu_ucat_edit, menu);
 
         return true;
     }
-
 
 
     private final TextWatcher titleEditorWatcher = new TextWatcher() {
@@ -189,6 +483,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
             String str = s.length() + "/" + titleCharMax;
             titleCharCounter.setText(str);
+
+            checkCatTitleChanges(s.toString());
+
         }
 
         public void afterTextChanged(Editable s) {
@@ -198,7 +495,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
     //// TTS integration
-
 
 
     public void speakText(String speech) {
@@ -238,6 +534,73 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
         }
     }
+
+
+
+    public interface ClickListener{
+        void onClick(View view,int position);
+        void onLongClick(View view,int position);
+    }
+    class RecyclerTouchListener implements RecyclerView.OnItemTouchListener{
+
+        private ClickListener clicklistener;
+        private GestureDetector gestureDetector;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recycleView, final ClickListener clicklistener){
+            this.clicklistener=clicklistener;
+            gestureDetector=new GestureDetector(context,new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child=recycleView.findChildViewUnder(e.getX(),e.getY());
+                    if(child!=null && clicklistener!=null){
+                        clicklistener.onLongClick(child,recycleView.getChildAdapterPosition(child));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            View child=rv.findChildViewUnder(e.getX(),e.getY());
+            if(child!=null && clicklistener!=null && gestureDetector.onTouchEvent(e)){
+                clicklistener.onClick(child,rv.getChildAdapterPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+        }
+    }
+
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putParcelable("categoryObject", categoryObject );
+
+        super.onSaveInstanceState(outState);
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

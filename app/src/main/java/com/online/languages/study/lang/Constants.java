@@ -129,12 +129,14 @@ public class Constants {
     public static final String PARAM_LIMIT_UNREACHED = "limit_unreached";
 
     public static final String ARG_NONE = "none";
+    public static final String VALUE_SOUND_OFF = "0ff";
 
 
-    public static final String ACTION_NONE = "NONE";
+    public static final String ACTION_NONE = "none";
     public static final String ACTION_CREATE = "create";
     public static final String ACTION_UPDATE = "update";
     public static final String ACTION_DELETE = "delete";
+    public static final String ACTION_VIEW = "view";
 
 
     public static final String STATUS_NEW = "new";
@@ -143,10 +145,10 @@ public class Constants {
     public static final String STATUS_UPDATED = "updated";
 
 
+
     public static final String TAB_ITEMS = "normal";
     public static final String TAB_GALLERY = "gallery";
     public static final String TABS_NORMAL = "normal";
-
 
 
     public static final String SET_SIMPLIFIED = "param_simplified";
@@ -171,6 +173,9 @@ public class Constants {
 
     public static final String SAVED_IMG_LINK = "saved_img";
 
+
+    public static final String UC_PREFIX = "uc_";
+    public static final String UD_PREFIX = "ud_";
 
 
 }

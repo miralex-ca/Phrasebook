@@ -381,8 +381,6 @@ public class CatActivity extends BaseActivity {
     }
 
 
-
-
     private void infoMessage() {
         dataModeDialog.createDialog(getString(R.string.info_txt), getString(R.string.info_star_txt));
     }
