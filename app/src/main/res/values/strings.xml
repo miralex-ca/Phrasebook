@@ -301,7 +301,7 @@
     <string name="msg_mail_subject_error">Сообщение об ошибке </string>
     <string name="msg_no_browser">Невозможно открыть ссылку.</string>
     <string name="no_data_msg">Нет данных</string>
-    <string name="nav_header_txt">История России</string>
+    <string name="nav_header_txt">@string/app_name</string>
     <string name="correct_errors">Работа над ошибками</string>
     <string name="errors_box_title">Ошибки в тестах</string>
 
@@ -589,5 +589,10 @@
     <string name="home_tab_1">Разделы</string>
     <string name="home_tab_2">Мой словарь</string>
     <string name="menu_delete_ucat">Удалить тему</string>
+
+    <string name="set_sort_desc">новые в начале</string>
+    <string name="set_sort_asc">новые в конце</string>
+    <string name="sort_udata_dialog_title">Сортировка записей</string>
+
 
 </resources>

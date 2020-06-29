@@ -32,9 +32,9 @@
         <LinearLayout
             android:id="@+id/tagged"
             android:orientation="vertical"
-            android:layout_marginLeft="74dp"
+            android:layout_marginLeft="82dp"
             android:paddingTop="4dp"
-            android:paddingLeft="18dp"
+            android:layout_marginRight="36dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 

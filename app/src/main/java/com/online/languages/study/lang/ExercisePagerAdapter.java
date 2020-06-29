@@ -184,8 +184,6 @@ class ExercisePagerAdapter extends PagerAdapter {
         }
 
 
-
-
         if (type == EX_AUDIO_TYPE ) {
              insertAudio(exerciseTask, itemView, position);
         }
@@ -220,8 +218,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         itemView.setTag("myview" + position);
         container.addView(itemView);
-
-
 
 
 

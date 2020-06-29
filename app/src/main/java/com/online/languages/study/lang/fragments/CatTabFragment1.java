@@ -239,6 +239,11 @@ public class CatTabFragment1 extends Fragment {
     }
 
 
+    public void updateDataList() {   /// check all items
+
+        updateList();
+    }
+
     public void checkDataList() {   /// check all items
 
         data = dataManager.checkDataItemsData(data);

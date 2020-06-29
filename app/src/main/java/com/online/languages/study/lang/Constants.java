@@ -61,6 +61,8 @@ public class Constants {
 
     public static final int TEST_OPTIONS_NUM = 4;
     public static final int TEST_LONG_OPTIONS_NUM = 3;
+
+
     public static final int TEST_LONG_OPTION_LEN = 40;
 
     public static final int DATA_MODE = 1;
@@ -100,7 +102,8 @@ public class Constants {
 
     public static final int GALLERY_REQUESTCODE = 100;
 
-    public static final int TEST_OPTIONS_RANGE = 10;
+    public static final int TEST_CATS_MAX_FOR_BEST = 10;
+    public static final int TEST_NEIGHBORS_RANGE = 10;
 
     public static final String FILTER_CHRONO = "chrono";
 
@@ -122,8 +125,10 @@ public class Constants {
     public static final int VIBRO_FAIL = 300;
 
 
-    public static final String PARAM_EMPTY = "populate";
+    public static final String PARAM_EMPTY = "";
     public static final String PARAM_POPULATE = "populate";
+
+    public static final String PARAM_UCAT_PARENT = "ucats";
 
     public static final String PARAM_LIMIT_REACHED = "limit_reached";
     public static final String PARAM_LIMIT_UNREACHED = "limit_unreached";
@@ -176,6 +181,12 @@ public class Constants {
 
     public static final String UC_PREFIX = "uc_";
     public static final String UD_PREFIX = "ud_";
+
+    public static final String DEFAULT_TEST_RELACE_CAT = "10010010";
+
+    public static final String UCAT_PARAM_SORT = "sort";
+    public static final String UCAT_PARAM_SORT_ASC = "sortup";
+    public static final String UCAT_PARAM_SORT_DESC = "sortdown";
 
 
 }

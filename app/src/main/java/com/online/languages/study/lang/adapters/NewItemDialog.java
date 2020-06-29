@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,9 +36,11 @@ public class NewItemDialog {
 
     Context context;
 
-    private int itemCharMax = 150;
-    private int grammarCharMax = 20;
-    private int infoCharMax = 300;
+    private int itemCharMax;
+    private int translateCharMax;
+    private int transcriptCharMax;
+    private int grammarCharMax;
+    private int infoCharMax;
 
 
     private EditText itemEditText;
@@ -54,18 +57,27 @@ public class NewItemDialog {
     private TextView infoCharCounter;
     private TextView grammarCharCounter;
 
-    Button openMore;
-    Button openLess;
+    private Button openMore;
+    private Button openLess;
 
-    View moreWrap;
+    private View moreWrap;
 
 
-    MyCatEditActivity activity;
+    private MyCatEditActivity activity;
 
 
     public NewItemDialog(Context _context, MyCatEditActivity activity) {
         context = _context;
         this.activity = activity;
+
+
+        itemCharMax = context.getResources().getInteger(R.integer.edit_text_length);
+        translateCharMax = context.getResources().getInteger(R.integer.edit_translation_length);
+        transcriptCharMax = context.getResources().getInteger(R.integer.edit_transcription_length);
+        grammarCharMax = context.getResources().getInteger(R.integer.edit_grammar_length);
+        infoCharMax = context.getResources().getInteger(R.integer.edit_info_length);
+
+
     }
 
 
@@ -99,6 +111,8 @@ public class NewItemDialog {
         grammarCharCounter = content.findViewById(R.id.grammarCharCounter);
 
 
+        initCounters();
+
         itemEditText.addTextChangedListener(itemEditorWatcher);
         translateEditText .addTextChangedListener(translateEditorWatcher);
         transcriptEditText.addTextChangedListener(transcriptEditorWatcher);
@@ -108,7 +122,8 @@ public class NewItemDialog {
         View speakBtn = content.findViewById(R.id.speakBtn);
 
 
-        if (action.equals(ACTION_UPDATE) )  setData(dataItem) ;
+        if (action.equals(ACTION_UPDATE) )  setData(dataItem);
+
 
         speakBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,15 +181,12 @@ public class NewItemDialog {
                         })
 
 
-
-
                 .setView(content);
 
 
 
         final AlertDialog alert = builder.create();
         alert.show();
-
 
 
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
@@ -212,6 +224,18 @@ public class NewItemDialog {
     }
 
 
+    private void initCounters () {
+
+        String initTxt = "0/";
+        itemCharCounter.setText(initTxt + itemCharMax);
+        translateCharCounter.setText(initTxt + translateCharMax);
+        transcriptCharCounter.setText(initTxt + transcriptCharMax);
+        grammarCharCounter.setText(initTxt + grammarCharMax);
+        infoCharCounter.setText(initTxt + infoCharMax);
+
+    }
+
+
     private void setData(DataItem dataItem) {
 
         itemEditText.setText(dataItem.item);
@@ -243,8 +267,6 @@ public class NewItemDialog {
     }
 
 
-
-
     private void expandView(View view) {
 
         openMore.setVisibility(View.GONE);
@@ -260,7 +282,6 @@ public class NewItemDialog {
 
             }
         }, 200);
-
 
     }
 
@@ -308,7 +329,7 @@ public class NewItemDialog {
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String str = s.length() + "/" + itemCharMax;
+            String str = s.length() + "/" + translateCharMax;
 
             translateCharCounter.setText(str);
         }
@@ -323,7 +344,7 @@ public class NewItemDialog {
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String str = s.length() + "/" + itemCharMax;
+            String str = s.length() + "/" + transcriptCharMax;
 
             transcriptCharCounter.setText(str);
         }

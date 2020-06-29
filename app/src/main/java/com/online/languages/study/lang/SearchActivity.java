@@ -83,7 +83,6 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         navStructure = getIntent().getParcelableExtra(Constants.EXTRA_NAV_STRUCTURE);
         navStructure.getUniqueCats();
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -92,6 +91,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
         dbHelper = new DBHelper(this);
         openActivity = new OpenActivity(this);
+        openActivity.setOrientation();
 
         card = findViewById(R.id.card);
         result = findViewById(R.id.searcTxt);

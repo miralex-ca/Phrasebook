@@ -12,7 +12,13 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdapter.MyViewHolder> {
@@ -23,13 +29,14 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, desc;
+        TextView title, desc, itemsCount;
 
         MyViewHolder(View view) {
             super(view);
 
             title = itemView.findViewById(R.id.title);
             desc = itemView.findViewById(R.id.desc);
+            itemsCount = itemView.findViewById(R.id.itemsCount);
 
         }
     }
@@ -58,8 +65,16 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
         DataObject dataObject = dataList.get(position);
 
         holder.title.setText( dataObject.title);
-        holder.desc.setText( dataObject.desc);
 
+        Locale current = context.getResources().getConfiguration().locale;
+
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT,  current);
+
+        String formattedDate = dateFormat.format(new Date());
+
+        holder.desc.setText("Дата:  " + formattedDate );
+
+        holder.itemsCount.setText("Изучено:  " + dataObject.progress +"/" + dataObject.count);
 
     }
 

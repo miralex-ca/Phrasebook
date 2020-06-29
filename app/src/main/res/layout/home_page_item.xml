@@ -86,9 +86,10 @@
 
                         <TextView
 
+
                             android:text="Добавлено тем: 3 \nДобавлено записей: 40"
 
-                            android:id="@+id/sectionDesc"
+                            android:id="@+id/userCounts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -144,19 +145,14 @@
 
 
                     <TextView
-
                         android:id="@+id/newCatBtn"
                         android:padding="4dp"
-
                         android:focusable="true"
                         android:clickable="true"
                         android:background="?android:attr/selectableItemBackground"
-
-                        android:fontFamily="sans-serif-light"
-
+                        android:textColor="?attr/colorAccent"
                         android:layout_marginBottom="20dp"
                         android:textSize="22sp"
-                        android:textStyle="bold"
                         android:text="＋ Новая тема"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>

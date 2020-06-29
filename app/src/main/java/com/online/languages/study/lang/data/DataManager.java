@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
@@ -29,6 +30,9 @@ import static com.online.languages.study.lang.Constants.SET_GALLERY;
 import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
 
 
@@ -70,7 +74,19 @@ public class DataManager {
 
 
     public ArrayList<DataItem> getCatDBList(String cat) {
-        return dbHelper.getCatByTag(cat);
+
+        ArrayList<DataItem> items = new ArrayList<>();
+
+        if (cat.contains(UC_PREFIX)) {
+
+            items =  getUDataList(cat);
+
+        } else {
+            items =  dbHelper.getCatByTag(cat);
+        }
+
+
+        return items;
     }
 
     public ArrayList<DataItem> getSectionDBList(NavSection navSection) {
@@ -426,6 +442,7 @@ public class DataManager {
 
         ArrayList<BookmarkItem> bookmarkItems = dbHelper.getBookmarks();
 
+
         ArrayList<BookmarkItem> bookmarksToReturn = new ArrayList<>();
 
         for (BookmarkItem bookmarkItem: bookmarkItems) {
@@ -460,6 +477,11 @@ public class DataManager {
             if (found) bookmarksToReturn.add(bookmark);
 
         }
+
+        ArrayList<BookmarkItem> ucats = dbHelper.getUCatsBookmarks();
+
+        bookmarksToReturn.addAll(ucats);
+
 
         Collections.sort(bookmarksToReturn, new TimeBookmarkComparator());
 
@@ -501,11 +523,112 @@ public class DataManager {
 
 
     public String formatTime (long time) {
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
         return  sdf.format(new Date(time));
     }
+
+
+    public ArrayList<DataObject> getUcatsList() {
+
+        ArrayList<DataObject> list = dbHelper.getUCatsList();
+
+        list = dbHelper.getUCatsListItemsCount(list);
+
+
+        return list;
+
+    }
+
+
+    public DataObject getUcatParams(DataObject dataObject) {
+
+        dataObject = dbHelper.getUCatParams(dataObject);
+
+        return dataObject;
+    }
+
+    public void saveUcatParams(DataObject dataObject) {
+
+        dbHelper.updateUCatParams(dataObject);
+
+    }
+
+
+    public String readParam(String paramString, String searchedParam) {
+
+        String[] params = paramString.split("&");
+        String paramValue = "";
+
+        for (String param: params) {
+            if (param.contains(searchedParam)) {
+                paramValue = param;
+            }
+        }
+
+        return paramValue;
+
+    }
+
+
+    public String addValueToParams(String paramString, String searchedParam, String value) {
+
+        String newParamString = "";
+
+        String[] params = paramString.split("&");
+
+        if (paramString.trim().length() == 0) {
+
+            newParamString = value;
+
+
+        } else {
+
+            boolean found = false;
+
+            for (int i = 0; i < params.length; i ++) {
+
+                String tParam = params[i].trim();
+
+                if (tParam.contains(searchedParam)) {
+                    tParam = value;
+                    found = true;
+                }
+
+                if (i ==  0 || tParam.equals("")) {
+                    newParamString = newParamString + tParam;
+                } else {
+                    newParamString = newParamString + "&" + tParam;
+                }
+
+            }
+
+            if (!found) {
+                newParamString = newParamString + "&" + value;
+            }
+
+        }
+
+
+        return newParamString;
+
+    }
+
+
+
+    public ArrayList<DataItem> getUDataList(String ucat_id) {
+
+        DataObject ucat = dbHelper.getUCat(ucat_id);
+
+        String sortParam = readParam(ucat.params, UCAT_PARAM_SORT);
+
+        return dbHelper.getUDataList(ucat_id, sortParam);
+
+    }
+
+
+
+
+
 
 
 

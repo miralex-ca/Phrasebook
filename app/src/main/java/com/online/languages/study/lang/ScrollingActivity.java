@@ -100,7 +100,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         dataItem = dbHelper.getDataItemById(tag);
 
         if (tag.contains(UD_PREFIX)) {
-            dataItem =  dbHelper.getUData(tag);
+            dataItem =  dbHelper.getUDataAllInfo(tag);
         }
 
 
@@ -197,7 +197,9 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         //enableScroll();
 
         View statusView = findViewById(R.id.status_wrap);
-        dataItem = dbHelper.getDataItemDBById(dataItem.id); // TODO check for udata
+
+       if (!tag.contains(UD_PREFIX)) dataItem = dbHelper.getDataItemDBById(dataItem.id);
+
         int showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         statusInfoDisplay(showStatus, statusView, dataItem);

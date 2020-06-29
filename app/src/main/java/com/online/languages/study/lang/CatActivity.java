@@ -30,6 +30,7 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
@@ -40,9 +41,11 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.IMG_LIST_LAYOUT;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 
 public class CatActivity extends BaseActivity {
@@ -115,6 +118,11 @@ public class CatActivity extends BaseActivity {
         parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
 
         setTitle(title);
+
+        if (categoryID.contains(UC_PREFIX)) {
+            DataObject ucat = dataManager.dbHelper.getUCat(categoryID);
+            setTitle(ucat.title);
+        }
 
         getDataItems();
 
@@ -290,6 +298,11 @@ public class CatActivity extends BaseActivity {
         bookmarkRadio = menu.findItem(R.id.bookmark);
         applyBookmarkStatus();
 
+        if (categoryID.contains(UC_PREFIX)) {
+            menu.findItem(R.id.edit_from_menu).setVisible(true);
+        }
+
+
         return true;
     }
 
@@ -317,8 +330,21 @@ public class CatActivity extends BaseActivity {
             case R.id.info_from_menu:
                 infoMessage();
                 return true;
+            case R.id.edit_from_menu:
+                openEditCat();
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void openEditCat() {
+
+        Intent i = new Intent(this, MyCatEditActivity.class);
+        i.putExtra(EXTRA_CAT_ID, categoryID);
+
+        startActivityForResult(i, 10);
+
     }
 
 
@@ -408,6 +434,33 @@ public class CatActivity extends BaseActivity {
                     fragment.checkStarred(result);
                 }
             }
+        } else if (requestCode == 10) {
+
+            if(resultCode == 50) {
+
+                finish();
+
+            } else {
+
+                DataObject ucat = dataManager.dbHelper.getUCat(categoryID);
+                setTitle(ucat.title);
+
+                cardData = dataManager.getCatDBList(categoryID);
+                exerciseData = cardData;
+
+                if (cardData.size() == 0) {
+
+                    finish();
+
+                } else {
+
+                    CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
+                    if (fragment != null) {
+                        fragment.updateDataList();
+                    }
+                }
+            }
+
         } else {
 
             CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();

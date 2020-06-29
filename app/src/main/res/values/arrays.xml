@@ -3,6 +3,12 @@
 
 
 
+    <string-array name="test_replace_cats">
+        <item>10040050</item> <!-- fruit -->
+    </string-array>
+
+
+
     <string-array name="themes">
         <item>@string/set_theme_default_name</item>
         <item>@string/set_theme_dark_name</item>
@@ -11,6 +17,8 @@
         <item>@string/set_theme_white_name</item>
         <item>@string/set_theme_ww_name</item>
     </string-array>
+
+
 
 
     <string-array name="themes_values">
@@ -224,6 +232,12 @@
         <item>misc.png</item>
         <item>pine-tree.png</item>
         <item>info.png</item>
+    </string-array>
+
+
+    <string-array name="set_sort_ucat_list">
+        <item>@string/set_sort_desc</item>
+        <item>@string/set_sort_asc</item>
     </string-array>
 
 </resources>

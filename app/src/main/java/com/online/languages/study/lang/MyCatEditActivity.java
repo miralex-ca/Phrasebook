@@ -43,6 +43,9 @@ import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnInitListener  {
@@ -84,6 +87,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     DataObject categoryObject;
 
+    MenuItem deleteMenuItem;
+
+    View listParams;
+
 
 
     @Override
@@ -97,11 +104,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         themeAdapter.getTheme();
 
         openActivity = new OpenActivity(this);
-        //openActivity.setOrientation();
+        openActivity.setOrientation();
 
         setContentView(R.layout.activity_cat_edit);
-
-        
         categoryObject = new DataObject();
 
         categoryObject.id = getIntent().getStringExtra(EXTRA_CAT_ID);
@@ -134,6 +139,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         createBtn = findViewById(R.id.createBtn);
         updateCatBtn = findViewById(R.id.updateCatBtn);
         newItem =  findViewById(R.id.newItemBtn);
+        listParams = findViewById(R.id.list_params);
 
         recyclerView = findViewById(R.id.recycler_view);
 
@@ -148,7 +154,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         prepareCat();
 
         titleEditText.addTextChangedListener(titleEditorWatcher);
-
 
         Intent checkTTSIntent = new Intent();
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -181,10 +186,16 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void confirmDeletion(final String id) {
 
+
+        String message = "\nУдалить запись?\n";
+
+        if (dataItems.size() == 1) message = "\nУдалить последнюю запись?\n";
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         builder.setTitle(R.string.confirmation_txt);
 
-        builder.setMessage("\nУдалить запись?\n");
+        builder.setMessage(message);
 
         builder.setCancelable(false);
 
@@ -221,6 +232,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             createBtn.setVisibility(View.VISIBLE);
             newDataItemAction = false;
             newItem.setAlpha(0.3f);
+            listParams.setVisibility(View.INVISIBLE);
 
         } else {
 
@@ -232,11 +244,12 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             txt.setText("Создано: "+ dataManager.formatTime(categoryObject.time_created));
             newDataItemAction = true;
             updateItemsList();
+            listParams.setVisibility(View.VISIBLE);
 
         }
 
-
     }
+
 
 
     private void showCreated(String[] catData) {
@@ -262,11 +275,14 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         newDataItemAction = true;
 
         newItem.setAlpha(1.0f);
+        listParams.setVisibility(View.VISIBLE);
 
         titleEditText.clearFocus();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(titleEditText.getWindowToken(), 0);
+
+        checkDeleteItem();
 
     }
 
@@ -365,7 +381,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void updateItemsList() {
 
-        dataItems  = dataManager.dbHelper.getUDataList(categoryObject.id);
+        dataItems  = dataManager.getUDataList(categoryObject.id);
         adapter = new EditDataListAdapter(this, dataItems, MyCatEditActivity.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -424,6 +440,8 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         infoDialog.toast("Удалено слов: " + num);
 
+        setResult(50);
+
         finish();
 
     }
@@ -470,7 +488,21 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_ucat_edit, menu);
 
+        deleteMenuItem = menu.findItem(R.id.delete_ucat);
+
+        checkDeleteItem();
+
         return true;
+    }
+
+    private  void checkDeleteItem() {
+
+        if (categoryObject.id.contains(UC_PREFIX)) {
+            deleteMenuItem.setVisible(true);
+        } else {
+            deleteMenuItem.setVisible(false);
+        }
+
     }
 
 
@@ -485,13 +517,11 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             titleCharCounter.setText(str);
 
             checkCatTitleChanges(s.toString());
-
         }
 
         public void afterTextChanged(Editable s) {
         }
     };
-
 
 
     //// TTS integration
@@ -595,11 +625,60 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
 
+    public void sortDialog(View view) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        categoryObject = dataManager.getUcatParams(categoryObject);
+
+        String paramSort = dataManager.readParam(categoryObject.params, UCAT_PARAM_SORT);
+
+       // Toast.makeText(this, "S: " + paramSort, Toast.LENGTH_SHORT).show();
+
+        int checkedItem = 0;
+
+        if (paramSort.equals(UCAT_PARAM_SORT_ASC))  checkedItem = 1;
+
+        builder.setTitle(getString(R.string.sort_udata_dialog_title))
+
+                .setSingleChoiceItems(R.array.set_sort_ucat_list, checkedItem, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        showSort(which);
+                        dialog.dismiss();
+                    }
+                })
+
+                .setCancelable(true)
+
+                .setNegativeButton(R.string.dialog_close_txt,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
 
 
+    private void showSort(int num) {
+
+        String orderValue = UCAT_PARAM_SORT_DESC;
+        if (num == 1) orderValue  = UCAT_PARAM_SORT_ASC;
+
+        categoryObject.params =  dataManager.addValueToParams(
+                    dataManager.getUcatParams(categoryObject).params,
+                    UCAT_PARAM_SORT, orderValue);
 
 
+        dataManager.saveUcatParams(categoryObject);
 
+        updateItemsList();
+
+    }
 
 
 

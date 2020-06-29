@@ -40,9 +40,13 @@ import com.online.languages.study.lang.data.ViewSection;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.IMG_LIST_LAYOUT;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 
 public class StarredBookmarksActivity extends BaseActivity {
@@ -234,9 +238,19 @@ public class StarredBookmarksActivity extends BaseActivity {
 
             for (BookmarkItem saved: bookmarkItems) {
                 if (present.item.equals(saved.item) && present.parent.equals(saved.parent)) {
+
+                    if ( !present.title.equals(saved.title) ) {
+
+                        dataItems.get(i).title = saved.title;
+
+                        mAdapter.notifyItemChanged(i);
+                    }
+
                     found = true;
                     break;
                 }
+
+
             }
 
             if (!found) checkBookmarks(present, i);
@@ -321,6 +335,12 @@ public class StarredBookmarksActivity extends BaseActivity {
 
     public void showAlertDialog(String id, View view) {
 
+
+        if (id.contains(UC_PREFIX)) {
+            openUcat(id);
+            return;
+        }
+
         int position = 0;
 
         for ( int i = 0; i < dataItems.size(); i++ ) {
@@ -335,6 +355,25 @@ public class StarredBookmarksActivity extends BaseActivity {
                 viewCategory);
 
     }
+
+    private void openUcat(String id) {
+
+        Intent i = new Intent(this, CatActivity.class);
+
+        i.putExtra(EXTRA_SECTION_ID, PARAM_UCAT_PARENT);
+        i.putExtra(Constants.EXTRA_CAT_ID, id);
+        i.putExtra("cat_title", PARAM_EMPTY);
+        i.putExtra(Constants.EXTRA_CAT_SPEC, PARAM_EMPTY);
+
+        startActivityForResult(i, 1);
+
+        openActivity.pageTransition();
+
+    }
+
+
+
+
 
     @Override
     public void onBackPressed() {

@@ -1,17 +1,21 @@
 package com.online.languages.study.lang.data;
 
 import android.content.Context;
+import android.widget.Toast;
 
-import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
-import static com.online.languages.study.lang.Constants.TEST_OPTIONS_RANGE;
+import static com.online.languages.study.lang.Constants.DEFAULT_TEST_RELACE_CAT;
+import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
+import static com.online.languages.study.lang.Constants.TEST_NEIGHBORS_RANGE;
+import static com.online.languages.study.lang.Constants.TEST_OPTIONS_NUM;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 
 public class ExerciseDataCollect {
@@ -27,8 +31,12 @@ public class ExerciseDataCollect {
 
     private  DBHelper dbHelper;
 
+    ArrayList<DataItem> replaceList;
+
     private ArrayList<Section> sections;
 
+
+    private String[] replaceCatIds = new String[]{DEFAULT_TEST_RELACE_CAT};
 
     public ArrayList<DataItem> optionsData = new ArrayList<>();
     public ArrayList<String> options = new ArrayList<>();
@@ -58,6 +66,13 @@ public class ExerciseDataCollect {
         dbHelper = new DBHelper(context);
 
         data = _data;
+
+
+        String[] ids = context.getResources().getStringArray(R.array.test_replace_cats);
+
+        if (ids.length > 0) replaceCatIds = ids;
+
+
         getCatIdsFromDataItems(data);
 
        // collect(data);
@@ -68,6 +83,7 @@ public class ExerciseDataCollect {
     public void generateTasks(ArrayList<DataItem> dataItems) {
         tasks = new ArrayList<>();
         collect(dataItems);
+
     }
 
 
@@ -80,9 +96,19 @@ public class ExerciseDataCollect {
     private void collect(ArrayList<DataItem> dataItemsList) {
 
 
+        for (DataItem dataItem: dataItemsList) {
+
+            ArrayList<DataItem> options =  getDataItemOptions(dataItem); // we're getting unique options
+
+            tasks.add ( createTaskWithOption(dataItem, options) );
+        }
+
+
+/*
+
         if (dataItemsList.size() == 1) {
 
-            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0).id );
+            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0) );
 
             tasks.add ( createTaskWithOption(dataItemsList.get(0), options) );
 
@@ -100,10 +126,11 @@ public class ExerciseDataCollect {
             //Toast.makeText(context, "One", Toast.LENGTH_SHORT).show();
 
 
-        } else if (dataItemsList.size() == 2) {
+        } else if (dataItemsList.size() == 2)
+        {
 
 
-            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0).id ); // options for task 1 and 2
+            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0) ); // options for task 1 and 2
             ArrayList<DataItem> dataItems = pickAddData(dataItemsList.get(0), dataItemsList);
 
             tasks.add ( createTaskWithOption(dataItemsList.get(0), options) );
@@ -112,7 +139,7 @@ public class ExerciseDataCollect {
             tasks.add ( createTaskWithOptions(dataItems.get(0), options, dataItemsList.get(0)) );
 
 
-            options =  getDataItemOptions( dataItemsList.get(1).id ); // options for task 3 and 4
+            options =  getDataItemOptions( dataItemsList.get(1) ); // options for task 3 and 4
             dataItems = pickAddData(dataItemsList.get(1), dataItemsList);
 
             tasks.add ( createTaskWithOption(dataItemsList.get(1), options) );
@@ -124,30 +151,24 @@ public class ExerciseDataCollect {
 
             Collections.shuffle(dataItemsList);
 
-            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0).id ); // options for task 1 and 2
+            ArrayList<DataItem> options =  getDataItemOptions( dataItemsList.get(0) ); // options for task 1 and 2
             ArrayList<DataItem> dataItems = pickAddData(dataItemsList.get(0), dataItemsList);
 
              tasks.add ( createTaskWithOption(dataItemsList.get(0), options) );
 
             if (dataItems.size()>0) tasks.add ( createTaskWithOptions(dataItems.get(0), options, dataItemsList.get(0)) );
 
-            options =  getDataItemOptions( dataItemsList.get(1).id ); // options for task 3
+            options =  getDataItemOptions( dataItemsList.get(1) ); // options for task 3
             tasks.add ( createTaskWithOption(dataItemsList.get(1), options) );
 
-            options =  getDataItemOptions( dataItemsList.get(2).id ); // options for task 4
+            options =  getDataItemOptions( dataItemsList.get(2) ); // options for task 4
             tasks.add ( createTaskWithOption(dataItemsList.get(2), options) );
 
 
         } else {
 
-            for (DataItem dataItem: dataItemsList) {
-
-                ArrayList<DataItem> options =  getDataItemOptions(dataItem.id);
-
-                tasks.add ( createTaskWithOption(dataItem, options) );
-            }
-
         }
+*/
 
     }
 
@@ -159,7 +180,7 @@ public class ExerciseDataCollect {
 
         DataItem addItem = new DataItem();
 
-        ArrayList<DataItem> dataItems = getDataItemOptions(dataItem.id);
+        ArrayList<DataItem> dataItems = getDataItemOptions(dataItem);
 
         Collections.shuffle(dataItems);
 
@@ -198,6 +219,7 @@ public class ExerciseDataCollect {
 
 
     private ExerciseTask createTaskWithOption (DataItem dataItem, ArrayList<DataItem> _optionsList) {
+
         ArrayList<DataItem> options = new ArrayList<>();
         options.add(dataItem);
 
@@ -207,24 +229,28 @@ public class ExerciseDataCollect {
 
 
 
-
     private ExerciseTask createTask (DataItem dataItem, ArrayList<DataItem> _optionsList, ArrayList<DataItem> options) {
 
+        // We get the required item with all info, list of possible options and preparatory options list
 
         Collections.shuffle(_optionsList);
 
-        int optionsLength = Constants.TEST_OPTIONS_NUM - options.size();
+        int optionsLength = TEST_OPTIONS_NUM - options.size();
+
+        int possibleOptions = _optionsList.size();
+
+        if (possibleOptions > TEST_OPTIONS_NUM ) optionsLength = TEST_OPTIONS_NUM - options.size();
+        if (possibleOptions <= TEST_OPTIONS_NUM  && possibleOptions > 0) optionsLength = possibleOptions - options.size();
+
 
 
         for (int i = 0; i < optionsLength; i++) {
+
             DataItem option = getOption(dataItem, options, _optionsList);
             options.add(option);
+
         }
 
-        ////// check for length
-
-
-        Boolean haveLong = false;
 
         ArrayList<String> optionsTxt = new ArrayList<>();
 
@@ -243,15 +269,29 @@ public class ExerciseDataCollect {
         ExerciseTask exerciseTask = new ExerciseTask(quest, questInfo, optionsTxt, correctOptionIndex, dataItem.id);
         exerciseTask.data = dataItem;
 
+
         return exerciseTask ;
 
     }
 
 
     private String getValueForUnique(DataItem dataItem) {
-        String value = dataItem.item;
-        if (exType == 2) value = dataItem.info;
-        if (exType == EX_IMG_TYPE) value = dataItem.item_info_1;
+
+        /// checking data for unique options
+
+        String value = dataItem.info;
+
+        if (exType == 2) {
+            value = dataItem.item;
+        }
+
+
+        return sanitized(value);
+    }
+
+    private String sanitized(String value) {
+        value = value.trim();
+        value = value.toUpperCase().replaceAll("[,!.]", "");
         return value;
     }
 
@@ -259,27 +299,19 @@ public class ExerciseDataCollect {
 
     private String getTextByExType(DataItem dataItem, int taskDataType) {
 
-        /// data type 1 - quest, 2 - options
+        /// taskDataType: (case) 1 - quest, 2 - options
+        /// exerciseType - general index for exercise type
 
         String txt = "";
 
         if (exType == 2) {
-            switch (taskDataType) {
-                case 1:
+
+            switch (taskDataType) {  ///
+                case 1: //
                     txt = dataItem.info;
                     break;
-                case 2:
-                    txt = dataItem.item;
-                    break;
-            }
-        } else if (exType == EX_IMG_TYPE) {
-
-            switch (taskDataType) {
-                case 1:
-                    txt = dataItem.image;
-                    break;
                 case 2: // option text
-                    txt = dataItem.item_info_1;
+                    txt = dataItem.item;
                     break;
             }
 
@@ -289,7 +321,7 @@ public class ExerciseDataCollect {
                 case 1:
                     txt = dataItem.item;
                     break;
-                case 2:
+                case 2: // option text
                     txt = dataItem.info;
                     break;
             }
@@ -302,18 +334,14 @@ public class ExerciseDataCollect {
 
     private DataItem getOption(DataItem dataItem, ArrayList<DataItem> options, ArrayList<DataItem> optionsList) {
 
-      //  Collections.shuffle(optionsList);
-
-        //if (optionsList.size() < 1) Toast.makeText(context, "No item " + dataItem.item, Toast.LENGTH_SHORT ).show();
 
         DataItem option = optionsList.get(0);
 
         if (option.item.equals(dataItem.item)) {
-
-          //  Toast.makeText(context, "Same: "+ option.item , Toast.LENGTH_SHORT).show();
-
-            option = optionsList.get(1);
+           // option = optionsList.get(1);
         }
+
+        //Toast.makeText(context, "Option: "+ dataItem.item +": - "+ option.item , Toast.LENGTH_SHORT).show();
 
 
         for (int i = 0; i< optionsList.size(); i++) {
@@ -334,11 +362,13 @@ public class ExerciseDataCollect {
 
         boolean foundSame = false;
 
+
         for (int i=0; i<optionsList.size(); i++) {
+
             if (
-             option.item.equals(optionsList.get(i).item)
-            ||  option.info.equals(optionsList.get(i).info)
-             ||  option.item_info_1.equals(optionsList.get(i).item_info_1)
+
+              getValueForUnique(option).equals(getValueForUnique(optionsList.get(i)))
+
             ) {
                 foundSame = true;
 
@@ -361,53 +391,153 @@ public class ExerciseDataCollect {
 
         HashSet<String> set = new HashSet<>();
 
+
+        //// getting an empty list of options related to items categories
         for (DataItem item: dataItems) {
-            String catId = item.id.substring(0, sectionTagSize);
+
+            String catId;
+
+            if (item.id.contains(UD_PREFIX)) {
+
+                catId = item.cat;
+
+
+            } else {
+                catId = item.id.substring(0, sectionTagSize);
+            }
+
             if (!set.contains(catId)) {
                 ids.add(catId);
                 optionsCatData.add(new OptionsCatData(catId));
                 set.add(catId);
+
             }
         }
 
 
+        /// getting all items from that match for options by category id
+
         ArrayList<DataItem> items = dbHelper.getDataItemsByCatIds(ids);
 
-            for (DataItem item: items) {
 
-                for (OptionsCatData optionsCat: optionsCatData) {
+        getReplacement();
 
-                    if (item.id.matches(optionsCat.id + ".*")) {
-                        optionsCat.options.add(item);
-                        break;
-                    }
-                }
+        //// distributing received items into exercises items options
+
+        for (DataItem item: items) {
+
+            for (OptionsCatData optionsCat: optionsCatData) {
+
+                //Toast.makeText(context, "Option: " + item.cat, Toast.LENGTH_SHORT).show();
+
+                 if ( item.id.matches(optionsCat.id + ".*")  ||  item.cat.equals(optionsCat.id)) {
+
+                     //Toast.makeText(context, "Matches ", Toast.LENGTH_SHORT).show();
+
+                      optionsCat.options.add(item);
+
+                      break;
+                 }
+
             }
+
+         }
+    }
+
+
+    private void getReplacement() {
+
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList(replaceCatIds));
+
+        replaceList = dbHelper.getDataItemsByCatIds(ids);
+
     }
 
 
 
-    private ArrayList<DataItem> getDataItemOptions(String id) {
+
+
+
+    private ArrayList<DataItem> getDataItemOptions(DataItem dataItem) {
+
 
         ArrayList<DataItem> tOptions = new ArrayList<>();
 
+
         for (OptionsCatData optionsCat: optionsCatData) {
-            if (id.matches(optionsCat.id + ".*")) {
 
-                tOptions = getNeighborOptions(optionsCat.options, id);
+            if (dataItem.id.matches(optionsCat.id + ".*") || dataItem.cat.equals(optionsCat.id)) {
 
+                tOptions = checkUniqueData( verifiedDiffer( optionsCat.options, dataItem ));
+
+                //ArrayList<DataItem> uniqueOptions = checkUniqueData(optionsCat.options);
+
+                if (tOptions.size() > TEST_NEIGHBORS_RANGE && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
+
+                    tOptions = getNeighborOptions(tOptions, dataItem.id);
+
+                }
+
+
+
+                if (tOptions.size() < 3 && data.size() > 1) {
+                    tOptions = addOption (dataItem);
+                }
+
+                if (tOptions.size() < 2) {
+
+                    ArrayList<DataItem> raplacement = getReplaceOptions(dataItem);
+                    if ( raplacement.size() > 0) tOptions = raplacement;
+
+                }
+
+
+
+               // Toast.makeText(context, "Options: " + tOptions.size(), Toast.LENGTH_SHORT).show();
               //  if (tOptions.size() < 1) Toast.makeText(context, "0: " + id, Toast.LENGTH_SHORT).show();
+               // if (tOptions.size() < 4)  tOptions = checkUniqueData(optionsCat.options); //
 
-                if (tOptions.size() < 4)  tOptions = checkUniqueData(optionsCat.options); // TODO improve to collect neighbors
-
-               //
 
                 break;
             }
 
         }
 
+       // Toast.makeText(context, "Len: " + tOptions.size(), Toast.LENGTH_SHORT).show();
+
         return tOptions;
+    }
+
+
+    private ArrayList<DataItem> addOption (DataItem dataItem) {
+
+        ArrayList<DataItem> options = new ArrayList<>(data);
+
+        return checkUniqueData( verifiedDiffer( options, dataItem) );
+    }
+
+
+    private  ArrayList<DataItem> getReplaceOptions(DataItem dataItem) {
+
+        Collections.shuffle(replaceList);
+
+        ArrayList<DataItem> candidates = new ArrayList<>(replaceList);
+
+        candidates = checkUniqueData( verifiedDiffer( candidates, dataItem));
+
+        ArrayList<DataItem> options = new ArrayList<>();
+
+        for (int i = 0; i < candidates.size(); i ++) {
+
+            if (i < 3) {
+
+                options.add(candidates.get(i));
+            }
+
+        }
+
+        return options;
+
     }
 
 
@@ -417,11 +547,15 @@ public class ExerciseDataCollect {
 
         HashSet<String> set = new HashSet<>();
 
+
         for (DataItem item: items) {
+
             String checkedValue = getValueForUnique(item);
 
             if (!set.contains(checkedValue )) {
+
                 newData.add(item);
+
                 set.add(checkedValue);
             }
         }
@@ -441,16 +575,13 @@ public class ExerciseDataCollect {
 
         for (int i = 0; i < options.size(); i ++ ) {
             if (options.get(i).id.equals(id)) target = i;
-
             indexesArray.add(i);
         }
-
-
 
         ArrayList<Integer> targetArray = new ArrayList<>();
         boolean toLeft = true;
 
-        int range = TEST_OPTIONS_RANGE;
+        int range = TEST_NEIGHBORS_RANGE;
 
         for (int i = 0; i < range; i ++) {  /// getting neighbor indexes
 
@@ -511,6 +642,37 @@ public class ExerciseDataCollect {
 
         return index;
     }
+
+
+
+    private ArrayList<DataItem> verifiedDiffer(ArrayList<DataItem> dataItems, DataItem itemToVerify) {
+
+
+        ArrayList<DataItem> newList = new ArrayList<>();
+
+
+        for (DataItem dataItem: dataItems) {
+
+            boolean similar = false;
+
+            if ( sanitized(itemToVerify.item).equals(sanitized(dataItem.item))
+              || sanitized(itemToVerify.info).equals(sanitized(dataItem.info))
+
+            ) {
+                if (!itemToVerify.id.equals(dataItem.id))
+                similar = true;
+            }
+
+            if (!similar) newList.add(dataItem);
+        }
+
+
+
+        //Toast.makeText(context, "Data: " + itemToVerify.item + " - " + newList.size(), Toast.LENGTH_SHORT).show();
+
+        return newList;
+    }
+
 
 
 

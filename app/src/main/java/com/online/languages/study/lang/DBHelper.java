@@ -38,6 +38,7 @@ import java.util.Map;
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 
+import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
@@ -49,7 +50,11 @@ import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
+import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -150,6 +155,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UCAT_INFO = "ucat_info";
     private static final String KEY_UCAT_STATUS = "ucat_status";
     private static final String KEY_UCAT_FILTER = "ucat_filter";
+    private static final String KEY_UCAT_PARAMS = "ucat_params";
     private static final String KEY_UCAT_CREATED = "ucat_created";
     private static final String KEY_UCAT_UPDATED = "ucat_updated";
 
@@ -171,9 +177,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //// user dataitem table columns
-    private static final String KEY_UDC_UDATA_ID = "udata_id";
     private static final String KEY_UDC_UCAT_ID = "ucat_id";
-
+    private static final String KEY_UDC_UDATA_ID = "udata_id";
 
 
     private static final String TABLE_ITEM_STRUCTURE  = "("
@@ -253,6 +258,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UCAT_INFO + " TEXT,"
             + KEY_UCAT_STATUS + " TEXT,"
             + KEY_UCAT_FILTER + " TEXT,"
+            + KEY_UCAT_PARAMS + " TEXT,"
             + KEY_UCAT_CREATED + " INTEGER,"
             + KEY_UCAT_UPDATED + " INTEGER"
             + ")";
@@ -276,8 +282,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     private static final String TABLE_UCAT_UDATA_STRUCTURE = "("
-            + KEY_UDC_UDATA_ID + " TEXT,"
-            + KEY_UDC_UCAT_ID + " TEXT"
+            + KEY_UDC_UCAT_ID + " TEXT,"
+            + KEY_UDC_UDATA_ID + " TEXT"
             + ")";
 
 
@@ -608,6 +614,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(KEY_UCAT_TITLE, catTitle);
         values.put(KEY_UCAT_DESC, "");
+        values.put(KEY_UCAT_PARAMS, "");
         values.put(KEY_UCAT_CREATED, time );
         values.put(KEY_UCAT_UPDATED, time );
 
@@ -760,28 +767,56 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public int deleteData(String id) {
-
-        int deleted = 0;
+    public DataObject getUCatParams(DataObject dataObject) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
 
-        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
-                KEY_UDATA_ID +" = ?",
-                new String[] { id }, null, null, null);
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
 
         if (cursor.moveToFirst() ) {
 
-           deleted = db.delete(TABLE_USER_DATA_ITEMS, KEY_UDATA_ID +" = ?",  new String[] { id });
+            dataObject.params = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARAMS));
 
         }
 
         cursor.close();
         db.close();
 
-        return deleted;
+        return dataObject;
     }
+
+
+    public void updateUCatParams(DataObject dataObject) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_PARAMS, dataObject.params);
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_ID +" = ?",
+                    new String[] { dataObject.id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+    }
+
+
+
 
 
     public int deleteUCat(String id) {
@@ -811,11 +846,15 @@ public class DBHelper extends SQLiteOpenHelper {
         db.delete(TABLE_UCAT_UDATA, KEY_UDC_UCAT_ID +" = ?",  new String[] { id });
 
 
+        cleanUDataFromUser(db);
 
         db.close();
 
         return deleted;
     }
+
+
+
 
 
     private int deleteUDataFromUcat(SQLiteDatabase db, String ucat_id) {
@@ -860,6 +899,70 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
+    public int deleteData(String id) {
+
+        int deleted = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null,
+                KEY_UDATA_ID +" = ?",
+                new String[] { id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            deleted = db.delete(TABLE_USER_DATA_ITEMS, KEY_UDATA_ID +" = ?",  new String[] { id });
+
+            db.delete(TABLE_UCAT_UDATA, KEY_UDATA_ID +" = ?",  new String[] { id });
+
+        }
+
+        cursor.close();
+
+
+        cleanUDataFromUser(db);
+
+
+        db.close();
+
+        return deleted;
+    }
+
+
+    private void cleanUDataFromUser(SQLiteDatabase db) {
+
+
+        String query = "SELECT * FROM "  +TABLE_USER_DATA
+                +" a LEFT JOIN " + TABLE_USER_DATA_ITEMS
+
+                +" b ON a." + KEY_USER_ITEM_ID + " = b." + KEY_UDATA_ID
+                +" WHERE (a." + KEY_USER_ITEM_ID + " LIKE '"+ UD_PREFIX +"%') AND ( b." + KEY_UDATA_ID + " IS NULL)";
+
+
+        Cursor cursor = db.rawQuery(query, null);
+
+
+
+        try {
+
+            while (cursor.moveToNext()) {
+
+                String id = cursor.getString(cursor.getColumnIndex(KEY_USER_ITEM_ID));
+
+                db.delete(TABLE_USER_DATA, KEY_USER_ITEM_ID +" = ?",  new String[] { id });
+
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+
+    }
+
+
+
 
     public DataItem getUData(String id) {
 
@@ -874,6 +977,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst() ) {
             dataItem = getDataItemFromUDATA(cursor);
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataItem;
+    }
+
+
+
+    public DataItem getUDataAllInfo(String id) {
+
+        DataItem dataItem = new DataItem();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        String query = "SELECT * FROM "  + TABLE_USER_DATA_ITEMS  +" a "
+
+                +" LEFT JOIN " + TABLE_USER_DATA +" b "
+                +" ON a." + KEY_UDATA_ID + " = b." + KEY_USER_ITEM_ID
+
+                +" WHERE a." + KEY_UDATA_ID + " = ?";
+
+        Cursor cursor = db.rawQuery(query,  new String[] { id });
+
+
+        if (cursor.moveToFirst() ) {
+            dataItem = getAllInfoUdataFromDB(cursor);
         }
 
         cursor.close();
@@ -906,24 +1038,44 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-
     public ArrayList<DataItem> getUDataList(String ucat_id) {
+
+        return  getUDataList(ucat_id, "");
+    }
+
+
+
+    public ArrayList<DataItem> getUDataList(String ucat_id, String sort) {
+
+        String sorting = "DESC";
+
+        if (sort.equals(UCAT_PARAM_SORT_ASC)) sorting = "ASC";
+
 
         ArrayList<DataItem> dataItems = new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * FROM "
-                +TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
-                +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
-                +" WHERE a." + KEY_UDC_UCAT_ID + " = ? ORDER BY b." + KEY_UDATA_CREATED + " DESC";
+        String query = "SELECT * FROM " +TABLE_UCAT_UDATA +" a "
+
+                + " INNER JOIN " + TABLE_USER_DATA_ITEMS + " b "
+                + " ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+
+                + " LEFT JOIN " + TABLE_USER_DATA + " c "
+                + " ON b." + KEY_UDATA_ID + " = c." + KEY_USER_ITEM_ID
+
+                + " WHERE a." + KEY_UDC_UCAT_ID + " = ? ORDER BY b." + KEY_UDATA_CREATED + " " + sorting;
 
         Cursor cursor = db.rawQuery(query, new String[]{ucat_id});
 
         try {
             while (cursor.moveToNext()) {
 
-                dataItems.add(getDataItemFromUDATA(cursor));
+                DataItem dataItem = getAllInfoUdataFromDB(cursor);
+                dataItem.cat = ucat_id;
+
+                dataItems.add(dataItem);
+
             }
 
         } finally {
@@ -937,6 +1089,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public ArrayList<DataObject> getUCatsList() {
+
 
         ArrayList<DataObject> categories = new ArrayList<>();
 
@@ -963,6 +1116,52 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return categories;
     }
+
+    public ArrayList<DataObject> getUCatsListItemsCount(ArrayList<DataObject> categories) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM "
+                + TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
+                +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+                +" WHERE a." + KEY_UDC_UCAT_ID + " = ?";
+
+
+        String progressQuery = "SELECT * FROM " + TABLE_UCAT_UDATA +" a "
+
+                +"INNER JOIN " + TABLE_USER_DATA_ITEMS +" b ON "
+                +"a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+
+                +" LEFT JOIN " + TABLE_USER_DATA +" c ON "
+                +" b." + KEY_UDATA_ID + " = c." + KEY_USER_ITEM_ID
+
+                +" WHERE (a." + KEY_UDC_UCAT_ID + " = ?) AND (c." +KEY_ITEM_SCORE + " > 2) "; //TODO find score
+
+
+        for (DataObject category: categories) {
+
+            Cursor cursor = db.rawQuery(query, new String[]{category.id});
+            category.count = cursor.getCount();
+
+            Cursor progressCursor = db.rawQuery(progressQuery, new String[]{category.id});
+            category.progress = progressCursor.getCount();
+
+
+            cursor.close();
+
+        }
+
+
+        db.close();
+
+        return categories;
+    }
+
+
+
+
+
+
 
 
     public void createNote(NoteData note) {
@@ -1129,7 +1328,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    public ArrayList<BookmarkItem> getBookmarks() {  /// TODO check for available in structure (datamanger)
+    public ArrayList<BookmarkItem> getBookmarks() {  ///
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -1155,6 +1354,50 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return  items;
     }
+
+
+    public ArrayList<BookmarkItem> getUCatsBookmarks() {
+
+        ArrayList<BookmarkItem> bookmarks = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        String query = "SELECT * FROM " + TABLE_BOOKMARKS_DATA +" a "
+                +"INNER JOIN " + TABLE_USER_DATA_CATS +" b "
+                +"ON a." + KEY_BOOKMARK_ITEM + " = b." + KEY_UCAT_ID;
+
+
+        Cursor cursor = db.rawQuery(query, null);
+
+
+        try {
+            while (cursor.moveToNext()) {
+
+                BookmarkItem bookmark = new BookmarkItem();
+
+                bookmark.item = cursor.getString(cursor.getColumnIndex(KEY_BOOKMARK_ITEM));
+                bookmark.parent = cursor.getString(cursor.getColumnIndex(KEY_BOOKMARK_PARENT));
+                bookmark.time = cursor.getLong(cursor.getColumnIndex(KEY_BOOKMARK_TIME));
+
+                bookmark.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+                bookmark.desc = "Раздел: Мой словарь";
+                bookmark.image = "cat/account.png";
+                bookmark.navCategory = new NavCategory();
+
+                bookmarks.add(bookmark);
+
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return bookmarks;
+    }
+
 
     public boolean checkBookmark(String bookmark, String parent) {
 
@@ -1565,6 +1808,29 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
 
+        String udataQuery = "SELECT * FROM " + TABLE_UCAT_UDATA + " a"
+
+                + " INNER JOIN " + TABLE_USER_DATA_ITEMS + " b "
+                + " ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+
+                +" WHERE  ("+KEY_UDATA_TEXT+" LIKE '%"+searchTerm+"%' OR "+KEY_UDATA_TRANSLATE+" LIKE '%" + searchTerm+"%')";
+
+
+        Cursor udataCursor = db.rawQuery(udataQuery, null);
+
+        try {
+            while (udataCursor.moveToNext()) {
+
+                items.add(getDataItemFromUDATA(udataCursor));
+            }
+        } finally {
+            udataCursor.close();
+        }
+
+
+
+
+
         db.close();
 
         return items;
@@ -1695,46 +1961,91 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         String limit = "";
-        if (catIds.size() > 10) {
+
+        if (catIds.size() > TEST_CATS_MAX_FOR_BEST) {
             limit = "ORDER BY RANDOM() LIMIT 15";
         }
 
-        String columns = KEY_ITEM_ID +", "+ KEY_ITEM_TITLE + ", "+ KEY_ITEM_DESC+ ", "+ KEY_ITEM_INFO_1;
 
 
-        db.beginTransaction();
+
+        // db.beginTransaction();
 
         for (int i = 0; i < catIds.size(); i++) {
 
-            String catQuery = "SELECT "+columns+" FROM " +TABLE_ITEMS_DATA
-                    +" WHERE ("+KEY_ITEM_ID + " LIKE '" + catIds.get(i) + "%') "
+            if (catIds.get(i).contains(UC_PREFIX)) {
 
-                    + "AND ("+KEY_ITEM_MODE+" < "+data_mode+") "
+                String id = catIds.get(i);
 
-                    +limit;
+                String query = "SELECT * FROM " +TABLE_UCAT_UDATA +" a "
 
-            Cursor cursor = db.rawQuery(catQuery, null);
+                        + " INNER JOIN " + TABLE_USER_DATA_ITEMS + " b "
+                        + " ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
 
-            try {
-                while (cursor.moveToNext()) {
+                        + " WHERE a." + KEY_UDC_UCAT_ID + " = ?";
 
-                    DataItem dataItem = new DataItem();
+                Cursor cursor = db.rawQuery(query, new String[]{catIds.get(i)});
 
-                    dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_ITEM_ID));
-                    dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TITLE));
-                    dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DESC));
-                    dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_INFO_1));
+                //Toast.makeText(cntx, "Cursor: " + cursor.getCount(), Toast.LENGTH_SHORT).show();
 
-                    items.add(dataItem);
+                try {
+                    while (cursor.moveToNext()) {
+
+                       // DataItem dataItem = getAllInfoUdataFromDB(cursor); //TODO
+
+                        DataItem dataItem = new DataItem("text " + id, "info");
+
+                        dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_UDATA_ID));
+                        dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TEXT));
+                        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE));
+                        dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_INFO));
+
+                        dataItem.cat = catIds.get(i);
+
+                        items.add(dataItem);
+
+                    }
+
+                } finally {
+                    cursor.close();
                 }
-            } finally {
-                cursor.close();
+
+
+            } else {
+
+                String columns = KEY_ITEM_ID +", "+ KEY_ITEM_TITLE + ", "+ KEY_ITEM_DESC+ ", "+ KEY_ITEM_INFO_1;
+
+                String catQuery = "SELECT "+columns+" FROM " +TABLE_ITEMS_DATA
+                        +" WHERE ("+KEY_ITEM_ID + " LIKE '" + catIds.get(i) + "%') "
+                        + "AND ("+KEY_ITEM_MODE+" < "+data_mode+") "
+                        +limit;
+
+                Cursor cursor = db.rawQuery(catQuery, null);
+
+                try {
+                    while (cursor.moveToNext()) {
+
+                        DataItem dataItem = new DataItem();
+                        dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_ITEM_ID));
+                        dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TITLE));
+                        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DESC));
+                        dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_INFO_1));
+                        items.add(dataItem);
+                    }
+                } finally {
+                    cursor.close();
+                }
+
+
             }
+
         }
 
-        db.endTransaction();
+       // db.endTransaction();
 
         db.close();
+
+        //Toast.makeText(cntx, "Items: " + items.size(), Toast.LENGTH_SHORT).show();
 
         return items;
     }
@@ -2035,6 +2346,35 @@ public class DBHelper extends SQLiteOpenHelper {
         } finally {
             cursor.close();
         }
+
+
+        query = "SELECT * FROM " +TABLE_USER_DATA +" a "
+                +"INNER JOIN "+TABLE_USER_DATA_ITEMS +" b "
+                +"ON a." + KEY_USER_ITEM_ID + " = b."+KEY_UDATA_ID
+
+                +" LEFT JOIN "+TABLE_UCAT_UDATA +" c "
+                +"ON b." + KEY_UDATA_ID + " = c."+KEY_UDC_UDATA_ID
+
+                + " WHERE a."+KEY_ITEM_STARRED +" > ? ORDER BY b."+KEY_UDATA_CREATED;
+
+
+        Cursor uCursor = db.rawQuery(query, new String[]{"0"});
+
+        try {
+            while (uCursor.moveToNext()) {
+
+                DataItem item = getAllInfoUdataFromDB(uCursor);
+                item.cat = uCursor.getString(uCursor.getColumnIndex(KEY_UDC_UCAT_ID));
+
+                items.add(item);
+
+            }
+        } finally {
+            uCursor.close();
+        }
+
+        db.close();
+
 
         return items;
     }
@@ -2831,6 +3171,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dataObject.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
         dataObject.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
         dataObject.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+        dataObject.params = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARAMS));
         dataObject.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
         dataObject.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_UPDATED));
 
@@ -2838,8 +3179,28 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    private DataItem getAllInfoUdataFromDB(Cursor cursor) {
 
+        DataItem dataItem = new DataItem();
 
+        dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_UDATA_ID));
+        dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TEXT));
+        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE));
+        dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSCRIPT));
+        dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_UDATA_GRAMMAR));
+        dataItem.sound = cursor.getString(cursor.getColumnIndex(KEY_UDATA_SOUND));
+        dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_INFO));
+
+        dataItem.starred = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_STARRED));
+        dataItem.rate = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_SCORE));
+        dataItem.errors = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_ERRORS));
+
+        dataItem.starred_time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_STARRED));
+        dataItem.time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME));
+        dataItem.time_errors = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_ERROR));
+
+        return dataItem;
+    }
 
 
 
@@ -2874,9 +3235,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sanitizeDB(db);
 
+//        cleanUDataFromUser(db);
+
         db.close();
     }
-
 
 
     private void sanitizeDB(SQLiteDatabase db) {
@@ -2894,6 +3256,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 String txt = cursor.getString(cursor.getColumnIndex(KEY_USER_ITEM_ID));
                 boolean found = false;
 
+                if (txt.contains(UD_PREFIX)) found = true;
+
                 DataItem foundW = new DataItem();
                 for (DataItem word: allItems) {
                     if (word.id.equals(txt)) {
@@ -2905,6 +3269,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 if (found) {
                     allItems.remove(foundW);
                 } else {
+
                     db.delete(TABLE_USER_DATA, KEY_USER_ITEM_ID +" = ?", new String[]{txt});
                     del++;
                 }

@@ -29,15 +29,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.google.android.gms.common.util.IOUtils;
+import com.online.languages.study.lang.CatActivity;
+import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.NoteActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
+import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
@@ -55,14 +59,17 @@ import java.util.ArrayList;
 import static android.app.Activity.RESULT_OK;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
 
 
 public class HomeFragment2 extends Fragment   {
 
 
-    private static int RESULT_LOAD_IMAGE = 1;
+    private static int RESULT_LOAD_IMAGE = 20;
     SharedPreferences appSettings;
 
     View rootView;
@@ -71,6 +78,10 @@ public class HomeFragment2 extends Fragment   {
     EditUCatsListAdapter adapter;
     RecyclerView recyclerView;
     ArrayList<DataObject> catsList;
+
+    TextView counts;
+
+    OpenActivity openActivity;
 
     Uri uri;
 
@@ -87,8 +98,10 @@ public class HomeFragment2 extends Fragment   {
 
         View newCat = rootView.findViewById(R.id.newCatBtn);
 
+        counts = rootView.findViewById(R.id.userCounts);
 
         dataManager = new DataManager(getActivity());
+        openActivity = new OpenActivity(getActivity());
 
         newCat.setOnClickListener(new View.OnClickListener() {
 
@@ -97,7 +110,6 @@ public class HomeFragment2 extends Fragment   {
                 openNewCat();
             }
         });
-
 
 
 
@@ -139,7 +151,7 @@ public class HomeFragment2 extends Fragment   {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        openCat(position);
+                        openMyCat(position);
                     }
                 }, 50);
 
@@ -153,7 +165,6 @@ public class HomeFragment2 extends Fragment   {
 
 
 
-
         updateList();
 
         return rootView;
@@ -161,14 +172,57 @@ public class HomeFragment2 extends Fragment   {
 
     public void updateList() {
 
-        catsList  = dataManager.dbHelper.getUCatsList();
-
-
+        catsList  = dataManager.getUcatsList();
         adapter = new EditUCatsListAdapter(getActivity(), catsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
 
+
+        checkCounts();
+
+    }
+
+
+    private void checkCounts() {
+
+        int count = 0;
+
+        for (DataObject cat: catsList) {
+            count = count + cat.count;
+        }
+
+        String str = "Добавлено тем:  "+ catsList.size() +"\nДобавлено записей: "+count;
+
+        counts.setText(str);
+
+    }
+
+
+
+    public void openMyCat(int position) {
+
+        if (catsList.get(position).count > 0 ) {
+
+            String id = catsList.get(position).id;
+            String title = catsList.get(position).title;
+
+            Intent i = new Intent(getActivity(), CatActivity.class);
+
+            i.putExtra(EXTRA_SECTION_ID, PARAM_UCAT_PARENT);
+            i.putExtra(Constants.EXTRA_CAT_ID, id);
+            i.putExtra("cat_title", title);
+            i.putExtra(Constants.EXTRA_CAT_SPEC, PARAM_EMPTY);
+
+            startActivityForResult(i, 10);
+
+            openActivity.pageTransition();
+
+
+        } else {
+
+            openCatEdit(position);
+        }
 
     }
 
@@ -180,7 +234,8 @@ public class HomeFragment2 extends Fragment   {
         startActivityForResult(i, 10);
     }
 
-    public void openCat(int position) {
+
+    public void openCatEdit(int position) {
 
         Intent i = new Intent(getActivity(), MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, catsList.get(position).id);
@@ -191,8 +246,8 @@ public class HomeFragment2 extends Fragment   {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
+        super.onActivityResult(requestCode, resultCode, data);
 
         updateList();
 

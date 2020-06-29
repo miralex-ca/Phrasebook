@@ -11,13 +11,13 @@ public class DataObject implements Parcelable {
     public String desc ="";
     public String text ="";
     public String info ="";
-
     public String image = "";
+    public String parent = "";
 
     public String status = "";
     public String filter = "";
     public String type = "";
-
+    public String params = "";
 
     public int count = 0;
     public int progress = 0;
@@ -40,9 +40,11 @@ public class DataObject implements Parcelable {
         this.text = parcel.readString();
         this.info = parcel.readString();
         this.image = parcel.readString();
+        this.parent = parcel.readString();
         this.status = parcel.readString();
         this.filter = parcel.readString();
         this.type = parcel.readString();
+        this.params = parcel.readString();
 
         this.count = parcel.readInt();
         this.progress = parcel.readInt();
@@ -64,10 +66,11 @@ public class DataObject implements Parcelable {
         dest.writeString(text);
         dest.writeString(info);
         dest.writeString(image);
+        dest.writeString(parent);
         dest.writeString(status);
         dest.writeString(filter);
         dest.writeString(type);
-
+        dest.writeString(params);
 
         dest.writeInt(count);
         dest.writeInt(progress);

@@ -20,23 +20,59 @@
         >
 
         <TextView
-            android:textSize="20dp"
+            android:textSize="19dp"
             android:id="@+id/title"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-
             />
 
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/desc"
+
+        <LinearLayout
+            android:visibility="visible"
+            android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="?attr/colorSecondaryText"
-            />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="12sp"
+                android:id="@+id/desc"
+                android:minWidth="110dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorSecondaryText"
+                />
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:textSize="12sp"
+                android:id="@+id/itemsCount"
+                android:text="Записей:  20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorSecondaryText"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:textSize="10dp"
+            android:text="10/20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

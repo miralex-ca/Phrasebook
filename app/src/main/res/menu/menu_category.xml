@@ -46,5 +46,14 @@
     </group>
 
 
+    <item
+        android:visible="false"
+        android:icon="@drawable/ic_edit"
+        android:id="@+id/edit_from_menu"
+        android:orderInCategory="150"
+        android:title="Редактировать"
+        app:showAsAction="ifRoom" />
+
+
 
 </menu>
