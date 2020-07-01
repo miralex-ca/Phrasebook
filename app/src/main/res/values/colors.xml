@@ -169,6 +169,9 @@
     <color name="colorStatusKnown">#D70091EA</color>
     <color name="colorStatusStudied">#D700C853</color>
 
+    <color name="colorUcatFamiliar">#0091EA</color>
+    <color name="colorUcatMastered">#00B94C</color>
+
     <color name="colorStudiedBox">#00C853</color>
     <color name="colorKnownBox">#0091EA</color>
     <color name="colorUnknownBox">#78909C</color>

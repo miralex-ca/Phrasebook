@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.adapters;
+package com.online.languages.study.lang.tools;
 
 
 import java.util.ArrayList;

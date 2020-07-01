@@ -155,6 +155,11 @@
         <item name="colorStatusKnown">@color/colorStatusKnown</item>
         <item name="colorStatusStudied">@color/colorStatusStudied</item>
 
+        <item name="colorUcatFamiliar">@color/colorUcatFamiliar</item>
+        <item name="colorUcatMastered">@color/colorUcatMastered</item>
+
+
+
         <item name="colorStudiedBox">@color/colorStudiedBox</item>
         <item name="colorKnownBox">@color/colorKnownBox</item>
         <item name="colorUnknownBox">@color/colorUnknownBox</item>
@@ -356,7 +361,7 @@
     <color name="colortTransparentBar">#41000000</color>
 
     <color name="colorBookmark_blue">#BC81C784</color>
-    <color name="colorBookmarkBorder_blue">#81C784</color>
+    <color name="colorBookmarkBorder_blue">#81C584</color>
 
     <style name="DefaultTheme">
         <item name="PopupOverlayTheme">@style/PopupOverlayTheme</item>
@@ -405,7 +410,10 @@
 
     <style name="CardViewStyle" parent="CardView">
         <item name="cardBackgroundColor">?attr/colorCardBg</item>
-        <item name="android:layout_margin">?attr/cardMargin</item>
+        <item name="android:layout_marginTop">?attr/cardMargin</item>
+        <item name="android:layout_marginLeft">?attr/cardMargin</item>
+        <item name="android:layout_marginRight">?attr/cardMargin</item>
+        <item name="android:layout_marginBottom">?attr/cardMargin</item>
         <item name="android:maxWidth">700dp</item>
         <item name="cardCornerRadius">?attr/cardCorner</item>
     </style>
@@ -417,7 +425,10 @@
 
     <style name="CardViewStyle.Widget">
         <item name="cardBackgroundColor">?attr/colorCardWidgetBg</item>
-        <item name="android:layout_margin">@dimen/card_margin_default</item>
+        <item name="android:layout_marginTop">@dimen/card_margin_default</item>
+        <item name="android:layout_marginLeft">@dimen/card_margin_default</item>
+        <item name="android:layout_marginRight">@dimen/card_margin_default</item>
+        <item name="android:layout_marginBottom">@dimen/card_margin_default</item>
     </style>
 
 

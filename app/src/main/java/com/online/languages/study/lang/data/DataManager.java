@@ -5,13 +5,12 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.Computer;
+import com.online.languages.study.lang.tools.Computer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
-import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
 

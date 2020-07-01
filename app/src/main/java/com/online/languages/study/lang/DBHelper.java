@@ -11,7 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-import com.online.languages.study.lang.adapters.Computer;
+import com.online.languages.study.lang.tools.Computer;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
@@ -38,21 +38,21 @@ import java.util.Map;
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 
-import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
-import static com.online.languages.study.lang.Constants.INFO_TAG;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
 import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_OFF;
+import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
-import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
@@ -119,7 +119,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //// detail table columns
     private static final String KEY_DETAIL_ID = "detail_id";
-    private static final String KEY_DETAIL_TITLE = "detail_tile";
+    private static final String KEY_DETAIL_TITLE = "detail_title";
     private static final String KEY_DETAIL_DESC = "detail_desc";
     private static final String KEY_DETAIL_IMAGE = "detail_image";
     private static final String KEY_DETAIL_IMG_INFO = "detail_img_imfo";
@@ -158,6 +158,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UCAT_PARAMS = "ucat_params";
     private static final String KEY_UCAT_CREATED = "ucat_created";
     private static final String KEY_UCAT_UPDATED = "ucat_updated";
+    private static final String KEY_UCAT_UPDATED_SORT = "ucat_updated_sort";
 
 
     //// user dataitem table columns
@@ -260,7 +261,8 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UCAT_FILTER + " TEXT,"
             + KEY_UCAT_PARAMS + " TEXT,"
             + KEY_UCAT_CREATED + " INTEGER,"
-            + KEY_UCAT_UPDATED + " INTEGER"
+            + KEY_UCAT_UPDATED + " INTEGER,"
+            + KEY_UCAT_UPDATED_SORT + " INTEGER"
             + ")";
 
 
@@ -617,6 +619,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_UCAT_PARAMS, "");
         values.put(KEY_UCAT_CREATED, time );
         values.put(KEY_UCAT_UPDATED, time );
+        values.put(KEY_UCAT_UPDATED_SORT, time );
 
        long cat_id  = db.insert(TABLE_USER_DATA_CATS, null, values);
 
@@ -737,7 +740,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public DataObject updateUCatTile(DataObject dataObject) {
+    public DataObject updateUCatTitle(DataObject dataObject) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -747,6 +750,34 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(KEY_UCAT_TITLE, dataObject.title);
         values.put(KEY_UCAT_UPDATED, dataObject.time_updated );
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_ID +" = ?",
+                    new String[] { dataObject.id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataObject;
+    }
+
+    public DataObject updateUCatSortTime(DataObject dataObject) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        dataObject.time_updated = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_UPDATED_SORT, dataObject.time_updated );
 
         Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
                 KEY_UCAT_ID +" = ?",
@@ -1039,7 +1070,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public ArrayList<DataItem> getUDataList(String ucat_id) {
-
         return  getUDataList(ucat_id, "");
     }
 
@@ -1096,7 +1126,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
 
-        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null, null, null, null, KEY_UCAT_CREATED + " DESC");
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null, null, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
 
         try {
             while (cursor.moveToNext()) {
@@ -1137,6 +1167,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 +" WHERE (a." + KEY_UDC_UCAT_ID + " = ?) AND (c." +KEY_ITEM_SCORE + " > 2) "; //TODO find score
 
+        String familiarQuery = "SELECT * FROM " + TABLE_UCAT_UDATA +" a "
+
+                +"INNER JOIN " + TABLE_USER_DATA_ITEMS +" b ON "
+                +"a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+
+                +" LEFT JOIN " + TABLE_USER_DATA +" c ON "
+                +" b." + KEY_UDATA_ID + " = c." + KEY_USER_ITEM_ID
+
+                +" WHERE (a." + KEY_UDC_UCAT_ID + " = ?) AND (c." +KEY_ITEM_SCORE + " > 0) ";
+
+
+
+
 
         for (DataObject category: categories) {
 
@@ -1145,6 +1188,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
             Cursor progressCursor = db.rawQuery(progressQuery, new String[]{category.id});
             category.progress = progressCursor.getCount();
+
+            Cursor familiarCursor = db.rawQuery(familiarQuery, new String[]{category.id});
+            category.progress_1 = familiarCursor.getCount();
+
+
+            boolean bookmark = checkBookmark(db, category.id, PARAM_UCAT_PARENT);
+
+            if (bookmark) {
+                category.info =  category.info + UCAT_PARAM_BOOKMARK_ON;
+            } else {
+                category.info =  category.info + UCAT_PARAM_BOOKMARK_OFF;
+            }
 
 
             cursor.close();
@@ -1156,8 +1211,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return categories;
     }
-
-
 
 
 
@@ -1385,8 +1438,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 bookmark.image = "cat/account.png";
                 bookmark.navCategory = new NavCategory();
 
-                bookmarks.add(bookmark);
+                int catListSize = checkUcatDataSize(db, bookmark.item);
 
+                if (catListSize > 0) bookmarks.add(bookmark);
             }
 
         } finally {
@@ -1398,25 +1452,48 @@ public class DBHelper extends SQLiteOpenHelper {
         return bookmarks;
     }
 
+    private int checkUcatDataSize(SQLiteDatabase db, String id) {
+
+        Cursor cursor = db.query(TABLE_UCAT_UDATA,  null,
+                KEY_UDC_UCAT_ID +" = ? ",
+                new String[] { id }, null, null, null);
+
+        int count = cursor.getCount();
+
+        cursor.close();
+
+        return count;
+    }
+
+
+
+
 
     public boolean checkBookmark(String bookmark, String parent) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        boolean bookmarked = false;
+        boolean  bookmarked = checkBookmark(db, bookmark, parent);
 
+        db.close();
+
+        return  bookmarked ;
+    }
+
+    private boolean checkBookmark(SQLiteDatabase db, String bookmark, String parent) {
+
+
+        boolean bookmarked = false;
 
         Cursor cursor = db.query(TABLE_BOOKMARKS_DATA,  null,
                 KEY_BOOKMARK_ITEM +" = ? AND " + KEY_BOOKMARK_PARENT + " = ?",
                 new String[] { bookmark, parent }, null, null, null);
-
 
         if (cursor.moveToFirst() ) {
             bookmarked = true;
         }
 
         cursor.close();
-        db.close();
 
         return  bookmarked ;
     }
@@ -3173,7 +3250,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dataObject.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
         dataObject.params = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARAMS));
         dataObject.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
-        dataObject.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_UPDATED));
+        dataObject.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_UPDATED_SORT));
 
         return dataObject;
     }

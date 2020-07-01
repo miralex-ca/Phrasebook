@@ -39,6 +39,7 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.NoteActivity;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
@@ -103,6 +104,7 @@ public class HomeFragment2 extends Fragment   {
         dataManager = new DataManager(getActivity());
         openActivity = new OpenActivity(getActivity());
 
+
         newCat.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -111,6 +113,16 @@ public class HomeFragment2 extends Fragment   {
             }
         });
 
+
+        View openUcatList = rootView.findViewById(R.id.extToList);
+
+        openUcatList.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                openUcatList();
+            }
+        });
 
 
         placePicutre.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +190,6 @@ public class HomeFragment2 extends Fragment   {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
 
-
         checkCounts();
 
     }
@@ -232,6 +243,14 @@ public class HomeFragment2 extends Fragment   {
         Intent i = new Intent(getActivity(), MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, "new");
         startActivityForResult(i, 10);
+    }
+
+    public void openUcatList( ) {
+
+        Intent i = new Intent(getActivity(), UCatsListActivity.class);
+        startActivityForResult(i, 10);
+
+        openActivity.pageTransition();
     }
 
 

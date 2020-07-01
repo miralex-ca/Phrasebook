@@ -21,6 +21,7 @@ public class DataObject implements Parcelable {
 
     public int count = 0;
     public int progress = 0;
+    public int progress_1 = 0;
     public int order = 0;
 
     public long time_created = 0;
@@ -48,6 +49,7 @@ public class DataObject implements Parcelable {
 
         this.count = parcel.readInt();
         this.progress = parcel.readInt();
+        this.progress_1 = parcel.readInt();
         this.order = parcel.readInt();
     }
 
@@ -74,6 +76,7 @@ public class DataObject implements Parcelable {
 
         dest.writeInt(count);
         dest.writeInt(progress);
+        dest.writeInt(progress_1);
         dest.writeInt(order);
 
     }

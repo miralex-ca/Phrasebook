@@ -188,8 +188,6 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
             }
         }, 100);
 
-
-
     }
 
 

@@ -241,4 +241,7 @@
     <attr name="colorHomeTabTxt" format="reference" />
     <attr name="colorHomeTabTxtInactive" format="reference" />
 
+    <attr name="colorUcatFamiliar" format="reference" />
+    <attr name="colorUcatMastered" format="reference" />
+
 </resources>

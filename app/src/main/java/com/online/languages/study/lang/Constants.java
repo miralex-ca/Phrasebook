@@ -142,6 +142,9 @@ public class Constants {
     public static final String ACTION_UPDATE = "update";
     public static final String ACTION_DELETE = "delete";
     public static final String ACTION_VIEW = "view";
+    public static final String ACTION_BOOKMARK = "bookmark";
+
+    public static final String ACTION_CHANGE_ORDER = "change_order";
 
 
     public static final String STATUS_NEW = "new";
@@ -187,6 +190,9 @@ public class Constants {
     public static final String UCAT_PARAM_SORT = "sort";
     public static final String UCAT_PARAM_SORT_ASC = "sortup";
     public static final String UCAT_PARAM_SORT_DESC = "sortdown";
+
+    public static final String UCAT_PARAM_BOOKMARK_ON = "bookmarkon";
+    public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";
 
 
 }

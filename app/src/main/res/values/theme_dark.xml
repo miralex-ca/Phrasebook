@@ -115,6 +115,9 @@
     <color name="colorCreateFabBtn_dark">#313131</color>
     <color name="colorCreateFabIcon_dark">#FFFFFF</color>
 
+    <color name="colorUcatFamiliar_dark">#58C2FC</color>
+    <color name="colorUcatMastered_dark">#63FF73</color>
+
 
     <dimen name="card_margin_default_dark">0dp</dimen>
 
@@ -183,6 +186,8 @@
 
         <item name="colorContactIcon">@color/colorContactIcon_dark</item>
 
+        <item name="colorUcatFamiliar">@color/colorUcatFamiliar_dark</item>
+        <item name="colorUcatMastered">@color/colorUcatMastered_dark</item>
 
         <item name="colorDrawerItemBg">@color/colorDrawerMenuBg_dark</item>
         <item name="colorDrawerItemTxt">@color/colorDrawerMenuTxt_dark</item>

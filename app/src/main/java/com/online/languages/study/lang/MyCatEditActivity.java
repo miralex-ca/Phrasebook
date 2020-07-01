@@ -275,7 +275,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         newDataItemAction = true;
 
         newItem.setAlpha(1.0f);
+
+        listParams.setAlpha(0);
         listParams.setVisibility(View.VISIBLE);
+        listParams.animate().alpha(1.0f).start();
 
         titleEditText.clearFocus();
 
@@ -329,7 +332,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             } else {
 
                 categoryObject.title = textSanitizer(title);
-                categoryObject = dataManager.dbHelper.updateUCatTile(categoryObject);
+                categoryObject = dataManager.dbHelper.updateUCatTitle(categoryObject);
 
                 titleEditText.setText(categoryObject.title);
 
