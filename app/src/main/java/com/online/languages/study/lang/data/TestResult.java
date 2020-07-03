@@ -6,6 +6,8 @@ import com.online.languages.study.lang.DBHelper;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
+
 public class TestResult {
 
 
@@ -37,6 +39,7 @@ public class TestResult {
         dbHelper = new DBHelper(context );
         DataFromJson dataFromJson = new DataFromJson(context);
         navStructure = dataFromJson.getStructure();
+        navStructure.addUserContent();
 
         sections = new ArrayList<>();
         categories = new ArrayList<>();
@@ -58,6 +61,7 @@ public class TestResult {
         for (DataItem dataItem: dataItems) {
             if (dataItem.testError == 1) testErrors.add(dataItem);
             if (dataItem.testError == -1) unanswered.add(dataItem);
+
         }
 
         structureData();
@@ -71,6 +75,8 @@ public class TestResult {
             ResultCategory section = new ResultCategory();
             section.dataItems = new ArrayList<>();
             section.title = navSection.title;
+
+            //if (navSection.id.contains())
 
             for (NavCategory navCategory: navSection.navCategories) {
                 ResultCategory category = new ResultCategory();

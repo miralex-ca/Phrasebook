@@ -23,7 +23,10 @@ import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_NOTES_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_UCAT_UDATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA_CATS;
+import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA_ITEMS;
 
 
 public class DBExport {
@@ -96,6 +99,9 @@ public class DBExport {
                             || c.getString(0).equals(TABLE_TESTS_DATA)
                             || c.getString(0).equals(TABLE_BOOKMARKS_DATA)
                             || c.getString(0).equals(TABLE_NOTES_DATA)
+                            || c.getString(0).equals(TABLE_USER_DATA_CATS)
+                            || c.getString(0).equals(TABLE_USER_DATA_ITEMS)
+                            || c.getString(0).equals(TABLE_UCAT_UDATA)
                     ) {
                         tables.add(c.getString(0));
                     }

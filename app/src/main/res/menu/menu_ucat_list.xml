@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <item
+        android:id="@+id/info_item"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_ucat_layout"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="Вид списка тем"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/archive_item"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_info"
+        android:title="Открыть архив"
+        app:showAsAction="never" />
+
+</menu>

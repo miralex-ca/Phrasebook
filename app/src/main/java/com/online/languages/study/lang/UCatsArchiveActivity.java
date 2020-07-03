@@ -1,70 +1,47 @@
 package com.online.languages.study.lang;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.online.languages.study.lang.adapters.BookmarksAdapter;
-import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.DividerItemDecoration;
-import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
+import com.online.languages.study.lang.adapters.ArchiveAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UCatsListAdapter;
 import com.online.languages.study.lang.data.BookmarkItem;
-import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.data.ImageMapsData;
-import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.data.ViewCategory;
-import com.online.languages.study.lang.data.ViewSection;
-import com.online.languages.study.lang.fragments.HomeFragment2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
-import static com.online.languages.study.lang.Constants.ACTION_BOOKMARK;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
-import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 
-public class UCatsListActivity extends BaseActivity {
+public class UCatsArchiveActivity extends BaseActivity {
 
 
     ThemeAdapter themeAdapter;
@@ -88,12 +65,9 @@ public class UCatsListActivity extends BaseActivity {
     OpenActivity openActivity;
 
 
-    UCatsListAdapter adapter;
+    ArchiveAdapter adapter;
     ArrayList<DataObject> catsList;
 
-    FloatingActionButton fab;
-
-    String listLayout;
 
 
     @Override
@@ -108,7 +82,7 @@ public class UCatsListActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_ucat_list);
+        setContentView(R.layout.activity_ucat_archive);
 
         navStructure = new NavStructure(this);
 
@@ -121,8 +95,7 @@ public class UCatsListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-        setTitle("Мой словарь");
+        setTitle("Архив");
 
 
         itemListWrap = findViewById(R.id.itemListWrap);
@@ -131,93 +104,25 @@ public class UCatsListActivity extends BaseActivity {
         dataManager = new DataManager(this, 1);
         dbHelper = dataManager.dbHelper;
 
-
-
         recyclerView = findViewById(R.id.recycler_view);
-
-
 
 
         updateList();
 
-        fab = findViewById(R.id.fab_add);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fab.show();
-            }
-        }, 350);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openNewCat();
-            }
-        });
 
     }
 
 
     public void updateList() {
 
-        catsList  = dataManager.getUcatsList();
-        adapter = new UCatsListAdapter(this, catsList, this);
+        catsList  = dataManager.getUcatsForArchive();
+        adapter = new ArchiveAdapter(this, catsList, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
 
     }
-
-
-    private void listLayoutDialog() {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        listLayout = appSettings.getString("set_ucat_list", getString(R.string.set_ucat_layout_default));
-
-        int checkedItem = 0;
-
-        if (listLayout.equals("compact"))  checkedItem = 1;
-
-        builder.setTitle(getString(R.string.set_ucat_layout_dialog_title))
-
-                .setSingleChoiceItems(R.array.set_ucat_layout_list, checkedItem, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        saveListLayout(which);
-                        dialog.dismiss();
-                    }
-                })
-
-                .setCancelable(true)
-
-                .setNegativeButton(R.string.dialog_close_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-
-        AlertDialog alert = builder.create();
-        alert.show();
-
-    }
-
-    private void saveListLayout(int num) {
-
-        String orderValue = getResources().getStringArray(R.array.set_ucat_layout_values)[0];
-        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_ucat_layout_values)[1];
-
-        SharedPreferences.Editor editor = appSettings.edit();
-        editor.putString("set_ucat_list", orderValue);
-        editor.apply();
-
-        updateList();
-
-    }
-
 
 
     public void openMyCat(DataObject dataObject) {
@@ -246,49 +151,19 @@ public class UCatsListActivity extends BaseActivity {
     }
 
 
-    public void performAction(final DataObject dataObject, String type) {
+    public void unarchive(DataObject dataObject) {
 
-        if (type.equals(ACTION_UPDATE)) openCatEdit(dataObject);
+        dataManager.dbHelper.unarchiveUCat(dataObject);
 
-        if (type.equals(ACTION_CHANGE_ORDER)) {
-            dataManager.dbHelper.updateUCatSortTime(dataObject);
-            checkListAnimation();
-        }
-
-        if (type.equals(ACTION_ARCHIVE)) archiveCat(dataObject);
-
-    }
-
-    public void archiveCat(DataObject dataObject) {
-        dataManager.dbHelper.archiveUCat(dataObject);
         checkListAnimation();
-    }
-
-
-    public boolean bookmarkCat(DataObject dataObject) {
-
-            dataManager.setBookmark(dataObject.id, PARAM_UCAT_PARENT, navStructure);
-
-            return dataManager.dbHelper.checkBookmark(dataObject.id, PARAM_UCAT_PARENT);
-    }
-
-
-    public void changeOrder(final DataObject dataObject ) {
-
-        dataManager.dbHelper.updateUCatSortTime(dataObject);
-        catsList  = dataManager.getUcatsList();
-
-        adapter = new UCatsListAdapter(this, catsList, this);
-        recyclerView.setAdapter(adapter);
 
     }
+
 
 
     private void checkListAnimation() {
 
-
-        ArrayList<DataObject> newCatlist = dataManager.getUcatsList();
-
+        ArrayList<DataObject> newCatlist = dataManager.getUcatsForArchive();
 
         for (DataObject catData: catsList) catData.status = STATUS_DELETED;
         for (DataObject newCat: newCatlist)  newCat.status = STATUS_NEW;
@@ -360,12 +235,6 @@ public class UCatsListActivity extends BaseActivity {
     }
 
 
-    public void openNewCat( ) {
-        Intent i = new Intent(this, MyCatEditActivity.class);
-        i.putExtra(EXTRA_CAT_ID, "new");
-        startActivityForResult(i, 10);
-    }
-
 
     public void openCatEdit(DataObject dataObject) {
 
@@ -374,13 +243,6 @@ public class UCatsListActivity extends BaseActivity {
         startActivityForResult(i, 10);
     }
 
-
-    public void openArchive() {
-
-        Intent i = new Intent(this, UCatsArchiveActivity.class);
-        startActivityForResult(i, 10);
-        openActivity.pageTransition();
-    }
 
 
 
@@ -400,17 +262,10 @@ public class UCatsListActivity extends BaseActivity {
                 openActivity.pageBackTransition();
                 return true;
 
-            case R.id.archive_item:
-                openArchive();
-                return true;
-
-            case R.id.menu_ucat_layout:
-                listLayoutDialog();
-                return true;
-
             case R.id.info_item:
 
                 return true;
+
 
         }
         return super.onOptionsItemSelected(item);
@@ -419,10 +274,11 @@ public class UCatsListActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_ucat_list, menu);
+        getMenuInflater().inflate(R.menu.menu_simple_info, menu);
 
         return true;
     }
+
 
 
 
@@ -431,11 +287,14 @@ public class UCatsListActivity extends BaseActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (requestCode == 10) {
             updateList();
         }
 
+
     }
+
 
 
 

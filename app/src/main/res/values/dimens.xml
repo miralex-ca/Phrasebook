@@ -132,6 +132,8 @@
     <dimen name="dialog_card_height">@dimen/_dialog_card_height</dimen>
     <dimen name="dialog_card_img_height">@dimen/_dialog_card_img_height</dimen>
 
+    <dimen name="dialog_result_height">@dimen/_dialog_result_height</dimen>
+
     <integer name="search_dialog_height">@integer/_search_dialog_height</integer>
     <integer name="search_dialog_img_height">@integer/_search_dialog_img_height</integer>
 

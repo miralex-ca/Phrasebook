@@ -128,7 +128,9 @@ public class Constants {
     public static final String PARAM_EMPTY = "";
     public static final String PARAM_POPULATE = "populate";
 
-    public static final String PARAM_UCAT_PARENT = "ucats";
+    public static final String PARAM_UCAT_PARENT = "ucats"; // used for bookmarks to indicate user items
+
+
 
     public static final String PARAM_LIMIT_REACHED = "limit_reached";
     public static final String PARAM_LIMIT_UNREACHED = "limit_unreached";
@@ -143,8 +145,8 @@ public class Constants {
     public static final String ACTION_DELETE = "delete";
     public static final String ACTION_VIEW = "view";
     public static final String ACTION_BOOKMARK = "bookmark";
-
     public static final String ACTION_CHANGE_ORDER = "change_order";
+    public static final String ACTION_ARCHIVE = "archive";
 
 
     public static final String STATUS_NEW = "new";
@@ -184,6 +186,9 @@ public class Constants {
 
     public static final String UC_PREFIX = "uc_";
     public static final String UD_PREFIX = "ud_";
+
+    public static final String PARAM_UCAT_ROOT = "ucats_root";
+    public static final String PARAM_UCAT_ARCHIVE = "uc_archive";
 
     public static final String DEFAULT_TEST_RELACE_CAT = "10010010";
 

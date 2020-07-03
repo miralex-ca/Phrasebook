@@ -19,7 +19,10 @@ import static com.online.languages.study.lang.DBHelper.TABLE_BOOKMARKS_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_CAT_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_NOTES_DATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_TESTS_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_UCAT_UDATA;
 import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA;
+import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA_CATS;
+import static com.online.languages.study.lang.DBHelper.TABLE_USER_DATA_ITEMS;
 
 public class DBImport {
 
@@ -116,6 +119,12 @@ public class DBImport {
         updateUserItemsDataTable(importedDB);
         updateBookmarksDataTable(importedDB);
         updateNotesDataTable(importedDB);
+
+        updateUserDataItems(importedDB);
+        updateUserDataCats(importedDB);
+
+        updateUcatUata(importedDB);
+
 
     }
 
@@ -277,6 +286,110 @@ public class DBImport {
 
     }
 
+    private void updateUserDataItems(ImportedDB importedDB) {
+
+        ImportedTable helpTable = new ImportedTable();
+
+        UserDataItemsTable userDataItemsTable = new UserDataItemsTable();
+
+        for (ImportedTable table: importedDB.tables) {
+            if (table.tableName.equals(TABLE_USER_DATA_ITEMS)) helpTable = table;
+        }
+
+        for (List<String> line: helpTable.lines) {
+            UserDataItem userDataItem = new UserDataItem();
+            userDataItem.udataPrimaryId = line.get(0);
+            userDataItem.udataId = line.get(1);
+            userDataItem.udataText = line.get(2);
+            userDataItem.udataTranslate = line.get(3);
+            userDataItem.udataTranscript = line.get(4);
+            userDataItem.udataGrammar = line.get(5);
+            userDataItem.udataSound = line.get(6);
+            userDataItem.udataInfo = line.get(7);
+            userDataItem.udataImage = line.get(8);
+            userDataItem.udataStatus = line.get(9);
+            userDataItem.udataFilter= line.get(10);
+            userDataItem.udataCreated= line.get(11);
+            userDataItem.udataUpdated= line.get(12);
+
+            userDataItemsTable.lines.add(userDataItem);
+        }
+
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        dbHelper.importUserDataItems(db, userDataItemsTable.lines);
+
+        db.close();
+
+    }
+
+
+    private void updateUserDataCats(ImportedDB importedDB) {
+
+        ImportedTable helpTable = new ImportedTable();
+
+        UserDataCatsTable userDataCatsTable = new  UserDataCatsTable();
+
+        for (ImportedTable table: importedDB.tables) {
+            if (table.tableName.equals(TABLE_USER_DATA_CATS)) helpTable = table;
+        }
+
+        for (List<String> line: helpTable.lines) {
+            UserDataCat userDataCat = new UserDataCat();
+            userDataCat.ucatPrimaryId = line.get(0);
+            userDataCat.ucatId = line.get(1);
+            userDataCat.ucatTitle = line.get(2);
+            userDataCat.ucatDesc = line.get(3);
+            userDataCat.ucatIcon = line.get(4);
+            userDataCat.ucatInfo = line.get(5);
+            userDataCat.ucatStatus = line.get(6);
+            userDataCat.ucatFilter = line.get(7);
+            userDataCat.ucatParams = line.get(8);
+            userDataCat.ucatParent= line.get(9);
+            userDataCat.ucatCreated = line.get(10);
+            userDataCat.ucatUpdated = line.get(11);
+            userDataCat.ucatUpdatedSort  = line.get(12);
+
+            userDataCatsTable.lines.add(userDataCat);
+        }
+
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        dbHelper.importUserDataCats(db, userDataCatsTable.lines);
+
+        db.close();
+
+    }
+
+
+    private void updateUcatUata(ImportedDB importedDB) {
+
+        ImportedTable helpTable = new ImportedTable();
+
+        UCatUDataTable uCatUDataTable = new  UCatUDataTable();
+
+        for (ImportedTable table: importedDB.tables) {
+            if (table.tableName.equals(TABLE_UCAT_UDATA)) helpTable = table;
+        }
+
+        for (List<String> line: helpTable.lines) {
+            UCatUData uCatUData= new UCatUData();
+            uCatUData.udcUcatId = line.get(0);
+            uCatUData.udcUdataId = line.get(1);
+
+            uCatUDataTable.lines.add(uCatUData);
+        }
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        dbHelper.importUcatUdata(db, uCatUDataTable.lines);
+
+        db.close();
+
+    }
+
 
 
     public class CatDataTable {
@@ -325,7 +438,6 @@ public class DBImport {
         public String noteInfo;
         public String noteCreated;
         public String noteUpdated;
-
     }
 
 
@@ -344,6 +456,58 @@ public class DBImport {
         public String itemTime;
         public String itemTimeStarred;
         public String itemTimeError;
+    }
+
+
+    public class UserDataItemsTable {
+        ArrayList<UserDataItem> lines = new ArrayList<>();
+    }
+
+    public class UserDataItem {
+        public String udataPrimaryId;
+        public String udataId;
+        public String udataText;
+        public String udataTranslate;
+        public String udataTranscript;
+        public String udataGrammar;
+        public String udataSound;
+        public String udataInfo;
+        public String udataImage;
+        public String udataStatus;
+        public String udataFilter;
+        public String udataCreated;
+        public String udataUpdated;
+
+    }
+
+
+    public class UserDataCatsTable {
+        ArrayList<UserDataCat> lines = new ArrayList<>();
+    }
+
+    public class UserDataCat {
+        public String ucatPrimaryId;
+        public String ucatId;
+        public String ucatTitle;
+        public String ucatDesc;
+        public String ucatIcon;
+        public String ucatInfo;
+        public String ucatStatus;
+        public String ucatFilter;
+        public String ucatParams;
+        public String ucatParent;
+        public String ucatCreated;
+        public String ucatUpdated;
+        public String ucatUpdatedSort;
+    }
+
+    public class UCatUDataTable {
+        ArrayList<UCatUData> lines = new ArrayList<>();
+    }
+
+    public class UCatUData {
+        public String udcUcatId;
+        public String udcUdataId;
     }
 
 

@@ -191,6 +191,11 @@
             android:theme="@style/AppTheme"
             />
 
+        <activity android:name="com.online.languages.study.lang.UCatsArchiveActivity"
+            android:theme="@style/AppTheme"
+            />
+
+
 
     </application>
 

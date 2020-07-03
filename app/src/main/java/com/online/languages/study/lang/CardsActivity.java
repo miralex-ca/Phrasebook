@@ -513,8 +513,6 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         editor.apply();
 
         autoPlay = orderValue;
-
-
     }
 
 

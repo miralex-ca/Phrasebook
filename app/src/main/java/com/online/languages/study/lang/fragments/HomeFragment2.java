@@ -4,6 +4,7 @@ package com.online.languages.study.lang.fragments;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -19,15 +20,21 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 
+import android.support.v4.view.ViewCompat;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +49,8 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
+import com.online.languages.study.lang.adapters.IconPickerAdapter;
+import com.online.languages.study.lang.adapters.ImgPickerAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.data.DataManager;
@@ -61,6 +70,7 @@ import static android.app.Activity.RESULT_OK;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
@@ -80,9 +90,12 @@ public class HomeFragment2 extends Fragment   {
     RecyclerView recyclerView;
     ArrayList<DataObject> catsList;
 
-    TextView counts;
+    TextView counts, itemsCount;
 
     OpenActivity openActivity;
+
+    String[] icons;
+    AlertDialog alert;
 
     Uri uri;
 
@@ -95,11 +108,10 @@ public class HomeFragment2 extends Fragment   {
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
-        ImageView placePicutre = rootView.findViewById(R.id.catImage);
-
         View newCat = rootView.findViewById(R.id.newCatBtn);
 
         counts = rootView.findViewById(R.id.userCounts);
+        itemsCount = rootView.findViewById(R.id.itemsCounts);
 
         dataManager = new DataManager(getActivity());
         openActivity = new OpenActivity(getActivity());
@@ -124,32 +136,22 @@ public class HomeFragment2 extends Fragment   {
             }
         });
 
+        icons = getResources().getStringArray(R.array.icon_pics_list);
+        showSavedIcon();
 
-        placePicutre.setOnClickListener(new View.OnClickListener() {
+
+        View selectPic = rootView.findViewById(R.id.selectImg);
+
+
+        selectPic.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
+                buildDialog();
             }
         });
 
-
-
-        String str = appSettings.getString(SAVED_IMG_LINK, "");
-
-
-        Picasso.with( getActivity() )
-                .load("file:" + str )
-                .placeholder(R.drawable.account)
-                .transform(new RoundedTransformation(0,0))
-                .fit()
-                .centerCrop()
-                .into(placePicutre);
 
         recyclerView = rootView.findViewById(R.id.recycler_view);
 
@@ -203,9 +205,10 @@ public class HomeFragment2 extends Fragment   {
             count = count + cat.count;
         }
 
-        String str = "Добавлено тем:  "+ catsList.size() +"\nДобавлено записей: "+count;
+        String str = "Добавлено тем:  "+ catsList.size();
 
         counts.setText(str);
+        itemsCount.setText("Добавлено записей:  "+count);
 
     }
 
@@ -296,8 +299,6 @@ public class HomeFragment2 extends Fragment   {
 
             String str = appSettings.getString(SAVED_IMG_LINK, "");
 
-
-
             Picasso.with( getActivity() )
                     .load( "file:"+str )
                     .transform(new RoundedTransformation(0,0))
@@ -308,7 +309,6 @@ public class HomeFragment2 extends Fragment   {
                     .into(placePicutre);
 
         }
-
 
     }
 
@@ -349,11 +349,11 @@ public class HomeFragment2 extends Fragment   {
         ContextWrapper cw = new ContextWrapper(getActivity());
         File path = cw.getDir("images", Context.MODE_PRIVATE);
 
-        saveImageLink( path + "/" +imgName+".jpeg");
+        saveImageLink( path + "/" +imgName+".jpg");
 
         //Toast.makeText(getActivity(), "P: "+ path + "/" +imgName+".jpeg" , Toast.LENGTH_LONG).show();
 
-        File imageFile = new File(path, imgName+".jpeg"); // Imagename.png
+        File imageFile = new File(path, imgName+".jpg"); // Imagename.png
         FileOutputStream out = new FileOutputStream(imageFile);
         try{
             bm.compress(Bitmap.CompressFormat.JPEG, 60, out); // Compress Image
@@ -372,11 +372,6 @@ public class HomeFragment2 extends Fragment   {
             throw new IOException();
         }
     }
-
-
-
-
-
 
 
     public interface ClickListener{
@@ -422,6 +417,100 @@ public class HomeFragment2 extends Fragment   {
         @Override
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         }
+    }
+
+
+
+    public void buildDialog() {
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View content = inflater.inflate(R.layout.picker_dialog, null);
+
+        RecyclerView iconRecycler = content.findViewById(R.id.recycler_view);
+
+        int picIndex = -1;
+
+        IconPickerAdapter imgPickerAdapter = new IconPickerAdapter(getActivity(), icons, picIndex, HomeFragment2.this);
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
+
+        iconRecycler.setLayoutManager(mLayoutManager);
+
+        iconRecycler.setAdapter(imgPickerAdapter);
+
+        ViewCompat.setNestedScrollingEnabled(iconRecycler, false);
+
+        dialog.setView(content);
+
+        dialog.setNegativeButton(R.string.cancel_txt,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+
+
+        alert = dialog.create();
+
+        alert.show();
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(alert.getWindow().getAttributes());
+        int dialogWidth = lp.width;
+        alert.getWindow().setLayout(dialogWidth, dpToPixels(getActivity(), 340));
+
+    }
+
+    private static int dpToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
+    }
+
+
+    public void iconSelect(int position) {
+
+        String icon = icons[position];
+
+        alert.dismiss();
+
+        if (position == (icons.length -1)) {
+
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+
+        } else {
+            saveImageLink( icon );
+            showSavedIcon();
+        }
+
+
+
+    }
+
+
+    private void showSavedIcon() {
+
+        ImageView placePicutre = rootView.findViewById(R.id.catImage);
+
+        String str = appSettings.getString(SAVED_IMG_LINK, "///android_asset/pics/cat/account.png" );
+
+
+        Picasso.with( getActivity() )
+                .load("file:" + str )
+                //.placeholder(R.drawable.account)
+                .transform(new RoundedTransformation(0,0))
+                .fit()
+                .centerCrop()
+                .into(placePicutre);
+
     }
 
 

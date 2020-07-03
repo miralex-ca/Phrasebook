@@ -240,4 +240,28 @@
         <item>@string/set_sort_asc</item>
     </string-array>
 
+
+    <string-array name="set_ucat_layout_list">
+        <item>@string/set_ucat_layout_1</item>
+        <item>@string/set_ucat_layout_2</item>
+    </string-array>
+
+    <string-array name="set_ucat_layout_values">
+        <item>@string/set_ucat_layout_default</item>
+        <item>compact</item>
+    </string-array>
+
+    <string name="set_ucat_layout_default" translatable="false">normal</string>
+
+
+    <string-array name="icon_pics_list">
+        <item>///android_asset/pics/icons/account.png</item>
+        <item>///android_asset/pics/icons/nature.png</item>
+        <item>///android_asset/pics/icons/health.png</item>
+        <item>///android_asset/pics/icons/school.png</item>
+        <item>///android_asset/pics/icons/basketball.png</item>
+        <item>///android_asset/pics/icons/empty.png</item>
+    </string-array>
+
+
 </resources>

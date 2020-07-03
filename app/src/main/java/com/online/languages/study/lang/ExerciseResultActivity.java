@@ -99,6 +99,9 @@ public class ExerciseResultActivity extends BaseActivity {
 
         double res = ((double) correct ) / originList.size() * 100;
 
+        if (res < 0) res = 0;
+        if (res > 100) res = 100;
+
         testProgress.setText((int)res +"%");
         ColorProgress colorProgress = new ColorProgress(this);
         testProgress.setTextColor(  colorProgress.getColorFromAttr( (int)res)  );

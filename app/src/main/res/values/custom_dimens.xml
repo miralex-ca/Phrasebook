@@ -31,6 +31,8 @@
     <dimen name="_dialog_card_height">440dp</dimen>
     <dimen name="_dialog_card_img_height">200dp</dimen>
 
+    <dimen name="_dialog_result_height">460dp</dimen>
+
     <integer name="_search_dialog_height">400</integer>
     <integer name="_search_dialog_img_height">240</integer>
 

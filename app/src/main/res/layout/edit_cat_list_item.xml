@@ -4,9 +4,9 @@
     android:layout_height="wrap_content"
     android:id="@+id/cat_item_wrap"
 
-    android:paddingTop="8dp"
-    android:paddingBottom="10dp"
-    android:paddingLeft="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="12dp"
+    android:paddingLeft="20dp"
     android:paddingRight="16dp"
     android:focusable="true"
     android:clickable="true"
@@ -29,7 +29,7 @@
 
         <LinearLayout
             android:visibility="visible"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -43,10 +43,9 @@
                 />
 
             <TextView
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="16dp"
                 android:textSize="12sp"
                 android:id="@+id/itemsCount"
-                android:text="Записей:  20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/colorSecondaryText"

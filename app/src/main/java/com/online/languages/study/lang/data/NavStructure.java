@@ -4,10 +4,13 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.online.languages.study.lang.R;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class NavStructure implements Parcelable {
 
@@ -16,10 +19,13 @@ public class NavStructure implements Parcelable {
 
     public ArrayList<NavCategory> categories;
 
+    private Context context;
+
 
     public NavStructure(Context context) {
        sections = new ArrayList<>();
        categories = new ArrayList<>();
+       this.context = context;
 
     }
 
@@ -99,6 +105,24 @@ public class NavStructure implements Parcelable {
 
         return  navCategory;
     }
+
+
+    public void addUserContent () { // used only for test results
+
+        String title = context.getString(R.string.user_content_title);
+        NavSection userSection = new NavSection();
+        userSection.id = UD_PREFIX;
+        userSection.title = title;
+        
+        NavCategory userCategory = new NavCategory();
+        userCategory.id = UD_PREFIX;
+        userCategory.title = title;
+
+        userSection.navCategories.add(userCategory);
+
+        sections.add(userSection);
+    }
+
 
     @Override
     public int describeContents(){

@@ -44,8 +44,11 @@ import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
@@ -156,6 +159,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UCAT_STATUS = "ucat_status";
     private static final String KEY_UCAT_FILTER = "ucat_filter";
     private static final String KEY_UCAT_PARAMS = "ucat_params";
+    private static final String KEY_UCAT_PARENT = "ucat_parent";
     private static final String KEY_UCAT_CREATED = "ucat_created";
     private static final String KEY_UCAT_UPDATED = "ucat_updated";
     private static final String KEY_UCAT_UPDATED_SORT = "ucat_updated_sort";
@@ -260,6 +264,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UCAT_STATUS + " TEXT,"
             + KEY_UCAT_FILTER + " TEXT,"
             + KEY_UCAT_PARAMS + " TEXT,"
+            + KEY_UCAT_PARENT + " TEXT,"
             + KEY_UCAT_CREATED + " INTEGER,"
             + KEY_UCAT_UPDATED + " INTEGER,"
             + KEY_UCAT_UPDATED_SORT + " INTEGER"
@@ -608,15 +613,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-
         long time = System.currentTimeMillis();
-
 
         ContentValues values = new ContentValues();
 
         values.put(KEY_UCAT_TITLE, catTitle);
         values.put(KEY_UCAT_DESC, "");
         values.put(KEY_UCAT_PARAMS, "");
+        values.put(KEY_UCAT_PARENT, "");
         values.put(KEY_UCAT_CREATED, time );
         values.put(KEY_UCAT_UPDATED, time );
         values.put(KEY_UCAT_UPDATED_SORT, time );
@@ -796,6 +800,45 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return dataObject;
     }
+
+
+    public DataObject archiveUCat(DataObject dataObject) {
+       return parentUCat(dataObject, PARAM_UCAT_ARCHIVE);
+    }
+
+    public DataObject unarchiveUCat(DataObject dataObject) {
+        return parentUCat(dataObject, PARAM_UCAT_ROOT);
+    }
+
+    public DataObject parentUCat(DataObject dataObject, String parent) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        dataObject.parent = parent;
+        dataObject.time_updated = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_UCAT_PARENT, dataObject.parent);
+        values.put(KEY_UCAT_UPDATED_SORT, dataObject.time_updated );
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_ID +" = ?",
+                    new String[] { dataObject.id });
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return dataObject;
+    }
+
 
 
     public DataObject getUCatParams(DataObject dataObject) {
@@ -1135,6 +1178,39 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
                 category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+                category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+
+                if (!category.parent.contains(UC_PREFIX)) categories.add(category);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return categories;
+    }
+
+
+    public ArrayList<DataObject> getUCatsListForSet(String set_id) {
+
+
+        ArrayList<DataObject> categories = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, KEY_UCAT_PARENT +" = ?", new String[]{set_id}, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
+
+        try {
+            while (cursor.moveToNext()) {
+
+                DataObject category = new DataObject();
+                category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+                category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+                category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+                category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+
                 categories.add(category);
             }
 
@@ -2010,20 +2086,44 @@ public class DBHelper extends SQLiteOpenHelper {
 
         for (DataItem item: dataItems) {
 
-            Cursor cursor = db.query(TABLE_ITEMS_DATA,  null, KEY_ITEM_ID +" = ?",
-                    new String[] { item.id}, null, null, null);
 
-            try {
-                while (cursor.moveToNext()) {
+            if (item.id.contains(UD_PREFIX)) {
 
-                    DataItem data = getSimpleItemFromCursor(cursor);
-                    data.testError = item.testError;
-                    items.add(data);
+                Cursor cursor = db.query(TABLE_USER_DATA_ITEMS,  null, KEY_UDATA_ID +" = ?",
+                        new String[] { item.id}, null, null, null);
+
+                try {
+                    while (cursor.moveToNext()) {
+
+                        DataItem data = getDataItemFromUDATA(cursor);
+                        data.testError = item.testError;
+                        items.add(data);
+                    }
+
+                } finally {
+                    cursor.close();
                 }
 
-            } finally {
-                cursor.close();
+            } else {
+
+                Cursor cursor = db.query(TABLE_ITEMS_DATA,  null, KEY_ITEM_ID +" = ?",
+                        new String[] { item.id}, null, null, null);
+
+                try {
+                    while (cursor.moveToNext()) {
+
+                        DataItem data = getSimpleItemFromCursor(cursor);
+                        data.testError = item.testError;
+                        items.add(data);
+                    }
+
+                } finally {
+                    cursor.close();
+                }
+
             }
+
+
         }
 
         return items;
@@ -3539,6 +3639,8 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+
+
     private void insertImportedBookmarkData(SQLiteDatabase db, DBImport.BookmarkData bookmarkData) {
 
         ContentValues values = new ContentValues();
@@ -3567,6 +3669,125 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_NOTE_UPDATED, noteData.noteUpdated);
 
         db.insert(TABLE_NOTES_DATA, null, values);
+    }
+
+    public void importUserDataItems(SQLiteDatabase db, List<DBImport.UserDataItem> list) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_DATA_ITEMS);
+        db.execSQL(CREATE_UDATA_TABLE);
+
+        db.beginTransaction();
+
+        try {
+
+            for (DBImport.UserDataItem item: list) {
+                insertImportedUserDataItems(db, item);
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+    }
+
+    private void insertImportedUserDataItems(SQLiteDatabase db, DBImport.UserDataItem uDataItem) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UDATA_PRIMARY_ID, uDataItem.udataPrimaryId);
+        values.put(KEY_UDATA_ID, uDataItem.udataId);
+        values.put(KEY_UDATA_TEXT, uDataItem.udataText);
+        values.put(KEY_UDATA_TRANSLATE, uDataItem.udataTranslate);
+        values.put(KEY_UDATA_TRANSCRIPT, uDataItem.udataTranscript);
+        values.put(KEY_UDATA_GRAMMAR, uDataItem.udataGrammar);
+        values.put(KEY_UDATA_SOUND, uDataItem.udataSound);
+        values.put(KEY_UDATA_INFO, uDataItem.udataInfo);
+        values.put(KEY_UDATA_IMAGE, uDataItem.udataImage);
+        values.put(KEY_UDATA_STATUS, uDataItem.udataStatus);
+        values.put(KEY_UDATA_FILTER, uDataItem.udataFilter);
+        values.put(KEY_UDATA_CREATED, uDataItem.udataCreated);
+        values.put(KEY_UDATA_UPDATED, uDataItem.udataUpdated);
+
+        db.insert(TABLE_USER_DATA_ITEMS , null, values);
+    }
+
+
+    public void importUserDataCats(SQLiteDatabase db, List<DBImport.UserDataCat> list) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_DATA_CATS);
+        db.execSQL(CREATE_UCATS_TABLE);
+
+        db.beginTransaction();
+
+        try {
+
+            for (DBImport.UserDataCat item: list) {
+                insertImportedUserDataCat(db, item);
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+    }
+
+    private void insertImportedUserDataCat(SQLiteDatabase db, DBImport.UserDataCat userDataCat) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_PRIMARY_ID, userDataCat.ucatPrimaryId);
+        values.put(KEY_UCAT_ID, userDataCat.ucatId);
+
+        values.put(KEY_UCAT_TITLE, userDataCat.ucatTitle);
+        values.put(KEY_UCAT_DESC, userDataCat.ucatDesc);
+        values.put(KEY_UCAT_ICON, userDataCat.ucatIcon);
+        values.put(KEY_UCAT_INFO, userDataCat.ucatInfo);
+        values.put(KEY_UCAT_STATUS, userDataCat.ucatStatus);
+        values.put(KEY_UCAT_FILTER, userDataCat.ucatFilter);
+        values.put(KEY_UCAT_PARAMS, userDataCat.ucatParams);
+        values.put(KEY_UCAT_PARENT, userDataCat.ucatParent);
+        values.put(KEY_UCAT_CREATED, userDataCat.ucatCreated);
+        values.put(KEY_UCAT_UPDATED, userDataCat.ucatUpdated);
+        values.put(KEY_UCAT_UPDATED_SORT, userDataCat.ucatUpdatedSort);
+
+        db.insert(TABLE_USER_DATA_CATS , null, values);
+    }
+
+
+    public void importUcatUdata (SQLiteDatabase db, List<DBImport.UCatUData> list) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_UCAT_UDATA);
+        db.execSQL(CREATE_UDC_TABLE);
+
+        db.beginTransaction();
+
+        try {
+
+            for (DBImport.UCatUData item: list) {
+                insertImportedUcatUdata(db, item);
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+    }
+
+    private void insertImportedUcatUdata(SQLiteDatabase db, DBImport.UCatUData uCatUData) {
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UDC_UCAT_ID, uCatUData.udcUcatId);
+        values.put(KEY_UDC_UDATA_ID, uCatUData.udcUdataId);
+
+
+        db.insert(TABLE_UCAT_UDATA, null, values);
     }
 
 

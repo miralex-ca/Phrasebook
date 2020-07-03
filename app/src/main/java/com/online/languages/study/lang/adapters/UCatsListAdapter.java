@@ -2,8 +2,10 @@ package com.online.languages.study.lang.adapters;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.data.DataObject;
@@ -21,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
@@ -33,6 +37,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     private ArrayList<DataObject> dataList;
     private UCatsListActivity activity;
     private PopupWindow popupwindow_obj;
+    private String layout;
 
     private boolean clickActive;
 
@@ -69,10 +74,12 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         this.context  = context;
         this.dataList = dataList;
         this.activity = activity;
-
         clickActive = true;
-    }
 
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        layout = appSettings.getString("set_ucat_list", "normal");
+
+    }
 
 
     @Override
@@ -80,7 +87,11 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         View itemView;
 
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item, parent, false);
+        if (layout.equals("compact")) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_compact, parent, false);
+        } else {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item, parent, false);
+        }
 
         return new MyViewHolder(itemView);
     }
@@ -195,8 +206,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
 
         View moveToTop = view.findViewById(R.id.moveToTop);
-        View editItem = view.findViewById(R.id.edit);
-        View deleteItem  = view.findViewById(R.id.delete);
+        View archive = view.findViewById(R.id.archive);
 
 
         moveToTop.setOnClickListener(new View.OnClickListener() {
@@ -206,19 +216,13 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             }
         });
 
-        editItem.setOnClickListener(new View.OnClickListener() {
+        archive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_VIEW);
+                clickActionPopup(dataObject, ACTION_ARCHIVE);
             }
         });
 
-        deleteItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_VIEW);
-            }
-        });
 
 
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

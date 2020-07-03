@@ -595,4 +595,11 @@
     <string name="sort_udata_dialog_title">Сортировка записей</string>
 
 
+    <string name="set_ucat_layout_dialog_title">Вид списка тем</string>
+    <string name="set_ucat_layout_1">Обычный</string>
+    <string name="set_ucat_layout_2">Компактный</string>
+
+    <string name="user_content_title">Мой словарь</string>
+
+
 </resources>

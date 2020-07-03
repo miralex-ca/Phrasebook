@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<android.support.v4.widget.NestedScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <RelativeLayout
+        android:layout_marginTop="15dp"
+        android:paddingTop="35dp"
+        android:paddingBottom="70dp"
+        android:paddingRight="10dp"
+        android:minHeight="300dp"
+        android:paddingLeft="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+
+                android:id="@+id/recycler_view"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+
+                 />
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:elevation="1dp"
+        android:padding="7dp"
+        android:background="?attr/colorDialogBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-light"
+            android:text="Выбрать иконку"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+
+

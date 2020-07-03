@@ -25,6 +25,7 @@ import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.SET_GALLERY;
 import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
@@ -532,6 +533,16 @@ public class DataManager {
 
         list = dbHelper.getUCatsListItemsCount(list);
 
+        return list;
+
+    }
+
+
+    public ArrayList<DataObject> getUcatsForArchive() {
+
+        ArrayList<DataObject> list = dbHelper.getUCatsListForSet(PARAM_UCAT_ARCHIVE);
+
+        list = dbHelper.getUCatsListItemsCount(list);
 
         return list;
 
