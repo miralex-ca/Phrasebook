@@ -183,6 +183,8 @@
     <integer name="f_item_txt_size_medium">23</integer>
     <integer name="f_item_txt_size_small">22</integer>
 
+    <integer name="f_item_txt_size_smallest">21</integer>
+
 
     <integer name="_f_info_txt_size_norm">18</integer>
     <integer name="_f_info_txt_size_mid">16</integer>

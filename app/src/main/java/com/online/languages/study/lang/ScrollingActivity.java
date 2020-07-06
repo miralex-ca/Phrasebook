@@ -122,8 +122,11 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         if (sourceType==1) {
             int dialogHeight = getResources().getInteger(R.integer.search_dialog_height);
             int imgHeight = getResources().getInteger(R.integer.search_dialog_img_height);
-            changeDialogSize(coordinator, appbar, dialogHeight, imgHeight);
+            changeDialogSize(coordinator, dialogHeight );
         }
+
+
+        //changeDialogSize(coordinator, 450 );
 
 
         floatingActionButton = findViewById(R.id.fab);
@@ -154,23 +157,65 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         itemPostion = getIntent().getIntExtra("position", 0);
 
+        String  transcript = dataManager.getTranscriptFromData(dataItem);
+
+        boolean transcription = transcript.trim().equals("");
 
         TextView txt = findViewById(R.id.itemTxt);
 
         txt.setText(detailItem.title);
+        txt.setTextSize(getTextTxtSize( detailItem.title.length(), transcription ));
+
         infoT.setText(detailItem.desc);
 
-        infoT.setTextSize(getInfoTxtSize());
+        infoT.setTextSize(getInfoTxtSize(detailItem.desc.length()));
 
         TextView trans = findViewById(R.id.itemTxtTrans);
 
 
-        String  transcript = dataManager.getTranscriptFromData(dataItem);
 
-        if (transcript.equals("")) trans.setVisibility(View.GONE);
+        if (transcription) trans.setVisibility(View.GONE);
         else trans.setVisibility(View.VISIBLE);
 
         trans.setText(String.format("[ %s ]", transcript));
+
+        trans.setTextSize(getTranscriptTxtSize(transcript.length()));
+
+
+        TextView grammar = findViewById(R.id.grammar);
+
+        String gr = dataItem.grammar;
+
+        if (gr.trim().length() > 0 ) {
+            grammar.setVisibility(View.VISIBLE);
+        } else {
+            grammar.setVisibility(View.GONE);
+        }
+
+        grammar.setTextSize(getGrammarTxtSize(gr.length(), transcript.length()));
+        grammar.setText(gr);
+
+
+        TextView addInfo = findViewById(R.id.add_info);
+
+        String info = dataItem.item_info_1;
+
+        int bottomTextLen = detailItem.desc.length() + dataItem.item_info_1.length();
+
+        if ( info.trim().length() > 0) {
+            addInfo.setVisibility(View.VISIBLE);
+
+            if (bottomTextLen > 150 && bottomTextLen <= 190) {
+                changeDialogSize(coordinator, 390 );
+            } else if (bottomTextLen > 190) {
+                changeDialogSize(coordinator, 430 );
+            }
+
+        } else {
+            addInfo.setVisibility(View.GONE);
+        }
+
+        addInfo.setText(dataItem.item_info_1);
 
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +238,6 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         measureHeights();
 
-
         //enableScroll();
 
         View statusView = findViewById(R.id.status_wrap);
@@ -207,10 +251,93 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     }
 
+
+    private int getTextTxtSize(int textLength, boolean transcript) {
+
+        int size;
+
+        if (transcript) {
+            size = getTextSmallerTxtSize(textLength);
+        } else {
+            size = getTextTxtSize(textLength);
+        }
+
+        return size;
+    }
+
+    private int getTextTxtSize(int textLength) {
+
+        int size = 25;
+
+        if (textLength > 20) size = 24;
+        if (textLength > 40) size = 23;
+        if (textLength > 50) size = 22;
+        if (textLength > 60) size = 21;
+        if (textLength > 80) size = 20;
+
+        return size;
+    }
+
+    private int getTextSmallerTxtSize(int textLength) {
+
+        int size = 25;
+
+        if (textLength > 20) size = 24;
+        if (textLength > 40) size = 23;
+        if (textLength > 50) size = 21;
+        if (textLength > 60) size = 20;
+        if (textLength > 80) size = 19;
+        if (textLength > 90) size = 18;
+
+        return size;
+    }
+
+
+    private int getInfoTxtSize(int textLength) {
+
+        int size = 23;
+
+        if (textLength > 20) size = 22;
+        if (textLength > 40) size = 20;
+        if (textLength > 60) size = 18;
+        if (textLength > 80) size = 17;
+        if (textLength > 90) size = 16;
+
+        return size;
+    }
+
+    private int getTranscriptTxtSize(int textLength) {
+
+        int size = 16;
+
+        if (textLength > 40) size = 15;
+        if (textLength > 60) size = 14;
+
+        return size;
+    }
+
+
+    private int getGrammarTxtSize(int textLength, int transcript) {
+
+        int size = 22;
+
+        if (textLength > 8 || transcript > 60) size = 18;
+
+        return size;
+    }
+
+
+    private void changeDialogSize(View coordinator, int coordHeight) {
+        coordinator.getLayoutParams().height = convertDimen(coordHeight);
+        coordinator.setLayoutParams(coordinator.getLayoutParams());
+
+    }
+
+
     private void measureHeights() {
 
         final View appBar= findViewById(R.id.app_bar);
-        final View infoBox= findViewById(R.id.lbl_text);
+        final View infoBox= findViewById(R.id.infoBox);
 
         appBar.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -234,7 +361,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void checkScrollByAppBar(int height) {
         int minHeight = (int) (getResources().getDimension(R.dimen.detail_card_height) / getResources().getDisplayMetrics().density);
-        minHeight = minHeight * 75/100;
+        minHeight = minHeight * 60/100;
         if ( pxToDp(height)  > minHeight)  enableScroll();
     }
 
@@ -251,17 +378,9 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     }
 
-    private void changeDialogSize(View coordinator, View appbar, int coordHeight, int barHeight) {
-        coordinator.getLayoutParams().height = convertDimen(coordHeight);
-        coordinator.setLayoutParams(coordinator.getLayoutParams());
 
-    }
 
-    private int getInfoTxtSize() {
 
-        int size = getResources().getInteger(R.integer.detail_text_size_large);
-        return 23;
-    }
 
     public int convertDimen(int dimen) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dimen, getResources().getDisplayMetrics());
@@ -289,6 +408,8 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         } else {
             setResult(RESULT_CANCELED,returnIntent);
         }
+
+        speakWords("");
 
         super.finish();
         overridePendingTransition(0, R.anim.fade_out_2);

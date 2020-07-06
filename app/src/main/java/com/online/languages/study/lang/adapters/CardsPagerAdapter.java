@@ -234,7 +234,10 @@ public class CardsPagerAdapter extends PagerAdapter {
     private int itemMirrorTextSize(String text) {
         int textLength = text.length();
         int tSize = context.getResources().getInteger(R.integer.f_item_txt_size_medium);
+
         if ( textLength > 30) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_small);
+
+        if ( textLength > 75) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_smallest);
         return tSize;
     }
 

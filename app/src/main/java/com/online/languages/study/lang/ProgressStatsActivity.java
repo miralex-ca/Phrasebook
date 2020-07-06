@@ -25,6 +25,7 @@ import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ProgressDataAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.UserStats;
 
@@ -48,6 +49,7 @@ public class ProgressStatsActivity extends BaseActivity {
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
+    DataManager dataManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,8 @@ public class ProgressStatsActivity extends BaseActivity {
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+        dataManager = new DataManager(this);
+        easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);

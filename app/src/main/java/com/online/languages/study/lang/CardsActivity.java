@@ -69,7 +69,6 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
     public static Boolean exButtonShow;
 
-    Boolean easy_mode;
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
@@ -79,6 +78,8 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
     boolean speaking;
     static int initSpeak = 0;
     String autoPlay;
+
+    DataManager dataManager;
 
 
     @Override
@@ -105,10 +106,9 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
         topicTag = getIntent().getStringExtra(Constants.EXTRA_CAT_TAG);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
-        dataModeDialog = new DataModeDialog(this);
 
-        if (topicTag.equals(Constants.STARRED_CAT_TAG)) easy_mode = false;
+
+        dataModeDialog = new DataModeDialog(this);
 
         topicTag = "dates";
 
@@ -238,8 +238,6 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         exShowBtnRadio =  menu.findItem(R.id.exBtnSettings);
         applyExBtnStatus(exButtonShow, false);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
 
         return true;
     }

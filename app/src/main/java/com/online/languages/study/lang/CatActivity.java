@@ -100,9 +100,11 @@ public class CatActivity extends BaseActivity {
 
         setContentView(R.layout.activity_cat);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
-        dataModeDialog = new DataModeDialog(this);
         dataManager = new DataManager(this);
+
+        easy_mode = dataManager.easyMode();
+        dataModeDialog = new DataModeDialog(this);
+
 
         navStructure = dataManager.getNavStructure();
 
@@ -300,6 +302,7 @@ public class CatActivity extends BaseActivity {
 
         if (categoryID.contains(UC_PREFIX)) {
             menu.findItem(R.id.edit_from_menu).setVisible(true);
+            modeMenuItem.setVisible(false);
         }
 
 

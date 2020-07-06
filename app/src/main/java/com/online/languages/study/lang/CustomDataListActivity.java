@@ -87,7 +87,10 @@ public class CustomDataListActivity extends BaseActivity {
         sectionId = getIntent().getStringExtra(Constants.EXTRA_SECTION_ID);
         catId = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
+        dataManager = new DataManager(this);
+
+        easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
 
@@ -107,7 +110,7 @@ public class CustomDataListActivity extends BaseActivity {
 
         setPageTitle(listType);
 
-        dataManager = new DataManager(this);
+
 
         getDataList(sectionId, listType);
 

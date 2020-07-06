@@ -79,7 +79,8 @@ public class CustomDataActivity extends BaseActivity {
         sectionId = getIntent().getStringExtra(Constants.EXTRA_SECTION_ID);
         catId = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+        dataManager = new DataManager(this);
+        easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -94,7 +95,7 @@ public class CustomDataActivity extends BaseActivity {
 
         emptyTxt = findViewById(R.id.emptyTxt);
 
-        dataManager = new DataManager(this);
+
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);

@@ -255,18 +255,21 @@
     <string name="set_btm_nav_value_4">bottom_only</string>
 
     <string name="set_data_control_title">Выбор данных раздела</string>
-    <string name="set_data_control_summary">Учет в статистике: %s</string>
-    <string name="set_data_control_dialog_title">Учитывать в разделе</string>
 
-    <string name="set_data_control_dates">Только события</string>
-    <string name="set_data_control_all">События, личности, термины</string>
+    <string name="set_data_control_dialog_title">Учитывать в разделе</string>
+    <string name="set_data_control_summary">В статистику и тесты включены:\n%s</string>
+
+    <string name="set_data_control_dates">Только основные темы</string>
+    <string name="set_data_control_all">Основные и дополнительные темы</string>
 
     <string name="set_data_mode_title">Режим</string>
     <string name="set_data_mode_summary">Текущий: %s</string>
     <string name="set_data_mode_dialog_title">Выбрать режим</string>
 
+    <string name="set_data_mode_easy">Упрощенный</string>
     <string name="set_data_mode_default">Стандартный</string>
-    <string name="set_data_mode_easy">Упрощенный (только основная информация)</string>
+    <string name="set_data_mode_advanced">Расширенный</string>
+
 
     <string name="set_show_status">Cтатус изученности в списках</string>
     <string name="set_show_status_summary">Отображение: %s</string>
@@ -315,14 +318,14 @@
 
 
     <string name="easy_mode_dialog_title">Упрощенный режим</string>
-    <string name="easy_mode_info">\nНа данный момент активен Упрощенный режим, в котором представлены только основные исторические события, факты, личности, термины.
+    <string name="easy_mode_info">\nНа данный момент активен Упрощенный режим, в котором представлены только записи базового уровня.
     \n\nИзменить режим на стандартный можно в разделе:
         \n\n
         Настройки > Настройки данных > Режим.
         \n
     </string>
 
-    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только основные исторические события, факты, личности, термины.
+    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только записи базового уровня.
         \n\n
      Активный режим может повлиять на статистику, поскольку она учитывает изученность только тех записей, которые присутствуют в данном режиме. Смена режима не влияет на результаты тестов, поиска, статистику ошибок, а также на избранные записи.\n</string>
 
@@ -600,6 +603,7 @@
     <string name="set_ucat_layout_2">Компактный</string>
 
     <string name="user_content_title">Мой словарь</string>
+    <string name="export_notification">"Экспорт: "</string>
 
 
 </resources>

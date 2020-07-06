@@ -6,62 +6,40 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.online.languages.study.lang.adapters.BookmarksAdapter;
-import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.DividerItemDecoration;
-import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UCatsListAdapter;
 import com.online.languages.study.lang.data.BookmarkItem;
-import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.data.ImageMapsData;
-import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.data.ViewCategory;
-import com.online.languages.study.lang.data.ViewSection;
-import com.online.languages.study.lang.fragments.HomeFragment2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
-import static com.online.languages.study.lang.Constants.ACTION_BOOKMARK;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
-import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 
 public class UCatsListActivity extends BaseActivity {
@@ -95,6 +73,8 @@ public class UCatsListActivity extends BaseActivity {
 
     String listLayout;
 
+    MenuItem archiveMenuIcon;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,16 +90,13 @@ public class UCatsListActivity extends BaseActivity {
 
         setContentView(R.layout.activity_ucat_list);
 
-        navStructure = new NavStructure(this);
-
         openActivity = new OpenActivity(this);
-        //openActivity.setOrientation();
+        openActivity.setOrientation();
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
         setTitle("Мой словарь");
@@ -130,12 +107,9 @@ public class UCatsListActivity extends BaseActivity {
 
         dataManager = new DataManager(this, 1);
         dbHelper = dataManager.dbHelper;
-
-
+        navStructure = dataManager.getNavStructure();
 
         recyclerView = findViewById(R.id.recycler_view);
-
-
 
 
         updateList();
@@ -166,6 +140,25 @@ public class UCatsListActivity extends BaseActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        checkArchiveIcon();
+
+    }
+
+    private void checkArchiveIcon() {
+
+       int archiveSize = dataManager.getUcatsForArchive().size();
+
+       if (archiveMenuIcon != null) {
+
+           if (archiveSize > 0) {
+               archiveMenuIcon.setVisible(true);
+           } else {
+               archiveMenuIcon.setVisible(false);
+           }
+
+       }
+
 
     }
 
@@ -256,6 +249,8 @@ public class UCatsListActivity extends BaseActivity {
         }
 
         if (type.equals(ACTION_ARCHIVE)) archiveCat(dataObject);
+
+        checkArchiveIcon();
 
     }
 
@@ -376,7 +371,6 @@ public class UCatsListActivity extends BaseActivity {
 
 
     public void openArchive() {
-
         Intent i = new Intent(this, UCatsArchiveActivity.class);
         startActivityForResult(i, 10);
         openActivity.pageTransition();
@@ -404,6 +398,10 @@ public class UCatsListActivity extends BaseActivity {
                 openArchive();
                 return true;
 
+            case R.id.archive_icon:
+                openArchive();
+                return true;
+
             case R.id.menu_ucat_layout:
                 listLayoutDialog();
                 return true;
@@ -420,6 +418,11 @@ public class UCatsListActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_ucat_list, menu);
+
+        archiveMenuIcon = menu.findItem(R.id.archive_icon);
+
+        checkArchiveIcon();
+
 
         return true;
     }

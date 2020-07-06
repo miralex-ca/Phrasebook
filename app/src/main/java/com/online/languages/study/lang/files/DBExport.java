@@ -143,7 +143,9 @@ public class DBExport {
                 }
             }
 
-            Toast.makeText(context, "Экспорт: " + backupFile.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            String msg = context.getString(R.string.export_notification) + backupFile.getAbsolutePath();
+
+            Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
         }
         catch(Exception sqlEx) {
             Log.e(TAG, sqlEx.getMessage(), sqlEx);

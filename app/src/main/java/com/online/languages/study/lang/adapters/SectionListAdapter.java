@@ -177,7 +177,7 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
 
             if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
                 View errorIcon = statusBox.findViewById(R.id.errorIcon);
-                errorIcon.setVisibility(View.GONE);
+              //  errorIcon.setVisibility(View.GONE);
             }
         }
 

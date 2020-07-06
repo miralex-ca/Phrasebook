@@ -10,7 +10,7 @@
     <integer name="edit_text_length">100</integer>
     <integer name="edit_translation_length">100</integer>
     <integer name="edit_transcription_length">100</integer>
-    <integer name="edit_grammar_length">20</integer>
+    <integer name="edit_grammar_length">25</integer>
     <integer name="edit_info_length">300</integer>
 
 

@@ -7,6 +7,7 @@ public class NoteData {
     public String image ="";
 
     public String status = "";
+    public String params = "";
 
     public long time_created = 0;
     public long time_updated = 0;

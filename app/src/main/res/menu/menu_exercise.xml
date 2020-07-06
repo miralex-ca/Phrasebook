@@ -32,12 +32,5 @@
         android:title="@string/ex_menu_restart"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/easy_mode"
-        android:orderInCategory="50"
-        android:icon="?attr/iconSchool"
-        android:title="@string/menu_item_info"
-        android:visible="false"
-        app:showAsAction="always" />
 
 </menu>

@@ -28,7 +28,8 @@
         {"parent": "root", "type": "simple", "id": "10010120", "title": "Формулы вежливости","review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Дополнительные темы"},
-        {"parent": "root", "type": "simple", "spec": "items_list", "id": "10010040", "title": "Страны","review":  "true"}
+
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "10010040", "title": "Страны","review":  "true"}
 
       ]
     },

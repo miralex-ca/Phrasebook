@@ -43,7 +43,6 @@ public class SectionListActivity extends BaseActivity {
 
     NavSection navSection;
 
-    Boolean easy_mode;
     DataModeDialog dataModeDialog;
 
     boolean fullVersion;
@@ -69,7 +68,7 @@ public class SectionListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_list);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
 
         dataModeDialog = new DataModeDialog(this);
 
@@ -236,8 +235,7 @@ public class SectionListActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.stats_mode_info, menu);
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
+
         return true;
     }
 

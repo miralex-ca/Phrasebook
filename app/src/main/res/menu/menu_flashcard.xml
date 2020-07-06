@@ -50,12 +50,4 @@
         app:showAsAction="never" />
 
 
-
-    <item
-        android:id="@+id/easy_mode"
-        android:orderInCategory="50"
-        android:icon="?attr/iconSchool"
-        android:title="@string/menu_easy_mode"
-        android:visible="false"
-        app:showAsAction="always" />
 </menu>

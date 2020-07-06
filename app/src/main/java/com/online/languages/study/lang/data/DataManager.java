@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.tools.Computer;
@@ -26,10 +27,13 @@ import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
+import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS;
+import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
 import static com.online.languages.study.lang.Constants.SET_GALLERY;
 import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
+import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
@@ -343,6 +347,7 @@ public class DataManager {
     public boolean homecards = false;
     public boolean gallerySection = false;
     public boolean statsSection = true;
+    public boolean dataLevels = SET_DATA_LEVELS_DEFAULT;
 
     public void getParamsFromJSON() {
 
@@ -353,6 +358,7 @@ public class DataManager {
         homecards = paramsList.get("homecards");
         gallerySection = paramsList.get("gallery");
         statsSection = paramsList.get("stats");
+        dataLevels = paramsList.get("dataLevels");;
     }
 
     private void saveParams() {
@@ -361,6 +367,7 @@ public class DataManager {
         editor.putBoolean(SET_HOMECARDS, homecards);
         editor.putBoolean(SET_GALLERY, gallerySection);
         editor.putBoolean(SET_STATS, statsSection);
+        editor.putBoolean(SET_DATA_LEVELS, dataLevels);
         editor.apply();
     }
 
@@ -369,6 +376,7 @@ public class DataManager {
         homecards = appSettings.getBoolean(SET_HOMECARDS, false);
         gallerySection = appSettings.getBoolean(SET_GALLERY, false);
         statsSection = appSettings.getBoolean(SET_STATS, true);
+        dataLevels = appSettings.getBoolean(SET_DATA_LEVELS, SET_DATA_LEVELS_DEFAULT);
     }
 
     public void getScreenSize() {
@@ -527,6 +535,13 @@ public class DataManager {
     }
 
 
+
+    public String[] getTotalCounts() {
+
+        return dbHelper.getUCatsCounts();
+
+    }
+
     public ArrayList<DataObject> getUcatsList() {
 
         ArrayList<DataObject> list = dbHelper.getUCatsList();
@@ -634,6 +649,37 @@ public class DataManager {
 
     }
 
+
+    public boolean easyMode(String categoryId) {
+
+
+
+        boolean easyMode = easyMode();
+
+        if (categoryId.contains(UC_PREFIX) || categoryId.equals(STARRED_CAT_TAG)) easyMode = false;
+
+
+
+
+
+
+        Toast.makeText(context, "Levels: " + dataLevels, Toast.LENGTH_SHORT).show();
+
+        return easyMode;
+    }
+
+    public boolean easyMode() {
+
+        getParams();
+
+        String defaultModeValue = context.getResources().getString(R.string.set_data_mode_default_value);
+        String easyModeValue = context.getResources().getStringArray(R.array.set_data_mode_values)[0];
+        boolean easyMode = appSettings.getString(Constants.SET_DATA_MODE, defaultModeValue).equals(easyModeValue);
+
+        if (!dataLevels) easyMode = false;
+
+        return easyMode;
+    }
 
 
 

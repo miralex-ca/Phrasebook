@@ -16,6 +16,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
+import static com.online.languages.study.lang.Constants.DATA_MODE_DEFAULT;
+import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
+
 public class DataFromJson {
 
     Context context;
@@ -68,17 +71,20 @@ public class DataFromJson {
             boolean homecards = false;
             boolean gallery = false;
             boolean stats = true;
+            boolean dataLevels = SET_DATA_LEVELS_DEFAULT;
 
 
             if (params.has("simplified")) simplified = params.getBoolean("simplified");
             if (params.has("homecards")) homecards = params.getBoolean("homecards");
             if (params.has("gallery")) gallery = params.getBoolean("gallery");
             if (params.has("stats")) stats = params.getBoolean("stats");
+            if (params.has("dataLevels")) dataLevels = params.getBoolean("dataLevels");
 
             paramsList.put("simplified", simplified);
             paramsList.put("homecards", homecards);
             paramsList.put("gallery", gallery);
             paramsList.put("stats", stats);
+            paramsList.put("dataLevels", dataLevels);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -383,13 +389,9 @@ public class DataFromJson {
             }
 
             if (itemInfo.has("item_info_1")) {
-                if (itemInfo.getString("item_info_1").equals("none")) {
-                    dataItem.item_info_1 = dataItem.item;
-                } else {
-                    dataItem.item_info_1 = itemInfo.getString("item_info_1");
-                }
+                dataItem.item_info_1 = itemInfo.getString("item_info_1");
             } else {
-                dataItem.item_info_1 = dataItem.item;
+                dataItem.item_info_1 = "";
             }
 
             if (itemInfo.has("ipa")) {
@@ -408,7 +410,7 @@ public class DataFromJson {
             if (itemInfo.has("mode")) {
                 dataItem.mode = Integer.parseInt(itemInfo.getString("mode"));
             } else {
-                dataItem.mode = 0;
+                dataItem.mode = DATA_MODE_DEFAULT;
             }
 
         } catch (JSONException e) {

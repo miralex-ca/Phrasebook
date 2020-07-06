@@ -25,6 +25,7 @@ import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
@@ -61,6 +62,7 @@ public class SectionActivity extends BaseActivity {
     Boolean easy_mode;
     InfoDialog dataModeDialog;
     OpenActivity openActivity;
+    DataManager dataManager;
 
 
     @Override
@@ -76,7 +78,10 @@ public class SectionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+        dataManager = new DataManager(this);
+
+        easy_mode = dataManager.easyMode();
+
         dataModeDialog = new InfoDialog(this);
         openActivity = new OpenActivity(this);
 

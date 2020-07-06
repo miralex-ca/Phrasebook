@@ -271,9 +271,12 @@ public class DBImport {
             noteData.noteContent = line.get(3);
             noteData.noteIcon = line.get(4);
             noteData.noteInfo = line.get(5);
-            noteData.noteFilter = line.get(6);
-            noteData.noteCreated = line.get(7);
-            noteData.noteUpdated = line.get(8);
+            noteData.noteStatus = line.get(6);
+            noteData.noteParams = line.get(7);
+            noteData.noteFilter = line.get(8);
+            noteData.noteCreated = line.get(9);
+            noteData.noteUpdated = line.get(10);
+
             noteDataTable.lines.add(noteData);
         }
 
@@ -311,6 +314,7 @@ public class DBImport {
             userDataItem.udataFilter= line.get(10);
             userDataItem.udataCreated= line.get(11);
             userDataItem.udataUpdated= line.get(12);
+            userDataItem.udataUpdatedSort = line.get(13);
 
             userDataItemsTable.lines.add(userDataItem);
         }
@@ -434,8 +438,10 @@ public class DBImport {
         public String noteTitle;
         public String noteContent;
         public String noteIcon;
-        public String noteFilter;
         public String noteInfo;
+        public String noteStatus;
+        public String noteParams;
+        public String noteFilter;
         public String noteCreated;
         public String noteUpdated;
     }
@@ -477,6 +483,7 @@ public class DBImport {
         public String udataFilter;
         public String udataCreated;
         public String udataUpdated;
+        public String udataUpdatedSort;
 
     }
 

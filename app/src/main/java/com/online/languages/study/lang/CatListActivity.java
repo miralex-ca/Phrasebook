@@ -83,7 +83,9 @@ public class CatListActivity extends BaseActivity {
 
         adapterListType = -1;
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+        dataManager = new DataManager(this);
+
+        easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
         listType = getIntent().getIntExtra(Constants.EXTRA_DATA_TYPE, 0); //
@@ -105,7 +107,7 @@ public class CatListActivity extends BaseActivity {
 
         emptyTxt = findViewById(R.id.emptyTxt);
 
-        dataManager = new DataManager(this);
+
 
         getDataList(sectionId, listType);
 

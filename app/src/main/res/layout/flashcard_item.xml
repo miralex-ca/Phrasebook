@@ -28,6 +28,10 @@
                 style="@style/fTextBox"/>
 
             <TextView
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+
+                android:gravity="center"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif-light"
                 android:id="@+id/fCardTrascript"
@@ -183,28 +187,19 @@
                         android:textSize="@dimen/flash_txt_size_mirror"
                         style="@style/fTextBox"/>
 
-                    <TextView
-
-                        android:textSize="16sp"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:fontFamily="sans-serif-light"
-                        android:id="@+id/fCardTrascriptMirror"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        />
 
                     <RelativeLayout
 
                         android:id="@+id/speakBtnMirror"
                         android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
+
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="10dp"
 
                         android:focusable="true"
                         android:clickable="true"
 
                         android:background="?selectableItemBackgroundBorderless"
-
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -216,6 +211,21 @@
 
 
                     </RelativeLayout>
+
+                    <TextView
+
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="sans-serif-light"
+                        android:id="@+id/fCardTrascriptMirror"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
+
 
                 </LinearLayout>
 

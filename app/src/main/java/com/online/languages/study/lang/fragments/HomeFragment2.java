@@ -199,19 +199,12 @@ public class HomeFragment2 extends Fragment   {
 
     private void checkCounts() {
 
-        int count = 0;
+        String[] countsVaules = dataManager.getTotalCounts();
 
-        for (DataObject cat: catsList) {
-            count = count + cat.count;
-        }
-
-        String str = "Добавлено тем:  "+ catsList.size();
-
-        counts.setText(str);
-        itemsCount.setText("Добавлено записей:  "+count);
+        counts.setText("Добавлено тем:  " + countsVaules[0]);
+        itemsCount.setText("Добавлено записей:  " + countsVaules[1]);
 
     }
-
 
 
     public void openMyCat(int position) {

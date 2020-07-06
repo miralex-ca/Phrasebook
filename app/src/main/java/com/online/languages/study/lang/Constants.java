@@ -76,6 +76,14 @@ public class Constants {
     public static final String CAT_TYPE_EXTRA = "extra";
 
     public static final String SET_DATA_MODE = "data_mode";
+    public static final int DATA_MODE_DEFAULT = 10;
+    /// normal 20, easy 10. This value is increased by 1 in settings and DBHelper for checking
+
+
+    public static final String SET_DATA_SELECT = "data_select"; // default - dates, option - all
+    public static final String DATA_SELECT_BASIC = "dates";
+    public static final String DATA_SELECT_EXTRA = "all";
+
 
     public static final String STARRED_CAT_TAG = "starred";
     public static final String ERRORS_CAT_TAG = "errors";
@@ -155,16 +163,17 @@ public class Constants {
     public static final String STATUS_UPDATED = "updated";
 
 
-
     public static final String TAB_ITEMS = "normal";
     public static final String TAB_GALLERY = "gallery";
     public static final String TABS_NORMAL = "normal";
-
 
     public static final String SET_SIMPLIFIED = "param_simplified";
     public static final String SET_HOMECARDS = "param_homecards";
     public static final String SET_GALLERY = "param_gallery";
     public static final String SET_STATS = "param_stats";
+    public static final String SET_DATA_LEVELS= "param_dataLevels";
+
+    public static final boolean SET_DATA_LEVELS_DEFAULT = true;
 
     public static final String STARRED_TABS = "gallery";
 

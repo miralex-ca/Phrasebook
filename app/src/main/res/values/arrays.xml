@@ -142,13 +142,17 @@
     <string-array name="set_data_mode_list">
         <item>@string/set_data_mode_easy</item>
         <item>@string/set_data_mode_default</item>
+        <!-- item>@string/set_data_mode_advanced</item -->
     </string-array>
 
 
     <string-array name="set_data_mode_values">
-        <item>1</item>
-        <item>2</item>
+        <item>11</item>
+        <item>@string/set_data_mode_default_value</item>
+        <!-- item>21</item -->
     </string-array>
+
+    <string name="set_data_mode_default_value">21</string>
 
 
     <string-array name="set_transcript_values">

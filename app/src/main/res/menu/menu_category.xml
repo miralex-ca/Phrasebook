@@ -4,11 +4,11 @@
 
     <item
         android:id="@+id/easy_mode"
-        android:orderInCategory="50"
+        android:orderInCategory="150"
         android:icon="?attr/iconSchool"
         android:title="@string/menu_easy_mode"
         android:visible="false"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/sort_from_menu"

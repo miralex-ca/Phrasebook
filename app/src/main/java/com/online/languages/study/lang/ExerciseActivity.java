@@ -131,7 +131,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     ExerciseDataCollect exerciseAllData;
 
-    Boolean easy_mode;
+
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
@@ -185,11 +185,10 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default)); // TODO
 
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
+
         dataModeDialog = new DataModeDialog(this);
-        if (topicTag.equals(Constants.STARRED_CAT_TAG)
-                || topicTag.equals(Constants.ERRORS_CAT_TAG)
-                || topicTag.equals(Constants.REVISE_CAT_TAG)) easy_mode = false;
+
 
 
         forceSave = true;
@@ -842,8 +841,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         setSaveStatsForAll();
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
 
         return true;
 
@@ -896,9 +893,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             case R.id.fAutoplay:
                 autoPlayDialog();
                 return true;
-            case R.id.easy_mode:
-                dataModeDialog.openDialog();
-                return true;
+
 
         }
         return super.onOptionsItemSelected(item);

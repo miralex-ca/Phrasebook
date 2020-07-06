@@ -26,6 +26,7 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.StatsCatsAdapter;
 import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.UserStats;
 
@@ -55,6 +56,7 @@ public class StatsFragment extends Fragment {
     ProgressBar studiedProgress;
 
     Boolean easy_mode;
+    DataManager dataManager;
 
     DataModeDialog dataModeDialog;
 
@@ -72,7 +74,9 @@ public class StatsFragment extends Fragment {
 
 
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
+        dataManager = new DataManager(getActivity());
+        easy_mode = dataManager.easyMode();
 
         dataModeDialog = new DataModeDialog(getActivity());
 

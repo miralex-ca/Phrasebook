@@ -17,8 +17,13 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.data.Section;
 
 import java.util.ArrayList;
+
+import static com.online.languages.study.lang.Constants.DATA_SELECT_BASIC;
+import static com.online.languages.study.lang.Constants.DATA_SELECT_EXTRA;
+import static com.online.languages.study.lang.Constants.SET_DATA_SELECT;
 
 
 public class SectionTestActivity extends BaseActivity {
@@ -45,7 +50,6 @@ public class SectionTestActivity extends BaseActivity {
 
     String dataSelect;
 
-    Boolean easy_mode;
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
@@ -68,14 +72,14 @@ public class SectionTestActivity extends BaseActivity {
         speaking = appSettings.getBoolean("set_speak", true);
 
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+
         dataModeDialog = new DataModeDialog(this);
 
         navStructure = getIntent().getParcelableExtra(Constants.EXTRA_NAV_STRUCTURE);
         tSectionID = getIntent().getStringExtra(Constants.EXTRA_SECTION_ID);
 
         dbHelper = new DBHelper(this);
-        dataSelect = appSettings.getString("data_select", "dates");
+        dataSelect = appSettings.getString(SET_DATA_SELECT, DATA_SELECT_BASIC);
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
@@ -135,6 +139,14 @@ public class SectionTestActivity extends BaseActivity {
         ArrayList<String> allCatIds = new ArrayList<>();
         ArrayList<String> extraCatIds = new ArrayList<>();
 
+        ArrayList<String> catIdsForTests = new ArrayList<>();
+
+        Section section = new Section(navStructure.getNavSectionByID(tSectionID), this);
+
+        catIdsForTests.addAll(section.checkCatIds);
+
+
+
         for (NavCategory navCategory: navStructure.getNavSectionByID(tSectionID).uniqueCategories) {
 
             if (!navCategory.type.equals(Constants.CAT_TYPE_EXTRA)) {
@@ -142,7 +154,6 @@ public class SectionTestActivity extends BaseActivity {
             } else {
                 extraCatIds.add(navCategory.id);
             }
-
             allCatIds.add(navCategory.id);
 
         }
@@ -150,8 +161,10 @@ public class SectionTestActivity extends BaseActivity {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        basicData = dbHelper.selectSimpleDataItemsByIds(db, basicCatIds);
+        basicData = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
+
         if (extraCatIds.size() > 0) extraData = dbHelper.selectSimpleDataItemsByIds(db, extraCatIds);
+
         allData = dbHelper.selectSimpleDataItemsByIds(db, allCatIds);
 
         db.close();
@@ -208,10 +221,15 @@ public class SectionTestActivity extends BaseActivity {
 
         i.putExtra("ex_type", type);
 
+
         String exTag = Constants.SECTION_TEST_PREFIX + tSectionID;
 
         i.putExtra(Constants.EXTRA_CAT_TAG, exTag);
-        i.putParcelableArrayListExtra("dataItems", basicData);
+
+
+            i.putParcelableArrayListExtra("dataItems", basicData);
+
+
 
         startActivityForResult(i, 1);;
         openActivity.pageTransition();
@@ -272,8 +290,6 @@ public class SectionTestActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_section_tests, menu);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
 
         return true;
     }

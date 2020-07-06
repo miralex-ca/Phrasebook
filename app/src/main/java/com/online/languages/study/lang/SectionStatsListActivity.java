@@ -24,6 +24,7 @@ import com.online.languages.study.lang.adapters.CustomSectionAdapter;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
@@ -55,6 +56,7 @@ public class SectionStatsListActivity extends BaseActivity {
 
     Boolean easy_mode;
     DataModeDialog dataModeDialog;
+    DataManager dataManager;
 
     OpenActivity openActivity;
 
@@ -71,7 +73,8 @@ public class SectionStatsListActivity extends BaseActivity {
 
         full_version = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
 
-        easy_mode = appSettings.getString(Constants.SET_DATA_MODE, "2").equals("1");
+        dataManager = new DataManager(this);
+        easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
         setContentView(R.layout.activity_cat_data_stats);

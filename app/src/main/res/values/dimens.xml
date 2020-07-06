@@ -194,6 +194,9 @@
     <!-- flashcard end -->
 
 
+
+
+
     <dimen name="ex_card_top">@dimen/_ex_card_top</dimen>
 
     <dimen name="ex_btn_padding">@dimen/_ex_btn_padding</dimen>
