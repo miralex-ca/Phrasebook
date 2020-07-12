@@ -126,8 +126,8 @@ public class UserListTabFragment2 extends Fragment {
         exLinkDesc.add(getString(R.string.voc_ex_link_second_desc));
 
         if (speaking) {
-            exLinkTitles.add("Тест 3");
-            exLinkDesc.add("Тест аудио");
+            exLinkTitles.add(getString(R.string.voc_ex_link_third_title));
+            exLinkDesc.add(getString(R.string.voc_ex_link_third_desc));
         }
 
     }

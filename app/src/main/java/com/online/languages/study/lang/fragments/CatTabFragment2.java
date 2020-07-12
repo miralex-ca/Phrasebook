@@ -84,6 +84,8 @@ public class CatTabFragment2 extends Fragment {
         recyclerView = rootView.findViewById(R.id.ex_recycler_list);
 
         exAdapter = new ExRecycleAdapter(getActivity(), exLinkTitles, exLinkDesc, exResults, true);
+        exAdapter.matchLines = true;
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
@@ -91,17 +93,14 @@ public class CatTabFragment2 extends Fragment {
 
         recyclerView.setAdapter(exAdapter);
 
+
         View topStatsCard = rootView.findViewById(R.id.topStatsCard);
         View minCardHeight = rootView.findViewById(R.id.cardMinHeight);
         View divide = rootView.findViewById(R.id.carDivider);
 
 
-        if (  getActivity().getResources().getBoolean(R.bool.small_height ))  {
-            topStatsCard.setVisibility(View.GONE);
-            divide.setVisibility(View.GONE);
-        } else {
-            if (!dataManager.simplified) minCardHeight.setMinimumHeight(0);
-        }
+
+        if (!dataManager.simplified) minCardHeight.setMinimumHeight(0);
 
         if (dataManager.simplified) {
             topStatsCard.setVisibility(View.GONE);
@@ -172,8 +171,8 @@ public class CatTabFragment2 extends Fragment {
 
 
         if (speaking) {
-            exLinkTitles.add("Тест 3");
-            exLinkDesc.add("Тест аудио");
+            exLinkTitles.add(getString(R.string.voc_ex_link_third_title));
+            exLinkDesc.add(getString(R.string.voc_ex_link_third_desc));
         }
 
 
@@ -210,7 +209,7 @@ public class CatTabFragment2 extends Fragment {
             if (item.rate > 2) studiedCount++;
         }
 
-        String totalCount = getString(R.string.cat_stats_total_items)+ dataCount;
+        String totalCount = getString(R.string.cat_stats_total_items_text)+ dataCount;
         catTotalCount.setText(totalCount);
         catKnownCount.setText(String.valueOf(knownCount));
         catStudiedCount.setText(String.valueOf(studiedCount));
@@ -250,6 +249,8 @@ public class CatTabFragment2 extends Fragment {
 
         fillData();
         exAdapter = new ExRecycleAdapter(getActivity(), exLinkTitles, exLinkDesc, exResults, true);
+        exAdapter.matchLines = true;
+
         recyclerView.setAdapter(exAdapter);
 
     }

@@ -15,7 +15,10 @@
     <dimen name="_detail_image_height">420dp</dimen>
     <dimen name="_detail_image_appbar_height">260dp</dimen>
 
-    <dimen name="_detail_card_height">430dp</dimen>
+
+    <integer name="detail_card_height_big">440</integer>
+    <dimen name="_detail_card_height">350dp</dimen>
+
     <dimen name="_detail_appbar_height">240dp</dimen>
 
     <integer name="_search_dialog_height">420</integer>
@@ -50,7 +53,7 @@
 
     <!--  flashcard dimens -->
 
-    <dimen name="_flash_card_height">320dp</dimen>
+    <dimen name="_flash_card_height">390dp</dimen>
     <dimen name="_flash_text_box_height">100dp</dimen>
     <dimen name="_flash_translate_box_height">160dp</dimen>
     <dimen name="_flash_translate_box_mirror_height">90dp</dimen>
@@ -111,7 +114,10 @@
 
 
     <dimen name="_ex_link_padding_top">12dp</dimen>
-    <dimen name="_ex_link_padding_btm">13dp</dimen>
+    <dimen name="_ex_link_padding_btm">14dp</dimen>
+
+    <dimen name="_ex_link_padding_top_inline">10dp</dimen>
+    <dimen name="_ex_link_padding_btm_inline">12dp</dimen>
 
 
 </resources>

@@ -31,6 +31,7 @@ import com.online.languages.study.lang.adapters.NotesAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NoteData;
 
 import java.util.ArrayList;
@@ -40,12 +41,14 @@ import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_ANIMATION;
+import static com.online.languages.study.lang.Constants.NOTES_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT;
 import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT_DEFAULT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
+import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 
 
 public class NotesFragment extends Fragment {
@@ -65,6 +68,7 @@ public class NotesFragment extends Fragment {
     RecyclerView recyclerView;
 
     RelativeLayout helperView;
+    boolean cutList;
 
 
     DataManager dataManager;
@@ -87,12 +91,16 @@ public class NotesFragment extends Fragment {
         openActivity = new OpenActivity(getActivity());
         dataManager = new DataManager(getActivity());
 
-        notes = getNotes();
-
         recyclerView = rootview.findViewById(R.id.recycler_view);
         helperView = rootview.findViewById(R.id.list_wrapper);
 
-        adapter = new NotesAdapter(getActivity(), notes);
+
+        cutList = true;
+
+        notes = getNotes();
+
+
+        adapter = new NotesAdapter(getActivity(), notes, NotesFragment.this);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -102,35 +110,31 @@ public class NotesFragment extends Fragment {
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
 
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
-            @Override
-            public void onClick(final View view, final int position) {
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        onNoteClick(view, position);
-                    }
-                }, 50);
-
-            }
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-
+        openListView();
 
         return rootview;
 
     }
 
-    private void onNoteClick(View view, int position) {
+    private void openListView() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                helperView.setVisibility(View.VISIBLE);
+
+            }
+        }, 30);
+
+    }
+
+    public void onNoteClick(NoteData note) {
 
         Intent i = new Intent(getActivity(), NoteActivity.class);
-        i.putExtra(EXTRA_NOTE_ID, notes.get(position).id );
-        startActivityForResult(i, 10);
+        i.putExtra(EXTRA_NOTE_ID, note.id );
+
+        startActivityForResult(i, 20);
         openActivity.pageTransition();
 
     }
@@ -138,10 +142,14 @@ public class NotesFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+
         super.onActivityResult(requestCode, resultCode, data);
 
-
-        updateList();
+        if (requestCode == 10) {
+            updateListNoAnimation();
+        } else {
+            updateList();
+        }
 
     }
 
@@ -152,16 +160,83 @@ public class NotesFragment extends Fragment {
     }
 
 
-    private void checkList() {
+    public void openCompleteList() {
+
+        cutList = false;
+
+        helperView.clearAnimation();
+        setWrapContentHeight(helperView);
+
+
+        updateListNoAnimation();
+
+
+
+    }
+
+
+    private ArrayList<NoteData> getNotes() {
+
 
         setWrapContentHeight(helperView);
 
+        ArrayList<NoteData> completeList = dataManager.getNotes();
+
+        ArrayList<NoteData> displayList = new ArrayList<>(completeList);
+
+
+        int limit = NOTES_LIST_LIMIT;
+
+        if (completeList.size() > limit) {
+            if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
+        }
+
+        return addLast(displayList, completeList);
+    }
+
+
+    private ArrayList<NoteData> addLast(ArrayList<NoteData> displayList, ArrayList<NoteData> completeList) {
+
+        NoteData lastObject = checkMoreItem(displayList, completeList);
+
+        displayList.add( lastObject );
+
+
+        return displayList;
+    }
+
+
+    private NoteData checkMoreItem(ArrayList<NoteData> displayList, ArrayList<NoteData> completeList) {
+
+        NoteData lastObject = new NoteData();
+        lastObject.id = "last";
+
+
+        int dif = completeList.size() - displayList.size();
+
+        if (dif > 0) {
+            lastObject.title = "Загрузить ещё " + dif;
+            lastObject.info = "show";
+        } else {
+            lastObject.info = "hide";
+        }
+
+        return  lastObject;
+
+    }
+
+
+    private void updateMoreIem() {
+        adapter.notifyItemChanged(notes.size()-1);
+    }
+
+
+
+    private void checkList() {
+
         if (!NOTES_LIST_ANIMATION) {
-            ArrayList<NoteData> newNotes = getNotes();
 
-
-            adapter = new NotesAdapter(getActivity(), newNotes);
-            recyclerView.setAdapter(adapter);
+            updateListNoAnimation();
 
         } else {
 
@@ -172,9 +247,15 @@ public class NotesFragment extends Fragment {
                 }
             }, 50);
 
-
         }
 
+    }
+
+    private void updateListNoAnimation() {
+
+        notes = getNotes();
+        adapter = new NotesAdapter(getActivity(), notes, NotesFragment.this);
+        recyclerView.setAdapter(adapter);
     }
 
 
@@ -208,6 +289,12 @@ public class NotesFragment extends Fragment {
 
                         }
 
+                        if (noteData.id.equals("last")) {
+                            noteData.title  = newNote.title;
+                            noteData.info = newNote.info;
+                        }
+
+
                         break;
                     }
                 }
@@ -220,13 +307,7 @@ public class NotesFragment extends Fragment {
 
                 if (noteData.status.equals(STATUS_UPDATED)) {
 
-                    // TODO consider sorting by update
-                   // notes = getNotes();
-                   // adapter = new NotesAdapter(getActivity(), notes);
-                   // recyclerView.setAdapter(adapter);
-
                     adapter.notifyItemChanged(i); /// normal
-
 
                 }
                 if (noteData.status.equals(STATUS_DELETED)) {
@@ -236,7 +317,6 @@ public class NotesFragment extends Fragment {
 
                     notes.remove(i);
                     adapter.notifyItemRemoved(i);
-
 
                 }
             }
@@ -257,7 +337,14 @@ public class NotesFragment extends Fragment {
                 }
             }
 
+
+          updateMoreIem();
+
     }
+
+
+
+
 
 
 
@@ -282,7 +369,7 @@ public class NotesFragment extends Fragment {
                 recycler.setMinimumHeight(0);
 
             }
-        }, 450);
+        }, 400);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -291,15 +378,12 @@ public class NotesFragment extends Fragment {
                 int h = recycler.getHeight();
                 ResizeHeight resizeHeight = new ResizeHeight(helper, h);
                 resizeHeight.setDuration(300);
+
+                helper.clearAnimation();
                 helper.startAnimation(resizeHeight);
 
             }
-        }, 550);
-
-
-
-
-
+        }, 450);
 
     }
 
@@ -334,11 +418,6 @@ public class NotesFragment extends Fragment {
     }
 
 
-    private ArrayList<NoteData> getNotes() {
-
-        return dataManager.getNotes();
-
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {

@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
@@ -870,6 +871,18 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     public void onBackPressed() {
         super.onBackPressed();
         openActivity.pageBackTransition();
+    }
+
+    @Override
+    public void finish() {
+
+
+        if (speaking) {
+            speakWords("");
+        }
+
+
+        super.finish();
     }
 
     @Override

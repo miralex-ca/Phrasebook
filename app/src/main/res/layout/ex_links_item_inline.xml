@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    android:paddingLeft="@dimen/ex_link_padding_left"
+    android:paddingRight="@dimen/ex_link_padding_right"
+
+    android:paddingTop="@dimen/ex_link_padding_top_inline"
+    android:paddingBottom="@dimen/ex_link_padding_btm_inline"
+
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground"
+
+    android:gravity="center_vertical" >
+
+    <LinearLayout
+
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+
+    <ImageView
+
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        style="@style/exItemIcon"
+        android:id="@+id/exLinksIconRight"
+        app:srcCompat="?attr/iconTest" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="45dp"
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:maxLines="1"
+                android:textSize="18sp"
+                android:id="@+id/exLinkTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/exLinkListItemTxt"/>
+
+            <TextView
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="13sp"
+                android:id="@+id/exLinkDesc"
+                android:textColor="?attr/colorSecondaryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/exLinkListItemDesc"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/exProgressBox"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ex_links_icon_margin_right"
+            >
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/ic_ex_circle" />
+
+
+            <TextView
+                android:id="@+id/exProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                tools:text="100%"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="?attr/colorExListResultTxt"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

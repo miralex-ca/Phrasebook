@@ -22,6 +22,7 @@ public class ExRecycleAdapter extends RecyclerView.Adapter<ExRecycleAdapter.MyVi
     private ArrayList<String> exLinkDesc;
     private int[] results = {0,0,0,0};
     private Boolean exercises;
+    public Boolean matchLines;
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -49,6 +50,7 @@ public class ExRecycleAdapter extends RecyclerView.Adapter<ExRecycleAdapter.MyVi
         exLinkDesc = _exLinkDesc;
         exercises = _exercises;
         results = _results;
+        matchLines = false;
     }
 
     @Override
@@ -56,7 +58,18 @@ public class ExRecycleAdapter extends RecyclerView.Adapter<ExRecycleAdapter.MyVi
         View itemView;
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ex_links_item, parent, false);
 
+        if (viewType == 2) itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ex_links_item_inline, parent, false);
+
+
         return new MyViewHolder(itemView);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        int type = 1;
+        if (matchLines) type = 2;
+
+        return type;
     }
 
 

@@ -19,7 +19,7 @@
         android:orderInCategory="100"
         android:icon="@drawable/ic_edit"
         android:title="Редактировать"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 
 </menu>

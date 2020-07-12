@@ -274,8 +274,11 @@ public class DBImport {
             noteData.noteStatus = line.get(6);
             noteData.noteParams = line.get(7);
             noteData.noteFilter = line.get(8);
-            noteData.noteCreated = line.get(9);
-            noteData.noteUpdated = line.get(10);
+            noteData.noteParent = line.get(9);
+            noteData.noteOrder = line.get(10);
+            noteData.noteCreated = line.get(11);
+            noteData.noteUpdated = line.get(12);
+            noteData.noteUpdatedSort = line.get(13);
 
             noteDataTable.lines.add(noteData);
         }
@@ -312,9 +315,10 @@ public class DBImport {
             userDataItem.udataImage = line.get(8);
             userDataItem.udataStatus = line.get(9);
             userDataItem.udataFilter= line.get(10);
-            userDataItem.udataCreated= line.get(11);
-            userDataItem.udataUpdated= line.get(12);
-            userDataItem.udataUpdatedSort = line.get(13);
+            userDataItem.udataOrder = line.get(11);
+            userDataItem.udataCreated= line.get(12);
+            userDataItem.udataUpdated= line.get(13);
+            userDataItem.udataUpdatedSort = line.get(14);
 
             userDataItemsTable.lines.add(userDataItem);
         }
@@ -350,10 +354,11 @@ public class DBImport {
             userDataCat.ucatStatus = line.get(6);
             userDataCat.ucatFilter = line.get(7);
             userDataCat.ucatParams = line.get(8);
-            userDataCat.ucatParent= line.get(9);
-            userDataCat.ucatCreated = line.get(10);
-            userDataCat.ucatUpdated = line.get(11);
-            userDataCat.ucatUpdatedSort  = line.get(12);
+            userDataCat.ucatParent = line.get(9);
+            userDataCat.ucatOrder= line.get(10);
+            userDataCat.ucatCreated = line.get(11);
+            userDataCat.ucatUpdated = line.get(12);
+            userDataCat.ucatUpdatedSort  = line.get(13);
 
             userDataCatsTable.lines.add(userDataCat);
         }
@@ -442,8 +447,11 @@ public class DBImport {
         public String noteStatus;
         public String noteParams;
         public String noteFilter;
+        public String noteParent;
+        public String noteOrder;
         public String noteCreated;
         public String noteUpdated;
+        public String noteUpdatedSort;
     }
 
 
@@ -481,6 +489,7 @@ public class DBImport {
         public String udataImage;
         public String udataStatus;
         public String udataFilter;
+        public String udataOrder;
         public String udataCreated;
         public String udataUpdated;
         public String udataUpdatedSort;
@@ -503,6 +512,7 @@ public class DBImport {
         public String ucatFilter;
         public String ucatParams;
         public String ucatParent;
+        public String ucatOrder;
         public String ucatCreated;
         public String ucatUpdated;
         public String ucatUpdatedSort;

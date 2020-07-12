@@ -31,6 +31,7 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 
@@ -39,6 +40,8 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 
 
 public class CatSimpleListActivity extends BaseActivity {
@@ -75,6 +78,8 @@ public class CatSimpleListActivity extends BaseActivity {
     DataManager dataManager;
     private MenuItem changeLayoutBtn;
 
+    private MenuItem bookmarkRadio;
+    NavStructure navStructure;
 
 
     ContentAdapter adapter, adapterCompact;
@@ -82,6 +87,8 @@ public class CatSimpleListActivity extends BaseActivity {
     View listWrapper, listWrapperCompact;
 
     ArrayList<DataItem> data = new ArrayList<>();
+
+    public String parentSectionId;
 
 
     @Override
@@ -104,8 +111,11 @@ public class CatSimpleListActivity extends BaseActivity {
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
-        categoryID = "10010040"; //getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
-        catSpec = "misc";
+        categoryID = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
+        catSpec = getIntent().getStringExtra(Constants.EXTRA_CAT_SPEC);
+
+        parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+        navStructure = dataManager.getNavStructure();
 
         String title = getIntent().getStringExtra("cat_title");
 
@@ -356,13 +366,16 @@ public class CatSimpleListActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_category, menu);
+        getMenuInflater().inflate(R.menu.menu_category_list, menu);
 
         MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
         if (easy_mode) modeMenuItem.setVisible(true);
 
         changeLayoutBtn = menu.findItem(R.id.list_layout);
         applyLayoutStatus();
+
+        bookmarkRadio = menu.findItem(R.id.bookmark);
+        applyBookmarkStatus();
 
         return true;
     }
@@ -382,6 +395,15 @@ public class CatSimpleListActivity extends BaseActivity {
             case R.id.list_layout:
                 changeLayoutStatus();
                 return true;
+
+            case R.id.bookmark:
+                changeBookmark();
+                return true;
+
+            case R.id.card_from_menu:
+                openCards();
+                return true;
+
             case R.id.info_from_menu:
                 infoMessage();
                 return true;
@@ -390,8 +412,37 @@ public class CatSimpleListActivity extends BaseActivity {
     }
 
 
+    private void applyBookmarkStatus() {
 
-    private void applyLayoutStatus() {
+        boolean status = dataManager.dbHelper.checkBookmark(categoryID, parentSectionId);
+
+        if (status) bookmarkRadio.setIcon(R.drawable.ic_bookmark_active);
+        else bookmarkRadio.setIcon(R.drawable.ic_bookmark_inactive);
+
+        bookmarkRadio.setChecked(status);
+    }
+
+    private void changeBookmark() {
+
+
+        int status = dataManager.setBookmark(categoryID, parentSectionId, navStructure);
+
+        boolean radioChecked;
+
+        if (status == OUTCOME_ADDED) {
+            bookmarkRadio.setIcon(R.drawable.ic_bookmark_active);
+            radioChecked = true;
+        } else {
+            bookmarkRadio.setIcon(R.drawable.ic_bookmark_inactive);
+            radioChecked = false;
+        }
+
+        bookmarkRadio.setChecked(radioChecked);
+
+    }
+
+
+        private void applyLayoutStatus() {
 
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
@@ -420,6 +471,29 @@ public class CatSimpleListActivity extends BaseActivity {
         applyLayoutStatus();
     }
 
+
+    private void openCards() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                openCards(true);
+            }
+        }, 80);
+
+
+    }
+
+
+    private void openCards(boolean action) {
+
+        Intent i = new Intent(this, CardsActivity.class);
+        i.putExtra(Constants.EXTRA_CAT_TAG, categoryID);
+        i.putParcelableArrayListExtra("dataItems", cardData);
+        startActivityForResult(i,2);
+        openActivity.pageTransition();
+
+    }
 
 
 
@@ -452,10 +526,6 @@ public class CatSimpleListActivity extends BaseActivity {
             //// checkDataList
         }
     }
-
-
-
-
 
 
 

@@ -45,7 +45,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, desc, itemsCount, familiarCount, masteredCount;
-        View wrap, settings, bookmark, bookmarkOn, bookmarkOff, edit, bookmarkWrap;
+        View wrap, settings, bookmark, bookmarkOn, bookmarkOff, edit, bookmarkWrap, mainWrap;
 
 
         MyViewHolder(View view) {
@@ -65,6 +65,8 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             bookmarkWrap = itemView.findViewById(R.id.ucatBookmarkWrap);
 
             edit = itemView.findViewById(R.id.ucatEdit);
+
+            mainWrap = itemView.findViewById(R.id.cat_item_wrap);
 
         }
     }
@@ -93,7 +95,21 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item, parent, false);
         }
 
+        if (viewType == 2) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
+        }
+
+
         return new MyViewHolder(itemView);
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        int type = 1;
+        if (dataList.get(position).id.equals("last")) type = 2;
+
+        return type;
     }
 
     @Override
@@ -113,6 +129,12 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         holder.itemsCount.setText("Записей: " + dataObject.count );
 
+
+        if (dataObject.id.equals("last")) {
+
+            manageMoreView(holder.mainWrap, dataObject);
+
+        }
 
 
         holder.familiarCount.setText("" + dataObject.progress_1 );
@@ -282,6 +304,23 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
             }
         }, 80);
+
+    }
+
+
+    private void manageMoreView(View view, DataObject dataObject) {
+
+       View wrapper = view.findViewById(R.id.openMoreWrap);
+       TextView moreTitle = view.findViewById(R.id.openMoreTxt);
+
+       moreTitle.setText(dataObject.title);
+
+        if (dataObject.info.equals("hide")) {
+            wrapper.setVisibility(View.GONE);
+        } else {
+            wrapper.setVisibility(View.VISIBLE);
+
+        }
 
     }
 

@@ -91,29 +91,35 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
 
+    <string name="starred_ex_link_title">Тест с избранными записями</string>
+
     <string name="voc_ex_link_card_title">Карточки</string>
     <string name="voc_ex_link_first_title">Тест 1</string>
     <string name="voc_ex_link_second_title">Тест 2</string>
+    <string name="voc_ex_link_third_title">Тест 3</string>
 
-    <string name="starred_ex_link_title">Тест с избранными</string>
+    <string name="ex_link_card_inline">Карточки</string>
+    <string name="ex_link_1_inline">Тест на перевод</string>
+    <string name="ex_link_2_inline">Тест на обратный перевод</string>
+    <string name="ex_link_3_inline">Тест на перевод аудио</string>
 
-    <string name="voc_ex_link_first_desc">Выбор перевода</string>
-    <string name="voc_ex_link_second_desc">Выбор перевода</string>
+
+    <string name="voc_ex_link_card_desc">Изучение отдельных записей</string>
+    <string name="voc_ex_link_first_desc">Выбор перевода записи</string>
+    <string name="voc_ex_link_second_desc">Обратный перевод записи</string>
+    <string name="voc_ex_link_third_desc">Выбор перевода аудио</string>
+
+
 
     <string name="section_ex_link_title_1">Общий тест 1</string>
     <string name="section_ex_link_title_2">Общий тест 2</string>
     <string name="section_ex_link_title_3">Общий тест 3</string>
 
 
-    <string name="section_ex_link_desc_3">Тест аудио</string>
+    <string name="section_ex_link_desc_3">@string/voc_ex_link_third_desc</string>
 
 
 
-    <string name="voc_ex_link_third_title">Упражнение 3</string>
-    <string name="voc_ex_link_card_desc">Изучение отдельных записей</string>
-
-
-    <string name="voc_ex_link_third_desc">Тест с вариантами ответа</string>
     <string name="title_activity_cards">CardsActivity</string>
 
 
@@ -536,7 +542,11 @@
     <string name="image_info_title">Изображение</string>
     <string name="image_info_desc">Описание</string>
     <string name="cat_stats_title">Статистика темы</string>
+
+    <string name="cat_stats_total_items_text">@string/cat_stats_total_items_short</string>
+    <string name="cat_stats_total_items_short">"Записей: "</string>
     <string name="cat_stats_total_items">"Всего записей: "</string>
+
     <string name="cat_stats_familliar_count">Пройдено</string>
     <string name="cat_stats_studied_count">Изучено</string>
     <string name="reference_title">Используемые материалы</string>
@@ -604,6 +614,12 @@
 
     <string name="user_content_title">Мой словарь</string>
     <string name="export_notification">"Экспорт: "</string>
+
+
+    <string name="archive_item_date_text" translatable="false">@string/archive_item_date_short</string>
+
+    <string name="archive_item_date">Создано:  %s</string>
+    <string name="archive_item_date_short">Дата: %s</string>
 
 
 </resources>

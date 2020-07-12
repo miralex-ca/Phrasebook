@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
@@ -41,8 +42,8 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, desc;
-        View wrap, settings, edit;
+        TextView title, desc, itemsCount;
+        View wrap, settings, mainWrap;
 
 
         MyViewHolder(View view) {
@@ -50,11 +51,12 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
 
             title = itemView.findViewById(R.id.title);
             desc = itemView.findViewById(R.id.desc);
+            itemsCount = itemView.findViewById(R.id.itemsCount);
 
             wrap = itemView.findViewById(R.id.wrap);
             settings = itemView.findViewById(R.id.settings);
 
-            edit = itemView.findViewById(R.id.ucatEdit);
+            mainWrap = itemView.findViewById(R.id.cat_item_wrap);
 
         }
     }
@@ -78,8 +80,23 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_archive_item, parent, false);
 
+
+        if (viewType == 2) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
+        }
+
         return new MyViewHolder(itemView);
     }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        int type = 1;
+        if (dataList.get(position).id.equals("last")) type = 2;
+
+        return type;
+    }
+
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
@@ -94,7 +111,15 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
 
         String formattedDate = dateFormat.format(new Date());
 
-        holder.desc.setText("Создано:  " + formattedDate );
+        holder.desc.setText(String.format(context.getString(R.string.archive_item_date_text), formattedDate));
+
+        holder.itemsCount.setText("Записей:  " + dataObject.count );
+
+
+
+        if (dataObject.id.equals("last")) {
+            manageMoreView(holder.mainWrap, dataObject);
+        }
 
 
 
@@ -106,16 +131,20 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
         });
 
 
-
         final  View v = holder.settings;
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                activity.unarchive(dataObject);
+                View view = v.findViewById(R.id.position);
+                popupwindow_obj = popupDisplay(dataObject);
+                popupwindow_obj.showAsDropDown(view,0, 0);
+                clickActive = true;
             }
         });
+
+
+
 
 
 
@@ -124,6 +153,94 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+
+
+
+    private PopupWindow popupDisplay(final DataObject dataObject) { // disply designing your popoup window
+
+        final PopupWindow popupWindow = new PopupWindow(context); // inflet your layout or diynamic add view
+
+        View view;
+
+        LayoutInflater inflater = (LayoutInflater)   context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        view = inflater.inflate(R.layout.popup_actions_archive, null);
+
+
+        View edit = view.findViewById(R.id.edit);
+        View archive = view.findViewById(R.id.archive);
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickActionPopup(dataObject, ACTION_UPDATE);
+            }
+        });
+
+        archive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickActionPopup(dataObject, ACTION_ARCHIVE);
+            }
+        });
+
+
+
+        popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        popupWindow.setFocusable(true);
+
+        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(view.getMeasuredHeight());
+
+
+        popupWindow.setContentView(view);
+
+
+        return popupWindow;
+    }
+
+
+
+    private void clickActionPopup(final DataObject dataObject, final String type) {
+
+        clickActive = false;
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // String id =  vocab.sectionTags.get(act);
+
+                activity.performAction(dataObject, type);
+
+                popupwindow_obj.dismiss();
+                clickActive = true;
+
+            }
+        }, 80);
+
+    }
+
+    private void manageMoreView(View view, DataObject dataObject) {
+
+        View wrapper = view.findViewById(R.id.openMoreWrap);
+        TextView moreTitle = view.findViewById(R.id.openMoreTxt);
+
+        moreTitle.setText(dataObject.title);
+
+        if (dataObject.info.equals("hide")) {
+            wrapper.setVisibility(View.GONE);
+        } else {
+            wrapper.setVisibility(View.VISIBLE);
+
+        }
     }
 
 

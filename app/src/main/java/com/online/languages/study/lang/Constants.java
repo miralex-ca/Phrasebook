@@ -208,5 +208,9 @@ public class Constants {
     public static final String UCAT_PARAM_BOOKMARK_ON = "bookmarkon";
     public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";
 
+    public static final int UCAT_WIDGET_LIMIT = 6;
+    public static final int UCAT_LIST_LIMIT = 20;
+    public static final int NOTES_LIST_LIMIT = 4;
+
 
 }

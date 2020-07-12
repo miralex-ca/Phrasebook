@@ -13,7 +13,10 @@
     <integer name="edit_grammar_length">25</integer>
     <integer name="edit_info_length">300</integer>
 
+    <integer name="starred_preview_limit">4</integer>
+    <integer name="bookmarks_preview_limit">3</integer>
 
+    <integer name="limit_lines_option_less">3</integer>
 
 
 </resources>

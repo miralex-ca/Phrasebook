@@ -24,6 +24,7 @@ import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
 import static com.online.languages.study.lang.Constants.CAT_SPEC_TEXT;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
 public class OpenActivity  {
 
@@ -136,7 +137,8 @@ public class OpenActivity  {
         //callSubActivity(i, navStructure, sectionID, catID);
 
         Intent i = createIntent(context, CatSimpleListActivity.class);
-        callActivity( catIntent(i, catID, title, "pers") );
+        i.putExtra(Constants.EXTRA_SECTION_ID, sectionID);
+        callActivity( catIntent(i, catID, title, PARAM_EMPTY) );
 
     }
 

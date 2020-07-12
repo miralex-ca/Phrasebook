@@ -13,6 +13,12 @@
     android:gravity="center_horizontal"
     >
 
+
+    <RelativeLayout
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <RelativeLayout
         android:layout_marginTop="15dp"
         android:paddingTop="35dp"
@@ -33,6 +39,8 @@
                 android:nestedScrollingEnabled="false"
 
                  />
+
+    </RelativeLayout>
 
     </RelativeLayout>
 

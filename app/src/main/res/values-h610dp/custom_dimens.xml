@@ -13,16 +13,21 @@
     <dimen name="_detail_image_height">460dp</dimen>
     <dimen name="_detail_image_appbar_height">280dp</dimen>
 
-    <dimen name="_detail_card_height">440dp</dimen>
+
+
+    <integer name="detail_card_height_big">440</integer>
+    <dimen name="_detail_card_height">350dp</dimen>
+
+
     <dimen name="_detail_appbar_height">250dp</dimen>
 
     <integer name="_search_dialog_height">430</integer>
     <integer name="_search_dialog_img_height">260</integer>
 
-    <dimen name="_flash_card_height">340dp</dimen>
+    <dimen name="_flash_card_height">410dp</dimen>
     <dimen name="_flash_text_box_height">120dp</dimen>
     <dimen name="_flash_translate_box_height">160dp</dimen>
-    <dimen name="_flash_translate_box_mirror_height">90dp</dimen>
+    <dimen name="_flash_translate_box_mirror_height">120dp</dimen>
     <dimen name="_flash_text_box_mirror_height">110dp</dimen>
     <dimen name="_flash_text_wrap_mirror_height">0dp</dimen>
 
@@ -49,7 +54,15 @@
     <dimen name="_ex_link_padding_top">14dp</dimen>
     <dimen name="_ex_link_padding_btm">16dp</dimen>
 
+    <dimen name="_ex_link_padding_top_inline">12dp</dimen>
+    <dimen name="_ex_link_padding_btm_inline">14dp</dimen>
+
     <string name="section_content_title_short">Содержание раздела</string>
+
+    <integer name="starred_preview_limit">5</integer>
+    <integer name="bookmarks_preview_limit">4</integer>
+
+    <integer name="limit_lines_option_less">4</integer>
 
 
 </resources>

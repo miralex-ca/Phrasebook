@@ -244,14 +244,29 @@ public class NoteActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void finish() {
+
+
+        if (source.equals("search"))  {
+            Intent returnIntent = new Intent();
+            setResult(RESULT_OK,returnIntent);
+            returnIntent.putExtra("position", getIntent().getIntExtra("position", 0));
+        }
+
+        super.finish();
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_note, menu);
 
         if (source.equals("search")) {
-            menu.findItem(R.id.edit_note).setVisible(false);
-            menu.findItem(R.id.delete_note).setVisible(false);
+           // menu.findItem(R.id.edit_note).setVisible(false);
+            //menu.findItem(R.id.delete_note).setVisible(false);
         }
 
         return true;
@@ -269,7 +284,7 @@ public class NoteActivity extends BaseActivity {
 
         builder.setMessage("\nУдалить заметку?\n");
 
-        builder.setCancelable(false);
+        builder.setCancelable(true);
 
         builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
             @Override

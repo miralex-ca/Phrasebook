@@ -119,8 +119,9 @@ public class StarredTabOne extends Fragment {
 
         starredCount.setText(count);
 
-        int displayLimit = 6;
-        if (getTabType () == 2) displayLimit = 5;
+        int displayLimit = getActivity().getResources().getInteger(R.integer.starred_preview_limit);
+
+        if (getTabType () == 2) displayLimit = getActivity().getResources().getInteger(R.integer.bookmarks_preview_limit);;
 
         if (words.size() < displayLimit) displayLimit = words.size();
 

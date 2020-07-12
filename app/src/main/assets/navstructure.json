@@ -17,6 +17,12 @@
       "categories":
       [
 
+        {"parent": "root", "type": "simple", "id": "20010010", "title": "Тестовая тема 60", "review":  "false"},
+
+        {"parent": "root", "type": "simple", "id": "20010020", "title": "Тестовая тема 90", "review":  "false"},
+
+
+
         {"parent": "root", "type": "set", "id": "set_1_1", "title": "Словарь"},
 
         {"parent": "root", "type": "simple", "id": "10010010", "title": "Общение", "image":  "cat/contact_cat.png","review":  "true"},

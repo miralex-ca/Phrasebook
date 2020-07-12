@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/easy_mode"
+        android:orderInCategory="150"
+        android:icon="?attr/iconSchool"
+        android:title="@string/menu_easy_mode"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/sort_from_menu"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_sort"
+        android:visible="false"
+        android:title="@string/menu_sort"
+        app:showAsAction="ifRoom" />
+
+
+
+    <item
+        android:id="@+id/list_layout"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_view_list_big"
+        android:title="@string/menu_layout"
+        app:showAsAction="ifRoom" />
+
+
+
+    <item
+        android:visible="false"
+        android:icon="@drawable/ic_edit"
+        android:id="@+id/edit_from_menu"
+        android:orderInCategory="150"
+        android:title="Редактировать"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/info_from_menu"
+        android:orderInCategory="100"
+        android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+
+
+    <group android:checkableBehavior="all">
+        <item
+            android:icon="@drawable/ic_bookmark"
+            android:id="@+id/bookmark"
+            android:orderInCategory="100"
+            android:title="@string/menu_item_bookmark"
+            android:checked="false"
+            app:showAsAction="never" />
+    </group>
+
+
+    <item
+        android:id="@+id/card_from_menu"
+        android:orderInCategory="100"
+        android:title="@string/title_card_txt"
+        app:showAsAction="never" />
+
+
+
+
+
+
+</menu>

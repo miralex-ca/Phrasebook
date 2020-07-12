@@ -75,6 +75,8 @@ import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
+import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
+import static com.online.languages.study.lang.Constants.UCAT_WIDGET_LIMIT;
 
 
 public class HomeFragment2 extends Fragment   {
@@ -96,6 +98,8 @@ public class HomeFragment2 extends Fragment   {
 
     String[] icons;
     AlertDialog alert;
+
+    View openMoreWrap;
 
     Uri uri;
 
@@ -127,6 +131,9 @@ public class HomeFragment2 extends Fragment   {
 
 
         View openUcatList = rootView.findViewById(R.id.extToList);
+        openMoreWrap = rootView.findViewById(R.id.openMoreWrap);
+
+        View openMore = rootView.findViewById(R.id.openMore);
 
         openUcatList.setOnClickListener(new View.OnClickListener() {
 
@@ -135,6 +142,15 @@ public class HomeFragment2 extends Fragment   {
                 openUcatList();
             }
         });
+
+        openMore.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                openUcatList();
+            }
+        });
+
 
         icons = getResources().getStringArray(R.array.icon_pics_list);
         showSavedIcon();
@@ -186,7 +202,8 @@ public class HomeFragment2 extends Fragment   {
 
     public void updateList() {
 
-        catsList  = dataManager.getUcatsList();
+        catsList  = checkLimits(dataManager.getUcatsList());
+
         adapter = new EditUCatsListAdapter(getActivity(), catsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -195,6 +212,36 @@ public class HomeFragment2 extends Fragment   {
         checkCounts();
 
     }
+
+
+    private ArrayList<DataObject> checkLimits(ArrayList<DataObject> list) {
+
+        int limit = UCAT_WIDGET_LIMIT;
+
+        if (list.size() > limit) {
+            list = new ArrayList<>(list.subList(0, limit));
+
+            displayOpenMore(true);
+        } else {
+            displayOpenMore(false);
+        }
+
+        return  list;
+
+    }
+
+    private void displayOpenMore(boolean show) {
+
+        if (show) {
+            openMoreWrap.setVisibility(View.VISIBLE);
+        } else {
+            openMoreWrap.setVisibility(View.GONE);
+        }
+
+
+    }
+
+
 
 
     private void checkCounts() {

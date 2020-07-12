@@ -35,6 +35,7 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, desc;
         ImageView image, star, gIcon, iIcon, noteIcon;
+        View wrapper;
 
         public MyViewHolder(View view) {
             super(view);
@@ -46,6 +47,7 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
             gIcon = view.findViewById(R.id.gIcon);
             iIcon = view.findViewById(R.id.iIcon);
             noteIcon = view.findViewById(R.id.noteIcon);
+            wrapper = view.findViewById(R.id.wrapper);
         }
     }
 
@@ -61,8 +63,11 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.search_item, parent, false);
+
+
         return new MyViewHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -107,9 +112,13 @@ public class SearchDataAdapter extends RecyclerView.Adapter<SearchDataAdapter.My
                 .into(holder.image);
 
 
-
         if (theme.equals("westworld")) {
             holder.image.setColorFilter(Color.argb(255, 50, 250, 240), PorterDuff.Mode.MULTIPLY);
+        }
+
+        if (dataItem.type.equals("missing")) {
+            holder.wrapper.setVisibility(View.GONE);
+            holder.wrapper.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
         }
 
 

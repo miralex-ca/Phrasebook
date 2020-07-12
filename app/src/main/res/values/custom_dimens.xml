@@ -2,7 +2,12 @@
 <resources>
 
 
-    <string name="dimen_size">default</string>
+
+    <string name="dimen_size" translatable="false">default</string>
+
+    <string name="width" translatable="false">smallest</string>
+    <integer name="width_level">1</integer>
+
 
     <dimen name="_tab_width">0dp</dimen>
 
@@ -28,7 +33,10 @@
     <dimen name="_image_list_pic_height">110dp</dimen>
 
 
-    <dimen name="_dialog_card_height">440dp</dimen>
+    <integer name="detail_card_height_big">440</integer>
+    <dimen name="_detail_card_height">350dp</dimen>
+
+    <dimen name="_dialog_card_height">400dp</dimen>
     <dimen name="_dialog_card_img_height">200dp</dimen>
 
     <dimen name="_dialog_result_height">460dp</dimen>
@@ -43,8 +51,13 @@
     <dimen name="_ex_link_padding_left">0dp</dimen>
     <dimen name="_ex_link_padding_right">0dp</dimen>
 
-    <dimen name="_ex_link_padding_top">14dp</dimen>
-    <dimen name="_ex_link_padding_btm">16dp</dimen>
+    <dimen name="_ex_link_padding_top">10dp</dimen>
+    <dimen name="_ex_link_padding_btm">12dp</dimen>
+
+    <dimen name="_ex_link_padding_top_inline">9dp</dimen>
+    <dimen name="_ex_link_padding_btm_inline">11dp</dimen>
+
+
 
     <dimen name="_ex_links_icon_margin_right">6dp</dimen>
 
@@ -128,7 +141,6 @@
     <dimen name="_detail_card_width_min">98%</dimen>
 
 
-    <dimen name="_detail_card_height">400dp</dimen>
     <dimen name="_detail_image_height">400dp</dimen>
     <dimen name="_detail_image_appbar_height">240dp</dimen>
 
@@ -160,7 +172,7 @@
 
 
     <!--  flashcard dimens -->
-    <dimen name="_flash_card_height">290dp</dimen>
+    <dimen name="_flash_card_height">360dp</dimen>
 
     <dimen name="_flash_text_box_height">100dp</dimen>
     <dimen name="_flash_translate_box_height">140dp</dimen>
@@ -182,7 +194,6 @@
     <integer name="f_item_txt_size_norm">24</integer>
     <integer name="f_item_txt_size_medium">23</integer>
     <integer name="f_item_txt_size_small">22</integer>
-
     <integer name="f_item_txt_size_smallest">21</integer>
 
 
@@ -270,7 +281,7 @@
     <integer name="_ex_text_long_num_sw720">70</integer>
     <integer name="_ex_text_long_num_sw600">50</integer>
 
-    <dimen name="_cat_stat_title_txt_size">15sp</dimen>
+    <dimen name="_cat_stat_title_txt_size">18sp</dimen>
     <dimen name="_cat_stat_title_txt_left">22dp</dimen>
 
 

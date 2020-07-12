@@ -96,7 +96,7 @@
             android:summary="@string/set_data_mode_summary"
             android:entries="@array/set_data_mode_list"
             android:entryValues="@array/set_data_mode_values"
-            android:defaultValue="@string/set_data_mode_default"
+            android:defaultValue="@string/set_data_mode_default_value"
             android:dialogTitle="@string/set_data_mode_dialog_title" />
 
 

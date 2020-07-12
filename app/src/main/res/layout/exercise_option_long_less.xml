@@ -3,7 +3,7 @@
 <RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:text="@string/ex_option_foo"
 
-    android:maxLines="4"
+    android:maxLines="@integer/limit_lines_option_less"
     android:ellipsize="end"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

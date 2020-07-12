@@ -149,9 +149,11 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_NOTE_STATUS = "note_status";
     private static final String KEY_NOTE_PARAMS = "note_params";
     private static final String KEY_NOTE_FILTER = "note_filter";
+    private static final String KEY_NOTE_PARENT = "note_parent";
+    private static final String KEY_NOTE_ORDER = "note_order";
     private static final String KEY_NOTE_CREATED = "note_created";
     private static final String KEY_NOTE_UPDATED = "note_updated";
-
+    private static final String KEY_NOTE_UPDATED_SORT = "note_updated_sort";
 
     //// user cats table columns
     private static final String KEY_UCAT_PRIMARY_ID = "ucat_primary_id";
@@ -164,6 +166,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UCAT_FILTER = "ucat_filter";
     private static final String KEY_UCAT_PARAMS = "ucat_params";
     private static final String KEY_UCAT_PARENT = "ucat_parent";
+    private static final String KEY_UCAT_ORDER = "ucat_order";
     private static final String KEY_UCAT_CREATED = "ucat_created";
     private static final String KEY_UCAT_UPDATED = "ucat_updated";
     private static final String KEY_UCAT_UPDATED_SORT = "ucat_updated_sort";
@@ -181,6 +184,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UDATA_IMAGE = "udata_image";
     private static final String KEY_UDATA_STATUS = "udata_status";
     private static final String KEY_UDATA_FILTER = "udata_filter";
+    private static final String KEY_UDATA_ORDER = "udata_order";
     private static final String KEY_UDATA_CREATED = "udata_created";
     private static final String KEY_UDATA_UPDATED = "udata_updated";
     private static final String KEY_UDATA_UPDATED_SORT = "udata_updated_sort";
@@ -252,13 +256,15 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_NOTE_TITLE + " TEXT,"
             + KEY_NOTE_TEXT + " TEXT,"
             + KEY_NOTE_ICON+ " TEXT,"
-
             + KEY_NOTE_INFO + " TEXT,"
             + KEY_NOTE_STATUS + " TEXT,"
             + KEY_NOTE_PARAMS + " TEXT,"
             + KEY_NOTE_FILTER + " TEXT,"
+            + KEY_NOTE_PARENT + " TEXT,"
+            + KEY_NOTE_ORDER + " INTEGER,"
             + KEY_NOTE_CREATED + " INTEGER,"
-            + KEY_NOTE_UPDATED + " INTEGER"
+            + KEY_NOTE_UPDATED + " INTEGER,"
+            + KEY_NOTE_UPDATED_SORT + " INTEGER"
             + ")";
 
 
@@ -273,6 +279,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UCAT_FILTER + " TEXT,"
             + KEY_UCAT_PARAMS + " TEXT,"
             + KEY_UCAT_PARENT + " TEXT,"
+            + KEY_UCAT_ORDER + " INTEGER,"
             + KEY_UCAT_CREATED + " INTEGER,"
             + KEY_UCAT_UPDATED + " INTEGER,"
             + KEY_UCAT_UPDATED_SORT + " INTEGER"
@@ -291,6 +298,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UDATA_IMAGE + " TEXT,"
             + KEY_UDATA_STATUS + " TEXT,"
             + KEY_UDATA_FILTER + " TEXT,"
+            + KEY_UDATA_ORDER + " INTEGER,"
             + KEY_UDATA_CREATED + " INTEGER,"
             + KEY_UDATA_UPDATED + " INTEGER,"
             + KEY_UDATA_UPDATED_SORT + " INTEGER"
@@ -353,8 +361,10 @@ public class DBHelper extends SQLiteOpenHelper {
         cntx = context;
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(context);
-        data_mode = Integer.parseInt(appSettings.getString(SET_DATA_MODE, String.valueOf(DATA_MODE_DEFAULT+1))); ///TODO check for improvement
 
+        String modeLevel = appSettings.getString(SET_DATA_MODE, cntx.getResources().getString(R.string.set_data_mode_default_value));
+
+        data_mode = Integer.parseInt(modeLevel); ///TODO check for improvement
 
         speaking_mode = appSettings.getBoolean("set_speak", true);
 
@@ -927,6 +937,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.close();
 
+        String idPrefix = id+"_%";
+
+        db.delete(TABLE_TESTS_DATA, KEY_TEST_TAG +" LIKE ?", new String[]{idPrefix});
 
         db.delete(TABLE_UCAT_UDATA, KEY_UDC_UCAT_ID +" = ?",  new String[] { id });
 
@@ -1351,10 +1364,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
     public void createNote(NoteData note) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1482,7 +1491,8 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         NoteData note = new NoteData();
-        note.title = "not_found";
+        note.title = "";
+        note.status = "not_found";
 
         //Toast.makeText(cntx, "ID: " + id, Toast.LENGTH_SHORT).show();
 
@@ -1492,7 +1502,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         if (cursor.moveToFirst() ) {
+            note.status = "";
             note  = getNoteFromCursor(cursor);
+
         }
 
         cursor.close();
@@ -1650,7 +1662,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private void setCatResult(SQLiteDatabase db, String cat_id, int tests_num) {
 
         int progress = 0;
-        String idPrefix = cat_id+"%";
+        String idPrefix = cat_id+"_%";
 
         Cursor cursor = db.query(TABLE_TESTS_DATA,  null,
                 KEY_TEST_TAG +" LIKE ?", new String[] { idPrefix },
@@ -1687,6 +1699,7 @@ public class DBHelper extends SQLiteOpenHelper {
             if (exist) {
                 db.update(TABLE_CAT_DATA, initialValues, KEY_CAT_ID+"=?", new String[] {cat_id});
             } else {
+                if (!cat_id.contains(UC_PREFIX))
                 db.insert(TABLE_CAT_DATA, null, initialValues);
             }
 
@@ -2011,7 +2024,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String notesQuery = "SELECT * FROM " +TABLE_NOTES_DATA
-                +" WHERE  ("+KEY_NOTE_TITLE+" LIKE '%"+searchTerm+"%' OR "+KEY_NOTE_TEXT+" LIKE '%" + searchTerm+"%')";
+                +" WHERE  ("+KEY_NOTE_TITLE+" LIKE '%"+searchTerm+"%' OR "+KEY_NOTE_TEXT+" LIKE '%" + searchTerm+"%')"
+                +"ORDER BY "+KEY_NOTE_CREATED + " DESC";
 
 
         Cursor notesCursor = db.rawQuery(notesQuery, null);
@@ -3728,11 +3742,14 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_NOTE_TEXT, noteData.noteContent);
         values.put(KEY_NOTE_ICON, noteData.noteIcon);
         values.put(KEY_NOTE_INFO, noteData.noteInfo);
-        values.put(KEY_NOTE_STATUS, noteData.noteFilter);
-        values.put(KEY_NOTE_PARAMS, noteData.noteFilter);
+        values.put(KEY_NOTE_STATUS, noteData.noteStatus);
+        values.put(KEY_NOTE_PARAMS, noteData.noteParams);
         values.put(KEY_NOTE_FILTER, noteData.noteFilter);
+        values.put(KEY_NOTE_PARENT, noteData.noteParent);
+        values.put(KEY_NOTE_ORDER, noteData.noteOrder);
         values.put(KEY_NOTE_CREATED, noteData.noteCreated);
         values.put(KEY_NOTE_UPDATED, noteData.noteUpdated);
+        values.put(KEY_NOTE_UPDATED_SORT, noteData.noteUpdatedSort);
 
         db.insert(TABLE_NOTES_DATA, null, values);
     }
@@ -3773,6 +3790,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_UDATA_IMAGE, uDataItem.udataImage);
         values.put(KEY_UDATA_STATUS, uDataItem.udataStatus);
         values.put(KEY_UDATA_FILTER, uDataItem.udataFilter);
+        values.put(KEY_UDATA_ORDER, uDataItem.udataOrder);
         values.put(KEY_UDATA_CREATED, uDataItem.udataCreated);
         values.put(KEY_UDATA_UPDATED, uDataItem.udataUpdated);
         values.put(KEY_UDATA_UPDATED_SORT, uDataItem.udataUpdatedSort);
@@ -3808,7 +3826,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(KEY_UCAT_PRIMARY_ID, userDataCat.ucatPrimaryId);
         values.put(KEY_UCAT_ID, userDataCat.ucatId);
-
         values.put(KEY_UCAT_TITLE, userDataCat.ucatTitle);
         values.put(KEY_UCAT_DESC, userDataCat.ucatDesc);
         values.put(KEY_UCAT_ICON, userDataCat.ucatIcon);
@@ -3817,6 +3834,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_UCAT_FILTER, userDataCat.ucatFilter);
         values.put(KEY_UCAT_PARAMS, userDataCat.ucatParams);
         values.put(KEY_UCAT_PARENT, userDataCat.ucatParent);
+        values.put(KEY_UCAT_ORDER, userDataCat.ucatCreated);
         values.put(KEY_UCAT_CREATED, userDataCat.ucatCreated);
         values.put(KEY_UCAT_UPDATED, userDataCat.ucatUpdated);
         values.put(KEY_UCAT_UPDATED_SORT, userDataCat.ucatUpdatedSort);

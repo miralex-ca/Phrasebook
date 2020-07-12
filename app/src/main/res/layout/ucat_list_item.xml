@@ -5,25 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cat_item_wrap"
 
-
     android:gravity="center_horizontal"
 
     >
 
 
-
-    <RelativeLayout
-
-        android:padding="0dp"
-
-        style="@style/CardWrapper.Width"
-        android:layout_height="match_parent">
-
-
         <RelativeLayout
-
-            android:paddingLeft="@dimen/card_wrap_padding"
-            android:paddingRight="@dimen/card_wrap_padding"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -348,9 +335,6 @@
             </android.support.v7.widget.CardView>
 
         </RelativeLayout>
-
-
-    </RelativeLayout>
 
 
 </RelativeLayout>

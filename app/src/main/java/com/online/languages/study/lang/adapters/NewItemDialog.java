@@ -173,12 +173,6 @@ public class NewItemDialog {
                             }
                         })
 
-                .setNeutralButton(" ",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        })
 
 
                 .setView(content);
@@ -187,6 +181,14 @@ public class NewItemDialog {
 
         final AlertDialog alert = builder.create();
         alert.show();
+
+
+        alert.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                activity.speakText("");
+            }
+        });
 
 
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
@@ -216,6 +218,8 @@ public class NewItemDialog {
                         activity.saveDataItem(getDataFromForm());
                     }
 
+
+                    activity.speakText("");
                     alert.dismiss();
                 }
             }

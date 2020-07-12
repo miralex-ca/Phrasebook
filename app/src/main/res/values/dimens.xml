@@ -159,6 +159,9 @@
     <dimen name="ex_link_padding_top">@dimen/_ex_link_padding_top</dimen>
     <dimen name="ex_link_padding_btm">@dimen/_ex_link_padding_btm</dimen>
 
+    <dimen name="ex_link_padding_top_inline">@dimen/_ex_link_padding_top_inline</dimen>
+    <dimen name="ex_link_padding_btm_inline">@dimen/_ex_link_padding_btm_inline</dimen>
+
     <dimen name="ex_links_icon_margin_right">@dimen/_ex_links_icon_margin_right</dimen>
 
     <!-- flashcard to exercises -->

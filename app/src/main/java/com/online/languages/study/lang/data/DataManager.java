@@ -419,6 +419,7 @@ public class DataManager {
 
         int outcome = dbHelper.setBookmark(catId, sectionId, param );
 
+
         if (outcome == OUTCOME_LIMIT) {
 
             Toast.makeText(context, R.string.starred_limit, Toast.LENGTH_SHORT).show(); /// TODO check for bookmarks
@@ -535,7 +536,6 @@ public class DataManager {
     }
 
 
-
     public String[] getTotalCounts() {
 
         return dbHelper.getUCatsCounts();
@@ -629,9 +629,7 @@ public class DataManager {
             if (!found) {
                 newParamString = newParamString + "&" + value;
             }
-
         }
-
 
         return newParamString;
 
@@ -652,16 +650,9 @@ public class DataManager {
 
     public boolean easyMode(String categoryId) {
 
-
-
         boolean easyMode = easyMode();
 
         if (categoryId.contains(UC_PREFIX) || categoryId.equals(STARRED_CAT_TAG)) easyMode = false;
-
-
-
-
-
 
         Toast.makeText(context, "Levels: " + dataLevels, Toast.LENGTH_SHORT).show();
 
@@ -680,8 +671,6 @@ public class DataManager {
 
         return easyMode;
     }
-
-
 
 
 

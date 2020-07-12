@@ -5,6 +5,7 @@ public class NoteData {
     public String title ="";
     public String content ="";
     public String image ="";
+    public String info ="";
 
     public String status = "";
     public String params = "";

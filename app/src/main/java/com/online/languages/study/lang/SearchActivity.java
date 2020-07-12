@@ -13,6 +13,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.GestureDetector;
@@ -21,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,7 @@ import com.online.languages.study.lang.adapters.SearchDataAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.data.NoteData;
 
 import java.util.ArrayList;
 
@@ -64,6 +67,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
     NavStructure navStructure;
     OpenActivity openActivity;
+    RelativeLayout listWrapper;
 
 
     @Override
@@ -97,6 +101,7 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         result = findViewById(R.id.searcTxt);
 
         loadMoreTxt = findViewById(R.id.loadMoreTxt);
+        listWrapper = findViewById(R.id.list_wrapper);
 
         recyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -106,7 +111,10 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setSelected(true);
-        ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+
+        //ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+
+        //((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new ClickListener() {
             @Override
@@ -214,9 +222,55 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
         if (requestCode == 2) {
 
-            //Toast.makeText(this, "Update note", Toast.LENGTH_SHORT).show();
+
+            if(resultCode ==  RESULT_OK){
+
+                int result = data.getIntExtra("position", -1);
+
+                //Toast.makeText(this, "Update note" + result, Toast.LENGTH_SHORT).show();
+
+                updateListItem(result);
+
+            }
+
 
         }
+    }
+
+    private void updateListItem(int position) {
+
+            checkNoteFromSearch(displayData.get(position));
+
+            if (displayData.get(position).type.equals("missing")) {
+                recyclerView.setMinimumHeight(recyclerView.getHeight());
+            }
+
+            adapter.notifyItemChanged(position);
+
+
+    }
+
+    private void setWrapContentHeight(View view) { //// should aply to the target view parent
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        view.setLayoutParams(params);
+
+    }
+
+    public DataItem checkNoteFromSearch(DataItem dataItem) {
+
+        NoteData note = dbHelper.getNote(dataItem.id);
+
+        if (note.status.equals("not_found")) dataItem.type = "missing";
+
+        dataItem.item = note.title;
+        dataItem.info = note.content;
+        dataItem.image = note.image;
+
+
+        return dataItem;
     }
 
 
@@ -226,9 +280,12 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
         if (dataItem.filter.contains(NOTE_TAG)) {
 
+
+
             Intent i = new Intent(this, NoteActivity.class);
             i.putExtra(EXTRA_NOTE_ID, dataItem.id );
             i.putExtra("source", "search" );
+            i.putExtra("position", position);
             startActivityForResult(i, 2);
             openActivity.pageTransition();
 
@@ -311,6 +368,8 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
 
 
     public void results(String query) {
+
+        setWrapContentHeight(recyclerView);
 
         data = dbHelper.searchData(navStructure.categories, query);
         data = dbHelper.checkStarredList(data);

@@ -24,13 +24,11 @@
     <dimen name="_home_card_desc_txt_size_4">14sp</dimen>
     <integer name="_home_card_desc_maxlines_4">3</integer>
 
-
     <dimen name="_gallery_item_pic_size">70dp</dimen>
 
-
     <integer name="detail_card_height_big">450</integer>
-
     <dimen name="_detail_card_height">350dp</dimen>
+    
     <dimen name="_detail_appbar_height">250dp</dimen>
 
     <integer name="_search_dialog_height">350</integer>
@@ -50,12 +48,12 @@
     <dimen name="_cat_item_title_txt_size_norm">20sp</dimen>
     <dimen name="_cat_item_info_txt_size">15sp</dimen>
 
-    <dimen name="_flash_card_height">410dp</dimen>
+    <dimen name="_flash_card_height">480dp</dimen>
 
     <dimen name="_flash_text_box_height">200dp</dimen>
     <dimen name="_flash_translate_box_height">160dp</dimen>
 
-    <dimen name="_flash_translate_box_mirror_height">170dp</dimen>
+    <dimen name="_flash_translate_box_mirror_height">160dp</dimen>
     <dimen name="_flash_text_box_mirror_height">160dp</dimen>
 
     <dimen name="_flash_show_msg_txt_size">20sp</dimen>
@@ -149,6 +147,8 @@
     <dimen name="_stats_diagram_int_size">106dp</dimen>
 
     <dimen name="_cat_item_pic_size">48dp</dimen>
+
+
 
 
 </resources>

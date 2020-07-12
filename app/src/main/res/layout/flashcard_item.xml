@@ -129,7 +129,7 @@
                 android:gravity="center"
                 android:clickable="true"
                 android:textSize="20sp"
-                style="@style/fAnswerBox.Height"
+                style="@style/fAnswerBox"
 
                 android:paddingRight="@dimen/flash_txt_padding_side"
                 android:paddingLeft="@dimen/flash_txt_padding_side"

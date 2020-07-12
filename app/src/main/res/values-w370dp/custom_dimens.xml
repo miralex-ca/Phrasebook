@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <bool name="wide">true</bool>
+
+    <string name="width">normal</string>
+    <integer name="width_level">3</integer>
+
 
 </resources>

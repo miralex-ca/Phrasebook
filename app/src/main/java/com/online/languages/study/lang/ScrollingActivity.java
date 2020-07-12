@@ -186,10 +186,14 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         String gr = dataItem.grammar;
 
+        //Toast.makeText(this, "Len: " + gr.trim().length(), Toast.LENGTH_SHORT ).show();
+
+        View grammarBox = findViewById(R.id.grammarBox);
+
         if (gr.trim().length() > 0 ) {
-            grammar.setVisibility(View.VISIBLE);
+            grammarBox.setVisibility(View.VISIBLE);
         } else {
-            grammar.setVisibility(View.GONE);
+            grammarBox.setVisibility(View.GONE);
         }
 
         grammar.setTextSize(getGrammarTxtSize(gr.length(), transcript.length()));
@@ -507,12 +511,15 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
+
+
             }
             else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(installTTSIntent);
+
             }
         }
     }

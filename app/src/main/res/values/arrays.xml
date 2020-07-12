@@ -221,6 +221,7 @@
     <string-array name="note_pics_list">
         <item>empty.png</item>
         <item>note.png</item>
+        <item>text.png</item>
         <item>contacts.png</item>
         <item>travel.png</item>
         <item>city.png</item>
@@ -229,13 +230,17 @@
         <item>nature.png</item>
         <item>health.png</item>
         <item>house.png</item>
-        <item>school.png</item>
         <item>basketball.png</item>
-        <item>laptop.png</item>
-        <item>book-open.png</item>
+        <item>school.png</item>
+        <item>info.png</item>
+        <item>check.png</item>
+        <item>minus.png</item>
         <item>misc.png</item>
         <item>pine-tree.png</item>
-        <item>info.png</item>
+        <item>calendar.png</item>
+        <item>laptop.png</item>
+
+
     </string-array>
 
 
@@ -260,10 +265,10 @@
 
     <string-array name="icon_pics_list">
         <item>///android_asset/pics/icons/account.png</item>
-        <item>///android_asset/pics/icons/nature.png</item>
-        <item>///android_asset/pics/icons/health.png</item>
-        <item>///android_asset/pics/icons/school.png</item>
-        <item>///android_asset/pics/icons/basketball.png</item>
+        <item>///android_asset/pics/icons/account_red.png</item>
+        <item>///android_asset/pics/icons/account_blue.png</item>
+        <item>///android_asset/pics/icons/account_gray.png</item>
+        <item>///android_asset/pics/icons/account_green.png</item>
         <item>///android_asset/pics/icons/empty.png</item>
     </string-array>
 

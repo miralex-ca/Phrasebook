@@ -85,10 +85,10 @@ class ExercisePagerAdapter extends PagerAdapter {
         a.recycle();
 
 
-        exOptTitleShort = context.getResources().getString(R.string.ex_opt_short);
-        exOptTitleLong = context.getResources().getString(R.string.ex_opt_long);
+        exOptTitleShort = context.getResources().getString(R.string.ex_opt_short);  /// used for option with short text
+        exOptTitleLong = context.getResources().getString(R.string.ex_opt_long);    /// used for normal option
 
-        exOptTitleLongLess = context.getResources().getString(R.string.ex_opt_long_less);
+        exOptTitleLongLess = context.getResources().getString(R.string.ex_opt_long_less);  /// used for long option with fewer number of options
 
         textLongNum = context.getResources().getInteger(R.integer.ex_text_long_num);
 
@@ -299,22 +299,10 @@ class ExercisePagerAdapter extends PagerAdapter {
         }
 
 
-        if (type == -1) {
+        int questLongTextSize = textLongSize(text);
+        textView.setTextSize(questLongTextSize);
 
-            int questShortTextSize = context.getResources().getInteger(R.integer.ex_quest_short_txt_size_small);
 
-            if (text.length() > 18) {
-                questShortTextSize = context.getResources().getInteger(R.integer.ex_quest_short_txt_size_norm);
-            }
-
-            textView.setTextSize(questShortTextSize);
-
-        } else {
-
-            int questLongTextSize = textLongSize(text);
-            textView.setTextSize(questLongTextSize);
-
-        }
 
     }
 
@@ -323,8 +311,8 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         int tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_norm);
         if ( textLength > 60) tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_medium);
-        if ( textLength > 150 ) tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_small);
-        if ( textLength > 200 ) tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_smallest);
+        if ( textLength > 80 ) tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_small);
+        if ( textLength > 100 ) tSize = context.getResources().getInteger(R.integer.ex_quest_txt_size_smallest);
 
         return tSize;
     }
@@ -368,7 +356,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         }
 
         if ( textLength > context.getResources().getInteger(R.integer.ex_opt_txt_length_longest) ) {
-            if (!lessOptions) tSize = context.getResources().getInteger(R.integer.ex_opt_txt_size_smallest);
+             tSize = context.getResources().getInteger(R.integer.ex_opt_txt_size_smallest);
         }
 
         return tSize;

@@ -135,6 +135,7 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         exButtonShow = appSettings.getBoolean("card_buttons_show", true);
 
 
+
         String cat = "dates";
         DataManager dataManager = new DataManager(this);
 
@@ -177,6 +178,14 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
     public void onBackPressed() {
         super.onBackPressed();
         openActivity.pageBackTransition();
+    }
+
+
+    @Override
+    public void finish() {
+
+        if (speaking) speakWords("");
+        super.finish();
     }
 
 

@@ -234,6 +234,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             newItem.setAlpha(0.3f);
             listParams.setVisibility(View.INVISIBLE);
 
+
         } else {
 
             categoryObject  = dataManager.dbHelper.getUCat(categoryObject.id);
@@ -301,17 +302,20 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         if (catBtnAction) {
 
-            String title = titleEditText.getText().toString();
+            String title = textSanitizer(titleEditText.getText().toString());
 
             if (title.trim().equals("")) {
+
                 infoDialog.simpleDialog("Сохранение темы", "\nВведите название темы.\n");
 
             } else {
                 catBtnAction = false;
 
+                String[] catData = dataManager.dbHelper.createUCat(textSanitizer(title));
 
-                String[] catData = dataManager.dbHelper.createUCat(title);
-                categoryObject.title = title;
+                categoryObject.title = textSanitizer(title);
+
+                titleEditText.setText(categoryObject.title);
 
                 showCreated(catData);
 

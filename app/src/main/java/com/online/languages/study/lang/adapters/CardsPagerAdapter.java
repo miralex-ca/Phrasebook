@@ -111,6 +111,8 @@ public class CardsPagerAdapter extends PagerAdapter {
 
         String transcriptTxt = dataManager.getTranscriptFromData(wordData) ;
 
+        if (context.getResources().getBoolean(R.bool.small_height)) transcriptTxt = "";
+
         if (transcriptTxt.equals("")) {
 
             transcript.setVisibility(View.GONE);
@@ -227,6 +229,8 @@ public class CardsPagerAdapter extends PagerAdapter {
         int tSize = context.getResources().getInteger(R.integer.f_item_txt_size_norm);
         if ( textLength > 20) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_medium);
         if ( textLength > 60) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_small);
+        if ( textLength > 75) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_smallest);
+
         return tSize;
     }
 
@@ -236,8 +240,8 @@ public class CardsPagerAdapter extends PagerAdapter {
         int tSize = context.getResources().getInteger(R.integer.f_item_txt_size_medium);
 
         if ( textLength > 30) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_small);
-
         if ( textLength > 75) tSize = context.getResources().getInteger(R.integer.f_item_txt_size_smallest);
+
         return tSize;
     }
 

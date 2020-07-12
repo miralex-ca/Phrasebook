@@ -329,15 +329,12 @@ public class MainActivity extends BaseActivity
         statsFragment.setArguments(bundle);
         galleryFragment.setArguments(bundle);
 
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                noteFabClick();
             }
         });
-
 
     }
 
@@ -1222,6 +1219,11 @@ public class MainActivity extends BaseActivity
             Fragment fragment = fragmentManager.findFragmentByTag("starred");
             if (fragment != null) {
                 fragment.onActivityResult(requestCode, resultCode, data);
+            }
+
+            Fragment fragmentNote = fragmentManager.findFragmentByTag("notes");
+            if (fragmentNote != null) {
+                fragmentNote.onActivityResult(requestCode, resultCode, data);
             }
         }
 

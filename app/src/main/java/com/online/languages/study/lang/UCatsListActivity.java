@@ -18,14 +18,17 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UCatsListAdapter;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.data.NoteData;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,7 @@ import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
+import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 
 
 public class UCatsListActivity extends BaseActivity {
@@ -51,11 +55,11 @@ public class UCatsListActivity extends BaseActivity {
 
     RecyclerView recyclerView;
 
-    RecyclerView.LayoutManager mLayoutManager;
+    LinearLayoutManager mLayoutManager;
 
     ArrayList<BookmarkItem> dataItems;
 
-    RelativeLayout itemListWrap;
+
 
     NavStructure navStructure;
 
@@ -74,6 +78,9 @@ public class UCatsListActivity extends BaseActivity {
     String listLayout;
 
     MenuItem archiveMenuIcon;
+
+    boolean cutList;
+    RelativeLayout helperView;
 
 
     @Override
@@ -101,8 +108,9 @@ public class UCatsListActivity extends BaseActivity {
 
         setTitle("Мой словарь");
 
+        cutList = true;
 
-        itemListWrap = findViewById(R.id.itemListWrap);
+        helperView = findViewById(R.id.list_wrapper);
 
 
         dataManager = new DataManager(this, 1);
@@ -110,7 +118,8 @@ public class UCatsListActivity extends BaseActivity {
         navStructure = dataManager.getNavStructure();
 
         recyclerView = findViewById(R.id.recycler_view);
-
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
 
         updateList();
 
@@ -130,20 +139,115 @@ public class UCatsListActivity extends BaseActivity {
             }
         });
 
+
+        openListView();
+
     }
+
+
+    private void openListView() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                helperView.setVisibility(View.VISIBLE);
+
+            }
+        }, 30);
+
+    }
+
+
+    public void openCompleteList(View view) {
+
+        cutList = false;
+
+        updateList();
+
+        helperView.clearAnimation();
+        setWrapContentHeight(helperView);
+    }
+
 
 
     public void updateList() {
 
-        catsList  = dataManager.getUcatsList();
+
+        catsList  = getCatList();
+
         adapter = new UCatsListAdapter(this, catsList, this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
+
+
         recyclerView.setAdapter(adapter);
 
         checkArchiveIcon();
 
+
+
     }
+
+
+    public ArrayList<DataObject> getCatList() {
+
+        setWrapContentHeight(helperView);
+
+
+       ArrayList<DataObject> completeList = dataManager.getUcatsList();
+
+       ArrayList<DataObject> displayList = new ArrayList<>(completeList);
+
+
+       int limit = UCAT_LIST_LIMIT;
+
+
+       if (completeList.size() > limit) {
+          if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
+       }
+
+       return addLast(displayList, completeList);
+
+    }
+
+
+    private ArrayList<DataObject> addLast(ArrayList<DataObject> displayList, ArrayList<DataObject> completeList) {
+
+        DataObject lastObject = checkMoreItem(displayList, completeList);
+
+        displayList.add( lastObject );
+
+
+        return displayList;
+    }
+
+
+    private DataObject checkMoreItem(ArrayList<DataObject> displayList, ArrayList<DataObject> completeList) {
+
+        DataObject lastObject = new DataObject();
+        lastObject.id = "last";
+
+
+        int dif = completeList.size() - displayList.size();
+
+        if (dif > 0) {
+            lastObject.title = "Загрузить ещё " + dif;
+            lastObject.info = "show";
+        } else {
+            lastObject.info = "hide";
+        }
+
+        return  lastObject;
+
+    }
+
+    private void updateMoreIem() {
+
+        adapter.notifyItemChanged(catsList.size()-1);
+
+    }
+
+
+
 
     private void checkArchiveIcon() {
 
@@ -158,7 +262,6 @@ public class UCatsListActivity extends BaseActivity {
            }
 
        }
-
 
     }
 
@@ -268,21 +371,11 @@ public class UCatsListActivity extends BaseActivity {
     }
 
 
-    public void changeOrder(final DataObject dataObject ) {
-
-        dataManager.dbHelper.updateUCatSortTime(dataObject);
-        catsList  = dataManager.getUcatsList();
-
-        adapter = new UCatsListAdapter(this, catsList, this);
-        recyclerView.setAdapter(adapter);
-
-    }
-
 
     private void checkListAnimation() {
 
 
-        ArrayList<DataObject> newCatlist = dataManager.getUcatsList();
+        ArrayList<DataObject> newCatlist = getCatList();
 
 
         for (DataObject catData: catsList) catData.status = STATUS_DELETED;
@@ -292,6 +385,8 @@ public class UCatsListActivity extends BaseActivity {
         for (int i = 0; i < catsList.size(); i ++ ) {
 
             DataObject catData = catsList.get(i);
+
+
 
             for (int n = 0; n < newCatlist.size(); n ++ ) {
 
@@ -312,23 +407,34 @@ public class UCatsListActivity extends BaseActivity {
 
                     }
 
+                    if (catData.id.equals("last")) {
+                        catData.title  = newCat.title;
+                        catData.info = newCat.info;
+                    }
+
+
                     break;
                 }
             }
+
         }
 
 
 
         for(int i = 0; i < catsList.size(); i++) {
 
+
             DataObject dataObject = catsList.get(i);
 
+
             if (dataObject.status.equals(STATUS_UPDATED)) {
+                setHR( recyclerView, helperView);
                 catsList.remove(i);
                 adapter.notifyItemRemoved(i); /// normal
             }
 
             if (dataObject.status.equals(STATUS_DELETED)) {
+                setHR( recyclerView, helperView);
                 catsList.remove(i);
                 adapter.notifyItemRemoved(i);
 
@@ -338,7 +444,6 @@ public class UCatsListActivity extends BaseActivity {
         for(int i = 0; i < newCatlist.size(); i++) {
 
             DataObject dataObject = newCatlist.get(i);
-
 
             if (dataObject.status.equals(STATUS_UPDATED)) {
                 if (i > (newCatlist.size()-1 )) {
@@ -352,7 +457,65 @@ public class UCatsListActivity extends BaseActivity {
 
         }
 
+
+        for(int i = 0; i < newCatlist.size(); i++) {
+
+            DataObject dataObject = newCatlist.get(i);
+
+            if (dataObject.status.equals(STATUS_NEW)) {
+
+                catsList.add(i,dataObject);
+                adapter.notifyItemInserted(i);
+            }
+
+        }
+
+
+        updateMoreIem();
+
     }
+
+
+
+
+    private void setHR(final RecyclerView recycler, final RelativeLayout helper) {
+
+        recycler.setMinimumHeight(recycler.getHeight());
+        helper.setMinimumHeight(recycler.getHeight());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recycler.setMinimumHeight(0);
+
+            }
+        }, 450);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                int h = recycler.getHeight();
+                ResizeHeight resizeHeight = new ResizeHeight(helper, h);
+                resizeHeight.setDuration(300);
+                helper.startAnimation(resizeHeight);
+
+
+            }
+        }, 550);
+
+    }
+
+
+    private void setWrapContentHeight(View view) { //// should aply to the target view parent
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+        view.setLayoutParams(params);
+
+    }
+
 
 
     public void openNewCat( ) {
@@ -401,7 +564,6 @@ public class UCatsListActivity extends BaseActivity {
             case R.id.archive_icon:
                 openArchive();
                 return true;
-
             case R.id.menu_ucat_layout:
                 listLayoutDialog();
                 return true;
