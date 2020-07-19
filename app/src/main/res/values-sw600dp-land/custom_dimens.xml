@@ -7,4 +7,12 @@
 
     <dimen name="detail_appbar_height">@dimen/detail_appbar_height_land</dimen>
 
+    <bool name="tablet_land">true</bool>
+
+
+    <color name="colorHomeTabBg_dark">#282828</color>
+    <color name="colorHomeTabBg_smoky">#374757</color>
+    <color name="colorHomeTabBg_ww">#191924</color>
+
+
 </resources>

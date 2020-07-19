@@ -54,6 +54,7 @@ public class CatTabFragment1 extends Fragment {
 
     int showStatus;
     String theme;
+    boolean open;
 
 
 
@@ -67,6 +68,8 @@ public class CatTabFragment1 extends Fragment {
         showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         dataManager = new DataManager(getActivity());
+
+        open = true;
 
 
         String forceStatus = "no";
@@ -103,6 +106,7 @@ public class CatTabFragment1 extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
+
                 View animObj = view.findViewById(R.id.animObj);
                 onItemClick(animObj, position);
             }
@@ -230,12 +234,27 @@ public class CatTabFragment1 extends Fragment {
     }
 
     private void onItemClick(final View view, final int position) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ((CatActivity)getActivity()).showAlertDialog(view, position);
-            }
-        }, 50);
+
+        if (open) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ((CatActivity)getActivity()).showAlertDialog(view, position);
+                }
+            }, 50);
+
+            open = false;
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    open = true;
+                }
+            }, 200);
+
+        }
+
     }
 
 
@@ -260,6 +279,7 @@ public class CatTabFragment1 extends Fragment {
 
 
     public void checkStarred(final int result){   /// check just one item
+        open = true;
         data = dataManager.checkDataItemsData(data);
         new Handler().postDelayed(new Runnable() {
             @Override

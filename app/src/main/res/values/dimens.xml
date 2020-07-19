@@ -311,6 +311,7 @@
 
 
     <dimen name="nav_icon_dialog_size">32dp</dimen>
+    <dimen name="account_icon_height">100dp</dimen>
 
     <style name="NavDialogItem" >
         <item name="android:paddingLeft">30dp</item>

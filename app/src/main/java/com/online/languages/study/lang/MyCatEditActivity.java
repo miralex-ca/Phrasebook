@@ -31,6 +31,7 @@ import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.NewItemDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.PremiumDialog;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
@@ -47,6 +48,8 @@ import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
+import static com.online.languages.study.lang.Constants.UDATA_LIMIT;
+import static com.online.languages.study.lang.Constants.UDATA_LIMIT_UNPAID;
 
 public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnInitListener  {
 
@@ -84,7 +87,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     EditDataListAdapter adapter;
     RecyclerView recyclerView;
 
-
     DataObject categoryObject;
 
     MenuItem deleteMenuItem;
@@ -119,6 +121,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         newItemDialog = new NewItemDialog(this, MyCatEditActivity.this);
 
         dataManager = new DataManager(this);
+
+        dataManager.plus_Version = dataManager.checkPlusVersion();
+
         infoDialog = new InfoDialog(this);
 
         catBtnAction = true;
@@ -368,9 +373,55 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void editItem() {
         if (newDataItemAction) {
-            newItemDialog.showCustomDialog("Новая запись");
-            titleEditText.clearFocus();
+
+            boolean limit = checkUcatLimits();
+
+            if (limit) {
+
+                if (!dataManager.plus_Version) {
+
+                    PremiumDialog premiumDialog = new PremiumDialog(this);
+
+                    premiumDialog.createDialog(
+                            getString(R.string.udata_limit_dialog_title_unpaid),
+                            String.format(getString(R.string.udata_limit_dialog_text_unpaid), String.valueOf(UDATA_LIMIT_UNPAID))
+
+                    );
+
+                } else {
+
+                    infoDialog.simpleDialog(
+                            getString(R.string.udata_limit_dialog_title),
+                            String.format(getString(R.string.udata_limit_dialog_text), String.valueOf(UDATA_LIMIT))
+                    );
+                }
+
+            } else {
+                newItemDialog.showCustomDialog("Новая запись");
+                titleEditText.clearFocus();
+            }
+
         }
+    }
+
+
+    private boolean checkUcatLimits() {
+
+        boolean reachedLimit = true;
+
+        int size = dataManager.checkUcatLimit(categoryObject.id);
+
+        int limit = UDATA_LIMIT;
+
+        if (!dataManager.plus_Version) {
+            limit = UDATA_LIMIT_UNPAID;
+        }
+
+        reachedLimit = size >= limit;
+
+
+        return reachedLimit;
+
     }
 
 

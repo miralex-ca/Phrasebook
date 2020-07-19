@@ -164,6 +164,7 @@ public class MainActivity extends BaseActivity
 
         multipane = getResources().getBoolean(R.bool.multipane);
 
+        homeFrag = "all";
 
 
         openActivity = new OpenActivity(this);
@@ -668,12 +669,14 @@ public class MainActivity extends BaseActivity
                 findViewById(R.id.nav_footer).setVisibility(View.VISIBLE);
             }
 
-            if (fab != null) {
-                manageNoteFab(activePosition);
-            }
+
 
             manageBarShadow(activePosition);
 
+        }
+
+        if (fab != null) {
+            manageNoteFab(activePosition);
         }
 
     }

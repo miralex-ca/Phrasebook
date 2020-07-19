@@ -301,9 +301,11 @@ public class NoteEditActivity extends BaseActivity {
 
 
 
+        int spanCount = getResources().getInteger(R.integer.img_picker_span);
+
         imgPickerAdapter = new ImgPickerAdapter(this, pics, picIndex);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 4);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, spanCount);
 
         recyclerView.setLayoutManager(mLayoutManager);
 

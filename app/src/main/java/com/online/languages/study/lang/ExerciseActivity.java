@@ -1140,5 +1140,16 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     }
 
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        if(myTTS != null){
+            myTTS.shutdown();
+        }
+    }
+
+
 
 }

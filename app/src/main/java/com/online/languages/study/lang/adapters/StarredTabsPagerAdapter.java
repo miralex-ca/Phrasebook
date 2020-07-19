@@ -1,5 +1,6 @@
 package com.online.languages.study.lang.adapters;
 
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -73,8 +74,16 @@ public class StarredTabsPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
+
         registeredFragments.remove(position);
+
         super.destroyItem(container, position, object);
+    }
+
+    @Override
+    public void restoreState(Parcelable arg0, ClassLoader arg1) {
+        //do nothing here! no call to super.restoreState(arg0, arg1);
+        // http://speakman.net.nz/blog/2014/02/20/a-bug-in-and-a-fix-for-the-way-fragmentstatepageradapter-handles-fragment-restoration/
     }
 
 }

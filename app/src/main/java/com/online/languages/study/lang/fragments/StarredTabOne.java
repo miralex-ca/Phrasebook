@@ -50,6 +50,8 @@ public class StarredTabOne extends Fragment {
         if (getTabType() == 2) rootView = inflater.inflate(R.layout.fragment_starred_tab_2, container, false);
 
 
+        words = new ArrayList<>();
+
         text = rootView.findViewById(R.id.starredWords);
         dataManager = new DataManager(getActivity(), 1);
         starredCount = rootView.findViewById(R.id.starred_count);

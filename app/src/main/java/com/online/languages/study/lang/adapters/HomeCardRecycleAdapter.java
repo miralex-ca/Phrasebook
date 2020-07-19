@@ -61,12 +61,32 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         View itemView;
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_grid_item, parent, false);
-        if (type == 2) {
+        if (viewType == 2) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_card_item, parent, false);
         }
 
+        if (viewType == 3) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_grid_item_image, parent, false);
+        }
+
+
+
         return new MyViewHolder(itemView);
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        int viewType = 1;
+
+        if (type == 2)  viewType = 2;
+        if (type == 3)  viewType = 3;
+
+
+        return viewType;
+    }
+
+
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -79,12 +99,28 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         if (shortDesc) holder.desc.setText(section.desc_short);
         else holder.desc.setText(section.desc);
 
-        Picasso.with( context )
-                .load("file:///android_asset/pics/"+ section.image )
-                .fit()
-                .centerCrop()
-                .transform(new RoundedCornersTransformation(5,3))
-                .into(holder.icon);
+
+        if (type == 1) {
+
+            Picasso.with( context )
+                    .load("file:///android_asset/pics/"+ section.image )
+                    .fit()
+                    .centerCrop()
+                    .transform(new RoundedCornersTransformation(5,5))
+                    .into(holder.icon);
+        }
+
+        if (type == 3) {
+
+            Picasso.with( context )
+                    .load("file:///android_asset/pics/"+ section.image )
+                    .fit()
+                    .centerCrop()
+                    //.transform(new RoundedCornersTransformation(5,5))
+                    .transform(new RoundedTransformation(0,0))
+                    .into(holder.icon);
+        }
+
 
 
         if (type == 2) {

@@ -118,6 +118,7 @@
     <color name="colorUcatFamiliar_dark">#58C2FC</color>
     <color name="colorUcatMastered_dark">#63FF73</color>
 
+    <color name="colorHomeTabBg_dark">@color/colorPrimary_dark</color>
 
     <dimen name="card_margin_default_dark">0dp</dimen>
 
@@ -257,7 +258,8 @@
         <item name="colorCreateFabBtn">@color/colorCreateFabBtn_dark</item>
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon_dark</item>
 
-        <item name="colorHomeTabBg">?attr/colorPrimary</item>
+        <item name="colorHomeTabBg">@color/colorHomeTabBg_dark</item>
+
         <item name="colorHomeTabTxt">?attr/colorTabIndicator</item>
         <item name="colorHomeTabTxtInactive">?attr/colorSecondaryText</item>
 

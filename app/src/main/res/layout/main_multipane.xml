@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="?attr/colorBaseBg"
     >
 
     <RelativeLayout
@@ -35,6 +36,8 @@
     </android.support.design.widget.AppBarLayout>
 
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -52,6 +55,39 @@
         </RelativeLayout>
 
     </RelativeLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+
+        app:theme="@style/fabStyle"
+
+        android:id="@+id/fab_add"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/fab_margin"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="40dp"
+
+        app:layout_anchor="@+id/fab_anchor"
+
+        app:layout_anchorGravity="right|top"
+
+        app:fabCustomSize="56dp"
+        app:maxImageSize="33dp"
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_plus_fab"
+        />
+
+    <RelativeLayout
+
+        android:paddingTop="40dp"
+        android:layout_gravity="bottom"
+        android:id="@+id/fab_anchor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </android.support.design.widget.CoordinatorLayout>

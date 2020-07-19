@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
     SharedPreferences appSettings;
 
     DataManager dataManager;
+    boolean tablet;
 
 
     public HomeFragment() {
@@ -59,6 +60,8 @@ public class HomeFragment extends Fragment {
 
         ArrayList<NavSection> navSections = checkSections(navStructure.sections);
 
+        tablet = getResources().getBoolean(R.bool.tablet);
+
         recyclerView = rootView.findViewById(R.id.recycler_view);
         recyclerViewCards = rootView.findViewById(R.id.recycler_view_cards);
 
@@ -76,9 +79,23 @@ public class HomeFragment extends Fragment {
             recyclerViewCards.setVisibility(View.GONE);
         }
 
-        mAdapter = new HomeCardRecycleAdapter(getActivity(), navSections, theme, recycleType);
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1, LinearLayoutManager.VERTICAL, false);
+        int spanCount = 1;
+        if (tablet) {
+            spanCount = 3;
+            recycleType = 3;
+
+            if (getResources().getBoolean(R.bool.tablet_land)) {
+                spanCount = 2;
+                recycleType = 1;
+            }
+        }
+
+
+        mAdapter = new HomeCardRecycleAdapter(getActivity(), navSections, theme, recycleType);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), spanCount, LinearLayoutManager.VERTICAL, false);
+
+
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(mAdapter);
 

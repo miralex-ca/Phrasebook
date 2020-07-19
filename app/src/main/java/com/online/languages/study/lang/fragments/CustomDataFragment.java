@@ -32,12 +32,16 @@ public class CustomDataFragment extends Fragment {
     ArrayList<DataItem> data = new ArrayList<>();
     CustomDataListAdapter adapter;
     DataManager dataManager;
+    boolean open;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_custom_cat, container, false);
+
+        open = true;
 
         dataManager = new DataManager(getActivity());
 
@@ -142,12 +146,26 @@ public class CustomDataFragment extends Fragment {
     }
 
     private void onItemClick(final View view, final int position) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ((CustomDataActivity)getActivity()).showDetailDialog(view, position);
-            }
-        }, 50);
+
+        if (open) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ((CustomDataActivity) getActivity()).showDetailDialog(view, position);
+                }
+            }, 50);
+
+            open = false;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    open = true;
+                }
+            }, 200);
+
+        }
+
     }
 
 

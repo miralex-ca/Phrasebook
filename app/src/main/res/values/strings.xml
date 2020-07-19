@@ -622,4 +622,12 @@
     <string name="archive_item_date_short">Дата: %s</string>
 
 
+
+    <string name="udata_limit_dialog_title">Достигнут лимит</string>
+    <string name="udata_limit_dialog_text">В тему можно добавить не более %s записей.</string>
+
+
+    <string name="udata_limit_dialog_title_unpaid">Достигнут лимит</string>
+    <string name="udata_limit_dialog_text_unpaid">В тему можно добавить не более %s записей.</string>
+
 </resources>

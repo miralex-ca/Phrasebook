@@ -9,8 +9,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -102,7 +104,12 @@ public class NotesFragment extends Fragment {
 
         adapter = new NotesAdapter(getActivity(), notes, NotesFragment.this);
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        int spanCount = 1;
+        if (getResources().getBoolean(R.bool.tablet))  spanCount = 2;
+
+        RecyclerView.LayoutManager mLayoutManager = new StaggeredGridLayoutManager(spanCount,1);
+
+
         recyclerView.setLayoutManager(mLayoutManager);
 
         recyclerView.setAdapter(adapter);

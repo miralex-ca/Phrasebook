@@ -27,6 +27,7 @@ import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
+import static com.online.languages.study.lang.Constants.PRO;
 import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS;
 import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
 import static com.online.languages.study.lang.Constants.SET_GALLERY;
@@ -34,6 +35,7 @@ import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
 import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
+import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
@@ -47,6 +49,7 @@ public class DataManager {
     public ArrayList<NavCategory> navCategories;
     public SharedPreferences appSettings;
     private Computer computer;
+    public  boolean plus_Version;
 
 
     public DataManager(Context _context) {
@@ -95,6 +98,9 @@ public class DataManager {
     public ArrayList<DataItem> getSectionDBList(NavSection navSection) {
         return dbHelper.getAllDataItems(navSection.uniqueCategories);
     }
+
+
+
 
 
     public String getTranscriptType() {
@@ -498,7 +504,6 @@ public class DataManager {
 
 
     public NavStructure getNavStructure() {
-
         DataFromJson dataFromJson = new DataFromJson(context);
         return dataFromJson.getStructure();
     }
@@ -551,6 +556,54 @@ public class DataManager {
         return list;
 
     }
+
+    public boolean checkPlusVersion() {
+
+        boolean plusVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
+
+        if (PRO) plusVersion = true;
+
+        return plusVersion;
+    }
+
+
+    public ArrayList<DataObject> getUcatsListForUnpaid(String parent) {
+
+
+        int limit = UCATS_UNPAID_LIMIT;
+
+        ArrayList<DataObject> list = dbHelper.getUCatsListUnpaid(limit);
+
+
+        ArrayList<DataObject> cutList = new ArrayList<>();
+
+        if (parent.equals("root")) {
+
+            for (DataObject ucat: list) {
+
+                if (!ucat.parent.contains(UC_PREFIX)) {
+
+                    cutList.add(ucat);
+
+                }
+            }
+
+        } else {
+
+            for (DataObject ucat: list) {
+                if (ucat.parent.equals(parent)) cutList.add(ucat);
+            }
+
+        }
+
+        //Toast.makeText(context, "Check: " + cutList.size(), Toast.LENGTH_SHORT).show();
+
+        cutList = dbHelper.getUCatsListItemsCount(cutList);
+
+        return cutList;
+
+    }
+
 
 
     public ArrayList<DataObject> getUcatsForArchive() {
@@ -672,6 +725,12 @@ public class DataManager {
         return easyMode;
     }
 
+
+    public int checkUcatLimit(String ucat_id) {
+
+        return  dbHelper.checkUcaDataListSize(ucat_id);
+
+    }
 
 
 

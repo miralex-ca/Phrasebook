@@ -272,13 +272,14 @@ public class DBImport {
             noteData.noteIcon = line.get(4);
             noteData.noteInfo = line.get(5);
             noteData.noteStatus = line.get(6);
-            noteData.noteParams = line.get(7);
-            noteData.noteFilter = line.get(8);
-            noteData.noteParent = line.get(9);
-            noteData.noteOrder = line.get(10);
-            noteData.noteCreated = line.get(11);
-            noteData.noteUpdated = line.get(12);
-            noteData.noteUpdatedSort = line.get(13);
+            noteData.noteType = line.get(7);
+            noteData.noteParams = line.get(8);
+            noteData.noteFilter = line.get(9);
+            noteData.noteParent = line.get(10);
+            noteData.noteOrder = line.get(11);
+            noteData.noteCreated = line.get(12);
+            noteData.noteUpdated = line.get(13);
+            noteData.noteUpdatedSort = line.get(14);
 
             noteDataTable.lines.add(noteData);
         }
@@ -352,13 +353,14 @@ public class DBImport {
             userDataCat.ucatIcon = line.get(4);
             userDataCat.ucatInfo = line.get(5);
             userDataCat.ucatStatus = line.get(6);
-            userDataCat.ucatFilter = line.get(7);
-            userDataCat.ucatParams = line.get(8);
-            userDataCat.ucatParent = line.get(9);
-            userDataCat.ucatOrder= line.get(10);
-            userDataCat.ucatCreated = line.get(11);
-            userDataCat.ucatUpdated = line.get(12);
-            userDataCat.ucatUpdatedSort  = line.get(13);
+            userDataCat.ucatType = line.get(7);
+            userDataCat.ucatFilter = line.get(8);
+            userDataCat.ucatParams = line.get(9);
+            userDataCat.ucatParent = line.get(10);
+            userDataCat.ucatOrder= line.get(11);
+            userDataCat.ucatCreated = line.get(12);
+            userDataCat.ucatUpdated = line.get(13);
+            userDataCat.ucatUpdatedSort  = line.get(14);
 
             userDataCatsTable.lines.add(userDataCat);
         }
@@ -445,6 +447,7 @@ public class DBImport {
         public String noteIcon;
         public String noteInfo;
         public String noteStatus;
+        public String noteType;
         public String noteParams;
         public String noteFilter;
         public String noteParent;
@@ -509,6 +512,7 @@ public class DBImport {
         public String ucatIcon;
         public String ucatInfo;
         public String ucatStatus;
+        public String ucatType;
         public String ucatFilter;
         public String ucatParams;
         public String ucatParent;

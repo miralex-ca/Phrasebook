@@ -62,6 +62,8 @@ public class UserListTabFragment1 extends Fragment {
     Boolean showDialog = true;
     Boolean comeBack = true;
 
+    boolean open;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class UserListTabFragment1 extends Fragment {
 
         theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
 
+        open = true;
 
         listWrapper = rootView.findViewById(R.id.listContainer);
         listWrapperCompact = rootView.findViewById(R.id.listContainerCompact);
@@ -233,12 +236,23 @@ public class UserListTabFragment1 extends Fragment {
 
 
     private void onItemClick(final View view, final int position) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ((UserListActivity)getActivity()).showAlertDialog(view);
-            }
-        }, 50);
+
+        if (open) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ((UserListActivity)getActivity()).showAlertDialog(view);
+                }
+            }, 50);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    open = true;
+                }
+            }, 200);
+        }
     }
 
 

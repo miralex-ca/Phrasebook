@@ -85,6 +85,8 @@
 
     <color name="colorMapTitleBox_ww">#78021223</color>
 
+    <color name="colorHomeTabBg_ww">@color/colorPrimary_ww</color>
+
 
     <style name="WestworldTheme.TransparentStatus" />
 
@@ -187,6 +189,8 @@
 
         <item name="colorCreateFabBtn">?attr/colorAccent</item>
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon_smoky</item>
+        <item name="colorHomeTabBg">@color/colorHomeTabBg_ww</item>
+
 
     </style>
 

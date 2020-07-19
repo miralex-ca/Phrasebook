@@ -18,5 +18,9 @@
 
     <integer name="limit_lines_option_less">3</integer>
 
+    <integer name="icon_dialog_height">340</integer>
+
+    <integer name="img_picker_span">4</integer>
+
 
 </resources>

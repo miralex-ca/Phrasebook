@@ -27,8 +27,9 @@
     <dimen name="_gallery_item_pic_size">70dp</dimen>
 
     <integer name="detail_card_height_big">450</integer>
+
     <dimen name="_detail_card_height">350dp</dimen>
-    
+
     <dimen name="_detail_appbar_height">250dp</dimen>
 
     <integer name="_search_dialog_height">350</integer>

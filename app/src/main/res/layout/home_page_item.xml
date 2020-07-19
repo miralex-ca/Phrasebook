@@ -280,8 +280,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-
-
                             <android.support.v7.widget.CardView
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
@@ -337,6 +335,66 @@
                         </RelativeLayout>
 
 
+                        <RelativeLayout
+
+                            android:id="@+id/openUnpaidWrap"
+                            android:visibility="gone"
+                            android:layout_marginTop="18dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                app:cardElevation="0dp"
+                                android:layout_gravity="bottom|center"
+                                app:contentPadding="0dp"
+                                app:cardCornerRadius="18dp"
+
+                                >
+
+                                <RelativeLayout
+
+                                    android:onClick="openGetPremium"
+
+                                    android:id="@+id/openUnpaid"
+                                    android:focusable="true"
+                                    android:clickable="true"
+                                    android:background="?android:attr/selectableItemBackground"
+
+                                    android:paddingLeft="16dp"
+                                    android:paddingRight="16dp"
+                                    android:paddingBottom="8dp"
+                                    android:paddingTop="8dp"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+
+                                    <TextView
+                                        android:layout_centerVertical="true"
+                                        android:id="@+id/openPlusTxt"
+                                        android:fontFamily="sans-serif-light"
+                                        android:textStyle="bold"
+                                        android:textSize="18sp"
+                                        android:textColor="?attr/colorAccent"
+                                        android:text="Больше с версией PLUS"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+
+
+
+                                </RelativeLayout>
+
+                            </android.support.v7.widget.CardView>
+
+
+
+                        </RelativeLayout>
+
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -346,6 +404,7 @@
 
 
         </android.support.v7.widget.CardView>
+
 
         <View
             android:layout_width="match_parent"

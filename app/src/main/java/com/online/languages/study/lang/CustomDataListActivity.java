@@ -65,6 +65,7 @@ public class CustomDataListActivity extends BaseActivity {
     OpenActivity openActivity;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

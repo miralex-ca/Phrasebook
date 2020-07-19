@@ -577,5 +577,15 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         }
     }
 
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        if(myTTS != null){
+            myTTS.shutdown();
+        }
+    }
+
 
 }

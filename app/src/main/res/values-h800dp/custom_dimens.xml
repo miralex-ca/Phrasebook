@@ -31,7 +31,7 @@
     <integer name="_ex_quest_short_txt_size_small">24</integer>      <!-- ex2 -->
 
 
-    <dimen name="_flash_card_height">500dp</dimen>
+    <dimen name="_flash_card_height">570dp</dimen>
 
     <!-- dimen name="_flash_card_height">330dp</dimen -->
 
@@ -62,7 +62,7 @@
     <dimen name="_detail_image_height">500dp</dimen>
     <dimen name="_detail_image_appbar_height">320dp</dimen>
 
-    <dimen name="_detail_card_height">550dp</dimen>
+
     <dimen name="_detail_appbar_height">330dp</dimen>
 
     <integer name="_search_dialog_height">500</integer>

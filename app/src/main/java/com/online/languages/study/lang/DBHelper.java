@@ -147,6 +147,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_NOTE_ICON = "note_icon";
     private static final String KEY_NOTE_INFO = "note_info";
     private static final String KEY_NOTE_STATUS = "note_status";
+    private static final String KEY_NOTE_TYPE = "note_type";
     private static final String KEY_NOTE_PARAMS = "note_params";
     private static final String KEY_NOTE_FILTER = "note_filter";
     private static final String KEY_NOTE_PARENT = "note_parent";
@@ -162,6 +163,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_UCAT_DESC = "ucat_desc";
     private static final String KEY_UCAT_ICON = "ucat_icon";
     private static final String KEY_UCAT_INFO = "ucat_info";
+    private static final String KEY_UCAT_TYPE = "ucat_type";
     private static final String KEY_UCAT_STATUS = "ucat_status";
     private static final String KEY_UCAT_FILTER = "ucat_filter";
     private static final String KEY_UCAT_PARAMS = "ucat_params";
@@ -258,6 +260,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_NOTE_ICON+ " TEXT,"
             + KEY_NOTE_INFO + " TEXT,"
             + KEY_NOTE_STATUS + " TEXT,"
+            + KEY_NOTE_TYPE + " TEXT,"
             + KEY_NOTE_PARAMS + " TEXT,"
             + KEY_NOTE_FILTER + " TEXT,"
             + KEY_NOTE_PARENT + " TEXT,"
@@ -276,6 +279,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_UCAT_ICON+ " TEXT,"
             + KEY_UCAT_INFO + " TEXT,"
             + KEY_UCAT_STATUS + " TEXT,"
+            + KEY_UCAT_TYPE + " TEXT,"
             + KEY_UCAT_FILTER + " TEXT,"
             + KEY_UCAT_PARAMS + " TEXT,"
             + KEY_UCAT_PARENT + " TEXT,"
@@ -1183,6 +1187,23 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public int checkUcaDataListSize(String id) {
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_UCAT_UDATA,  null,
+                KEY_UDC_UCAT_ID +" = ? ",
+                new String[] { id }, null, null, null);
+
+        int count = cursor.getCount();
+
+        cursor.close();
+
+        return count;
+    }
+
+
     public String[] getUCatsCounts() {
 
 
@@ -1233,6 +1254,36 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
         return new String[] {String.valueOf(catCount), String.valueOf(itemsCount)};
+    }
+
+
+    public ArrayList<DataObject> getUCatsListUnpaid(int limit) {
+
+        ArrayList<DataObject> categories = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null, null, null, null, KEY_UCAT_UPDATED_SORT + " DESC", String.valueOf(limit));
+
+        try {
+            while (cursor.moveToNext()) {
+
+                DataObject category = new DataObject();
+                category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+                category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+                category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+                category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+
+                categories.add(category);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return categories;
     }
 
 
@@ -1616,6 +1667,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return count;
     }
+
+
 
 
 
@@ -3743,6 +3796,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_NOTE_ICON, noteData.noteIcon);
         values.put(KEY_NOTE_INFO, noteData.noteInfo);
         values.put(KEY_NOTE_STATUS, noteData.noteStatus);
+        values.put(KEY_NOTE_TYPE, noteData.noteType);
         values.put(KEY_NOTE_PARAMS, noteData.noteParams);
         values.put(KEY_NOTE_FILTER, noteData.noteFilter);
         values.put(KEY_NOTE_PARENT, noteData.noteParent);
@@ -3831,6 +3885,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_UCAT_ICON, userDataCat.ucatIcon);
         values.put(KEY_UCAT_INFO, userDataCat.ucatInfo);
         values.put(KEY_UCAT_STATUS, userDataCat.ucatStatus);
+        values.put(KEY_UCAT_TYPE, userDataCat.ucatType);
         values.put(KEY_UCAT_FILTER, userDataCat.ucatFilter);
         values.put(KEY_UCAT_PARAMS, userDataCat.ucatParams);
         values.put(KEY_UCAT_PARENT, userDataCat.ucatParent);

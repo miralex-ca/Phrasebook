@@ -144,5 +144,14 @@
     </style>
 
 
+    <dimen name="_cat_stat_title_txt_size">24sp</dimen>
+
+    <dimen name="account_icon_height">130dp</dimen>
+    <integer name="icon_dialog_height">400</integer>
+
+    <integer name="img_picker_span">5</integer>
+
+
+
 
 </resources>

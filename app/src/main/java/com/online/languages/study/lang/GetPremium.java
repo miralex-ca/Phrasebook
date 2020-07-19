@@ -1,5 +1,6 @@
 package com.online.languages.study.lang;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import com.online.languages.study.lang.util.SkuDetails;
 
 import java.util.Arrays;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class GetPremium extends BaseActivity {
 
     ThemeAdapter themeAdapter;
@@ -38,6 +41,9 @@ public class GetPremium extends BaseActivity {
     OpenActivity openActivity;
 
 
+    boolean appRestart;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -50,6 +56,8 @@ public class GetPremium extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_premium);
+
+        appRestart = false;
 
 
 
@@ -67,6 +75,8 @@ public class GetPremium extends BaseActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_toolbar);
 
 
         getPremiumMsg = findViewById(R.id.getPremiumMsg);
@@ -137,7 +147,6 @@ public class GetPremium extends BaseActivity {
     };
 
 
-
     public void purchase(View view) {
 
         if  (Constants.DEBUG) {
@@ -183,14 +192,38 @@ public class GetPremium extends BaseActivity {
     }
 
 
+    private void appRestart() {
+
+        Intent i = new Intent(this, AppStart.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+    }
+
+
+    @Override
+    public void finish() {
+
+        if (appRestart) {
+            appRestart();
+        }
+
+        super.finish();
+
+    }
+
+
     private void updateAfterPurchase() {
         showRes("Thank you!");
         getPremiumMsg.setVisibility(View.GONE);
         thanksMsg.setVisibility(View.VISIBLE);
         changeVersion(true);
 
+        appRestart = true;
+
         Intent returnIntent = new Intent();
         setResult(RESULT_OK,returnIntent);
+
+
     }
 
     public void showRes(String msg) {

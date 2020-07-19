@@ -116,6 +116,8 @@ public class UCatsArchiveActivity extends BaseActivity {
         dataManager = new DataManager(this, 1);
         dbHelper = dataManager.dbHelper;
 
+        dataManager.plus_Version = dataManager.checkPlusVersion();
+
         recyclerView = findViewById(R.id.recycler_view);
 
         updateList();
@@ -161,8 +163,6 @@ public class UCatsArchiveActivity extends BaseActivity {
 
     public void updateList() {
 
-
-
         catsList  = getCatList();
 
 
@@ -181,6 +181,13 @@ public class UCatsArchiveActivity extends BaseActivity {
 
 
         ArrayList<DataObject> completeList = dataManager.getUcatsForArchive();
+
+        if (!dataManager.plus_Version) {
+            completeList = dataManager.getUcatsListForUnpaid(PARAM_UCAT_ARCHIVE);
+        }
+
+
+
 
         ArrayList<DataObject> displayList = new ArrayList<>(completeList);
 

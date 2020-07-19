@@ -73,8 +73,10 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
+import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_WIDGET_LIMIT;
 
@@ -100,6 +102,9 @@ public class HomeFragment2 extends Fragment   {
     AlertDialog alert;
 
     View openMoreWrap;
+    View newCat;
+
+    View openPlusBtn;
 
     Uri uri;
 
@@ -112,13 +117,15 @@ public class HomeFragment2 extends Fragment   {
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
-        View newCat = rootView.findViewById(R.id.newCatBtn);
+        newCat = rootView.findViewById(R.id.newCatBtn);
 
         counts = rootView.findViewById(R.id.userCounts);
         itemsCount = rootView.findViewById(R.id.itemsCounts);
 
         dataManager = new DataManager(getActivity());
         openActivity = new OpenActivity(getActivity());
+
+        dataManager.plus_Version = dataManager.checkPlusVersion();
 
 
         newCat.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +139,7 @@ public class HomeFragment2 extends Fragment   {
 
         View openUcatList = rootView.findViewById(R.id.extToList);
         openMoreWrap = rootView.findViewById(R.id.openMoreWrap);
+        openPlusBtn = rootView.findViewById(R.id.openUnpaidWrap);
 
         View openMore = rootView.findViewById(R.id.openMore);
 
@@ -173,7 +181,6 @@ public class HomeFragment2 extends Fragment   {
 
 
 
-
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, final int position) {
@@ -202,7 +209,7 @@ public class HomeFragment2 extends Fragment   {
 
     public void updateList() {
 
-        catsList  = checkLimits(dataManager.getUcatsList());
+        catsList  = checkLimits( getList() );
 
         adapter = new EditUCatsListAdapter(getActivity(), catsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -211,6 +218,19 @@ public class HomeFragment2 extends Fragment   {
 
         checkCounts();
 
+    }
+
+
+    private ArrayList<DataObject> getList() {
+
+        ArrayList<DataObject> list = dataManager.getUcatsList();
+
+        if (!dataManager.plus_Version) {
+            list = dataManager.getUcatsListForUnpaid("root");
+
+        }
+
+        return list;
     }
 
 
@@ -229,6 +249,8 @@ public class HomeFragment2 extends Fragment   {
         return  list;
 
     }
+
+
 
     private void displayOpenMore(boolean show) {
 
@@ -251,6 +273,24 @@ public class HomeFragment2 extends Fragment   {
         counts.setText("Добавлено тем:  " + countsVaules[0]);
         itemsCount.setText("Добавлено записей:  " + countsVaules[1]);
 
+
+        if (!dataManager.plus_Version) {
+            manageUnpaidLimit(Integer.parseInt(countsVaules[0]));
+        }
+
+    }
+
+
+
+    private void manageUnpaidLimit(int listSize) {
+
+        if (listSize >= UCATS_UNPAID_LIMIT) {
+            newCat.setVisibility(View.GONE);
+            openPlusBtn.setVisibility(View.VISIBLE);
+        } else {
+            newCat.setVisibility(View.VISIBLE);
+            openPlusBtn.setVisibility(View.GONE);
+        }
     }
 
 
@@ -498,10 +538,13 @@ public class HomeFragment2 extends Fragment   {
 
         alert.show();
 
+        int dialogHeight = getActivity().getResources().getInteger(R.integer.icon_dialog_height);
+
+
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(alert.getWindow().getAttributes());
         int dialogWidth = lp.width;
-        alert.getWindow().setLayout(dialogWidth, dpToPixels(getActivity(), 340));
+        alert.getWindow().setLayout(dialogWidth, dpToPixels(getActivity(), dialogHeight));
 
     }
 

@@ -84,7 +84,7 @@ public class CatTabFragment2 extends Fragment {
         recyclerView = rootView.findViewById(R.id.ex_recycler_list);
 
         exAdapter = new ExRecycleAdapter(getActivity(), exLinkTitles, exLinkDesc, exResults, true);
-        exAdapter.matchLines = true;
+        if (!getResources().getBoolean(R.bool.tablet)) exAdapter.matchLines = true;
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
@@ -249,7 +249,7 @@ public class CatTabFragment2 extends Fragment {
 
         fillData();
         exAdapter = new ExRecycleAdapter(getActivity(), exLinkTitles, exLinkDesc, exResults, true);
-        exAdapter.matchLines = true;
+        if (!getResources().getBoolean(R.bool.tablet)) exAdapter.matchLines = true;
 
         recyclerView.setAdapter(exAdapter);
 

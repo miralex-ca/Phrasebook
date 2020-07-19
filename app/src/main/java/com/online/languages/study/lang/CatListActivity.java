@@ -64,6 +64,8 @@ public class CatListActivity extends BaseActivity {
 
     int adapterListType;
 
+    boolean open;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,9 @@ public class CatListActivity extends BaseActivity {
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
+
+        open = true;
+
 
         adapterListType = -1;
 
@@ -182,12 +187,24 @@ public class CatListActivity extends BaseActivity {
 
 
     private void onItemClick(final View view, final int position) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showAlertDialog(view, position);
-            }
-        }, 50);
+
+        if (open) {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    showAlertDialog(view, position);
+                }
+            }, 50);
+
+            open = false;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    open = true;
+                }
+            }, 200);
+        }
     }
 
     public void showAlertDialog(View view, int position) {
@@ -207,6 +224,8 @@ public class CatListActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        open = true;
+
         if (requestCode == 1) {
 
             if(resultCode == CatListActivity.RESULT_OK){

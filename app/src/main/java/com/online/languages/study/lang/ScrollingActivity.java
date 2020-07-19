@@ -172,8 +172,6 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         TextView trans = findViewById(R.id.itemTxtTrans);
 
-
-
         if (transcription) trans.setVisibility(View.GONE);
         else trans.setVisibility(View.VISIBLE);
 
@@ -235,9 +233,21 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
         if (speaking) {
-            Intent checkTTSIntent = new Intent();
-            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    Intent checkTTSIntent = new Intent();
+                    checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+
+                }
+            }, 100);
+
+
+
         }
 
         measureHeights();
@@ -271,8 +281,10 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private int getTextTxtSize(int textLength) {
 
-        int size = 25;
+        int size = 28;
 
+        if (textLength > 10) size = 27;
+        if (textLength > 15) size = 25;
         if (textLength > 20) size = 24;
         if (textLength > 40) size = 23;
         if (textLength > 50) size = 22;
@@ -284,8 +296,10 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private int getTextSmallerTxtSize(int textLength) {
 
-        int size = 25;
+        int size = 28;
 
+        if (textLength > 10) size = 27;
+        if (textLength > 15) size = 25;
         if (textLength > 20) size = 24;
         if (textLength > 40) size = 23;
         if (textLength > 50) size = 21;
@@ -537,6 +551,8 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
           //  speakBtn.setVisibility(View.VISIBLE);
         }
         else if (initStatus == TextToSpeech.ERROR) {
+
+            speakBtn.setVisibility(View.GONE);
             //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
         }
     }
@@ -609,6 +625,19 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         }
 
     }
+
+
+    @Override
+    protected void onStop()
+    {
+        super.onStop();
+
+        if(myTTS != null){
+            myTTS.shutdown();
+        }
+    }
+
+
 
 
 

@@ -24,9 +24,6 @@
     </android.support.design.widget.AppBarLayout>
 
 
-
-
-
     <android.support.v4.widget.NestedScrollView
 
 
@@ -40,9 +37,10 @@
         >
 
 
-        <RelativeLayout
+        <LinearLayout
             android:focusableInTouchMode="true"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/main_card_top"
@@ -51,11 +49,13 @@
             >
 
 
+
         <RelativeLayout
             android:gravity="center_horizontal"
             android:paddingBottom="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
 
             <RelativeLayout
                 android:visibility="gone"
@@ -77,10 +77,12 @@
             </RelativeLayout>
 
 
-        </RelativeLayout>
 
 
         </RelativeLayout>
+
+
+        </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
 

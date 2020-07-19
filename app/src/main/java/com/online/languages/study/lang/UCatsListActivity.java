@@ -20,7 +20,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.PremiumDialog;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UCatsListAdapter;
@@ -38,11 +40,13 @@ import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
+import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 
 
@@ -83,6 +87,12 @@ public class UCatsListActivity extends BaseActivity {
     RelativeLayout helperView;
 
 
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -116,6 +126,9 @@ public class UCatsListActivity extends BaseActivity {
         dataManager = new DataManager(this, 1);
         dbHelper = dataManager.dbHelper;
         navStructure = dataManager.getNavStructure();
+
+
+        dataManager.plus_Version = dataManager.checkPlusVersion();
 
         recyclerView = findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
@@ -193,7 +206,13 @@ public class UCatsListActivity extends BaseActivity {
         setWrapContentHeight(helperView);
 
 
-       ArrayList<DataObject> completeList = dataManager.getUcatsList();
+       ArrayList<DataObject> completeList;
+
+       if (!dataManager.plus_Version) {
+           completeList =   dataManager.getUcatsListForUnpaid("root");
+       } else {
+           completeList = dataManager.getUcatsList();
+       }
 
        ArrayList<DataObject> displayList = new ArrayList<>(completeList);
 
@@ -241,7 +260,6 @@ public class UCatsListActivity extends BaseActivity {
     }
 
     private void updateMoreIem() {
-
         adapter.notifyItemChanged(catsList.size()-1);
 
     }
@@ -252,6 +270,11 @@ public class UCatsListActivity extends BaseActivity {
     private void checkArchiveIcon() {
 
        int archiveSize = dataManager.getUcatsForArchive().size();
+
+       if (! dataManager.plus_Version) {
+
+           archiveSize = dataManager.getUcatsListForUnpaid(PARAM_UCAT_ARCHIVE).size();
+       }
 
        if (archiveMenuIcon != null) {
 
@@ -519,10 +542,46 @@ public class UCatsListActivity extends BaseActivity {
 
 
     public void openNewCat( ) {
+
+
+
+
+        if (!dataManager.plus_Version) {
+
+            String[] countsVaules = dataManager.getTotalCounts();
+
+            int listSize = Integer.parseInt(countsVaules[0]);
+
+            if (listSize >= UCATS_UNPAID_LIMIT) {
+
+                PremiumDialog infoDialog = new PremiumDialog(this);
+
+                infoDialog.createDialog("Версия PLUS", "\nДостигнут лимит тем обчной версии. Чтобы создавать больше тем, получите версию PLUS.\n");
+
+            } else {
+
+                createNewCat( );
+
+            }
+
+
+        } else {
+
+            createNewCat( );
+
+        }
+    }
+
+    public void createNewCat( ) {
+
         Intent i = new Intent(this, MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, "new");
         startActivityForResult(i, 10);
+
     }
+
+
+
 
 
     public void openCatEdit(DataObject dataObject) {
