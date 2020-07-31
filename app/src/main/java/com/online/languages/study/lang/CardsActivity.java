@@ -114,12 +114,8 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
         speaking = appSettings.getBoolean("set_speak", true);
 
-        if (speaking) {
-            Intent checkTTSIntent = new Intent();
-            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-        }
 
+        initTTS();
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
@@ -169,6 +165,16 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         });
 
 
+
+    }
+
+    private void initTTS() {
+
+        if (speaking) {
+            Intent checkTTSIntent = new Intent();
+            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        }
 
     }
 
@@ -578,9 +584,9 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
     }
 
     @Override
-    protected void onStop()
+    protected void onDestroy()
     {
-        super.onStop();
+        super.onDestroy();
 
         if(myTTS != null){
             myTTS.shutdown();

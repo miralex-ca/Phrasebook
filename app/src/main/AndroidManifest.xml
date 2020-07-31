@@ -44,11 +44,9 @@
 
         <activity
             android:name="com.online.languages.study.lang.SampleActivity"
-            android:label="@string/title_activity_sample"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme.Dialog" />
         <activity
             android:name="com.online.languages.study.lang.ExerciseResultActivity"
@@ -71,18 +69,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SectionStatsListActivity"
-            android:label="@string/title_activity_cat_data_stats"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.CustomDataListActivity"
-            android:label="@string/title_activity_custom_data_list"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.CatListActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.CustomDataActivity"
-            android:label="@string/title_activity_custom_data_list"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.ReferenceActivity"
@@ -94,19 +89,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SectionActivity"
-            android:label="@string/title_activity_section"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SubSectionActivity"
-            android:label="@string/title_activity_sub_section"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SectionListActivity"
-            android:label="@string/title_activity_section_list"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SectionTestActivity"
-            android:label="@string/title_activity_section_test"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SearchActivity"
@@ -122,14 +113,12 @@
         </activity>
         <activity
             android:name="com.online.languages.study.lang.ProgressStatsActivity"
-            android:label="@string/title_activity_progress_stats"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.MapActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.MapListActivity"
-            android:label="@string/title_activity_map_list"
             android:theme="@style/AppTheme" />
 
         <activity

@@ -31,7 +31,7 @@
     <TextView
 
         android:textSize="14sp"
-        android:text="Общий результат складывается из следующих составляющих:"
+        android:text="@string/section_result_calculation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

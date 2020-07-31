@@ -125,9 +125,9 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         String formattedDate = dateFormat.format(new Date());
 
-        holder.desc.setText("Дата:  " + formattedDate );
+        holder.desc.setText(String.format(context.getString(R.string.ucat_date), formattedDate));
 
-        holder.itemsCount.setText("Записей: " + dataObject.count );
+        holder.itemsCount.setText(String.format(context.getString(R.string.ucat_items_count), String.valueOf(dataObject.count)));
 
 
         if (dataObject.id.equals("last")) {

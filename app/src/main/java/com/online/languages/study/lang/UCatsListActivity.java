@@ -116,7 +116,7 @@ public class UCatsListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        setTitle("Мой словарь");
+        setTitle(R.string.user_vocabulary_title);
 
         cutList = true;
 
@@ -249,7 +249,7 @@ public class UCatsListActivity extends BaseActivity {
         int dif = completeList.size() - displayList.size();
 
         if (dif > 0) {
-            lastObject.title = "Загрузить ещё " + dif;
+            lastObject.title = String.format(getString(R.string.load_more_items), String.valueOf(dif));
             lastObject.info = "show";
         } else {
             lastObject.info = "hide";

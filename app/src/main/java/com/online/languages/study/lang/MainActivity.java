@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -897,10 +898,11 @@ public class MainActivity extends BaseActivity
 
     public void testAllPage(View view) {
 
+
         Intent i = new Intent(MainActivity.this, ExerciseActivity.class);
         i.putExtra("ex_type", 1);
         i.putExtra(Constants.EXTRA_CAT_TAG, "all");
-        i.putParcelableArrayListExtra("dataItems", allDataList);
+        i.putParcelableArrayListExtra("dataItems", new ArrayList<Parcelable>());
         startActivity(i);
         openActivity.pageTransition();
     }

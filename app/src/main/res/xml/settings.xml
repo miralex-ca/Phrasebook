@@ -8,6 +8,18 @@
         android:title="@string/set_interface"
         app:iconSpaceReserved="false"
         >
+
+        <Preference
+            app:iconSpaceReserved="false"
+            android:key="version"
+            android:title="@string/set_version_plus"
+            android:summary="@string/set_version_plus_summary">
+            <intent
+                android:targetPackage="@string/applicationId"
+                android:targetClass="com.online.languages.study.lang.GetPremium"/>
+        </Preference>
+
+
         <ListPreference
             android:key="theme"
             android:title="@string/set_app_theme_title"
@@ -60,23 +72,12 @@
         <ListPreference
             app:iconSpaceReserved="false"
             android:key="set_transript"
-            android:title="Транскрипция"
-            android:summary="Выбрать тип"
+            android:title="@string/set_transcript_title"
+            android:summary="@string/set_transcript_summary"
             android:entries="@array/set_transcript_list"
             android:entryValues="@array/set_transcript_values"
             android:defaultValue="@string/set_transcript_default"
-            android:dialogTitle="Выбрать тип" />
-
-
-        <Preference
-            app:iconSpaceReserved="false"
-            android:key="version"
-            android:title="Полная версия"
-            android:summary="Доступ к полной версии приложения">
-            <intent
-                android:targetPackage="@string/applicationId"
-                android:targetClass="com.online.languages.study.lang.GetPremium"/>
-        </Preference>
+            android:dialogTitle="@string/set_transcript_dialog" />
 
 
     </PreferenceCategory>
@@ -85,8 +86,8 @@
 
     <PreferenceCategory
         android:key="data"
-        android:title="НАСТРОЙКИ ДАННЫХ"
-        android:summary="НАСТРОЙКИ ДАННЫХ"
+        android:title="@string/set_data_section"
+
         >
 
         <ListPreference
@@ -158,14 +159,14 @@
 
     <PreferenceCategory
         android:key="misc"
-        android:title="РАЗНОЕ"
-        android:summary="РАЗНОЕ"
+        android:title="@string/set_misc"
+        android:summary="@string/set_misc"
         >
 
         <PreferenceScreen
             app:iconSpaceReserved="false"
-            android:title="Импорт и экпорт данных"
-            android:summary="Синхронизация, резервная копия">
+            android:title="@string/set_backup_title"
+            android:summary="@string/set_backup_desc">
             <intent
                 android:targetPackage="@string/applicationId"
                 android:targetClass="com.online.languages.study.lang.BackupActivity"/>
@@ -195,22 +196,12 @@
             android:dialogTitle="@string/set_control_dialog_title" />
 
 
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="detail_txt_size"
-            android:title="@string/set_detail_txt"
-            android:summary="@string/set_detail_txt_summary"
-            android:entries="@array/set_detail_txt_list"
-            android:entryValues="@array/set_detail_txt_values"
-            android:defaultValue="small"
-            android:dialogTitle="@string/set_detail_txt_dialog_title" />
-
 
         <Preference
             app:iconSpaceReserved="false"
-            android:key="version"
-            android:title="Настройки синтеза речи"
-            android:summary="Системные настройки">
+            android:key="set_tts"
+            android:title="@string/set_tts"
+            android:summary="@string/set_tts_summary">
 
             <intent android:action="com.android.settings.TTS_SETTINGS" />
 
@@ -239,6 +230,15 @@
             />
 
 
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="detail_txt_size"
+            android:title="@string/set_detail_txt"
+            android:summary="@string/set_detail_txt_summary"
+            android:entries="@array/set_detail_txt_list"
+            android:entryValues="@array/set_detail_txt_values"
+            android:defaultValue="small"
+            android:dialogTitle="@string/set_detail_txt_dialog_title" />
 
 
         <SwitchPreferenceCompat

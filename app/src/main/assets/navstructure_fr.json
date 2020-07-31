@@ -1,0 +1,241 @@
+{
+  "params": {
+
+    "simplified": false,
+    "homecards": false,
+    "gallery": false
+
+  },
+
+  "sections":
+  [
+    {"tag": "section_1", "title": "Communication", "id": "10010",
+      "title_short": "Communication",
+      "desc_short": "Salutations, gens, famille, professions",
+      "desc": "Salutations, gens, famille, professions",
+
+      "image": "cat/contacts.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100100010", "title": "Contacts", "image":  "cat/contact_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100020", "title": "Gens", "image":  "cat/people_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100030", "title": "Questionnaire", "image":  "cat/form_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100040", "title": "Famille", "image":  "cat/family_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100050", "title": "Professions", "image":  "cat/jobs_cat.png","review":  "true"},
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100100110", "title": "Salutations", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100100120", "title": "Formules de politesse","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100100130", "title": "Langues","review":  "true"},
+
+        {"parent": "root", "type": "set", "id": "set_1_3", "title": "Informations utiles"},
+
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100310", "title": "Noms de pays","review":  "false"},
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100320", "title": "Noms de villes","review":  "false"}
+
+      ]
+    },
+
+    {"tag": "section_2", "title": "Voyage", "id": "10020",
+      "desc": "Voyage en avion, train, bateau, hôtel, visite guidée etc.",
+      "title_short": "Voyage",
+      "desc_short": "Voyage en avion, train, bateau, hôtel, visite guidée etc.",
+      "image": "cat/travel.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_2_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100200010", "title": "Voyage en avion", "image": "cat/plane_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Voyage en train", "image": "cat/train_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Voyage en bateau", "image": "cat/ship_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat_p.png"},
+
+        {"parent": "root", "type": "set", "id": "set_2_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100200210", "title": "À l'hôtel"},
+        {"parent": "root", "type": "simple", "id": "100200220", "title": "Visite guidée"},
+        {"parent": "root", "type": "simple", "id": "100300120", "title": "Transport urbain"}
+
+
+      ]
+    },
+
+    {"tag": "section_3", "title": "Dans la ville", "id": "10030",
+      "desc": "City transport, organisations, places of interest, signboards",
+      "title_short": "In the city",
+      "desc_short": "City transport, organisations, places of interest, signboards",
+      "image": "picto/section_city.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_3_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100300010", "title": "Ville", "image": "cat/city_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "Organisations", "image": "cat/store_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Sites touristiques", "image":  "cat/sights_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_3_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100300110", "title": "Dans la ville"},
+        {"parent": "root", "type": "simple", "id": "100300120", "title": "Transport urbain"},
+
+        {"parent": "root", "type": "set", "id": "set_3_3", "title": "Thèmes supplémentaires"},
+        {"parent": "root", "type": "extra", "id": "100300210", "title": "Panneaux et inscriptions"}
+
+      ]
+    },
+
+    {"tag": "section_4", "title": "Achats", "id": "10040",
+      "title_short": "Achats",
+      "desc": "Magasins, vêtements, accessoires, parfumerie etc.",
+      "desc_short": "Magasins, vêtements, accessoires, parfumerie etc.",
+      "image": "cat/shop.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_4_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100400010", "title": "Magasins", "image": "cat/shop_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400020", "title": "Vêtements", "image": "cat/clothes_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400030", "title": "Accessoires", "image": "cat/accessory_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400040", "title": "Livres et papeterie", "image": "cat/book_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400050", "title": "Électronique", "image": "cat/electro_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400060", "title": "Parfumerie", "image": "cat/perfume_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_4_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100400110", "title": "Dans un magasin"},
+        {"parent": "root", "type": "simple", "id": "100400120", "title": "Paiement"}
+
+      ]
+    },
+
+    {"tag": "section_5", "title": "Repas", "id": "10050",
+      "desc": "Légumes, fruits, viande, poisson, desserts etc.",
+      "title_short": "Repas",
+      "desc_short": "Légumes, fruits, viande, poisson, desserts etc.",
+      "image": "cat/food.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_5_1", "title": "Vocabulaire de base"},
+
+
+        {"parent": "root", "type": "simple", "id": "100500020", "title": "Viande", "image": "cat/meat_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Poisson et fruits de mer", "image": "cat/fish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500040", "title": "Légumes", "image": "cat/vegetable_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500050", "title": "Fruits", "image": "cat/fruit_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Desserts", "image": "cat/dessert_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500070", "title": "Boissons", "image": "cat/drink_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_5_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100500110", "title": "Dans un restaurant"},
+        {"parent": "root", "type": "simple", "id": "100500120", "title": "Dans un pub"},
+
+        {"parent": "root", "type": "set", "id": "set_5_3", "title": "Thèmes supplémentaires"},
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Baies"},
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Noix et fruits secs"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbes et épices"}
+      ]
+    },
+
+    {"tag": "section_6", "title": "Nature", "id": "10060",
+      "desc": "Animaux, oiseaux, fleurs, arbres etc.",
+      "title_short": "Nature",
+      "desc_short": "Animaux, oiseaux, fleurs, arbres etc.",
+      "image": "cat/nature.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_6_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100600010", "title": "Nature", "image": "cat/nature_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "Ressources en eau", "image": "cat/water_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Ciel", "image": "cat/sky_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600040", "title": "Animaux sauvages", "image": "cat/animal_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Oiseaux sauvages", "image": "cat/bird_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600070", "title": "Animaux marins", "image": "cat/sea_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600080", "title": "Insectes", "image": "cat/insect_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600090", "title": "Fleurs", "image": "cat/flower_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600091", "title": "Arbres", "image": "cat/tree_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_6_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100600110", "title": "À propos de la météo"}
+
+
+      ]
+    },
+
+    {"tag": "section_7", "title": "Santé", "id": "10070",
+      "desc": "Parties du corps, organes, maladies etc.",
+      "title_short": "Health",
+      "desc_short": "Parties du corps, organes, maladies etc.",
+      "image": "cat/health.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_7_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "Parties du corps", "image": "cat/body_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700020", "title": "Visage humain", "image": "cat/face_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700030", "title": "Organes et tissus", "image": "cat/organ_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Maladies", "image": "cat/desease_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_7_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100700110", "title": "Consulter un médecin"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptômes de maladies"},
+        {"parent": "root", "type": "simple", "id": "100700130", "title": "À la pharmacie"}
+
+      ]
+    },
+
+    {"tag": "section_8", "title": "Maison", "id": "10080",
+      "desc": "Pièces, meubles, appareils domestiques, vaisselle etc.",
+      "title_short": "House",
+      "desc_short": "Pièces, meubles, appareils domestiques, vaisselle etc",
+      "image": "cat/house.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_8_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Maison, appartement", "image":  "cat/house_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800020", "title": "Pièce, meubles", "image":  "cat/furniture_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Chambre à coucher", "image":  "cat/bed_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800040", "title": "Salle de bains", "image":  "cat/bath_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800050", "title": "Cuisine", "image":  "cat/kitchen_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800060", "title": "Vaisselle et argenterie", "image":  "cat/dish_cat.png"}
+
+      ]
+    },
+
+    {"tag": "section_9", "title": "Divers", "id": "10090",
+      "desc": "Nombres, couleurs, temps, calendrie etc.",
+      "title_short": "Miscellaneous",
+      "desc_short": "Nombres, couleurs, temps, calendrie etc.",
+      "image": "cat/misc.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Vocabulaire de base"},
+
+        {"parent": "root", "type": "simple", "id": "100900010", "title": "Nombres", "image": "cat/number_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900020", "title": "Couleurs", "image": "cat/color_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900030", "title": "Adjectifs", "image": "cat/quality_1_cat.png"},
+
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Prépositions", "image": "cat/preposition_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900060", "title": "Temps", "image": "cat/time_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900070", "title": "Calendrier", "image": "cat/calendar_cat.png"}
+
+
+      ]
+    }
+  ]
+
+
+}
+

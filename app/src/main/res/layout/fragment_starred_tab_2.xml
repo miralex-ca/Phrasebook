@@ -132,7 +132,7 @@
                             >
 
                             <TextView
-                                android:text="@string/open_starred"
+                                android:text="@string/open_bookmarks"
                                 android:textSize="13sp"
                                 android:id="@+id/exBtnNextTxt"
                                 android:layout_width="wrap_content"
@@ -173,7 +173,7 @@
                     <TextView
                             android:padding="10dp"
                             android:layout_marginLeft="10dp"
-                            android:text="@string/recently_starred"
+                            android:text="@string/recent_bookmarks"
                             android:textSize="14sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />

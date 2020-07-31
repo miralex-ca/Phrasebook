@@ -157,6 +157,7 @@ public class StatsFragment extends Fragment {
 
         userStats.updateData();
         MainActivity.allDataList = userStats.getAllDataFromJson();
+
         MainActivity.oldestDataList = userStats.getOldestLIst();
         errorsList = userStats.userStatsData.errorsWords;
         MainActivity.errorsList = userStats.userStatsData.errorsWords;

@@ -270,8 +270,8 @@ public class HomeFragment2 extends Fragment   {
 
         String[] countsVaules = dataManager.getTotalCounts();
 
-        counts.setText("Добавлено тем:  " + countsVaules[0]);
-        itemsCount.setText("Добавлено записей:  " + countsVaules[1]);
+        counts.setText(String.format("%s%s", getString(R.string.user_topics_count), countsVaules[0]));
+        itemsCount.setText(String.format("%s%s", getString(R.string.user_items_count), countsVaules[1]));
 
 
         if (!dataManager.plus_Version) {

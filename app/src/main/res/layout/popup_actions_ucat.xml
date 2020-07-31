@@ -71,7 +71,7 @@
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Наверх"
+                        android:text="@string/popup_menu_move_top"
                         />
 
                 </LinearLayout>
@@ -104,7 +104,7 @@
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Архив"
+                        android:text="@string/popup_menu_archive"
                         />
 
                 </LinearLayout>
@@ -142,7 +142,7 @@
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Удалить"
+                        android:text="@string/popup_menu_delete"
                         />
 
                 </LinearLayout>

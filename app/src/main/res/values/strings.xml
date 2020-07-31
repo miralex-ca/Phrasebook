@@ -11,24 +11,26 @@
 
 
     <string name="app_name">Иностранный язык</string>
-    <string name="app_backup_activity">.BackupActivity</string>
+
+    <string name="app_backup_activity" translatable="false">.BackupActivity</string>
 
     <string name="app_name_spec"> </string>
 
-    <string name="app_data_file">data.json</string>
-    <string name="app_detail_file">details.json</string>
+    <string name="app_data_file" translatable="false">data.json</string>
+    <string name="app_detail_file" translatable="false">details.json</string>
     <string name="app_structure_file">navstructure.json</string>
+
+    <string name="app_info_file">info</string>
 
     <string name="tabs_starred_order" translatable="false">normal</string>
     <string name="tabs_starred_display" translatable="false">item_prior</string>
 
-    <string name="backup_file_name">backup_lang.csv</string>
+
+    <string name="backup_file_name" translatable="false">backup_lang.csv</string>
 
 
-
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
@@ -43,6 +45,9 @@
 
     <item name="cat_id" type="id" />
     <item name="data_count" type="id" />
+
+
+
 
 
     <string name="nav_home_txt">Главная</string>
@@ -66,6 +71,7 @@
     </string-array>
 
     <string name="title_main_txt">@string/title_home_txt</string>
+
     <string name="title_home_txt">Главная</string>
     <string name="title_gallery_txt">Галерея</string>
     <string name="title_starred_txt">Избранное</string>
@@ -83,12 +89,11 @@
     <string name="title_custom_txt">Список</string>
 
 
-    <string name="title_activity_cat">CatActivity</string>
+    <string name="title_activity_cat" translatable="false">CatActivity</string>
 
     <string name="section_tab1_title">Список</string>
     <string name="section_tab2_title">Изучение</string>
-    <string name="title_activity_sample">SampleActivity</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
+
 
 
     <string name="starred_ex_link_title">Тест с избранными записями</string>
@@ -238,12 +243,12 @@
     <string name="set_test_all_limit_3">100 заданий</string>
 
 
-    <string name="set_sort_pers_title">Сортировка личностей</string>
-    <string name="set_sort_pers_summary">Текущая: %s</string>
-    <string name="set_sort_pers_dialog_title">Сортировка</string>
+    <string name="set_sort_pers_title" translatable="false">Сортировка личностей</string>
+    <string name="set_sort_pers_summary" translatable="false">Текущая: %s</string>
+    <string name="set_sort_pers_dialog_title" translatable="false">Сортировка</string>
 
-    <string name="set_sort_pers_1">по хронологии</string>
-    <string name="set_sort_pers_2">по алфавиту</string>
+    <string name="set_sort_pers_1" translatable="false">по хронологии</string>
+    <string name="set_sort_pers_2" translatable="false">по алфавиту</string>
 
     <string name="set_btm_nav_title">Нижняя панели навигации</string>
     <string name="set_btm_nav_summary">%s</string>
@@ -254,11 +259,7 @@
     <string name="set_btm_nav_3">Не отображать</string>
     <string name="set_btm_nav_4">Отображать, убрать меню полностью</string>
 
-    <string name="set_btm_nav_value_default">@string/set_btm_nav_value_3</string>
-    <string name="set_btm_nav_value_1">bottom</string>
-    <string name="set_btm_nav_value_2">bottom_menu</string>
-    <string name="set_btm_nav_value_3">never</string>
-    <string name="set_btm_nav_value_4">bottom_only</string>
+
 
     <string name="set_data_control_title">Выбор данных раздела</string>
 
@@ -303,7 +304,7 @@
     <string name="app_market_link" translatable="false">com.online.languages.study.ruhistory</string>
     <!-- string name="app_market_link">@string/app_market_link_pro</string -->
 
-    <string name="mail_address">study.languages.online@gmail.com</string>
+    <string name="mail_address" translatable="false">study.languages.online@gmail.com</string>
     <string name="msg_sending_mail">Отправка сообщения &#8230;</string>
     <string name="msg_no_mail_client">Почтовый клиент не установлен.</string>
     <string name="msg_mail_subject">Отзыв по приложению</string>
@@ -315,10 +316,10 @@
     <string name="errors_box_title">Ошибки в тестах</string>
 
 
-    <string name="section_stats_info">Для того, чтобы раздел считался полностью изученным, недостаточно только выполнить тесты. Также необходимо, чтобы были изучены записи раздела, и это будет зависеть от их статуса изученности (см. Справку). Такая система позволяет точнее определить уровень знания материала.  \n\nОбщий результат раздела зависит от результата тестов, количества пройденных записей и количества изученных записей. Каждый из этих показателей может максимально добавить к результату следующее количество процентов: \n\n- Результат теста: +50% (если тесты выполнены на 100%) \n- Пройденный материал: +30% (если пройдены все записи)
+    <string name="section_stats_info">Для того, чтобы раздел считался полностью изученным, недостаточно только выполнить тесты. Также необходимо, чтобы были изучены записи раздела, и это будет зависеть от их статуса изученности (см. Справку). Такая система позволяет точнее определить уровень знания материала.  \n\nОбщий результат раздела зависит от результата тестов, количества пройденных записей и количества изученных записей. Каждый из этих показателей может максимально добавить к результату следующее количество процентов: \n\n- Результат тестов: +50% (если тесты выполнены на 100%) \n- Пройденный материал: +30% (если пройдены все записи)
     \n- Изученный материал: +20% (если изучены все записи)\n</string>
 
-    <string name="progress_info">Здесь представлена статистика степени изученности записей в целом приложении, а также в каждом разделе. Результаты тестов раздела или темы не учитываются. Сепень изученности выражена процентной частью записей со статусом «пройдено» и «изучено».
+    <string name="progress_info">Здесь представлена статистика степени изученности записей в целом приложении, а также в каждом разделе. Результаты тестов раздела или темы не учитываются. Степень изученности выражена процентной частью записей со статусом «пройдено» и «изучено».
         \n\nСтатус записи соответствует оценке, которая присваивается записи при выполнении тестов. Оценка вычисляется по следующей системе: +1 балл при правильном ответе, -1 балл при неправильном ответе. Максимальная оценка – 4 балла. В соответствии с количеством баллов записи присваивается один из следующих статусов:
         \n\n — Не пройдено (0 баллов)\n — Пройдено (1-2 балла)\n — Изучено (3-4 балла) </string>
 
@@ -331,7 +332,7 @@
         \n
     </string>
 
-    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только записи базового уровня.
+    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только записи базового уровня обучения.
         \n\n
      Активный режим может повлиять на статистику, поскольку она учитывает изученность только тех записей, которые присутствуют в данном режиме. Смена режима не влияет на результаты тестов, поиска, статистику ошибок, а также на избранные записи.\n</string>
 
@@ -346,19 +347,12 @@
     <string name="get_premium_buy">Купить</string>
     <string name="get_premium_buy_price">Купить за %s</string>
     <string name="purchased_txt">Чтобы продолжить работу с приложением, нажмите «Продолжить»</string>
-    <string name="title_activity_section">SectionActivity</string>
-    <string name="title_activity_sub_section">SubSectionActivity</string>
-    <string name="title_activity_section_list">SectionListActivity</string>
-    <string name="title_activity_section_test">SectionTestActivity</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_progress_stats">ProgressStatsActivity</string>
-
 
     <string name="ex_save_stats">Сохранять статистику </string>
 
-    <string name="ex_opt_short">short</string>
-    <string name="ex_opt_long">long</string>
-    <string name="ex_opt_long_less">long_less</string>
+    <string name="ex_opt_short" translatable="false">short</string>
+    <string name="ex_opt_long" translatable="false">long</string>
+    <string name="ex_opt_long_less" translatable="false">long_less</string>
 
 
     <string name="stats_test_all_desc">Тест с записями из всех разделов</string>
@@ -378,16 +372,14 @@
 
 
     <string name="cat_progress_txt">Средний результат \nтестов</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="title_activity_map_list">MapListActivity</string>
 
     <string name="section_content_title">Содержание раздела</string>
     <string name="section_content_title_short">Содержание</string>
     <string name="persons_title">Личности</string>
 
-    <string name="dimen_size_h">default</string>
+    <string name="dimen_size_h" translatable="false">default</string>
+
     <string name="detail_img_info_txt">Изображение: %s</string>
-    <string name="title_activity_backup">BackupActivity</string>
 
 
     <string name="backup_info"><![CDATA[
@@ -415,7 +407,7 @@
 
 
     <string name="info_txt">Справка</string>
-    <string name="title_activity_finder">FinderActivity</string>
+    <string name="title_activity_finder" translatable="false">FinderActivity</string>
     <string name="fullversion_desc_txt">Ура! У вас установлена полная версия приложения.</string>
     <string name="export_btn">Выполнить экспорт</string>
     <string name="export_title">Экспорт</string>
@@ -438,7 +430,7 @@
 
     <string name="info_star_txt">\nДля дополнительной работы отдельные записи можно добавить в избранное. В избранное можно добавить, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне, а также долгим нажатием на элемент списка. Максимально в избранное можно добавить 30 записей.\n</string>
 
-    <string name="info_list_txt">\nЗаписи в данной теме не могут быть добавлены в избранное , а также не включены в тесты и упражнения.\n</string>
+    <string name="info_list_txt">\nЗаписи в данной теме не могут быть добавлены в избранное, а также не включены в тесты и упражнения.\n</string>
 
     <string name="starred_menu_info">Справка</string>
     <string name="starred_words_info">В избранное можно добавить в списке раздела или темы (не более %1$d записей).</string>
@@ -543,7 +535,7 @@
     <string name="image_info_desc">Описание</string>
     <string name="cat_stats_title">Статистика темы</string>
 
-    <string name="cat_stats_total_items_text">@string/cat_stats_total_items_short</string>
+    <string name="cat_stats_total_items_text" translatable="false">@string/cat_stats_total_items_short</string>
     <string name="cat_stats_total_items_short">"Записей: "</string>
     <string name="cat_stats_total_items">"Всего записей: "</string>
 
@@ -554,6 +546,11 @@
     <string name="starred_items_title">Добавлено в избранное</string>
     <string name="open_starred">ПОДРОБНЕЕ</string>
     <string name="recently_starred">ПОСЛЕДНЕЕ</string>
+
+
+    <string name="open_bookmarks">ПОДРОБНЕЕ</string>
+    <string name="recent_bookmarks">НЕДАВНИЕ ЗАКЛАДКИ</string>
+
     <string name="sections_stats_title">Статистика разделов</string>
     <string name="stats_general_test">Общий тест</string>
     <string name="stats_revision">Повторение</string>
@@ -565,18 +562,26 @@
     <string name="starred_tab_gallery">Галерея</string>
     <string name="starrd_tab_info_count">Записи (%d)</string>
     <string name="starrd_tab_gallery_count">Закладки (%d)</string>
-    <string name="number_percent">%d%%</string>
-    <string name="maps_list_title">Карты</string>
+
+    <string name="number_percent" translatable="false">%d%%</string>
+
+    <string name="maps_list_title" translatable="false">Карты</string>
 
     <string name="msg_version_name">(LA, версия %s)</string>
+
     <string name="menu_img_test">Пройти тест</string>
     <string name="menu_sort">Сортировка</string>
-    <string name="sort_pers_dialog_title">Сортировка личностей</string>
+    <string name="sort_pers_dialog_title" translatable="false">Сортировка</string>
     <string name="nav_more">Ещё</string>
     <string name="nav_more_version">Другое</string>
 
-    <string name="set_transcript_1">IPA</string>
-    <string name="set_transcript_2">RU</string>
+
+    <string name="set_transcript_title">Транскрипция</string>
+    <string name="set_transcript_summary">Текущее: %s</string>
+    <string name="set_transcript_dialog">Выбрать тип</string>
+
+    <string name="set_transcript_1">IPA (международная) </string>
+    <string name="set_transcript_2">Русская</string>
     <string name="set_transcript_0">Не отображать</string>
 
 
@@ -595,9 +600,9 @@
 
 
 
-    <string name="note_title"> Название заметки заметки </string>
+    <string name="note_title" translatable="false"> Название заметки </string>
 
-    <string name="note_content">Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel. An eam dolor feugait urbanitas. Vim iisque alterum sapientem ut. Autem eleifend nam et, ferri solum est ne, latine prodesset id vix. \n\n Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel.</string>
+    <string name="note_content" translatable="false">Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel. An eam dolor feugait urbanitas. Vim iisque alterum sapientem ut. Autem eleifend nam et, ferri solum est ne, latine prodesset id vix. \n\n Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel.</string>
 
     <string name="home_tab_1">Разделы</string>
     <string name="home_tab_2">Мой словарь</string>
@@ -624,10 +629,86 @@
 
 
     <string name="udata_limit_dialog_title">Достигнут лимит</string>
-    <string name="udata_limit_dialog_text">В тему можно добавить не более %s записей.</string>
+    <string name="udata_limit_dialog_text">\nВ тему можно добавить не более %s записей.\n</string>
 
 
     <string name="udata_limit_dialog_title_unpaid">Достигнут лимит</string>
-    <string name="udata_limit_dialog_text_unpaid">В тему можно добавить не более %s записей.</string>
+    <string name="udata_limit_dialog_text_unpaid">\nВ тему можно добавить не более %s записей. \n</string>
+
+    <string name="note_img_edit">Изменить</string>
+    <string name="note_title_edit">Заголовок</string>
+    <string name="note_txt_edit">Текст заметки</string>
+    <string name="note_save">Сохранить</string>
+    <string name="savaing_note_title">Сохранение заметки</string>
+    <string name="empty_note_msg">\nПустая заметка. Введите текст.</string>
+    <string name="apply_btn">Применить</string>
+    <string name="pick_note_icon_title">Выбрать иконку</string>
+    <string name="note_title_txt">Заметка</string>
+    <string name="menu_delete_note">Удалить заметку</string>
+    <string name="menu_edit_note">Редактировать</string>
+
+    <string name="set_tts">Настройки синтеза речи</string>
+    <string name="set_tts_summary">Открыть системные настройки</string>
+
+    <string name="set_data_section">НАСТРОЙКИ ДАННЫХ</string>
+    <string name="set_misc">РАЗНОЕ</string>
+
+    <string name="set_backup_title">Импорт и экпорт данных</string>
+    <string name="set_backup_desc">Синхронизация, резервная копия</string>
+
+    <string name="set_version_plus">Версия PLUS</string>
+    <string name="set_version_plus_summary">Доступ к дополнительным функциям приложения</string>
+    <string name="note_img_empty">Нет</string>
+    <string name="pick_device_icon">Выбрать \nна\n устройстве</string>
+    <string name="user_vocabulary_title">Мой словарь</string>
+    <string name="user_topics_list">Список тем</string>
+    <string name="new_topic_btn">＋ Новая тема</string>
+    <string name="plus_version_more_lablel">Больше с версией PLUS</string>
+    <string name="open_all_user_topics">Полный список</string>
+    <string name="user_topics_count">"Добавлено тем:  "</string>
+    <string name="user_items_count">"Добавлено записей:  "</string>
+    <string name="ucat_date">Дата:  %s</string>
+    <string name="ucat_items_count">Записей: %s</string>
+    <string name="ucat_familiar_items">"Пройдено: "</string>
+    <string name="ucat_mastered_items">"Изучено: "</string>
+    <string name="open_more">Открыть больше</string>
+    <string name="home_ucat_date">Дата:</string>
+    <string name="home_ucat_list_progress">Изучено:  %s/%s</string>
+    <string name="load_more_items">Загрузить ещё %s</string>
+    <string name="popup_menu_edit">Редактировать</string>
+    <string name="popup_menu_unarchive">Извлечь</string>
+    <string name="popup_menu_delete">Удалить</string>
+    <string name="popup_menu_move_top">Наверх</string>
+    <string name="popup_menu_archive">Архив</string>
+    <string name="popup_menu_view">Просмотр</string>
+    <string name="ucat_edit_title">Заголовок</string>
+    <string name="ucat_edit_create">Создать тему</string>
+    <string name="ucat_new_item">＋ Новая запись</string>
+    <string name="ucat_saving_alert">Сохранение темы</string>
+    <string name="ucat_enter_title_alert">Введите название темы.</string>
+    <string name="ucat_delete_confirm">\nУдалить тему со всеми словами?\n</string>
+    <string name="ucat_edit_info_txt">Справка о редктировании темы</string>
+    <string name="ucat_edit_info_title">Справка</string>
+    <string name="ucat_deleted_items">Удалено слов: %d</string>
+    <string name="ucat_new_item_dialog">Новая запись</string>
+    <string name="ucat_edit_item_dialog">Редактировать</string>
+    <string name="ucat_created_time">Создано: %s</string>
+    <string name="ucat_item_deleted_msg">Удалено</string>
+    <string name="ucat_delete_item_confirm">\nУдалить запись?\n</string>
+    <string name="ucat_delete_item_confirm_last">\nУдалить последнюю запись?\n</string>
+    <string name="dialog_edit_item_more">" Больше"</string>
+    <string name="dialog_edit_item_less">" Меньше"</string>
+    <string name="save_txt">Сохранить</string>
+    <string name="edit_item_enter_txt_msg">Введите текст</string>
+    <string name="dialog_edit_item_text">английский текст</string>
+    <string name="dialog_edit_item_translation">перевод</string>
+    <string name="dialog_edit_item_listen">Прослушать</string>
+    <string name="dialog_edit_item_nosound">Без звука</string>
+    <string name="dialog_edit_item_transcription">Транскрипция</string>
+    <string name="dialog_edit_item_grammar">Граматика</string>
+    <string name="dialog_edit_item_extra">Дополнительная информация</string>
+    <string name="bookmarks_section_txt">"Раздел: "</string>
+    <string name="section_result_calculation">Общий результат складывается из следующих составляющих:</string>
+
 
 </resources>

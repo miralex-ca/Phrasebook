@@ -628,9 +628,9 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
     @Override
-    protected void onStop()
+    protected void onDestroy()
     {
-        super.onStop();
+        super.onDestroy();
 
         if(myTTS != null){
             myTTS.shutdown();

@@ -11,9 +11,9 @@
 
     <dimen name="_home_card_image_width">100dp</dimen>
     <dimen name="_home_card_image_height">85dp</dimen> <!-- change for 4 items-->
-    <dimen name="_home_card_title_bottom">10dp</dimen> <!-- change for 4 items-->
+    <dimen name="_home_card_title_bottom">7dp</dimen> <!-- change for 4 items-->
     <dimen name="_home_card_title_txt_size">20sp</dimen>
-    <dimen name="_home_card_desc_txt_size">14sp</dimen>
+    <dimen name="_home_card_desc_txt_size">13sp</dimen>
 
     <dimen name="_home_card_title_left">24dp</dimen>
 

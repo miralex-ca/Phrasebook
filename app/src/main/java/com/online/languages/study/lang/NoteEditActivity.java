@@ -230,7 +230,7 @@ public class NoteEditActivity extends BaseActivity {
 
             InfoDialog infoDialog = new InfoDialog(this);
 
-            infoDialog.simpleDialog("Сохранение заметки", "\nПустая заметка. Введите текст.");
+            infoDialog.simpleDialog(getString(R.string.savaing_note_title), getString(R.string.empty_note_msg));
 
             return;
         }
@@ -239,7 +239,7 @@ public class NoteEditActivity extends BaseActivity {
 
         if (noteAction.equals(ACTION_UPDATE)) {
             dataManager.dbHelper.updateNote(note);
-            Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
         }
 
         if (noteAction.equals(ACTION_CREATE)) dataManager.dbHelper.createNote(note);
@@ -322,7 +322,7 @@ public class NoteEditActivity extends BaseActivity {
                     }
                 });
 
-        dialog.setPositiveButton("Применить",
+        dialog.setPositiveButton(R.string.apply_btn,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 

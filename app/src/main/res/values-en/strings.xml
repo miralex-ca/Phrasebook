@@ -37,11 +37,6 @@
     <string name="title_errors_txt">Errors</string>
     <string name="title_custom_txt">List</string>
 
-    <string name="title_activity_cat">CatActivity</string>
-    <string name="section_tab1_title">Listing</string>
-    <string name="section_tab2_title">Training</string>
-    <string name="title_activity_sample">SampleActivity</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
 
     <string name="voc_ex_link_card_title">Flashcards</string>
     <string name="voc_ex_link_first_title">Test 1</string>
@@ -49,17 +44,17 @@
 
     <string name="starred_ex_link_title">Test with starred items</string>
 
-    <string name="voc_ex_link_first_desc">Test: Event / Date</string>
-    <string name="voc_ex_link_second_desc">Test: Date / Event</string>
+    <string name="voc_ex_link_first_desc">Choose item translation</string>
+    <string name="voc_ex_link_second_desc">Choose item translation</string>
 
     <string name="section_ex_link_title_1">General test 1</string>
     <string name="section_ex_link_title_2">General test 2</string>
     <string name="section_ex_link_title_3">General test 3</string>
 
-    <string name="section_ex_link_desc_3">Test with persons and terms</string>
+    <string name="section_ex_link_desc_3">Choose translation for audio</string>
 
     <string name="voc_ex_link_third_title">Test 3</string>
-    <string name="voc_ex_link_card_desc">Study items one by one</string>
+    <string name="voc_ex_link_card_desc">Review items one by one</string>
 
 
     <string name="voc_ex_link_third_desc">Test with multiple options</string>
@@ -100,8 +95,8 @@
     <string name="ex_result_txt_excellent">EXCELLENT!</string>
     <string name="ex_result_txt_verygood">VERY GOOD!</string>
     <string name="ex_result_txt_good">GOOD!</string>
-    <string name="ex_result_txt_bad">BADLY</string>
-    <string name="ex_result_txt_verybad">VERY BADLY!</string>
+    <string name="ex_result_txt_bad">NOT GOOD ENOUGH!</string>
+    <string name="ex_result_txt_verybad">VERY BAD!</string>
     <string name="ex_result_txt">Correct: %1$d from %2$d \n Result:\u00A0\u00A0\u00A0 %3$d%%</string>
 
     <string name="title_activity_user_list">UserListActivity</string>
@@ -154,8 +149,8 @@
     </string-array>
 
     <string name="set_control_title">Section tests results</string>
-    <string name="set_control_summary">Included in general stats: %s</string>
-    <string name="set_control_dialog_title">Include in stats</string>
+    <string name="set_control_summary">Use in section stats: %s</string>
+    <string name="set_control_dialog_title">Use in stats</string>
 
     <string name="set_control_tests_one">If results are better</string>
     <string name="set_control_tests_two">Always</string>
@@ -176,20 +171,27 @@
     <string name="set_btm_nav_1">Display and remove items from menu</string>
     <string name="set_btm_nav_2">Display and leave items in menu</string>
     <string name="set_btm_nav_3">Hide</string>
+    <string name="set_btm_nav_4">Display and remove the left menu completely</string>
 
     <string name="set_data_control_title">Data for stats</string>
     <string name="set_data_control_summary">Include in section stats: %s</string>
     <string name="set_data_control_dialog_title">Include in section stats</string>
 
-    <string name="set_data_control_dates">Only events</string>
-    <string name="set_data_control_all">Events, persons, terms</string>
+    <string name="set_data_control_dates">Only basic topics</string>
+    <string name="set_data_control_all">Basic and additional topics</string>
 
     <string name="set_data_mode_title">Mode</string>
     <string name="set_data_mode_summary">Current: %s</string>
     <string name="set_data_mode_dialog_title">Choose mode</string>
 
+
     <string name="set_data_mode_default">Standard</string>
-    <string name="set_data_mode_easy">Simplified (only basic info)</string>
+    <string name="set_data_mode_easy">Simplified (only beginner\'s level items)</string>
+    <string name="set_data_mode_advanced">Advanced</string>
+
+    <string name="set_mode_sum">Current: %s</string>
+    <string name="set_mode_default_name">Basic</string>
+    <string name="set_mode_full_name">PLUS version</string>
 
     <string name="set_show_status">Status in listings</string>
     <string name="set_show_status_summary">Display: %s</string>
@@ -213,7 +215,6 @@
     <string name="title_activity_reference">Reference</string>
 
 
-    <string name="app_market_link" translatable="false">com.online.languages.study.ruhistory</string>
     <!-- string name="app_market_link">@string/app_market_link_pro</string -->
 
     <string name="msg_sending_mail">Send feedback &#8230;</string>
@@ -222,31 +223,35 @@
     <string name="msg_mail_subject_error">Error report</string>
     <string name="msg_no_browser">Browser is not installed.</string>
     <string name="no_data_msg">No data saved</string>
-    <string name="nav_header_txt">History of Russia</string>
+    <string name="nav_header_txt">Learn languages! \nIt\'s fun!</string>
     <string name="correct_errors">Correct errors</string>
     <string name="errors_box_title">Errors from tests</string>
 
 
-    <string name="section_stats_info">Для того, чтобы раздел считался полностью изученным, недостаточно только выполнить тесты. Также необходимо, чтобы были изучены записи раздела, и это будет зависеть от их статуса изученности (см. Справку). Такая система позволяет точнее определить уровень знания материала.  \n\nОбщий результат раздела зависит от результата тестов, количества пройденных записей и количества изученных записей. Каждый из этих показателей может максимально добавить к результату следующее количество процентов: \n\n- Результат теста: +50% (если тесты выполнены на 100%) \n- Пройденный материал: +30% (если пройдены все записи)
-    \n- Изученный материал: +20% (если изучены все записи)\n</string>
+    <string name="section_stats_info">The total result of a section depends on the average tests result, the number of familiar items and the number of mastered items. Each of these indicators can add the following percentage to the total result:
 
-    <string name="progress_info">Здесь представлена статистика степени изученности записей в целом приложении, а также в каждом разделе. Результаты тестов раздела или темы не учитываются. Сепень изученности выражена процентной частью записей со статусом «пройдено» и «изучено».
-        \n\nСтатус записи соответствует оценке, которая присваивается записи при выполнении тестов. Оценка вычисляется по следующей системе: +1 балл при правильном ответе, -1 балл при неправильном ответе. Максимальная оценка – 4 балла. В соответствии с количеством баллов записи присваивается один из следующих статусов:
-        \n\n — Не пройдено (0 баллов)\n — Пройдено (1-2 балла)\n — Изучено (3-4 балла) </string>
+        \n\n- Average tests result: +50% (if all tests have 100% result)
+        \n- Familiar items: +30% (if all items have been studied)
+         \n- Mastered items: +20% (if all items have been mastered)\n</string>
+
+    <string name="progress_info">Here you can see statistics on the items statuses in the entire application, as well as in each section.
+        \n\n An item may have various statuses according to the score obtained in tests and exercises.
+ The score is calculated as follows: +1 point for each correct response, -1 for each incorrect response. The highest score is 4 points. Items statuses include::
+        \n\n — Unknown (0 points)\n — Familiar (1-2 points)\n — Mastered (3-4 points) </string>
 
 
     <string name="easy_mode_dialog_title">Simplified mode</string>
 
-    <string name="easy_mode_info">\nНа данный момент активен Упрощенный режим, в котором представлены только основные исторические события, факты, личности, термины.
-    \n\nИзменить режим на стандартный можно в разделе:
+    <string name="easy_mode_info">\nCurrently, Simplified mode is active in which only the basic level items are displayed.
+    \n\nYou can change the mode here:
         \n\n
-        Настройки > Настройки данных > Режим.
+        Settings > Data settings > Mode.
         \n
     </string>
 
-    <string name="mode_info">\nВ приложении имеется два режима работы, Стандартный и Упрощенный, применить которые можно в Настройках. При активном Упрощенном режиме в темах отображаются только основные исторические события, факты, личности, термины.
+    <string name="mode_info">\nThe application has two modes, Standard and Simplified which can be applied in the Settings. When Simplified mode is enabled, only Beginner level items are displayed in the topics.
         \n\n
-     Активный режим может повлиять на статистику, поскольку она учитывает изученность только тех записей, которые присутствуют в данном режиме. Смена режима не влияет на результаты тестов, поиска, статистику ошибок, а также на избранные записи.\n</string>
+     The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n</string>
 
 
     <string name="get_premium_txt">Full version</string>
@@ -264,8 +269,8 @@
 
     <string name="ex_save_stats">Save stats</string>
 
-    <string name="stats_test_all_desc">Test with items from all categories</string>
-    <string name="stats_test_old_desc">Test with known and familiar items</string>
+    <string name="stats_test_all_desc">Test with random items from all topics</string>
+    <string name="stats_test_old_desc">Test with mastered and familiar items</string>
 
     <string name="ex_link_desc_pers_1">Test: Description / Person</string>
     <string name="ex_link_desc_pers_2">Test: Person / Description</string>
@@ -280,7 +285,7 @@
     <string name="ex_link_desc_star_2">Test: Item / Description</string>
 
 
-    <string name="cat_progress_txt">Average tests \nтresult</string>
+    <string name="cat_progress_txt">Average tests \nresult</string>
 
     <string name="section_content_title">Section overview</string>
     <string name="section_content_title_short">Contents</string>
@@ -323,48 +328,44 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="import_last_info">"Last import: "</string>
 
     <string name="cancel_txt">Cancel</string>
-    <string name="starred_confirm_title">Подтверждение удаления</string>
-    <string name="set_starred_confirm_summary">Подтверждать удаление из избранного</string>
-    <string name="starred_confirm_desc">Запись будет удалена из списка избранных. Продолжить?</string>
-    <string name="dont_ask_again">Больше не спрашивать</string>
-    <string name="confirmation_txt">Подтверждение</string>
 
 
-    <string name="info_star_txt">\nДля дополнительной работы отдельные записи можно добавить в избранное. В избранное можно добавить, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне, а также долгим нажатием на элемент списка. Максимально в избранное можно добавить 30 записей.\n</string>
+    <string name="info_star_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
+\n</string>
 
     <string name="starred_menu_info">Info</string>
-    <string name="starred_words_info">В избранное можно добавить в списке раздела или темы (не более %1$d записей).</string>
-    <string name="starred_gallery_info">В избранное можно добавить в разделе Галерея (не более %1$d записей).</string>
 
-    <string name="info_gallery_txt">\nВ галерее представлены различные материалы для дополнительного изучения. Записи из галереи можно добавить в избранное, при этом они появятся в отдельной вкладке в разделе Избранное. Записи и темы из галереи, как правило, не включены в тесты и упражнения.  \n</string>
+    <string name="starred_gallery_info">info ( %1$d ).</string>
 
-    <string name="info_img_starred">\nУдалить записи из избранного можно, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне, а также долгим нажатием на элемент списка.\n</string>
+    <string name="info_gallery_txt">\nInfo  \n</string>
 
-    <string name="maps_info">\nНа этой странице представлен список карт по темам раздела.\n</string>
-    <string name="info_menu_map">\nКарты можно открыть на новой странице и увеличить жестом или двойным касанием.\n</string>
+    <string name="info_img_starred">\nInfo\n</string>
+
+    <string name="maps_info">\Info\n</string>
+    <string name="info_menu_map">Info</string>
 
     <string name="menu_easy_mode">Simplified mode</string>
     <string name="menu_search">Search</string>
     <string name="menu_layout">Layout</string>
     <string name="menu_fullscreen">Fullscreen</string>
-    <string name="menu_open_cat">Open the category</string>
+    <string name="menu_open_cat">Open the topic</string>
     <string name="menu_sort">Sort list</string>
     <string name="stats_page_activity">Section stats</string>
     <string name="stats_total">TOTAL: %d%%</string>
-    <string name="stats_tests">TESTS:   %d%% * 0.5</string>
+    <string name="stats_tests">Test:   %d%% * 0.5</string>
     <string name="stats_familiar">Familiar: %d%% * 0.3</string>
-    <string name="stats_studied">Known:  %d%%  * 0.2</string>
+    <string name="stats_studied">Mastered:  %d%%  * 0.2</string>
     <string name="no_entries_msg">No data</string>
     <string name="total_result">Total result</string>
     <string name="stats_percent">+ %d%%</string>
-    <string name="stats_studied_percent">Known: %d%%</string>
+    <string name="stats_studied_percent">Mastered: %d%%</string>
     <string name="stats_familier_percent">Familiar: %d%%</string>
     <string name="stats_unknown_percent">Unknown: %d%%</string>
-    <string name="section_studied_title">Known items in the section</string>
+    <string name="section_studied_title">Mastered items in the section</string>
     <string name="section_familiar_title">Familiar items in the section</string>
     <string name="section_unknown_title">Unknown items in the section</string>
-    <string name="status_studied">status «KNOWN»</string>
-    <string name="status_familiar">status «KNOWN» or «FAMILIAR»</string>
+    <string name="status_studied">status «MASTERED»</string>
+    <string name="status_familiar">status «MASTERED» or «FAMILIAR»</string>
     <string name="status_unknown">status «UNKNOWN»</string>
     <string name="pro_content">Available in full version</string>
     <string name="section_tests_titile">Section tests</string>
@@ -383,7 +384,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="test_errors">Errors: %d</string>
     <string name="tasks_missed">Skipped: %d</string>
     <string name="entries_updated">Updated items: %d</string>
-    <string name="studied_tab">Known</string>
+    <string name="studied_tab">Mastered</string>
     <string name="familiar_tab">Familiar</string>
     <string name="unknown_tab">Unknown</string>
     <string name="errors_label">Errors: %d</string>
@@ -393,24 +394,24 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="result_incorrect_count">Incorrect: %d</string>
     <string name="item_status_unknown">Status: unknown</string>
     <string name="item_status_familiar">Status: familiar</string>
-    <string name="item_status_studied">Status: known</string>
-    <string name="cats_data_list_title">Stats by categories</string>
+    <string name="item_status_studied">Status: mastered</string>
+    <string name="cats_data_list_title">Stats by topics</string>
     <string name="loading">Loading …</string>
-    <string name="stats_test_result">Tests result:</string>
-    <string name="stats_familiar_label">Familiar:</string>
-    <string name="stats_studied_label">Known:</string>
-    <string name="stats_general_result">Total result</string>
-    <string name="studied_btn_txt">Known</string>
+    <string name="stats_test_result">"Tests result: "</string>
+    <string name="stats_familiar_label">"Familiar: "</string>
+    <string name="stats_studied_label">"Mastered: "</string>
+    <string name="stats_general_result">Section total result</string>
+    <string name="studied_btn_txt">Mastered</string>
     <string name="familiar_btn_txt">Familiar</string>
     <string name="unknown_btn_txt">Unknown</string>
     <string name="stats_open_section">Open section</string>
     <string name="stats_open_section_list">Section items overview</string>
-    <string name="stats_open_list_desc">List of items from categories of the section</string>
+    <string name="stats_open_list_desc">List of items from topics of the section</string>
     <string name="stats_open_tests">Section tests</string>
-    <string name="stats_open_tests_desc">Test with items from all categories</string>
-    <string name="open_results_details">Resul detailed info</string>
+    <string name="stats_open_tests_desc">Test with random items from all topics</string>
+    <string name="open_results_details">Result detailed info</string>
     <string name="circle_familiar_lbl">Familiar</string>
-    <string name="circle_studied_lbl">Known</string>
+    <string name="circle_studied_lbl">Mastered</string>
     <string name="result_errors_info">ERRORS STATS</string>
     <string name="result_total_info">Total result</string>
     <string name="search_no_result">Not found</string>
@@ -422,26 +423,209 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="pic_link">Reference</string>
     <string name="image_info_title">Image</string>
     <string name="image_info_desc">Description</string>
-    <string name="cat_stats_title">Category stats</string>
-    <string name="cat_stats_total_items">Total items:</string>
+    <string name="cat_stats_title">Topic stats</string>
+    <string name="cat_stats_total_items">"Total items: "</string>
+    <string name="cat_stats_total_items_short">"Total items: "</string>
     <string name="cat_stats_familliar_count">Familiar</string>
-    <string name="cat_stats_studied_count">Known</string>
+    <string name="cat_stats_studied_count">Mastered</string>
     <string name="reference_title">Reference</string>
     <string name="open_reference">Open info</string>
     <string name="starred_items_title">Items added to starred</string>
-    <string name="open_starred">REVIEW STARRED ITEMS</string>
+
+    <string name="open_starred">VIEW ALL STARRED ITEMS</string>
     <string name="recently_starred">RECENTLY STARRED </string>
+
+    <string name="open_bookmarks">VIEW ALL BOOKMARKS</string>
+    <string name="recent_bookmarks">RECENT BOOKMARKS</string>
+
     <string name="sections_stats_title">Sections stats</string>
     <string name="stats_general_test">General test</string>
     <string name="stats_revision">Revision</string>
-    <string name="progress_studied_label">Known</string>
+    <string name="progress_studied_label">Mastered</string>
     <string name="progress_familiar_label">Familiar</string>
     <string name="progress_unknown_label">Unknown</string>
-    <string name="result_skipped_task">Skipped tasks</string>
+    <string name="result_skipped_task">Incorrect tasks list:</string>
     <string name="starred_tab_info">Info</string>
     <string name="starred_tab_gallery">Gallery</string>
-    <string name="starrd_tab_info_count">Info (%d)</string>
+    <string name="starrd_tab_info_count">Starred items (%d)</string>
     <string name="starrd_tab_gallery_count">Bookmarks (%d)</string>
+
+
+    <string name="msg_version_name">(LA, version %s)</string>
+
+    <string name="menu_img_test">Complete a test</string>
+
+    <string name="nav_more">More</string>
+    <string name="nav_more_version">More</string>
+
+
+    <string name="set_transcript_title">Transcription</string>
+    <string name="set_transcript_summary">Current: %s</string>
+    <string name="set_transcript_dialog">Choose transcription</string>
+
+    <string name="set_transcript_1">IPA (international)</string>
+    <string name="set_transcript_2">Alternative</string>
+    <string name="set_transcript_0">Do not display</string>
+
+
+    <string name="set_flash_autoplay_title">Sound settings</string>
+    <string name="set_flash_autoplay_summary">Current: %s</string>
+    <string name="set_flash_autoplay_dialog_title">Sounds</string>
+
+    <string name="set_flash_autoplay_1">Play sound automatically</string>
+    <string name="set_flash_autoplay_2">Play sound only manually</string>
+
+    <string name="set_speak_title">Activate sounds</string>
+    <string name="set_speak_on">Use a speech synthesizer</string>
+    <string name="set_speak_off">Sounds disabled</string>
+
+    <string name="menu_item_bookmark">Bookmark</string>
+
+
+    <string name="home_tab_1">Topics</string>
+    <string name="home_tab_2">My vocabulary</string>
+    <string name="menu_delete_ucat">Delete the topic</string>
+
+    <string name="sort_udata_dialog_title">Sort items</string>
+    <string name="set_sort_desc">Newest first</string>
+    <string name="set_sort_asc">Oldest first</string>
+
+
+    <string name="set_ucat_layout_dialog_title">List layout</string>
+    <string name="set_ucat_layout_1">Normal</string>
+    <string name="set_ucat_layout_2">Compact</string>
+
+    <string name="user_content_title">My vocabulary</string>
+    <string name="export_notification">"Export: "</string>
+
+    <string name="archive_item_date">Created:  %s</string>
+    <string name="archive_item_date_short">Date: %s</string>
+
+
+    <string name="udata_limit_dialog_title">Limit is reached.</string>
+    <string name="udata_limit_dialog_text">\nA topic can\'t include more than %s items.\n</string>
+
+
+    <string name="udata_limit_dialog_title_unpaid">Limit is reached.</string>
+    <string name="udata_limit_dialog_text_unpaid">\nA topic can\'t include more than %s items. \n</string>
+
+    <string name="nav_notes_txt">Notes</string>
+
+    <string name="note_img_edit">Edit</string>
+    <string name="note_title_edit">Note title</string>
+    <string name="note_txt_edit">Note content</string>
+    <string name="note_save">Save</string>
+
+    <string name="savaing_note_title">Saving a note</string>
+    <string name="empty_note_msg">\nThe note is empty. Please enter a text. \n</string>
+    <string name="apply_btn">Apply</string>
+    <string name="pick_note_icon_title">Choose an image</string>
+
+    <string name="note_title_txt">Note</string>
+    <string name="menu_delete_note">Delete note</string>
+    <string name="menu_edit_note">Edit note</string>
+
+
+    <string name="set_night_theme">Night mode for light themes</string>
+    <string name="set_night_theme_on">Enabled</string>
+    <string name="set_night_theme_off">Disabled</string>
+
+    <string name="set_tts">Text-to-speech settings</string>
+    <string name="set_tts_summary">Open device settings</string>
+
+    <string name="set_data_section">DATA SETTINGS</string>
+    <string name="set_misc">MISCELLANEOUS</string>
+
+    <string name="set_backup_title">Export/Import your data</string>
+    <string name="set_backup_desc">Backups and Sync between devices</string>
+
+    <string name="set_version_plus">PLUS version</string>
+    <string name="set_version_plus_summary">Access to app\'s additional features</string>
+
+    <string name="confirmation_txt">Confirmation</string>
+    <string name="starred_confirm_title">Removal confirmation</string>
+    <string name="set_starred_confirm_summary">Сonfirm to remove from starred</string>
+    <string name="starred_confirm_desc">You are about to remove this item from starred. Do you really want to proceed ?</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+
+    <string name="section_tab1_title">Items list</string>
+    <string name="section_tab2_title">Training</string>
+
+    <string name="note_img_empty">none</string>
+    <string name="pick_device_icon">Find\non\n device</string>
+
+    <string name="user_vocabulary_title">My vocabulary</string>
+    <string name="user_topics_list">Topics list</string>
+    <string name="new_topic_btn">＋ New topic</string>
+    <string name="plus_version_more_lablel">More with PLUS version</string>
+    <string name="open_all_user_topics">Open the full list</string>
+    <string name="user_topics_count">"Topics added:  "</string>
+    <string name="user_items_count">"Items added:  "</string>
+
+    <string name="ucat_date">Date:  %s</string>
+    <string name="ucat_items_count">Items count: %s</string>
+
+    <string name="ucat_familiar_items">"Familiar: "</string>
+    <string name="ucat_mastered_items">"Mastered: "</string>
+    <string name="open_more">Open more</string>
+    <string name="home_ucat_date">"Date: "</string>
+    <string name="home_ucat_list_progress">Mastered:  %s/%s</string>
+
+    <string name="load_more_items">Load %s more</string>
+
+    <string name="popup_menu_edit">Edit</string>
+    <string name="popup_menu_unarchive">Unarchive</string>
+    <string name="popup_menu_delete">Delete</string>
+    <string name="popup_menu_move_top">Move to top</string>
+    <string name="popup_menu_archive">Archive</string>
+    <string name="popup_menu_view">Review</string>
+
+    <string name="ucat_edit_title">Topic title</string>
+    <string name="ucat_edit_create">Create topic</string>
+    <string name="ucat_new_item">＋ New item </string>
+
+    <string name="ucat_saving_alert">Save the topic</string>
+    <string name="ucat_enter_title_alert">Enter the title of the topic.</string>
+
+    <string name="ucat_delete_confirm">\nDelete this topic with all items?\n</string>
+    <string name="ucat_edit_info_txt">Info how to edit a topic</string>
+    <string name="ucat_edit_info_title">Info</string>
+    <string name="ucat_deleted_items">Deleted items: %d</string>
+    <string name="ucat_new_item_dialog">New item</string>
+    <string name="ucat_edit_item_dialog">Edit item</string>
+    <string name="ucat_created_time">Created: %s</string>
+    <string name="ucat_item_deleted_msg">Deleted</string>
+    <string name="ucat_delete_item_confirm">\nDelete this item?\n</string>
+    <string name="ucat_delete_item_confirm_last">\nDelete the last item?\n</string>
+
+    <string name="dialog_edit_item_more">" More"</string>
+    <string name="dialog_edit_item_less">" Less"</string>
+    <string name="save_txt">Save</string>
+    <string name="edit_item_enter_txt_msg">Enter a text</string>
+    <string name="dialog_edit_item_text">original text</string>
+    <string name="dialog_edit_item_translation">translation</string>
+    <string name="dialog_edit_item_listen">Listen</string>
+    <string name="dialog_edit_item_nosound">No sound</string>
+    <string name="dialog_edit_item_transcription">Transcription</string>
+    <string name="dialog_edit_item_grammar">Grammar</string>
+    <string name="dialog_edit_item_extra">Additional info</string>
+
+    <string name="starred_bookmarks_title">Bookmarks (%d)</string>
+    <string name="starred_bookmark_header">Topics added to bookmarks</string>
+
+    <string name="starred_bookmark_info">Bookmarks can be added from topic menu (not more than %1$d bookmarks).</string>
+    <string name="info_list_txt">\nItems from this topic cannot be starred, and they are not included in tests and exercises.\n</string>
+
+
+    <string name="starred_words_info">You can star up to %1$d items in topics or section lists.</string>
+
+    <string name="item_status_unknown_short">Unknown</string>
+    <string name="item_status_familiar_short">✓ Familiar</string>
+    <string name="item_status_studied_short">✓ Mastered</string>
+
+    <string name="bookmarks_section_txt">"Section: "</string>
+
+    <string name="section_result_calculation">Total result calculation is based on the following stats:</string>
 
 
 </resources>

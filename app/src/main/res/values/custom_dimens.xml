@@ -69,7 +69,7 @@
 
     <dimen name="_home_card_image_width">70dp</dimen>
     <dimen name="_home_card_image_height">@dimen/_home_card_image_width</dimen>
-    <dimen name="_home_card_title_bottom">10dp</dimen> <!-- change for 4 items -->
+    <dimen name="_home_card_title_bottom">6dp</dimen> <!-- change for 4 items -->
     <dimen name="_home_card_title_txt_size">18sp</dimen>
     <dimen name="_home_card_desc_txt_size">12sp</dimen>
     <integer name="_home_card_desc_maxlines">1</integer>

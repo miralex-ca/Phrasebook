@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
@@ -458,6 +459,8 @@ public class DataManager {
 
 
         ArrayList<BookmarkItem> bookmarksToReturn = new ArrayList<>();
+        
+        String sectionTxt = context.getString(R.string.bookmarks_section_txt);
 
         for (BookmarkItem bookmarkItem: bookmarkItems) {
 
@@ -477,7 +480,7 @@ public class DataManager {
                         bookmark.item = bookmarkItem.item;
                         bookmark.parent = bookmarkItem.parent;
                         bookmark.title = category.title;
-                        bookmark.desc = "Раздел: " + navSection.title;
+                        bookmark.desc = sectionTxt + navSection.title;
                         bookmark.image = navSection.image;
                         bookmark.navCategory = category;
                     }
@@ -729,6 +732,33 @@ public class DataManager {
     public int checkUcatLimit(String ucat_id) {
 
         return  dbHelper.checkUcaDataListSize(ucat_id);
+
+    }
+
+
+    public ArrayList<DataItem> getAllItems() {
+
+
+        ArrayList<DataItem> data = new ArrayList<>();
+
+        NavStructure navStructure = getNavStructure();
+
+
+        ArrayList<String> checkIds = new ArrayList<>();
+
+        for (NavSection navSection:  navStructure.sections ) {
+            Section section = new Section(navSection, context);
+            checkIds.addAll(section.checkCatIds);
+        }
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        data = dbHelper.selectSimpleDataItemsByIds(db, checkIds);
+
+        db.close();
+
+        return  data;
+
 
     }
 

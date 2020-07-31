@@ -158,13 +158,13 @@ public class NewItemDialog {
                 .setCancelable(true)
 
 
-                .setNegativeButton("Отмена",
+                .setNegativeButton(R.string.cancel_txt,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         })
-                .setPositiveButton("Сохранить",
+                .setPositiveButton(R.string.save_txt,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
@@ -199,7 +199,7 @@ public class NewItemDialog {
                 boolean wantToCloseDialog = false;
 
                 if (itemEditText.getText().toString().trim().equals("")) {
-                    Toast.makeText(context, "Введите текст", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.edit_item_enter_txt_msg, Toast.LENGTH_SHORT).show();
                 } else {
                     wantToCloseDialog = true;
                 }

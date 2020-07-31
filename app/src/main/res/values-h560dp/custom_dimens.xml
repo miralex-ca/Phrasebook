@@ -10,6 +10,8 @@
 
     <dimen name="_home_card_image_width">80dp</dimen>
 
+    <integer name="_home_card_desc_maxlines">2</integer>
+
     <dimen name="nav_header_height">130dp</dimen>
 
     <dimen name="_detail_image_height">420dp</dimen>

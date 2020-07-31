@@ -109,7 +109,7 @@
 
                         <TextView
 
-                            android:text="Мой словарь"
+                            android:text="@string/user_vocabulary_title"
                             android:maxLines="1"
                             android:id="@+id/sectionTitle"
                             android:textSize="@dimen/section_title_txt_size"
@@ -119,7 +119,7 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
-                            android:text="Добавлено тем:  "
+
 
                             android:id="@+id/userCounts"
                             android:layout_width="wrap_content"
@@ -136,7 +136,7 @@
                             android:textSize="14sp" />
 
                         <TextView
-                            android:text="Добавлено записей: "
+
 
                             android:id="@+id/itemsCounts"
                             android:layout_below="@+id/userCounts"
@@ -216,7 +216,7 @@
                             android:textStyle="bold"
                             android:layout_centerVertical="true"
                             android:textSize="18sp"
-                            android:text="Cписок тем"
+                            android:text="@string/user_topics_list"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
@@ -256,7 +256,7 @@
                             android:textColor="?attr/colorAccent"
                             android:layout_marginBottom="16dp"
                             android:textSize="22sp"
-                            android:text="＋ Новая тема"
+                            android:text="@string/new_topic_btn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 
@@ -308,11 +308,12 @@
 
                                     <TextView
                                         android:layout_centerVertical="true"
-                                        android:id="@+id/openMoreTxt"
                                         android:fontFamily="sans-serif-light"
                                         android:textStyle="bold"
                                         android:textSize="18sp"
-                                        android:text="Полный список"
+                                        android:id="@+id/openMoreTxt"
+                                        android:text="@string/open_all_user_topics"
+
                                         android:layout_marginRight="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"/>
@@ -379,7 +380,7 @@
                                         android:textStyle="bold"
                                         android:textSize="18sp"
                                         android:textColor="?attr/colorAccent"
-                                        android:text="Больше с версией PLUS"
+                                        android:text="@string/plus_version_more_lablel"
                                         android:layout_marginRight="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"/>

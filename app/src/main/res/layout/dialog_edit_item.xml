@@ -41,7 +41,7 @@
                     android:paddingTop="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="английский текст"
+                    android:hint="@string/dialog_edit_item_text"
                     android:maxLength="@integer/edit_text_length"
                     android:maxLines="6"
                     android:textSize="20sp"
@@ -70,7 +70,7 @@
                     android:paddingTop="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="перевод"
+                    android:hint="@string/dialog_edit_item_translation"
                     android:maxLength="@integer/edit_translation_length"
                     android:maxLines="6"
                     android:textSize="18sp"
@@ -137,7 +137,7 @@
 
                                     android:layout_marginLeft="8dp"
                                     android:textSize="16sp"
-                                    android:text="Прослушать "
+                                    android:text="@string/dialog_edit_item_listen"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
 
@@ -152,7 +152,7 @@
                                 android:layout_marginLeft="20dp"
                                 android:textSize="14sp"
 
-                                android:text="Без звука"
+                                android:text="@string/dialog_edit_item_nosound"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
 
@@ -178,7 +178,7 @@
                             android:paddingTop="2dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Транскрипция"
+                            android:hint="@string/dialog_edit_item_transcription"
                             android:maxLength="@integer/edit_transcription_length"
                             android:maxLines="6"
                             android:textSize="15sp"
@@ -207,7 +207,7 @@
                                 android:paddingTop="2dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="Граматика"
+                                android:hint="@string/dialog_edit_item_grammar"
                                 android:maxLength="@integer/edit_grammar_length"
                                 android:maxLines="1"
                                 android:textSize="15sp"
@@ -235,7 +235,7 @@
                             android:paddingTop="2dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Дополнительная информация"
+                            android:hint="@string/dialog_edit_item_extra"
                             android:maxLength="@integer/edit_info_length"
                             android:maxLines="8"
                             android:textSize="15sp"

@@ -72,9 +72,9 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
 
         String formattedDate = dateFormat.format(new Date());
 
-        holder.desc.setText("Дата:  " + formattedDate );
+        holder.desc.setText(context.getString(R.string.home_ucat_date) + formattedDate );
 
-        holder.itemsCount.setText("Изучено:  " + dataObject.progress +"/" + dataObject.count);
+        holder.itemsCount.setText(String.format(context.getString(R.string.home_ucat_list_progress), String.valueOf(dataObject.progress), String.valueOf(dataObject.count)));
 
     }
 

@@ -98,7 +98,7 @@ public class NoteActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle("Заметка");
+        setTitle(R.string.note_title_txt);
 
         title = findViewById(R.id.noteTitle);
         titleNopic = findViewById(R.id.noteTitleNopic);

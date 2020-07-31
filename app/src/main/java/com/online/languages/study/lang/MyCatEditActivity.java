@@ -192,9 +192,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     private void confirmDeletion(final String id) {
 
 
-        String message = "\nУдалить запись?\n";
+        String message = getString(R.string.ucat_delete_item_confirm);
 
-        if (dataItems.size() == 1) message = "\nУдалить последнюю запись?\n";
+        if (dataItems.size() == 1) message = getString(R.string.ucat_delete_item_confirm_last);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -224,7 +224,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void deleteItem(String id) {
         int num = dataManager.dbHelper.deleteData(id);
-        if (num > 0) infoDialog.toast("Удалено");
+        if (num > 0) infoDialog.toast(getString(R.string.ucat_item_deleted_msg));
         updateItemsList();
     }
 
@@ -247,7 +247,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             titleEditText.setText(categoryObject.title);
 
             TextView txt = findViewById(R.id.createdDate);
-            txt.setText("Создано: "+ dataManager.formatTime(categoryObject.time_created));
+
+
+            txt.setText(String.format(getString(R.string.ucat_created_time), dataManager.formatTime(categoryObject.time_created)));
             newDataItemAction = true;
             updateItemsList();
             listParams.setVisibility(View.VISIBLE);
@@ -276,7 +278,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
         TextView txt = findViewById(R.id.createdDate);
-        txt.setText("Создано: "+ time);
+        txt.setText(String.format(getString(R.string.ucat_created_time), time));
 
         newDataItemAction = true;
 
@@ -298,7 +300,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     public void openDataItem(String id) {
         DataItem dataItem = dataManager.dbHelper.getUData(id);
-        newItemDialog.showCustomDialog("Редактировать", ACTION_UPDATE, dataItem);
+        newItemDialog.showCustomDialog(getString(R.string.ucat_edit_item_dialog), ACTION_UPDATE, dataItem);
         titleEditText.clearFocus();
     }
 
@@ -311,7 +313,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
             if (title.trim().equals("")) {
 
-                infoDialog.simpleDialog("Сохранение темы", "\nВведите название темы.\n");
+                infoDialog.simpleDialog(getString(R.string.ucat_saving_alert), getString(R.string.ucat_enter_title_alert));
 
             } else {
                 catBtnAction = false;
@@ -336,7 +338,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
             if (title.trim().equals("")) {
 
-                infoDialog.simpleDialog("Сохранение темы", "\nВведите название темы.\n");
+                infoDialog.simpleDialog(getString(R.string.ucat_saving_alert), getString(R.string.ucat_enter_title_alert));
 
             } else {
 
@@ -397,7 +399,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
                 }
 
             } else {
-                newItemDialog.showCustomDialog("Новая запись");
+                newItemDialog.showCustomDialog(getString(R.string.ucat_new_item_dialog));
                 titleEditText.clearFocus();
             }
 
@@ -469,7 +471,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.confirmation_txt);
 
-        builder.setMessage("\nУдалить тему со всеми словами?\n");
+        builder.setMessage(R.string.ucat_delete_confirm);
 
         builder.setCancelable(false);
 
@@ -496,7 +498,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         int num =  dataManager.dbHelper.deleteUCat(id);
 
-        infoDialog.toast("Удалено слов: " + num);
+        infoDialog.toast(String.format(getString(R.string.ucat_deleted_items), num));
 
         setResult(50);
 
@@ -528,7 +530,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
                 return true;
 
             case R.id.info_item:
-                infoDialog.simpleDialog("Справка", "Справка о редктировании темы");
+                infoDialog.simpleDialog(getString(R.string.ucat_edit_info_title), getString(R.string.ucat_edit_info_txt));
                 return true;
 
             case R.id.delete_ucat:

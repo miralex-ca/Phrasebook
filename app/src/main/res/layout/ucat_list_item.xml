@@ -131,7 +131,6 @@
                                 <TextView
                                     android:textSize="13sp"
                                     android:id="@+id/itemsCount"
-                                    android:text="Записей: 0"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     />
@@ -141,7 +140,7 @@
                                     android:layout_marginLeft="14dp"
                                     android:textSize="13sp"
                                     android:id="@+id/familiarCountTxt"
-                                    android:text="Пройдено: "
+                                    android:text="@string/ucat_familiar_items"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     />
@@ -164,7 +163,7 @@
                                     android:layout_marginLeft="14dp"
                                     android:textSize="13sp"
                                     android:id="@+id/masteredCountTxt"
-                                    android:text="Изучено: "
+                                    android:text="@string/ucat_mastered_items"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     />
@@ -189,7 +188,7 @@
                                 android:visibility="gone"
                                 android:layout_marginTop="8dp"
                                 android:textSize="13sp"
-                                android:text="Средний результат тестов: 20%"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 />

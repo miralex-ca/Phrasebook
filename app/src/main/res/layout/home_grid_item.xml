@@ -67,7 +67,6 @@
 
                 <TextView
                     android:id="@+id/desc"
-                    tools:text="Desc"
 
                     android:gravity="start"
 

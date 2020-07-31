@@ -113,7 +113,7 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
 
         holder.desc.setText(String.format(context.getString(R.string.archive_item_date_text), formattedDate));
 
-        holder.itemsCount.setText("Записей:  " + dataObject.count );
+        holder.itemsCount.setText(String.format(context.getString(R.string.ucat_items_count), String.valueOf(dataObject.count)));
 
 
 

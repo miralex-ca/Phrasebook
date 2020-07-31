@@ -150,6 +150,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         super.onCreate(savedInstanceState);
 
 
+        //Toast.makeText(this, "Len: " , Toast.LENGTH_SHORT).show();
+
         appSettings = PreferenceManager.getDefaultSharedPreferences(this);
         themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
 
@@ -259,6 +261,13 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         btnGroupBox = findViewById(R.id.btnBox);
 
         originWordsList = getIntent().getParcelableArrayListExtra("dataItems");
+
+        if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+
+            originWordsList = dataManager.getAllItems();
+        }
+
+        //Toast.makeText(this, "Len: " + originWordsList.size(), Toast.LENGTH_SHORT).show();
 
         exerciseController = new ExerciseController();
         completed = new ArrayList<>();
@@ -387,6 +396,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             limit = Integer.parseInt(lim);
 
+            //Toast.makeText(this, "Len: "+ originWordsList.size(), Toast.LENGTH_SHORT).show();
 
         }
 
@@ -399,6 +409,10 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         ArrayList<DataItem> data = new ArrayList<>(originWordsList);
         if (data.size() > limit) {
             data = new ArrayList<>(data.subList(0, limit));
+        }
+
+        if (topicTag.contains(Constants.SECTION_TEST_PREFIX)) {
+            data = new ArrayList<>();
         }
 
         exerciseAllData.generateTasks(data);
@@ -914,8 +928,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     private void restartFromMenu() {
 
-        int delay = 150;
-        if (originWordsList.size() > 90) delay = 200;
+        int delay = 300;
+        if (originWordsList.size() > 50) delay = 350;
 
         new android.os.Handler().postDelayed(new Runnable() {
             public void run() {
@@ -1141,9 +1155,9 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
     @Override
-    protected void onStop()
+    protected void onDestroy()
     {
-        super.onStop();
+        super.onDestroy();
 
         if(myTTS != null){
             myTTS.shutdown();

@@ -77,7 +77,7 @@
 
                         <TextView
                             android:layout_marginRight="12dp"
-                            android:text="1/2"
+                            android:text="0"
                             android:layout_gravity="right"
                             android:alpha="0.6"
                             android:textSize="14sp"
@@ -91,7 +91,7 @@
                             android:paddingTop="2dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Заголовок"
+                            android:hint="@string/ucat_edit_title"
                             android:maxLength="60"
                             android:maxLines="6"
                             android:textSize="19sp"
@@ -126,7 +126,7 @@
                             android:id="@+id/createBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Создать тему"
+                            android:text="@string/ucat_edit_create"
                             style="?android:attr/borderlessButtonStyle" />
 
 
@@ -236,7 +236,7 @@
 
                             android:textColor="?attr/colorAccent"
 
-                            android:text="＋ Новая запись"
+                            android:text="@string/ucat_new_item"
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>

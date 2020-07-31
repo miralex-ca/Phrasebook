@@ -1,0 +1,241 @@
+{
+  "params": {
+
+    "simplified": false,
+    "homecards": false,
+    "gallery": false
+
+  },
+
+  "sections":
+  [
+    {"tag": "section_1", "title": "Communication", "id": "10010",
+      "title_short": "Communication",
+      "desc_short": "Greetings, people, family, occupations",
+      "desc": "Greetings, people, family, occupations",
+
+      "image": "cat/contacts.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100100010", "title": "Contacts", "image":  "cat/contact_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100020", "title": "People", "image":  "cat/people_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100030", "title": "Questionary", "image":  "cat/form_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100040", "title": "Family", "image":  "cat/family_cat.png","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100050", "title": "Occupations", "image":  "cat/jobs_cat.png","review":  "true"},
+
+        {"parent": "root", "type": "set", "id": "set_1_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100100110", "title": "Greetings", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100100120", "title": "Formulas of politeness","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100100130", "title": "Languages","review":  "true"},
+
+        {"parent": "root", "type": "set", "id": "set_1_3", "title": "Useful information"},
+
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100310", "title": "Countries","review":  "false"},
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100320", "title": "Cities","review":  "false"}
+
+      ]
+    },
+
+    {"tag": "section_2", "title": "Travel", "id": "10020",
+      "desc": "Transport, hotel, sightseeing etc.",
+      "title_short": "Travel",
+      "desc_short": "Transport, hotel, sightseeing etc.",
+      "image": "cat/travel.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_2_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100200010", "title": "Travel by plane", "image": "cat/plane_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Travel by train", "image": "cat/train_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Travel by ship", "image": "cat/ship_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat_p.png"},
+
+        {"parent": "root", "type": "set", "id": "set_2_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100200210", "title": "At the hotel"},
+        {"parent": "root", "type": "simple", "id": "100200220", "title": "Sightseeing tour"},
+        {"parent": "root", "type": "simple", "id": "100300120", "title": "City transport"}
+
+
+      ]
+    },
+
+    {"tag": "section_3", "title": "In the city", "id": "10030",
+      "desc": "City transport, organisations, places of interest, signboards",
+      "title_short": "In the city",
+      "desc_short": "City transport, organisations, places of interest, signboards",
+      "image": "picto/section_city.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_3_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100300010", "title": "City", "image": "cat/city_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "Organisations", "image": "cat/store_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Places of interest", "image":  "cat/sights_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_3_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100300110", "title": "In the city"},
+        {"parent": "root", "type": "simple", "id": "100300120", "title": "City transport"},
+
+        {"parent": "root", "type": "set", "id": "set_3_3", "title": "Additional topics"},
+        {"parent": "root", "type": "extra", "id": "100300210", "title": "Signboards and inscriptions"}
+
+      ]
+    },
+
+    {"tag": "section_4", "title": "Shopping", "id": "10040",
+      "title_short": "Shopping",
+      "desc": "Stores, clothes, accessories, electronics etc.",
+      "desc_short": "Магазины, одежда, аксессуары, парфюмерия и т.д.",
+      "image": "cat/shop.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_4_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100400010", "title": "Shops", "image": "cat/shop_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400020", "title": "Clothes", "image": "cat/clothes_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400030", "title": "Accessories", "image": "cat/accessory_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400040", "title": "Books and stationary", "image": "cat/book_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400050", "title": "Electronics", "image": "cat/electro_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100400060", "title": "Perfumery", "image": "cat/perfume_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_4_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100400110", "title": "In a shop"},
+        {"parent": "root", "type": "simple", "id": "100400120", "title": "Payment"}
+
+      ]
+    },
+
+    {"tag": "section_5", "title": "Food", "id": "10050",
+      "desc": "Vegetables, fruit, meat, sea food, desserts, drinks etc.",
+      "title_short": "Food",
+      "desc_short": "Vegetables, fruit, meat, sea food, desserts, drinks etc.",
+      "image": "cat/food.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_5_1", "title": "Basic vocabulary"},
+
+
+        {"parent": "root", "type": "simple", "id": "100500020", "title": "Мeat", "image": "cat/meat_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Fish and seafood", "image": "cat/fish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500040", "title": "Vegetables", "image": "cat/vegetable_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500050", "title": "Fruit", "image": "cat/fruit_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Desserts", "image": "cat/dessert_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500070", "title": "Drinks", "image": "cat/drink_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_5_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100500110", "title": "In a restaurant"},
+        {"parent": "root", "type": "simple", "id": "100500120", "title": "In a pub"},
+
+        {"parent": "root", "type": "set", "id": "set_5_3", "title": "Additional topics"},
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Berries"},
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts and dried fruits"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs and spices"}
+      ]
+    },
+
+    {"tag": "section_6", "title": "Nature", "id": "10060",
+      "desc": "Animals, birds, flowers, trees etc.",
+      "title_short": "Nature",
+      "desc_short": "Animals, birds, flowers, trees etc.",
+      "image": "cat/nature.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_6_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100600010", "title": "Nature", "image": "cat/nature_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "Water resources", "image": "cat/water_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Sky", "image": "cat/sky_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600040", "title": "Wild animals", "image": "cat/animal_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Wild birds", "image": "cat/bird_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600070", "title": "Sea animals", "image": "cat/sea_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600080", "title": "Insects", "image": "cat/insect_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600090", "title": "Flowers", "image": "cat/flower_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600091", "title": "Tress", "image": "cat/tree_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_6_2", "title": "Phrases"},
+        {"parent": "root", "type": "simple", "id": "100600110", "title": "About weather"}
+
+
+      ]
+    },
+
+    {"tag": "section_7", "title": "Health", "id": "10070",
+      "desc": "Parts of the body, organs, diseases etc.",
+      "title_short": "Health",
+      "desc_short": "Части тела, органы, болезни, приём у врача и т.д.",
+      "image": "cat/health.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_7_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "Parts of the body", "image": "cat/body_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700020", "title": "Human face", "image": "cat/face_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700030", "title": "Organs and tissues", "image": "cat/organ_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Diseases", "image": "cat/desease_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_7_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100700110", "title": "Consulting a doctor"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of diseases"},
+        {"parent": "root", "type": "simple", "id": "100700130", "title": "At the pharmacy"}
+
+      ]
+    },
+
+    {"tag": "section_8", "title": "House", "id": "10080",
+      "desc": "Rooms, furniture, appliances dishes etc.",
+      "title_short": "House",
+      "desc_short": "Rooms, furniture, appliances dishes etc.",
+      "image": "cat/house.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_8_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "House, apartment", "image":  "cat/house_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800020", "title": "Room, furniture", "image":  "cat/furniture_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Bedroom", "image":  "cat/bed_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800040", "title": "Bathroom", "image":  "cat/bath_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800050", "title": "Kitchen", "image":  "cat/kitchen_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800060", "title": "Dishes and Silverware", "image":  "cat/dish_cat.png"}
+
+      ]
+    },
+
+    {"tag": "section_9", "title": "Miscellaneous", "id": "10090",
+      "desc": "Numbers, colors, time, calendar etc.",
+      "title_short": "Miscellaneous",
+      "desc_short": "Numbers, colors, time, calendar etc.",
+      "image": "cat/misc.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Basic vocabulary"},
+
+        {"parent": "root", "type": "simple", "id": "100900010", "title": "Numbers", "image": "cat/number_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900020", "title": "Colors", "image": "cat/color_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900030", "title": "Adjectives", "image": "cat/quality_1_cat.png"},
+
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Prepositions", "image": "cat/preposition_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900060", "title": "Time", "image": "cat/time_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900070", "title": "Calendar", "image": "cat/calendar_cat.png"}
+
+
+      ]
+    }
+  ]
+
+
+}
+

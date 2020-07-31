@@ -224,7 +224,7 @@ public class UCatsArchiveActivity extends BaseActivity {
         int dif = completeList.size() - displayList.size();
 
         if (dif > 0) {
-            lastObject.title = "Загрузить ещё " + dif;
+            lastObject.title = String.format(getString(R.string.load_more_items), String.valueOf(dif));;
             lastObject.info = "show";
         } else {
             lastObject.info = "hide";

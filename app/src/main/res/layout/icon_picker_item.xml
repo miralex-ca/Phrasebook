@@ -36,7 +36,7 @@
         android:textSize="13sp"
         android:gravity="center"
         android:layout_centerInParent="true"
-        android:text="Выбрать \nна\n устройстве"
+        android:text="@string/pick_device_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
