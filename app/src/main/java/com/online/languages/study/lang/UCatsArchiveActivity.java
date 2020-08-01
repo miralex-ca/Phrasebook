@@ -105,7 +105,7 @@ public class UCatsArchiveActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        setTitle("Архив");
+        setTitle(R.string.archive_title);
 
         activeAction = false;
 

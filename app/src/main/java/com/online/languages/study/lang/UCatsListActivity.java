@@ -556,7 +556,7 @@ public class UCatsListActivity extends BaseActivity {
 
                 PremiumDialog infoDialog = new PremiumDialog(this);
 
-                infoDialog.createDialog("Версия PLUS", "\nДостигнут лимит тем обчной версии. Чтобы создавать больше тем, получите версию PLUS.\n");
+                infoDialog.createDialog(getString(R.string.plus_version_btn), getString(R.string.limit_cats_for_unpaid));
 
             } else {
 

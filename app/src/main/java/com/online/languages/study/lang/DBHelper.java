@@ -1637,7 +1637,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 bookmark.time = cursor.getLong(cursor.getColumnIndex(KEY_BOOKMARK_TIME));
 
                 bookmark.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
-                bookmark.desc = "Раздел: Мой словарь";
+                bookmark.desc = cntx.getString(R.string.bookmarks_section_my_voc);
                 bookmark.image = "cat/account.png";
                 bookmark.navCategory = new NavCategory();
 

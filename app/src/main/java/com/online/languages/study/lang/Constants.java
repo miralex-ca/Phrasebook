@@ -3,7 +3,7 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = false;  // TODO change in PRO
+    public static final boolean PRO = true;  // TODO change in PRO
     public static final boolean DEBUG = true;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
@@ -199,7 +199,7 @@ public class Constants {
     public static final String PARAM_UCAT_ROOT = "ucats_root";
     public static final String PARAM_UCAT_ARCHIVE = "uc_archive";
 
-    public static final String DEFAULT_TEST_RELACE_CAT = "10010010";
+    public static final String DEFAULT_TEST_RELACE_CAT = "100500050";
 
     public static final String UCAT_PARAM_SORT = "sort";
     public static final String UCAT_PARAM_SORT_ASC = "sortup";

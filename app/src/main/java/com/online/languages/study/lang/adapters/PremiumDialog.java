@@ -68,7 +68,7 @@ public class PremiumDialog {
         builder.setTitle(title)
                 .setCancelable(true)
 
-                .setNeutralButton("Версия PLUS",
+                .setNeutralButton(R.string.plus_version_btn,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 openPremium();

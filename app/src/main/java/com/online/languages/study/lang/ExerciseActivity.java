@@ -262,12 +262,18 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         originWordsList = getIntent().getParcelableArrayListExtra("dataItems");
 
+
+
+
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+
 
             originWordsList = dataManager.getAllItems();
         }
 
-        //Toast.makeText(this, "Len: " + originWordsList.size(), Toast.LENGTH_SHORT).show();
+
+
+
 
         exerciseController = new ExerciseController();
         completed = new ArrayList<>();
@@ -407,13 +413,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         Collections.shuffle(originWordsList);
 
         ArrayList<DataItem> data = new ArrayList<>(originWordsList);
+
         if (data.size() > limit) {
             data = new ArrayList<>(data.subList(0, limit));
         }
 
-        if (topicTag.contains(Constants.SECTION_TEST_PREFIX)) {
-            data = new ArrayList<>();
-        }
+
 
         exerciseAllData.generateTasks(data);
         exerciseAllData.shuffleTasks();

@@ -4,8 +4,22 @@
 
 
     <string-array name="test_replace_cats">
-        <item>10040050</item> <!-- fruit -->
+        <item>100500050</item> <!-- fruit -->
     </string-array>
+
+
+    <string-array name="menu_titles">
+        <item>@string/title_home_txt</item>
+        <item>@string/title_gallery_txt</item>
+        <item>@string/title_starred_txt</item>
+        <item>@string/title_stats_txt</item>
+        <item>@string/nav_notes_txt</item>
+        <item>@string/title_settings_txt</item>
+        <item>@string/title_info_txt</item>
+        <item>@string/title_contact_txt</item>
+    </string-array>
+
+    <string name="title_main_txt" translatable="false">@string/title_home_txt</string>
 
 
 
@@ -188,10 +202,6 @@
     </string-array>
 
     <string name="set_mode_default" translatable="false">default</string>
-    <string name="set_mode_sum">Текущий: %s</string>
-
-    <string name="set_mode_default_name">Основной</string>
-    <string name="set_mode_full_name">Версия PLUS</string>
 
 
     <string-array name="home_card_1">

@@ -3,7 +3,7 @@
 <resources>
 
 
-
+    <string name="app_name">Apprenez des langues</string>
 
     <string name="action_settings">Settings</string>
 
@@ -44,21 +44,21 @@
 
     <string name="starred_ex_link_title">Test avec les favoris</string>
 
-    <string name="voc_ex_link_first_desc">Choose item translation</string>
-    <string name="voc_ex_link_second_desc">Choose item translation</string>
+    <string name="voc_ex_link_first_desc">Choisir la tradiction</string>
+    <string name="voc_ex_link_second_desc">Choisir la tradiction</string>
 
-    <string name="section_ex_link_title_1">General test 1</string>
-    <string name="section_ex_link_title_2">General test 2</string>
-    <string name="section_ex_link_title_3">General test 3</string>
+    <string name="section_ex_link_title_1">Test général 1</string>
+    <string name="section_ex_link_title_2">Test général 2</string>
+    <string name="section_ex_link_title_3">Test général 3</string>
 
-    <string name="section_ex_link_desc_3">Choose translation for audio</string>
+
 
     <string name="voc_ex_link_third_title">Test 3</string>
-    <string name="voc_ex_link_card_desc">Review items one by one</string>
+    <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
 
 
-    <string name="voc_ex_link_third_desc">Test with multiple options</string>
-    <string name=       "title_activity_cards">CardsActivity</string>
+    <string name="voc_ex_link_third_desc">Choisir la tradiction pour l\'audio</string>
+
 
 
     <!-- flashcard -->
@@ -78,7 +78,7 @@
     <!-- helper -->
     <string name="ex_text_foo">Texte</string>
     <string name="image_desc">Image</string>
-    <string name="title_activity_exericse">ExericseActivity</string>
+
 
     <!-- exercise -->
 
@@ -101,13 +101,11 @@
 
     <string name="ex_result_txt">Réponses correctes: %1$d from %2$d \n Résultat:\u00A0\u00A0\u00A0 %3$d%%</string>
 
-    <string name="title_activity_user_list">UserListActivity</string>
+
 
     <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
 
-    <string name="title_activity_cat_stats">CatStatsActivity</string>
-    <string name="title_activity_cat_data_stats">CatDataStatsActivity</string>
-    <string name="title_activity_custom_data_list">CustomDataListActivity</string>
+
 
 
     <string name="starred_limit">La limite de favoris est atteinte.</string>
@@ -231,7 +229,7 @@
     <string name="no_data_msg">Il n\'y a pas de données</string>
     <string name="nav_header_txt">Apprenez des langues! \nC\'est cool!</string>
     <string name="correct_errors">Corriger les erreurs</string>
-    <string name="errors_box_title">Errors from tests</string>
+    <string name="errors_box_title">Erreurs faites dans les tests</string>
 
 
     <string name="section_stats_info">The total result of a section depends on the average tests result, the number of familiar items and the number of mastered items. Each of these indicators can add the following percentage to the total result:
@@ -260,7 +258,7 @@
      The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n</string>
 
 
-    <string name="get_premium_txt">Version PLUS</string>
+    <string name="get_premium_txt">Bien plus avec la version PLUS!</string>
     <string name="title_activity_get_premium">Version PLUS</string>
 
     <string name="get_premium_activity">Version PLUS</string>
@@ -275,8 +273,8 @@
 
     <string name="ex_save_stats">Sauvegarder la statistique</string>
 
-    <string name="stats_test_all_desc">Test with random items from all topics</string>
-    <string name="stats_test_old_desc">Test with mastered and familiar items</string>
+    <string name="stats_test_all_desc">Test avec des entrées de tous les thèmes</string>
+    <string name="stats_test_old_desc">Test avec des entrées maîtrisé et familières</string>
 
     <string name="ex_link_desc_pers_1">Test: Description / Person</string>
     <string name="ex_link_desc_pers_2">Test: Person / Description</string>
@@ -404,9 +402,9 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="cats_data_list_title">Statistiques par thèmes</string>
     <string name="loading">Chargement …</string>
     <string name="stats_test_result">"Résultats des tests: "</string>
-    <string name="stats_familiar_label">"Familiar: "</string>
-    <string name="stats_studied_label">"Mastered: "</string>
-    <string name="stats_general_result">Section total result</string>
+    <string name="stats_familiar_label">"Familier: "</string>
+    <string name="stats_studied_label">"Maîtrisé: "</string>
+    <string name="stats_general_result">Résultat total de la section</string>
     <string name="studied_btn_txt">Maîtrisé</string>
     <string name="familiar_btn_txt">Familier</string>
     <string name="unknown_btn_txt">Inconnu</string>
@@ -591,7 +589,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="ucat_new_item">＋ Nouvelle entrée </string>
 
     <string name="ucat_saving_alert">Enregistrer le thème</string>
-    <string name="ucat_enter_title_alert">Entrez le nom du thème.</string>
+    <string name="ucat_enter_title_alert">Entrez le titre du thème.</string>
 
     <string name="ucat_delete_confirm">\nSupprimer ce thème avec toutes les entrées?\n</string>
     <string name="ucat_edit_info_txt">Info comment modifier le thème</string>
@@ -629,8 +627,16 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="item_status_studied_short">✓ Maîtrisé</string>
 
     <string name="bookmarks_section_txt">"Section: "</string>
+    <string name="bookmarks_section_my_voc">Section: Mon vocabulaire</string>
 
     <string name="section_result_calculation">Le calcul du résultat total est basé sur les statistiques suivantes:</string>
+    <string name="plus_version_btn">Version PLUS</string>
 
+    <string name="limit_cats_for_unpaid">\nVous avez atteint la limite de thèmes dans la version basique. Obtenez la version PLUS pour ajouter plus de thèmes.\n</string>
+
+    <string name="menu_ucats_list_layout">Affichage de la liste</string>
+    <string name="menu_open_archive">Ouvrir l\'archive</string>
+    <string name="delete_note_confirm">\nSupprimer cette note?\n</string>
+    <string name="archive_title">Аrchive</string>
 
 </resources>

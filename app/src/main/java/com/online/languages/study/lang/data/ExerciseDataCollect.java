@@ -451,6 +451,8 @@ public class ExerciseDataCollect {
 
         replaceList = dbHelper.getDataItemsByCatIds(ids);
 
+        //Toast.makeText(context, "Len: "+ replaceList.size(), Toast.LENGTH_SHORT).show();
+
     }
 
 

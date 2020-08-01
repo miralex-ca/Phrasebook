@@ -9,6 +9,7 @@
     <string name="app_data_file" translatable="false">data_fr.json</string>
 
 
+
     <string-array name="data_files">
         <item>data_fr.json</item>
         <!-- item>test_data.json</item -->
@@ -20,6 +21,11 @@
     <string name="app_name_spec">FR</string>
 
     <string name="title_main_txt">@string/title_home_txt</string>
+
+    <string-array name="test_replace_cats" tools:ignore="InconsistentArrays">
+        <item>100500050</item> <!-- fruit -->
+        <item>100500040</item> <!-- fruit -->
+    </string-array>
 
 
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">

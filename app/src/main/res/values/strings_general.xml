@@ -1,0 +1,106 @@
+
+
+<resources>
+
+
+
+
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/7707206650</string>
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~1169718468</string>
+
+
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuHpMkp0RqQJ4CzsokYgM0kkzAXgffvRI9aQCS5KYGsSe6RIAZHqvZurxjWjQNkpKHwRa5IdDHZD7BUsA1+pooJtyPRZLEvCAlXf1XNY93clF9UEHz77fp29RuzTEGtlZysUk56Do5++FKKcwa4UEJkobyObTCzo6e+jVMy23gFX2A0HP25aP4RUfX5UsPjFpPMydGgGyLZoD5TcQVB1aLvUSCCdTuQpgkEEB4Cdqd09VlYXSrgJqDg4f0+ZbDM06UvE63XEmtnj79ivu5adm9S1NLNHkFor9DbTrMgNWvvcFCIMPkMxlcRYS0ewdFptA8mKmDABMBEq12rCkjOFSSwIDAQAB</string>
+
+
+    <string name="app_backup_activity" translatable="false">.BackupActivity</string>
+
+    <string name="app_name_spec"> </string>
+
+    <string name="app_data_file" translatable="false">data.json</string>
+    <string name="app_detail_file" translatable="false">details.json</string>
+    <string name="app_structure_file">navstructure.json</string>
+
+    <string name="app_info_file">info</string>
+
+    <string name="tabs_starred_order" translatable="false">normal</string>
+    <string name="tabs_starred_display" translatable="false">item_prior</string>
+
+
+    <string name="backup_file_name" translatable="false">backup_lang.csv</string>
+
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+
+    <item name="item_id" type="id" />
+    <item name="item_type" type="id" />
+
+    <item name="cat_id" type="id" />
+    <item name="data_count" type="id" />
+
+
+    <string name="title_activity_cat" translatable="false">CatActivity</string>
+
+    <string name="section_ex_link_desc_3">@string/voc_ex_link_third_desc</string>
+
+    <string name="title_activity_cards">CardsActivity</string>
+
+    <string name="title_activity_exericse">ExericseActivity</string>
+
+    <string name="title_activity_user_list">UserListActivity</string>
+
+    <string name="title_activity_cat_stats">CatStatsActivity</string>
+    <string name="title_activity_cat_data_stats">CatDataStatsActivity</string>
+    <string name="title_activity_custom_data_list">CustomDataListActivity</string>
+
+    <string-array name="starred_list_sort_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="starred_list_save_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string name="set_sort_pers_title" translatable="false">Сортировка личностей</string>
+    <string name="set_sort_pers_summary" translatable="false">Текущая: %s</string>
+    <string name="set_sort_pers_dialog_title" translatable="false">Сортировка</string>
+
+    <string name="set_sort_pers_1" translatable="false">по хронологии</string>
+    <string name="set_sort_pers_2" translatable="false">по алфавиту</string>
+
+    <string name="app_market_link" translatable="false">com.online.languages.study.ruhistory</string>
+    <!-- string name="app_market_link">@string/app_market_link_pro</string -->
+
+    <string name="mail_address" translatable="false">study.languages.online@gmail.com</string>
+
+    <string name="ex_opt_short" translatable="false">short</string>
+    <string name="ex_opt_long" translatable="false">long</string>
+    <string name="ex_opt_long_less" translatable="false">long_less</string>
+
+    <string name="dimen_size_h" translatable="false">default</string>
+
+    <string name="title_activity_finder" translatable="false">FinderActivity</string>
+
+    <string name="number_percent" translatable="false">%d%%</string>
+
+    <string name="maps_list_title" translatable="false">Карты</string>
+
+    <string name="sort_pers_dialog_title" translatable="false">Сортировка</string>
+
+
+    <string name="note_title" translatable="false"> Название заметки </string>
+
+    <string name="note_content" translatable="false">Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel. An eam dolor feugait urbanitas. Vim iisque alterum sapientem ut. Autem eleifend nam et, ferri solum est ne, latine prodesset id vix. \n\n Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel.</string>
+
+
+    <string name="archive_item_date_text" translatable="false">@string/archive_item_date_short</string>
+
+
+
+
+
+</resources>

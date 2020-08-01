@@ -2,8 +2,7 @@
 
 <resources>
 
-
-
+    <string name="app_name">Learn languages</string>
 
     <string name="action_settings">Settings</string>
 
@@ -51,14 +50,14 @@
     <string name="section_ex_link_title_2">General test 2</string>
     <string name="section_ex_link_title_3">General test 3</string>
 
-    <string name="section_ex_link_desc_3">Choose translation for audio</string>
+
 
     <string name="voc_ex_link_third_title">Test 3</string>
     <string name="voc_ex_link_card_desc">Review items one by one</string>
 
 
     <string name="voc_ex_link_third_desc">Test with multiple options</string>
-    <string name="title_activity_cards">CardsActivity</string>
+
 
 
     <!-- flashcard -->
@@ -78,7 +77,7 @@
     <!-- helper -->
     <string name="ex_text_foo">Text</string>
     <string name="image_desc">Image</string>
-    <string name="title_activity_exericse">ExericseActivity</string>
+
 
     <!-- exercise -->
 
@@ -99,12 +98,9 @@
     <string name="ex_result_txt_verybad">VERY BAD!</string>
     <string name="ex_result_txt">Correct: %1$d from %2$d \n Result:\u00A0\u00A0\u00A0 %3$d%%</string>
 
-    <string name="title_activity_user_list">UserListActivity</string>
 
     <string name="starred_ex_notif">Exercises will be available once new items are added to the Starred list.</string>
-    <string name="title_activity_cat_stats">CatStatsActivity</string>
-    <string name="title_activity_cat_data_stats">CatDataStatsActivity</string>
-    <string name="title_activity_custom_data_list">CustomDataListActivity</string>
+
 
 
     <string name="starred_limit">Failed to add. Limit is reached.</string>
@@ -254,13 +250,13 @@
      The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n</string>
 
 
-    <string name="get_premium_txt">Full version</string>
-    <string name="title_activity_get_premium">Full version</string>
+    <string name="get_premium_txt">Get more with PLUS version!</string>
+    <string name="title_activity_get_premium">PLUS version</string>
 
-    <string name="get_premium_activity">Full version</string>
-    <string name="purchase_txt">Get the full version of the app and remove ads</string>
+    <string name="get_premium_activity">PLUS version</string>
+    <string name="purchase_txt">Get the PLUS version of the app and remove ads</string>
     <string name="get_premium_thank">Thank you!</string>
-    <string name="get_premium_continue">Продолжить</string>
+    <string name="get_premium_continue">Continue</string>
     <string name="get_premium_buy">Buy</string>
     <string name="get_premium_buy_price">Buy for %s</string>
     <string name="purchased_txt">Click «Continue» to go to the home page</string>
@@ -624,8 +620,17 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="item_status_studied_short">✓ Mastered</string>
 
     <string name="bookmarks_section_txt">"Section: "</string>
+    <string name="bookmarks_section_my_voc">Section: My vocabulary</string>
 
     <string name="section_result_calculation">Total result calculation is based on the following stats:</string>
+    <string name="plus_version_btn">PLUS version</string>
+
+    <string name="limit_cats_for_unpaid">\nYou have reached the limit for topics in the basic version. Get version PLUS to add more topics.\n</string>
+
+    <string name="menu_ucats_list_layout">Topics list layout</string>
+    <string name="menu_open_archive">Open archive</string>
+    <string name="delete_note_confirm">\nDelete this note?\n</string>
+    <string name="archive_title">Архив</string>
 
 
 </resources>

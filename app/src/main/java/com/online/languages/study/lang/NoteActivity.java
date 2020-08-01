@@ -282,7 +282,7 @@ public class NoteActivity extends BaseActivity {
 
         builder.setTitle(R.string.confirmation_txt);
 
-        builder.setMessage("\nУдалить заметку?\n");
+        builder.setMessage(R.string.delete_note_confirm);
 
         builder.setCancelable(true);
 
