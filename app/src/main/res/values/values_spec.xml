@@ -4,6 +4,7 @@
     <string name="app_reference_file" translatable="false">reference</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
+
     <integer name="section_id_length">9</integer>
 
 
@@ -20,10 +21,9 @@
     </style>
 
 
-
     <string-array name="data_files">
+        <item>data_fr.json</item>
         <item>data.json</item>
-        <!-- item>test_data.json</item -->
     </string-array>
 
 

@@ -26,6 +26,7 @@
         {"parent": "root", "type": "simple", "id": "100100050", "title": "Профессии", "image":  "cat/jobs_cat.png","review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_1_2", "title": "Фразы"},
+
         {"parent": "root", "type": "simple", "id": "100100110", "title": "Приветствия и прощания", "review":  "false"},
         {"parent": "root", "type": "simple", "id": "100100120", "title": "Формулы вежливости","review":  "false"},
         {"parent": "root", "type": "simple", "id": "100100130", "title": "Знание языка","review":  "true"},
@@ -83,8 +84,8 @@
         {"parent": "root", "type": "simple", "id": "100300110", "title": "В городе"},
         {"parent": "root", "type": "simple", "id": "100300120", "title": "В транспорте"},
 
-        {"parent": "root", "type": "set", "id": "set_3_3", "title": "Дополнительно"},
-        {"parent": "root", "type": "extra", "id": "100300210", "title": "Вывески, таблички"}
+        {"parent": "root", "type": "set", "id": "set_3_3", "title": "Дополнительные темы"},
+        {"parent": "root", "type": "extra", "id": "100300210", "title": "Вывески, таблички","review":  "false"}
 
       ]
     },
@@ -108,9 +109,9 @@
 
         {"parent": "root", "type": "set", "id": "set_4_2", "title": "Фразы"},
         {"parent": "root", "type": "simple", "id": "100400110", "title": "В магазине"},
-        {"parent": "root", "type": "simple", "id": "100400120", "title": "Оплата на кассе"},
+        {"parent": "root", "type": "simple", "id": "100400120", "title": "Оплата на кассе","review":  "false"},
 
-        {"parent": "root", "type": "set", "id": "set_4_3", "title": "Дополнительно"},
+        {"parent": "root", "type": "set", "id": "set_4_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100400210", "title": "Нижнее белье","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100400220", "title": "Обувь","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100400240", "title": "Ткани и материалы","review":  "false"}
@@ -129,7 +130,6 @@
 
         {"parent": "root", "type": "set", "id": "set_5_1", "title": "Словарь"},
 
-
         {"parent": "root", "type": "simple", "id": "100500020", "title": "Мясные изделия", "image": "cat/meat_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500030", "title": "Рыба и морепродукты", "image": "cat/fish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500040", "title": "Овощи", "image": "cat/vegetable_cat.png"},
@@ -138,13 +138,14 @@
         {"parent": "root", "type": "simple", "id": "100500070", "title": "Напитки", "image": "cat/drink_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_5_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100500110", "title": "В ресторане"},
-        {"parent": "root", "type": "simple", "id": "100500120", "title": "В баре"},
+        {"parent": "root", "type": "simple", "id": "100500110", "title": "В ресторане","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100500120", "title": "В баре","review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Дополнительные темы"},
-        {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды"},
-        {"parent": "root", "type": "extra", "id": "100500220", "title": "Орехи и сухофрукты"},
-        {"parent": "root", "type": "extra", "id": "100500230", "title": "Травы и пряности"}
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Орехи и сухофрукты","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Травы и пряности","review":  "false"}
+
       ]
     },
 
@@ -162,18 +163,21 @@
         {"parent": "root", "type": "simple", "id": "100600020", "title": "Водные ресурсы", "image": "cat/water_cat.png"},
         {"parent": "root", "type": "simple", "id": "100600030", "title": "Небесные тела", "image": "cat/sky_cat.png"},
         {"parent": "root", "type": "simple", "id": "100600040", "title": "Дикие животные", "image": "cat/animal_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600050", "title": "Дикие птицы", "image": "cat/bird_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Дикие птицы", "image": "cat/bird_cat.png","review":  "false"},
         {"parent": "root", "type": "simple", "id": "100600070", "title": "Подводный мир", "image": "cat/sea_cat.png"},
         {"parent": "root", "type": "simple", "id": "100600080", "title": "Насекомые", "image": "cat/insect_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600090", "title": "Цветы", "image": "cat/flower_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600091", "title": "Деревья", "image": "cat/tree_cat.png"},
+
 
         {"parent": "root", "type": "set", "id": "set_6_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100600110", "title": "О погоде"}
+        {"parent": "root", "type": "simple", "id": "100600110", "title": "О погоде"},
 
+        {"parent": "root", "type": "set", "id": "set_6_3", "title": "Дополнительные темы"},
 
+        {"parent": "root", "type": "simple", "id": "100600090", "title": "Цветы", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100600091", "title": "Деревья", "review":  "false"}
       ]
     },
+
 
     {"tag": "section_7", "title": "Здоровье", "id": "10070",
       "desc": "Части тела, органы, болезни, приём у врача и т.д.",
@@ -187,8 +191,8 @@
 
         {"parent": "root", "type": "simple", "id": "100700010", "title": "Части тела", "image": "cat/body_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700020", "title": "Лицо", "image": "cat/face_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100700030", "title": "Внутренние органы", "image": "cat/organ_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни", "image": "cat/desease_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700030", "title": "Внутренние органы", "image": "cat/organ_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни", "image": "cat/desease_cat.png","review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Фразы"},
 
@@ -211,7 +215,7 @@
 
         {"parent": "root", "type": "simple", "id": "100800010", "title": "Дом, квартира", "image":  "cat/house_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800020", "title": "Мебель, интерьер", "image":  "cat/furniture_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800030", "title": "Спальня", "image":  "cat/bed_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Спальня", "image":  "cat/bed_cat.png","review":  "false"},
         {"parent": "root", "type": "simple", "id": "100800040", "title": "Ванная комната", "image":  "cat/bath_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800050", "title": "Кухня", "image":  "cat/kitchen_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800060", "title": "Посуда", "image":  "cat/dish_cat.png"}
@@ -231,11 +235,14 @@
 
         {"parent": "root", "type": "simple", "id": "100900010", "title": "Числа", "image": "cat/number_cat.png"},
         {"parent": "root", "type": "simple", "id": "100900020", "title": "Цвета", "image": "cat/color_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900030", "title": "Качества (часть 1)", "image": "cat/quality_1_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900040", "title": "Качества (часть 2)", "image": "cat/quality_2_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900050", "title": "Предлоги", "image": "cat/preposition_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900060", "title": "Время", "image": "cat/time_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900070", "title": "Календарь", "image": "cat/calendar_cat.png"}
+        {"parent": "root", "type": "simple", "id": "100900040", "title": "Календарь", "image": "cat/calendar_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900030", "title": "Время", "image": "cat/time_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Качества", "image": "cat/quality_1_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_9_3", "title": "Дополнительные темы"},
+
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Предлоги", "review":  "false"}
+
 
 
       ]

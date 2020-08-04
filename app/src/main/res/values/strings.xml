@@ -2,226 +2,234 @@
 
 <resources>
 
-    <string name="app_name">Learn languages</string>
+
+    <string name="app_name">Apprenez des langues</string>
 
     <string name="action_settings">Settings</string>
 
-    <string name="contact_error">Report an error</string>
-    <string name="contact_feedback">Send feedback</string>
-    <string name="contact_pro">PRO version</string>
-    <string name="contact_rate">Rate the app</string>
-    <string name="contact_website">Visit website</string>
+    <string name="contact_error">Signaler une erreur</string>
+    <string name="contact_feedback">Envoyer un email</string>
+    <string name="contact_pro">Version PLUS</string>
+    <string name="contact_rate">Évaluer l\'application</string>
+    <string name="contact_website">Visiter le site web</string>
 
-    <string name="nav_home_txt">Home</string>
-    <string name="nav_gallery_txt">Gallery</string>
-    <string name="nav_starred_txt">Starred</string>
-    <string name="nav_stats_txt">Statistics</string>
-    <string name="nav_settings_txt">Settings</string>
-    <string name="nav_info_txt">Info</string>
-    <string name="nav_contact_txt">Contacts/feedback</string>
+    <string name="nav_home_txt">Accueil</string>
+    <string name="nav_gallery_txt">Galerie</string>
+    <string name="nav_starred_txt">Favoris</string>
+    <string name="nav_stats_txt">Statistiques</string>
+    <string name="nav_settings_txt">Paramètres</string>
+    <string name="nav_info_txt">Information</string>
+    <string name="nav_contact_txt">Contacts/commentaires</string>
 
-    <string name="title_home_txt">Home</string>
-    <string name="title_gallery_txt">Gallery</string>
-    <string name="title_starred_txt">Starred</string>
-    <string name="title_stats_txt">Statistics</string>
-    <string name="title_settings_txt">Settings</string>
-    <string name="title_info_txt">Info</string>
-    <string name="title_contact_txt">Contacts/feedback</string>
+    <string name="title_home_txt">Accueil</string>
+    <string name="title_gallery_txt">Galerie</string>
+    <string name="title_starred_txt">Favoris</string>
+    <string name="title_stats_txt">Statistiques</string>
+    <string name="title_settings_txt">Paramètres</string>
+    <string name="title_info_txt">Information</string>
+    <string name="title_contact_txt">Contacts/commentaires</string>
 
 
     <string name="title_test_txt">Test</string>
-    <string name="title_card_txt">Flashcards</string>
+    <string name="title_card_txt">Cartes</string>
 
-    <string name="title_starred_activity">Starred</string>
-    <string name="title_errors_txt">Errors</string>
-    <string name="title_custom_txt">List</string>
+    <string name="title_starred_activity">Favoris</string>
+    <string name="title_errors_txt">Erreurs</string>
+    <string name="title_custom_txt">Liste</string>
 
 
-    <string name="voc_ex_link_card_title">Flashcards</string>
+    <string name="voc_ex_link_card_title">Cartes</string>
     <string name="voc_ex_link_first_title">Test 1</string>
     <string name="voc_ex_link_second_title">Test 2</string>
 
-    <string name="starred_ex_link_title">Test with starred items</string>
+    <string name="starred_ex_link_title">Test avec les favoris</string>
 
-    <string name="voc_ex_link_first_desc">Choose item translation</string>
-    <string name="voc_ex_link_second_desc">Choose item translation</string>
+    <string name="voc_ex_link_first_desc">Choisir la tradiction</string>
+    <string name="voc_ex_link_second_desc">Choisir la tradiction</string>
 
-    <string name="section_ex_link_title_1">General test 1</string>
-    <string name="section_ex_link_title_2">General test 2</string>
-    <string name="section_ex_link_title_3">General test 3</string>
+    <string name="section_ex_link_title_1">Test général 1</string>
+    <string name="section_ex_link_title_2">Test général 2</string>
+    <string name="section_ex_link_title_3">Test général 3</string>
 
 
 
     <string name="voc_ex_link_third_title">Test 3</string>
-    <string name="voc_ex_link_card_desc">Review items one by one</string>
+    <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
 
 
-    <string name="voc_ex_link_third_desc">Test with multiple options</string>
+    <string name="voc_ex_link_third_desc">Choisir la tradiction pour l\'audio</string>
 
 
 
     <!-- flashcard -->
-    <string name="f_menu_show_translate">Show answer</string>
-    <string name="f_menu_shuffle">Shuffle cards</string>
-    <string name="f_menu_reflect">Reverse information</string>
-    <string name="f_menu_restart">Restart</string>
-    <string name="f_activity_title">Flashcards</string>
+    <string name="f_menu_show_translate">Afficher la réponse</string>
+    <string name="f_menu_shuffle">Mélanger les cartes</string>
+    <string name="f_menu_reflect">Inverser</string>
+    <string name="f_menu_restart">Relancer</string>
+    <string name="f_activity_title">Cartes</string>
     <string name="f_counter_txt">%1$d / %2$d</string>
-    <string name="f_show_translate_txt">SHOW ANSWER</string>
-    <string name="f_back_btn_txt">Back</string>
-    <string name="f_next_btn_txt">Next</string>
+    <string name="f_show_translate_txt">AFFICHER LA RÉPONSE</string>
+    <string name="f_back_btn_txt">Précédent</string>
+    <string name="f_next_btn_txt">Suivant</string>
 
-    <string name="ex_menu_buttons">Buttons</string>
+    <string name="ex_menu_buttons">Boutons</string>
 
-    <string name="set_ex_buttons">Show buttons</string>
+    <string name="set_ex_buttons">Afficher les boutons</string>
     <!-- helper -->
-    <string name="ex_text_foo">Text</string>
+    <string name="ex_text_foo">Texte</string>
     <string name="image_desc">Image</string>
 
 
     <!-- exercise -->
 
-    <string name="ex_menu_restart">Restart</string>
+    <string name="ex_menu_restart">Relancer</string>
     <string name="ex_counter_txt">%1$d / %2$d</string>
     <string name="ex_option_foo">Option</string>
-    <string name="ex_txt_title">Exercise</string>
+    <string name="ex_txt_title">Exercice</string>
     <string name="ex_txt_correct">CORRECT</string>
-    <string name="ex_txt_incorrect">WRONG</string>
-    <string name="ex_check_btn_txt">Check</string>
-    <string name="ex_show_result_btn_txt">Show results</string>
-    <string name="ex_restart_btn_txt">Restart</string>
-    <string name="ex_next_btn_txt">Next</string>
+    <string name="ex_txt_incorrect">INCORRECT</string>
+    <string name="ex_check_btn_txt">Valider</string>
+    <string name="ex_show_result_btn_txt">Afficher le résultat</string>
+    <string name="ex_restart_btn_txt">Relancer</string>
+    <string name="ex_next_btn_txt">Suivant</string>
+
     <string name="ex_result_txt_excellent">EXCELLENT!</string>
-    <string name="ex_result_txt_verygood">VERY GOOD!</string>
-    <string name="ex_result_txt_good">GOOD!</string>
-    <string name="ex_result_txt_bad">NOT GOOD ENOUGH!</string>
-    <string name="ex_result_txt_verybad">VERY BAD!</string>
-    <string name="ex_result_txt">Correct: %1$d from %2$d \n Result:\u00A0\u00A0\u00A0 %3$d%%</string>
+    <string name="ex_result_txt_verygood">TRÈS BIEN!</string>
+    <string name="ex_result_txt_good">BIEN!</string>
+    <string name="ex_result_txt_verybad">TRÈS MAL!</string>
+    <string name="ex_result_txt_bad">PAS BIEN</string>
 
-
-    <string name="starred_ex_notif">Exercises will be available once new items are added to the Starred list.</string>
+    <string name="ex_result_txt">Réponses correctes: %1$d from %2$d \n Résultat:\u00A0\u00A0\u00A0 %3$d%%</string>
 
 
 
-    <string name="starred_limit">Failed to add. Limit is reached.</string>
-    <string name="dialog_close_txt">Close</string>
-    <string name="continue_txt">Continue</string>
+    <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
+
+
+
+
+    <string name="starred_limit">La limite de favoris est atteinte.</string>
+    <string name="dialog_close_txt">Fermer</string>
+    <string name="continue_txt">Continuer</string>
     <string name="menu_item_info">Info</string>
 
-    <string name="starred_lessons_results">Show test results</string>
+    <string name="starred_lessons_results">Afficher les résultats de leçons</string>
+
     <string name="set_starred_result_summary">Test results display</string>
 
 
     <string name="set_interface">INTERFACE</string>
-    <string name="set_app_theme_title">App theme</string>
+    <string name="set_app_theme_title">Thèmes</string>
 
-    <string name="set_theme_default_name">Default</string>
-    <string name="set_theme_dark_name">Black</string>
-    <string name="set_theme_smoky_name">Dark</string>
+    <string name="set_theme_default_name">Par défaut</string>
+    <string name="set_theme_dark_name">Noir</string>
+    <string name="set_theme_smoky_name">Sombre</string>
     <string name="set_theme_red_name">Red</string>
-    <string name="set_theme_white_name">White</string>
-    <string name="set_theme_ww_name">Contrast</string>
+    <string name="set_theme_white_name">Blanc</string>
+    <string name="set_theme_ww_name">Contraste</string>
 
-    <string name="set_starred_sort_title">Starred list sorting</string>
-    <string name="set_starred_sort_sum">Current: %s</string>
-    <string name="set_starred_sort_title_dialog">Change sorting</string>
-    <string name="set_starred_section">STARRED</string>
+    <string name="set_starred_sort_title">Trier la liste des favoris</string>
+    <string name="set_starred_sort_sum">Courant: %s</string>
+    <string name="set_starred_sort_title_dialog">Trier la liste</string>
+    <string name="set_starred_section">FAVORIS</string>
 
 
     <string-array name="starred_list_sort">
-        <item>Newest first </item>
-        <item>Oldest first</item>
-        <item>In lessons order</item>
+        <item>Le plus récent en premier</item>
+        <item>Le plus récent en dernier</item>
+        <item>Selon l\'ordre de catégories</item>
     </string-array>
 
 
-    <string name="set_starred_save_title">Save tests results</string>
-    <string name="set_starred_save_sum">Current: %s</string>
+    <string name="set_starred_save_title">Enregistrer les résultats de tests</string>
+    <string name="set_starred_save_sum">Courant: %s</string>
     <string name="set_starred_save_title_dialog">Save results</string>
 
     <string-array name="starred_list_save">
-        <item>Latest results </item>
-        <item>Best results</item>
+        <item>Derniers résultats </item>
+        <item>Meilleurs résultats</item>
     </string-array>
 
-    <string name="set_control_title">Section tests results</string>
-    <string name="set_control_summary">Use in section stats: %s</string>
-    <string name="set_control_dialog_title">Use in stats</string>
+    <string name="set_control_title">Résultats de tests d\'une section</string>
+    <string name="set_control_summary">Utilser dans les statistiques: %s</string>
+    <string name="set_control_dialog_title">Utilser</string>
 
-    <string name="set_control_tests_one">If results are better</string>
-    <string name="set_control_tests_two">Always</string>
-    <string name="set_control_tests_three">Never</string>
+    <string name="set_control_tests_one">Si les résultats sont meilleurs</string>
+    <string name="set_control_tests_two">Toujours</string>
+    <string name="set_control_tests_three">Jamais</string>
 
-    <string name="set_test_all_limit_title">General test tasks count</string>
+    <string name="set_test_all_limit_title">Nombre d\'items dans le test général </string>
     <string name="set_test_all_limit_summary">Maximum: %s</string>
-    <string name="set_test_all_limit_dialog_title">General test</string>
+    <string name="set_test_all_limit_dialog_title">Test général</string>
 
-    <string name="set_test_all_limit_1">30 tasks</string>
-    <string name="set_test_all_limit_2">60 tasks</string>
-    <string name="set_test_all_limit_3">100 tasks</string>
+    <string name="set_test_all_limit_1">30 items</string>
+    <string name="set_test_all_limit_2">60 items</string>
+    <string name="set_test_all_limit_3">100 items</string>
 
-    <string name="set_btm_nav_title">Display bottom navigation</string>
+    <string name="set_btm_nav_title">Barre de navigation en bas</string>
     <string name="set_btm_nav_summary">%s</string>
-    <string name="set_btm_nav_dialog_title">Bottom navigation</string>
+    <string name="set_btm_nav_dialog_title">Barre de navigation en bas</string>
 
-    <string name="set_btm_nav_1">Display and remove items from menu</string>
-    <string name="set_btm_nav_2">Display and leave items in menu</string>
-    <string name="set_btm_nav_3">Hide</string>
-    <string name="set_btm_nav_4">Display and remove the left menu completely</string>
+    <string name="set_btm_nav_1">Afficher la barre et supprimer les éléments dans le menu</string>
+    <string name="set_btm_nav_2">Afficher la barre et afficher tous les éléments dans le menu</string>
+    <string name="set_btm_nav_3">Ne pas afficher</string>
+    <string name="set_btm_nav_4">Afficher la barre et supprimer le menu</string>
 
-    <string name="set_data_control_title">Data for stats</string>
-    <string name="set_data_control_summary">Include in section stats: %s</string>
-    <string name="set_data_control_dialog_title">Include in section stats</string>
+    <string name="set_data_control_title">Données pour les statistiques</string>
 
-    <string name="set_data_control_dates">Only basic topics</string>
-    <string name="set_data_control_all">Basic and additional topics</string>
+    <string name="set_data_control_summary">Statistique d\'une section inclut: %s</string>
+    <string name="set_data_control_dialog_title">Statistique d\'une section</string>
+
+    <string name="set_data_control_dates">Thèmes de base seulement</string>
+    <string name="set_data_control_all">Thèmes de base et thèmes supplémentaires</string>
 
     <string name="set_data_mode_title">Mode</string>
-    <string name="set_data_mode_summary">Current: %s</string>
-    <string name="set_data_mode_dialog_title">Choose mode</string>
+    <string name="set_data_mode_summary">Courant: %s</string>
+    <string name="set_data_mode_dialog_title">Choisir le mode</string>
 
 
     <string name="set_data_mode_default">Standard</string>
-    <string name="set_data_mode_easy">Simplified (only beginner\'s level items)</string>
-    <string name="set_data_mode_advanced">Advanced</string>
+    <string name="set_data_mode_easy">Simplifié (seulement des mots et des expressions de base)</string>
+    <string name="set_data_mode_advanced">Avancé</string>
 
-    <string name="set_mode_sum">Current: %s</string>
-    <string name="set_mode_default_name">Basic</string>
-    <string name="set_mode_full_name">PLUS version</string>
+    <string name="set_mode_sum">Courant: %s</string>
 
-    <string name="set_show_status">Status in listings</string>
-    <string name="set_show_status_summary">Display: %s</string>
-    <string name="set_show_status_dialog_title">Status display</string>
+    <string name="set_mode_default_name">Basique</string>
+    <string name="set_mode_full_name">Version PLUS</string>
 
-    <string name="set_show_status_one">Auto</string>
-    <string name="set_show_status_two">Always</string>
-    <string name="set_show_status_three">Hide in listings</string>
+    <string name="set_show_status">Statut dans les listes</string>
+    <string name="set_show_status_summary">Afficher: %s</string>
+    <string name="set_show_status_dialog_title">Afficher le statut</string>
 
-    <string name="set_detail_txt">Font size in details</string>
-    <string name="set_detail_txt_summary">Current: %s</string>
+    <string name="set_show_status_one">Automatiquement</string>
+    <string name="set_show_status_two">Toujours</string>
+    <string name="set_show_status_three">Jamais</string>
+
+    <string name="set_detail_txt">Taille du text dans les détails</string>
+    <string name="set_detail_txt_summary">Courant: %s</string>
     <string name="set_detail_txt_dialog_title">Font size</string>
 
-    <string name="set_detail_txt_small">Small</string>
-    <string name="set_detail_txt_medium">Medium</string>
-    <string name="set_detail_txt_large">Large</string>
+    <string name="set_detail_txt_small">Petit</string>
+    <string name="set_detail_txt_medium">Moyen</string>
+    <string name="set_detail_txt_large">Grand</string>
 
-    <string name="stats_info_txt">Info about stats</string>
-    <string name="starred_lessons_remove">Reset results</string>
+    <string name="stats_info_txt">Info sur les statistiques</string>
+    <string name="starred_lessons_remove">Réinitialiser les résultats</string>
 
-    <string name="title_activity_reference">Reference</string>
+    <string name="title_activity_reference">Référence</string>
 
 
     <!-- string name="app_market_link">@string/app_market_link_pro</string -->
 
-    <string name="msg_sending_mail">Send feedback &#8230;</string>
-    <string name="msg_no_mail_client">Mail client is not installed.</string>
-    <string name="msg_mail_subject">Feedback</string>
-    <string name="msg_mail_subject_error">Error report</string>
+    <string name="msg_sending_mail">Envoyer un commentaire &#8230;</string>
+    <string name="msg_no_mail_client">lient de messagerie n\'est pas installé</string>
+    <string name="msg_mail_subject">Commentaire sur l\'appli</string>
+    <string name="msg_mail_subject_error">Signaler une erreur</string>
     <string name="msg_no_browser">Browser is not installed.</string>
-    <string name="no_data_msg">No data saved</string>
-    <string name="nav_header_txt">Learn languages! \nIt\'s fun!</string>
-    <string name="correct_errors">Correct errors</string>
-    <string name="errors_box_title">Errors from tests</string>
+    <string name="no_data_msg">Il n\'y a pas de données</string>
+    <string name="nav_header_txt">Apprenez des langues! \nC\'est cool!</string>
+    <string name="correct_errors">Corriger les erreurs</string>
+    <string name="errors_box_title">Erreurs faites dans les tests</string>
 
 
     <string name="section_stats_info">The total result of a section depends on the average tests result, the number of familiar items and the number of mastered items. Each of these indicators can add the following percentage to the total result:
@@ -236,7 +244,7 @@
         \n\n — Unknown (0 points)\n — Familiar (1-2 points)\n — Mastered (3-4 points) </string>
 
 
-    <string name="easy_mode_dialog_title">Simplified mode</string>
+    <string name="easy_mode_dialog_title">Mode simplifié</string>
 
     <string name="easy_mode_info">\nCurrently, Simplified mode is active in which only the basic level items are displayed.
     \n\nYou can change the mode here:
@@ -250,23 +258,31 @@
      The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n</string>
 
 
-    <string name="get_premium_txt">Get more with PLUS version!</string>
-    <string name="title_activity_get_premium">PLUS version</string>
+    <string name="get_premium_txt">Bien plus avec la version PLUS!</string>
+    <string name="title_activity_get_premium">Version PLUS</string>
 
-    <string name="get_premium_activity">PLUS version</string>
-    <string name="purchase_txt">Get the PLUS version of the app and remove ads</string>
-    <string name="get_premium_thank">Thank you!</string>
-    <string name="get_premium_continue">Continue</string>
-    <string name="get_premium_buy">Buy</string>
-    <string name="get_premium_buy_price">Buy for %s</string>
-    <string name="purchased_txt">Click «Continue» to go to the home page</string>
-    <string name="fullversion_desc_txt">You have the full version of the application.</string>
+    <string name="get_premium_activity">Version PLUS</string>
+    <string name="purchase_txt"> </string>
+
+    <string name="purchase_txt_1">Créez un nombre illimité de thèmes!</string>
+    <string name="purchase_txt_2">Ajoutez jusqu\'à 50 entrées dans un thème!</string>
+    <string name="purchase_txt_3">Pas de pubs!</string>
 
 
-    <string name="ex_save_stats">Save stats</string>
+    <string name="get_premium_thank">Merci beaucoup!</string>
+    <string name="get_premium_continue">Continuer</string>
+    <string name="get_premium_buy">Acheter</string>
+    <string name="get_premium_buy_price">Acheter pour %s</string>
+    <string name="purchased_txt">Clickez sur «Continuer» pour retourner à la page d\'Accueil</string>
 
-    <string name="stats_test_all_desc">Test with random items from all topics</string>
-    <string name="stats_test_old_desc">Test with mastered and familiar items</string>
+
+    <string name="fullversion_desc_txt">Vous avez la version PLUS.</string>
+
+
+    <string name="ex_save_stats">Sauvegarder la statistique</string>
+
+    <string name="stats_test_all_desc">Test avec des entrées de tous les thèmes</string>
+    <string name="stats_test_old_desc">Test avec des entrées maîtrisé et familières</string>
 
     <string name="ex_link_desc_pers_1">Test: Description / Person</string>
     <string name="ex_link_desc_pers_2">Test: Person / Description</string>
@@ -281,10 +297,10 @@
     <string name="ex_link_desc_star_2">Test: Item / Description</string>
 
 
-    <string name="cat_progress_txt">Average tests \nresult</string>
+    <string name="cat_progress_txt">Résultat moyen \ndes tests</string>
 
-    <string name="section_content_title">Section overview</string>
-    <string name="section_content_title_short">Contents</string>
+    <string name="section_content_title">Aperçu de la section</string>
+    <string name="section_content_title_short">Contenu de la section</string>
     <string name="persons_title">Persons</string>
 
     <string name="detail_img_info_txt">Image: %s</string>
@@ -309,21 +325,21 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="info_txt">Info</string>
     <string name="backup_page_title">Export/Import</string>
-    <string name="no_import_data">data unavailable</string>
-    <string name="last_import_dat">Last import: %s</string>
-    <string name="no_access">Action not permitted</string>
-    <string name="export_title">Export your data</string>
+    <string name="no_import_data">info non disponible</string>
+    <string name="last_import_dat">Dernière importation: %s</string>
+    <string name="no_access">Action non autorisée</string>
+    <string name="export_title">Exportez vos données</string>
     <string name="export_desc">
-        <![CDATA[ You can export your data and have a copy of it safely stored on your device. This will take a snapshot of your current data and export it as a file <b> %s </b>. ]]>
+        <![CDATA[ Vous pouvez exporter vos données et en avoir une copie sauvegardée en toute sécurité sur votre appareil. Ceci sauvegardera toutes vos données actuelles et les exportera en fichier <b> %s </b>. ]]>
     </string>
-    <string name="export_btn">Export as file</string>
-    <string name="import_title">Restore/Import your data</string>
-    <string name="import_desc">Restore your data from a previous backup. This will errase all the current data.</string>
-    <string name="import_btn">Restore from file</string>
-    <string name="import_last_desc">Last import</string>
-    <string name="import_last_info">"Last import: "</string>
+    <string name="export_btn">Exporter en fichier</string>
+    <string name="import_title">Importez vos données</string>
+    <string name="import_desc">Restaurez vos données à partir d\'une précédente sauvegarde. Ceci effacera toutes les données actuelles.</string>
+    <string name="import_btn">Importer d\'un fichier</string>
+    <string name="import_last_desc">Dernière importation</string>
+    <string name="import_last_info">"Dernière importation: "</string>
 
-    <string name="cancel_txt">Cancel</string>
+    <string name="cancel_txt">Annuler</string>
 
 
     <string name="info_star_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
@@ -340,297 +356,296 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="maps_info">\Info\n</string>
     <string name="info_menu_map">Info</string>
 
-    <string name="menu_easy_mode">Simplified mode</string>
-    <string name="menu_search">Search</string>
-    <string name="menu_layout">Layout</string>
-    <string name="menu_fullscreen">Fullscreen</string>
-    <string name="menu_open_cat">Open the topic</string>
-    <string name="menu_sort">Sort list</string>
-    <string name="stats_page_activity">Section stats</string>
+    <string name="menu_easy_mode">Mode simplifié</string>
+    <string name="menu_search">Recherche</string>
+    <string name="menu_layout">Affichage</string>
+    <string name="menu_fullscreen">Plein écran</string>
+    <string name="menu_open_cat">Ouvrir le thème</string>
+    <string name="menu_sort">Trier la liste</string>
+    <string name="stats_page_activity">Statistiques de la section</string>
     <string name="stats_total">TOTAL: %d%%</string>
-    <string name="stats_tests">Test:   %d%% * 0.5</string>
-    <string name="stats_familiar">Familiar: %d%% * 0.3</string>
-    <string name="stats_studied">Mastered:  %d%%  * 0.2</string>
-    <string name="no_entries_msg">No data</string>
-    <string name="total_result">Total result</string>
+    <string name="stats_tests">Tests:   %d%% * 0.5</string>
+    <string name="stats_familiar">Familier: %d%% * 0.3</string>
+    <string name="stats_studied">Maîtrisé:  %d%%  * 0.2</string>
+    <string name="no_entries_msg">Pas de données</string>
+    <string name="total_result">Résultat total</string>
     <string name="stats_percent">+ %d%%</string>
-    <string name="stats_studied_percent">Mastered: %d%%</string>
-    <string name="stats_familier_percent">Familiar: %d%%</string>
-    <string name="stats_unknown_percent">Unknown: %d%%</string>
-    <string name="section_studied_title">Mastered items in the section</string>
-    <string name="section_familiar_title">Familiar items in the section</string>
-    <string name="section_unknown_title">Unknown items in the section</string>
-    <string name="status_studied">status «MASTERED»</string>
-    <string name="status_familiar">status «MASTERED» or «FAMILIAR»</string>
-    <string name="status_unknown">status «UNKNOWN»</string>
-    <string name="pro_content">Available in full version</string>
-    <string name="section_tests_titile">Section tests</string>
-    <string name="subsection_title">Subsection</string>
-    <string name="starred_title">Starred (%d)</string>
-    <string name="section_review_title">Section overview</string>
-    <string name="stats_progress_title">Progress stats</string>
-    <string name="search_hint">Search</string>
-    <string name="no_search_result"><![CDATA[No results found for: <br> <b><i>%s</i></b>]]></string>
-    <string name="load_more">Show %d more from %d</string>
+    <string name="stats_studied_percent">Maîtrisé: %d%%</string>
+    <string name="stats_familier_percent">Familier: %d%%</string>
+    <string name="stats_unknown_percent">Inconnu: %d%%</string>
+    <string name="section_studied_title"> </string>
+    <string name="section_familiar_title"> </string>
+    <string name="section_unknown_title"> </string>
+    <string name="status_studied">statut «Maîtrisé»</string>
+    <string name="status_familiar">statut «Maîtrisé» ou «Familier»</string>
+    <string name="status_unknown">statut «Inconnu»</string>
+    <string name="pro_content">Disponible dans la version PLUS</string>
+    <string name="section_tests_titile">Tests de la section</string>
+    <string name="subsection_title">Sous-section</string>
+    <string name="starred_title">Favoris (%d)</string>
+    <string name="section_review_title">Aperçu de la section</string>
+    <string name="stats_progress_title">Statistiques du progrès</string>
+    <string name="search_hint">Recherche</string>
+    <string name="no_search_result"><![CDATA[Aucun résulat trouvé pour: <br> <b><i> %1$s </i></b>]]></string>
+    <string name="load_more">Afficher encore %d de %d</string>
     <string name="pic_name_label">Image: %s</string>
     <string name="pic_info_title">Image info</string>
-    <string name="starred_pic_title">Starred (%d)</string>
-    <string name="test_result_title">Test result</string>
-    <string name="total_tasks">Tasks count: %d</string>
-    <string name="test_errors">Errors: %d</string>
-    <string name="tasks_missed">Skipped: %d</string>
-    <string name="entries_updated">Updated items: %d</string>
-    <string name="studied_tab">Mastered</string>
-    <string name="familiar_tab">Familiar</string>
-    <string name="unknown_tab">Unknown</string>
-    <string name="errors_label">Errors: %d</string>
-    <string name="section_errors_label">Errors: %d</string>
-    <string name="cats_studied">Catigories studied:</string>
-    <string name="result_task_count">Tasks: %d</string>
+    <string name="starred_pic_title">Favoris (%d)</string>
+    <string name="test_result_title">Résultat du test</string>
+    <string name="total_tasks">Nombre d\'items: %d</string>
+    <string name="test_errors">Erreurs: %d</string>
+    <string name="tasks_missed">Items sautés: %d</string>
+    <string name="entries_updated">Etrées mises à jour: %d</string>
+    <string name="studied_tab">Maîtrisé</string>
+    <string name="familiar_tab">Familier</string>
+    <string name="unknown_tab">Inconnu</string>
+    <string name="errors_label">Erreurs: %d</string>
+    <string name="section_errors_label">Erreurs: %d</string>
+    <string name="cats_studied">Thèmes étudiés:</string>
+    <string name="result_task_count">Nombre d\'items: %d</string>
     <string name="result_incorrect_count">Incorrect: %d</string>
-    <string name="item_status_unknown">Status: unknown</string>
-    <string name="item_status_familiar">Status: familiar</string>
-    <string name="item_status_studied">Status: mastered</string>
-    <string name="cats_data_list_title">Stats by topics</string>
-    <string name="loading">Loading …</string>
-    <string name="stats_test_result">"Tests result: "</string>
-    <string name="stats_familiar_label">"Familiar: "</string>
-    <string name="stats_studied_label">"Mastered: "</string>
-    <string name="stats_general_result">Section total result</string>
-    <string name="studied_btn_txt">Mastered</string>
-    <string name="familiar_btn_txt">Familiar</string>
-    <string name="unknown_btn_txt">Unknown</string>
-    <string name="stats_open_section">Open section</string>
-    <string name="stats_open_section_list">Section items overview</string>
-    <string name="stats_open_list_desc">List of items from topics of the section</string>
-    <string name="stats_open_tests">Section tests</string>
-    <string name="stats_open_tests_desc">Test with random items from all topics</string>
-    <string name="open_results_details">Result detailed info</string>
-    <string name="circle_familiar_lbl">Familiar</string>
-    <string name="circle_studied_lbl">Mastered</string>
-    <string name="result_errors_info">ERRORS STATS</string>
-    <string name="result_total_info">Total result</string>
-    <string name="search_no_result">Not found</string>
-    <string name="search_load_more">Show more</string>
-    <string name="section_list_title">Overview</string>
-    <string name="section_list_desc">All items list</string>
+    <string name="item_status_unknown">Statut: inconnu</string>
+    <string name="item_status_familiar">Statut: familier</string>
+    <string name="item_status_studied">Statut: maîtrisé</string>
+    <string name="cats_data_list_title">Statistiques par thèmes</string>
+    <string name="loading">Chargement …</string>
+    <string name="stats_test_result">"Résultats des tests: "</string>
+    <string name="stats_familiar_label">"Familier: "</string>
+    <string name="stats_studied_label">"Maîtrisé: "</string>
+    <string name="stats_general_result">Résultat total de la section</string>
+    <string name="studied_btn_txt">Maîtrisé</string>
+    <string name="familiar_btn_txt">Familier</string>
+    <string name="unknown_btn_txt">Inconnu</string>
+    <string name="stats_open_section">Ouvrir la section</string>
+    <string name="stats_open_section_list">Aperçu de la section</string>
+    <string name="stats_open_list_desc">Liste de mots et d\'expressions</string>
+    <string name="stats_open_tests">Tests de section</string>
+    <string name="stats_open_tests_desc">Tests avec des mots de tous les thèmes</string>
+    <string name="open_results_details">Informations détaillées sur le résultat</string>
+    <string name="circle_familiar_lbl">Familier</string>
+    <string name="circle_studied_lbl">Maîtrisé</string>
+    <string name="result_errors_info">STATISTIQUES D\'ERREURS</string>
+    <string name="result_total_info">Résultat total</string>
+    <string name="search_no_result">Aucun résulat trouvé</string>
+    <string name="search_load_more">Afficher plus</string>
+    <string name="section_list_title">Revue</string>
+    <string name="section_list_desc">Liste</string>
     <string name="section_tests_title">Tests</string>
-    <string name="sections_title_desc">All section items</string>
+    <string name="sections_title_desc">Tests</string>
     <string name="pic_link">Reference</string>
     <string name="image_info_title">Image</string>
     <string name="image_info_desc">Description</string>
-    <string name="cat_stats_title">Topic stats</string>
-    <string name="cat_stats_total_items">"Total items: "</string>
-    <string name="cat_stats_total_items_short">"Total items: "</string>
-    <string name="cat_stats_familliar_count">Familiar</string>
-    <string name="cat_stats_studied_count">Mastered</string>
-    <string name="reference_title">Reference</string>
-    <string name="open_reference">Open info</string>
-    <string name="starred_items_title">Items added to starred</string>
+    <string name="cat_stats_title">Statistiques du thème</string>
+    <string name="cat_stats_total_items">"Nombre d\'entrées: "</string>
+    <string name="cat_stats_total_items_short">"Nombre d\'entrées: "</string>
+    <string name="cat_stats_familliar_count">Familier</string>
+    <string name="cat_stats_studied_count">Maîtrisé</string>
+    <string name="reference_title">Référence</string>
+    <string name="open_reference">Afficher les informations</string>
+    <string name="starred_items_title">Entrées ajoutées aux favoris</string>
 
-    <string name="open_starred">VIEW ALL STARRED ITEMS</string>
-    <string name="recently_starred">RECENTLY STARRED </string>
+    <string name="open_starred">AFFICHER TOUS LES FAVORIS</string>
+    <string name="recently_starred">LES PLUS RÉCENTS </string>
 
-    <string name="open_bookmarks">VIEW ALL BOOKMARKS</string>
-    <string name="recent_bookmarks">RECENT BOOKMARKS</string>
+    <string name="open_bookmarks">AFFICHER TOUS LES SIGNETS</string>
+    <string name="recent_bookmarks">LES PLUS RÉCENTS</string>
 
-    <string name="sections_stats_title">Sections stats</string>
-    <string name="stats_general_test">General test</string>
-    <string name="stats_revision">Revision</string>
-    <string name="progress_studied_label">Mastered</string>
-    <string name="progress_familiar_label">Familiar</string>
-    <string name="progress_unknown_label">Unknown</string>
-    <string name="result_skipped_task">Incorrect tasks list:</string>
+    <string name="sections_stats_title">Statistiques de sections</string>
+    <string name="stats_general_test">Test général</string>
+    <string name="stats_revision">Révision</string>
+    <string name="progress_studied_label">Maîtrisé</string>
+    <string name="progress_familiar_label">Familier</string>
+    <string name="progress_unknown_label">Inconnu</string>
+    <string name="result_skipped_task">Liste de réponses incorrectes:</string>
     <string name="starred_tab_info">Info</string>
-    <string name="starred_tab_gallery">Gallery</string>
-    <string name="starrd_tab_info_count">Starred items (%d)</string>
-    <string name="starrd_tab_gallery_count">Bookmarks (%d)</string>
+    <string name="starred_tab_gallery">Galerie</string>
+    <string name="starrd_tab_info_count">Favoris (%d)</string>
+    <string name="starrd_tab_gallery_count">Signets (%d)</string>
 
 
     <string name="msg_version_name">(LA, version %s)</string>
 
-    <string name="menu_img_test">Complete a test</string>
+    <string name="menu_img_test">Passer le test</string>
 
-    <string name="nav_more">More</string>
-    <string name="nav_more_version">More</string>
+    <string name="nav_more">Autre</string>
+    <string name="nav_more_version">Autre</string>
 
 
     <string name="set_transcript_title">Transcription</string>
-    <string name="set_transcript_summary">Current: %s</string>
-    <string name="set_transcript_dialog">Choose transcription</string>
+    <string name="set_transcript_summary">Courant: %s</string>
+    <string name="set_transcript_dialog">Choisissez la transcription</string>
 
-    <string name="set_transcript_1">IPA (international)</string>
+    <string name="set_transcript_1">IPA (internationale)</string>
     <string name="set_transcript_2">Alternative</string>
-    <string name="set_transcript_0">Do not display</string>
+    <string name="set_transcript_0">Ne pas afficher</string>
 
 
-    <string name="set_flash_autoplay_title">Sound settings</string>
-    <string name="set_flash_autoplay_summary">Current: %s</string>
-    <string name="set_flash_autoplay_dialog_title">Sounds</string>
+    <string name="set_flash_autoplay_title">Paramètres des sons</string>
+    <string name="set_flash_autoplay_summary">Courant: %s</string>
+    <string name="set_flash_autoplay_dialog_title">Sons</string>
 
-    <string name="set_flash_autoplay_1">Play sound automatically</string>
-    <string name="set_flash_autoplay_2">Play sound only manually</string>
+    <string name="set_flash_autoplay_1">Jouer le son automatiquement</string>
+    <string name="set_flash_autoplay_2">Jouer le son manuellement</string>
 
-    <string name="set_speak_title">Activate sounds</string>
-    <string name="set_speak_on">Use a speech synthesizer</string>
-    <string name="set_speak_off">Sounds disabled</string>
+    <string name="set_speak_title">Activer les sons</string>
+    <string name="set_speak_on">Utiliser un synthétiseur vocal</string>
+    <string name="set_speak_off">Les sons sont désactivés</string>
 
-    <string name="menu_item_bookmark">Bookmark</string>
-
-
-    <string name="home_tab_1">Topics</string>
-    <string name="home_tab_2">My vocabulary</string>
-    <string name="menu_delete_ucat">Delete the topic</string>
-
-    <string name="sort_udata_dialog_title">Sort items</string>
-    <string name="set_sort_desc">Newest first</string>
-    <string name="set_sort_asc">Oldest first</string>
+    <string name="menu_item_bookmark">Mettre en signet</string>
 
 
-    <string name="set_ucat_layout_dialog_title">List layout</string>
+    <string name="home_tab_1">Thèmes</string>
+    <string name="home_tab_2">Mon vocabulaire</string>
+    <string name="menu_delete_ucat">Supprimer le thème</string>
+
+    <string name="sort_udata_dialog_title">Trier les entrées</string>
+    <string name="set_sort_desc">Le plus récent en premier</string>
+    <string name="set_sort_asc">Le plus récent en dernier</string>
+
+
+    <string name="set_ucat_layout_dialog_title">Affichage de la liste</string>
     <string name="set_ucat_layout_1">Normal</string>
     <string name="set_ucat_layout_2">Compact</string>
 
-    <string name="user_content_title">My vocabulary</string>
+    <string name="user_content_title">Mon vocabulaire</string>
     <string name="export_notification">"Export: "</string>
 
-    <string name="archive_item_date">Created:  %s</string>
+    <string name="archive_item_date">Créé:  %s</string>
     <string name="archive_item_date_short">Date: %s</string>
 
 
-    <string name="udata_limit_dialog_title">Limit is reached.</string>
-    <string name="udata_limit_dialog_text">\nA topic can\'t include more than %s items.\n</string>
+    <string name="udata_limit_dialog_title">La limite est atteinte.</string>
+    <string name="udata_limit_dialog_text">\nUn thème ne peut pas inclure plus de %s entrées.\n</string>
 
 
-    <string name="udata_limit_dialog_title_unpaid">Limit is reached.</string>
-    <string name="udata_limit_dialog_text_unpaid">\nA topic can\'t include more than %s items. \n</string>
+    <string name="udata_limit_dialog_title_unpaid">La limite est atteinte.</string>
+    <string name="udata_limit_dialog_text_unpaid">\nUn thème ne peut pas inclure plus de %s entrées.\n</string>
 
     <string name="nav_notes_txt">Notes</string>
 
-    <string name="note_img_edit">Edit</string>
-    <string name="note_title_edit">Note title</string>
-    <string name="note_txt_edit">Note content</string>
-    <string name="note_save">Save</string>
+    <string name="note_img_edit">Modifier</string>
+    <string name="note_title_edit">Titre</string>
+    <string name="note_txt_edit">Texte</string>
+    <string name="note_save">Enregistrer</string>
 
-    <string name="savaing_note_title">Saving a note</string>
-    <string name="empty_note_msg">\nThe note is empty. Please enter a text. \n</string>
-    <string name="apply_btn">Apply</string>
-    <string name="pick_note_icon_title">Choose an image</string>
+    <string name="savaing_note_title">Enregistrer la note</string>
+    <string name="empty_note_msg">\nLa note est vide. Veuillez saisir un texte. \n</string>
+    <string name="apply_btn">Appliquer</string>
+    <string name="pick_note_icon_title">Choisissez une image</string>
 
     <string name="note_title_txt">Note</string>
-    <string name="menu_delete_note">Delete note</string>
-    <string name="menu_edit_note">Edit note</string>
+    <string name="menu_delete_note">Supprimer la note</string>
+    <string name="menu_edit_note">Modifier la note</string>
 
 
-    <string name="set_night_theme">Night mode for light themes</string>
-    <string name="set_night_theme_on">Enabled</string>
-    <string name="set_night_theme_off">Disabled</string>
+    <string name="set_night_theme">Mode nuit pour les thèmes claires</string>
+    <string name="set_night_theme_on">Activé</string>
+    <string name="set_night_theme_off">Désactivé</string>
 
-    <string name="set_tts">Text-to-speech settings</string>
-    <string name="set_tts_summary">Open device settings</string>
+    <string name="set_tts">Paramètres de la synthèse vocale</string>
+    <string name="set_tts_summary">Ouvrir les paramètres de l\'appareil</string>
 
-    <string name="set_data_section">DATA SETTINGS</string>
-    <string name="set_misc">MISCELLANEOUS</string>
+    <string name="set_data_section">PARAMÈTRES DE DONNÉES</string>
+    <string name="set_misc">DIVERS</string>
 
-    <string name="set_backup_title">Export/Import your data</string>
-    <string name="set_backup_desc">Backups and Sync between devices</string>
+    <string name="set_backup_title">Exportez/Importez vos données</string>
+    <string name="set_backup_desc">Sauvegardes et synchronisation entre les appareils</string>
 
-    <string name="set_version_plus">PLUS version</string>
-    <string name="set_version_plus_summary">Access to app\'s additional features</string>
+    <string name="set_version_plus">Version PLUS</string>
+    <string name="set_version_plus_summary">Profitez des avantages de la version PLUS!</string>
 
     <string name="confirmation_txt">Confirmation</string>
-    <string name="starred_confirm_title">Removal confirmation</string>
-    <string name="set_starred_confirm_summary">Сonfirm to remove from starred</string>
-    <string name="starred_confirm_desc">You are about to remove this item from starred. Do you really want to proceed ?</string>
-    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="starred_confirm_title">Confirmer la suppression</string>
+    <string name="set_starred_confirm_summary">Confirmer la la suppression des favoris</string>
+    <string name="starred_confirm_desc">Vous êtes sur le point de supprimer ce favori, souhaitez-vous confirmer cette suppression?</string>
+    <string name="dont_ask_again">Ne plus me demander</string>
 
-    <string name="section_tab1_title">Items list</string>
-    <string name="section_tab2_title">Training</string>
+    <string name="section_tab1_title">Liste</string>
+    <string name="section_tab2_title">Pratique</string>
 
-    <string name="note_img_empty">none</string>
-    <string name="pick_device_icon">Find\non\n device</string>
+    <string name="note_img_empty">Rien</string>
+    <string name="pick_device_icon">Trouver \nsur\nl\'appareil</string>
 
-    <string name="user_vocabulary_title">My vocabulary</string>
-    <string name="user_topics_list">Topics list</string>
-    <string name="new_topic_btn">＋ New topic</string>
-    <string name="plus_version_more_lablel">More with PLUS version</string>
-    <string name="open_all_user_topics">Open the full list</string>
-    <string name="user_topics_count">"Topics added:  "</string>
-    <string name="user_items_count">"Items added:  "</string>
+    <string name="user_vocabulary_title">Mon vocabulaire</string>
+    <string name="user_topics_list">Liste de thèmes</string>
+    <string name="new_topic_btn">＋ Nouveau thème</string>
+    <string name="plus_version_more_lablel">Bien plus avec la version PLUS</string>
+    <string name="open_all_user_topics">Afficher tous les thèmes</string>
+    <string name="user_topics_count">"Thèmes ajoutés:  "</string>
+    <string name="user_items_count">"Entrées ajoutées:  "</string>
 
     <string name="ucat_date">Date:  %s</string>
-    <string name="ucat_items_count">Items count: %s</string>
+    <string name="ucat_items_count">Nomre d\'entrées: %s</string>
 
-    <string name="ucat_familiar_items">"Familiar: "</string>
-    <string name="ucat_mastered_items">"Mastered: "</string>
-    <string name="open_more">Open more</string>
+    <string name="ucat_familiar_items">"Familier: "</string>
+    <string name="ucat_mastered_items">"Maîtrisé: "</string>
+    <string name="open_more">Afficher plus</string>
     <string name="home_ucat_date">"Date: "</string>
-    <string name="home_ucat_list_progress">Mastered:  %s/%s</string>
+    <string name="home_ucat_list_progress">Maîtrisé:  %s/%s</string>
 
-    <string name="load_more_items">Load %s more</string>
+    <string name="load_more_items">Afficher encore %s </string>
 
-    <string name="popup_menu_edit">Edit</string>
-    <string name="popup_menu_unarchive">Unarchive</string>
-    <string name="popup_menu_delete">Delete</string>
-    <string name="popup_menu_move_top">Move to top</string>
-    <string name="popup_menu_archive">Archive</string>
-    <string name="popup_menu_view">Review</string>
+    <string name="popup_menu_edit">Modifier</string>
+    <string name="popup_menu_unarchive">Désarchiver</string>
+    <string name="popup_menu_delete">Supprimer</string>
+    <string name="popup_menu_move_top">Placer en haut</string>
+    <string name="popup_menu_archive">Archiver</string>
+    <string name="popup_menu_view">Afficher</string>
 
-    <string name="ucat_edit_title">Topic title</string>
-    <string name="ucat_edit_create">Create topic</string>
-    <string name="ucat_new_item">＋ New item </string>
+    <string name="ucat_edit_title">Titre du thème</string>
+    <string name="ucat_edit_create">Créer le thème</string>
+    <string name="ucat_new_item">＋ Nouvelle entrée </string>
 
-    <string name="ucat_saving_alert">Save the topic</string>
-    <string name="ucat_enter_title_alert">Enter the title of the topic.</string>
+    <string name="ucat_saving_alert">Enregistrer le thème</string>
+    <string name="ucat_enter_title_alert">Entrez le titre du thème.</string>
 
-    <string name="ucat_delete_confirm">\nDelete this topic with all items?\n</string>
-    <string name="ucat_edit_info_txt">Info how to edit a topic</string>
+    <string name="ucat_delete_confirm">\nSupprimer ce thème avec toutes les entrées?\n</string>
+    <string name="ucat_edit_info_txt">Info comment modifier le thème</string>
     <string name="ucat_edit_info_title">Info</string>
-    <string name="ucat_deleted_items">Deleted items: %d</string>
-    <string name="ucat_new_item_dialog">New item</string>
-    <string name="ucat_edit_item_dialog">Edit item</string>
-    <string name="ucat_created_time">Created: %s</string>
-    <string name="ucat_item_deleted_msg">Deleted</string>
-    <string name="ucat_delete_item_confirm">\nDelete this item?\n</string>
-    <string name="ucat_delete_item_confirm_last">\nDelete the last item?\n</string>
+    <string name="ucat_deleted_items">Entrées supprimée: %d</string>
+    <string name="ucat_new_item_dialog">Nouvelle entrée</string>
+    <string name="ucat_edit_item_dialog">Modifier l\'entrée</string>
+    <string name="ucat_created_time">Créé: %s</string>
+    <string name="ucat_item_deleted_msg">Supprimé</string>
+    <string name="ucat_delete_item_confirm">\nSupprimer cette entrée?\n</string>
+    <string name="ucat_delete_item_confirm_last">\nSupprimer la dernière entrée?\n</string>
 
-    <string name="dialog_edit_item_more">" More"</string>
-    <string name="dialog_edit_item_less">" Less"</string>
-    <string name="save_txt">Save</string>
-    <string name="edit_item_enter_txt_msg">Enter a text</string>
-    <string name="dialog_edit_item_text">original text</string>
-    <string name="dialog_edit_item_translation">translation</string>
-    <string name="dialog_edit_item_listen">Listen</string>
-    <string name="dialog_edit_item_nosound">No sound</string>
+    <string name="dialog_edit_item_more">" Afficher plus"</string>
+    <string name="dialog_edit_item_less">" Afficher moins"</string>
+    <string name="save_txt">Enregister</string>
+    <string name="edit_item_enter_txt_msg">Entrez un texte</string>
+    <string name="dialog_edit_item_text">texte original</string>
+    <string name="dialog_edit_item_translation">traduction</string>
+    <string name="dialog_edit_item_listen">Écouter</string>
+    <string name="dialog_edit_item_nosound">Pas de son</string>
     <string name="dialog_edit_item_transcription">Transcription</string>
-    <string name="dialog_edit_item_grammar">Grammar</string>
-    <string name="dialog_edit_item_extra">Additional info</string>
+    <string name="dialog_edit_item_grammar">Grammaire</string>
+    <string name="dialog_edit_item_extra">Information supplémentaire</string>
 
-    <string name="starred_bookmarks_title">Bookmarks (%d)</string>
-    <string name="starred_bookmark_header">Topics added to bookmarks</string>
+    <string name="starred_bookmarks_title">Signets (%d)</string>
+    <string name="starred_bookmark_header">Thèmes ajoutés aux signets</string>
 
-    <string name="starred_bookmark_info">Bookmarks can be added from topic menu (not more than %1$d bookmarks).</string>
+    <string name="starred_bookmark_info">Les signets peuvent être ajoutés dans le menu des thèmes (%1$d signets au maximum).</string>
     <string name="info_list_txt">\nItems from this topic cannot be starred, and they are not included in tests and exercises.\n</string>
 
+    <string name="starred_words_info">On peut ajouter jusqu\'à %1$d favoris dans la liste d\'un thème ou d\'une section. </string>
 
-    <string name="starred_words_info">You can star up to %1$d items in topics or section lists.</string>
-
-    <string name="item_status_unknown_short">Unknown</string>
-    <string name="item_status_familiar_short">✓ Familiar</string>
-    <string name="item_status_studied_short">✓ Mastered</string>
+    <string name="item_status_unknown_short">Inconnu</string>
+    <string name="item_status_familiar_short">✓ Familier</string>
+    <string name="item_status_studied_short">✓ Maîtrisé</string>
 
     <string name="bookmarks_section_txt">"Section: "</string>
-    <string name="bookmarks_section_my_voc">Section: My vocabulary</string>
+    <string name="bookmarks_section_my_voc">Section: Mon vocabulaire</string>
 
-    <string name="section_result_calculation">Total result calculation is based on the following stats:</string>
-    <string name="plus_version_btn">PLUS version</string>
+    <string name="section_result_calculation">Le calcul du résultat total est basé sur les statistiques suivantes:</string>
+    <string name="plus_version_btn">Version PLUS</string>
 
-    <string name="limit_cats_for_unpaid">\nYou have reached the limit for topics in the basic version. Get version PLUS to add more topics.\n</string>
+    <string name="limit_cats_for_unpaid">\nVous avez atteint la limite de thèmes dans la version basique. Obtenez la version PLUS pour ajouter plus de thèmes.\n</string>
 
-    <string name="menu_ucats_list_layout">Topics list layout</string>
-    <string name="menu_open_archive">Open archive</string>
-    <string name="delete_note_confirm">\nDelete this note?\n</string>
+    <string name="menu_ucats_list_layout">Affichage de la liste</string>
+    <string name="menu_open_archive">Ouvrir l\'archive</string>
+    <string name="delete_note_confirm">\nSupprimer cette note?\n</string>
     <string name="archive_title">Аrchive</string>
-
+    <string name="stats_not_saved_msg">La statistique n\'est pas sauvegardée</string>
 
 </resources>

@@ -17,22 +17,89 @@
         android:visibility="visible"
         android:layout_centerHorizontal="true"
         android:id="@+id/getPremiumMsg"
-        android:gravity="center"
+
         style="@style/PurchaseMsg.Width">
 
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_get_premium"
+            android:gravity="center"
+            android:textColor="#222222"
+            android:lineSpacingExtra="8dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginBottom="15dp"
+            />
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:text="– "
+                style="@style/gopro_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/gopro_txt"
+                android:text="@string/purchase_txt_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:text="– "
+                style="@style/gopro_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/gopro_txt"
+                android:text="@string/purchase_txt_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:text="– "
+                style="@style/gopro_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                style="@style/gopro_txt"
+                android:text="@string/purchase_txt_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <TextView
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/purchase_txt"
             android:id="@+id/textBuyView"
-            android:maxWidth="400dp"
-            android:gravity="center"
-            android:textColor="#333333"
-            android:lineSpacingExtra="8dp"
-            android:textSize="22sp"
-            android:padding="15dp"
-            android:fontFamily="sans-serif-light"
+            android:textColor="#222222"
+            android:textStyle="italic"
+            android:textSize="18sp"
+
             />
+
 
         <Button
 

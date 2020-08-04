@@ -1118,4 +1118,13 @@
         <!-- item name="android:textColor">#ffffff</item -->
     </style>
 
+    <style name="gopro_txt">
+        <item name="android:textColor">#111</item>
+        <item name="android:textSize">@dimen/goproTxtSize</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
 </resources>

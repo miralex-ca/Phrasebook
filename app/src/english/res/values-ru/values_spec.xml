@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_data_file" translatable="false">data.json</string>
+    <string name="app_structure_file">navstructure.json</string>
+
+    <string name="app_name">Английский язык</string>
+
+    <string name="nav_header_txt">Английский язык</string>
+
+    <string name="app_info_file">info</string>
+
+    <string name="voc_ex_link_first_desc">Англо-русский перевод</string>
+    <string name="voc_ex_link_second_desc">Русско-английский перевод</string>
+
+    <string name="msg_version_name">(LE, версия %s)</string>
+
+</resources>

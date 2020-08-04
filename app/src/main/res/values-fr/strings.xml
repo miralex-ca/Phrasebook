@@ -262,7 +262,12 @@
     <string name="title_activity_get_premium">Version PLUS</string>
 
     <string name="get_premium_activity">Version PLUS</string>
-    <string name="purchase_txt">Obtenez plus de possibilités dans la version PLUS!</string>
+    <string name="purchase_txt"> </string>
+
+    <string name="purchase_txt_1">Créez un nombre illimité de thèmes!</string>
+    <string name="purchase_txt_2">Ajoutez jusqu\'à 50 entrées dans un thème!</string>
+    <string name="purchase_txt_3">Pas de pubs!</string>
+
     <string name="get_premium_thank">Merci beaucoup!</string>
     <string name="get_premium_continue">Continuer</string>
     <string name="get_premium_buy">Acheter</string>
@@ -556,7 +561,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="section_tab2_title">Pratique</string>
 
     <string name="note_img_empty">Rien</string>
-    <string name="pick_device_icon">Trouver \nsur\nl\appareil</string>
+    <string name="pick_device_icon">Trouver \nsur\nl\'appareil</string>
 
     <string name="user_vocabulary_title">Mon vocabulaire</string>
     <string name="user_topics_list">Liste de thèmes</string>
@@ -638,5 +643,6 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="menu_open_archive">Ouvrir l\'archive</string>
     <string name="delete_note_confirm">\nSupprimer cette note?\n</string>
     <string name="archive_title">Аrchive</string>
+    <string name="stats_not_saved_msg">La statistique n\'est pas sauvegardée</string>
 
 </resources>

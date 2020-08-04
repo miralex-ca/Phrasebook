@@ -121,5 +121,7 @@
     <dimen name="_ex_link_padding_top_inline">10dp</dimen>
     <dimen name="_ex_link_padding_btm_inline">12dp</dimen>
 
+    <dimen name="goproTxtSize">16sp</dimen>
+
 
 </resources>

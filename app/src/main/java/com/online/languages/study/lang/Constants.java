@@ -209,13 +209,13 @@ public class Constants {
     public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";
 
     public static final int UCAT_WIDGET_LIMIT = 6; // normal 6
-    public static final int UCAT_LIST_LIMIT = 5;  // normal 20
-    public static final int NOTES_LIST_LIMIT = 4;  // normal 30
+    public static final int UCAT_LIST_LIMIT = 20;  // normal 20
+    public static final int NOTES_LIST_LIMIT = 30;  // normal 30
 
     public static final int UCATS_UNPAID_LIMIT = 3;  // normal 3
 
-    public static final int UDATA_LIMIT_UNPAID = 3;  // normal 20
-    public static final int UDATA_LIMIT = 5;         // normal 50
+    public static final int UDATA_LIMIT_UNPAID = 20;  // normal 20
+    public static final int UDATA_LIMIT = 50;         // normal 50
 
 
 

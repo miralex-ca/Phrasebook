@@ -295,4 +295,9 @@
     <string name="fab_size">normal</string>
 
 
+    <dimen name="goproTxtSize">14sp</dimen>
+
+    <string name="cat_stats_total_items_text" translatable="false">@string/cat_stats_total_items_short</string>
+
+
 </resources>

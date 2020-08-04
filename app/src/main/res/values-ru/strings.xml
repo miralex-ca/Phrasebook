@@ -41,8 +41,6 @@
     <string name="title_custom_txt">Список</string>
 
 
-
-
     <string name="section_tab1_title">Список</string>
     <string name="section_tab2_title">Изучение</string>
 
@@ -55,11 +53,6 @@
     <string name="voc_ex_link_second_title">Тест 2</string>
     <string name="voc_ex_link_third_title">Тест 3</string>
 
-    <string name="ex_link_card_inline">Карточки</string>
-    <string name="ex_link_1_inline">Тест на перевод</string>
-    <string name="ex_link_2_inline">Тест на обратный перевод</string>
-    <string name="ex_link_3_inline">Тест на перевод аудио</string>
-
 
     <string name="voc_ex_link_card_desc">Изучение отдельных записей</string>
     <string name="voc_ex_link_first_desc">Выбор перевода записи</string>
@@ -71,7 +64,6 @@
     <string name="section_ex_link_title_1">Общий тест 1</string>
     <string name="section_ex_link_title_2">Общий тест 2</string>
     <string name="section_ex_link_title_3">Общий тест 3</string>
-
 
 
 
@@ -263,11 +255,20 @@
      Активный режим может повлиять на статистику, поскольку она учитывает изученность только тех записей, которые присутствуют в данном режиме. Смена режима не влияет на результаты тестов, поиска, статистику ошибок, а также на избранные записи.\n</string>
 
 
-    <string name="get_premium_txt">Полная версия</string>
-    <string name="title_activity_get_premium">Полная версия</string>
+    <string name="get_premium_txt">Больше с версией PLUS</string>
+    <string name="title_activity_get_premium">Версия PLUS</string>
 
-    <string name="get_premium_activity">Полная версия</string>
-    <string name="purchase_txt">Получите полную версию приложения без рекламы</string>
+    <string name="get_premium_activity">Версия PLUS</string>
+
+
+    <string name="purchase_txt"> </string>
+
+
+    <string name="purchase_txt_1">Создавайте неограниченное количество тем!</string>
+    <string name="purchase_txt_2">Добавляйте до 50 записей в тему!</string>
+    <string name="purchase_txt_3">Отсутствие рекламы!</string>
+
+
     <string name="get_premium_thank">Спасибо!</string>
     <string name="get_premium_continue">Продолжить</string>
     <string name="get_premium_buy">Купить</string>
@@ -275,8 +276,6 @@
     <string name="purchased_txt">Чтобы продолжить работу с приложением, нажмите «Продолжить»</string>
 
     <string name="ex_save_stats">Сохранять статистику </string>
-
-
 
 
     <string name="stats_test_all_desc">Тест с записями из всех разделов</string>
@@ -637,6 +636,7 @@
     <string name="menu_open_archive">Открыть архив</string>
     <string name="delete_note_confirm">\nУдалить заметку?\n</string>
     <string name="archive_title">Архив</string>
+    <string name="stats_not_saved_msg">Статистика не сохраняется</string>
 
 
 </resources>

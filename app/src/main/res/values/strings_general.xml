@@ -3,8 +3,6 @@
 <resources>
 
 
-
-
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/7707206650</string>
     <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~1169718468</string>
 
@@ -17,6 +15,8 @@
     <string name="app_name_spec"> </string>
 
     <string name="app_data_file" translatable="false">data.json</string>
+
+
     <string name="app_detail_file" translatable="false">details.json</string>
     <string name="app_structure_file">navstructure.json</string>
 
@@ -44,15 +44,13 @@
 
     <string name="section_ex_link_desc_3">@string/voc_ex_link_third_desc</string>
 
-    <string name="title_activity_cards">CardsActivity</string>
+    <string name="title_activity_cards" translatable="false">CardsActivity</string>
+    <string name="title_activity_exericse" translatable="false">ExericseActivity</string>
+    <string name="title_activity_user_list" translatable="false">UserListActivity</string>
+    <string name="title_activity_cat_stats" translatable="false">CatStatsActivity</string>
+    <string name="title_activity_cat_data_stats" translatable="false">CatDataStatsActivity</string>
+    <string name="title_activity_custom_data_list" translatable="false">CustomDataListActivity</string>
 
-    <string name="title_activity_exericse">ExericseActivity</string>
-
-    <string name="title_activity_user_list">UserListActivity</string>
-
-    <string name="title_activity_cat_stats">CatStatsActivity</string>
-    <string name="title_activity_cat_data_stats">CatDataStatsActivity</string>
-    <string name="title_activity_custom_data_list">CustomDataListActivity</string>
 
     <string-array name="starred_list_sort_values">
         <item>0</item>

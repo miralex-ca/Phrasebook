@@ -984,11 +984,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     public void notifyNotSaved() {
 
+        final String statsMsg = getString(R.string.stats_not_saved_msg);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Snackbar.make(fCounterInfoBox, Html.fromHtml("<font color=\"#ffffff\">Статистика не сохраняется</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Snackbar.make(fCounterInfoBox, Html.fromHtml("<font color=\"#ffffff\">"+ statsMsg +"</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }, 250);
 

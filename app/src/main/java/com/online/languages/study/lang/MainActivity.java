@@ -142,10 +142,11 @@ public class MainActivity extends BaseActivity
 
     public static final String SKU_PREMIUM = BuildConfig.SKU;
 
-    public static final String PUBLIC_KEY_1 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuHpMkp0RqQJ4CzsokYgM0kkzAXgffvRI9aQCS5KYGsSe6RIAZHqvZurxjWjQN";
-    public static final String PUBLIC_KEY_2 = "kpKHwRa5IdDHZD7BUsA1+pooJtyPRZLEvCAlXf1XNY93clF9UEHz77fp29RuzTEGtlZysUk56Do5++FKKcwa4UEJkobyObTCzo6e+jVMy23";
-    public static final String PUBLIC_KEY_3 = "gFX2A0HP25aP4RUfX5UsPjFpPMydGgGyLZoD5TcQVB1aLvUSCCdTuQpgkEEB4Cdqd09VlYXSrgJqDg4f0+ZbDM06UvE63XEmtnj79ivu5adm9";
-    public static final String PUBLIC_KEY_4 = "S1NLNHkFor9DbTrMgNWvvcFCIMPkMxlcRYS0ewdFptA8mKmDABMBEq12rCkjOFSSwIDAQAB";
+    public static final String PUBLIC_KEY_1 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkgtUL0w+YuiWAtnMVbLQ1racScuPdv5Jtuf5rU";
+
+    public static final String PUBLIC_KEY_2 = "+IODWjq7oMUzxX/yHWW4UiQD0jM7Vl8ppwbp665DHi0LR9sIQsqzJTYvA2dGb+0GE0LHe2xBVzX0eEBhzkXAxIUDgzIdJlchl3";
+    public static final String PUBLIC_KEY_3 = "/R6eYz4TCr1zMN79oaLmdBD6y5pQE4zBEFHStCb9mJRhxYfqusAl/kjzZSEUIneKVH72zvgQJ0W1iyOKevQNivNGK60PVq4wp/r9iFTtZG5mfpSELIMKETWgJ8w1";
+    public static final String PUBLIC_KEY_4 = "/KNJLflpswQSrJWbSzua3sjlP+U4VBzvbdRzuMS2Ij3dToXU7Seep3msBYcl8yhmWmy9W/vDTsYGoheapQIDAQAB";
 
     IabHelper mHelper;
 

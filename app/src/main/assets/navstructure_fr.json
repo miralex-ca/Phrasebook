@@ -29,7 +29,7 @@
         {"parent": "root", "type": "set", "id": "set_1_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100100110", "title": "Salutations", "review":  "false"},
         {"parent": "root", "type": "simple", "id": "100100120", "title": "Formules de politesse","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100130", "title": "Langues","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100130", "title": "Langues", "review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Informations utiles"},
 
@@ -40,8 +40,8 @@
     },
 
     {"tag": "section_2", "title": "Voyage", "id": "10020",
-      "desc": "Voyage en avion, train, bateau, hôtel, visite guidée etc.",
       "title_short": "Voyage",
+      "desc": "Voyage en avion, train, bateau, hôtel, visite guidée etc.",
       "desc_short": "Voyage en avion, train, bateau, hôtel, visite guidée etc.",
       "image": "cat/travel.png",
       "categories":
@@ -65,8 +65,9 @@
     },
 
     {"tag": "section_3", "title": "Dans la ville", "id": "10030",
-      "desc": "City transport, organisations, places of interest, signboards",
       "title_short": "In the city",
+      "desc": "City transport, organisations, places of interest, signboards",
+
       "desc_short": "City transport, organisations, places of interest, signboards",
       "image": "picto/section_city.png",
       "categories":
@@ -114,15 +115,14 @@
     },
 
     {"tag": "section_5", "title": "Repas", "id": "10050",
-      "desc": "Légumes, fruits, viande, poisson, desserts etc.",
       "title_short": "Repas",
+      "desc": "Légumes, fruits, viande, poisson, desserts etc.",
       "desc_short": "Légumes, fruits, viande, poisson, desserts etc.",
       "image": "cat/food.png",
       "categories":
       [
 
         {"parent": "root", "type": "set", "id": "set_5_1", "title": "Vocabulaire de base"},
-
 
         {"parent": "root", "type": "simple", "id": "100500020", "title": "Viande", "image": "cat/meat_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500030", "title": "Poisson et fruits de mer", "image": "cat/fish_cat.png"},
@@ -137,14 +137,14 @@
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Thèmes supplémentaires"},
         {"parent": "root", "type": "extra", "id": "100500210", "title": "Baies"},
-        {"parent": "root", "type": "extra", "id": "100500220", "title": "Noix et fruits secs"},
-        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbes et épices"}
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Noix et fruits secs","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbes et épices","review":  "false"}
       ]
     },
 
     {"tag": "section_6", "title": "Nature", "id": "10060",
-      "desc": "Animaux, oiseaux, fleurs, arbres etc.",
       "title_short": "Nature",
+      "desc": "Animaux, oiseaux, fleurs, arbres etc.",
       "desc_short": "Animaux, oiseaux, fleurs, arbres etc.",
       "image": "cat/nature.png",
       "categories":
@@ -170,8 +170,8 @@
     },
 
     {"tag": "section_7", "title": "Santé", "id": "10070",
+      "title_short": "Santé",
       "desc": "Parties du corps, organes, maladies etc.",
-      "title_short": "Health",
       "desc_short": "Parties du corps, organes, maladies etc.",
       "image": "cat/health.png",
       "categories":
@@ -194,8 +194,8 @@
     },
 
     {"tag": "section_8", "title": "Maison", "id": "10080",
+      "title_short": "Maison",
       "desc": "Pièces, meubles, appareils domestiques, vaisselle etc.",
-      "title_short": "House",
       "desc_short": "Pièces, meubles, appareils domestiques, vaisselle etc",
       "image": "cat/house.png",
       "categories":
@@ -214,22 +214,25 @@
     },
 
     {"tag": "section_9", "title": "Divers", "id": "10090",
+      "title_short": "Divers",
       "desc": "Nombres, couleurs, temps, calendrie etc.",
-      "title_short": "Miscellaneous",
       "desc_short": "Nombres, couleurs, temps, calendrie etc.",
       "image": "cat/misc.png",
       "categories":
       [
 
-        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Vocabulaire de base"},
+        {"parent": "root", "type": "set", "id": "set_9_1", "title": "Vocabulaire de base"},
 
         {"parent": "root", "type": "simple", "id": "100900010", "title": "Nombres", "image": "cat/number_cat.png"},
         {"parent": "root", "type": "simple", "id": "100900020", "title": "Couleurs", "image": "cat/color_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900030", "title": "Adjectifs", "image": "cat/quality_1_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900030", "title": "Calendrier", "image": "cat/calendar_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900040", "title": "Temps", "image": "cat/time_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Adjectifs", "image": "cat/quality_1_cat.png"},
 
-        {"parent": "root", "type": "simple", "id": "100900050", "title": "Prépositions", "image": "cat/preposition_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900060", "title": "Temps", "image": "cat/time_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900070", "title": "Calendrier", "image": "cat/calendar_cat.png"}
+        {"parent": "root", "type": "set", "id": "set_9_3", "title": "Thèmes supplémentaires"},
+
+        {"parent": "root", "type": "simple", "id": "100900050", "title": "Prépositions", "review":  "false" }
+
 
 
       ]

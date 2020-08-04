@@ -149,6 +149,8 @@
 
     <dimen name="_cat_item_pic_size">48dp</dimen>
 
+    <dimen name="goproTxtSize">18sp</dimen>
+
 
 
 

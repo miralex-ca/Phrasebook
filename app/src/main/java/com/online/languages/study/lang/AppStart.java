@@ -38,16 +38,17 @@ public class AppStart extends AppCompatActivity {
 
 
 
+        DBHelper dbHelper = new DBHelper(this);
+
         if (Constants.DEBUG) {
             changeVersion();
             changeShowAd();
 
-            DBHelper dbHelper = new DBHelper(this);
-
             dbHelper.sanitizeDB();
-            dbHelper.populateDB();
 
         }
+
+        dbHelper.populateDB();
 
 
         startActivity(new Intent(this, MainActivity.class));

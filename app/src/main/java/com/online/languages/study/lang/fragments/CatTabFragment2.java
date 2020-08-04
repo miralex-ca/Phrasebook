@@ -209,7 +209,7 @@ public class CatTabFragment2 extends Fragment {
             if (item.rate > 2) studiedCount++;
         }
 
-        String totalCount = getString(R.string.cat_stats_total_items_text)+ dataCount;
+        String totalCount = getString(R.string.cat_stats_total_items_text)+ String.valueOf(dataCount);
         catTotalCount.setText(totalCount);
         catKnownCount.setText(String.valueOf(knownCount));
         catStudiedCount.setText(String.valueOf(studiedCount));
@@ -225,15 +225,8 @@ public class CatTabFragment2 extends Fragment {
             desc = getString(R.string.voc_ex_link_card_desc);
         } else if (order == 1) {
             desc = getString(R.string.voc_ex_link_first_desc);
-            if (spec.equals(Constants.CAT_SPEC_PERS)) desc = getString(R.string.ex_link_desc_pers_1);
-            if (spec.equals(Constants.CAT_SPEC_TERM)) desc = getString(R.string.ex_link_desc_term_1);
-            if (spec.equals(Constants.CAT_SPEC_MISC)) desc = getString(R.string.ex_link_desc_misc_1);
         } else if (order == 2) {
             desc = getString(R.string.voc_ex_link_second_desc);
-            if (spec.equals(Constants.CAT_SPEC_PERS)) desc = getString(R.string.ex_link_desc_pers_2);
-            if (spec.equals(Constants.CAT_SPEC_TERM)) desc = getString(R.string.ex_link_desc_term_2);
-
-            if (spec.equals(Constants.CAT_SPEC_MISC)) desc = getString(R.string.ex_link_desc_misc_2);
         }
 
 
