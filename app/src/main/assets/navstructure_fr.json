@@ -158,13 +158,16 @@
         {"parent": "root", "type": "simple", "id": "100600040", "title": "Animaux sauvages", "image": "cat/animal_cat.png"},
         {"parent": "root", "type": "simple", "id": "100600050", "title": "Oiseaux sauvages", "image": "cat/bird_cat.png"},
         {"parent": "root", "type": "simple", "id": "100600070", "title": "Animaux marins", "image": "cat/sea_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600080", "title": "Insectes", "image": "cat/insect_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600090", "title": "Fleurs", "image": "cat/flower_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600091", "title": "Arbres", "image": "cat/tree_cat.png"},
+
 
         {"parent": "root", "type": "set", "id": "set_6_2", "title": "Phrases"},
-        {"parent": "root", "type": "simple", "id": "100600110", "title": "À propos de la météo"}
+        {"parent": "root", "type": "simple", "id": "100600110", "title": "À propos de la météo"},
 
+        {"parent": "root", "type": "set", "id": "set_6_3", "title": "Thèmes supplémentaires"},
+
+        {"parent": "root", "type": "extra", "id": "100600080", "title": "Insectes", "review":  "false" },
+        {"parent": "root", "type": "extra", "id": "100600090", "title": "Fleurs", "review":  "false" },
+        {"parent": "root", "type": "extra", "id": "100600091", "title": "Arbres", "review":  "false" }
 
       ]
     },
@@ -200,12 +203,11 @@
       "image": "cat/house.png",
       "categories":
       [
-
         {"parent": "root", "type": "set", "id": "set_8_1", "title": "Vocabulaire de base"},
 
         {"parent": "root", "type": "simple", "id": "100800010", "title": "Maison, appartement", "image":  "cat/house_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800020", "title": "Pièce, meubles", "image":  "cat/furniture_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800030", "title": "Chambre à coucher", "image":  "cat/bed_cat.png"},
+
         {"parent": "root", "type": "simple", "id": "100800040", "title": "Salle de bains", "image":  "cat/bath_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800050", "title": "Cuisine", "image":  "cat/kitchen_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800060", "title": "Vaisselle et argenterie", "image":  "cat/dish_cat.png"}
@@ -231,8 +233,7 @@
 
         {"parent": "root", "type": "set", "id": "set_9_3", "title": "Thèmes supplémentaires"},
 
-        {"parent": "root", "type": "simple", "id": "100900050", "title": "Prépositions", "review":  "false" }
-
+        {"parent": "root", "type": "simple", "id": "100900210", "title": "Prépositions", "review":  "false" }
 
 
       ]

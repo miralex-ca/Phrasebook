@@ -65,7 +65,7 @@ public class AppStartTest {
             onView(ViewMatchers.withId(R.id.recycler_view_cards))
                     .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         } else {
-            onView(ViewMatchers.withId(R.id.recycler_view))
+            onView(ViewMatchers.withId(R.id.recycler_view_home))
                     .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         }
 
@@ -101,9 +101,9 @@ public class AppStartTest {
         /// open first category
         waitTime(100);
         onView(ViewMatchers.withId(R.id.recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
 
-
+        /*
         // open details
         waitTime(500);
         onView(ViewMatchers.withId(R.id.my_recycler_view))
@@ -117,7 +117,7 @@ public class AppStartTest {
         starBtn.perform(click());
 
         waitTime(800);
-        pressBack(); // back to category
+        pressBack(); //  //back to category
 
 
         waitTime(100);
@@ -132,7 +132,7 @@ public class AppStartTest {
         onView(ViewMatchers.withId(R.id.my_recycler_view))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(2, longClick()));
 
-
+        */
 
         /// swipe to exercises list
         waitTime(500);
@@ -173,117 +173,7 @@ public class AppStartTest {
 
         if (display) { // bottom navigation displayed
 
-            // open gallery
-            waitTime(500);
-            ViewInteraction bottomNavigationGalleryView = onView(
-                    allOf(withId(R.id.nav_gallery),
-                            childAtPosition(
-                                    childAtPosition(
-                                            withId(R.id.navigation),
-                                            0),
-                                    1),
-                            isDisplayed()));
-            bottomNavigationGalleryView.perform(click());
 
-            /// change gallery layout
-            waitTime(200);
-
-
-            ViewInteraction actionMenuLayoutView = onView(
-                    allOf(withId(R.id.list_layout),
-                            childAtPosition(
-                                    childAtPosition(
-                                            withId(R.id.toolbar),
-                                            2),
-                                    0),
-                            isDisplayed()));
-
-            // waitTime(500);
-            // actionMenuLayoutView.perform(click());
-
-
-            waitTime(300);
-
-            int listType = dataManager.appSettings.getInt(SET_GALLERY_LAYOUT, SET_GALLERY_LAYOUT_DEFAULT);
-            if (listType == 1) {
-                actionMenuLayoutView.perform(click());
-            } else {
-                actionMenuLayoutView.perform(click());
-                waitTime(200);
-                actionMenuLayoutView.perform(click());
-            }
-
-
-            // open gallery category
-            waitTime(300);
-            ViewInteraction item = onView(
-                    childAtPosition(withIndex(withId(R.id.recycler_view), 0), 0)
-            );
-            item.perform(click());
-
-
-
-
-
-            waitTime(300);
-
-
-            int imgListType = dataManager.appSettings.getInt(IMG_LIST_LAYOUT, 3);
-
-
-            ViewInteraction actionMenuLayoutView1 = onView(
-                    allOf(withId(R.id.list_layout),
-                            isDisplayed()));
-
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-
-
-            for (int i = 0; i < 3; i++) {
-
-                imgListType = dataManager.appSettings.getInt(IMG_LIST_LAYOUT, 3);
-
-                if (imgListType == 1) break;
-
-                waitTime(100);
-                actionMenuLayoutView1.perform(click());
-
-            }
-
-
-            waitTime(100);
-            ViewInteraction catItem1 = onView(
-                    childAtPosition(withIndex(withId(R.id.recycler_view), 0), 0)
-            );
-            catItem1.perform(longClick());
-            waitTime(500);
-
-
-            ViewInteraction catItem12 = onView(
-                    childAtPosition(withIndex(withId(R.id.recycler_view), 0), 0)
-            );
-
-            catItem12.perform(click());
-
-            waitTime(400);
-
-            ViewInteraction starBtn2 = onView(
-                    allOf(withId(R.id.fab),
-                            isDisplayed()));
-            starBtn2.perform(click());
-
-
-            waitTime(500);
-            pressBack();
-
-
-
-            waitTime(300);
-            pressBack(); // back to gallery fragment
 
             // open starred fragment
             waitTime(500);
@@ -312,58 +202,6 @@ public class AppStartTest {
 
             waitTime(500);
 
-            onView(withId(R.id.nav_view))
-                    .perform(NavigationViewActions.navigateTo(R.id.nav_gallery));
-
-
-            /// change gallery layout
-            waitTime(200);
-
-
-            ViewInteraction actionMenuLayoutView = onView(
-                    allOf(withId(R.id.list_layout),
-                            childAtPosition(
-                                    childAtPosition(
-                                            withId(R.id.toolbar),
-                                            2),
-                                    0),
-                            isDisplayed()));
-
-            // waitTime(500);
-            // actionMenuLayoutView.perform(click());
-            // open gallery category
-            waitTime(300);
-
-
-            int listType = dataManager.appSettings.getInt(SET_GALLERY_LAYOUT, SET_GALLERY_LAYOUT_DEFAULT);
-            if (listType == 1) {
-                actionMenuLayoutView.perform(click());
-            } else {
-                actionMenuLayoutView.perform(click());
-                waitTime(200);
-                actionMenuLayoutView.perform(click());
-            }
-
-            waitTime(300);
-            ViewInteraction item = onView(
-                    childAtPosition(withIndex(withId(R.id.recycler_view), 0), 0)
-            );
-            item.perform(click());
-
-            waitTime(300);
-
-            ViewInteraction actionMenuLayoutView1 = onView(
-                    allOf(withId(R.id.list_layout),
-                            isDisplayed()));
-
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-            actionMenuLayoutView1.perform(click());
-            waitTime(300);
-
-            pressBack(); // back to gallery fragment
 
             // open starred fragment in navigation
             waitTime(500);

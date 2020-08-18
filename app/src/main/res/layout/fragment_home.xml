@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content">
 
                         <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recycler_view"
+                            android:id="@+id/recycler_view_home"
 
                             android:clipToPadding="false"
                             android:nestedScrollingEnabled="false"

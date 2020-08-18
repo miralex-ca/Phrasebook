@@ -28,7 +28,7 @@ public class Constants {
 
     public static final int RATE_INCLUDE = 4; // used for priority of unfamiliar dataItems in tests
 
-    public static final int QUEST_NUM = 60;  // limit for tests
+    public static final int QUEST_NUM = 100;  // limit for tests
     public static final int SECTION_TEST_LIMIT = 100;  //  100 for prod
     public static final int REVISE_NUM = 30;
 
@@ -215,7 +215,8 @@ public class Constants {
     public static final int UCATS_UNPAID_LIMIT = 3;  // normal 3
 
     public static final int UDATA_LIMIT_UNPAID = 20;  // normal 20
-    public static final int UDATA_LIMIT = 50;         // normal 50
+    public static final int UDATA_LIMIT = 100;
+    // normal 100
 
 
 

@@ -19,7 +19,7 @@
     </string-array>
 
 
-    <string name="backup_file_name" translatable="false">backup_lang.endb</string>
+    <string name="backup_file_name" translatable="false">Backup_file .endb</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
     <string name="app_name">Learn English</string>

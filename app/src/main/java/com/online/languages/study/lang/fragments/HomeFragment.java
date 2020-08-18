@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
         tablet = getResources().getBoolean(R.bool.tablet);
 
-        recyclerView = rootView.findViewById(R.id.recycler_view);
+        recyclerView = rootView.findViewById(R.id.recycler_view_home);
         recyclerViewCards = rootView.findViewById(R.id.recycler_view_cards);
 
         String theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);

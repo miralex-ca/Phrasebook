@@ -40,7 +40,16 @@ public class PreReleaseTest {
         dataManager.getParamsFromJSON();
         assertFalse(dataManager.simplified);
         assertFalse(dataManager.homecards);
-        assertTrue(dataManager.gallerySection);
+
+    }
+
+
+    @Test
+    public void limits_areCorrect() throws Exception {
+        assertEquals(100, Constants.UDATA_LIMIT);
+        assertEquals(20, Constants.UDATA_LIMIT_UNPAID);
+        assertEquals(3, Constants.UCATS_UNPAID_LIMIT);
+
     }
 
 

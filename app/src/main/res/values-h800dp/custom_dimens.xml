@@ -27,7 +27,7 @@
     <dimen name="_ex_opt_short_txt_min_height">55dp</dimen>
 
     <integer name="_ex_quest_txt_size_norm">21</integer>
-    <integer name="_ex_quest_short_txt_size_norm">22</integer>   <!-- ex1 opt -->
+     <integer name="_ex_quest_short_txt_size_norm">22</integer>   <!-- ex1 opt -->
     <integer name="_ex_quest_short_txt_size_small">24</integer>      <!-- ex2 -->
 
 
@@ -65,8 +65,6 @@
 
     <dimen name="_detail_appbar_height">330dp</dimen>
 
-    <integer name="_search_dialog_height">500</integer>
-    <integer name="_search_dialog_img_height">300</integer>
 
 
     <dimen name="_cat_stat_data_padding">30dp</dimen>
