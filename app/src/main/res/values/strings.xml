@@ -6,7 +6,6 @@
     <string name="app_name">Apprenez des langues</string>
 
     <string name="action_settings">Settings</string>
-
     <string name="contact_error">Signaler une erreur</string>
     <string name="contact_feedback">Envoyer un email</string>
     <string name="contact_pro">Version PLUS</string>
@@ -556,7 +555,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="confirmation_txt">Confirmation</string>
     <string name="starred_confirm_title">Confirmer la suppression</string>
-    <string name="set_starred_confirm_summary">Confirmer la la suppression des favoris</string>
+    <string name="set_starred_confirm_summary">Confirmer la suppression des favoris</string>
     <string name="starred_confirm_desc">Vous êtes sur le point de supprimer ce favori, souhaitez-vous confirmer cette suppression?</string>
     <string name="dont_ask_again">Ne plus me demander</string>
 

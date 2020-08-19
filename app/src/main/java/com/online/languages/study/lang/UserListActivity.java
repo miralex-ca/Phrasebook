@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UserListViewPagerAdapter;
@@ -207,8 +208,16 @@ public class UserListActivity extends BaseActivity {
             case R.id.starred_del_results:
                 deleteStarredExResults();
                 return true;
+            case R.id.info_item:
+                showInfoDialog();
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showInfoDialog() {
+        InfoDialog infoDialog = new InfoDialog(this);
+        infoDialog.simpleDialog(getString(R.string.info_txt), getString(R.string.info_img_starred));
     }
 
     @Override

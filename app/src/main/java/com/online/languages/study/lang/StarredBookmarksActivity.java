@@ -408,14 +408,11 @@ public class StarredBookmarksActivity extends BaseActivity {
     }
 
 
-
     public void showInfoDialog() {
         DataModeDialog dataModeDialog = new DataModeDialog(this);
-        String info = getString(R.string.info_img_starred); /// TODO check description
+        String info = getString(R.string.info_bookmark_list); /// TODO check description
         dataModeDialog.createDialog(getString(R.string.info_txt), info);
     }
-
-
 
 
     public interface ClickListener {
