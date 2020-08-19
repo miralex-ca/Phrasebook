@@ -204,8 +204,18 @@ public class NoteEditActivity extends BaseActivity {
                 editNote();
                 return true;
 
+            case R.id.info_item:
+                showInfo();
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showInfo() {
+        InfoDialog infoDialog = new InfoDialog(this);
+        infoDialog.simpleDialog(getString(R.string.info_notes_title), getString(R.string.info_notes_text));
+
     }
 
     private void editNote() {

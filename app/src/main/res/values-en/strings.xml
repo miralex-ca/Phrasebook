@@ -639,5 +639,10 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="archive_title">Архив</string>
     <string name="stats_not_saved_msg">Stats are not saved.</string>
 
+    <string name="info_notes_title">Information</string>
+    <string name="info_notes_text">\nYou can store any text information in your notes. You can find a list of notes in the Notes section, or you can find notes by searching in the app. You can modify the title, icon and text of a note at any time. \n</string>
+
+    <string name="info_bookmark_list">\nYou can remove a topic from bookmarks by long clicking on a list item, or you can remove the bookmark in the topic menu.\n</string>
+
 
 </resources>

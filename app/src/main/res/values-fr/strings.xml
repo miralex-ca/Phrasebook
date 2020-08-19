@@ -645,4 +645,10 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="archive_title">Аrchive</string>
     <string name="stats_not_saved_msg">La statistique n\'est pas sauvegardée</string>
 
+
+    <string name="info_notes_title">Information</string>
+    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste de notes dans la section Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l\'application. Vous pouvez modifier le titre, l\'icône et le texte d\'une note à tout moment. \n</string>
+
+    <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
+
 </resources>

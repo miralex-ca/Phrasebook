@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.NotesAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
@@ -238,6 +239,9 @@ public class NoteActivity extends BaseActivity {
             case R.id.delete_note:
                 deleteConfirmDialog();
                 return true;
+            case R.id.info_item:
+                showInfo();
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
@@ -270,6 +274,13 @@ public class NoteActivity extends BaseActivity {
         }
 
         return true;
+    }
+
+
+    private void showInfo() {
+        InfoDialog infoDialog = new InfoDialog(this);
+        infoDialog.simpleDialog(getString(R.string.info_notes_title), getString(R.string.info_notes_text));
+
     }
 
 
