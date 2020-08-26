@@ -58,10 +58,8 @@
 
         {"parent": "root", "type": "simple", "id": "100200210", "title": "В гостинице"},
         {"parent": "root", "type": "simple", "id": "100200220", "title": "На экскурсии"},
+        {"parent": "root", "type": "simple", "id": "100200230", "title": "Аренда автомобиля"},
         {"parent": "root", "type": "simple", "id": "100300120", "title": "В городском транспорте"}
-
-
-
       ]
     },
 
@@ -130,6 +128,7 @@
 
         {"parent": "root", "type": "set", "id": "set_5_1", "title": "Основной словарь"},
 
+        {"parent": "root", "type": "simple", "id": "100500010", "title": "Еда", "image": "cat/food_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500020", "title": "Мясные изделия", "image": "cat/meat_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500030", "title": "Рыба и морепродукты", "image": "cat/fish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500040", "title": "Овощи", "image": "cat/vegetable_cat.png"},
@@ -138,14 +137,17 @@
         {"parent": "root", "type": "simple", "id": "100500070", "title": "Напитки", "image": "cat/drink_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_5_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100500110", "title": "В ресторане","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100500120", "title": "В баре","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100500110", "title": "В ресторане"},
+        {"parent": "root", "type": "simple", "id": "100500120", "title": "В баре"},
+        {"parent": "root", "type": "simple", "id": "100500130", "title": "Заказ еды по телефону"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500220", "title": "Орехи и сухофрукты","review":  "false"},
-        {"parent": "root", "type": "extra", "id": "100500230", "title": "Травы и пряности","review":  "false"}
-
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Травы и пряности","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500240", "title": "Соусы и приправы","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500250", "title": "Молочные продукты","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500260", "title": "Зерновые продукты","review":  "false"}
       ]
     },
 

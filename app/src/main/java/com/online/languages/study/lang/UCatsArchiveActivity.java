@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.online.languages.study.lang.adapters.ArchiveAdapter;
+import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -450,7 +451,7 @@ public class UCatsArchiveActivity extends BaseActivity {
                 return true;
 
             case R.id.info_item:
-
+                showInfoDialog();
                 return true;
 
 
@@ -466,7 +467,11 @@ public class UCatsArchiveActivity extends BaseActivity {
         return true;
     }
 
-
+    public void showInfoDialog() {
+        DataModeDialog dataModeDialog = new DataModeDialog(this);
+        String info = getString(R.string.info_txt); /// TODO check description
+        dataModeDialog.createDialog(getString(R.string.info_txt), info);
+    }
 
 
     @Override
