@@ -652,4 +652,8 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
 
+    <string name="info_ucat_list">\nInfo  \n</string>
+    <string name="info_ucat_archive">\nInfo  \nn</string>
+
+
 </resources>

@@ -469,7 +469,7 @@ public class UCatsArchiveActivity extends BaseActivity {
 
     public void showInfoDialog() {
         DataModeDialog dataModeDialog = new DataModeDialog(this);
-        String info = getString(R.string.info_txt); /// TODO check description
+        String info = getString(R.string.info_ucat_archive); /// TODO check description
         dataModeDialog.createDialog(getString(R.string.info_txt), info);
     }
 
@@ -478,7 +478,6 @@ public class UCatsArchiveActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-
 
         if (requestCode == 10) {
             updateList();

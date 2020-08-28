@@ -27,6 +27,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.NewItemDialog;
@@ -530,7 +531,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
                 return true;
 
             case R.id.info_item:
-                infoDialog.simpleDialog(getString(R.string.ucat_edit_info_title), getString(R.string.ucat_edit_info_txt));
+
+                showInfoDialog();
+
                 return true;
 
             case R.id.delete_ucat:
@@ -540,6 +543,12 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showInfoDialog() {
+        DataModeDialog dataModeDialog = new DataModeDialog(this);
+        String info = getString(R.string.ucat_edit_info_txt); /// TODO check description
+        dataModeDialog.createDialog(getString(R.string.info_txt), info);
     }
 
 

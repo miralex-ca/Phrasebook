@@ -649,7 +649,7 @@ public class UCatsListActivity extends BaseActivity {
 
     public void showInfoDialog() {
         DataModeDialog dataModeDialog = new DataModeDialog(this);
-        String info = getString(R.string.info_txt); /// TODO check description
+        String info = getString(R.string.info_ucat_list); /// TODO check description
         dataModeDialog.createDialog(getString(R.string.info_txt), info);
     }
 
