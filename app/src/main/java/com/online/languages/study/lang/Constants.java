@@ -218,6 +218,7 @@ public class Constants {
     public static final int UDATA_LIMIT = 100;
     // normal 100
 
-
+    public static final int TASK_DELAY_CORRECT = 900;
+    public static final int TASK_DELAY_INCORRECT = 1800;
 
 }
