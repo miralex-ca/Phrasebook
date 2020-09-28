@@ -2340,7 +2340,7 @@
     {"id": "1008001200090", "item": "That’s in my price range.", "info": "Ce prix me convient.", "ipa": "ðæts ɪn maɪ praɪs reɪnʤ", "tr_ru": "зэтс ин май прайс рэйндж"},
     {"id": "1008001200100", "item": "Does it have a parking space?", "info": "Y a-t-il une place de parking?", "ipa": "dʌz ɪt həv ə ˈpɑːkɪŋ speɪs?", "tr_ru": "даз ит хэв э ˈпаːкин спэйс?"},
     {"id": "1008001200110", "item": "Is it on a quite street?", "info": "Est-ce que ça se trouve dans une rue calme?", "ipa": "ɪz ɪt ɒn ə kwaɪt striːt?", "tr_ru": "из ит он э куайт стриːт?"},
-    {"id": "1008001200120", "item": "Is it a newer building or an older one?", "info": "Est-ce un bâtiment plus récent ou plus ancien?", "ipa": "ɪz ɪt ə ˈnjuːə ˈbɪldɪŋ ə ən ˈəʊldə wʌn?", "tr_ru": "из ит э ˈньюːэ ˈбилдин э эн ˈоулдэ уан?"},
+    {"id": "1008001200120", "item": "Is it a newer building or an older one?", "info": "Est-ce un bâtiment neuf ou ancien?", "ipa": "ɪz ɪt ə ˈnjuːə ˈbɪldɪŋ ə ən ˈəʊldə wʌn?", "tr_ru": "из ит э ˈньюːэ ˈбилдин э эн ˈоулдэ уан?"},
     {"id": "1008001200130", "item": "How old is the apartment complex?", "info": "Quel âge a le complexe d'appartements?", "ipa": "haʊ əʊld ɪz ðiː əˈpɑːtmənt ˈkɒmpleks?", "tr_ru": "хау оулд из зиː эˈпаːтмэнт ˈкомплэкс?"},
     {"id": "1008001200140", "mode": "-1", "item": "Is the apartment furnished?", "info": "L'appartement est-il meublé?", "ipa": "ɪz ðiː əˈpɑːtmənt ˈfɜːnɪʃt?", "tr_ru": "из зиː эˈпаːтмэнт ˈфэːништ?"},
     {"id": "1008001200150", "mode": "-1", "item": "Does it have appliances?", "info": "Y a-t-il des appareils électroménagers?", "ipa": "dʌz ɪt həv əˈplaɪənsɪz?", "tr_ru": "даз ит хэв эˈплайэнсиз?"},

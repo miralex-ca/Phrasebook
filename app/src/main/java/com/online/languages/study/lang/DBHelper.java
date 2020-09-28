@@ -10,8 +10,6 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-
-import com.online.languages.study.lang.tools.Computer;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
@@ -26,6 +24,7 @@ import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.data.UserStats;
 import com.online.languages.study.lang.data.UserStatsData;
 import com.online.languages.study.lang.files.DBImport;
+import com.online.languages.study.lang.tools.Computer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,15 +36,12 @@ import java.util.Map;
 
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
-
-import static com.online.languages.study.lang.Constants.DATA_MODE_DEFAULT;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
@@ -864,6 +860,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return dataObject;
     }
+
+
 
 
 
@@ -1878,6 +1876,96 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int deleteCatResult(String catId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int num = 0;
+
+        String idPrefix = catId+"_%";
+
+        db.delete(TABLE_TESTS_DATA, KEY_TEST_TAG +" LIKE ?", new String[]{idPrefix});
+
+        // int num = db.delete(TABLE_USER_DATA, KEY_USER_ITEM_ID +" LIKE ?", new String[]{idPrefix});
+
+        ArrayList<String> ids = new ArrayList<>();
+
+        Cursor cursor;
+
+        if (catId.contains(UC_PREFIX)) {
+
+            String query = "SELECT * FROM "
+                    + TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
+                    +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
+                    +" WHERE a." + KEY_UDC_UCAT_ID + " = ?";
+
+            cursor = db.rawQuery(query, new String[]{catId});
+
+
+            while (cursor.moveToNext()) {
+                String id = cursor.getString( (cursor.getColumnIndex(KEY_UDATA_ID)));
+                ids.add(id);
+            }
+
+        } else {
+
+            cursor = db.query(TABLE_USER_DATA,  null, KEY_USER_ITEM_ID +" LIKE ?",
+                    new String[]{idPrefix}, null, null, null);
+
+
+            while (cursor.moveToNext()) {
+                String id = cursor.getString( (cursor.getColumnIndex(KEY_USER_ITEM_ID)));
+                ids.add(id);
+            }
+        }
+
+
+
+
+
+
+
+        cursor.close();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_ITEM_PROGRESS, 0);
+        values.put(KEY_ITEM_ERRORS, 0);
+        values.put(KEY_ITEM_SCORE, 0);
+        values.put(KEY_ITEM_TIME, "");
+        values.put(KEY_ITEM_TIME_ERROR, "");
+
+        db.beginTransaction();
+
+        try {
+
+            for (String id: ids) {
+                db.update(TABLE_USER_DATA, values, KEY_USER_ITEM_ID +" = ?", new String[]{id});
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+
+        db.close();
+
+        return num;
+    }
+
+    public int deleteDataListResult(String catId, SQLiteDatabase db) {
+
+
+        String idPrefix = catId+"_%";
+
+        db.delete(TABLE_TESTS_DATA, KEY_TEST_TAG +" LIKE ?", new String[]{idPrefix});
+        int num = db.delete(TABLE_USER_DATA, KEY_USER_ITEM_ID +" LIKE ?", new String[]{idPrefix});
+
+        db.close();
+
+        return num;
+    }
+
 
     private void setStarredTab(int type) {
 
@@ -2018,9 +2106,9 @@ public class DBHelper extends SQLiteOpenHelper {
         int size = checkCursor.getCount();
         checkCursor.close();
 
-        return size;
-    }
 
+        return size;
+}
 
     public Boolean checkStarred(String word_id) {
         Boolean status = false;

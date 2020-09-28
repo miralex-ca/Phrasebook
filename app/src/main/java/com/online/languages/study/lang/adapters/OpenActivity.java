@@ -11,7 +11,6 @@ import com.online.languages.study.lang.CatSimpleListActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.GalleryActivity;
 import com.online.languages.study.lang.ImageListActivity;
-import com.online.languages.study.lang.InfoListActivity;
 import com.online.languages.study.lang.MapActivity;
 import com.online.languages.study.lang.MapListActivity;
 import com.online.languages.study.lang.R;
@@ -68,7 +67,7 @@ public class OpenActivity  {
 
     public void setOrientation() {
         if(context.getResources().getBoolean(R.bool.portrait_only)){
-            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
         }
     }
 

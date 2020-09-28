@@ -2,8 +2,6 @@ package com.online.languages.study.lang;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -74,8 +72,15 @@ public class SectionActivity extends BaseActivity {
         themeAdapter = new ThemeAdapter(this, themeTitle, false);
         themeAdapter.getTheme();
 
+        openActivity = new OpenActivity(this);
+        openActivity.setOrientation();
+
 
         super.onCreate(savedInstanceState);
+
+
+
+
         setContentView(R.layout.activity_section);
 
         dataManager = new DataManager(this);
@@ -83,9 +88,9 @@ public class SectionActivity extends BaseActivity {
         easy_mode = dataManager.easyMode();
 
         dataModeDialog = new InfoDialog(this);
-        openActivity = new OpenActivity(this);
 
-        openActivity.setOrientation();
+
+
 
         full_version = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
 

@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
@@ -759,6 +758,12 @@ public class DataManager {
 
         return  data;
 
+
+    }
+
+    public void removeCatData(String catId) {
+
+       dbHelper.deleteCatResult(catId);
 
     }
 

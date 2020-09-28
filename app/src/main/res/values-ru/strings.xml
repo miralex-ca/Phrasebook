@@ -651,5 +651,13 @@
 
     <string name="ucat_edit_info_txt">\nДля того, чтобы сохранить новую тему, необходимо ввести ее название. Изменить название темы можно в любое время. В обычной версии в тему можно добавить не более 20 слов.\n</string>
 
+    <string name="delete_stats_from_menu">Удалить статистику</string>
+    <string name="delete_stats_confirm_text">\nБудут удалены результаты упражнений, а также статистика изучения записей данной темы. \n\nВы уверены, что хотите удалить эти данные?\n</string>
+    <string name="delete_stats_process">Удаление …</string>
+
+    <string name="set_del_cat_stats">Удаление статистики темы</string>
+    <string name="set_del_cat_stats_summary">Отображение удаления статистики в меню темы</string>
+
+
 
 </resources>

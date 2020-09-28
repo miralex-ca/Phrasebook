@@ -52,14 +52,14 @@
         {"parent": "root", "type": "simple", "id": "100200010", "title": "Самолёт", "image": "cat/plane_cat.png"},
         {"parent": "root", "type": "simple", "id": "100200020", "title": "Поезд", "image": "cat/train_cat.png"},
         {"parent": "root", "type": "simple", "id": "100200030", "title": "Корабль, теплоход", "image": "cat/ship_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300040", "title": "Транспорт", "image": "cat/transport_cat_p.png"},
+        {"parent": "root", "type": "simple", "id": "100300050", "title": "Транспорт", "image": "cat/transport_cat_p.png"},
 
         {"parent": "root", "type": "set", "id": "set_2_2", "title": "Фразы"},
 
         {"parent": "root", "type": "simple", "id": "100200210", "title": "В гостинице"},
         {"parent": "root", "type": "simple", "id": "100200220", "title": "На экскурсии"},
-        {"parent": "root", "type": "simple", "id": "100200230", "title": "Аренда автомобиля"},
-        {"parent": "root", "type": "simple", "id": "100300120", "title": "В городском транспорте"}
+        {"parent": "root", "type": "simple", "id": "100200230", "title": "Аренда автомобиля"}
+
       ]
     },
 
@@ -74,9 +74,11 @@
         {"parent": "root", "type": "set", "id": "set_3_1", "title": "Основной словарь"},
 
         {"parent": "root", "type": "simple", "id": "100300010", "title": "Город", "image": "cat/city_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300020", "title": "Учреждения", "image": "cat/store_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300030", "title": "Экскурсия по городу", "image":  "cat/sights_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300040", "title": "Транспорт", "image": "cat/transport_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "Улица", "image": "cat/road_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Учреждения", "image": "cat/store_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Туризм и развлечения", "image":  "cat/sights_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300050", "title": "Транспорт", "image": "cat/transport_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300060", "title": "Автомобиль", "image": "cat/car_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_3_2", "title": "Фразы"},
         {"parent": "root", "type": "simple", "id": "100300110", "title": "В городе"},
@@ -229,14 +231,21 @@
 
         {"parent": "root", "type": "simple", "id": "100800010", "title": "Дом, квартира", "image":  "cat/house_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800020", "title": "Мебель, интерьер", "image":  "cat/furniture_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800040", "title": "Ванная комната", "image":  "cat/bath_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800050", "title": "Кухня", "image":  "cat/kitchen_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800060", "title": "Посуда", "image":  "cat/dish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Кухня", "image":  "cat/kitchen_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800040", "title": "Посуда", "image":  "cat/dish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800050", "title": "Бытовые приборы", "image":  "cat/appliance_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800060", "title": "Ванная комната", "image":  "cat/bath_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800070", "title": "Ферма", "image":  "cat/barn_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_8_2", "title": "Фразы"},
 
         {"parent": "root", "type": "simple", "id": "100800110", "title": "Мой дом"},
-        {"parent": "root", "type": "simple", "id": "100800120", "title": "Аренда жилья"}
+        {"parent": "root", "type": "simple", "id": "100800120", "title": "Аренда жилья"},
+
+        {"parent": "root", "type": "set", "id": "set_8_3", "title": "Дополнительные темы"},
+
+        {"parent": "root", "type": "extra", "id": "100800210", "title": "Инструменты", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100800220", "title": "Садовые инструменты", "review":  "false"}
 
       ]
     },

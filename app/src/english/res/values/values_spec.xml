@@ -33,6 +33,16 @@
 
     <string name="tabs_starred_display" translatable="false">always</string>
 
+    <string-array name="set_transcript_values" >
+        <item>ipa</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="set_transcript_list">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
 
 
 </resources>

@@ -1,7 +1,5 @@
 package com.online.languages.study.lang;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,10 +29,9 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
+import com.online.languages.study.lang.fragments.CatTabFragment2;
 
 import java.util.ArrayList;
 
@@ -43,7 +40,6 @@ import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.IMG_LIST_LAYOUT;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
@@ -87,6 +83,8 @@ public class CatActivity extends BaseActivity {
 
     NavStructure navStructure;
 
+    boolean showDelStats;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +103,7 @@ public class CatActivity extends BaseActivity {
         easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
+        showDelStats = appSettings.getBoolean("set_del_stats_cat", false);
 
         navStructure = dataManager.getNavStructure();
 
@@ -305,6 +304,10 @@ public class CatActivity extends BaseActivity {
             modeMenuItem.setVisible(false);
         }
 
+        if (!showDelStats) {
+            menu.findItem(R.id.remove_stats_from_menu).setVisible(false);
+        }
+
 
         return true;
     }
@@ -333,6 +336,9 @@ public class CatActivity extends BaseActivity {
             case R.id.info_from_menu:
                 infoMessage();
                 return true;
+            case R.id.remove_stats_from_menu:
+                deleteConfirmDialog();
+                return true;
             case R.id.edit_from_menu:
                 openEditCat();
                 return true;
@@ -340,6 +346,56 @@ public class CatActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void deleteConfirmDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+
+        builder.setTitle(R.string.confirmation_txt);
+
+        builder.setMessage(R.string.delete_stats_confirm_text);
+
+        builder.setCancelable(true);
+
+        builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                deleteCatResults();
+
+            }
+        });
+
+        builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.show();
+
+    }
+
+
+    private void deleteCatResults() {
+        String catId = categoryID;
+        
+        Toast.makeText(this, R.string.delete_stats_process, Toast.LENGTH_LONG).show();
+
+        dataManager.removeCatData(catId);
+
+        CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
+        if (fragment1 != null) {
+            fragment1.updateDataList();
+        }
+
+        CatTabFragment2 fragment2 = (CatTabFragment2) adapter.getFragmentTwo();
+        if (fragment2 != null) {
+            fragment2.updateResults();
+        }
+    }
 
     private void openEditCat() {
 

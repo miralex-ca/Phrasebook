@@ -657,4 +657,13 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="info_ucat_archive">\nInfo  \nn</string>
 
 
+    <string name="delete_stats_from_menu">Delete stats</string>
+
+    <string name="delete_stats_confirm_text">\nAre you sure you want to delete all test results and items stats in this topic?\n</string>
+    <string name="delete_stats_process">Deleting stats …</string>
+
+    <string name="set_del_cat_stats">Topic stats deletion</string>
+    <string name="set_del_cat_stats_summary">Display stats deletion button in the topic menu</string>
+
+
 </resources>

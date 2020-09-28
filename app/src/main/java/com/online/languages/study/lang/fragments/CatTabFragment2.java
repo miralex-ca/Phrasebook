@@ -16,11 +16,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.online.languages.study.lang.CatActivity;
-import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ColorProgress;
@@ -31,8 +28,6 @@ import com.online.languages.study.lang.data.DataManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-
-import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 
 public class CatTabFragment2 extends Fragment {
 
@@ -240,12 +235,17 @@ public class CatTabFragment2 extends Fragment {
     public void onResume() {
         super.onResume();
 
+        updateResults();
+
+    }
+
+    public void updateResults() {
+
         fillData();
         exAdapter = new ExRecycleAdapter(getActivity(), exLinkTitles, exLinkDesc, exResults, true);
         if (!getResources().getBoolean(R.bool.tablet)) exAdapter.matchLines = true;
 
         recyclerView.setAdapter(exAdapter);
-
     }
 
 

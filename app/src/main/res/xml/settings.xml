@@ -195,8 +195,6 @@
             android:defaultValue="1"
             android:dialogTitle="@string/set_control_dialog_title" />
 
-
-
         <Preference
             app:iconSpaceReserved="false"
             android:key="set_tts"
@@ -206,6 +204,14 @@
             <intent android:action="com.android.settings.TTS_SETTINGS" />
 
         </Preference>
+
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_del_stats_cat"
+            android:title="@string/set_del_cat_stats"
+            android:summary = "@string/set_del_cat_stats_summary"
+            android:defaultValue="false" />
 
 
     </PreferenceCategory>
