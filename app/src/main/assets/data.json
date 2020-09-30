@@ -2284,7 +2284,7 @@
     {"id": "1007001200170", "item": "I’ve hurt my ankle.", "info": "Я повредил лодыжку.", "ipa": "aɪv hɜːt maɪ ˈæŋkl", "tr_ru": "айв хэ:т май ˈэнкл"},
     {"id": "1007001200180", "item": "I have something in my eye.", "info": "Мне что-то попало в глаз.", "ipa": "aɪ həv ˈsʌmθɪŋ ɪn maɪ aɪ", "tr_ru": "ай хэв ˈсамсин ин май ай"},
     {"id": "1007001200190", "item": "I’m suffering from insomnia.", "info": "Я страдаю от бессонницы.", "ipa": "aɪm ˈsʌfərɪŋ frɒm ɪnˈsɒmnɪə", "tr_ru": "айм ˈсафэрин фром инˈсомниэ"},
-    {"id": "1007001200200", "item": "I have a burnt.", "info": "У меня ожог.", "ipa": "aɪ həv ə bɜːnt", "tr_ru": "ай хэв э бэ:нт"},
+    {"id": "1007001200200", "item": "I have a burn.", "info": "У меня ожог.", "ipa": "aɪ həv ə bɜːn", "tr_ru": "ай хэв э бэ:н"},
     {"id": "1007001200210", "item": "I have a cut.", "info": "У меня порез.", "ipa": "aɪ həv ə kʌt", "tr_ru": "ай хэв э кат"},
     {"id": "1007001300010", "item": "Where is the nearest pharmacy?", "info": "Где находится ближайшая аптека?", "ipa": "weə ɪz ðə ˈnɪərɪst ˈfɑːməsɪ", "tr_ru": "уэр из зэ ˈниэрист ˈфа:мэси"},
     {"id": "1007001300020", "item": "Give me please something for a headache.", "info": "Дайте, пожалуйста, что-нибудь от головной боли.", "ipa": "gɪv miː pliːz ˈsʌmθɪŋ fər ə ˈhedeɪk", "tr_ru": "гив ми: пли:з ˈсамсин фор э ˈхэдэйк"},
