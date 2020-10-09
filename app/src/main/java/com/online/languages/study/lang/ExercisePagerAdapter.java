@@ -355,6 +355,10 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         int tSize = context.getResources().getInteger(R.integer.ex_opt_txt_size_norm);
 
+        if (textLength > context.getResources().getInteger(R.integer.ex_opt_txt_length_medium) ) {
+            tSize = context.getResources().getInteger(R.integer.ex_opt_txt_size_medium);
+        }
+
         if (textLength > context.getResources().getInteger(R.integer.ex_opt_txt_length_long) ) {
             tSize = context.getResources().getInteger(R.integer.ex_opt_txt_size_small);
         }

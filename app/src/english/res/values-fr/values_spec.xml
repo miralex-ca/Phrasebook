@@ -12,7 +12,7 @@
 
     <string name="app_reference_file" translatable="false">info_en</string>
 
-    <string name="app_info_file">info_en</string>
+    <string name="app_info_file">info_fr</string>
 
     <string name="voc_ex_link_first_desc">Tradiction anglais-français</string>
     <string name="voc_ex_link_second_desc">Traduction français-anglais </string>

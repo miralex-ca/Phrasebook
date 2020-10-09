@@ -277,6 +277,7 @@
 
 
     <integer name="ex_opt_txt_length_norm">59</integer>
+    <integer name="ex_opt_txt_length_medium">@integer/ex_opt_txt_length_norm</integer>
     <integer name="ex_opt_txt_length_long">60</integer>
     <integer name="ex_opt_txt_length_longest">80</integer>
 

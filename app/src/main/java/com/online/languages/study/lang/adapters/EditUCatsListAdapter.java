@@ -70,7 +70,7 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
 
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT,  current);
 
-        String formattedDate = dateFormat.format(new Date());
+        String formattedDate = dateFormat.format(  new Date( dataObject.time_created) );
 
         holder.desc.setText(context.getString(R.string.home_ucat_date) + formattedDate );
 

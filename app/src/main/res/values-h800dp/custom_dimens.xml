@@ -20,6 +20,10 @@
     <dimen name="test_img_width_tablet">360dp</dimen>
 
 
+    <integer name="ex_text_long_num">60</integer>
+
+    <integer name="ex_opt_txt_length_medium">@integer/ex_opt_txt_length_norm</integer>
+
     <integer name="_ex_card_wrap">540</integer>
     <integer name="_ex_card_wrap_high">578</integer>
 

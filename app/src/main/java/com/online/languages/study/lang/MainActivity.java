@@ -366,6 +366,8 @@ public class MainActivity extends BaseActivity
 
     public void bottomNavDisplay() {
 
+        if (getResources().getBoolean(R.bool.tablet_land)) return;
+
         String btmSetting = appSettings.getString("btm_nav", getString(R.string.set_btm_nav_value_default));
 
         btmOnly = btmSetting.equals(getString(R.string.set_btm_nav_value_4));
@@ -394,6 +396,8 @@ public class MainActivity extends BaseActivity
 
                 } else {
                     bottomNav = findViewById(R.id.navigation);
+
+
                     bottomNav.setVisibility(View.VISIBLE);
                     findViewById(R.id.navigation1).setVisibility(View.GONE);
                     setDrawerState(true);

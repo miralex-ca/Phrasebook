@@ -274,6 +274,7 @@
     <integer name="_ex_opt_short_txt_size_small">16</integer>
 
     <integer name="_ex_opt_txt_size_norm">15</integer>
+    <integer name="ex_opt_txt_size_medium">@integer/_ex_opt_txt_size_norm</integer>
     <integer name="_ex_opt_txt_size_small">14</integer>
     <integer name="_ex_opt_txt_size_smallest">13</integer>
 

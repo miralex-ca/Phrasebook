@@ -123,7 +123,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG,  current);
 
-        String formattedDate = dateFormat.format(new Date());
+        String formattedDate = dateFormat.format( new Date( dataObject.time_created) );
 
         holder.desc.setText(String.format(context.getString(R.string.ucat_date), formattedDate));
 

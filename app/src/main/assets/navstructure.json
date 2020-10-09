@@ -229,13 +229,13 @@
 
         {"parent": "root", "type": "set", "id": "set_8_1", "title": "Основной словарь"},
 
-        {"parent": "root", "type": "simple", "id": "100800010", "title": "Дом, квартира", "image":  "cat/house_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Дом, квартира", "image":  "cat/houses_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800020", "title": "Мебель, интерьер", "image":  "cat/furniture_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800030", "title": "Кухня", "image":  "cat/kitchen_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800040", "title": "Посуда", "image":  "cat/dish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800050", "title": "Бытовые приборы", "image":  "cat/appliance_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800060", "title": "Ванная комната", "image":  "cat/bath_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800070", "title": "Ферма", "image":  "cat/barn_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800070", "title": "Дом за городом", "image":  "cat/house_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_8_2", "title": "Фразы"},
 

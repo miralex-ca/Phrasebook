@@ -1301,6 +1301,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+                category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
 
                 if (!category.parent.contains(UC_PREFIX)) categories.add(category);
             }
@@ -1332,6 +1333,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+                category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
 
                 categories.add(category);
             }

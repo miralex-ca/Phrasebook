@@ -206,7 +206,6 @@ public class UCatsListActivity extends BaseActivity {
 
         setWrapContentHeight(helperView);
 
-
        ArrayList<DataObject> completeList;
 
        if (!dataManager.plus_Version) {

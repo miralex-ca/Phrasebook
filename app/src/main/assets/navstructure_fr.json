@@ -52,24 +52,23 @@
         {"parent": "root", "type": "simple", "id": "100200010", "title": "Voyage en avion", "image": "cat/plane_cat.png"},
         {"parent": "root", "type": "simple", "id": "100200020", "title": "Voyage en train", "image": "cat/train_cat.png"},
         {"parent": "root", "type": "simple", "id": "100200030", "title": "Voyage en bateau", "image": "cat/ship_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat_p.png"},
+        {"parent": "root", "type": "simple", "id": "100300050", "title": "Transport", "image": "cat/transport_cat_p.png"},
 
         {"parent": "root", "type": "set", "id": "set_2_2", "title": "Phrases"},
 
         {"parent": "root", "type": "simple", "id": "100200210", "title": "À l'hôtel"},
         {"parent": "root", "type": "simple", "id": "100200220", "title": "Visite guidée"},
-        {"parent": "root", "type": "simple", "id": "100200230", "title": "Location de voitures"},
-        {"parent": "root", "type": "simple", "id": "100300120", "title": "Transport urbain"}
+        {"parent": "root", "type": "simple", "id": "100200230", "title": "Location de voitures"}
 
 
       ]
     },
 
     {"tag": "section_3", "title": "Dans la ville", "id": "10030",
-      "title_short": "In the city",
-      "desc": "City transport, organisations, places of interest, signboards",
+      "title_short": "Ville",
+      "desc": "Transports urbains, organisations, lieux d'intérêt, enseignes",
 
-      "desc_short": "City transport, organisations, places of interest, signboards",
+      "desc_short": "Transports urbains, organisations, lieux d'intérêt, enseignes",
       "image": "picto/section_city.png",
       "categories":
       [
@@ -77,9 +76,12 @@
         {"parent": "root", "type": "set", "id": "set_3_1", "title": "Vocabulaire de base"},
 
         {"parent": "root", "type": "simple", "id": "100300010", "title": "Ville", "image": "cat/city_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300020", "title": "Organisations", "image": "cat/store_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300030", "title": "Sites touristiques", "image":  "cat/sights_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300040", "title": "Transport", "image": "cat/transport_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "Rue", "image": "cat/road_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Organisations", "image": "cat/store_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Sites touristiques", "image":  "cat/sights_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300050", "title": "Transport", "image": "cat/transport_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300060", "title": "Voiture", "image": "cat/car_cat.png"},
+
 
         {"parent": "root", "type": "set", "id": "set_3_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100300110", "title": "Dans la ville"},
@@ -224,16 +226,24 @@
       [
         {"parent": "root", "type": "set", "id": "set_8_1", "title": "Vocabulaire de base"},
 
-        {"parent": "root", "type": "simple", "id": "100800010", "title": "Maison, appartement", "image":  "cat/house_cat.png"},
+
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Maison, appartement", "image":  "cat/houses_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800020", "title": "Pièce, meubles", "image":  "cat/furniture_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800040", "title": "Salle de bains", "image":  "cat/bath_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800050", "title": "Cuisine", "image":  "cat/kitchen_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800060", "title": "Vaisselle et argenterie", "image":  "cat/dish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Cuisine", "image":  "cat/kitchen_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800040", "title": "Vaisselle et argenterie", "image":  "cat/dish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800050", "title": "Électroménagers", "image":  "cat/appliance_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800060", "title": "Salle de bains", "image":  "cat/bath_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100800070", "title": "Ferme", "image":  "cat/barn_cat.png"},
+
+        {"parent": "root", "type": "set", "id": "set_8_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100800110", "title": "Ma maison"},
+        {"parent": "root", "type": "simple", "id": "100800120", "title": "Location de logement"},
 
         {"parent": "root", "type": "set", "id": "set_8_3", "title": "Thèmes supplémentaires"},
 
-        {"parent": "root", "type": "simple", "id": "100800110", "title": "Ma maison"},
-        {"parent": "root", "type": "simple", "id": "100800120", "title": "Location de logement"}
+        {"parent": "root", "type": "extra", "id": "100800210", "title": "Outils", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100800220", "title": "Outils de jardinage", "review":  "false"}
 
       ]
     },

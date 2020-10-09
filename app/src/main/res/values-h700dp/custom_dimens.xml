@@ -108,14 +108,16 @@
     <dimen name="_ex_opt_short_txt_size_norm">23sp</dimen>
     <integer name="_ex_opt_short_txt_size_small">21</integer>
 
+    <integer name="ex_opt_txt_length_medium">35</integer>
     <integer name="ex_opt_txt_length_long">50</integer>
     <integer name="ex_opt_txt_length_longest">65</integer>
 
     <integer name="_ex_opt_txt_size_norm">21</integer>
+    <integer name="ex_opt_txt_size_medium">20</integer>
     <integer name="_ex_opt_txt_size_small">19</integer>
     <integer name="_ex_opt_txt_size_smallest">18</integer>
 
-    <integer name="ex_text_long_num">60</integer>
+    <integer name="ex_text_long_num">50</integer>
 
     <integer name="_ex_text_long_num_sw600">100</integer>
     <integer name="_ex_text_long_num_sw720">100</integer>

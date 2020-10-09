@@ -332,8 +332,10 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="cancel_txt">Cancel</string>
 
 
-    <string name="info_star_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
+    <string name="info_star_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appears when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
 \n</string>
+
+    <string name="info_img_starred">\nYou can unstar a starred item by clicking the Star icon in the popup which appears when you tap this item in the list, our you can also tap and hold this item in the list.\n</string>
 
     <string name="starred_menu_info">Info</string>
 
@@ -341,7 +343,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="info_gallery_txt">\nInfo  \n</string>
 
-    <string name="info_img_starred">\nInfo\n</string>
+
 
     <string name="maps_info">\Info\n</string>
     <string name="info_menu_map">Info</string>
@@ -590,7 +592,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="ucat_enter_title_alert">Enter the title of the topic.</string>
 
     <string name="ucat_delete_confirm">\nDelete this topic with all items?\n</string>
-    <string name="ucat_edit_info_txt">Info how to edit a topic</string>
+
     <string name="ucat_edit_info_title">Info</string>
     <string name="ucat_deleted_items">Deleted items: %d</string>
     <string name="ucat_new_item_dialog">New item</string>
@@ -636,14 +638,28 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="menu_ucats_list_layout">Topics list layout</string>
     <string name="menu_open_archive">Open archive</string>
     <string name="delete_note_confirm">\nDelete this note?\n</string>
-    <string name="archive_title">Архив</string>
+    <string name="archive_title">Archive</string>
     <string name="stats_not_saved_msg">Stats are not saved.</string>
 
     <string name="info_notes_title">Information</string>
     <string name="info_notes_text">\nYou can store any text information in your notes. You can find a list of notes in the Notes section, or you can find notes by searching in the app. You can modify the title, icon and text of a note at any time. \n</string>
 
     <string name="info_bookmark_list">\nYou can remove a topic from bookmarks by long clicking on a list item, or you can remove the bookmark in the topic menu.\n</string>
-    <string name="info_ucat_list">\nInfo  \n</string>
-    <string name="info_ucat_archive">\nInfo  \nn</string>
+
+    <string name="info_ucat_list">\nYou can add your own topics with any items you need. In the basic version, you can add up to 3 topics.
+        \n\nTopics and items that you add are not included in the general statistics, but their test results and item statuses can be viewed on the topic\'s page.
+       \n\nTo remove a topic from the main list without deleting it, you can archive it. If you unarchive a topic, it is placed at the top of the main list.  \n</string>
+
+    <string name="info_ucat_archive">\nTo remove a topic from the main list without deleting it, you can archive it. If you unarchive the topic, it is placed at the top of the main list.  \nn</string>
+
+    <string name="ucat_edit_info_txt">\nIn order to create a new topic, you must enter its title. You can change the title of a topic at any time. In the regular version, you can add up to 20 items to a topic.\n</string>
+
+    <string name="delete_stats_from_menu">Delete stats</string>
+
+    <string name="delete_stats_confirm_text">\nAre you sure you want to delete all test results and items stats in this topic?\n</string>
+    <string name="delete_stats_process">Deleting stats …</string>
+
+    <string name="set_del_cat_stats">Topic stats deletion</string>
+    <string name="set_del_cat_stats_summary">Display stats deletion button in the topic menu</string>
 
 </resources>

@@ -1,15 +1,14 @@
-
-
 <resources>
 
 
     <string name="app_name">Apprenez des langues</string>
 
     <string name="action_settings">Settings</string>
+
     <string name="contact_error">Signaler une erreur</string>
     <string name="contact_feedback">Envoyer un email</string>
     <string name="contact_pro">Version PLUS</string>
-    <string name="contact_rate">Évaluer l\'application</string>
+    <string name="contact_rate">Évaluer l’application</string>
     <string name="contact_website">Visiter le site web</string>
 
     <string name="nav_home_txt">Accueil</string>
@@ -56,7 +55,7 @@
     <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
 
 
-    <string name="voc_ex_link_third_desc">Choisir la tradiction pour l\'audio</string>
+    <string name="voc_ex_link_third_desc">Choisir la tradiction pour l’audio</string>
 
 
 
@@ -136,7 +135,7 @@
     <string-array name="starred_list_sort">
         <item>Le plus récent en premier</item>
         <item>Le plus récent en dernier</item>
-        <item>Selon l\'ordre de catégories</item>
+        <item>Selon l’ordre de catégories</item>
     </string-array>
 
 
@@ -149,7 +148,7 @@
         <item>Meilleurs résultats</item>
     </string-array>
 
-    <string name="set_control_title">Résultats de tests d\'une section</string>
+    <string name="set_control_title">Résultats de tests d’une section</string>
     <string name="set_control_summary">Utilser dans les statistiques: %s</string>
     <string name="set_control_dialog_title">Utilser</string>
 
@@ -157,7 +156,7 @@
     <string name="set_control_tests_two">Toujours</string>
     <string name="set_control_tests_three">Jamais</string>
 
-    <string name="set_test_all_limit_title">Nombre d\'items dans le test général </string>
+    <string name="set_test_all_limit_title">Nombre d’items dans le test général </string>
     <string name="set_test_all_limit_summary">Maximum: %s</string>
     <string name="set_test_all_limit_dialog_title">Test général</string>
 
@@ -176,8 +175,8 @@
 
     <string name="set_data_control_title">Données pour les statistiques</string>
 
-    <string name="set_data_control_summary">Statistique d\'une section inclut: %s</string>
-    <string name="set_data_control_dialog_title">Statistique d\'une section</string>
+    <string name="set_data_control_summary">Statistique d’une section inclut: %s</string>
+    <string name="set_data_control_dialog_title">Statistique d’une section</string>
 
     <string name="set_data_control_dates">Thèmes de base seulement</string>
     <string name="set_data_control_all">Thèmes de base et thèmes supplémentaires</string>
@@ -221,40 +220,43 @@
     <!-- string name="app_market_link">@string/app_market_link_pro</string -->
 
     <string name="msg_sending_mail">Envoyer un commentaire &#8230;</string>
-    <string name="msg_no_mail_client">lient de messagerie n\'est pas installé</string>
-    <string name="msg_mail_subject">Commentaire sur l\'appli</string>
+    <string name="msg_no_mail_client">lient de messagerie n’est pas installé</string>
+    <string name="msg_mail_subject">Commentaire sur l’appli</string>
     <string name="msg_mail_subject_error">Signaler une erreur</string>
     <string name="msg_no_browser">Browser is not installed.</string>
-    <string name="no_data_msg">Il n\'y a pas de données</string>
-    <string name="nav_header_txt">Apprenez des langues! \nC\'est cool!</string>
+    <string name="no_data_msg">Il n’y a pas de données</string>
+    <string name="nav_header_txt">Apprenez des langues! \nC’est cool!</string>
     <string name="correct_errors">Corriger les erreurs</string>
     <string name="errors_box_title">Erreurs faites dans les tests</string>
 
 
-    <string name="section_stats_info">The total result of a section depends on the average tests result, the number of familiar items and the number of mastered items. Each of these indicators can add the following percentage to the total result:
+    <string name="section_stats_info">Le résultat total d’une section dépend du résultat moyen des tests, du nombre d’entrées familières et du nombre d’entrées maîtrisés. Chacun de ces indicateurs peut ajouter le pourcentage suivant au résultat total:
 
-        \n\n- Average tests result: +50% (if all tests have 100% result)
-        \n- Familiar items: +30% (if all items have been studied)
-         \n- Mastered items: +20% (if all items have been mastered)\n</string>
+        \n\n- Résultat moyen des tests: + 50% (si tous les tests ont le résulat de 100%)
+        \n- Entrées familières: + 30% (si tous les entrées ont le statut Familier)
+         \n- Entrées maîtrisées: + 20% (si tous les entrées ont le statut Maîtrisé)\n</string>
 
-    <string name="progress_info">Here you can see statistics on the items statuses in the entire application, as well as in each section.
-        \n\n An item may have various statuses according to the score obtained in tests and exercises.
- The score is calculated as follows: +1 point for each correct response, -1 for each incorrect response. The highest score is 4 points. Items statuses include::
-        \n\n — Unknown (0 points)\n — Familiar (1-2 points)\n — Mastered (3-4 points) </string>
-
+    <string name="progress_info">Ici, vous pouvez voir les statistiques sur les statuts des entrées dans toute l’application ou dans chaque section.
+        \n\n Une entrée peut avoir différents statuts selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points. Les statuts des articles incluent:
+        \n\n — Nouveau (0 points)\n — Familier (1-2 points)\n — Maîtrisé (3-4 points) </string>
 
     <string name="easy_mode_dialog_title">Mode simplifié</string>
 
-    <string name="easy_mode_info">\nCurrently, Simplified mode is active in which only the basic level items are displayed.
-    \n\nYou can change the mode here:
+    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichés.
+        \n\nVous pouvez changer le mode ici:
         \n\n
-        Settings > Data settings > Mode.
+        Paramètres > Paramètres de données > Mode.
         \n
     </string>
 
-    <string name="mode_info">\nThe application has two modes, Standard and Simplified which can be applied in the Settings. When Simplified mode is enabled, only Beginner level items are displayed in the topics.
+    <string name="mode_info">\n
+        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichés dans les thèmes.
         \n\n
-     The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n</string>
+        Le mode actif peut affecter vos statistiques car il ne prend en compte que le statut des entrées disponibles dans ce mode. Un changement de mode n’affecte pas les résultats des tests, les résultats de la recherche, les statistiques d’erreurs ou la liste de Favoris.
+        \n
+    </string>
+
+
 
 
     <string name="get_premium_txt">Bien plus avec la version PLUS!</string>
@@ -264,17 +266,14 @@
     <string name="purchase_txt"> </string>
 
     <string name="purchase_txt_1">Créez un nombre illimité de thèmes!</string>
-    <string name="purchase_txt_2">Ajoutez jusqu\'à 100 entrées dans un thème!</string>
+    <string name="purchase_txt_2">Ajoutez jusqu’à 100 entrées dans un thème!</string>
     <string name="purchase_txt_3">Pas de pubs!</string>
-
 
     <string name="get_premium_thank">Merci beaucoup!</string>
     <string name="get_premium_continue">Continuer</string>
     <string name="get_premium_buy">Acheter</string>
     <string name="get_premium_buy_price">Acheter pour %s</string>
-    <string name="purchased_txt">Clickez sur «Continuer» pour retourner à la page d\'Accueil</string>
-
-
+    <string name="purchased_txt">Clickez sur «Continuer» pour retourner à la page d’Accueil</string>
     <string name="fullversion_desc_txt">Vous avez la version PLUS.</string>
 
 
@@ -306,16 +305,16 @@
 
     <string name="backup_info"><![CDATA[
 <br/>
-<b>Export your data</b>
+<b>Importez vos données</b>
 <br/><br/>
 
-You can export your data and have a copy of it safely stored in case you change phone or you need to reset it. This will take a snapshot of your current data and export it as a file <strong> %s </strong>. The backup file is saved by default in <b>Download</b> folder, but the path to this folder may differ depending on your device.
+Vous pouvez exporter vos données et en avoir une copie sauvegardée en toute sécurité au cas où vous changez de téléphone ou vous avez besoin de de le réinitialiser. Ceci sauvegardera toutes vos données actuelles et les exportera en fichier <strong> %s </strong>. Le fichier de sauvegarde est enregistré par défaut dans le dossier <b>Download</b>, mais le chemin d’accès à ce dossier peut varier d’un appareil à l’autre.
 
 <br/><br/>
-<strong>Restore/Import your data</strong>
+<strong>Importez vos données</strong>
 <br/><br/>
 
-This will allow to restore your data from a previous backup. Note that this will errase all the current data and replace it by the new import, so make sure this is what you want before proceeding. We are doing our best to ensure the data import on any device but we cannot guarantee that it will be successful in all cases. If you have any difficulty, please contact us through Contact page and let us know about the issue.
+Ceci vous permettra de restaurer vos données à partir d’une précédente sauvegarde. Notez que ceci effacera toutes les données actuelles et les remplacera par le fichier importé. Nous faisons de notre mieux pour assurer l’importation des données sur n’importe quel appareil, mais nous ne pouvons pas garantir qu’elle peut être accomplie dans tous les cas. Si vous avez quelques difficultés, veuillez nous contacter via la page Contacts et nous en informer.
 
 <br/><br/>
 
@@ -333,24 +332,24 @@ This will allow to restore your data from a previous backup. Note that this will
     </string>
     <string name="export_btn">Exporter en fichier</string>
     <string name="import_title">Importez vos données</string>
-    <string name="import_desc">Restaurez vos données à partir d\'une précédente sauvegarde. Ceci effacera toutes les données actuelles.</string>
-    <string name="import_btn">Importer d\'un fichier</string>
+    <string name="import_desc">Restaurez vos données à partir d’une précédente sauvegarde. Ceci effacera toutes les données actuelles.</string>
+    <string name="import_btn">Importer d’un fichier</string>
     <string name="import_last_desc">Dernière importation</string>
     <string name="import_last_info">"Dernière importation: "</string>
 
     <string name="cancel_txt">Annuler</string>
 
 
-    <string name="info_star_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
+    <string name="info_star_txt">\nVous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste. Vous pouvez également appuyer longuement sur une entrée si vous souhaitez l’ajouter aux Favoris ou retirer des Favoris.
 \n</string>
+
+    <string name="info_img_starred">\nVous pouvez retirer une entrée des Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste. Vous pouvez également appuyer longuement sur une entrée dans la liste si vous souhaitez la retirer des Favoris.\n</string>
 
     <string name="starred_menu_info">Info</string>
 
     <string name="starred_gallery_info">info ( %1$d ).</string>
 
     <string name="info_gallery_txt">\nInfo  \n</string>
-
-    <string name="info_img_starred">\nInfo\n</string>
 
     <string name="maps_info">\Info\n</string>
     <string name="info_menu_map">Info</string>
@@ -391,7 +390,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="pic_info_title">Image info</string>
     <string name="starred_pic_title">Favoris (%d)</string>
     <string name="test_result_title">Résultat du test</string>
-    <string name="total_tasks">Nombre d\'items: %d</string>
+    <string name="total_tasks">Nombre d’items: %d</string>
     <string name="test_errors">Erreurs: %d</string>
     <string name="tasks_missed">Items sautés: %d</string>
     <string name="entries_updated">Etrées mises à jour: %d</string>
@@ -401,7 +400,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="errors_label">Erreurs: %d</string>
     <string name="section_errors_label">Erreurs: %d</string>
     <string name="cats_studied">Thèmes étudiés:</string>
-    <string name="result_task_count">Nombre d\'items: %d</string>
+    <string name="result_task_count">Nombre d’items: %d</string>
     <string name="result_incorrect_count">Incorrect: %d</string>
     <string name="item_status_unknown">Statut: inconnu</string>
     <string name="item_status_familiar">Statut: familier</string>
@@ -417,13 +416,13 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="unknown_btn_txt">Inconnu</string>
     <string name="stats_open_section">Ouvrir la section</string>
     <string name="stats_open_section_list">Aperçu de la section</string>
-    <string name="stats_open_list_desc">Liste de mots et d\'expressions</string>
+    <string name="stats_open_list_desc">Liste de mots et d’expressions</string>
     <string name="stats_open_tests">Tests de section</string>
     <string name="stats_open_tests_desc">Tests avec des mots de tous les thèmes</string>
     <string name="open_results_details">Informations détaillées sur le résultat</string>
     <string name="circle_familiar_lbl">Familier</string>
     <string name="circle_studied_lbl">Maîtrisé</string>
-    <string name="result_errors_info">STATISTIQUES D\'ERREURS</string>
+    <string name="result_errors_info">STATISTIQUES D’ERREURS</string>
     <string name="result_total_info">Résultat total</string>
     <string name="search_no_result">Aucun résulat trouvé</string>
     <string name="search_load_more">Afficher plus</string>
@@ -435,8 +434,8 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="image_info_title">Image</string>
     <string name="image_info_desc">Description</string>
     <string name="cat_stats_title">Statistiques du thème</string>
-    <string name="cat_stats_total_items">"Nombre d\'entrées: "</string>
-    <string name="cat_stats_total_items_short">"Nombre d\'entrées: "</string>
+    <string name="cat_stats_total_items">"Nombre d’entrées: "</string>
+    <string name="cat_stats_total_items_short">"Nombre d’entrées: "</string>
     <string name="cat_stats_familliar_count">Familier</string>
     <string name="cat_stats_studied_count">Maîtrisé</string>
     <string name="reference_title">Référence</string>
@@ -542,7 +541,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="set_night_theme_off">Désactivé</string>
 
     <string name="set_tts">Paramètres de la synthèse vocale</string>
-    <string name="set_tts_summary">Ouvrir les paramètres de l\'appareil</string>
+    <string name="set_tts_summary">Ouvrir les paramètres de l’appareil</string>
 
     <string name="set_data_section">PARAMÈTRES DE DONNÉES</string>
     <string name="set_misc">DIVERS</string>
@@ -555,7 +554,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="confirmation_txt">Confirmation</string>
     <string name="starred_confirm_title">Confirmer la suppression</string>
-    <string name="set_starred_confirm_summary">Confirmer la suppression des favoris</string>
+    <string name="set_starred_confirm_summary">Confirmer la la suppression des favoris</string>
     <string name="starred_confirm_desc">Vous êtes sur le point de supprimer ce favori, souhaitez-vous confirmer cette suppression?</string>
     <string name="dont_ask_again">Ne plus me demander</string>
 
@@ -563,7 +562,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="section_tab2_title">Pratique</string>
 
     <string name="note_img_empty">Rien</string>
-    <string name="pick_device_icon">Trouver \nsur\nl\'appareil</string>
+    <string name="pick_device_icon">Trouver \nsur\nl’appareil</string>
 
     <string name="user_vocabulary_title">Mon vocabulaire</string>
     <string name="user_topics_list">Liste de thèmes</string>
@@ -574,7 +573,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="user_items_count">"Entrées ajoutées:  "</string>
 
     <string name="ucat_date">Date:  %s</string>
-    <string name="ucat_items_count">Nomre d\'entrées: %s</string>
+    <string name="ucat_items_count">Nomre d’entrées: %s</string>
 
     <string name="ucat_familiar_items">"Familier: "</string>
     <string name="ucat_mastered_items">"Maîtrisé: "</string>
@@ -599,11 +598,11 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="ucat_enter_title_alert">Entrez le titre du thème.</string>
 
     <string name="ucat_delete_confirm">\nSupprimer ce thème avec toutes les entrées?\n</string>
-    <string name="ucat_edit_info_txt">Info comment modifier le thème</string>
+
     <string name="ucat_edit_info_title">Info</string>
     <string name="ucat_deleted_items">Entrées supprimée: %d</string>
     <string name="ucat_new_item_dialog">Nouvelle entrée</string>
-    <string name="ucat_edit_item_dialog">Modifier l\'entrée</string>
+    <string name="ucat_edit_item_dialog">Modifier l’entrée</string>
     <string name="ucat_created_time">Créé: %s</string>
     <string name="ucat_item_deleted_msg">Supprimé</string>
     <string name="ucat_delete_item_confirm">\nSupprimer cette entrée?\n</string>
@@ -627,7 +626,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="starred_bookmark_info">Les signets peuvent être ajoutés dans le menu des thèmes (%1$d signets au maximum).</string>
     <string name="info_list_txt">\nItems from this topic cannot be starred, and they are not included in tests and exercises.\n</string>
 
-    <string name="starred_words_info">On peut ajouter jusqu\'à %1$d favoris dans la liste d\'un thème ou d\'une section. </string>
+    <string name="starred_words_info">On peut ajouter jusqu’à %1$d favoris dans la liste d’un thème ou d’une section. </string>
 
     <string name="item_status_unknown_short">Inconnu</string>
     <string name="item_status_familiar_short">✓ Familier</string>
@@ -642,28 +641,35 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="limit_cats_for_unpaid">\nVous avez atteint la limite de thèmes dans la version basique. Obtenez la version PLUS pour ajouter plus de thèmes.\n</string>
 
     <string name="menu_ucats_list_layout">Affichage de la liste</string>
-    <string name="menu_open_archive">Ouvrir l\'archive</string>
+    <string name="menu_open_archive">Ouvrir l’archive</string>
     <string name="delete_note_confirm">\nSupprimer cette note?\n</string>
     <string name="archive_title">Аrchive</string>
-    <string name="stats_not_saved_msg">La statistique n\'est pas sauvegardée</string>
+    <string name="stats_not_saved_msg">La statistique n’est pas sauvegardée</string>
 
 
     <string name="info_notes_title">Information</string>
-    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste de notes dans la section Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l\'application. Vous pouvez modifier le titre, l\'icône et le texte d\'une note à tout moment. \n</string>
+
+    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste de notes dans la section Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. Vous pouvez modifier le titre, l’icône et le texte d’une note à tout moment. \n</string>
 
     <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
 
-    <string name="info_ucat_list">\nInfo  \n</string>
-    <string name="info_ucat_archive">\nInfo  \nn</string>
+    <string name="info_ucat_list">\nVous pouvez ajouter vos propres thèmes avec des entrées dont vous avez besoin. Dans la version basique, vous pouvez ajouter jusqu’à 3 thèmes.
+        Les thèmes et les entrées que vous ajoutez ne sont pas inclus dans les statistiques générales, mais vous pouvez voir les résultats de leur tests et les statuts de leurs entrées sur la page du thème.
+        Pour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.
+  \n</string>
+    <string name="info_ucat_archive">\nPour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.  \nn</string>
+
+    <string name="ucat_edit_info_txt">\nPour créer un nouveau thème, vous devez saisir son titre. Vous pouvez modifier le titre d’un thème à tout moment. Dans la version basique, vous pouvez ajouter jusqu’à 20 entrées à un sujet.\n</string>
+
+    <string name="delete_stats_from_menu">Supprimer les statistiques</string>
+
+    <string name="delete_stats_confirm_text">\nVoulez-vous vraiment supprimer tous les résultats des tests et les statistiques des entrées dans ce thème?\n</string>
+    <string name="delete_stats_process">Suppression de statistiques …</string>
+
+    <string name="set_del_cat_stats">Supprimer les statistiques du thème</string>
+    <string name="set_del_cat_stats_summary">Afficher le bouton pour supprimer les statistiques dans le menu du thème</string>
 
 
-    <string name="delete_stats_from_menu">Delete stats</string>
-
-    <string name="delete_stats_confirm_text">\nAre you sure you want to delete all test results and items stats in this topic?\n</string>
-    <string name="delete_stats_process">Deleting stats …</string>
-
-    <string name="set_del_cat_stats">Topic stats deletion</string>
-    <string name="set_del_cat_stats_summary">Display stats deletion button in the topic menu</string>
 
 
 </resources>
