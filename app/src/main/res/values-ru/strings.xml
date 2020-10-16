@@ -658,6 +658,6 @@
     <string name="set_del_cat_stats">Удаление статистики темы</string>
     <string name="set_del_cat_stats_summary">Отображение удаления статистики в меню темы</string>
 
-
+    <string name="errors_count">Ошибки: %d</string>
 
 </resources>

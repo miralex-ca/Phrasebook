@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:alpha="0.7"
         android:background="#2C8D8D8D"
         />
 

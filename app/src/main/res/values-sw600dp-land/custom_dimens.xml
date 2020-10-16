@@ -14,5 +14,14 @@
     <color name="colorHomeTabBg_smoky">#374757</color>
     <color name="colorHomeTabBg_ww">#191924</color>
 
+    <dimen name="cat_list_card_tb_padding">2dp</dimen>
+
+
+    <integer name="_ex_opt_txt_size_norm">@integer/_ex_opt_txt_size_norm_sw600_land</integer>
+    <integer name="ex_opt_txt_size_medium">@integer/ex_opt_txt_size_medium_sw600_land</integer>
+    <integer name="_ex_opt_txt_size_small">@integer/_ex_opt_txt_size_small_sw600_land</integer>
+    <integer name="_ex_opt_txt_size_smallest">@integer/_ex_opt_txt_size_smallest_sw600_land</integer>
+
+
 
 </resources>

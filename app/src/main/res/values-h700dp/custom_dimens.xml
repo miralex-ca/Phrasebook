@@ -119,8 +119,7 @@
 
     <integer name="ex_text_long_num">50</integer>
 
-    <integer name="_ex_text_long_num_sw600">100</integer>
-    <integer name="_ex_text_long_num_sw720">100</integer>
+    <integer name="_ex_text_long_num_sw600">50</integer>
 
 
     <style name="CatListTitle">
@@ -152,6 +151,7 @@
     <dimen name="_cat_item_pic_size">48dp</dimen>
 
     <dimen name="goproTxtSize">18sp</dimen>
+
 
 
 

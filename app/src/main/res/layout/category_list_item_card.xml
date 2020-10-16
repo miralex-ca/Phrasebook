@@ -1,145 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cat_item_wrap"
 
-    android:focusable="true"
-    android:clickable="true"
     >
 
 
-    <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
-        app:contentPadding="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="match_parent"
-        style="@style/CardViewStyle.Widget"
+            <android.support.v7.widget.CardView
+                android:layout_height="wrap_content"
 
-        app:cardCornerRadius="3dp"
-        >
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="?attr/CardViewBorder"
-            />
-
-        <RelativeLayout
-
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <View
-                android:visibility="gone"
-                android:id="@+id/catItemDivider"
-                android:layout_alignParentTop="true"
+                app:contentPadding="0dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#2C8D8D8D"
-                />
+                style="@style/CardViewStyle.Widget"
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/animObj"
-                />
-
-            <RelativeLayout
-                android:paddingTop="12dp"
-                android:paddingBottom="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-
-                <LinearLayout
-
+                app:cardCornerRadius="3dp"
+                >
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder"
+                    />
+
+                <RelativeLayout
+
+                    android:onClick="openCard"
+
+                    android:id="@+id/itemWrap"
+                    android:hapticFeedbackEnabled="false"
+
+                    android:paddingLeft="@dimen/cat_list_card_side_padding"
+                    android:paddingRight="@dimen/cat_list_card_side_padding"
+
+                    android:paddingTop="@dimen/cat_list_card_tb_padding"
+                    android:paddingBottom="@dimen/cat_list_card_tb_padding"
+
+
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <View
+                        android:visibility="gone"
+                        android:id="@+id/catItemDivider"
+                        android:layout_alignParentTop="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#2C8D8D8D"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:id="@+id/animObj"
+                        />
+
+                    <RelativeLayout
+                        android:paddingTop="14dp"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/playHolder"
+
+                            android:layout_alignParentRight="true"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+                            <ImageView
+
+                                android:layout_centerInParent="true"
+
+                                app:srcCompat="@drawable/ic_speaker"
+                                android:id="@+id/speakerIcon"
+                                android:alpha="0.9"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp" />
+
+
+                            <ImageView
+
+                                android:id="@+id/playButton"
+
+                                android:focusable="true"
+                                android:clickable="true"
+
+                                android:layout_centerInParent="true"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+
+                                android:onClick="play"
+
+                                />
+
+                        </RelativeLayout>
+
+
+
+                        <RelativeLayout
+
+
+                            android:id="@+id/starHolder"
+
+                            android:layout_marginBottom="3dp"
+
+                            android:layout_marginRight="3dp"
+                            android:layout_alignParentRight="true"
+
+                            android:layout_above="@+id/bottomView"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+
+
+                            <ImageView
+
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_star_borded_inactive"
+                                android:alpha="0.8"
+
+                                android:layout_width="22dp"
+                                android:layout_height="22dp" />
+
+                            <ImageView
+
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_star_borded"
+
+                                android:id="@+id/voclistStar"
+                                android:visibility="invisible"
+                                android:layout_width="22dp"
+                                android:layout_height="22dp" />
+
+
+                            <ImageView
+
+                                android:id="@+id/changeStar"
+                                android:onClick="changeStarred"
+
+                                android:focusable="true"
+                                android:clickable="true"
+
+                                android:layout_centerInParent="true"
+                                android:background="?selectableItemBackgroundBorderless"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+
+
+                                />
+
+
+                        </RelativeLayout>
+
+
+
+
+
 
                         <LinearLayout
-                            android:layout_marginLeft="28dp"
+                            android:id="@+id/textWrapper"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             >
-                            <TextView
-                                android:minHeight="40dp"
-                                android:fontFamily="sans-serif-light"
-                                android:id="@+id/itemText"
+
+                            <LinearLayout
+                                android:layout_marginLeft="18dp"
+                                android:layout_marginRight="35dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+                                <TextView
+                                    android:minHeight="30dp"
+                                    android:fontFamily="sans-serif-light"
+                                    android:id="@+id/itemText"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+
+                                    android:textSize="24sp"
+                                    android:layout_marginBottom="4dp"
+                                    style="@style/cat_list_item_title.norm"
+
+                                    />
+
+                                <TextView
+                                    android:alpha="0.8"
+
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginBottom="4dp"
+                                    android:id="@+id/itemTrans"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:textSize="14sp"
+                                    android:fontFamily="sans-serif-light"
+
+                                    />
+
+                                <TextView
+                                    android:minHeight="30dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="2dp"
+                                    android:id="@+id/itemInfo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:textColor="?attr/colorCatSecondaryText"
+                                    style="@style/cat_list_item_info"
+
+                                    android:textSize="17sp"
+                                    />
+
+                            </LinearLayout>
+
+                            <RelativeLayout
                                 android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
 
-                                android:textSize="25sp"
-                                android:layout_marginBottom="16dp"
-                                style="@style/cat_list_item_title.norm"
+                                    <include layout="@layout/category_list_card_status_include" />
 
-                                />
-
-                            <TextView
-                                android:minHeight="40dp"
-                                android:id="@+id/itemInfo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="sans-serif-light"
-                                android:textColor="?attr/colorCatSecondaryText"
-                                style="@style/cat_list_item_info"
-
-                                android:textSize="19sp"
-                                />
+                            </RelativeLayout>
 
                         </LinearLayout>
 
-                    <RelativeLayout
-                        android:minHeight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                            <include layout="@layout/category_list_item_status_include" />
+                        <View
+
+                            android:layout_alignParentRight="true"
+
+                            android:layout_below="@+id/textWrapper"
+                            android:id="@+id/bottomView"
+                            android:layout_width="100dp"
+                            android:layout_height="4dp"/>
+
                     </RelativeLayout>
 
-                </LinearLayout>
+                </RelativeLayout>
 
+            </android.support.v7.widget.CardView>
 
-
-
-                <ImageView
-                    android:layout_alignParentRight="true"
-
-                    android:layout_marginRight="@dimen/cat_item_star_right"
-
-                    app:srcCompat="@drawable/ic_star_borded"
-
-                    android:id="@+id/voclistStar"
-                    android:visibility="invisible"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp" />
-
-
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="@dimen/cat_item_star_right"
-
-                    android:layout_centerVertical="true"
-                    app:srcCompat="@drawable/ic_speaker"
-                    android:id="@+id/speakerIcon"
-                    android:alpha="0.8"
-                    android:layout_width="26dp"
-                    android:layout_height="26dp" />
-
-
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

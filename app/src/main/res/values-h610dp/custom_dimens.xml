@@ -46,7 +46,7 @@
 
     <dimen name="_ex_opt_short_txt_min_height">42dp</dimen>
 
-    <integer name="_ex_text_long_num_sw600">70</integer>
+
 
     <dimen name="_cat_stat_title_txt_size">21sp</dimen>
     <dimen name="_cat_stat_data_padding">20dp</dimen>
@@ -63,6 +63,11 @@
     <integer name="bookmarks_preview_limit">4</integer>
 
     <integer name="limit_lines_option_less">4</integer>
+
+    <integer name="_ex_opt_txt_size_norm_sw600_land">21</integer>
+    <integer name="ex_opt_txt_size_medium_sw600_land">20</integer>
+    <integer name="_ex_opt_txt_size_small_sw600_land">19</integer>
+    <integer name="_ex_opt_txt_size_smallest_sw600_land">18</integer>
 
 
 </resources>

@@ -99,7 +99,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
         }
 
-
         return new MyViewHolder(itemView);
     }
 
@@ -147,7 +146,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         } else {
             holder.bookmarkOn.setVisibility(View.GONE);
             holder.bookmarkOff.setVisibility(View.VISIBLE);
-
         }
 
         if (dataObject.count < 1) {

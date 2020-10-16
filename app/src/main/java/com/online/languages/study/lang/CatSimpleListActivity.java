@@ -38,6 +38,7 @@ import com.online.languages.study.lang.fragments.CatTabFragment1;
 import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -229,6 +230,8 @@ public class CatSimpleListActivity extends BaseActivity {
             listWrapperCompact.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
         }
+
+
 
         updateList();
     }
@@ -444,22 +447,23 @@ public class CatSimpleListActivity extends BaseActivity {
 
         private void applyLayoutStatus() {
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
-        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
-        } else {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
-        }
+            String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+
+            if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+                changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
+            } else {
+                changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
+            }
     }
 
     public void changeLayoutStatus() {
 
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
 
-        if (listType.equals(CAT_LIST_VIEW_NORM)) {
-            listType = CAT_LIST_VIEW_COMPACT;
-        } else if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
+        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listType = CAT_LIST_VIEW_NORM;
+        } else {
+            listType = CAT_LIST_VIEW_COMPACT;
         }
 
         SharedPreferences.Editor editor = appSettings.edit();
@@ -468,20 +472,17 @@ public class CatSimpleListActivity extends BaseActivity {
 
          updateLayoutStatus();
 
-        applyLayoutStatus();
+         applyLayoutStatus();
     }
 
 
     private void openCards() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 openCards(true);
             }
         }, 80);
-
-
     }
 
 

@@ -111,7 +111,6 @@
     <string name="fab_size">normal</string>
 
 
-
     <integer name="ex_text_long_num">@integer/_ex_text_long_num_sw600</integer>
 
     <dimen name="_stats_diagram_ext_size">120dp</dimen>
@@ -151,7 +150,20 @@
 
     <integer name="img_picker_span">5</integer>
 
+    <dimen name="cat_list_card_side_padding">10dp</dimen>
+    <dimen name="cat_list_card_tb_padding">5dp</dimen>
 
+
+    <integer name="_ex_quest_txt_size_norm">29</integer>
+    <integer name="_ex_quest_txt_size_medium">28</integer>
+    <integer name="_ex_quest_txt_size_small">24</integer>
+    <integer name="_ex_quest_txt_size_smallest">22</integer>
+
+
+    <integer name="_ex_opt_txt_size_norm">23</integer>
+    <integer name="ex_opt_txt_size_medium">22</integer>
+    <integer name="_ex_opt_txt_size_small">20</integer>
+    <integer name="_ex_opt_txt_size_smallest">19</integer>
 
 
 </resources>

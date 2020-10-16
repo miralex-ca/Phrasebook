@@ -50,7 +50,6 @@
     <string name="section_ex_link_title_3">Test général 3</string>
 
 
-
     <string name="voc_ex_link_third_title">Test 3</string>
     <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
 
@@ -102,8 +101,6 @@
 
 
     <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
-
-
 
 
     <string name="starred_limit">La limite de favoris est atteinte.</string>
@@ -668,8 +665,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="set_del_cat_stats">Supprimer les statistiques du thème</string>
     <string name="set_del_cat_stats_summary">Afficher le bouton pour supprimer les statistiques dans le menu du thème</string>
-
-
+    <string name="errors_count">Erreurs: %d</string>
 
 
 </resources>

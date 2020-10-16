@@ -78,4 +78,7 @@
 
     <dimen name="_cat_list_item_padding">11dp</dimen>
 
+    <integer name="_ex_text_long_num_sw600">90</integer>
+    <integer name="_ex_text_long_num_sw720">90</integer>
+
 </resources>

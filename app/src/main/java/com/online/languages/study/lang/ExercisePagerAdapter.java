@@ -146,6 +146,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         if (longCount > 1) lessOptions = true;
 
 
+
         if (lessOptions) {
             exerciseTask.options = new ArrayList<>(exerciseTask.options.subList(0, Constants.TEST_LONG_OPTIONS_NUM));
         }
@@ -343,7 +344,6 @@ class ExercisePagerAdapter extends PagerAdapter {
         }
 
         setDefaultRadio(radiogroup);
-
 
     }
 

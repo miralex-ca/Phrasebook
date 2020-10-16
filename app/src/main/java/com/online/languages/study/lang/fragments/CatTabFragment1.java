@@ -12,6 +12,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ContentAdapter;
+import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
@@ -35,6 +37,7 @@ import com.online.languages.study.lang.data.DataManager;
 import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT;
@@ -49,12 +52,12 @@ public class CatTabFragment1 extends Fragment {
     SharedPreferences appSettings;
 
     ContentAdapter adapter, adapterCompact;
-    RecyclerView recyclerView, recyclerViewCompact;
-    View listWrapper, listWrapperCompact;
+    ContentCardAdapter adapterCard;
+    RecyclerView recyclerView, recyclerViewCompact, recyclerViewCard;
+    View listWrapper, listWrapperCompact, listWrapperCard ;
 
     int showStatus;
     String theme;
-    boolean open;
 
 
 
@@ -69,8 +72,6 @@ public class CatTabFragment1 extends Fragment {
 
         dataManager = new DataManager(getActivity());
 
-        open = true;
-
 
         String forceStatus = "no";
         if (getActivity().getIntent().hasExtra(Constants.EXTRA_FORCE_STATUS)) {
@@ -82,6 +83,8 @@ public class CatTabFragment1 extends Fragment {
 
         listWrapper = rootView.findViewById(R.id.listContainer);
         listWrapperCompact = rootView.findViewById(R.id.listContainerCompact);
+        listWrapperCard = rootView.findViewById(R.id.listContainerCard);
+
 
         recyclerView = rootView.findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -91,16 +94,27 @@ public class CatTabFragment1 extends Fragment {
         RecyclerView.LayoutManager mLayoutManagerCompact = new LinearLayoutManager(getActivity());
         recyclerViewCompact.setLayoutManager(mLayoutManagerCompact);
 
+
+        recyclerViewCard = rootView.findViewById(R.id.my_recycler_view_card);
+        RecyclerView.LayoutManager mLayoutManagerCard = new LinearLayoutManager(getActivity());
+        recyclerViewCard.setLayoutManager(mLayoutManagerCard);
+
+
+
         updateLayoutStatus();
 
         openView(recyclerView);
         openView(recyclerViewCompact); // TODO improve
+        openView(recyclerViewCard); // TODO improve
 
         ((SimpleItemAnimator) recyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
 
         ((SimpleItemAnimator) recyclerViewCompact.getItemAnimator()).setSupportsChangeAnimations(false);
         ViewCompat.setNestedScrollingEnabled(recyclerViewCompact, false);
+
+        ((SimpleItemAnimator) recyclerViewCard.getItemAnimator()).setSupportsChangeAnimations(false);
+        ViewCompat.setNestedScrollingEnabled(recyclerViewCard, false);
 
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
@@ -129,6 +143,7 @@ public class CatTabFragment1 extends Fragment {
             }
         }));
 
+
         return rootView;
     }
 
@@ -138,9 +153,15 @@ public class CatTabFragment1 extends Fragment {
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listWrapper.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.GONE);
             listWrapperCompact.setVisibility(View.VISIBLE);
+        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.VISIBLE);
         } else {
             listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
         }
 
@@ -155,6 +176,9 @@ public class CatTabFragment1 extends Fragment {
 
         adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_COMPACT);
         recyclerViewCompact.setAdapter(adapterCompact);
+
+        adapterCard = new ContentCardAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_CARD, (CatActivity)getActivity());
+        recyclerViewCard.setAdapter(adapterCard);
     }
 
     public void updateSort() {
@@ -169,7 +193,6 @@ public class CatTabFragment1 extends Fragment {
             }
         }, 150);
 
-
     }
 
 
@@ -179,26 +202,52 @@ public class CatTabFragment1 extends Fragment {
         data = insertDivider(data);
     }
 
-    public void changeStarred(int position) {   /// check just one item
+
+    public void changeStarred(String id, boolean vibe) {
+
+        int position = -1;
+
+        for (int i = 0; i<data.size(); i++) {
+            DataItem dataItem = data.get(i);
+            if (dataItem.id.equals(id)) position = i;
+        }
+
+        if (position > -1) changeStarred(position, true);
+
+        if (vibe) vibrate(30);
+
+    }
+
+
+    public void changeStarred(int position) {
+        changeStarred(position, false);
+        vibrate(30);
+    }
+
+    public void changeStarred(int position, boolean card) {   /// check just one item
 
         String id = data.get(position).id;
+
         boolean starred = dataManager.checkStarStatusById(id );
 
         int status = dataManager.dbHelper.setStarred(id, !starred); // id to id
 
-        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-
-        int vibLen = 30;
-
         if (status == 0) {
             Toast.makeText(getActivity(), R.string.starred_limit, Toast.LENGTH_SHORT).show();
-            vibLen = 300;
+            vibrate(300);
         }
 
-        checkStarred(position);
+        int delay = 100;
+        if (card) delay = 0;
+        checkStarred(position, delay);
 
+    }
+
+
+    private void vibrate(int duration) {
+        Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         assert v != null;
-        v.vibrate(vibLen);
+        v.vibrate(duration);
     }
 
     private ArrayList<DataItem> insertDivider(ArrayList<DataItem> data) {
@@ -233,28 +282,8 @@ public class CatTabFragment1 extends Fragment {
         }, 70);
     }
 
-    private void onItemClick(final View view, final int position) {
-
-        if (open) {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ((CatActivity)getActivity()).showAlertDialog(view, position);
-                }
-            }, 50);
-
-            open = false;
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    open = true;
-                }
-            }, 200);
-
-        }
-
+    public void onItemClick(final View view, final int position) {
+        ((CatActivity)getActivity()).openDetailDialog(view, position);
     }
 
 
@@ -272,22 +301,26 @@ public class CatTabFragment1 extends Fragment {
             public void run() {
                 adapter.notifyDataSetChanged();
                 adapterCompact.notifyDataSetChanged();
+                adapterCard.notifyDataSetChanged();
             }
         }, 80);
     }
 
 
 
-    public void checkStarred(final int result){   /// check just one item
-        open = true;
+    public void checkStarred(final int result, int delay){   /// check just one item
+
+        //Toast.makeText(getActivity(), "Delay: " + delay, Toast.LENGTH_SHORT).show();
+
         data = dataManager.checkDataItemsData(data);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 adapter.notifyItemChanged(result);
                 adapterCompact.notifyItemChanged(result);
+                adapterCard.notifyItemChanged(result);
             }
-        }, 200);
+        }, delay);
     }
 
 

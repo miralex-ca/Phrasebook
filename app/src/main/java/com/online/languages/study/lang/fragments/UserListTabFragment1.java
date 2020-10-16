@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -24,11 +25,13 @@ import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UserListActivity;
 import com.online.languages.study.lang.adapters.ContentAdapter;
+import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.adapters.ImageListAdapter;
 import com.online.languages.study.lang.adapters.ResizeHeight;
@@ -39,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
@@ -51,10 +55,11 @@ public class UserListTabFragment1 extends Fragment {
 
 
     ContentAdapter adapter, adapterCompact;
-    RecyclerView recyclerView, recyclerViewCompact;
-    View listWrapper, listWrapperCompact;
+    ContentCardAdapter adapterCard;
+    RecyclerView recyclerView, recyclerViewCompact, recyclerViewCard;
+    View listWrapper, listWrapperCompact, listWrapperCard;
 
-    RelativeLayout  itemsList, itemsListCompact;
+    RelativeLayout  itemsList, itemsListCompact, itemsListCards;
 
     int showStatus;
     String theme;
@@ -63,6 +68,8 @@ public class UserListTabFragment1 extends Fragment {
     Boolean comeBack = true;
 
     boolean open;
+
+
 
 
     @Override
@@ -84,9 +91,11 @@ public class UserListTabFragment1 extends Fragment {
 
         listWrapper = rootView.findViewById(R.id.listContainer);
         listWrapperCompact = rootView.findViewById(R.id.listContainerCompact);
+        listWrapperCard = rootView.findViewById(R.id.listContainerCard);
 
         itemsList = rootView.findViewById(R.id.itemListWrap);
         itemsListCompact = rootView.findViewById(R.id.itemListWrapCompact);
+        itemsListCards = rootView.findViewById(R.id.itemListWrapCard);
 
         recyclerView = rootView.findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -98,13 +107,21 @@ public class UserListTabFragment1 extends Fragment {
         recyclerViewCompact.setLayoutManager(mLayoutManagerCompact);
         recyclerViewCompact.addItemDecoration( new DividerItemDecoration(getActivity()) );
 
+
+        recyclerViewCard = rootView.findViewById(R.id.my_recycler_view_card);
+        RecyclerView.LayoutManager mLayoutManagerCard = new LinearLayoutManager(getActivity());
+        recyclerViewCard.setLayoutManager(mLayoutManagerCard);
+
+
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
         ViewCompat.setNestedScrollingEnabled(recyclerViewCompact, false);
+        ViewCompat.setNestedScrollingEnabled(recyclerViewCard, false);
 
         updateLayoutStatus();
 
         openView(recyclerView);
         openView(recyclerViewCompact); // TODO improve
+        openView(recyclerViewCard); // TODO improve
 
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
@@ -139,17 +156,22 @@ public class UserListTabFragment1 extends Fragment {
     public void confirmChange(int position) { /// TODO check
 
         boolean confirm = appSettings.getBoolean("set_starred_confirm", true);
+        String id = data.get(position).id;
 
         if (confirm) {
-            openConfirmDialog(position);
+            openConfirmDialog(id);
         } else {
-            changeStarred(position);
+            changeStarred(id);
         }
 
+        vibrate(30);
+    }
+
+
+    private void vibrate(int duration) {
         Vibrator v = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        int vibLen = 30;
         assert v != null;
-        v.vibrate(vibLen);
+        v.vibrate(duration);
     }
 
 
@@ -167,9 +189,15 @@ public class UserListTabFragment1 extends Fragment {
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listWrapper.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.GONE);
             listWrapperCompact.setVisibility(View.VISIBLE);
+        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.VISIBLE);
         } else {
             listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
         }
 
@@ -177,8 +205,7 @@ public class UserListTabFragment1 extends Fragment {
     }
 
 
-
-    public void openConfirmDialog(final int position) {
+    public void openConfirmDialog(final String id) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -204,7 +231,7 @@ public class UserListTabFragment1 extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                changeStarred(position);
+                changeStarred(id);
 
             }
         });
@@ -228,11 +255,35 @@ public class UserListTabFragment1 extends Fragment {
 
     public void changeStarred(int position) {   /// check just one item
         String id = data.get(position).id;
+        changeStarred(id);
+    }
+
+    public void changeStar(String id, boolean vibe) {
+
+        boolean confirm = appSettings.getBoolean("set_starred_confirm", true);
+
+        if (confirm) {
+            openConfirmDialog(id);
+            vibrate(30);
+
+        } else {
+            changeStarred(id, 80);
+            if (vibe) vibrate(30);
+        }
+
+    }
+
+    public void changeStarred(String id) {
         Boolean starred = dbHelper.checkStarred(id);
-        dbHelper.setStarred(id, !starred); // id to id
+        dbHelper.setStarred(id, !starred);
         checkStarred();
     }
 
+    public void changeStarred(String id, int delay) {
+        Boolean starred = dbHelper.checkStarred(id);
+        dbHelper.setStarred(id, !starred);
+        checkStarred(delay);
+    }
 
 
     private void onItemClick(final View view, final int position) {
@@ -274,6 +325,7 @@ public class UserListTabFragment1 extends Fragment {
             data = checkList(data);
             adapter.notifyDataSetChanged();
             adapterCompact.notifyDataSetChanged();
+            adapterCard.notifyDataSetChanged();
         } else {
             comeBack = true;
         }
@@ -283,16 +335,21 @@ public class UserListTabFragment1 extends Fragment {
 
 
     public void checkStarred(){
+        checkStarred(150);
+    }
+
+    public void checkStarred(int delay){
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 findRemoved(data);
             }
-        }, 150);
-
+        }, delay);
         comeBack = false;
     }
+
+
 
 
     private ArrayList<DataItem> checkList(ArrayList<DataItem> wordList) {
@@ -322,6 +379,8 @@ public class UserListTabFragment1 extends Fragment {
 
     private void findRemoved(ArrayList<DataItem> wordList) {
 
+        //Toast.makeText(getActivity() , "Remove", Toast.LENGTH_SHORT).show();
+
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
 
 
@@ -329,13 +388,14 @@ public class UserListTabFragment1 extends Fragment {
 
             wordList = dbHelper.checkStarredList(wordList);
 
-
             if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
 
                 removeFromList(wordList, recyclerViewCompact, itemsListCompact, adapterCompact);
-                adapter.notifyDataSetChanged();
-                setWrapContentHeight(itemsList);
 
+                adapter.notifyDataSetChanged();
+                adapterCard.notifyDataSetChanged();
+
+                setWrapContentHeight(itemsList);
             }
 
 
@@ -343,7 +403,19 @@ public class UserListTabFragment1 extends Fragment {
 
                 removeFromList(wordList, recyclerView, itemsList, adapter);
                 adapterCompact.notifyDataSetChanged();
+                adapterCard.notifyDataSetChanged();
+
                 setWrapContentHeight(itemsListCompact);
+            }
+
+            if (listType.equals(CAT_LIST_VIEW_CARD)) {
+
+                removeFromList(wordList, recyclerViewCard, itemsListCards, adapter);
+
+                adapter.notifyDataSetChanged();
+                adapterCompact.notifyDataSetChanged();
+
+                setWrapContentHeight(itemsListCards);
             }
 
 
@@ -354,7 +426,9 @@ public class UserListTabFragment1 extends Fragment {
 
     private void removeFromList(ArrayList<DataItem> wordList, RecyclerView recyclerView, View helper, ContentAdapter adapter) {
 
-        helper.setMinimumHeight(recyclerView.getHeight());  /// TODO lisst
+        helper.setMinimumHeight(recyclerView.getHeight());  /// TODO list
+
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
 
         for (int i = 0; i < wordList.size(); i++) {
             if (wordList.get(i).starred < 1) {
@@ -366,7 +440,15 @@ public class UserListTabFragment1 extends Fragment {
                         setHR(recyclerView, helper);
                     }
                 } finally {
-                    adapter.remove(i);
+
+                    if (listType.equals(CAT_LIST_VIEW_CARD)) {
+
+                        adapterCard.remove(i);
+
+                    } else {
+                        adapter.remove(i);
+                    }
+
                 }
             }
         }
@@ -381,6 +463,7 @@ public class UserListTabFragment1 extends Fragment {
             public void run() {
                 recyclerView.setMinimumHeight(0);
                 recyclerViewCompact.setMinimumHeight(0);
+                recyclerViewCard.setMinimumHeight(0);
             }
         }, 450);
 
@@ -403,18 +486,22 @@ public class UserListTabFragment1 extends Fragment {
 
         adapter = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_NORM);
         adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_COMPACT);
-
+        adapterCard = new ContentCardAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_NORM, (UserListActivity) getActivity());
 
         setWrapContentHeight(itemsList);
         setWrapContentHeight(itemsListCompact);
+        setWrapContentHeight(itemsListCards);
 
         itemsList.setMinimumHeight(0);
         itemsListCompact.setMinimumHeight(0);
+        itemsListCards.setMinimumHeight(0);
 
         recyclerView.setMinimumHeight(0);
 
         recyclerView.setAdapter(adapter);
         recyclerViewCompact.setAdapter(adapterCompact);
+
+        recyclerViewCard.setAdapter(adapterCard);
 
     }
 
@@ -426,8 +513,6 @@ public class UserListTabFragment1 extends Fragment {
         view.setLayoutParams(params);
 
     }
-
-
 
 
     public interface ClickListener{

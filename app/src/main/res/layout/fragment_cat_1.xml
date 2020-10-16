@@ -130,6 +130,59 @@
             </RelativeLayout>
 
 
+            <RelativeLayout
+                android:id="@+id/listContainerCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintWidth_max="540dp">
+
+
+
+                        <RelativeLayout
+                            android:id="@+id/itemListWrapCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/my_recycler_view_card"
+                                android:layout_width="match_parent"
+                                android:animateLayoutChanges="false"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false"
+                                android:clipToPadding="false"
+                                android:visibility="gone"
+                                android:scrollbars="vertical" />
+
+
+                        </RelativeLayout>
+
+
+                </RelativeLayout>
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+
+
+            </RelativeLayout>
+
         </RelativeLayout>
 
 

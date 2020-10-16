@@ -20,7 +20,6 @@
             android:text="@string/item_status_unknown_short"
             android:id="@+id/statusUnknown"
             android:textColor="?attr/colorUnknown"
-
             />
 
         <TextView

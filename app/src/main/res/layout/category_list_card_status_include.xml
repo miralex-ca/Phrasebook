@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:id="@+id/status_wrap"
+    android:visibility="gone"
+    android:layout_marginTop="0dp">
+
+
+    <RelativeLayout
+        android:id="@+id/itemStatus"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:alpha=".8"
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_unknown_short"
+            android:id="@+id/statusUnknown"
+            android:textColor="?attr/colorUnknown"
+            android:background="@drawable/status_gray_bg"
+            />
+
+        <TextView
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_familiar_short"
+            android:id="@+id/statusKnown"
+            android:textColor="?attr/colorKnown"
+            android:background="@drawable/status_blue_bg"
+            />
+
+        <TextView
+            style="@style/cat_item_status.detail"
+            android:text="@string/item_status_studied_short"
+            android:id="@+id/statusStudied"
+            android:textColor="?attr/colorStudied"
+            android:background="@drawable/status_green_bg"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:visibility="gone"
+            style="@style/cat_item_status.detail"
+            android:ellipsize="middle"
+
+            android:singleLine="true"
+            android:id="@+id/errorsCount"
+            android:textColor="?attr/colorErrors"
+            android:background="@drawable/status_red_bg"
+            />
+
+
+    <ImageView
+        android:layout_marginTop="19dp"
+        android:visibility="gone"
+        android:layout_marginLeft="1dp"
+        android:id="@+id/errorIcon"
+        app:srcCompat="@drawable/ic_tick_circle_error"
+        android:layout_width="14dp"
+        android:layout_height="14dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

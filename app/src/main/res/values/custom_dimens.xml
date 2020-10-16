@@ -279,8 +279,9 @@
     <integer name="_ex_opt_txt_size_smallest">13</integer>
 
 
-    <integer name="_ex_text_long_num_sw720">70</integer>
-    <integer name="_ex_text_long_num_sw600">50</integer>
+    <integer name="_ex_text_long_num_sw720">40</integer>
+    <integer name="_ex_text_long_num_sw600">40</integer>
+
 
     <dimen name="_cat_stat_title_txt_size">18sp</dimen>
     <dimen name="_cat_stat_title_txt_left">22dp</dimen>
@@ -299,6 +300,15 @@
     <dimen name="goproTxtSize">14sp</dimen>
 
     <string name="cat_stats_total_items_text" translatable="false">@string/cat_stats_total_items_short</string>
+
+    <dimen name="cat_list_card_side_padding">0dp</dimen>
+    <dimen name="cat_list_card_tb_padding">0dp</dimen>
+
+
+    <integer name="_ex_opt_txt_size_norm_sw600_land">19</integer>
+    <integer name="ex_opt_txt_size_medium_sw600_land">18</integer>
+    <integer name="_ex_opt_txt_size_small_sw600_land">17</integer>
+    <integer name="_ex_opt_txt_size_smallest_sw600_land">16</integer>
 
 
 </resources>
