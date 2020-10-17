@@ -2,6 +2,8 @@ package com.online.languages.study.lang;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -113,6 +115,10 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         TextView infoT = findViewById(R.id.lbl_text);
 
         speaking = appSettings.getBoolean("set_speak", true);
+
+        //check for TTS data
+        //speakBtn = findViewById(R.id.speakBtn);
+        checkTTSIntent();
 
 
         View appbar = findViewById(R.id.app_bar);
@@ -227,28 +233,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
             }
         });
 
-        //check for TTS data
-        //speakBtn = findViewById(R.id.speakBtn);
 
-
-
-        if (speaking) {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    Intent checkTTSIntent = new Intent();
-                    checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-
-                }
-            }, 100);
-
-
-
-        }
 
         measureHeights();
 
@@ -263,6 +248,39 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         statusInfoDisplay(showStatus, statusView, dataItem);
 
 
+    }
+
+
+    public void checkTTSIntent() {
+
+        if (! speaking ) return;
+
+        PackageManager pm = getPackageManager();
+        final Intent checkTTSIntent = new Intent();
+        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+
+        ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
+
+        if( resolveInfo == null ) {
+            // Not able to find the activity which should be started for this intent
+
+            //Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
+            speaking = false;
+
+        } else {
+
+
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+                    }
+                }, 100);
+
+        }
     }
 
 

@@ -68,7 +68,7 @@
     <color name="colorStarButtonInactive">#727272</color>
 
 
-    <color name="colorBaseBg">#eeeeee</color>
+    <color name="colorBaseBg">#f6f6f6</color>
     <color name="colorCardBg">#fff</color>
     <color name="colorCardDivider">#72818181</color>
     <color name="colorMainText">#333</color>

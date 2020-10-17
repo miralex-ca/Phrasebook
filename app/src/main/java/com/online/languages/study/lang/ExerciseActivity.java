@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -339,13 +341,46 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         }
 
         if (speaking) {
-            Intent checkTTSIntent = new Intent();
-            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+            checkTTSIntent();
         }
 
 
     }
+
+
+    private void checkTTSIntent() {
+
+        if (! speaking ) return;
+
+        PackageManager pm = getPackageManager();
+        final Intent checkTTSIntent = new Intent();
+        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+
+        ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
+
+        if( resolveInfo == null ) {
+            Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
+            speaking = false;
+
+        } else {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+                }
+            }, 100);
+
+        }
+    }
+
+
+
+
+
+
 
     private void restaureChecked (int type) {
 

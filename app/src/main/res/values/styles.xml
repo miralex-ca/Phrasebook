@@ -409,6 +409,9 @@
 
 
     <style name="CardViewStyle" parent="CardView">
+
+        
+
         <item name="cardBackgroundColor">?attr/colorCardBg</item>
         <item name="android:layout_marginTop">?attr/cardMargin</item>
         <item name="android:layout_marginLeft">?attr/cardMargin</item>

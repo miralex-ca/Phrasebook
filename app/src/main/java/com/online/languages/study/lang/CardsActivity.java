@@ -5,7 +5,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
@@ -170,10 +173,29 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
     private void initTTS() {
 
-        if (speaking) {
-            Intent checkTTSIntent = new Intent();
-            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        if (! speaking ) return;
+
+        PackageManager pm = getPackageManager();
+        final Intent checkTTSIntent = new Intent();
+        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+
+        ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
+
+        if( resolveInfo == null ) {
+            Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
+            speaking = false;
+
+        } else {
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+
+                }
+            }, 100);
+
         }
 
     }
