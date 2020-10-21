@@ -26,8 +26,10 @@ import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
+import static com.online.languages.study.lang.Constants.ACTION_MOVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 
 
@@ -45,7 +47,8 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, desc, itemsCount, familiarCount, masteredCount;
-        View wrap, settings, bookmark, bookmarkOn, bookmarkOff, edit, bookmarkWrap, mainWrap;
+        View wrap, settings, bookmark, bookmarkOn, bookmarkOff, edit,
+                bookmarkWrap, mainWrap, progressWrap, rightEditWrap;
 
 
         MyViewHolder(View view) {
@@ -67,6 +70,8 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             edit = itemView.findViewById(R.id.ucatEdit);
 
             mainWrap = itemView.findViewById(R.id.cat_item_wrap);
+            progressWrap = itemView.findViewById(R.id.progress_wrap);
+            rightEditWrap = itemView.findViewById(R.id.rightEditWrap);
 
         }
     }
@@ -130,7 +135,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
 
         if (dataObject.id.equals("last")) {
-
             manageMoreView(holder.mainWrap, dataObject);
 
         }
@@ -151,6 +155,18 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         if (dataObject.count < 1) {
             holder.bookmarkWrap.setVisibility(View.GONE);
         }
+
+
+        if (dataObject.type != null && dataObject.type.equals(PARAM_GROUP)) {
+            String desc = "Group of topics: " + dataObject.count;
+            holder.desc.setText(desc);
+            holder.progressWrap.setVisibility(View.GONE);
+            holder.rightEditWrap.setVisibility(View.GONE);
+        } else {
+            holder.progressWrap.setVisibility(View.VISIBLE);
+           // holder.rightEditWrap.setVisibility(View.VISIBLE);
+        }
+
 
         holder.wrap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,6 +242,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
 
         View moveToTop = view.findViewById(R.id.moveToTop);
+        View moveToGroup = view.findViewById(R.id.moveToGroup);
         View archive = view.findViewById(R.id.archive);
 
 
@@ -236,12 +253,22 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             }
         });
 
+        moveToGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickActionPopup(dataObject, ACTION_MOVE);
+            }
+        });
+
+
         archive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickActionPopup(dataObject, ACTION_ARCHIVE);
             }
         });
+
+        if(dataObject.type.equals("group")) moveToGroup.setVisibility(View.GONE);
 
 
 

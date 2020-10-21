@@ -3,8 +3,8 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = false;  // TODO change in PRO
-    public static final boolean DEBUG = false;  /// should be true to see ads in debug
+    public static final boolean PRO = true;  // TODO change in PRO
+    public static final boolean DEBUG = true;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -135,9 +135,8 @@ public class Constants {
 
     public static final String PARAM_EMPTY = "";
     public static final String PARAM_POPULATE = "populate";
-
     public static final String PARAM_UCAT_PARENT = "ucats"; // used for bookmarks to indicate user items
-
+    public static final String PARAM_GROUP = "group";
 
 
     public static final String PARAM_LIMIT_REACHED = "limit_reached";
@@ -155,6 +154,7 @@ public class Constants {
     public static final String ACTION_BOOKMARK = "bookmark";
     public static final String ACTION_CHANGE_ORDER = "change_order";
     public static final String ACTION_ARCHIVE = "archive";
+    public static final String ACTION_MOVE = "move";
 
 
     public static final String STATUS_NEW = "new";

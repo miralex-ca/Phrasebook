@@ -66,7 +66,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private EditText titleEditText;
 
-    int titleCharMax = 60;
+    int titleCharMax = 50;
 
     DataManager dataManager;
     InfoDialog infoDialog;
@@ -138,6 +138,8 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         setTitle("");
 
+        titleCharMax = getResources().getInteger(R.integer.ucat_title_limit);
+
         titleCharCounter = findViewById(R.id.titleCharCounter);
         titleCharCounter.setText("0/"+titleCharMax);
         titleEditText = findViewById(R.id.editTitle);
@@ -157,9 +159,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             }
         });
 
+        titleEditText.addTextChangedListener(titleEditorWatcher);
+
         prepareCat();
 
-        titleEditText.addTextChangedListener(titleEditorWatcher);
 
         Intent checkTTSIntent = new Intent();
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
@@ -470,8 +473,8 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.confirmation_txt);
 
+        builder.setTitle(R.string.confirmation_txt);
         builder.setMessage(R.string.ucat_delete_confirm);
 
         builder.setCancelable(false);

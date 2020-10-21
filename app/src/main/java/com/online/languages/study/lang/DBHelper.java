@@ -42,6 +42,7 @@ import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
@@ -677,6 +678,71 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public String[] createGroup(String catTitle) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long time = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UCAT_TITLE, catTitle);
+        values.put(KEY_UCAT_DESC, "");
+        values.put(KEY_UCAT_PARAMS, "");
+        values.put(KEY_UCAT_PARENT, "");
+        values.put(KEY_UCAT_TYPE, PARAM_GROUP);
+        values.put(KEY_UCAT_CREATED, time );
+        values.put(KEY_UCAT_UPDATED, time );
+        values.put(KEY_UCAT_UPDATED_SORT, time );
+
+        long cat_id  = db.insert(TABLE_USER_DATA_CATS, null, values);
+
+
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
+                KEY_UCAT_PRIMARY_ID +" = ?",
+
+                new String[] { String.valueOf(cat_id)}, null, null, null);
+
+
+        if (cursor.moveToFirst() ) {
+
+            values = new ContentValues();
+            values.put(KEY_UCAT_ID, UC_PREFIX + cat_id);
+
+
+            db.update(TABLE_USER_DATA_CATS, values,
+                    KEY_UCAT_PRIMARY_ID +" = ?",
+                    new String[] { String.valueOf(cat_id)});
+
+        }
+
+        cursor.close();
+        db.close();
+
+
+        return new String[] { UC_PREFIX + cat_id };
+    }
+
+
+    public void updateGroup(String catTitle, String group_id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_UCAT_TITLE, catTitle);
+
+
+        db.update(TABLE_USER_DATA_CATS, values,
+                KEY_UCAT_ID +" = ?",
+                new String[] { String.valueOf(group_id)});
+
+
+        db.close();
+
+
+    }
+
+
     public String[] createUData(DataItem dataItem) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1210,10 +1276,11 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
 
-        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  new String[] {KEY_UCAT_ID}, null, null, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
-
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  new String[] {KEY_UCAT_ID , KEY_UCAT_TYPE},
+                null, null, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
 
         int catCount = cursor.getCount();
+
         int itemsCount = 0;
 
         try {
@@ -1221,8 +1288,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 DataObject category = new DataObject();
                 category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+                category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+                if (category.type == null) category.type = "";
 
-                if (!category.parent.contains(UC_PREFIX)) categories.add(category);
+                if (!category.type.contains(PARAM_GROUP))
+                    categories.add(category);
             }
 
         } finally {
@@ -1234,7 +1304,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 + TABLE_UCAT_UDATA +" a INNER JOIN " + TABLE_USER_DATA_ITEMS
                 +" b ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
                 +" WHERE a." + KEY_UDC_UCAT_ID + " = ?";
-
 
 
         for (DataObject category: categories) {
@@ -1251,7 +1320,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-        return new String[] {String.valueOf(catCount), String.valueOf(itemsCount)};
+        return new String[] {String.valueOf(categories.size()), String.valueOf(itemsCount)};
     }
 
 
@@ -1271,6 +1340,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+
+                category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+                if (category.type == null) category.type = "";
 
                 categories.add(category);
             }
@@ -1301,9 +1373,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+
                 category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
 
-                if (!category.parent.contains(UC_PREFIX)) categories.add(category);
+                category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+                if (category.type == null) category.type = "";
+
+                if (!category.parent.contains(UC_PREFIX)) // disable to display all cats and groups
+                    categories.add(category);
             }
 
         } finally {
@@ -1334,6 +1411,48 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
                 category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
+
+                category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+                if (category.type == null) category.type = "";
+
+                categories.add(category);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return categories;
+    }
+
+    public ArrayList<DataObject> getUGroupsListForSet(String set_id) {
+
+
+        ArrayList<DataObject> categories = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor;
+
+
+        cursor = db.query(TABLE_USER_DATA_CATS,  null, KEY_UCAT_TYPE +" = ?",
+                    new String[]{"group"}, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
+
+
+        try {
+            while (cursor.moveToNext()) {
+
+                DataObject category = new DataObject();
+                category.id = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ID));
+                category.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
+                category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
+                category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
+                category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
+
+                category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+                if (category.type == null) category.type = "";
 
                 categories.add(category);
             }
@@ -1386,11 +1505,24 @@ public class DBHelper extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(query, new String[]{category.id});
             category.count = cursor.getCount();
 
-            Cursor progressCursor = db.rawQuery(progressQuery, new String[]{category.id});
-            category.progress = progressCursor.getCount();
+            if (category.count > 0) {
 
-            Cursor familiarCursor = db.rawQuery(familiarQuery, new String[]{category.id});
-            category.progress_1 = familiarCursor.getCount();
+                Cursor progressCursor = db.rawQuery(progressQuery, new String[]{category.id});
+                category.progress = progressCursor.getCount();
+
+                Cursor familiarCursor = db.rawQuery(familiarQuery, new String[]{category.id});
+                category.progress_1 = familiarCursor.getCount();
+
+                progressCursor.close();
+                familiarCursor.close();
+            }
+
+            if (category.type.equals(PARAM_GROUP) ) {
+
+                cursor = db.query(TABLE_USER_DATA_CATS,  null, KEY_UCAT_PARENT +" = ?", new String[]{category.id}, null, null, KEY_UCAT_UPDATED_SORT + " DESC");
+                category.count = cursor.getCount();
+            }
+
 
 
             boolean bookmark = checkBookmark(db, category.id, PARAM_UCAT_PARENT);
@@ -1402,8 +1534,6 @@ public class DBHelper extends SQLiteOpenHelper {
             }
 
             cursor.close();
-            progressCursor.close();
-            familiarCursor.close();
 
 
         }
@@ -3570,8 +3700,12 @@ public class DBHelper extends SQLiteOpenHelper {
         dataObject.title = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TITLE));
         dataObject.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
         dataObject.params = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARAMS));
+
         dataObject.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
         dataObject.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_UPDATED_SORT));
+
+        dataObject.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
+        if (dataObject.type == null) dataObject.type = "";
 
         return dataObject;
     }

@@ -80,6 +80,7 @@ public class NoteEditActivity extends BaseActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -375,7 +376,6 @@ public class NoteEditActivity extends BaseActivity {
 
         imgPickerAdapter = new ImgPickerAdapter(this, pics, t);
         recyclerView.setAdapter(imgPickerAdapter);
-
 
     }
 

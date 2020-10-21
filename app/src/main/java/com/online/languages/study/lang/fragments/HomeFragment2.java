@@ -73,8 +73,10 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
@@ -296,6 +298,11 @@ public class HomeFragment2 extends Fragment   {
 
     public void openMyCat(int position) {
 
+        if (catsList.get(position).type.equals(PARAM_GROUP)) {
+            openGroup(catsList.get(position));
+            return;
+        }
+
         if (catsList.get(position).count > 0 ) {
 
             String id = catsList.get(position).id;
@@ -320,6 +327,17 @@ public class HomeFragment2 extends Fragment   {
 
     }
 
+    public void openGroup(DataObject dataObject) {
+
+        Intent i = new Intent(getActivity(), UCatsListActivity.class);
+
+        i.putExtra(EXTRA_CAT_ID, dataObject.id);
+
+        startActivityForResult(i, 10);
+
+        openActivity.pageTransition();
+    }
+
 
 
     public void openNewCat( ) {
@@ -331,6 +349,9 @@ public class HomeFragment2 extends Fragment   {
     public void openUcatList( ) {
 
         Intent i = new Intent(getActivity(), UCatsListActivity.class);
+
+        i.putExtra(EXTRA_CAT_ID, PARAM_UCAT_ROOT);
+
         startActivityForResult(i, 10);
 
         openActivity.pageTransition();

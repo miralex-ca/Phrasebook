@@ -28,4 +28,32 @@
         android:title="@string/menu_open_archive"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/new_group"
+        android:orderInCategory="100"
+        android:title="New group"
+        app:showAsAction="never" />
+
+
+    <item
+        android:visible="false"
+        android:icon="@drawable/ic_edit"
+        android:id="@+id/delete_group"
+        android:orderInCategory="150"
+        android:title="Delete group"
+        app:showAsAction="never" />
+
+    <item
+        android:visible="false"
+        android:icon="@drawable/ic_edit"
+        android:id="@+id/edit_group"
+        android:orderInCategory="150"
+        android:title="Edit group"
+        app:showAsAction="never" />
+
+
+
+
+
+
 </menu>

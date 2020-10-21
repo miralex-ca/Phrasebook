@@ -97,6 +97,7 @@
                     <LinearLayout
                         android:id="@+id/wrapTxt"
                         android:layout_marginTop="16dp"
+                        android:layout_marginRight="35dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
@@ -109,12 +110,15 @@
                             android:fontFamily="sans-serif-light"
                             android:textSize="21sp"
                             android:id="@+id/title"
+                            android:maxLines="2"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
                             />
 
 
                         <LinearLayout
+
                             android:layout_marginBottom="18dp"
                             android:orientation="vertical"
                             android:layout_marginTop="14dp"
@@ -122,8 +126,8 @@
                             android:layout_height="wrap_content">
 
 
-
                             <RelativeLayout
+                                android:id="@+id/progress_wrap"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
@@ -225,12 +229,10 @@
 
                     <RelativeLayout
 
-                        android:id="@+id/bookmarkWrap"
+                        android:id="@+id/rightEditWrap"
                         android:layout_above="@+id/bottomView"
 
-
                         android:layout_marginTop="5dp"
-
 
                         android:layout_marginBottom="4dp"
                         android:layout_marginRight="10dp"

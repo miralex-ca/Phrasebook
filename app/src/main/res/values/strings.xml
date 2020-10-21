@@ -666,6 +666,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="set_del_cat_stats">Supprimer les statistiques du thème</string>
     <string name="set_del_cat_stats_summary">Afficher le bouton pour supprimer les statistiques dans le menu du thème</string>
     <string name="errors_count">Erreurs: %d</string>
+    <string name="popup_menu_move">Move</string>
 
 
 </resources>

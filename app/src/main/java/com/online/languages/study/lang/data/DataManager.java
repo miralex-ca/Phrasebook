@@ -27,6 +27,7 @@ import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
 import static com.online.languages.study.lang.Constants.PRO;
 import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS;
 import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
@@ -559,6 +560,16 @@ public class DataManager {
 
     }
 
+    public ArrayList<DataObject> getUcatsGroup(String group_id) {
+
+        ArrayList<DataObject> list = dbHelper.getUCatsListForSet(group_id);
+
+        list = dbHelper.getUCatsListItemsCount(list);
+
+        return list;
+
+    }
+
     public boolean checkPlusVersion() {
 
         boolean plusVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
@@ -764,6 +775,35 @@ public class DataManager {
     public void removeCatData(String catId) {
 
        dbHelper.deleteCatResult(catId);
+
+    }
+
+
+    public ArrayList<DataObject> getGroupsForDialog(boolean includeMain) {
+
+        DataObject mainListGroup = new DataObject();
+        mainListGroup.title = "Main list";
+        mainListGroup.id = PARAM_UCAT_ROOT;
+
+        ArrayList<DataObject> groups =  new ArrayList<>();
+        if (includeMain) groups.add(mainListGroup);
+
+        groups.addAll(dbHelper.getUGroupsListForSet(PARAM_UCAT_ROOT));
+
+        return groups;
+
+    }
+
+    public DataObject getGroupData(String group_id) {
+
+        DataObject groupObject = dbHelper.getUCat(group_id);
+        ArrayList<DataObject> helpArrayForCount = new ArrayList<>();
+        helpArrayForCount.add(groupObject);
+        ArrayList<DataObject> cats = dbHelper.getUCatsListItemsCount(helpArrayForCount);
+
+        groupObject.count = cats.get(0).count;
+
+        return groupObject;
 
     }
 

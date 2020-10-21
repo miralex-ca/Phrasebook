@@ -22,5 +22,7 @@
 
     <integer name="img_picker_span">4</integer>
 
+    <integer name="ucat_title_limit">45</integer>
+
 
 </resources>

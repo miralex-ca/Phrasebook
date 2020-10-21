@@ -195,6 +195,7 @@
 
 
                             <RelativeLayout
+                                android:id="@+id/progress_wrap"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
@@ -260,7 +261,7 @@
                                 android:visibility="gone"
                                 android:layout_marginTop="8dp"
                                 android:textSize="13sp"
-                                android:text="Средний результат тестов: 20%"
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 />
@@ -297,7 +298,8 @@
 
                     <RelativeLayout
 
-                        android:id="@+id/bookmarkWrap"
+                        android:id="@+id/rightEditWrap"
+
                         android:layout_above="@+id/bottomView"
 
 

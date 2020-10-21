@@ -36,6 +36,7 @@ import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
@@ -244,6 +245,14 @@ public class UCatsArchiveActivity extends BaseActivity {
 
     public void openMyCat(DataObject dataObject) {
 
+        if (dataObject.type.equals(PARAM_GROUP)) {
+
+            openGroup(dataObject);
+
+            return;
+        }
+
+
         if (dataObject.count > 0 ) {
 
             String id = dataObject.id;
@@ -265,6 +274,17 @@ public class UCatsArchiveActivity extends BaseActivity {
             openCatEdit( dataObject );
         }
 
+    }
+
+    public void openGroup(DataObject dataObject) {
+
+        Intent i = new Intent(this, UCatsListActivity.class);
+
+        i.putExtra(EXTRA_CAT_ID, dataObject.id);
+
+        startActivityForResult(i, 10);
+
+        openActivity.pageTransition();
     }
 
 
