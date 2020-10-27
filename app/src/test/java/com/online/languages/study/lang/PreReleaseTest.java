@@ -48,7 +48,8 @@ public class PreReleaseTest {
     public void limits_areCorrect() throws Exception {
         assertEquals(100, Constants.UDATA_LIMIT);
         assertEquals(20, Constants.UDATA_LIMIT_UNPAID);
-        assertEquals(3, Constants.UCATS_UNPAID_LIMIT);
+        assertEquals(4, Constants.UCATS_UNPAID_LIMIT);
+        assertEquals(2, Constants.GROUPS_UNPAID_LIMIT);
 
     }
 

@@ -50,6 +50,7 @@
     <string name="section_ex_link_title_3">Test général 3</string>
 
 
+
     <string name="voc_ex_link_third_title">Test 3</string>
     <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
 
@@ -101,6 +102,8 @@
 
 
     <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
+
+
 
 
     <string name="starred_limit">La limite de favoris est atteinte.</string>
@@ -570,7 +573,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="user_items_count">"Entrées ajoutées:  "</string>
 
     <string name="ucat_date">Date:  %s</string>
-    <string name="ucat_items_count">Nomre d’entrées: %s</string>
+    <string name="ucat_items_count">Nombre d’entrées: %s</string>
 
     <string name="ucat_familiar_items">"Familier: "</string>
     <string name="ucat_mastered_items">"Maîtrisé: "</string>
@@ -650,11 +653,11 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
 
-    <string name="info_ucat_list">\nVous pouvez ajouter vos propres thèmes avec des entrées dont vous avez besoin. Dans la version basique, vous pouvez ajouter jusqu’à 3 thèmes.
+    <string name="info_ucat_list">\nVous pouvez ajouter vos propres thèmes avec des entrées dont vous avez besoin. Dans la version basique, vous pouvez ajouter jusqu’à 4hèmes.
         Les thèmes et les entrées que vous ajoutez ne sont pas inclus dans les statistiques générales, mais vous pouvez voir les résultats de leur tests et les statuts de leurs entrées sur la page du thème.
         Pour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.
   \n</string>
-    <string name="info_ucat_archive">\nPour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.  \nn</string>
+    <string name="info_ucat_archive">\nPour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.  \n</string>
 
     <string name="ucat_edit_info_txt">\nPour créer un nouveau thème, vous devez saisir son titre. Vous pouvez modifier le titre d’un thème à tout moment. Dans la version basique, vous pouvez ajouter jusqu’à 20 entrées à un sujet.\n</string>
 
@@ -665,8 +668,38 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="set_del_cat_stats">Supprimer les statistiques du thème</string>
     <string name="set_del_cat_stats_summary">Afficher le bouton pour supprimer les statistiques dans le menu du thème</string>
+
     <string name="errors_count">Erreurs: %d</string>
-    <string name="popup_menu_move">Move</string>
+
+    <string name="popup_menu_move">Déplacer</string>
+    <string name="create_group_title">Nouvelle section</string>
+    <string name="edit_group_title">Modifier la section</string>
+    <string name="edit_section_title_txt">Titre</string>
+    <string name="edit_section_desc_text">Description</string>
+    <string name="delete_group_title">Supprimer la section</string>
+    <string name="delete_group_msg">\nLa section ne peut être supprimée que si elle n’inclut aucun thème. Vous pouvez archiver, supprimer ou déplacer les thèmes de la section, et puis vous pourrez la supprimer.\n</string>
+    <string name="delete_groupt_confirm">\nÊtes-vous sûr(e) de vouloir supprimer cette section?\n</string>
+    <string name="delete_process">Suppression …</string>
+    <string name="menu_new_group">Nouvelle section</string>
+    <string name="menu_delete_group">Supprimer la section</string>
+    <string name="edit_group">Modifier la section</string>
+    <string name="move_to_section_btn">Déplacer</string>
+    <string name="move_topic_to_title">Déplacer vers …</string>
+    <string name="main_list_txt">Liste principale ⇑ </string>
+    <string name="no_groups">Aucune section n’est encore disponible. Vous pouvez créer une nouvelle section à partir du menu de la page ou en utilisant le bouton ci-dessous.</string>
+
+    <string name="create_dialog_unpaid_title">Créer une nouvelle section</string>
+    <string name="create_new_section_btn">Create new section</string>
+    <string name="limit_groups_for_unpaid">\nVous avez atteint la limite de sections dans la version basique. Obtenez la version PLUS pour ajouter plus de sections.\n</string>
+
+    <string name="set_ucat_layout_3">Mixte (compact uniquement pour les thèmes)</string>
+
+
+    <plurals name="topic_plurals">
+        <item quantity="one">Section avec %1$d thème</item>
+        <item quantity="other">Section avec %1$d thèmes</item>
+    </plurals>
+
 
 
 </resources>

@@ -40,10 +40,9 @@ public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.
             super(view);
 
             icon = view.findViewById(R.id.icon);
-
             title = view.findViewById(R.id.title);
             selector = view.findViewById(R.id.imgSelector);
-            emptyTxt = view.findViewById(R.id.emptyTxt);
+
 
         }
     }
@@ -53,7 +52,7 @@ public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.
         this.context = context;
         this.groups = groups;
         this.selected = selected;
-        folder = context.getString(R.string.notes_pics_folder);
+        folder = context.getString(R.string.group_pics_folder);
 
     }
 

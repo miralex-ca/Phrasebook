@@ -6,10 +6,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,8 +25,10 @@ import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.data.DataObject;
 
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
+import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
 
@@ -47,6 +54,12 @@ public class NewGroupDialog {
 
     private TextView infoCharCounter;
 
+    String [] pics = new String[] {};
+    ImgGroupPickerAdapter imgPickerAdapter;
+    RecyclerView recyclerView;
+
+    int picIndex = 0;
+
 
     private UCatsListActivity activity;
 
@@ -57,52 +70,57 @@ public class NewGroupDialog {
 
 
         itemCharMax = context.getResources().getInteger(R.integer.ucat_title_limit);
-        infoCharMax = context.getResources().getInteger(R.integer.edit_info_length);
+        infoCharMax = context.getResources().getInteger(R.integer.ucat_desc_limit);
 
-
+        pics = context.getResources().getStringArray(R.array.group_pics_list);
     }
 
     public void showCustomDialog(String title) {
-        showCustomDialog(title, ACTION_CREATE, new DataItem());
+        showCustomDialog(title, ACTION_CREATE, new DataObject());
     }
 
 
-    public void showCustomDialog(String title, final String action, final DataItem dataItem) {
+    public void showCustomDialog(String title, final String action, final DataObject groupObject) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View content = inflater.inflate(R.layout.dialog_edit_group, null);
 
-        final View moreView = content.findViewById(R.id.openMore);
-
-
         itemEditText = content.findViewById(R.id.editItem);
-
         infoEditText = content.findViewById(R.id.editAddInfo);
 
-
         itemCharCounter = content.findViewById(R.id.itemCharCounter);
-
         infoCharCounter = content.findViewById(R.id.addInfoCharCounter);
 
-
+        TextView dialogTitle = content.findViewById(R.id.dialog_title);
+        dialogTitle.setText(title);
 
         initCounters();
 
         itemEditText.addTextChangedListener(itemEditorWatcher);
-
         infoEditText.addTextChangedListener(infoEditorWatcher);
 
-        if (action.equals(ACTION_UPDATE) )  setData(dataItem);
+        picIndex = 1;
 
+
+        if (action.equals(ACTION_UPDATE) || action.equals(ACTION_EDIT_GROUP))  setData(groupObject);
+
+        recyclerView = content.findViewById(R.id.recycler_view);
+
+        int spanCount = context.getResources().getInteger(R.integer.img_group_picker_span);
+
+        imgPickerAdapter = new ImgGroupPickerAdapter(context, pics, picIndex);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, spanCount);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(imgPickerAdapter);
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
 
-        builder.setTitle(title)
+        builder
+                //.setTitle(title)
                 .setCancelable(true)
-
 
                 .setNegativeButton(R.string.cancel_txt,
                         new DialogInterface.OnClickListener() {
@@ -127,6 +145,7 @@ public class NewGroupDialog {
         alert.show();
 
 
+
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -145,15 +164,19 @@ public class NewGroupDialog {
                 if (wantToCloseDialog) {
 
                     if (action.equals(ACTION_UPDATE)) {
+                        DataObject newGroupObject = getDataFromForm();
+                        newGroupObject.id  = groupObject.id;
+                        activity.updateGroup(newGroupObject);
 
-                        DataItem dataFromForm = getDataFromForm();
-                        dataFromForm.id  = dataItem.id;
+                    }  else if (action.equals(ACTION_EDIT_GROUP)) {
+                        DataObject newGroupObject = getDataFromForm();
+                        newGroupObject.id  = groupObject.id;
 
-                       activity.updateGroup(dataFromForm.item, dataFromForm.id);
+                        activity.updateGroupFromList(newGroupObject);
 
-                    }  else  {
+                    } else  {
 
-                       activity.createNewGroup(getDataFromForm().item);
+                       activity.createNewGroup(getDataFromForm());
 
                     }
 
@@ -163,6 +186,16 @@ public class NewGroupDialog {
         });
 
     }
+
+    public void updateList(int t) {
+
+        picIndex =  t;
+        imgPickerAdapter = new ImgGroupPickerAdapter(context, pics, t);
+        recyclerView.setAdapter(imgPickerAdapter);
+
+    }
+
+
 
 
     private void initCounters () {
@@ -175,25 +208,37 @@ public class NewGroupDialog {
     }
 
 
-    private void setData(DataItem dataItem) {
+    private void setData(DataObject group) {
 
-        itemEditText.setText(dataItem.item);
+        itemEditText.setText(group.title);
+        infoEditText.setText(group.desc);
+        picIndex = getIconIndex(group.image);
 
-        infoEditText.setText(dataItem.item_info_1);
+    }
 
+    private int getIconIndex(String pic) {
+
+        int index = 0;
+
+        for (int i = 0; i < pics.length; i ++) {
+            if (pics[i].equals(pic)) index = i;
+        }
+        return index;
     }
 
 
 
-    private DataItem getDataFromForm() {
+    private DataObject getDataFromForm() {
 
-        DataItem dataItem = new DataItem();
+        DataObject groupObject= new DataObject();
 
-        dataItem.item = textSanitizer(itemEditText.getText().toString());
+        groupObject.title = textSanitizer(itemEditText.getText().toString());
 
-        dataItem.item_info_1 = infoEditText.getText().toString();
+        groupObject.desc = textSanitizer(infoEditText.getText().toString());
 
-        return dataItem;
+        groupObject.image = pics[picIndex];
+
+        return groupObject;
     }
 
 
@@ -203,6 +248,11 @@ public class NewGroupDialog {
         text = text.trim();
 
         return text;
+    }
+
+    private static int dpToPixels(Context context, float dipValue) {
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
     }
 
 

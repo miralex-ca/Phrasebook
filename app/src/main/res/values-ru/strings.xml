@@ -3,7 +3,6 @@
 
     <string name="app_name">Иностранный язык</string>
 
-
     <string name="action_settings">Settings</string>
 
     <string name="contact_error">Сообщить об ошибке</string>
@@ -11,7 +10,6 @@
     <string name="contact_pro">PRO version</string>
     <string name="contact_rate">Оценить приложение</string>
     <string name="contact_website">Посетить веб-сайт</string>
-
 
     <string name="nav_home_txt">Главная</string>
     <string name="nav_gallery_txt">Галерея</string>
@@ -21,7 +19,6 @@
     <string name="nav_settings_txt">Настройки</string>
     <string name="nav_info_txt">Справка</string>
     <string name="nav_contact_txt">Контакты/отзыв</string>
-
 
 
     <string name="title_home_txt">Главная</string>
@@ -59,13 +56,9 @@
     <string name="voc_ex_link_second_desc">Обратный перевод записи</string>
     <string name="voc_ex_link_third_desc">Выбор перевода аудио</string>
 
-
-
     <string name="section_ex_link_title_1">Общий тест 1</string>
     <string name="section_ex_link_title_2">Общий тест 2</string>
     <string name="section_ex_link_title_3">Общий тест 3</string>
-
-
 
     <!-- flashcard -->
     <string name="f_menu_show_translate">Показывать ответ</string>
@@ -536,6 +529,7 @@
     <string name="set_ucat_layout_dialog_title">Вид списка тем</string>
     <string name="set_ucat_layout_1">Обычный</string>
     <string name="set_ucat_layout_2">Компактный</string>
+    <string name="set_ucat_layout_3">Смешанный (компактный только для тем)</string>
 
     <string name="user_content_title">Мой словарь</string>
     <string name="export_notification">"Экспорт: "</string>
@@ -630,7 +624,8 @@
     <string name="section_result_calculation">Общий результат складывается из следующих составляющих:</string>
     <string name="bookmarks_section_my_voc">Раздел: Мой словарь</string>
     <string name="plus_version_btn">Версия PLUS</string>
-    <string name="limit_cats_for_unpaid">\nДостигнут лимит тем обчной версии. Чтобы создавать больше тем, получите версию PLUS.\n</string>
+    <string name="limit_cats_for_unpaid">\nДостигнут лимит тем обычной версии. Чтобы создавать больше тем, получите версию PLUS.\n</string>
+    <string name="limit_groups_for_unpaid">\nДостигнут лимит тем обычной версии. Чтобы создавать больше разделов, получите версию PLUS.\n</string>
     <string name="menu_ucats_list_layout">Вид списка тем</string>
     <string name="menu_open_archive">Открыть архив</string>
     <string name="delete_note_confirm">\nУдалить заметку?\n</string>
@@ -642,7 +637,7 @@
 
     <string name="info_bookmark_list">\nВы можете удалить темы из закладок долгим нажатием на элемент списка, а также из меню темы.\n</string>
 
-    <string name="info_ucat_list">\nВы можете добавлять свои темы для изучения с любыми записями, которые вам потребуются. В обычной версии можно добавить не более 3 тем.
+    <string name="info_ucat_list">\nВы можете добавлять свои темы для изучения с любыми записями, которые вам потребуются. В обычной версии можно добавить не более 4 тем.
         \n\nДобавленные темы и записи не учитываются в общей статистике, но статистику изучения можно посмотреть в самой теме.
         \n\nЧтобы убрать тему из основного списка без удаления, ее можно поместить в архив. При извлечении из архива тема помещается в верх основного списка.
         \n</string>
@@ -659,5 +654,36 @@
     <string name="set_del_cat_stats_summary">Отображение удаления статистики в меню темы</string>
 
     <string name="errors_count">Ошибки: %d</string>
+
+    <string name="popup_menu_move">Переместить</string>
+    <string name="create_group_title">Новый раздел</string>
+    <string name="edit_group_title">Редактировать раздел</string>
+    <string name="edit_section_title_txt">Название</string>
+    <string name="edit_section_desc_text">Описание</string>
+
+    <string name="delete_group_title">Удалить раздел</string>
+    <string name="delete_group_msg">\nУдалить раздел можно, только если он не содержит никаких тем. Вы можете архивировать, удалить или переместить темы раздела, и после этого у вас будет возможность его удалить.\n</string>
+    <string name="delete_groupt_confirm">\nВы уверены, что хотите удалить данный раздел?\n</string>
+    <string name="delete_process">Удаление …</string>
+
+    <string name="menu_new_group">Создать раздел</string>
+    <string name="menu_delete_group">Удалить раздел</string>
+    <string name="edit_group">Редактировать раздел</string>
+    <string name="move_to_section_btn">Переместить</string>
+    <string name="move_topic_to_title">Переместить тему в …</string>
+
+    <string name="main_list_txt">Основной список ⇑ </string>
+    <string name="no_groups">Пока что нет доступных разделов. Вы можете создать новый раздел из меню страницы или с помощью кнопки ниже.</string>
+    <string name="create_dialog_unpaid_title">Создать раздел</string>
+    <string name="create_new_section_btn">Создать раздел</string>
+
+    <plurals name="topic_plurals">
+        <item quantity="one">Раздел с %1$d темой</item>
+        <item quantity="few">Раздел с %1$d темами</item>
+        <item quantity="many">Раздел с %1$d темами</item>
+        <item quantity="other">Раздел с %1$d темами</item>
+    </plurals>
+
+
 
 </resources>

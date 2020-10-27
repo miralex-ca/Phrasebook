@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.data.DataObject;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -26,9 +28,12 @@ import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
+import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
 import static com.online.languages.study.lang.Constants.ACTION_MOVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
+import static com.online.languages.study.lang.Constants.FOLDER_PICS;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 
@@ -42,13 +47,16 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     private String layout;
 
     private boolean clickActive;
+    private String folder;
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, desc, itemsCount, familiarCount, masteredCount;
+        TextView title, desc, itemsCount, familiarCount, masteredCount, description;
         View wrap, settings, bookmark, bookmarkOn, bookmarkOff, edit,
-                bookmarkWrap, mainWrap, progressWrap, rightEditWrap;
+                bookmarkWrap, mainWrap, progressWrap, rightEditWrap, editMenuItem;
+
+        ImageView icon;
 
 
         MyViewHolder(View view) {
@@ -56,6 +64,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
             title = itemView.findViewById(R.id.title);
             desc = itemView.findViewById(R.id.desc);
+            description = itemView.findViewById(R.id.description);
             itemsCount = itemView.findViewById(R.id.itemsCount);
             wrap = itemView.findViewById(R.id.wrap);
             settings = itemView.findViewById(R.id.settings);
@@ -73,6 +82,8 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             progressWrap = itemView.findViewById(R.id.progress_wrap);
             rightEditWrap = itemView.findViewById(R.id.rightEditWrap);
 
+            icon = itemView.findViewById(R.id.icon);
+
         }
     }
 
@@ -86,6 +97,8 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         layout = appSettings.getString("set_ucat_list", "normal");
 
+        folder = context.getString(R.string.group_pics_folder);
+
     }
 
 
@@ -94,15 +107,15 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         View itemView;
 
-        if (layout.equals("compact")) {
+
+        if (viewType == 3) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
+        } else if (viewType == 2) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_compact, parent, false);
         } else {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item, parent, false);
         }
 
-        if (viewType == 2) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
-        }
 
         return new MyViewHolder(itemView);
     }
@@ -111,7 +124,15 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     @Override
     public int getItemViewType(int position) {
         int type = 1;
-        if (dataList.get(position).id.equals("last")) type = 2;
+
+        DataObject dataObject = dataList.get(position);
+
+        if (layout.equals("compact")) type = 2;
+
+        if (layout.equals("mixed") && !dataObject.type.equals(PARAM_GROUP)) type = 2;
+
+        if (dataObject.id.equals("last")) type = 3;
+
 
         return type;
     }
@@ -154,16 +175,51 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         if (dataObject.count < 1) {
             holder.bookmarkWrap.setVisibility(View.GONE);
+        } else {
+            holder.bookmarkWrap.setVisibility(View.VISIBLE);
         }
 
 
         if (dataObject.type != null && dataObject.type.equals(PARAM_GROUP)) {
-            String desc = "Group of topics: " + dataObject.count;
-            holder.desc.setText(desc);
+
             holder.progressWrap.setVisibility(View.GONE);
             holder.rightEditWrap.setVisibility(View.GONE);
+            holder.description.setVisibility(View.VISIBLE);
+
+            String desc =
+              context.getResources().getQuantityString(R.plurals.topic_plurals, dataObject.count, dataObject.count);
+
+            if (dataObject.desc.equals(PARAM_EMPTY)) {
+
+                holder.description.setText(desc);
+
+            } else {
+                holder.description.setText(dataObject.desc);
+                holder.desc.setText(desc);
+
+            }
+
+            if (emptyImage(dataObject.image)) {
+                holder.icon.setVisibility(View.GONE);
+            } else {
+
+                holder.icon.setVisibility(View.VISIBLE);
+
+                Picasso.with( context )
+                        .load(FOLDER_PICS + folder + dataObject.image)
+                        .fit()
+                        .centerCrop()
+                        .transform(new RoundedCornersTransformation(10,0))
+                        .into(holder.icon);
+            }
+
+
         } else {
             holder.progressWrap.setVisibility(View.VISIBLE);
+            holder.rightEditWrap.setVisibility(View.VISIBLE);
+            holder.description.setVisibility(View.GONE);
+            holder.icon.setVisibility(View.GONE);
+
            // holder.rightEditWrap.setVisibility(View.VISIBLE);
         }
 
@@ -215,6 +271,16 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
     }
 
 
+    private boolean emptyImage(String picName) {
+
+        boolean noImage = false;
+
+        if (picName.equals("none") || picName.equals("empty.png") || picName.equals("")) {
+            noImage = true;
+        }
+
+        return noImage;
+    }
 
     private void setBookmark (DataObject dataObject, View bookmarkOn, View bookmarkOff) {
 
@@ -243,6 +309,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         View moveToTop = view.findViewById(R.id.moveToTop);
         View moveToGroup = view.findViewById(R.id.moveToGroup);
+        View edit = view.findViewById(R.id.edit_from_menu);
         View archive = view.findViewById(R.id.archive);
 
 
@@ -260,6 +327,13 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             }
         });
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickActionPopup(dataObject, ACTION_EDIT_GROUP);
+            }
+        });
+
 
         archive.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -268,7 +342,10 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             }
         });
 
-        if(dataObject.type.equals("group")) moveToGroup.setVisibility(View.GONE);
+        if(dataObject.type.equals("group")) {
+            moveToGroup.setVisibility(View.GONE);
+            edit.setVisibility(View.VISIBLE);
+        }
 
 
 

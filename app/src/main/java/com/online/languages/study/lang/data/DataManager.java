@@ -24,6 +24,7 @@ import java.util.Map;
 import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_POPULATE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
@@ -587,6 +588,38 @@ public class DataManager {
 
         ArrayList<DataObject> list = dbHelper.getUCatsListUnpaid(limit);
 
+        for (DataObject ucat: list) {
+
+            if (ucat.type.equals(PARAM_GROUP)) {
+
+                if (!ucat.parent.equals(PARAM_UCAT_ARCHIVE)) {
+
+                    ucat.parent = PARAM_UCAT_ROOT;
+                }
+
+            } else {
+
+                boolean found = false;
+
+                for (DataObject cat: list) {
+
+                    if (cat.type.equals(PARAM_GROUP)) {
+
+                        if (ucat.parent.equals(cat.id) || ucat.parent.equals(PARAM_UCAT_ARCHIVE)) {
+                            found = true;
+                           // Toast.makeText(context, "Found: " + ucat.title, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+                if (!found) {
+                    ucat.parent = PARAM_UCAT_ROOT;
+                }
+            }
+        }
+
+
+        //Toast.makeText(context, "Size: " + list.size(), Toast.LENGTH_SHORT).show();
 
         ArrayList<DataObject> cutList = new ArrayList<>();
 
@@ -595,7 +628,6 @@ public class DataManager {
             for (DataObject ucat: list) {
 
                 if (!ucat.parent.contains(UC_PREFIX)) {
-
                     cutList.add(ucat);
 
                 }
@@ -608,6 +640,9 @@ public class DataManager {
             }
 
         }
+
+
+
 
         //Toast.makeText(context, "Check: " + cutList.size(), Toast.LENGTH_SHORT).show();
 
@@ -779,18 +814,27 @@ public class DataManager {
     }
 
 
-    public ArrayList<DataObject> getGroupsForDialog(boolean includeMain) {
+    public ArrayList<DataObject> getGroupsForDialog(String currentGroup) {
 
         DataObject mainListGroup = new DataObject();
-        mainListGroup.title = "Main list";
+        mainListGroup.title = context.getString(R.string.main_list_txt);
         mainListGroup.id = PARAM_UCAT_ROOT;
 
         ArrayList<DataObject> groups =  new ArrayList<>();
-        if (includeMain) groups.add(mainListGroup);
+        groups.add(mainListGroup);
 
         groups.addAll(dbHelper.getUGroupsListForSet(PARAM_UCAT_ROOT));
 
-        return groups;
+        ArrayList<DataObject> groupsForDialog = new ArrayList<>();
+
+        for (DataObject group: groups) {
+
+            if (!group.id.equals(currentGroup) ) {
+                groupsForDialog.add(group);
+            }
+        }
+
+        return groupsForDialog;
 
     }
 
@@ -804,6 +848,15 @@ public class DataManager {
         groupObject.count = cats.get(0).count;
 
         return groupObject;
+
+    }
+
+    public int getGroupsCount() {
+        int count = 0;
+
+        count = dbHelper.getGroupsCount();
+
+        return count;
 
     }
 

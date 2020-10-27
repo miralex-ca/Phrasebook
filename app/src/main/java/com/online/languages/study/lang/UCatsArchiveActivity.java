@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import com.online.languages.study.lang.adapters.ArchiveAdapter;
 import com.online.languages.study.lang.adapters.DataModeDialog;
+import com.online.languages.study.lang.adapters.NewGroupDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -32,6 +33,7 @@ import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
+import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -151,6 +153,14 @@ public class UCatsArchiveActivity extends BaseActivity {
 
     }
 
+    private void editGroupFromList(DataObject group) {
+
+      //  newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
+
+       // newGroupDialog.showCustomDialog(getString(R.string.edit_group_title), ACTION_EDIT_GROUP, group );
+
+    }
+
 
     public void openCompleteList(View view) {
 
@@ -187,8 +197,6 @@ public class UCatsArchiveActivity extends BaseActivity {
         if (!dataManager.plus_Version) {
             completeList = dataManager.getUcatsListForUnpaid(PARAM_UCAT_ARCHIVE);
         }
-
-
 
 
         ArrayList<DataObject> displayList = new ArrayList<>(completeList);

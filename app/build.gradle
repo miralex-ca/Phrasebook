@@ -75,7 +75,7 @@ android {
             dimension "mode"
             applicationId 'com.study.languages.english'
             resValue("string", "applicationId", applicationId)
-            resConfigs 'fr', 'ru'
+            resConfigs 'fr', 'ru', 'en'
         }
 
 

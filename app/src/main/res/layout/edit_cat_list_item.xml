@@ -7,13 +7,15 @@
     android:paddingTop="10dp"
     android:paddingBottom="12dp"
     android:paddingLeft="20dp"
-    android:paddingRight="16dp"
+    android:paddingRight="0dp"
     android:focusable="true"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground">
 
 
     <LinearLayout
+        android:id="@+id/text_wrapper"
+        android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,7 +23,10 @@
 
         <TextView
             android:textSize="19dp"
+            android:layout_marginRight="30dp"
             android:id="@+id/title"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             />
@@ -34,6 +39,9 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_marginRight="30dp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textSize="12sp"
                 android:id="@+id/desc"
                 android:minWidth="110dp"
@@ -45,6 +53,8 @@
             <TextView
                 android:layout_marginLeft="16dp"
                 android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:id="@+id/itemsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,19 +67,19 @@
 
 
     <RelativeLayout
-        android:visibility="gone"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_marginRight="0dp"
+            android:id="@+id/icon"
+            android:layout_height="35dp"
+            android:layout_width="40dp"
+            />
 
-        <TextView
-            android:textSize="10dp"
-            android:text="10/20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 

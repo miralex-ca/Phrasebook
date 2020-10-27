@@ -37,6 +37,7 @@ import java.util.Map;
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
+import static com.online.languages.study.lang.Constants.GROUPS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
@@ -52,6 +53,7 @@ import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
 import static com.online.languages.study.lang.Constants.TAB_ITEMS;
 import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
+import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_OFF;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
@@ -678,7 +680,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public String[] createGroup(String catTitle) {
+    public String[] createGroup(DataObject groupObject) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -686,8 +688,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
-        values.put(KEY_UCAT_TITLE, catTitle);
-        values.put(KEY_UCAT_DESC, "");
+        values.put(KEY_UCAT_TITLE, groupObject.title);
+        values.put(KEY_UCAT_DESC, groupObject.desc);
+        values.put(KEY_UCAT_ICON, groupObject.image);
         values.put(KEY_UCAT_PARAMS, "");
         values.put(KEY_UCAT_PARENT, "");
         values.put(KEY_UCAT_TYPE, PARAM_GROUP);
@@ -724,17 +727,19 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public void updateGroup(String catTitle, String group_id) {
+    public void updateGroup(DataObject groupObject) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_UCAT_TITLE, catTitle);
+        values.put(KEY_UCAT_TITLE, groupObject.title);
+        values.put(KEY_UCAT_DESC, groupObject.desc);
+        values.put(KEY_UCAT_ICON, groupObject.image);
 
 
         db.update(TABLE_USER_DATA_CATS, values,
                 KEY_UCAT_ID +" = ?",
-                new String[] { String.valueOf(group_id)});
+                new String[] { String.valueOf(groupObject.id)});
 
 
         db.close();
@@ -1330,7 +1335,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null, null, null, null, KEY_UCAT_UPDATED_SORT + " DESC", String.valueOf(limit));
+        Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null, null,
+                null, null, null,
+                KEY_UCAT_UPDATED_SORT + " DESC");
+
+        int topicCount = 0;
+        int groupCount = 0;
 
         try {
             while (cursor.moveToNext()) {
@@ -1341,10 +1351,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 category.desc = cursor.getString(cursor.getColumnIndex(KEY_UCAT_DESC));
                 category.parent = cursor.getString(cursor.getColumnIndex(KEY_UCAT_PARENT));
 
+                category.time_created = cursor.getLong(cursor.getColumnIndex(KEY_UCAT_CREATED));
+
                 category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
                 if (category.type == null) category.type = "";
 
-                categories.add(category);
+                category.image = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ICON));
+                if (category.image == null) category.image = "";
+
+                if (category.type.equals(PARAM_GROUP) ) {
+                    if (groupCount < GROUPS_UNPAID_LIMIT) {
+                        categories.add(category);
+                        groupCount++;
+                    }
+                } else {
+                    if (topicCount < UCATS_UNPAID_LIMIT) {
+                        categories.add(category);
+                        topicCount++;
+                    }
+                }
+
             }
 
         } finally {
@@ -1378,6 +1404,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
                 if (category.type == null) category.type = "";
+
+                category.image = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ICON));
+                if (category.image == null) category.image = "";
 
                 if (!category.parent.contains(UC_PREFIX)) // disable to display all cats and groups
                     categories.add(category);
@@ -1414,6 +1443,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 category.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
                 if (category.type == null) category.type = "";
+
+                category.image = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ICON));
+                if (category.image == null) category.image = "";
 
                 categories.add(category);
             }
@@ -1464,6 +1496,28 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         return categories;
+    }
+
+    public int getGroupsCount() {
+
+
+        int count = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor;
+
+        cursor = db.query(TABLE_USER_DATA_CATS,  null, KEY_UCAT_TYPE +" = ?",
+                new String[]{PARAM_GROUP}, null, null, null);
+
+
+        count = cursor.getCount();
+
+        cursor.close();
+
+        db.close();
+
+        return count;
     }
 
     public ArrayList<DataObject> getUCatsListItemsCount(ArrayList<DataObject> categories) {
@@ -3706,6 +3760,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         dataObject.type = cursor.getString(cursor.getColumnIndex(KEY_UCAT_TYPE));
         if (dataObject.type == null) dataObject.type = "";
+
+        dataObject.image = cursor.getString(cursor.getColumnIndex(KEY_UCAT_ICON));
+        if (dataObject.image == null) dataObject.image = "";
 
         return dataObject;
     }

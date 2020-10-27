@@ -155,6 +155,7 @@ public class Constants {
     public static final String ACTION_CHANGE_ORDER = "change_order";
     public static final String ACTION_ARCHIVE = "archive";
     public static final String ACTION_MOVE = "move";
+    public static final String ACTION_EDIT_GROUP = "edit_group";
 
 
     public static final String STATUS_NEW = "new";
@@ -181,6 +182,7 @@ public class Constants {
     public static final String CAT_LIST_VIEW_NORM = "normal";
     public static final String CAT_LIST_VIEW_COMPACT = "COMPACT";
     public static final String CAT_LIST_VIEW_CARD = "card";
+    public static String CAT_LIST_VIEW_DEFAULT = CAT_LIST_VIEW_CARD;
 
     public static final String EXTRA_NOTE_ID = "note_id";
     public static final String EXTRA_NOTE_ACTION = "note_action";
@@ -192,7 +194,6 @@ public class Constants {
     public static final String HOME_TAB_ACTIVE = "home_tab_active";
 
     public static final String SAVED_IMG_LINK = "saved_img";
-
 
     public static final String UC_PREFIX = "uc_";
     public static final String UD_PREFIX = "ud_";
@@ -213,7 +214,8 @@ public class Constants {
     public static final int UCAT_LIST_LIMIT = 20;  // normal 20
     public static final int NOTES_LIST_LIMIT = 30;  // normal 30
 
-    public static final int UCATS_UNPAID_LIMIT = 3;  // normal 3
+    public static final int UCATS_UNPAID_LIMIT = 4;  // normal 4
+    public static final int GROUPS_UNPAID_LIMIT = 2;  // normal 4
 
     public static final int UDATA_LIMIT_UNPAID = 20;  // normal 20
     public static final int UDATA_LIMIT = 100;

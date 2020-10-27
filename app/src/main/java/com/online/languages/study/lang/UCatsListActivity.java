@@ -50,10 +50,12 @@ import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
+import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
 import static com.online.languages.study.lang.Constants.ACTION_MOVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.GROUPS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
@@ -116,6 +118,9 @@ public class UCatsListActivity extends BaseActivity {
     boolean typeGroup;
     DataObject groupObject;
 
+    NewGroupDialog newGroupDialog;
+    InfoDialog infoDialog;
+
 
 
     @Override
@@ -143,6 +148,7 @@ public class UCatsListActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         uGroup = getIntent().getStringExtra(EXTRA_CAT_ID);
+        infoDialog = new InfoDialog(this);
 
         setTitle(R.string.user_vocabulary_title);
 
@@ -217,25 +223,18 @@ public class UCatsListActivity extends BaseActivity {
     public void openCompleteList(View view) {
 
         cutList = false;
-
         updateList();
-
         helperView.clearAnimation();
         setWrapContentHeight(helperView);
     }
 
 
-
     public void updateList() {
 
-
         catsList  = getCatList();
-
         adapter = new UCatsListAdapter(this, catsList, this);
-
         recyclerView.setAdapter(adapter);
-
-         checkArchiveIcon();
+        checkArchiveIcon();
 
     }
 
@@ -247,7 +246,7 @@ public class UCatsListActivity extends BaseActivity {
        ArrayList<DataObject> completeList;
 
        if (!dataManager.plus_Version) {
-           completeList =   dataManager.getUcatsListForUnpaid("root");
+           completeList =   dataManager.getUcatsListForUnpaid(uGroup);
        } else {
            if (uGroup.contains(UC_PREFIX)) {
                completeList = dataManager.getUcatsGroup(uGroup);
@@ -322,9 +321,7 @@ public class UCatsListActivity extends BaseActivity {
            } else {
                archiveMenuIcon.setVisible(false);
            }
-
        }
-
     }
 
 
@@ -337,6 +334,7 @@ public class UCatsListActivity extends BaseActivity {
         int checkedItem = 0;
 
         if (listLayout.equals("compact"))  checkedItem = 1;
+        if (listLayout.equals("mixed"))  checkedItem = 2;
 
         builder.setTitle(getString(R.string.set_ucat_layout_dialog_title))
 
@@ -367,6 +365,7 @@ public class UCatsListActivity extends BaseActivity {
 
         String orderValue = getResources().getStringArray(R.array.set_ucat_layout_values)[0];
         if (num == 1) orderValue  = getResources().getStringArray(R.array.set_ucat_layout_values)[1];
+        if (num == 2) orderValue  = getResources().getStringArray(R.array.set_ucat_layout_values)[2];
 
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putString("set_ucat_list", orderValue);
@@ -425,16 +424,15 @@ public class UCatsListActivity extends BaseActivity {
         if (type.equals(ACTION_UPDATE)) openCatEdit(dataObject);
 
         if (type.equals(ACTION_CHANGE_ORDER)) {
-
             dataManager.dbHelper.updateUCatSortTime(dataObject);
-
             checkListAnimation();
-
         }
 
         if (type.equals(ACTION_ARCHIVE)) archiveCat(dataObject);
 
         if (type.equals(ACTION_MOVE)) moveToGroup(dataObject);
+
+        if (type.equals(ACTION_EDIT_GROUP)) editGroupFromList(dataObject);
 
         checkArchiveIcon();
 
@@ -444,23 +442,21 @@ public class UCatsListActivity extends BaseActivity {
 
         DataObject data = new DataObject();
         data.id = dataObject.id;
-
         dataManager.dbHelper.archiveUCat(dataObject);
-
         checkListAnimation();
     }
 
     public void moveToGroup(DataObject dataObject) {
-
         buildDialog(dataObject);
-
     }
+
 
     public ArrayList<DataObject> getGroups() {
 
         // Toast.makeText(this, "Groups: " + groups.size(), Toast.LENGTH_SHORT).show();
 
-        return dataManager.getGroupsForDialog(!uGroup.equals(PARAM_UCAT_ROOT));
+        return dataManager.getGroupsForDialog(uGroup);
+        
 
     }
 
@@ -474,9 +470,12 @@ public class UCatsListActivity extends BaseActivity {
 
         View content = inflater.inflate(R.layout.dialog_move_group, null);
 
+
         groupList = content.findViewById(R.id.recycler_view);
 
         groupsDataList = getGroups();
+
+
 
         groupIndexSelected = -1;
 
@@ -490,25 +489,43 @@ public class UCatsListActivity extends BaseActivity {
 
         ViewCompat.setNestedScrollingEnabled(groupList, false);
 
+        if (groupsDataList.size() < 1) {
+            View noGroups = content.findViewById(R.id.noGroups);
+            noGroups.setVisibility(View.VISIBLE);
+        }
+
         dialog.setView(content);
 
-        dialog.setNegativeButton(R.string.cancel_txt,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+        if (groupsDataList.size() < 1) {
 
-        dialog.setPositiveButton(R.string.apply_btn,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+            dialog.setNegativeButton(R.string.dialog_close_txt,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+        } else {
 
-                        if (groupIndexSelected > -1)
-                        moveCategoryToGroup(categoryObject, groupsDataList.get(groupIndexSelected));
+            dialog.setNegativeButton(R.string.cancel_txt,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
 
-                        dialog.cancel();
-                    }
-                });
+            dialog.setPositiveButton(R.string.move_to_section_btn,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            if (groupIndexSelected > -1) {
+                                moveCategoryToGroup(categoryObject, groupsDataList.get(groupIndexSelected));
+                            }
+
+                            dialog.cancel();
+                        }
+                    });
+        }
+
 
 
         alert = dialog.create();
@@ -518,12 +535,25 @@ public class UCatsListActivity extends BaseActivity {
         Button yesButton =  alert.getButton(AlertDialog.BUTTON_POSITIVE);
         yesButton.setEnabled(false);
 
-        int dialogHeight = getResources().getInteger(R.integer.icon_dialog_height);
 
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(alert.getWindow().getAttributes());
-        int dialogWidth = lp.width;
-        alert.getWindow().setLayout(dialogWidth, dpToPixels(this, dialogHeight));
+        Button createBtn = content.findViewById(R.id.createGroupBtn);
+
+        createBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                alert.dismiss();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        newGroup();
+                    }
+                }, 150);
+
+            }
+        });
+
 
     }
 
@@ -535,7 +565,6 @@ public class UCatsListActivity extends BaseActivity {
         DataObject updateGroupObject = dataManager.getGroupData(groupObject.id);
 
         int count = updateGroupObject.count;
-
 
         for (int i = 0; i < catsList.size(); i ++) {
 
@@ -736,14 +765,11 @@ public class UCatsListActivity extends BaseActivity {
 
             if (listSize >= UCATS_UNPAID_LIMIT) {
 
-                PremiumDialog infoDialog = new PremiumDialog(this);
-
-                infoDialog.createDialog(getString(R.string.plus_version_btn), getString(R.string.limit_cats_for_unpaid));
+                PremiumDialog premiumDialog = new PremiumDialog(this);
+                premiumDialog.createDialog(getString(R.string.plus_version_btn), getString(R.string.limit_cats_for_unpaid));
 
             } else {
-
                 createNewCat( );
-
             }
 
 
@@ -761,21 +787,40 @@ public class UCatsListActivity extends BaseActivity {
 
     }
 
-    public void createNewGroup(String title ) {
+    public void createNewGroup(DataObject groupObject ) {
 
-        String[] catData = dataManager.dbHelper.createGroup( title );
-        checkListAnimation();
+            dataManager.dbHelper.createGroup( groupObject );
+            checkListAnimation();
 
     }
 
-    public void updateGroup(String title, String id ) {
 
-        dataManager.dbHelper.updateGroup( title, id );
-
+    public void updateGroup(DataObject groupObject) {
+        dataManager.dbHelper.updateGroup( groupObject );
         setGroupData();
-
     }
 
+    public void updateGroupFromList(DataObject groupObject) {
+
+        dataManager.dbHelper.updateGroup( groupObject );
+
+        DataObject updateGroupObject = dataManager.getGroupData(groupObject.id);
+
+        for (int i = 0; i < catsList.size(); i ++) {
+
+            DataObject cat = catsList.get(i);
+
+            if (cat.id.equals(groupObject.id)) {
+                catsList.get(i).title = updateGroupObject.title;
+                catsList.get(i).desc = updateGroupObject.desc;
+                catsList.get(i).image = updateGroupObject.image;
+
+                adapter.notifyItemChanged(i);
+            }
+
+        }
+
+    }
 
     public void openCatEdit(DataObject dataObject) {
         Intent i = new Intent(this, MyCatEditActivity.class);
@@ -841,39 +886,62 @@ public class UCatsListActivity extends BaseActivity {
 
     private void newGroup() {
 
-        NewGroupDialog newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
+        int count = dataManager.getGroupsCount();
 
-        newGroupDialog.showCustomDialog("New group");
+        if (!dataManager.plus_Version && count >= GROUPS_UNPAID_LIMIT  ) {
 
+            //infoDialog.simpleDialog(getString(R.string.create_dialog_unpaid_title), getString(R.string.create_dialog_unpaid_txt));
+
+            PremiumDialog premiumDialog = new PremiumDialog(this);
+            premiumDialog.createDialog(getString(R.string.create_dialog_unpaid_title), getString(R.string.limit_groups_for_unpaid));
+
+        } else {
+
+            newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
+            newGroupDialog.showCustomDialog(getString(R.string.create_group_title));
+
+        }
     }
 
     private void editGroup() {
 
-        NewGroupDialog newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
+        newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
 
-        DataItem dataItem = new DataItem();
-        dataItem.id = uGroup;
-        dataItem.item =  groupObject.title;
+        newGroupDialog.showCustomDialog(getString(R.string.edit_group_title), ACTION_UPDATE, groupObject );
 
-        newGroupDialog.showCustomDialog("Edit group", ACTION_UPDATE, dataItem );
+    }
+
+    private void editGroupFromList(DataObject group) {
+
+        newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
+
+        newGroupDialog.showCustomDialog(getString(R.string.edit_group_title), ACTION_EDIT_GROUP, group );
+
+    }
+
+
+    public void checkPic(View view) {
+
+        View icon = view.findViewById(R.id.icon);
+
+        int t = (int) icon.getTag();
+
+        newGroupDialog.updateList( t);
 
     }
 
     private void deleteGroup() {
 
-        InfoDialog infoDialog = new InfoDialog(this);
 
         DataObject group = dataManager.getGroupData(uGroup);
 
         if (group.count > 0) {
-            infoDialog.simpleDialog("Delete group", "Can't delete");
+            infoDialog.simpleDialog(getString(R.string.delete_group_title), getString(R.string.delete_group_msg));
         } else {
 
             confirmDeletion(uGroup);
 
-
         }
-
 
     }
 
@@ -881,11 +949,10 @@ public class UCatsListActivity extends BaseActivity {
     private void confirmDeletion(final String id) {
 
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle(R.string.confirmation_txt);
-        builder.setMessage(R.string.ucat_delete_confirm);
+        builder.setMessage(R.string.delete_groupt_confirm);
 
         builder.setCancelable(false);
 
@@ -913,7 +980,7 @@ public class UCatsListActivity extends BaseActivity {
 
         int num =  dataManager.dbHelper.deleteUCat(id);
 
-        Toast.makeText(this, "Deletion ..." , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.delete_process , Toast.LENGTH_SHORT).show();
 
         finish();
 
@@ -929,7 +996,10 @@ public class UCatsListActivity extends BaseActivity {
         editGroupMenuIcon = menu.findItem(R.id.edit_group);
         deleteGroupMenuIcon = menu.findItem(R.id.delete_group);
 
+        MenuItem archiveMenuItem = menu.findItem(R.id.archive_item);
+
         if (typeGroup) {
+            archiveMenuItem.setVisible(false);
             newGroupMenuIcon.setVisible(false);
             editGroupMenuIcon.setVisible(true);
             deleteGroupMenuIcon.setVisible(true);

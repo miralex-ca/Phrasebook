@@ -23,6 +23,9 @@
     <integer name="img_picker_span">4</integer>
 
     <integer name="ucat_title_limit">45</integer>
+    <integer name="ucat_desc_limit">60</integer>
+
+    <integer name="img_group_picker_span">5</integer>
 
 
 </resources>

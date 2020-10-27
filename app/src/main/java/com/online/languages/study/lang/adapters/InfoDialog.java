@@ -73,6 +73,7 @@ public class InfoDialog {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
         builder.setTitle(title)
                 .setCancelable(true)
                 .setNegativeButton(R.string.dialog_close_txt,

@@ -165,5 +165,7 @@
     <integer name="_ex_opt_txt_size_small">20</integer>
     <integer name="_ex_opt_txt_size_smallest">19</integer>
 
+    <integer name="img_group_picker_span">6</integer>
+
 
 </resources>

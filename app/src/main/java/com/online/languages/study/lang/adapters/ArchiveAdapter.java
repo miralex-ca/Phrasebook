@@ -27,6 +27,8 @@ import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 
 
@@ -122,6 +124,18 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
         }
 
 
+        if (dataObject.type != null && dataObject.type.equals(PARAM_GROUP)) {
+
+            String description =
+                    context.getResources().getQuantityString(R.plurals.topic_plurals, dataObject.count, dataObject.count);
+
+            holder.desc.setText(description);
+
+            holder.itemsCount.setText(PARAM_EMPTY);
+
+        }
+
+
 
         holder.wrap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +186,10 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
         View edit = view.findViewById(R.id.edit);
         View archive = view.findViewById(R.id.archive);
 
+        if (dataObject.type != null && dataObject.type.equals(PARAM_GROUP)) {
+            edit.setVisibility(View.GONE);
+        }
+
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,7 +204,6 @@ public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHo
                 clickActionPopup(dataObject, ACTION_ARCHIVE);
             }
         });
-
 
 
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

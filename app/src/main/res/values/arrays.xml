@@ -254,8 +254,36 @@
         <item>pine-tree.png</item>
         <item>calendar.png</item>
         <item>laptop.png</item>
+    </string-array>
 
+    <string name="group_pics_folder" translatable="false">cat/section/</string>
 
+    <string-array name="group_pics_list">
+        <item>empty.png</item>
+        <item>folder.png</item>
+        <item>folder_red.png</item>
+        <item>folder_green.png</item>
+        <item>folder_gray.png</item>
+        <item>text.png</item>
+        <item>contacts.png</item>
+        <item>travel.png</item>
+        <item>city.png</item>
+        <item>shop.png</item>
+        <item>food.png</item>
+        <item>nature.png</item>
+        <item>health.png</item>
+        <item>house.png</item>
+        <item>basketball.png</item>
+        <item>school.png</item>
+        <item>misc.png</item>
+        <item>calendar.png</item>
+        <item>info.png</item>
+        <item>check.png</item>
+        <item>minus.png</item>
+        <item>pine-tree.png</item>
+        <item>food_apple.png</item>
+        <item>laptop.png</item>
+        <item>halloween.png</item>
     </string-array>
 
 
@@ -268,11 +296,13 @@
     <string-array name="set_ucat_layout_list">
         <item>@string/set_ucat_layout_1</item>
         <item>@string/set_ucat_layout_2</item>
+        <item>@string/set_ucat_layout_3</item>
     </string-array>
 
     <string-array name="set_ucat_layout_values">
         <item>@string/set_ucat_layout_default</item>
         <item>compact</item>
+        <item>mixed</item>
     </string-array>
 
     <string name="set_ucat_layout_default" translatable="false">normal</string>

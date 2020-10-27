@@ -646,7 +646,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="info_bookmark_list">\nYou can remove a topic from bookmarks by long clicking on a list item, or you can remove the bookmark in the topic menu.\n</string>
 
-    <string name="info_ucat_list">\nYou can add your own topics with any items you need. In the basic version, you can add up to 3 topics.
+    <string name="info_ucat_list">\nYou can add your own topics with any items you need. In the basic version, you can add up to 4 topics.
         \n\nTopics and items that you add are not included in the general statistics, but their test results and item statuses can be viewed on the topic\'s page.
        \n\nTo remove a topic from the main list without deleting it, you can archive it. If you unarchive a topic, it is placed at the top of the main list.  \n</string>
 
@@ -662,5 +662,33 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="set_del_cat_stats">Topic stats deletion</string>
     <string name="set_del_cat_stats_summary">Display stats deletion button in the topic menu</string>
     <string name="errors_count">Errors: %d</string>
+
+    <string name="popup_menu_move">Move</string>
+    <string name="create_group_title">New section</string>
+    <string name="edit_group_title">Edit section</string>
+    <string name="edit_section_title_txt">Title</string>
+    <string name="edit_section_desc_text">Description</string>
+    <string name="delete_group_title">Delete section</string>
+    <string name="delete_group_msg">\nSection can only be deleted if it doesn\'t include any topics. You can archive, delete or move topics from the section and then you will be able to delete it.\n</string>
+    <string name="delete_groupt_confirm">\nAre you sure you want to delete this section?\n</string>
+    <string name="delete_process">Deletion …</string>
+    <string name="menu_new_group">Create new section</string>
+    <string name="menu_delete_group">Delete section</string>
+    <string name="edit_group">Edit section info</string>
+    <string name="move_to_section_btn">Move</string>
+    <string name="move_topic_to_title">Move topic to …</string>
+    <string name="main_list_txt">Main list ⇑ </string>
+    <string name="no_groups">There aren\'t any sections available yet. You can create a new section from the page menu or using the button below.</string>
+
+    <string name="create_dialog_unpaid_title">Create a new section</string>
+    <string name="create_new_section_btn">Create new section</string>
+    <string name="limit_groups_for_unpaid">\nOnly 2 sections can be created in the basic version. Get PLUS version to create more groups.\n</string>
+
+    <string name="set_ucat_layout_3">Mixed (compact only for topics)</string>
+
+    <plurals name="topic_plurals">
+        <item quantity="one">Section with %1$d topic</item>
+        <item quantity="other">Section with %1$d topics</item>
+    </plurals>
 
 </resources>
