@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
@@ -221,7 +222,7 @@ public class CatSimpleListActivity extends BaseActivity {
 
     public void updateLayoutStatus() {
 
-        String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listWrapper.setVisibility(View.GONE);
@@ -230,8 +231,6 @@ public class CatSimpleListActivity extends BaseActivity {
             listWrapperCompact.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
         }
-
-
 
         updateList();
     }
@@ -447,7 +446,7 @@ public class CatSimpleListActivity extends BaseActivity {
 
         private void applyLayoutStatus() {
 
-            String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+            String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
             if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
                 changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
@@ -458,12 +457,14 @@ public class CatSimpleListActivity extends BaseActivity {
 
     public void changeLayoutStatus() {
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listType = CAT_LIST_VIEW_NORM;
         } else {
+
             listType = CAT_LIST_VIEW_COMPACT;
+
         }
 
         SharedPreferences.Editor editor = appSettings.edit();
@@ -471,7 +472,6 @@ public class CatSimpleListActivity extends BaseActivity {
         editor.apply();
 
          updateLayoutStatus();
-
          applyLayoutStatus();
     }
 

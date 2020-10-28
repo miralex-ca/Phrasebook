@@ -256,10 +256,10 @@
 
     <string name="purchase_txt"> </string>
 
-
-    <string name="purchase_txt_1">Создавайте неограниченное количество тем!</string>
-    <string name="purchase_txt_2">Добавляйте до 100 записей в тему!</string>
-    <string name="purchase_txt_3">Отсутствие рекламы!</string>
+    <string name="purchase_txt_1">Неограниченное количество собственных тем!</string>
+    <string name="purchase_txt_2">Неограниченное количество собственных разделов!</string>
+    <string name="purchase_txt_3">Добавляйте до 100 записей в тему!</string>
+    <string name="purchase_txt_4">Отсутствие рекламы!</string>
 
 
     <string name="get_premium_thank">Спасибо!</string>
@@ -537,8 +537,6 @@
 
     <string name="archive_item_date">Создано:  %s</string>
     <string name="archive_item_date_short">Дата: %s</string>
-
-
 
     <string name="udata_limit_dialog_title">Достигнут лимит</string>
     <string name="udata_limit_dialog_text">\nВ тему можно добавить не более %s записей.\n</string>

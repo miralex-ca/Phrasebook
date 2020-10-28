@@ -276,7 +276,7 @@
 
         <SwitchPreferenceCompat
             android:key="download_notification"
-            android:title="Оповещение о загрузке"
+            android:title="Download notification"
             android:summaryOff ="Не отображается"
             android:summaryOn ="Отображается в строке состояния"
             android:defaultValue="false" />

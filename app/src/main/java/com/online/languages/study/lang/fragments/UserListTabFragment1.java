@@ -44,6 +44,7 @@ import java.util.Iterator;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
 
@@ -177,7 +178,7 @@ public class UserListTabFragment1 extends Fragment {
 
     public void updateLayoutStatus() {
 
-        String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
 
         setWrapContentHeight(itemsList);
@@ -191,14 +192,14 @@ public class UserListTabFragment1 extends Fragment {
             listWrapper.setVisibility(View.GONE);
             listWrapperCard.setVisibility(View.GONE);
             listWrapperCompact.setVisibility(View.VISIBLE);
-        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
-            listWrapper.setVisibility(View.GONE);
-            listWrapperCompact.setVisibility(View.GONE);
-            listWrapperCard.setVisibility(View.VISIBLE);
-        } else {
+        } else if (listType.equals(CAT_LIST_VIEW_NORM)) {
             listWrapperCompact.setVisibility(View.GONE);
             listWrapperCard.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
+        } else {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.VISIBLE);
         }
 
         updateList();
@@ -381,7 +382,7 @@ public class UserListTabFragment1 extends Fragment {
 
         //Toast.makeText(getActivity() , "Remove", Toast.LENGTH_SHORT).show();
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
 
         if (wordList != null) {
@@ -428,7 +429,7 @@ public class UserListTabFragment1 extends Fragment {
 
         helper.setMinimumHeight(recyclerView.getHeight());  /// TODO list
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         for (int i = 0; i < wordList.size(); i++) {
             if (wordList.get(i).starred < 1) {

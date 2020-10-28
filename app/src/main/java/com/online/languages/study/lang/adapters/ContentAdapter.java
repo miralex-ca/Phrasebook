@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
 
@@ -63,7 +64,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(_context);
 
         if (_layoutType.equals("auto")) {
-            layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+            layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
         } else {
             layoutType = _layoutType;
         }

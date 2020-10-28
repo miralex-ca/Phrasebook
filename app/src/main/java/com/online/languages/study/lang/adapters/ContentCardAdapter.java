@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
 
@@ -97,7 +98,6 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
     public ContentCardAdapter(Context _context, ArrayList<DataItem> _dataList,
                               int _show_status, String _theme, boolean divider, String _layoutType) {
 
-
         dataList = _dataList;
         context = _context;
         showStatus = _show_status;
@@ -110,7 +110,7 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
         speaking = appSettings.getBoolean("set_speak", true);
 
         if (_layoutType.equals("auto")) {
-            layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+            layoutType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
         } else {
             layoutType = _layoutType;
         }

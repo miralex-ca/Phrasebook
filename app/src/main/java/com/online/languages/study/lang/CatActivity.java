@@ -43,6 +43,7 @@ import java.util.Locale;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -551,20 +552,20 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
     private void applyLayoutStatus() {
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
-        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_card);
-        } else {
+        } else if (listType.equals(CAT_LIST_VIEW_NORM)) {
             changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
+        } else {
+            changeLayoutBtn.setIcon(R.drawable.ic_view_list_card);
         }
     }
 
     public void changeLayoutStatus() {
 
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         if (listType.equals(CAT_LIST_VIEW_NORM)) {
             listType = CAT_LIST_VIEW_COMPACT;

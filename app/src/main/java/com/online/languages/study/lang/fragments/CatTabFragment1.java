@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT;
 import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT_DEFAULT;
@@ -149,20 +150,21 @@ public class CatTabFragment1 extends Fragment {
 
     public void updateLayoutStatus() {
 
-      String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_NORM);
+      String listType =  appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
             listWrapper.setVisibility(View.GONE);
             listWrapperCard.setVisibility(View.GONE);
             listWrapperCompact.setVisibility(View.VISIBLE);
-        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
-            listWrapper.setVisibility(View.GONE);
-            listWrapperCompact.setVisibility(View.GONE);
-            listWrapperCard.setVisibility(View.VISIBLE);
-        } else {
+        } else if (listType.equals(CAT_LIST_VIEW_NORM)) {
             listWrapperCompact.setVisibility(View.GONE);
             listWrapperCard.setVisibility(View.GONE);
             listWrapper.setVisibility(View.VISIBLE);
+        } else {
+            listWrapper.setVisibility(View.GONE);
+            listWrapperCompact.setVisibility(View.GONE);
+            listWrapperCard.setVisibility(View.VISIBLE);
+
         }
 
         updateList();

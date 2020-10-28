@@ -3,8 +3,8 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = true;  // TODO change in PRO
-    public static final boolean DEBUG = true;  /// should be true to see ads in debug
+    public static final boolean PRO = false;  // TODO change in PRO
+    public static final boolean DEBUG = false;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -180,9 +180,9 @@ public class Constants {
 
     public static final String CAT_LIST_VIEW = "cat_list_view";
     public static final String CAT_LIST_VIEW_NORM = "normal";
-    public static final String CAT_LIST_VIEW_COMPACT = "COMPACT";
+    public static final String CAT_LIST_VIEW_COMPACT = "compact";
     public static final String CAT_LIST_VIEW_CARD = "card";
-    public static String CAT_LIST_VIEW_DEFAULT = CAT_LIST_VIEW_CARD;
+    public static final String CAT_LIST_VIEW_DEFAULT = CAT_LIST_VIEW_CARD;
 
     public static final String EXTRA_NOTE_ID = "note_id";
     public static final String EXTRA_NOTE_ACTION = "note_action";
