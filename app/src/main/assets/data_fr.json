@@ -944,9 +944,7 @@
     {"id": "1004000300340", "mode": "20", "item": "wristlet", "info": "bracelet", "ipa": "ˈrɪstlɪt", "tr_ru": "ˈристлит"},
     {"id": "1004000300350", "mode": "20", "item": "zipper", "info": "fermeture éclair", "ipa": "ˈzɪpə", "tr_ru": "ˈзипэ"},
 
-
-
-    {"id": "1004000400010", "item": "album", "info": "album"},
+    {"id": "1004000400010", "item": "album", "info": "album", "ipa": "ˈælbəm", "tr_ru": "ˈэлбэм"},
     {"id": "1004000400020", "mode": "-1", "item": "book", "info": "livre", "ipa": "bʊk", "tr_ru": "бук"},
     {"id": "1004000400030", "item": "brochure", "info": "brochure", "ipa": "ˈbrəʊʃjʊə", "tr_ru": "ˈброушйуэ"},
     {"id": "1004000400040", "mode": "-1", "item": "brush", "info": "pinceau", "ipa": "brʌʃ", "tr_ru": "браш"},
@@ -1768,7 +1766,7 @@
     {"id": "1006000500040", "item": "bear", "info": "ours", "ipa": "beə", "tr_ru": "бэа"},
     {"id": "1006000500050", "mode": "20", "item": "camel", "info": "chameau", "ipa": "ˈkæməl", "tr_ru": "ˈкэмэл"},
     {"id": "1006000500060", "mode": "20", "item": "cheetah", "info": "guépard", "ipa": "ˈʧiːtə", "tr_ru": "ˈчи:тэ"},
-    {"id": "1006000500070", "item": "coyote", "info": "coyote", "ipa": "ˈkɔɪəʊt", "tr_ru": "ˈкойоут"},
+    {"id": "1006000500070", "item": "coyote", "info": "coyote", "ipa": "kɔɪˈ(j)əʊt(ɪ)", "tr_ru": "коиˈ(й)оут(и)"},
     {"id": "1006000500080", "mode": "20", "item": "crayfish", "info": "écrevisse", "ipa": "ˈkreɪfɪʃ", "tr_ru": "ˈкрэйфиш"},
     {"id": "1006000500090", "item": "crocodile", "info": "crocodile", "ipa": "ˈkrɒkədaɪl", "tr_ru": "ˈкрокэдайл"},
     {"id": "1006000500100", "mode": "20", "item": "deer", "info": "cerf", "ipa": "dɪə", "tr_ru": "диэ"},

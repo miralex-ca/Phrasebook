@@ -52,8 +52,6 @@ public class CatSimpleListActivity extends BaseActivity {
     SharedPreferences appSettings;
     public String themeTitle;
 
-
-
     public ArrayList<DataItem> exerciseData = new ArrayList<>();
     public ArrayList<DataItem> cardData = new ArrayList<>();
 

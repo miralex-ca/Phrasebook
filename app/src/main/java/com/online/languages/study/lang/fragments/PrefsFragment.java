@@ -22,6 +22,8 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
 
+import java.util.Objects;
+
 
 public class PrefsFragment extends PreferenceFragmentCompat {
 
@@ -106,7 +108,7 @@ public class PrefsFragment extends PreferenceFragmentCompat {
                     public boolean onPreferenceChange(Preference preference, Object newValue) {
                         new android.os.Handler().postDelayed(new Runnable() {
                             public void run() {
-                                Intent intent = getActivity().getIntent();
+                                Intent intent = Objects.requireNonNull(getActivity()).getIntent();
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 getActivity().startActivity(intent);
                             }
