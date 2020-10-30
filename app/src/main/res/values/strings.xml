@@ -690,7 +690,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="no_groups">Aucune section n’est encore disponible. Vous pouvez créer une nouvelle section à partir du menu de la page ou en utilisant le bouton ci-dessous.</string>
 
     <string name="create_dialog_unpaid_title">Créer une nouvelle section</string>
-    <string name="create_new_section_btn">Create new section</string>
+    <string name="create_new_section_btn">Créer une nouvelle section</string>
     <string name="limit_groups_for_unpaid">\nVous avez atteint la limite de sections dans la version basique. Obtenez la version PLUS pour ajouter plus de sections.\n</string>
 
     <string name="set_ucat_layout_3">Mixte (compact uniquement pour les thèmes)</string>
