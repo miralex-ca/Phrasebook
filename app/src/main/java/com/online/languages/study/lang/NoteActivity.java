@@ -94,7 +94,6 @@ public class NoteActivity extends BaseActivity {
 
         setContentView(R.layout.activity_note);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -284,23 +283,16 @@ public class NoteActivity extends BaseActivity {
     }
 
 
-
-
     public void deleteConfirmDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-
         builder.setTitle(R.string.confirmation_txt);
-
         builder.setMessage(R.string.delete_note_confirm);
-
         builder.setCancelable(true);
 
         builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 deleteNote();
 
             }
@@ -316,8 +308,6 @@ public class NoteActivity extends BaseActivity {
         builder.show();
 
     }
-
-
 
 
 

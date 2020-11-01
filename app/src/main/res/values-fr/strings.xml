@@ -648,9 +648,6 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="stats_not_saved_msg">La statistique n’est pas sauvegardée</string>
 
 
-    <string name="info_notes_title">Information</string>
-
-    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste de notes dans la section Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. Vous pouvez modifier le titre, l’icône et le texte d’une note à tout moment. \n</string>
 
     <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
 
@@ -703,8 +700,21 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="notes_archive_title">Archive de notes</string>
     <string name="info_note_archive">\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.  \n</string>
 
-    <string name="first_note_title">@string/info_notes_title</string>
-    <string name="first_note_text">@string/info_note_archive</string>
+
+    <string name="info_notes_title">Information</string>
+
+    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste principales de notes dans la rubrique Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. On peut modifier le titre, l’icône et le texte d’une note à tout moment.
+        \n\nVous pouvez ouvrir un menu d’actionы pour une note en appuyant longuement sur cette note dans la liste principale. Depuis ce menu, la note peut être placée en haut de la liste principale, éditée, archivée ou supprimée.
+        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes. \n</string>
+
+
+    <string name="first_note_title">Rubrique Notes</string>
+
+    <string name="first_note_text">Vous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste principales de notes dans la rubrique Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. On peut modifier le titre, l’icône et le texte d’une note à tout moment.
+        \n\nVous pouvez ouvrir un menu d’actionы pour une note en appuyant longuement sur cette note dans la liste principale. Depuis ce menu, la note peut être placée en haut de la liste principale, éditée, archivée ou supprimée.
+        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.
+
+    </string>
 
 
 </resources>
