@@ -167,5 +167,7 @@
 
     <integer name="img_group_picker_span">6</integer>
 
+    <integer name="popup_position">-180</integer>
+
 
 </resources>

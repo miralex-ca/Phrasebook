@@ -438,9 +438,14 @@ public class MainActivity extends BaseActivity
 
         if (Build.VERSION.SDK_INT < 21) display = false;
 
+        View fabPos = findViewById(R.id.fabPos);
+
         if (bottomNavBox != null) {
             bottomNavDisplay = display;
             if (display)  {
+
+                fabPos.setVisibility(View.VISIBLE);
+
                 bottomNavBox.setVisibility(View.VISIBLE);
 
                 if (navigationView != null) {
@@ -463,6 +468,7 @@ public class MainActivity extends BaseActivity
                             });
                 }
             }  else {
+                fabPos.setVisibility(View.GONE);
                 bottomNavBox.setVisibility(View.GONE);
                 if (navigationView != null) {
                     navigationView.getMenu().setGroupVisible(R.id.grp1, true);
@@ -1251,6 +1257,9 @@ public class MainActivity extends BaseActivity
         if (mHelper != null) mHelper.dispose();
         mHelper = null;
     }
+
+
+
 
 
 }

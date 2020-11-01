@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
+import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
@@ -517,11 +518,22 @@ public class DataManager {
 
         ArrayList<NoteData> notes = dbHelper.getNotes();
 
-        Collections.sort(notes, new TimeNoteComparator());
+        //Collections.sort(notes, new TimeNoteComparator());
 
-        // Collections.sort(notes, new TimeUpdateNoteComparator());
+         Collections.sort(notes, new TimeUpdateNoteComparator());
 
         return notes;
+    }
+
+    public ArrayList<DataObject> getNotesForArchive() {
+
+        ArrayList<NoteData> notes = dbHelper.getNotesListForSet(NOTE_ARCHIVE);
+
+        //Collections.sort(notes, new TimeNoteComparator());
+
+        Collections.sort(notes, new TimeUpdateNoteComparator());
+
+        return convertNotesToObjects(notes);
     }
 
     private class TimeNoteComparator implements Comparator<NoteData> {
@@ -534,7 +546,7 @@ public class DataManager {
     private class TimeUpdateNoteComparator implements Comparator<NoteData> {
         @Override
         public int compare(NoteData o1, NoteData o2) {
-            return o1.time_updated <= o2.time_updated? 1 : -1;
+            return o1.time_updated_sort <= o2.time_updated_sort? 1 : -1;
         }
     }
 
@@ -542,6 +554,18 @@ public class DataManager {
     public String formatTime (long time) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return  sdf.format(new Date(time));
+    }
+
+    public ArrayList<DataObject> convertNotesToObjects(ArrayList<NoteData> notesList) {
+
+        ArrayList<DataObject> list = new ArrayList<>();
+
+        for (NoteData noteData: notesList) {
+
+            list.add(new DataObject(noteData));
+        }
+
+        return list;
     }
 
 
@@ -642,15 +666,13 @@ public class DataManager {
         }
 
 
-
-
-        //Toast.makeText(context, "Check: " + cutList.size(), Toast.LENGTH_SHORT).show();
-
         cutList = dbHelper.getUCatsListItemsCount(cutList);
 
         return cutList;
 
     }
+
+
 
 
 
@@ -857,6 +879,18 @@ public class DataManager {
         count = dbHelper.getGroupsCount();
 
         return count;
+
+    }
+
+
+    public void addNewNote(String title, String content, String image) {
+
+       NoteData note = new NoteData();
+       note.title = title;
+       note.content = content;
+       note.image = image;
+
+       dbHelper.createNote(note);
 
     }
 

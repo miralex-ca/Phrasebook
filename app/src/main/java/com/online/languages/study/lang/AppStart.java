@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.NoteData;
 
 public class AppStart extends AppCompatActivity {
 
@@ -49,6 +50,18 @@ public class AppStart extends AppCompatActivity {
         }
 
         dbHelper.populateDB();
+
+
+        for (int i = 0; i < 1; i ++) {
+
+            NoteData note = new NoteData();
+            note.title = "Note " + (i+1);
+            note.content = "Content";
+            note.image = "info.png";
+
+          //  dbHelper.createNote(note);
+        }
+
 
 
         startActivity(new Intent(this, MainActivity.class));

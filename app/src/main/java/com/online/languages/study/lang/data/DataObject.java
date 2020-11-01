@@ -26,10 +26,25 @@ public class DataObject implements Parcelable {
 
     public long time_created = 0;
     public long time_updated = 0;
+    public long time_updated_sort = 0;
 
 
 
     public DataObject() {
+    }
+
+    public DataObject(NoteData noteData) {
+
+        this.id = noteData.id;
+        this.title = noteData.title;
+        this.text = noteData.content;
+        this.image = noteData.image;
+
+        this.parent = noteData.parent;
+
+        this.time_updated = noteData.time_updated;
+        this.time_updated_sort = noteData.time_updated_sort;
+
     }
 
 

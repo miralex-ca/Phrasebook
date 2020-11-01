@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
@@ -122,12 +123,32 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         holder.mainWrap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              if (! note.id.equals("last"))  fragment.onNoteClick(note);
+                if (! note.id.equals("last"))  fragment.onNoteClick(note);
             }
         });
 
 
 
+        holder.mainWrap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (! note.id.equals("last"))  fragment.onNoteClick(note);
+            }
+        });
+
+        attachLongClickToCat(holder.mainWrap, note);
+
+
+
+    }
+
+    private void attachLongClickToCat(final View view, final NoteData note) {
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            public boolean onLongClick(View arg0) {
+                fragment.onNoteLongClick(note);
+                return true;    // <- set to true
+            }
+        });
     }
 
     @Override

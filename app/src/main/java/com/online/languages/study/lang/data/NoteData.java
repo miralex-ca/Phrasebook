@@ -9,9 +9,11 @@ public class NoteData {
 
     public String status = "";
     public String params = "";
+    public String parent ="";
 
     public long time_created = 0;
     public long time_updated = 0;
+    public long time_updated_sort = 0;
 
     public NoteData() {
     }

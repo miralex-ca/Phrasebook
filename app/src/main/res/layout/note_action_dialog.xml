@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.v7.widget.CardView
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/card_margin_default"
+            app:cardBackgroundColor="?attr/colorDialogBg"
+            style="@style/MenuDialog"
+            app:cardCornerRadius="8dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                >
+
+
+                <LinearLayout
+                    android:id="@+id/navItem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/NoteEditDialogItem"
+                    >
+
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/note_edit_icon_dialog_size"
+                        android:layout_height="@dimen/note_edit_icon_dialog_size"
+                        app:srcCompat="@drawable/ic_action_up"
+                        />
+
+                    <TextView
+
+                        android:layout_gravity="center_vertical"
+                        android:textSize="19sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popup_menu_move_top"
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    android:visibility="gone"
+                    android:background="#48969696"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp" />
+
+                <LinearLayout
+                    android:id="@+id/navItem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/NoteEditDialogItem"
+                    >
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/note_edit_icon_dialog_size"
+                        android:layout_height="@dimen/note_edit_icon_dialog_size"
+                        app:srcCompat="@drawable/ic_action_edit"
+                        />
+
+                    <TextView
+
+                        android:layout_gravity="center_vertical"
+                        android:textSize="19sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popup_menu_edit"
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    android:visibility="gone"
+                    android:background="#48969696"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp" />
+
+                <LinearLayout
+                    android:id="@+id/navItem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/NoteEditDialogItem"
+                    >
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/note_edit_icon_dialog_size"
+                        android:layout_height="@dimen/note_edit_icon_dialog_size"
+                        app:srcCompat="@drawable/ic_action_archive"
+                        />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:textSize="19sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popup_menu_archive"
+                        />
+
+                </LinearLayout>
+
+
+                <View
+                    android:background="#48969696"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp" />
+
+                <LinearLayout
+                    android:id="@+id/navItem4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    style="@style/NoteEditDialogItem"
+
+                    >
+
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/note_edit_icon_dialog_size"
+                        android:layout_height="@dimen/note_edit_icon_dialog_size"
+                        app:srcCompat="@drawable/ic_edit_delete"
+                        />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:textSize="19sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popup_menu_delete"
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

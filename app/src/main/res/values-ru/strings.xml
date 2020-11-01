@@ -682,6 +682,12 @@
         <item quantity="other">Раздел с %1$d темами</item>
     </plurals>
 
+    <string name="notes_archive_title">Архив заметок</string>
+
+    <string name="info_note_archive">\nЧтобы убрать заметку из основного списка без удаления, ее можно поместить в архив. При извлечении из архива заметка помещается в верх основного списка. \n</string>
+
+    <string name="first_note_title">@string/info_notes_title</string>
+    <string name="first_note_text">@string/info_note_archive</string>
 
 
 </resources>

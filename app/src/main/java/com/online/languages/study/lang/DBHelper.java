@@ -18,6 +18,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.DetailFromJson;
 import com.online.languages.study.lang.data.DetailItem;
+import com.online.languages.study.lang.data.InfoNotesManager;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.data.Section;
@@ -38,11 +39,13 @@ import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.GROUPS_UNPAID_LIMIT;
+import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
 import static com.online.languages.study.lang.Constants.NOTE_TAG;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
@@ -390,6 +393,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_UDC_TABLE);
 
 
+        InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
+        infoNotesManager.postStartNotes(DBHelper.this, db);
+
     }
 
 
@@ -398,6 +404,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         populateDB(db);
         sanitizeDB(db);
+
+        InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
+        infoNotesManager.postUpdateNotes(DBHelper.this, db, newVersion);
+
     }
 
 
@@ -894,6 +904,36 @@ public class DBHelper extends SQLiteOpenHelper {
         return dataObject;
     }
 
+    public void updateNoteSortTime(NoteData dataObject) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        dataObject.time_updated = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_NOTE_UPDATED_SORT, dataObject.time_updated );
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
+                KEY_NOTE_ID +" = ?",
+                new String[] { dataObject.id }, null, null, null);
+
+        if (cursor.moveToFirst() ) {
+
+            db.update(TABLE_NOTES_DATA, values,
+                    KEY_NOTE_ID +" = ?",
+                    new String[] { dataObject.id });
+
+            //Toast.makeText(cntx, "Time: " + dataObject.time_updated, Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        cursor.close();
+        db.close();
+
+    }
+
 
     public DataObject archiveUCat(DataObject dataObject) {
        return parentUCat(dataObject, PARAM_UCAT_ARCHIVE);
@@ -930,6 +970,31 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         return dataObject;
+    }
+
+
+    public void parentNote(String noteId, String parent) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+         long time = System.currentTimeMillis();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NOTE_PARENT, parent);
+       // values.put(KEY_NOTE_UPDATED, dataObject.time_updated);
+        values.put(KEY_NOTE_UPDATED_SORT, time );
+
+
+        int n = db.update(TABLE_NOTES_DATA, values,
+                    KEY_NOTE_ID +" = ?",
+                    new String[] { noteId });
+
+
+        //Toast.makeText(cntx, "N " + n, Toast.LENGTH_SHORT).show();
+
+        db.close();
+
+
     }
 
 
@@ -1421,6 +1486,33 @@ public class DBHelper extends SQLiteOpenHelper {
         return categories;
     }
 
+    public ArrayList<NoteData> getNotesListForSet(String set_id) {
+
+
+        ArrayList<NoteData> notes = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null, KEY_NOTE_PARENT +" = ?", new String[]{set_id},
+                null, null, KEY_NOTE_UPDATED_SORT + " DESC");
+
+        try {
+            while (cursor.moveToNext()) {
+
+                NoteData note = getNoteFromCursor(cursor);
+
+                notes.add(note);
+            }
+
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return notes;
+    }
+
 
     public ArrayList<DataObject> getUCatsListForSet(String set_id) {
 
@@ -1603,6 +1695,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
+        createNote(db, note);
+
+        db.close();
+    }
+
+    public void createNote(SQLiteDatabase db, NoteData note) {
+
         long time = System.currentTimeMillis();
 
         ContentValues values = new ContentValues();
@@ -1614,8 +1713,9 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(KEY_NOTE_PARAMS, note.params);
         values.put(KEY_NOTE_CREATED, time );
         values.put(KEY_NOTE_UPDATED, time );
+        values.put(KEY_NOTE_UPDATED_SORT, time );
 
-       long primary_id = db.insert(TABLE_NOTES_DATA, null, values);
+        long primary_id = db.insert(TABLE_NOTES_DATA, null, values);
 
         Cursor cursor = db.query(TABLE_NOTES_DATA,  null,
                 KEY_NOTE_PRIMARY_ID +" = ? " ,
@@ -1636,12 +1736,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         }
 
-
         cursor.close();
 
-
-        db.close();
     }
+
+
 
 
     public void updateNote(NoteData note) {
@@ -1657,7 +1756,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst() ) {
 
            // Toast.makeText(cntx, "FOUND", Toast.LENGTH_SHORT).show();
-
 
             ContentValues values = new ContentValues();
 
@@ -1703,12 +1801,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
         ArrayList<NoteData> items = new ArrayList<>();
 
-        Cursor cursor = db.query(TABLE_NOTES_DATA,  null, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_NOTES_DATA,  null, null, null,
+                null, null, KEY_NOTE_UPDATED_SORT + " DESC");
 
         try {
             while (cursor.moveToNext()) {
 
                 NoteData note  = getNoteFromCursor(cursor);
+
+               // Toast.makeText(cntx, "Parent: " + note.parent, Toast.LENGTH_SHORT).show();
+
+                if (!note.parent.contains(NOTE_ARCHIVE))
+
                 items.add(note);
             }
 
@@ -1760,6 +1864,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         note.time_updated = cursor.getLong(cursor.getColumnIndex(KEY_NOTE_UPDATED));
         note.time_created = cursor.getLong(cursor.getColumnIndex(KEY_NOTE_CREATED));
+        note.time_updated_sort = cursor.getLong(cursor.getColumnIndex(KEY_NOTE_UPDATED_SORT));
+
+        note.parent = cursor.getString(cursor.getColumnIndex(KEY_NOTE_PARENT));
+
+        if (note.parent == null) note.parent = "";
 
         return note;
     }

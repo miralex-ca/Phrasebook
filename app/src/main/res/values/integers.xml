@@ -28,4 +28,7 @@
     <integer name="img_group_picker_span">5</integer>
 
 
+    <integer name="popup_position">0</integer>
+
+
 </resources>

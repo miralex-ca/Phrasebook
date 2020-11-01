@@ -695,12 +695,17 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="set_ucat_layout_3">Mixte (compact uniquement pour les thèmes)</string>
 
-
     <plurals name="topic_plurals">
         <item quantity="one">Section avec %1$d thème</item>
         <item quantity="other">Section avec %1$d thèmes</item>
     </plurals>
 
+    <string name="notes_archive_title">Archive de notes</string>
+
+    <string name="info_note_archive">\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.  \n</string>
+
+    <string name="first_note_title">@string/info_notes_title</string>
+    <string name="first_note_text">@string/info_note_archive</string>
 
 
 </resources>

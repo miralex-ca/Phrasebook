@@ -692,4 +692,10 @@ This will allow to restore your data from a previous backup. Note that this will
         <item quantity="other">Section with %1$d topics</item>
     </plurals>
 
+    <string name="notes_archive_title">Notes archive</string>
+    <string name="info_note_archive">\nTo remove a note from the main list without deleting it, you can archive it. If you unarchive the note, it is placed at the top of the main notes list.  \nn</string>
+
+    <string name="first_note_title">@string/info_notes_title</string>
+    <string name="first_note_text">@string/info_note_archive</string>
+
 </resources>
