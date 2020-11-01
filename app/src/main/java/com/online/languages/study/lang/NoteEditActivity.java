@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 
@@ -77,6 +78,8 @@ public class NoteEditActivity extends BaseActivity {
 
     DataManager dataManager;
     NoteData note;
+
+    AlertDialog imgPickerDialog;
 
 
 
@@ -325,6 +328,7 @@ public class NoteEditActivity extends BaseActivity {
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
 
         dialog.setView(content);
+        dialog.setCancelable(true);
 
         dialog.setNegativeButton(R.string.cancel_txt,
                 new DialogInterface.OnClickListener() {
@@ -333,31 +337,26 @@ public class NoteEditActivity extends BaseActivity {
                     }
                 });
 
+
+        /*
+
         dialog.setPositiveButton(R.string.apply_btn,
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         setIconImage(pics[picIndex]);
-
                         dialog.cancel();
                     }
                 });
 
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                 ;
-            }
-        });
+         */
 
-        AlertDialog alert = dialog.create();
 
-        alert.show();
 
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(alert.getWindow().getAttributes());
-        int dialogWidth = lp.width;
-        alert.getWindow().setLayout(dialogWidth, dpToPixels(this, 430));
+        imgPickerDialog = dialog.create();
+
+        imgPickerDialog.show();
+
+
 
     }
 
@@ -369,13 +368,25 @@ public class NoteEditActivity extends BaseActivity {
     public void checkPic(View view) {
 
         View icon = view.findViewById(R.id.icon);
-
         int t = (int) icon.getTag();
-
         picIndex = t;
-
         imgPickerAdapter = new ImgPickerAdapter(this, pics, t);
         recyclerView.setAdapter(imgPickerAdapter);
+
+
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                imgPickerDialog.dismiss();
+
+            }
+        }, 40);
+
+
+        setIconImage(pics[picIndex]);
 
     }
 

@@ -559,13 +559,10 @@ public class HomeFragment2 extends Fragment   {
 
         alert.show();
 
-        int dialogHeight = getActivity().getResources().getInteger(R.integer.icon_dialog_height);
 
 
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(alert.getWindow().getAttributes());
-        int dialogWidth = lp.width;
-        alert.getWindow().setLayout(dialogWidth, dpToPixels(getActivity(), dialogHeight));
+
+
 
     }
 

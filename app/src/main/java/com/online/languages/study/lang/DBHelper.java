@@ -1775,6 +1775,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+
+
     public void deleteNote(NoteData note) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1808,8 +1810,6 @@ public class DBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
 
                 NoteData note  = getNoteFromCursor(cursor);
-
-               // Toast.makeText(cntx, "Parent: " + note.parent, Toast.LENGTH_SHORT).show();
 
                 if (!note.parent.contains(NOTE_ARCHIVE))
 

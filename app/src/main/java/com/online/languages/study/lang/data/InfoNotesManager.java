@@ -54,23 +54,20 @@ public class InfoNotesManager {
     }
 
 
-
     public void postStartNotes(DBHelper dbHelper, SQLiteDatabase db) {
 
-        postNote(dbHelper, db, "Note 2", "content", "info.png");
+        postNote(dbHelper, db,  // first note
+                context.getString(R.string.first_note_title),
+                context.getString(R.string.first_note_text),
+                "info.png");
 
-        String title = context.getString(R.string.first_note_title);
-        String content = context.getString(R.string.first_note_text);
-        postNote(dbHelper, db, title, content, "info.png");
 
     }
 
 
     public void postUpdateNotes(DBHelper dbHelper, SQLiteDatabase db, int version) {
 
-        if (version == 40) {
-            postNote(dbHelper, db, "Update " + version, "Version", "info.png");
-        }
+       // if (version == 40) { }
 
 
     }
@@ -85,10 +82,6 @@ public class InfoNotesManager {
         dbHelper.createNote(db, note);
 
     }
-
-
-
-
 
 
 
