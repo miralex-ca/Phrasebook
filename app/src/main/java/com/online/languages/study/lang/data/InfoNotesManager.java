@@ -61,13 +61,12 @@ public class InfoNotesManager {
                 context.getString(R.string.first_note_text),
                 "info.png");
 
-
     }
 
 
     public void postUpdateNotes(DBHelper dbHelper, SQLiteDatabase db, int version) {
 
-       // if (version == 40) { }
+      // if (version == 36) {  }
 
 
     }

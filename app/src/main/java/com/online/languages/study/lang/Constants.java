@@ -3,8 +3,8 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = true;  // TODO change in PRO
-    public static final boolean DEBUG = true;  /// should be true to see ads in debug
+    public static final boolean PRO = false;  // TODO change in PRO
+    public static final boolean DEBUG = false;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -213,8 +213,8 @@ public class Constants {
     public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";
 
     public static final int UCAT_WIDGET_LIMIT = 6; // normal 6
-    public static final int UCAT_LIST_LIMIT = 5;  // normal 20
-    public static final int NOTES_LIST_LIMIT = 5;  // normal 30
+    public static final int UCAT_LIST_LIMIT = 20;  // normal 20
+    public static final int NOTES_LIST_LIMIT = 30;  // normal 30
 
     public static final int UCATS_UNPAID_LIMIT = 4;  // normal 4
     public static final int GROUPS_UNPAID_LIMIT = 2;  // normal 4

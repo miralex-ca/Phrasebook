@@ -36,6 +36,7 @@ import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.NOTES_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
@@ -201,15 +202,13 @@ public class NotesArchiveActivity extends BaseActivity {
 
         ArrayList<DataObject> displayList = new ArrayList<>(completeList);
 
-        int limit = UCAT_LIST_LIMIT;
-
+        int limit = NOTES_LIST_LIMIT;
 
         if (completeList.size() > limit) {
             if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
         }
 
         return addLast(displayList, completeList);
-
     }
 
 
