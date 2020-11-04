@@ -4,7 +4,7 @@ package com.online.languages.study.lang.adapters;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +14,12 @@ import android.widget.TextView;
 
 import com.online.languages.study.lang.NotesArchiveActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UCatsArchiveActivity;
 import com.online.languages.study.lang.data.DataObject;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 
 

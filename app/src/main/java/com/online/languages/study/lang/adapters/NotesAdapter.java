@@ -2,16 +2,14 @@ package com.online.languages.study.lang.adapters;
 
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.fragments.NotesFragment;
 import com.squareup.picasso.Picasso;

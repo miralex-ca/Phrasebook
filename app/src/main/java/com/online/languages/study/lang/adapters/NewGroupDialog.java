@@ -4,33 +4,28 @@ package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
-import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataObject;
 
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
 
 
 public class NewGroupDialog {

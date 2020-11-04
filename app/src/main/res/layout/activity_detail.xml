@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
@@ -10,7 +10,7 @@
 
 
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:translationZ="2dp"
@@ -20,7 +20,7 @@
         android:theme="?attr/DetailAppBarOverlayTheme"
          >
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
 
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
 
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 app:cardElevation="0dp"
@@ -132,7 +132,7 @@
 
                 </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
 
@@ -152,7 +152,7 @@
                 android:layout_height="30dp"/>
 
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 app:contentInsetStartWithNavigation="0dp"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -165,12 +165,12 @@
                 app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" >
 
 
-            </android.support.v7.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
 
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 
@@ -194,7 +194,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:visibility="invisible"
         android:layout_width="wrap_content"
@@ -213,4 +213,4 @@
         app:srcCompat="@drawable/ic_speaker" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

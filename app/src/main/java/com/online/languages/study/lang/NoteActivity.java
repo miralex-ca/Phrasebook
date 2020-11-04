@@ -1,49 +1,30 @@
 package com.online.languages.study.lang;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.InfoDialog;
-import com.online.languages.study.lang.adapters.NotesAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.NavCategory;
-import com.online.languages.study.lang.data.NavSection;
-import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.NoteData;
 import com.squareup.picasso.Picasso;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
-import static com.online.languages.study.lang.Constants.EXTRA_NAV_STRUCTURE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
-import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 
 public class NoteActivity extends BaseActivity {
 

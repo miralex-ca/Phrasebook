@@ -1,11 +1,10 @@
 package com.online.languages.study.lang;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +20,6 @@ import com.online.languages.study.lang.util.Purchase;
 import com.online.languages.study.lang.util.SkuDetails;
 
 import java.util.Arrays;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class GetPremium extends BaseActivity {
 

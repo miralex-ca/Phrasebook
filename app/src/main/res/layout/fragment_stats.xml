@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,7 +27,7 @@
         <include layout="@layout/fragment_stats_progress_widgets_include" />
 
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_height="wrap_content"
             app:contentPadding="0dp"
             android:layout_gravity="center_horizontal"
@@ -77,7 +77,7 @@
                        android:padding="10dp"
                        >
 
-                       <android.support.v7.widget.RecyclerView
+                       <androidx.recyclerview.widget.RecyclerView
                            android:id="@+id/recycler_stats"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
 
@@ -105,7 +105,7 @@
             >
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 app:contentPadding="0dp"
                 app:cardBackgroundColor="?attr/colorStudiedBox"
@@ -152,10 +152,10 @@
                 </LinearLayout>
 
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 app:contentPadding="0dp"
                 app:cardBackgroundColor="?attr/colorKnownBox"
@@ -209,9 +209,9 @@
 
 
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 app:contentPadding="0dp"
                 app:cardBackgroundColor="?attr/colorUnknownBox"
@@ -252,11 +252,11 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_height="wrap_content"
             app:cardBackgroundColor="?attr/colorErrorBox"
             android:layout_width="match_parent"
@@ -317,7 +317,7 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
         <LinearLayout
@@ -328,7 +328,7 @@
             android:weightSum="1"
             >
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 app:contentPadding="0dp"
                 app:cardBackgroundColor="?attr/colorTestBox"
@@ -363,10 +363,10 @@
                 </LinearLayout>
 
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 app:contentPadding="0dp"
                 app:cardBackgroundColor="?attr/colorOpenBox"
@@ -403,12 +403,12 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_height="wrap_content"
             app:contentPadding="0dp"
             android:layout_gravity="center_horizontal"
@@ -552,7 +552,7 @@
 
             </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="match_parent"
@@ -560,5 +560,5 @@
 
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>
 

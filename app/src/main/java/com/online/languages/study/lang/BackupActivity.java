@@ -10,10 +10,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -152,8 +152,8 @@ public class BackupActivity extends BaseActivity {
                 .withActivity(this)
                 .withCustomActivity(FinderDialogActivity.class)
                 .withRequestCode(10)
-                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)"))
-                .withHiddenFiles(false)
+                //.withFilter(Pattern.compile("(.*\\.csv$)"))
+                .withHiddenFiles(true)
                 .withPath(uri.getPath())
                 .start();
     }
@@ -162,11 +162,12 @@ public class BackupActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10) {
-            if(resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
 
                 String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
-                proImportCSV( Uri.fromFile(new File(filePath)) );
+                proImportCSV(Uri.fromFile(new File(filePath)));
 
             }
         }

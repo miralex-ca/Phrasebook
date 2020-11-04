@@ -4,18 +4,16 @@ package com.online.languages.study.lang.adapters;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsArchiveActivity;
-import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.data.DataObject;
 
 import java.text.DateFormat;
@@ -24,12 +22,9 @@ import java.util.Date;
 import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
-import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.ACTION_VIEW;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
-import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 
 
 public class ArchiveAdapter extends RecyclerView.Adapter<ArchiveAdapter.MyViewHolder>    {

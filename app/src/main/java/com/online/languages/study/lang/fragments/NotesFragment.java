@@ -6,15 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+
+import androidx.fragment.app.Fragment;
+import androidx.core.view.ViewCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,24 +20,17 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.online.languages.study.lang.DBHelper;
-import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.NoteActivity;
 import com.online.languages.study.lang.NoteEditActivity;
 import com.online.languages.study.lang.NotesArchiveActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UCatsArchiveActivity;
-import com.online.languages.study.lang.adapters.NavigationDialog;
 import com.online.languages.study.lang.adapters.NoteActionDialog;
 import com.online.languages.study.lang.adapters.NotesAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NoteData;
 
 import java.util.ArrayList;
@@ -53,14 +43,11 @@ import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_ANIMATION;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
-import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT;
-import static com.online.languages.study.lang.Constants.SET_GALLERY_LAYOUT_DEFAULT;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED_SORT;
-import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 
 
 public class NotesFragment extends Fragment {

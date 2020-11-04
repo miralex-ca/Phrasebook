@@ -9,7 +9,7 @@
     android:id="@+id/imgWrap"
     android:background="?android:attr/selectableItemBackground">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_height="wrap_content"
 
         app:contentPadding="0dp"
@@ -61,6 +61,6 @@
 
     </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

@@ -1,14 +1,13 @@
 package com.online.languages.study.lang.adapters;
 
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import com.online.languages.study.lang.fragments.StarredBookmarkTab;
-import com.online.languages.study.lang.fragments.StarredGalleryTab;
 import com.online.languages.study.lang.fragments.StarredTabOne;
 
 

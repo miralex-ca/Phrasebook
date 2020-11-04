@@ -2,7 +2,7 @@ package com.online.languages.study.lang.adapters;
 
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataObject;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;

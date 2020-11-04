@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +22,6 @@ import com.online.languages.study.lang.data.Section;
 import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.DATA_SELECT_BASIC;
-import static com.online.languages.study.lang.Constants.DATA_SELECT_EXTRA;
 import static com.online.languages.study.lang.Constants.SET_DATA_SELECT;
 
 

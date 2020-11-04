@@ -9,22 +9,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 
-import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.core.view.ViewCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -34,23 +32,17 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.google.android.gms.common.util.IOUtils;
 import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.MyCatEditActivity;
-import com.online.languages.study.lang.NoteActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
-import com.online.languages.study.lang.adapters.EditDataListAdapter;
 import com.online.languages.study.lang.adapters.EditUCatsListAdapter;
 import com.online.languages.study.lang.adapters.IconPickerAdapter;
-import com.online.languages.study.lang.adapters.ImgPickerAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.data.DataManager;
@@ -59,27 +51,19 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 
 import static android.app.Activity.RESULT_OK;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
-import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.FOLDER_PICS;
-import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
-import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
-import static com.online.languages.study.lang.Constants.UCAT_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_WIDGET_LIMIT;
 
 

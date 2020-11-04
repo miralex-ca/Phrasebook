@@ -2,7 +2,7 @@ package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.util.TypedValue;
 import android.widget.TextView;
 

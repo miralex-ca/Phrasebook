@@ -3,7 +3,7 @@ package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
 import android.os.Handler;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +12,6 @@ import android.widget.ImageView;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.fragments.HomeFragment2;
 import com.squareup.picasso.Picasso;
-
-import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
-import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 
 
 public class IconPickerAdapter extends RecyclerView.Adapter<IconPickerAdapter.MyViewHolder> {

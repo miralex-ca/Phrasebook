@@ -35,7 +35,7 @@
 
             >
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_height="match_parent"
                 app:contentPadding="0dp"
                 android:layout_gravity="center_horizontal"
@@ -65,7 +65,7 @@
                     android:layout_gravity="bottom"
                     android:background="@drawable/screem_img_bottom"/>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

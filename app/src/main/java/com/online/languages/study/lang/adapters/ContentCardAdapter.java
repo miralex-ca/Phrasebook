@@ -3,14 +3,13 @@ package com.online.languages.study.lang.adapters;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.R;
@@ -23,7 +22,6 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 
 
 public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.MyViewHolder> {

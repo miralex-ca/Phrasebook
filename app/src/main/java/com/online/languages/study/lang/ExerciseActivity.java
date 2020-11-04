@@ -13,11 +13,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -863,7 +863,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
                 Snackbar.LENGTH_LONG).setAction("Action", null);
         View snackbarView = mSnackbar.getView();
         snackbarView.setBackgroundColor(background);
-        TextView snackTextView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
+        TextView snackTextView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
         snackTextView.setTextColor(textColor);
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
@@ -1077,13 +1077,14 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     //act on result of TTS data check
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
+
         if (requestCode == MY_DATA_CHECK_CODE) {
 
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
-            }
-            else {
+            } else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);

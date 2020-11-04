@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.util.AttributeSet;
 
 
-public class Typewriter extends android.support.v7.widget.AppCompatTextView {
+public class Typewriter extends androidx.appcompat.widget.AppCompatTextView {
 
 
     private CharSequence mText;

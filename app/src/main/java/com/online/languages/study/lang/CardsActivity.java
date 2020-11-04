@@ -11,10 +11,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,8 +33,6 @@ import com.online.languages.study.lang.data.DataManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-
-import static com.online.languages.study.lang.App.getAppContext;
 
 public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitListener  {
 
