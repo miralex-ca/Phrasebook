@@ -147,15 +147,16 @@ public class BackupActivity extends BaseActivity {
 
         String fileFormat = getString(R.string.backup_file_format);
 
+       // File exportDir =  getDir("backups", Context.MODE_PRIVATE);
+
         new MaterialFilePicker()
                 .withActivity(this)
                 .withCustomActivity(FinderDialogActivity.class)
                 .withRequestCode(10)
-                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)"))
+                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)|(.*\\.pdf$)"))
                 .withHiddenFiles(false)
                 .withPath(uri.getPath())
                 .start();
-
 
     }
 
