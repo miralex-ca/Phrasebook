@@ -2,6 +2,8 @@ package com.online.languages.study.lang;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -12,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
@@ -125,21 +128,40 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
         speaking = appSettings.getBoolean("set_speak", true);
-        if (speaking) {
+        checkTTSIntent();
+
+    }
+
+
+    private void checkTTSIntent() {
+
+        if (! speaking ) return;
+
+        PackageManager pm = getPackageManager();
+        final Intent checkTTSIntent = new Intent();
+        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+
+        ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
+
+        if( resolveInfo == null ) {
+            Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
+            speaking = false;
+
+        } else {
 
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
 
-                    Intent checkTTSIntent = new Intent();
-                    checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
                     startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
 
                 }
             }, 100);
-        }
 
+        }
     }
+
+
 
     public void changeStarred(View view) {
         changeStarred(view, false);
@@ -257,10 +279,11 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         open = true;
 
         if (requestCode == 1) {
-            if(resultCode == UserListActivity.RESULT_OK){
+            if (resultCode == UserListActivity.RESULT_OK) {
 
                 UserListTabFragment1 fragment = (UserListTabFragment1) adapter.getFragmentOne();
                 if (fragment != null) {
@@ -276,8 +299,7 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
-            }
-            else {
+            } else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
@@ -285,7 +307,6 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
             }
         }
-
 
 
     }
