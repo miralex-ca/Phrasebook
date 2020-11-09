@@ -757,13 +757,50 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public int insertUserDataItems(ArrayList<DataItem> list) {
 
-    public String[] createUData(DataItem dataItem) {
+        int n = 0;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        long time = System.currentTimeMillis();
+        db.beginTransaction();
 
+        try {
+
+            for (int i = 0; i < list.size(); i ++) {
+                DataItem dataItem = list.get(i);
+                createUData(db, dataItem, i);
+            }
+
+            n = list.size();
+            db.setTransactionSuccessful();
+
+
+        } finally {
+            db.endTransaction();
+        }
+
+
+        db.close();
+
+        return n;
+    }
+
+
+    public void createUData(DataItem dataItem) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        createUData(db, dataItem, 0);
+
+        db.close();
+
+    }
+
+
+    public void createUData( SQLiteDatabase db, DataItem dataItem, int timeFix) {
+
+        long time = System.currentTimeMillis() + timeFix;
 
         ContentValues values = new ContentValues();
 
@@ -805,10 +842,11 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
 
 
-        return new String[] {String.valueOf(cat_id)};
+
+
+
     }
 
 
@@ -1306,6 +1344,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 DataItem dataItem = getAllInfoUdataFromDB(cursor);
                 dataItem.cat = ucat_id;
+
 
                 dataItems.add(dataItem);
 
@@ -3883,7 +3922,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_UDATA_ID));
         dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TEXT));
-        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE));
+
+        //long i = cursor.getLong(cursor.getColumnIndex(KEY_UDATA_UPDATED_SORT));
+        dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE)); // TODO fix
         dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSCRIPT));
         dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_UDATA_GRAMMAR));
         dataItem.sound = cursor.getString(cursor.getColumnIndex(KEY_UDATA_SOUND));
@@ -3894,7 +3935,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.errors = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_ERRORS));
 
         dataItem.starred_time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_STARRED));
-        dataItem.time = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME));
+        dataItem.time = cursor.getLong(cursor.getColumnIndex(KEY_UDATA_UPDATED_SORT));
         dataItem.time_errors = cursor.getLong(cursor.getColumnIndex(KEY_ITEM_TIME_ERROR));
 
         return dataItem;
@@ -4024,6 +4065,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+
+
 
 
     private void insertImportedUserItem(SQLiteDatabase db, DBImport.UserItemData userItem) {
@@ -4197,6 +4240,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_NOTES_DATA, null, values);
     }
+
+
 
     public void importUserDataItems(SQLiteDatabase db, List<DBImport.UserDataItem> list) {
 

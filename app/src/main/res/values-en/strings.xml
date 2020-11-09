@@ -691,9 +691,9 @@ This will allow to restore your data from a previous backup. Note that this will
         <item quantity="other">Section with %1$d topics</item>
     </plurals>
 
+
     <string name="notes_archive_title">Notes archive</string>
     <string name="info_note_archive">\nTo remove a note from the main list without deleting it, you can archive it. If you unarchive the note, it is placed at the top of the main notes list.  \n</string>
-
 
     <string name="info_notes_title">Information</string>
     <string name="info_notes_text">\nYou can store any text information in your notes. You can find the main list of notes in the Notes section, or you can find notes by searching in the app. You can modify the title, icon and text of a note at any time.
@@ -706,5 +706,18 @@ This will allow to restore your data from a previous backup. Note that this will
        \n\nYou can open an action menu for a note by long press on this note in the main list. From this menu, the note can be placed at the top of the main list, edited, archived or deleted.
         \n\nTo remove a note from the main list without deleting it, you can archive it. If you unarchive the note, it is placed at the top of the main notes list.\n\n\n
     </string>
+
+    <plurals name="item_plurals">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+
+    <string name="add_list_dialog_text">You can add %s in this topic. Each new item must start with a new line. </string>
+    <string name="values_separator">Values will be separated by</string>
+    <string name="add_list_edit_hint">text %s translation</string>
+    <string name="add_list_title">Add a new list</string>
+    <string name="limit_txt">Limit:</string>
+    <string name="menu_add_list">Add a new list</string>
+
 
 </resources>

@@ -44,8 +44,6 @@
     <attr name="colorMenuBg" format="reference" />
     <attr name="colorMenuSelected" format="reference" />
 
-
-
     <attr name="colorDialogBg" format="reference" />
 
 

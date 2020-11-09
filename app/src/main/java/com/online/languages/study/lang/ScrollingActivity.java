@@ -538,6 +538,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     //act on result of TTS data check
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_DATA_CHECK_CODE) {
 
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
@@ -545,8 +546,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
                 myTTS = new TextToSpeech(this, this);
 
 
-            }
-            else {
+            } else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);

@@ -34,11 +34,14 @@ import com.online.languages.study.lang.adapters.NewItemDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.PremiumDialog;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.adapters.UDataListDialog;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
@@ -74,7 +77,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     NewItemDialog newItemDialog;
 
     private TextToSpeech myTTS;
-    private int MY_DATA_CHECK_CODE = 0;
+    private final int MY_DATA_CHECK_CODE = 0;
 
     Button createBtn;
     Button updateCatBtn;
@@ -91,6 +94,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     DataObject categoryObject;
 
     MenuItem deleteMenuItem;
+    MenuItem addListMenuItem;
 
     View listParams;
     boolean speaking;
@@ -110,10 +114,13 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
-        setContentView(R.layout.activity_cat_edit);
-        categoryObject = new DataObject();
+        dataItems = new ArrayList<>();
 
+        categoryObject = new DataObject();
         categoryObject.id = getIntent().getStringExtra(EXTRA_CAT_ID);
+
+        setContentView(R.layout.activity_cat_edit);
+
 
         if (savedInstanceState != null) {
             categoryObject = savedInstanceState.getParcelable("categoryObject");
@@ -270,7 +277,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             newItem.setAlpha(0.3f);
             listParams.setVisibility(View.INVISIBLE);
 
-
         } else {
 
             categoryObject  = dataManager.dbHelper.getUCat(categoryObject.id);
@@ -302,11 +308,12 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
                     @Override
                     public void run() {
                         createBtn.setVisibility(View.INVISIBLE);
+
+                        addListMenuItem.setEnabled(true);
                     }
                 })
                 .setDuration(450)
                 .start();
-
 
         TextView txt = findViewById(R.id.createdDate);
         txt.setText(String.format(getString(R.string.ucat_created_time), time));
@@ -368,9 +375,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             String title = titleEditText.getText().toString();
 
             if (title.trim().equals("")) {
-
                 infoDialog.simpleDialog(getString(R.string.ucat_saving_alert), getString(R.string.ucat_enter_title_alert));
-
             } else {
 
                 categoryObject.title = textSanitizer(title);
@@ -410,31 +415,36 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             boolean limit = checkUcatLimits();
 
             if (limit) {
-
-                if (!dataManager.plus_Version) {
-
-                    PremiumDialog premiumDialog = new PremiumDialog(this);
-
-                    premiumDialog.createDialog(
-                            getString(R.string.udata_limit_dialog_title_unpaid),
-                            String.format(getString(R.string.udata_limit_dialog_text_unpaid), String.valueOf(UDATA_LIMIT_UNPAID))
-
-                    );
-
-                } else {
-
-                    infoDialog.simpleDialog(
-                            getString(R.string.udata_limit_dialog_title),
-                            String.format(getString(R.string.udata_limit_dialog_text), String.valueOf(UDATA_LIMIT))
-                    );
-                }
-
+                showLimit();
             } else {
                 newItemDialog.showCustomDialog(getString(R.string.ucat_new_item_dialog));
                 titleEditText.clearFocus();
             }
 
         }
+    }
+
+    private void showLimit() {
+
+        if (!dataManager.plus_Version) {
+
+            PremiumDialog premiumDialog = new PremiumDialog(this);
+
+            premiumDialog.createDialog(
+                    getString(R.string.udata_limit_dialog_title_unpaid),
+                    String.format(getString(R.string.udata_limit_dialog_text_unpaid), String.valueOf(UDATA_LIMIT_UNPAID))
+
+            );
+
+        } else {
+
+            infoDialog.simpleDialog(
+                    getString(R.string.udata_limit_dialog_title),
+                    String.format(getString(R.string.udata_limit_dialog_text), String.valueOf(UDATA_LIMIT))
+            );
+        }
+
+
     }
 
 
@@ -555,23 +565,22 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                return true;
 
-            case R.id.info_item:
-
-                showInfoDialog();
-
-                return true;
-
-            case R.id.delete_ucat:
-
-                deleteCurrentUcat();
-                return true;
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        } else if (id == R.id.info_item) {
+            showInfoDialog();
+            return true;
+        } else if (id == R.id.delete_ucat) {
+            deleteCurrentUcat();
+            return true;
+        } else if (id == R.id.add_list) {
+            openAddListDialog();
+            return true;
         }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -581,6 +590,52 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         dataModeDialog.createDialog(getString(R.string.info_txt), info);
     }
 
+    private void openAddListDialog() {
+
+
+        int limit = !dataManager.plus_Version ? UDATA_LIMIT_UNPAID : UDATA_LIMIT;
+
+        limit = limit - dataItems.size();
+
+        //Toast.makeText(this, "Plus: " + limit, Toast.LENGTH_SHORT ).show();
+
+        if (checkUcatLimits()) {
+
+            showLimit();
+
+        } else {
+
+            UDataListDialog uDataListDialog = new UDataListDialog(this, MyCatEditActivity.this, limit);
+            uDataListDialog.showCustomDialog(getString(R.string.add_list_title));
+
+        }
+
+
+    }
+
+
+    public void addDataList(ArrayList<DataObject> dataObjects) {
+
+        ArrayList<DataItem> items = new ArrayList<>();
+
+        for (int i = 0; i < dataObjects.size(); i ++) {
+            DataObject dataObject = dataObjects.get(i);
+            DataItem dataItem = new DataItem(dataObject.text, dataObject.info);
+            dataItem.trans1 = dataObject.desc;
+
+            dataItem.cat = categoryObject.id;
+            items.add(dataItem);
+        }
+
+        Collections.reverse(items);
+
+        int count = dataManager.dbHelper.insertUserDataItems(items);
+
+        Toast.makeText(this, "Added: "+ count, Toast.LENGTH_SHORT).show();
+
+        updateItemsList();
+
+    }
 
 
     @Override
@@ -588,6 +643,11 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         getMenuInflater().inflate(R.menu.menu_ucat_edit, menu);
 
         deleteMenuItem = menu.findItem(R.id.delete_ucat);
+
+        addListMenuItem = menu.findItem(R.id.add_list);
+
+        addListMenuItem.setEnabled(false);
+        if (categoryObject.id.contains(UC_PREFIX)) addListMenuItem.setEnabled(true);
 
         checkDeleteItem();
 
@@ -636,13 +696,13 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     //act on result of TTS data check
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MY_DATA_CHECK_CODE) {
 
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
-            }
-            else {
+            } else {
                 //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);

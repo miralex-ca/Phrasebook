@@ -696,6 +696,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
         <item quantity="other">Section avec %1$d thèmes</item>
     </plurals>
 
+
     <string name="notes_archive_title">Archive de notes</string>
     <string name="info_note_archive">\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.  \n</string>
 
@@ -704,7 +705,8 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste principales de notes dans la rubrique Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. On peut modifier le titre, l’icône et le texte d’une note à tout moment.
         \n\nVous pouvez ouvrir un menu d’actionы pour une note en appuyant longuement sur cette note dans la liste principale. Depuis ce menu, la note peut être placée en haut de la liste principale, éditée, archivée ou supprimée.
-        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes. \n</string>
+        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes. \n
+    </string>
 
 
     <string name="first_note_title">Rubrique Notes</string>
@@ -714,6 +716,17 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
         \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.
 
     </string>
+
+    <plurals name="item_plurals">
+        <item quantity="one">%d entrée</item>
+        <item quantity="other">%d entrées</item>
+    </plurals>
+    <string name="add_list_dialog_text">Vous pouvez ajouter %s dans ce thème. Chaque nouvelle entrée doit commencer par une nouvelle ligne. </string>
+    <string name="values_separator">Les valeurs seront séparées par</string>
+    <string name="add_list_edit_hint">texte %s traduction</string>
+    <string name="add_list_title">Ajouter une liste</string>
+    <string name="limit_txt">Limite:</string>
+    <string name="menu_add_list">Ajouter une liste</string>
 
 
 </resources>

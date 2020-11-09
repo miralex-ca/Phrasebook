@@ -210,7 +210,11 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
     @Override
     public void finish() {
 
-        if (speaking) speakWords("");
+        if (speaking) {
+          //  myTTS.stop();
+            speakWords("");
+        }
+
         super.finish();
     }
 
