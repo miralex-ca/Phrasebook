@@ -40,10 +40,10 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
@@ -224,6 +224,29 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         if (type.equals(ACTION_VIEW)) viewItem(dataItem);
 
+        if (type.equals(ACTION_CHANGE_ORDER)) {
+            moveToTop(dataItem);
+        }
+
+    }
+
+
+    private void moveToTop(DataItem dataItem) {
+
+        String paramSort = dataManager.readParam(categoryObject.params, UCAT_PARAM_SORT);
+
+        long time = System.currentTimeMillis();
+
+        if (paramSort.equals(UCAT_PARAM_SORT_ASC)) {
+            if (dataItems.size()>1) time = dataItems.get(0).time - 1;
+        }
+
+        //Toast.makeText(this, "Time: " + time, Toast.LENGTH_SHORT).show();
+
+        dataManager.dbHelper.updateUDataSortTime(dataItem.id, time);
+
+
+        updateItemsList();
     }
 
 

@@ -21,7 +21,9 @@ import com.online.languages.study.lang.data.DataItem;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
+import static com.online.languages.study.lang.Constants.ACTION_MOVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
 
@@ -86,7 +88,7 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
             @Override
             public void onClick(View v) {
                 View view = v.findViewById(R.id.position);
-                popupwindow_obj = popupDisplay(dataItem);
+                popupwindow_obj = popupDisplay(dataItem, position);
                 popupwindow_obj.showAsDropDown(view,0, 0);
                 clickActive = true;
             }
@@ -109,7 +111,7 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
 
 
 
-    private PopupWindow popupDisplay(final DataItem dataItem) { // disply designing your popoup window
+    private PopupWindow popupDisplay(final DataItem dataItem, int position) { // disply designing your popoup window
 
         final PopupWindow popupWindow = new PopupWindow(context); // inflet your layout or diynamic add view
 
@@ -125,6 +127,20 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
         View editItem = view.findViewById(R.id.edit);
         View deleteItem  = view.findViewById(R.id.delete);
 
+        View moveItem  = view.findViewById(R.id.moveToTop);
+
+        if (position == 0) {
+            moveItem.setVisibility(View.GONE);
+        } else {
+            moveItem.setVisibility(View.VISIBLE);
+        }
+
+        moveItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editClick(dataItem, ACTION_CHANGE_ORDER);
+            }
+        });
 
         viewItem.setOnClickListener(new View.OnClickListener() {
             @Override

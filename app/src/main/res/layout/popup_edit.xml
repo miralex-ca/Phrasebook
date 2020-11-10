@@ -28,8 +28,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="14dp"
 
-
-
             app:cardElevation="8dp"
             app:cardBackgroundColor="?attr/colorDialogBg"
 
@@ -44,6 +42,37 @@
                 android:paddingBottom="0dp"
                 >
 
+
+                <LinearLayout
+                    android:padding="16dp"
+                    android:id="@+id/moveToTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground"
+
+                    >
+
+                    <ImageView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/ic_action_up"
+                        />
+
+                    <TextView
+
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popup_menu_move_top"
+                        />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:padding="16dp"

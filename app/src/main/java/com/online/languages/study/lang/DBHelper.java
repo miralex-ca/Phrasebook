@@ -942,6 +942,24 @@ public class DBHelper extends SQLiteOpenHelper {
         return dataObject;
     }
 
+    public void updateUDataSortTime(String udata_id, long time) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_UDATA_UPDATED_SORT, time );
+
+        db.update(TABLE_USER_DATA_ITEMS, values,
+                    KEY_UDATA_ID +" = ?",
+                    new String[] { udata_id });
+
+        db.close();
+
+    }
+
+
+
     public void updateNoteSortTime(NoteData dataObject) {
 
         SQLiteDatabase db = this.getWritableDatabase();
