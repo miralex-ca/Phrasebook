@@ -305,17 +305,31 @@
     <style name="AppCompatAlertDark" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:textColorPrimary">@color/colorMainText_dark</item>
         <!-- Used for the background -->
-        <item name="android:background">?attr/colorDialogBg</item>
+        <item name="android:colorBackground">?attr/colorDialogBg</item>
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/colorAccent_dk</item>
 
-        <!--item name="colorControlHighlight">@color/dialog_control_highlight</item -->
+
+
+
+        <item name="android:theme">@style/SelectableItemTheme</item>
 
         <!-- item name="colorPrimary">?attr/colorPrimary</item>
         <item name="colorPrimaryDark">?attr/colorPrimaryDark</item -->
 
+        <!-- item name="colorControlNormal">#FF0</item>
+        <item name="colorControlActivated">#FF0</item>
+        <item name="colorControlHighlight">#FF0</item -->
+
     </style>
 
+
+    <style name="SelectableItemTheme">
+
+
+
+
+    </style>
 
     <style name="DetailAppBarOverlayTheme.Dark" parent="Theme.AppCompat.Dialog">
     </style>

@@ -195,7 +195,7 @@
 
     <!-- Alert Dialog Theme -->
     <style name="AppCompatAlert_smoky" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="android:background">?attr/colorDialogBg</item>
+        <item name="android:colorBackground">?attr/colorDialogBg</item>
         <item name="colorAccent">@color/colorAccent_smoky</item>
 
     </style>
