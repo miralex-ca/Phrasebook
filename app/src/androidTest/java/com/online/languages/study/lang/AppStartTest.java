@@ -3,6 +3,9 @@ package com.online.languages.study.lang;
 
 import android.content.Context;
 import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.test.espresso.UiController;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.DrawerActions;
 import androidx.test.espresso.contrib.NavigationViewActions;
@@ -16,7 +19,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TableLayout;
 
+import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.data.DataManager;
 
 import org.hamcrest.Description;
@@ -34,6 +39,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.DrawerMatchers.isClosed;
+import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -53,6 +59,13 @@ public class AppStartTest {
 
         DataManager dataManager = new DataManager(mActivityTestRule.getActivity());
         dataManager.getParams();
+
+
+
+        waitTime(250);
+
+
+        onView(withId(R.id.tab_layout)).perform(selectTabAtPosition(0));
 
 
         waitTime(250);
@@ -170,7 +183,6 @@ public class AppStartTest {
         if (display) { // bottom navigation displayed
 
 
-
             // open starred fragment
             waitTime(500);
             ViewInteraction bottomNavigationStarredView = onView(
@@ -199,6 +211,10 @@ public class AppStartTest {
             waitTime(500);
 
 
+
+
+
+
             // open starred fragment in navigation
             waitTime(500);
 
@@ -223,6 +239,17 @@ public class AppStartTest {
             pressBack(); // back to home fragment
 
         }
+
+
+        // open notes fragment in navigation
+        waitTime(500);
+
+        onView(withId(R.id.drawer_layout))
+                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                .perform(DrawerActions.open()); // Open Drawer
+        waitTime(300);
+        onView(withId(R.id.nav_view))
+                .perform(NavigationViewActions.navigateTo(R.id.nav_notes));
 
 
         // open settings fragment
@@ -367,4 +394,39 @@ public class AppStartTest {
         onView(allOf(withId(RecyclerViewId),isDisplayed())).check(matches(matcher));
         return COUNT[0];
     }
+
+
+    @NonNull
+    private static ViewAction selectTabAtPosition(final int position) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return allOf(isDisplayed(), isAssignableFrom(TabLayout.class));
+            }
+
+            @Override
+            public String getDescription() {
+                return "with tab at index" + position;
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                if (view instanceof TabLayout) {
+                    TabLayout tabLayout = (TabLayout) view;
+                    TabLayout.Tab tab = tabLayout.getTabAt(position);
+
+                    if (tab != null) {
+                        tab.select();
+                    }
+                }
+            }
+        };
+    }
+
+
+
+
 }
+
+
+
