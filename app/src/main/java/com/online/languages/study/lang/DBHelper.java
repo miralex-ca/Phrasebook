@@ -2518,7 +2518,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String notesQuery = "SELECT * FROM " +TABLE_NOTES_DATA
                 +" WHERE  ("+KEY_NOTE_TITLE+" LIKE '%"+searchTerm+"%' OR "+KEY_NOTE_TEXT+" LIKE '%" + searchTerm+"%')"
-                +"ORDER BY "+KEY_NOTE_CREATED + " DESC";
+                +"ORDER BY "+KEY_NOTE_UPDATED_SORT + " DESC";
 
 
         Cursor notesCursor = db.rawQuery(notesQuery, null);
