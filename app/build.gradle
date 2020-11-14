@@ -83,6 +83,14 @@ android {
             resConfigs 'fr', 'ru'
         }
 
+        personal {
+            minSdkVersion 21
+            dimension "mode"
+            applicationId 'com.study.languages.personal'
+            resValue("string", "applicationId", applicationId)
+
+        }
+
 
         apptest {
             dimension "mode"
