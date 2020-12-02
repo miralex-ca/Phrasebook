@@ -15,7 +15,7 @@
         <item>data_fr.json</item>
     </string-array>
 
-    <string name="backup_file_name" translatable="false">ENDB_backup_pers.pdf</string>
+    <string name="backup_file_name" translatable="false">ENDB_backup_pers.jpg</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
     <string name="app_name">(C)Learn English</string>

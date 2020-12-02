@@ -153,7 +153,7 @@ public class BackupActivity extends BaseActivity {
                 .withActivity(this)
                 .withCustomActivity(FinderDialogActivity.class)
                 .withRequestCode(10)
-                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)|(.*\\.pdf$)"))
+                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)|(.*\\.jpg$)"))
                 .withHiddenFiles(false)
                 .withPath(uri.getPath())
                 .start();
