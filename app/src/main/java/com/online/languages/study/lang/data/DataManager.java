@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
@@ -892,6 +893,19 @@ public class DataManager {
 
        dbHelper.createNote(note);
 
+    }
+
+    public Locale getLocale() {
+
+        String localString = context.getString(R.string.locale_string);
+
+        Locale locale = Locale.ENGLISH;
+
+        if (localString.equals("french")) {
+            locale = Locale.FRENCH;
+        }
+
+        return locale;
     }
 
 

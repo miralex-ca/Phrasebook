@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~5617902072</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/3283382776</string>
+
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkgtUL0w+YuiWAtnMVbLQ1racScuPdv5Jtuf5rU+IODWjq7oMUzxX/yHWW4UiQD0jM7Vl8ppwbp665DHi0LR9sIQsqzJTYvA2dGb+0GE0LHe2xBVzX0eEBhzkXAxIUDgzIdJlchl3/R6eYz4TCr1zMN79oaLmdBD6y5pQE4zBEFHStCb9mJRhxYfqusAl/kjzZSEUIneKVH72zvgQJ0W1iyOKevQNivNGK60PVq4wp/r9iFTtZG5mfpSELIMKETWgJ8w1/KNJLflpswQSrJWbSzua3sjlP+U4VBzvbdRzuMS2Ij3dToXU7Seep3msBYcl8yhmWmy9W/vDTsYGoheapQIDAQAB</string>
+
+    <string name="app_market_link" translatable="false">com.study.languages.english</string>
+
+    <string name="app_data_file" translatable="false">data_fr.json</string>
+    <string name="app_structure_file" translatable="false">french/navstructure.json</string>
+
+    <string-array name="data_files">
+        <item>data.json</item>
+        <item>data_fr.json</item>
+    </string-array>
+
+    <string name="backup_file_name" translatable="false">ENDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">endb</string>
+
+    <string name="app_name">Learn English</string>
+    <string name="nav_header_txt">Apprenez l\'anglais!</string>
+    <string name="app_info_file">info_fr</string>
+
+    <string name="msg_version_name">(LE, version %s)</string>
+
+    <string name="voc_ex_link_first_desc">Traduction anglais-français</string>
+    <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
+
+    <string name="tabs_starred_display" translatable="false">always</string>
+
+    <string-array name="set_transcript_values" >
+        <item>ipa</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="set_transcript_list">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
+    <string name="locale_string" translatable="false">french</string>
+
+
+</resources>

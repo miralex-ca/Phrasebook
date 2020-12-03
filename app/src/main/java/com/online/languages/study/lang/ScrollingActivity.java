@@ -56,6 +56,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     View speakBtn;
     boolean speaking;
     MenuItem starMenuItem;
+    DataManager dataManager;
 
 
     @Override
@@ -68,6 +69,8 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         themeAdapter = new ThemeAdapter(this, themeTitle, 2);
         themeAdapter.getTheme();
+
+        dataManager =new DataManager(this);
 
         itemPostion = getIntent().getIntExtra("position", 0);
 
@@ -563,9 +566,14 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         //Locale locale = new Locale("en", "US");
 
+
+
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(Locale.ENGLISH)==TextToSpeech.LANG_AVAILABLE)
-                myTTS.setLanguage(Locale.ENGLISH);
+
+            final Locale locale = dataManager.getLocale();
+
+            if(myTTS.isLanguageAvailable(locale)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(locale);
           //  speakBtn.setVisibility(View.VISIBLE);
         }
         else if (initStatus == TextToSpeech.ERROR) {

@@ -83,6 +83,13 @@ android {
             resConfigs 'fr', 'ru'
         }
 
+        french {
+            minSdkVersion 21
+            dimension "mode"
+            applicationId 'com.study.languages.french'
+            resValue("string", "applicationId", applicationId)
+        }
+
         personal {
             minSdkVersion 21
             dimension "mode"

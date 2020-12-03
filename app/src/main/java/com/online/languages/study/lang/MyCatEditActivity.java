@@ -737,9 +737,11 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     //setup TTS
     public void onInit(int initStatus) {
 
+        final Locale locale = dataManager.getLocale();
+
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(Locale.ENGLISH)==TextToSpeech.LANG_AVAILABLE)
-                myTTS.setLanguage(Locale.ENGLISH);
+            if(myTTS.isLanguageAvailable(locale)==TextToSpeech.LANG_AVAILABLE)
+                myTTS.setLanguage(locale);
             //  speakBtn.setVisibility(View.VISIBLE);
         }
         else if (initStatus == TextToSpeech.ERROR) {
