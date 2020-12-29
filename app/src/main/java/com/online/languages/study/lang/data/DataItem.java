@@ -9,11 +9,13 @@ public class DataItem implements Parcelable {
     public String info ="";
     public String id = "";
     public String image = "";
+    public String base = "";
 
     public String trans1 = "";
     public String trans2 = "";
 
     public String sound = "";
+    public String pronounce = "";
     public String grammar = "";
 
     public String divider = "no";
@@ -69,9 +71,11 @@ public class DataItem implements Parcelable {
         this.info = parcel.readString();
         this.id = parcel.readString();
         this.image = parcel.readString();
+        this.base = parcel.readString();
         this.trans1 = parcel.readString();
         this.trans2 = parcel.readString();
         this.sound = parcel.readString();
+        this.pronounce = parcel.readString();
         this.grammar = parcel.readString();
         this.cat = parcel.readString();
 
@@ -95,9 +99,11 @@ public class DataItem implements Parcelable {
         dest.writeString(info);
         dest.writeString(id);
         dest.writeString(image);
+        dest.writeString(base);
         dest.writeString(trans1);
         dest.writeString(trans2);
         dest.writeString(sound);
+        dest.writeString(pronounce);
         dest.writeString(grammar);
         dest.writeString(cat);
 

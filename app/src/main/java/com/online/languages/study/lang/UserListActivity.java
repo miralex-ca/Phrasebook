@@ -450,7 +450,7 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
     //// TTS integration
 
     public void speakReading(DataItem dataItem) {
-        String text = dataItem.item;
+        String text = dataManager.getPronounce(dataItem);
         speakWords(text);
     }
 
@@ -465,7 +465,6 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
     //setup TTS
     public void onInit(int initStatus) {
-
 
         final Locale locale = dataManager.getLocale();
 

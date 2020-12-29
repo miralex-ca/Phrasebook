@@ -1117,7 +1117,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         if (!speaking) return;
 
 
-        final String text = exerciseController.tasks.get(position).quest;
+        final String text = dataManager.getPronounce(exerciseController.tasks.get(position).data);
 
         if (position == 0 ) {
 

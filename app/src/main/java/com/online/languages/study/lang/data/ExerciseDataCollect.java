@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import static com.online.languages.study.lang.Constants.DEFAULT_TEST_RELACE_CAT;
+import static com.online.languages.study.lang.Constants.ITEM_FILTER_DIVIDER;
+import static com.online.languages.study.lang.Constants.ITEM_TAG;
 import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
 import static com.online.languages.study.lang.Constants.TEST_NEIGHBORS_RANGE;
 import static com.online.languages.study.lang.Constants.TEST_OPTIONS_NUM;
@@ -419,7 +421,6 @@ public class ExerciseDataCollect {
 
         ArrayList<DataItem> items = dbHelper.getDataItemsByCatIds(ids);
 
-
         getReplacement();
 
         //// distributing received items into exercises items options
@@ -460,44 +461,86 @@ public class ExerciseDataCollect {
 
 
 
+    // getting options list from a category
+
     private ArrayList<DataItem> getDataItemOptions(DataItem dataItem) {
 
 
         ArrayList<DataItem> tOptions = new ArrayList<>();
 
 
+
         for (OptionsCatData optionsCat: optionsCatData) {
 
             if (dataItem.id.matches(optionsCat.id + ".*") || dataItem.cat.equals(optionsCat.id)) {
 
+
+                // checking all options to make sure they are unique
                 tOptions = checkUniqueData( verifiedDiffer( optionsCat.options, dataItem ));
+                String tagFilter = ITEM_FILTER_DIVIDER + ITEM_TAG;
 
-                //ArrayList<DataItem> uniqueOptions = checkUniqueData(optionsCat.options);
+                // check items and options for tag
 
-                if (tOptions.size() > TEST_NEIGHBORS_RANGE && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
+                String select = "";
+                String info = "";
+                boolean show = false;
 
-                    tOptions = getNeighborOptions(tOptions, dataItem.id);
+
+
+                if (dataItem.filter.contains(ITEM_TAG)  && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
+                    String[] tags = getTagsFromFilter(dataItem.filter);
+
+
+                    if (tags.length > 0) {
+                        ArrayList<DataItem> taggedOptions = new ArrayList<>();
+
+                        for (DataItem tOption: tOptions) {
+                            boolean optionHasTag = false;
+
+                                for (String tag: tags) {
+
+                                    String checkTag = ITEM_TAG + tag;
+
+                                   if (tOption.filter.contains(checkTag)) {
+                                       optionHasTag = true;
+                                       break;
+                                   }
+                                }
+
+                                if (optionHasTag) {
+                                    taggedOptions.add(tOption);
+                                }
+
+                        }
+
+
+                        if (taggedOptions.size() > 0 ) {
+                            tOptions = new ArrayList<>(taggedOptions);
+                        }
+
+                    }
 
                 }
 
+
+
+                if (tOptions.size() > TEST_NEIGHBORS_RANGE && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
+                    tOptions = getNeighborOptions(tOptions, dataItem.id);
+                }
 
 
                 if (tOptions.size() < 3 && data.size() > 1) {
                     tOptions = addOption (dataItem);
+
                 }
 
                 if (tOptions.size() < 2) {
-
-                    ArrayList<DataItem> raplacement = getReplaceOptions(dataItem);
-                    if ( raplacement.size() > 0) tOptions = raplacement;
-
+                    ArrayList<DataItem> replacement = getReplaceOptions(dataItem);
+                    if ( replacement.size() > 0) tOptions = replacement;
+                    select = "replace";
                 }
 
 
-
-               // Toast.makeText(context, "Options: " + tOptions.size(), Toast.LENGTH_SHORT).show();
-              //  if (tOptions.size() < 1) Toast.makeText(context, "0: " + id, Toast.LENGTH_SHORT).show();
-               // if (tOptions.size() < 4)  tOptions = checkUniqueData(optionsCat.options); //
 
 
                 break;
@@ -646,21 +689,29 @@ public class ExerciseDataCollect {
     }
 
 
-
     private ArrayList<DataItem> verifiedDiffer(ArrayList<DataItem> dataItems, DataItem itemToVerify) {
 
-
         ArrayList<DataItem> newList = new ArrayList<>();
-
 
         for (DataItem dataItem: dataItems) {
 
             boolean similar = false;
 
-            if ( sanitized(itemToVerify.item).equals(sanitized(dataItem.item))
-              || sanitized(itemToVerify.info).equals(sanitized(dataItem.info))
+            String valueVerify = sanitized(itemToVerify.info);
+            if (itemToVerify.info.contains(";")) valueVerify = sanitized(itemToVerify.info.split(";")[0]);
+            if (itemToVerify.info.contains("/")) valueVerify = sanitized(itemToVerify.info.split("/")[0]);
 
-            ) {
+            String valueItem = sanitized(dataItem.info);
+            if (dataItem.info.contains(";")) valueItem = sanitized(dataItem.info.split(";")[0]);
+            if (dataItem.info.contains("/")) valueItem = sanitized(dataItem.info.split("/")[0]);
+
+            boolean isEqualInfo = valueVerify.equals(valueItem);
+            boolean isEqualItem = sanitized(itemToVerify.item).equals(sanitized(dataItem.item));
+
+            boolean isEqualBase = sanitized(dataItem.base).length()>1 && itemToVerify.base.equals(dataItem.base);
+
+
+            if ( isEqualBase || isEqualItem  || isEqualInfo ) {
                 if (!itemToVerify.id.equals(dataItem.id))
                 similar = true;
             }
@@ -668,11 +719,26 @@ public class ExerciseDataCollect {
             if (!similar) newList.add(dataItem);
         }
 
-
-
         //Toast.makeText(context, "Data: " + itemToVerify.item + " - " + newList.size(), Toast.LENGTH_SHORT).show();
 
         return newList;
+    }
+
+
+    public String[] getTagsFromFilter(String filterString) {
+
+        String[] filters = filterString.split(ITEM_FILTER_DIVIDER);
+        ArrayList<String> tags = new ArrayList<>();
+
+        for (String filter: filters) {
+            if (filter.contains(ITEM_TAG)) {
+                String tag = filter.replace(ITEM_TAG, "");
+                tags.add(tag);
+            }
+        }
+
+        return tags.toArray(new String[0]);
+
     }
 
 

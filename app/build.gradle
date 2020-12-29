@@ -98,7 +98,6 @@ android {
 
         }
 
-
         apptest {
             dimension "mode"
             applicationId 'com.study.languages.tester'

@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.squareup.picasso.Picasso;
 
@@ -62,13 +63,14 @@ class ExercisePagerAdapter extends PagerAdapter {
 
 
     private int textLongNum;
+    DataManager dataManager;
 
 
     ExercisePagerAdapter(Context _context, ArrayList<ExerciseTask> _tasks) {
         context = _context;
         tasks = _tasks;
         dbHelper = new DBHelper(context);
-
+        dataManager = new DataManager(context);
 
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         ThemeAdapter themeAdapter = new ThemeAdapter(context, appSettings.getString(Constants.SET_THEME_TXT, Constants.SET_THEME_DEFAULT), false );
@@ -510,7 +512,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         audioWrapper.setVisibility(View.VISIBLE);
 
 
-        final String speakTxt = exerciseTask.quest;
+        final String speakTxt = dataManager.getPronounce(exerciseTask.data);
 
 
         audioWrapper.setOnClickListener(new View.OnClickListener() {

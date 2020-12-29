@@ -61,7 +61,6 @@ public class AppStartTest {
         dataManager.getParams();
 
 
-
         waitTime(250);
 
 

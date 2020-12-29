@@ -802,7 +802,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     //// TTS integration
 
     public void speakReading(DataItem dataItem) {
-        String text = dataItem.item;
+        String text = dataManager.getPronounce(dataItem);
         speakWords(text);
     }
 

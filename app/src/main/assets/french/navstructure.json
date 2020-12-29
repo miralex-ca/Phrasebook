@@ -8,8 +8,8 @@
 
   "sections":
   [
-    {"tag": "section_1", "title": "Общение фр", "id": "10010",
-      "title_short": "Общение фр",
+    {"tag": "section_1", "title": "Общение", "id": "10010",
+      "title_short": "Общение",
       "desc_short": "Знакомство, семья, профессии",
       "desc": "Знакомство, семья, профессии, страны, знание языков",
 
@@ -200,10 +200,10 @@
         {"parent": "root", "type": "simple", "id": "100700010", "title": "Части тела", "image": "cat/body_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700020", "title": "Лицо", "image": "cat/face_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700030", "title": "Органы и ткани", "image": "cat/organ_cat.png"},
-
-        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни и травмы", "image": "cat/desease_cat.png","review":  "false"},
-
-        {"parent": "root", "type": "simple", "id": "100700050", "title": "Лечебные средства", "image": "cat/medical_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700050", "title": "Симптомы и жалобы", "image": "cat/symtom_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни", "image": "cat/desease_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700060", "title": "Травмы", "image": "cat/trauma_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700070", "title": "Лечебные средства", "image": "cat/medical_cat.png","review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Фразы"},
 

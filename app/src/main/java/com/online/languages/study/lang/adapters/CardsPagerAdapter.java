@@ -145,7 +145,7 @@ public class CardsPagerAdapter extends PagerAdapter {
             speakBtnMirror.setVisibility(View.GONE);
         }
 
-        final String speakTxt = wordData.item;
+        final String speakTxt = dataManager.getPronounce(wordData);
 
 
         speakBtn.setOnClickListener(new View.OnClickListener() {

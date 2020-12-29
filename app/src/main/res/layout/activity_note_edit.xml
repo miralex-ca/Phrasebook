@@ -170,7 +170,7 @@
                                 android:layout_height="wrap_content" />
 
                             <EditText
-                                android:inputType="textCapSentences|textMultiLine"
+                                android:inputType="textMultiLine"
                                 android:paddingTop="4dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

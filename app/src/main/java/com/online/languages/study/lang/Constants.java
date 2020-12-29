@@ -3,7 +3,7 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = true;  // TODO change in PRO
+    public static final boolean PRO = false;  // TODO change in PRO
     public static final boolean DEBUG = true;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
@@ -104,13 +104,16 @@ public class Constants {
     public static final String GALLERY_TAG = "#gallery";
     public static final String NAV_GALLERY_SPEC = "nav_gallery";
 
+    public static final String ITEM_TAG = "tag=";
+    public static final String ITEM_FILTER_DIVIDER = "#";
+
     public static final String MAPS_FOLDER= "pics/maps";
 
     public static final String STARRED_TAB_ACTIVE = "starred_active_tab";
 
     public static final int GALLERY_REQUESTCODE = 100;
 
-    public static final int TEST_CATS_MAX_FOR_BEST = 10;
+    public static final int TEST_CATS_MAX_FOR_BEST = 15;
     public static final int TEST_NEIGHBORS_RANGE = 10;
 
     public static final String FILTER_CHRONO = "chrono";

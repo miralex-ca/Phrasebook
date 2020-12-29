@@ -93,6 +93,9 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_ITEM_DESC = "item_desc";
     private static final String KEY_ITEM_IMAGE = "item_image";
     private static final String KEY_ITEM_INFO_1 = "item_info_1";
+    private static final String KEY_ITEM_BASE = "item_base";
+    private static final String KEY_ITEM_PRONOUNCE = "item_pronounce";
+    private static final String KEY_ITEM_GRAMMAR = "item_grammar";
     private static final String KEY_ITEM_DIVIDER = "item_divider";
     private static final String KEY_ITEM_FILTER = "item_filter";
     private static final String KEY_ITEM_MODE = "item_mode";
@@ -208,6 +211,9 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_ITEM_TRANS1 + " TEXT,"
             + KEY_ITEM_TRANS2+ " TEXT,"
             + KEY_ITEM_INFO_1+ " TEXT,"
+            + KEY_ITEM_PRONOUNCE + " TEXT,"
+            + KEY_ITEM_BASE + " TEXT,"
+            + KEY_ITEM_GRAMMAR + " TEXT,"
             + KEY_ITEM_FILTER + " TEXT,"
             + KEY_ITEM_MODE + "  INTEGER DEFAULT 0,"
             + KEY_ITEM_DIVIDER + " TEXT"
@@ -447,12 +453,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_ITEM_DESC, item.info);
                 values.put(KEY_ITEM_IMAGE, item.image);
                 values.put(KEY_ITEM_INFO_1, item.item_info_1);
+                values.put(KEY_ITEM_PRONOUNCE, item.pronounce);
+                values.put(KEY_ITEM_BASE, item.base);
+                values.put(KEY_ITEM_GRAMMAR, item.grammar);
                 values.put(KEY_ITEM_DIVIDER, item.divider);
                 values.put(KEY_ITEM_FILTER, item.filter);
                 values.put(KEY_ITEM_MODE, item.mode);
                 values.put(KEY_ITEM_TRANS1, item.trans1);
                 values.put(KEY_ITEM_TRANS2, item.trans2);
-
                 db.insert(TABLE_ITEMS_DATA, null, values);
             }
 
@@ -2761,7 +2769,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
             } else {
 
-                String columns = KEY_ITEM_ID +", "+ KEY_ITEM_TITLE + ", "+ KEY_ITEM_DESC+ ", "+ KEY_ITEM_INFO_1;
+                String columns = KEY_ITEM_ID +", "+ KEY_ITEM_TITLE + ", "
+                        + KEY_ITEM_DESC+ ", "+ KEY_ITEM_INFO_1+ ", "+ KEY_ITEM_PRONOUNCE+ ", "+ KEY_ITEM_BASE
+                        + ", "+ KEY_ITEM_FILTER+ ", "+ KEY_ITEM_GRAMMAR;
 
                 String catQuery = "SELECT "+columns+" FROM " +TABLE_ITEMS_DATA
                         +" WHERE ("+KEY_ITEM_ID + " LIKE '" + catIds.get(i) + "%') "
@@ -2777,7 +2787,12 @@ public class DBHelper extends SQLiteOpenHelper {
                         dataItem.id = cursor.getString(cursor.getColumnIndex(KEY_ITEM_ID));
                         dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TITLE));
                         dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DESC));
+                        dataItem.pronounce = cursor.getString(cursor.getColumnIndex(KEY_ITEM_PRONOUNCE));
+                        dataItem.base = cursor.getString(cursor.getColumnIndex(KEY_ITEM_BASE));
+                        dataItem.filter = cursor.getString(cursor.getColumnIndex(KEY_ITEM_FILTER));
+                        dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_ITEM_GRAMMAR));
                         dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_INFO_1));
+
                         items.add(dataItem);
                     }
                 } finally {
@@ -3851,6 +3866,11 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TITLE));
         dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_ITEM_DESC));
         dataItem.image = cursor.getString(cursor.getColumnIndex(KEY_ITEM_IMAGE));
+
+        dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_ITEM_GRAMMAR));
+        dataItem.pronounce = cursor.getString(cursor.getColumnIndex(KEY_ITEM_PRONOUNCE));
+        dataItem.base = cursor.getString(cursor.getColumnIndex(KEY_ITEM_BASE));
+
         dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_ITEM_TRANS1));
         dataItem.trans2= cursor.getString(cursor.getColumnIndex(KEY_ITEM_TRANS2));
 
@@ -3905,6 +3925,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dataItem.item = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TEXT));
         dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE));
         dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSCRIPT));
+        dataItem.pronounce = dataItem.item;
         dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_UDATA_GRAMMAR));
         dataItem.sound = cursor.getString(cursor.getColumnIndex(KEY_UDATA_SOUND));
         dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_INFO));
@@ -3944,6 +3965,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //long i = cursor.getLong(cursor.getColumnIndex(KEY_UDATA_UPDATED_SORT));
         dataItem.info = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSLATE)); // TODO fix
         dataItem.trans1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_TRANSCRIPT));
+        dataItem.pronounce = dataItem.item;
         dataItem.grammar = cursor.getString(cursor.getColumnIndex(KEY_UDATA_GRAMMAR));
         dataItem.sound = cursor.getString(cursor.getColumnIndex(KEY_UDATA_SOUND));
         dataItem.item_info_1 = cursor.getString(cursor.getColumnIndex(KEY_UDATA_INFO));

@@ -1,7 +1,5 @@
 package com.online.languages.study.lang.adapters;
 
-
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
@@ -23,7 +21,6 @@ import com.online.languages.study.lang.data.DataItem;
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
-
 
 public class NewItemDialog {
 
@@ -122,7 +119,6 @@ public class NewItemDialog {
         speakBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-
                 String text = textSanitizer(itemEditText.getText().toString());
                 activity.speakText(text);
             }

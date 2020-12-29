@@ -4,29 +4,31 @@
     <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~5617902072</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/3283382776</string>
 
-    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkgtUL0w+YuiWAtnMVbLQ1racScuPdv5Jtuf5rU+IODWjq7oMUzxX/yHWW4UiQD0jM7Vl8ppwbp665DHi0LR9sIQsqzJTYvA2dGb+0GE0LHe2xBVzX0eEBhzkXAxIUDgzIdJlchl3/R6eYz4TCr1zMN79oaLmdBD6y5pQE4zBEFHStCb9mJRhxYfqusAl/kjzZSEUIneKVH72zvgQJ0W1iyOKevQNivNGK60PVq4wp/r9iFTtZG5mfpSELIMKETWgJ8w1/KNJLflpswQSrJWbSzua3sjlP+U4VBzvbdRzuMS2Ij3dToXU7Seep3msBYcl8yhmWmy9W/vDTsYGoheapQIDAQAB</string>
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQoM5r73RUBbeBt+c0JbayyjPrOZ7ovbz94UCgxXlseebTxGzP6fnj1MY9W8EjsA3cYhrJOcQGjZKpWKFUC1rBAziNVE6Rn9PA0scNDtAVHAl+ZQfI77O6f2ZdxhE+JmT4zYBuhs3fIWVk7XMZUJ6FKNN9ZgHbip+mEQcQbvQy7f6iaxMmweCTv3wypWmPvNJQBTvgdOZt+v/rPioSbprihbllTn9bzl4Cuu4TwRaFhLa7cE3HWe5qNkKBZ1Dee2U6mgYZoMy1HFC64cYaqNjneXQdJV7hDamjY3LIJbU02e2a42XjA2uT7KU/HSuYFx6fDc6O0Ja+GuQa1xJfqpUQIDAQAB</string>
 
-    <string name="app_market_link" translatable="false">com.study.languages.english</string>
+    <string name="app_market_link" translatable="false">com.study.languages.french</string>
 
-    <string name="app_data_file" translatable="false">data_fr.json</string>
-    <string name="app_structure_file" translatable="false">french/navstructure.json</string>
+    <string name="app_data_file" translatable="false">french/data_en.json</string>
+    <string name="app_structure_file" translatable="false">french/navstructure_en.json</string>
 
     <string-array name="data_files">
-        <item>data.json</item>
-        <item>data_fr.json</item>
+        <item>french/data.json</item>
+        <item>french/data_en.json</item>
     </string-array>
 
-    <string name="backup_file_name" translatable="false">ENDB_backup.jpg</string>
+    <string name="backup_file_name" translatable="false">FRDB_backup.jpg</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
-    <string name="app_name">Learn English</string>
-    <string name="nav_header_txt">Apprenez l\'anglais!</string>
-    <string name="app_info_file">info_fr</string>
+    <string name="app_name" translatable="false">Learn French</string>
+    <string name="nav_header_txt" translatable="false">Learn French!</string>
+    <string name="app_info_file" translatable="false">info_en</string>
 
-    <string name="msg_version_name">(LE, version %s)</string>
+    <string name="msg_version_name">(LF, version %s)</string>
 
-    <string name="voc_ex_link_first_desc">Traduction anglais-français</string>
-    <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
+    <string name="voc_ex_link_first_desc" translatable="false">French/English translation</string>
+    <string name="voc_ex_link_second_desc" translatable="false">English/French translation </string>
+
+    <string name="dialog_edit_item_text">French text</string>
 
     <string name="tabs_starred_display" translatable="false">always</string>
 

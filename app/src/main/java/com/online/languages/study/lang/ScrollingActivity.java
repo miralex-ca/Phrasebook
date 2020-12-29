@@ -528,7 +528,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     //// TTS integration
 
     public void speakReading() {
-        String text = dataItem.item;
+        String text = dataManager.getPronounce(dataItem);
         speakWords(text);
     }
 

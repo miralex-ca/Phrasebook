@@ -908,6 +908,11 @@ public class DataManager {
         return locale;
     }
 
+    public String getPronounce(DataItem item)  {
+        return item.pronounce;
+    }
+
+
 
 
 

@@ -6,7 +6,6 @@
     <string name="app_structure_file">french/navstructure.json</string>
 
     <string name="app_name">Французский язык</string>
-
     <string name="nav_header_txt">Французский язык</string>
 
     <string name="app_info_file">info</string>
@@ -15,6 +14,8 @@
     <string name="voc_ex_link_second_desc">Русско-французский перевод</string>
 
     <string name="msg_version_name">(LF, версия %s)</string>
+
+    <string name="dialog_edit_item_text">французский текст</string>
 
 
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">

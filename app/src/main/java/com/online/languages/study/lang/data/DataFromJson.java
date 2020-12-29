@@ -394,6 +394,24 @@ public class DataFromJson {
                 dataItem.item_info_1 = "";
             }
 
+            if (itemInfo.has("pronounce")) {
+                dataItem.pronounce = itemInfo.getString("pronounce");
+            } else {
+                dataItem.pronounce = dataItem.item;
+            }
+
+            if (itemInfo.has("grammar")) {
+                dataItem.grammar = itemInfo.getString("grammar");
+            } else {
+                dataItem.grammar = "";
+            }
+
+            if (itemInfo.has("base")) {
+                dataItem.base = itemInfo.getString("base");
+            } else {
+                dataItem.base = "";
+            }
+
             if (itemInfo.has("ipa")) {
                 dataItem.trans1 =  itemInfo.getString("ipa");
             } else {

@@ -450,7 +450,7 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
             if (!fShowTranslate)  return;
         }
 
-        final String text = wordList.get(position).item;
+        final String text = dataManager.getPronounce(wordList.get(position)) ;
 
         if (position == 0 ) {
 
