@@ -798,9 +798,7 @@ public class DataManager {
 
 
     public int checkUcatLimit(String ucat_id) {
-
         return  dbHelper.checkUcaDataListSize(ucat_id);
-
     }
 
 

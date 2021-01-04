@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~5617902072</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/3283382776</string>
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~3943472061</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/1962523591</string>
 
     <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQoM5r73RUBbeBt+c0JbayyjPrOZ7ovbz94UCgxXlseebTxGzP6fnj1MY9W8EjsA3cYhrJOcQGjZKpWKFUC1rBAziNVE6Rn9PA0scNDtAVHAl+ZQfI77O6f2ZdxhE+JmT4zYBuhs3fIWVk7XMZUJ6FKNN9ZgHbip+mEQcQbvQy7f6iaxMmweCTv3wypWmPvNJQBTvgdOZt+v/rPioSbprihbllTn9bzl4Cuu4TwRaFhLa7cE3HWe5qNkKBZ1Dee2U6mgYZoMy1HFC64cYaqNjneXQdJV7hDamjY3LIJbU02e2a42XjA2uT7KU/HSuYFx6fDc6O0Ja+GuQa1xJfqpUQIDAQAB</string>
 

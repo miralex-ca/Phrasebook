@@ -27,6 +27,7 @@ import com.online.languages.study.lang.data.UserStatsData;
 import com.online.languages.study.lang.files.DBImport;
 import com.online.languages.study.lang.tools.Computer;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,9 +67,9 @@ import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private Context cntx;
+    private final Context cntx;
     SharedPreferences appSettings;
-    private int MAX_SCORE = 4;
+    private final int MAX_SCORE = 4;
     private static final int DATABASE_VERSION = BuildConfig.VERSION_CODE;
     public static final String DATABASE_NAME = BuildConfig.DBNAME;
 
@@ -99,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_ITEM_DIVIDER = "item_divider";
     private static final String KEY_ITEM_FILTER = "item_filter";
     private static final String KEY_ITEM_MODE = "item_mode";
-
+    private static final String KEY_ITEM_SEARCH = "item_search";
     private static final String KEY_ITEM_TRANS1 = "item_trans1";
     private static final String KEY_ITEM_TRANS2 = "item_trans2";
 
@@ -215,6 +216,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_ITEM_BASE + " TEXT,"
             + KEY_ITEM_GRAMMAR + " TEXT,"
             + KEY_ITEM_FILTER + " TEXT,"
+            + KEY_ITEM_SEARCH + " TEXT,"
             + KEY_ITEM_MODE + "  INTEGER DEFAULT 0,"
             + KEY_ITEM_DIVIDER + " TEXT"
             + ")";
@@ -447,6 +449,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
             for (DataItem item: allItems) {
 
+
+
+                String searchTerm = item.item + " " + item.info;
+
+                String asciiName = Normalizer.normalize(searchTerm, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+
+                String formattedText= searchTerm + " " + asciiName;
+
                 ContentValues values = new ContentValues();
                 values.put(KEY_ITEM_ID, item.id);
                 values.put(KEY_ITEM_TITLE, item.item);
@@ -458,6 +468,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_ITEM_GRAMMAR, item.grammar);
                 values.put(KEY_ITEM_DIVIDER, item.divider);
                 values.put(KEY_ITEM_FILTER, item.filter);
+                values.put(KEY_ITEM_SEARCH, formattedText);
                 values.put(KEY_ITEM_MODE, item.mode);
                 values.put(KEY_ITEM_TRANS1, item.trans1);
                 values.put(KEY_ITEM_TRANS2, item.trans2);
@@ -2510,7 +2521,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String query = "SELECT * FROM " +TABLE_ITEMS_DATA
                 +" WHERE ("+conditionLike +")"
-                +" AND " + "("+KEY_ITEM_TITLE+" LIKE '%"+searchTerm+"%' OR "+KEY_ITEM_DESC+" LIKE '%" + searchTerm+"%')";
+                +" AND " + "( " +KEY_ITEM_SEARCH+" LIKE '%" + searchTerm+"%' ) LIMIT 200";
 
 
         Cursor cursor = db.rawQuery(query, null);
@@ -2545,7 +2556,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 + " INNER JOIN " + TABLE_USER_DATA_ITEMS + " b "
                 + " ON a." + KEY_UDC_UDATA_ID + " = b." + KEY_UDATA_ID
 
+              //  + ' WHERE lower(column) GLOB '*addTildeOptions(searchTerm)*'";
+
+               // + " WHERE lower(" + KEY_UDATA_TEXT +") GLOB '*addTildeOptions(%"+searchTerm+"%)*' ";
+
                 +" WHERE  ("+KEY_UDATA_TEXT+" LIKE '%"+searchTerm+"%' OR "+KEY_UDATA_TRANSLATE+" LIKE '%" + searchTerm+"%')";
+
+
 
 
         Cursor udataCursor = db.rawQuery(udataQuery, null);
@@ -2560,9 +2577,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
 
-
-
-
         db.close();
 
         return items;
@@ -2570,6 +2584,16 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+     private String addTildeOptions(String searchText) {
+        return searchText.toLowerCase()
+                .replaceAll("[aáàäâã]", "\\[aáàäâã\\]")
+                .replaceAll("[eéèëê]", "\\[eéèëê\\]")
+                .replaceAll("[iíìî]", "\\[iíìî\\]")
+                .replaceAll("[oóòöôõ]", "\\[oóòöôõ\\]")
+                .replaceAll("[uúùüû]", "\\[uúùüû\\]")
+                .replace("*", "[*]")
+                .replace("?", "[?]");
+    }
 
 
 

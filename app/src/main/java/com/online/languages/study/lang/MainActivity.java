@@ -759,14 +759,14 @@ public class MainActivity extends BaseActivity
 
         if ( isEnabled ) {
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            toggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_UNLOCKED);
+           // toggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_UNLOCKED);
             toggle.setDrawerIndicatorEnabled(true);
             toggle.syncState();
         }
         else {
 
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-            toggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            //toggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
             toggle.setDrawerIndicatorEnabled(false);
             toggle.syncState();
 

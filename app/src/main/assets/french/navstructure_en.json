@@ -27,8 +27,8 @@
 
         {"parent": "root", "type": "set", "id": "set_1_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100100110", "title": "Greetings", "review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100120", "title": "Formulas of politeness","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100130", "title": "Language skills","review":  "true"},
+        {"parent": "root", "type": "simple", "id": "100100120", "title": "Formulas of Politeness","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100100130", "title": "Language Skills","review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Useful information"},
 
@@ -63,9 +63,9 @@
       ]
     },
 
-    {"tag": "section_3", "title": "In the city", "id": "10030",
+    {"tag": "section_3", "title": "In the City", "id": "10030",
       "desc": "City transport, organisations, places of interest, signboards",
-      "title_short": "In the city",
+      "title_short": "In the City",
       "desc_short": "City transport, organisations, places of interest, signboards",
       "image": "picto/section_city.png",
       "categories":
@@ -77,16 +77,16 @@
 
         {"parent": "root", "type": "simple", "id": "100300020", "title": "Street", "image": "cat/road_cat.png"},
         {"parent": "root", "type": "simple", "id": "100300030", "title": "Organisations", "image": "cat/store_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100300040", "title": "Places of interest", "image":  "cat/sights_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100300040", "title": "Places of Interest", "image":  "cat/sights_cat.png"},
         {"parent": "root", "type": "simple", "id": "100300050", "title": "Transport", "image": "cat/transport_cat.png"},
         {"parent": "root", "type": "simple", "id": "100300060", "title": "Car", "image": "cat/car_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_3_2", "title": "Phrases"},
-        {"parent": "root", "type": "simple", "id": "100300110", "title": "In the city"},
-        {"parent": "root", "type": "simple", "id": "100300120", "title": "City transport"},
+        {"parent": "root", "type": "simple", "id": "100300110", "title": "In the City"},
+        {"parent": "root", "type": "simple", "id": "100300120", "title": "City Transport"},
 
         {"parent": "root", "type": "set", "id": "set_3_3", "title": "Additional topics"},
-        {"parent": "root", "type": "extra", "id": "100300210", "title": "Signboards & inscriptions"}
+        {"parent": "root", "type": "extra", "id": "100300210", "title": "Signboards & Inscriptions"}
 
       ]
     },
@@ -109,7 +109,7 @@
         {"parent": "root", "type": "simple", "id": "100400060", "title": "Perfumery", "image": "cat/perfume_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_4_2", "title": "Phrases"},
-        {"parent": "root", "type": "simple", "id": "100400110", "title": "In a shop"},
+        {"parent": "root", "type": "simple", "id": "100400110", "title": "In a Shop"},
         {"parent": "root", "type": "simple", "id": "100400120", "title": "Payment"},
 
         {"parent": "root", "type": "set", "id": "set_4_3", "title": "Additional topics"},
@@ -135,7 +135,7 @@
 
         {"parent": "root", "type": "simple", "id": "100500010", "title": "Food", "image": "cat/food_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500020", "title": "Meat", "image": "cat/meat_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100500030", "title": "Fish & seafood", "image": "cat/fish_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Fish & Seafood", "image": "cat/fish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500040", "title": "Vegetables", "image": "cat/vegetable_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500050", "title": "Fruit", "image": "cat/fruit_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500060", "title": "Desserts", "image": "cat/dessert_cat.png","review":  "false"},
@@ -151,7 +151,7 @@
         {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts & Dried fruits"},
         {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs & Spices"},
         {"parent": "root", "type": "extra", "id": "100500240", "title": "Sauces & Condiments","review":  "false"},
-        {"parent": "root", "type": "extra", "id": "100500250", "title": "Dairy produce","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500250", "title": "Dairy Produce","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500260", "title": "Cereals","review":  "false"}
 
 
@@ -169,12 +169,12 @@
         {"parent": "root", "type": "set", "id": "set_6_1", "title": "Basic vocabulary"},
 
         {"parent": "root", "type": "simple", "id": "100600010", "title": "Nature", "image": "cat/nature_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600020", "title": "Natural phenomena", "image": "cat/phenomena_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600030", "title": "Water resources", "image": "cat/water_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600040", "title": "Domestic animals", "image": "cat/domestic_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600050", "title": "Wild animals", "image": "cat/animal_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600060", "title": "Wild birds", "image": "cat/bird_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100600070", "title": "Sea animals", "image": "cat/sea_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "Natural Phenomena", "image": "cat/phenomena_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Water Resources", "image": "cat/water_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600040", "title": "Domestic Animals", "image": "cat/domestic_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Wild Animals", "image": "cat/animal_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600060", "title": "Wild Birds", "image": "cat/bird_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100600070", "title": "Sea Animals", "image": "cat/sea_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_6_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100600110", "title": "About weather"},
@@ -185,7 +185,7 @@
         {"parent": "root", "type": "extra", "id": "100600210", "title": "Trees", "review":  "false"},
         {"parent": "root", "type": "extra", "id": "100600220", "title": "Flowers", "review":  "false"},
         {"parent": "root", "type": "extra", "id": "100600230", "title": "Insects" , "review":  "false"},
-        {"parent": "root", "type": "extra", "id": "100600240", "title": "Deep-sky objects", "review":  "false"}
+        {"parent": "root", "type": "extra", "id": "100600240", "title": "Deep-sky Objects", "review":  "false"}
 
 
       ]
@@ -201,8 +201,8 @@
 
         {"parent": "root", "type": "set", "id": "set_7_1", "title": "Basic vocabulary"},
 
-        {"parent": "root", "type": "simple", "id": "100700010", "title": "Parts of the body", "image": "cat/body_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100700020", "title": "Human face", "image": "cat/face_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "Parts of the Body", "image": "cat/body_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700020", "title": "Human Face", "image": "cat/face_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700030", "title": "Organs & Tissues", "image": "cat/organ_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700050", "title": "Signs & Symptoms ", "image": "cat/symtom_cat.png","review":  "false"},
         {"parent": "root", "type": "simple", "id": "100700040", "title": "Diseases", "image": "cat/desease_cat.png","review":  "false"},
@@ -212,9 +212,9 @@
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Phrases"},
 
-        {"parent": "root", "type": "simple", "id": "100700110", "title": "Consulting a doctor"},
-        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of diseases"},
-        {"parent": "root", "type": "simple", "id": "100700130", "title": "At the pharmacy"},
+        {"parent": "root", "type": "simple", "id": "100700110", "title": "Seeing a Doctor"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of Diseases"},
+        {"parent": "root", "type": "simple", "id": "100700130", "title": "At the Pharmacy"},
 
         {"parent": "root", "type": "set", "id": "set_7_3", "title": "Additional topics"},
         {"parent": "root", "type": "extra", "id": "100700210", "title": "Skeleton", "review":  "false"},
@@ -238,7 +238,20 @@
         {"parent": "root", "type": "simple", "id": "100800040", "title": "Dishes & Silverware", "image":  "cat/dish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800050", "title": "Appliance", "image":  "cat/appliance_cat.png"},
         {"parent": "root", "type": "simple", "id": "100800060", "title": "Bathroom", "image":  "cat/bath_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100800070", "title": "Farm", "image":  "cat/house_cat.png"}
+        {"parent": "root", "type": "simple", "id": "100800070", "title": "Farm", "image":  "cat/house_cat.png"},
+
+
+        {"parent": "root", "type": "set", "id": "set_8_2", "title": "Phrases"},
+
+        {"parent": "root", "type": "simple", "id": "100800110", "title": "My Home"},
+        {"parent": "root", "type": "simple", "id": "100800120", "title": "Rent an Apartment"},
+
+        {"parent": "root", "type": "set", "id": "set_8_3", "title": "Additional topics"},
+
+        {"parent": "root", "type": "extra", "id": "100800210", "title": "Hardware & Tools", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100800220", "title": "Garden Tools", "review":  "false"}
+
+
       ]
     },
 

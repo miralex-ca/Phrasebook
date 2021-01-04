@@ -30,5 +30,7 @@
 
     <integer name="popup_position">0</integer>
 
+    <integer name="card_grammar_limit">10</integer>
+
 
 </resources>

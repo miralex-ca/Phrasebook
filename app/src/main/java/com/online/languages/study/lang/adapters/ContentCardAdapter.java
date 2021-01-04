@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
+import static com.online.languages.study.lang.Constants.SHOW_GRAMMAR;
 
 
 public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.MyViewHolder> {
@@ -41,15 +42,16 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
     CatActivity catActivity;
     UserListActivity starredActivity;
 
-
     int activityType;
     private static final int CAT_ACTIVITY = 1;
     private static final int STARRED_ACTIVITY = 2;
 
+    int grammarCharLimit = 10;
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt, translate, transcribe;
+        TextView txt, translate, transcribe, grammar;
         View helperView;
 
         View starIcon, statusView, divider, itemWrap, playButton, playHolder, starHolder, changeStar;
@@ -66,6 +68,8 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
             statusView = itemView.findViewById(R.id.status_wrap);
             divider = itemView.findViewById(R.id.catItemDivider);
 
+            grammar = itemView.findViewById(R.id.itemGrammar);
+
             playButton = itemView.findViewById(R.id.playButton);
             starHolder = itemView.findViewById(R.id.starHolder);
             playHolder = itemView.findViewById(R.id.playHolder);
@@ -81,6 +85,7 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
 
         activityType = CAT_ACTIVITY;
         catActivity = activity;
+
     }
 
     public ContentCardAdapter(Context _context, ArrayList<DataItem> _dataList,
@@ -114,6 +119,8 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
         }
 
         dataManager = new DataManager(context);
+
+        grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit);
 
     }
 
@@ -164,6 +171,12 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
 
         holder.transcribe.setText( String.format("[ %s ]", transcript) );
 
+        String grammar = dataItem.grammar.replace("n. ", "").replace(".", "");
+
+        if (SHOW_GRAMMAR && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
+            holder.grammar.setVisibility(View.VISIBLE);
+            holder.grammar.setText(grammar);
+        }
 
         if (position == 0 || autoDivider) holder.divider.setVisibility(View.INVISIBLE);
 

@@ -70,13 +70,11 @@
     <string-array name="set_test_all_limit_list">
         <item>@string/set_test_all_limit_1</item>
         <item>@string/set_test_all_limit_2</item>
-        <item>@string/set_test_all_limit_3</item>
     </string-array>
 
     <string-array name="set_test_all_limit_values">
         <item>@string/set_test_all_limit_default</item>
-        <item>60</item>
-        <item>100</item>
+        <item>50</item>
     </string-array>
 
     <string name="set_test_all_limit_default" translatable="false">30</string>
@@ -161,14 +159,14 @@
     <string-array name="set_data_mode_list">
         <item>@string/set_data_mode_easy</item>
         <item>@string/set_data_mode_default</item>
-        <!-- item>@string/set_data_mode_advanced</item -->
+        <item>@string/set_data_mode_advanced</item>
     </string-array>
 
 
     <string-array name="set_data_mode_values">
         <item>11</item>
         <item>@string/set_data_mode_default_value</item>
-        <!-- item>21</item -->
+        <item>31</item>
     </string-array>
 
     <string name="set_data_mode_default_value" translatable="false">21</string>
