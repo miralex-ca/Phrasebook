@@ -159,7 +159,7 @@
     <string-array name="set_data_mode_list">
         <item>@string/set_data_mode_easy</item>
         <item>@string/set_data_mode_default</item>
-        <item>@string/set_data_mode_advanced</item>
+        <!-- item>@string/set_data_mode_advanced</item -->
     </string-array>
 
 

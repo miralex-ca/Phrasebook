@@ -24,7 +24,7 @@ public class DataFromJson {
     Context context;
     public ArrayList<DataItem> data = new ArrayList<>();
 
-    private String categoryFile;
+    public String categoryFile;
 
     private String navStructureFile;
     private String dataNode;

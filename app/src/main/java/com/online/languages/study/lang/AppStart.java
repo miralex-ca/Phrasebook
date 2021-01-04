@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.online.languages.study.lang.data.CheckData;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
 
@@ -46,6 +47,9 @@ public class AppStart extends AppCompatActivity {
             changeShowAd();
 
             dbHelper.sanitizeDB();
+
+            CheckData checkData = new CheckData();
+            checkData.checkData();
 
         }
 

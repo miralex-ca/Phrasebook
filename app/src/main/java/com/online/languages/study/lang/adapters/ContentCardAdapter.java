@@ -176,6 +176,8 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
         if (SHOW_GRAMMAR && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
             holder.grammar.setVisibility(View.VISIBLE);
             holder.grammar.setText(grammar);
+        } else {
+            holder.grammar.setVisibility(View.GONE);
         }
 
         if (position == 0 || autoDivider) holder.divider.setVisibility(View.INVISIBLE);
