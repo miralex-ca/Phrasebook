@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
+import static com.online.languages.study.lang.Constants.SHOW_GRAMMAR;
 
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHolder> {
@@ -29,9 +30,11 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private ColorProgress colorProgress;
     private boolean autoDivider;
 
+    int grammarCharLimit = 10;
+
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txt, translate;
+        TextView txt, translate, grammar;
         View helperView;
 
         View starIcon, statusView, divider;
@@ -45,6 +48,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
             starIcon = itemView.findViewById(R.id.voclistStar);
             statusView = itemView.findViewById(R.id.status_wrap);
             divider = itemView.findViewById(R.id.catItemDivider);
+            grammar = itemView.findViewById(R.id.itemGrammar);
 
         }
     }
@@ -67,6 +71,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         } else {
             layoutType = _layoutType;
         }
+
+        grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit);
+        if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit_compact);;
 
     }
 
@@ -130,6 +137,15 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
                 holder.txt.setVisibility(View.INVISIBLE);
                 holder.txt.setTextSize(8);
             }
+        }
+
+        String grammar = dataItem.grammar.replace("n. ", "").replace(".", "");
+
+        if (SHOW_GRAMMAR && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
+            holder.grammar.setVisibility(View.VISIBLE);
+            holder.grammar.setText(grammar);
+        } else {
+            holder.grammar.setVisibility(View.GONE);
         }
 
 

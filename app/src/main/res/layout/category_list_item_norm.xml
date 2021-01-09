@@ -104,15 +104,38 @@
             style="@style/catListItemBox"
             >
 
-            <TextView
-                android:id="@+id/itemText"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_marginBottom="7dp"
-                android:fontFamily="sans-serif-light"
-                style="@style/cat_list_item_title.norm"
-                android:textSize="21sp"
-                />
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/itemText"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    android:fontFamily="sans-serif-light"
+                    style="@style/cat_list_item_title.norm"
+                    android:textSize="21sp"
+                    />
+
+                <TextView
+                    android:visibility="visible"
+                    android:text="fm"
+                    android:maxLines="1"
+                    android:layout_marginLeft="12dp"
+                    android:textStyle="italic"
+                    android:fontFamily="sans-serif-light"
+                    android:id="@+id/itemGrammar"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="19sp"
+                    style="@style/cat_list_item_title.norm"
+                    android:alpha=".7"
+                    />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/itemInfo"

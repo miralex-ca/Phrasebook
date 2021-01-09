@@ -2519,7 +2519,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<DataItem> items = new ArrayList<>();
 
 
-        String query = "SELECT * FROM " +TABLE_ITEMS_DATA
+        String query = "SELECT * FROM " + TABLE_ITEMS_DATA
                 +" WHERE ("+conditionLike +")"
                 +" AND " + "( " +KEY_ITEM_SEARCH+" LIKE '%" + searchTerm+"%' ) LIMIT 200";
 

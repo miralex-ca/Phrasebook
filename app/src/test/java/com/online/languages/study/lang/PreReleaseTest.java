@@ -53,9 +53,10 @@ public class PreReleaseTest {
         assertEquals(4, Constants.UCATS_UNPAID_LIMIT);
         assertEquals(2, Constants.GROUPS_UNPAID_LIMIT);
 
-        assertFalse(Constants.SHOW_GRAMMAR);
+        assertTrue(Constants.SHOW_GRAMMAR);
 
     }
+
 
 
 }

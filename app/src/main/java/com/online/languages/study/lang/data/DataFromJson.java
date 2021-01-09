@@ -363,8 +363,20 @@ public class DataFromJson {
         try {
 
             dataItem.id = itemInfo.getString("id");
-            dataItem.item = itemInfo.getString("item");
-            dataItem.info = itemInfo.getString("info");
+            //dataItem.item = itemInfo.getString("item");
+            //dataItem.info = itemInfo.getString("info");
+
+            if (itemInfo.has("item")) {
+                dataItem.item =  itemInfo.getString("item");
+            } else {
+                dataItem.item =  "";
+            }
+
+            if (itemInfo.has("info")) {
+                dataItem.info =  itemInfo.getString("info");
+            } else {
+                dataItem.info =  "";
+            }
 
             if (itemInfo.has("divider")) {
                 dataItem.divider =  itemInfo.getString("divider");

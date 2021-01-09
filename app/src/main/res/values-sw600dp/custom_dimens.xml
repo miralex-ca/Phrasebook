@@ -168,6 +168,7 @@
     <integer name="img_group_picker_span">6</integer>
 
     <integer name="popup_position">-180</integer>
+    <integer name="card_grammar_limit_compact">10</integer>
 
 
 </resources>

@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.data.DataManager;
@@ -31,6 +32,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -42,6 +44,7 @@ import static androidx.test.espresso.contrib.DrawerMatchers.isClosed;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
@@ -174,10 +177,17 @@ public class AppStartTest {
         pressBack(); // back to main
 
 
+
+
         Context context = mActivityTestRule.getActivity();
         String btmSetting = dataManager.appSettings.getString("btm_nav", context.getString(R.string.set_btm_nav_value_default));
 
-        boolean display = btmSetting.equals(context.getString(R.string.set_btm_nav_value_1)) || btmSetting.equals(context.getString(R.string.set_btm_nav_value_2));
+        boolean display = btmSetting.equals(context.getString(R.string.set_btm_nav_value_1)) || btmSetting.equals(context.getString(R.string.set_btm_nav_value_4));
+
+        //Toast.makeText(getApplicationContext(), "Display: " + display, Toast.LENGTH_SHORT).show();
+
+
+        waitTime(500);
 
         if (display) { // bottom navigation displayed
 
@@ -199,6 +209,7 @@ public class AppStartTest {
             waitTime(500);
             pressBack(); // back to home fragment
 
+
         }
 
         if (!display) {
@@ -208,9 +219,6 @@ public class AppStartTest {
                     .perform(DrawerActions.open()); // Open Drawer
 
             waitTime(500);
-
-
-
 
 
 
@@ -239,58 +247,114 @@ public class AppStartTest {
 
         }
 
+        boolean openFromNav = !btmSetting.equals(context.getString(R.string.set_btm_nav_value_4));
 
         // open notes fragment in navigation
         waitTime(500);
 
-        onView(withId(R.id.drawer_layout))
-                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-                .perform(DrawerActions.open()); // Open Drawer
-        waitTime(300);
-        onView(withId(R.id.nav_view))
-                .perform(NavigationViewActions.navigateTo(R.id.nav_notes));
+        if (openFromNav)  {
+
+            // open notes fragment from drawer
+            onView(withId(R.id.drawer_layout))
+                    .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                    .perform(DrawerActions.open()); // Open Drawer
+            waitTime(300);
+            onView(withId(R.id.nav_view))
+                    .perform(NavigationViewActions.navigateTo(R.id.nav_notes));
 
 
-        // open settings fragment
-        waitTime(500);
-        onView(withId(R.id.drawer_layout))
-                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-                .perform(DrawerActions.open()); // Open Drawer
-        waitTime(300);
-        onView(withId(R.id.nav_view))
-                .perform(NavigationViewActions.navigateTo(R.id.nav_settings));
+            // open settings fragment from drawer
+            waitTime(500);
+            onView(withId(R.id.drawer_layout))
+                    .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                    .perform(DrawerActions.open()); // Open Drawer
+            waitTime(300);
+            onView(withId(R.id.nav_view))
+                    .perform(NavigationViewActions.navigateTo(R.id.nav_settings));
 
-        // open desc fragment
-        waitTime(500);
-        onView(withId(R.id.drawer_layout))
-                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-                .perform(DrawerActions.open()); // Open Drawer
-        waitTime(300);
-        onView(withId(R.id.nav_view))
-                .perform(NavigationViewActions.navigateTo(R.id.nav_info));
+            // open info fragment
+            waitTime(500);
+            onView(withId(R.id.drawer_layout))
+                    .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                    .perform(DrawerActions.open()); // Open Drawer
+            waitTime(300);
+            onView(withId(R.id.nav_view))
+                    .perform(NavigationViewActions.navigateTo(R.id.nav_info));
 
-        // open contacts fragment
-        waitTime(500);
-        onView(withId(R.id.drawer_layout))
-                .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
-                .perform(DrawerActions.open()); // Open Drawer
-        waitTime(500);
-        onView(withId(R.id.nav_view))
-                .perform(NavigationViewActions.navigateTo(R.id.nav_contact));
+            // open contacts fragment
+            waitTime(500);
+            onView(withId(R.id.drawer_layout))
+                    .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
+                    .perform(DrawerActions.open()); // Open Drawer
+            waitTime(500);
+            onView(withId(R.id.nav_view))
+                    .perform(NavigationViewActions.navigateTo(R.id.nav_contact));
 
 
-        pressBack(); // back to home fragment
+            pressBack(); // back to home fragment
+
+        }
+        else {
+
+            ViewInteraction bottomNavigationMoreView = onView(
+                    allOf(withId(R.id.nav_more),
+                            isDisplayed()));
+
+            bottomNavigationMoreView.perform(click());  // open nav dialog
+            waitTime(500);
+
+            ViewInteraction navDialog1 = onView(
+                    allOf(withId(R.id.navItem1),
+                            isDisplayed()));
+            navDialog1.perform(click());
+            waitTime(500);
+
+            bottomNavigationMoreView.perform(click());  // open nav dialog
+            waitTime(500);
+
+            ViewInteraction navDialog2 = onView(
+                    allOf(withId(R.id.navItem2),
+                            isDisplayed()));
+            navDialog2.perform(click());
+            waitTime(500);
+
+            bottomNavigationMoreView.perform(click());  // open nav dialog
+            waitTime(500);
+
+            ViewInteraction navDialog3 = onView(
+                    allOf(withId(R.id.navItem3),
+                            isDisplayed()));
+            navDialog3.perform(click());
+            waitTime(500);
+
+            bottomNavigationMoreView.perform(click());  // open nav dialog
+            waitTime(500);
+
+            ViewInteraction navDialog4 = onView(
+                    allOf(withId(R.id.navItem4),
+                            isDisplayed()));
+            navDialog4.perform(click());
+            waitTime(500);
+
+            pressBack(); // back to home fragment
+        }
+
+
+        checkSearch();
+
+        waitTime(2000);
+
+    }
+
+
+
+    private void checkSearch() {
 
 
         // open search activity
         waitTime(300);
         ViewInteraction actionMenuItemView = onView(
                 allOf(withId(R.id.search),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.toolbar),
-                                        2),
-                                0),
                         isDisplayed()));
         actionMenuItemView.perform(click());
 
@@ -310,7 +374,7 @@ public class AppStartTest {
         waitTime(500);
         pressBack(); // back to main
 
-        waitTime(2000);
+
 
     }
 

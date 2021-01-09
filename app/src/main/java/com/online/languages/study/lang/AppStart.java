@@ -48,9 +48,6 @@ public class AppStart extends AppCompatActivity {
 
             dbHelper.sanitizeDB();
 
-            CheckData checkData = new CheckData();
-            checkData.checkData();
-
         }
 
         dbHelper.populateDB();
