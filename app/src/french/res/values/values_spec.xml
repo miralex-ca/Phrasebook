@@ -19,8 +19,8 @@
     <string name="backup_file_name" translatable="false">FRDB_backup.jpg</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
-    <string name="app_name" translatable="false">Learn French</string>
-    <string name="nav_header_txt" translatable="false">Learn French!</string>
+    <string name="app_name" translatable="false">French for Everyone</string>
+    <string name="nav_header_txt" translatable="false">French for Everyone</string>
     <string name="app_info_file" translatable="false">info_en</string>
 
     <string name="msg_version_name">(LF, version %s)</string>

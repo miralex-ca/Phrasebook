@@ -5,8 +5,8 @@
     <string name="app_data_file" translatable="false">french/data.json</string>
     <string name="app_structure_file">french/navstructure.json</string>
 
-    <string name="app_name">Французский язык</string>
-    <string name="nav_header_txt">Французский язык</string>
+    <string name="app_name">Французский для всех</string>
+    <string name="nav_header_txt">Французский для всех</string>
 
     <string name="app_info_file">info</string>
 
