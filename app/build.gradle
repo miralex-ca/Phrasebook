@@ -38,8 +38,8 @@ android {
         applicationId "com.study.languages.master"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 45
-        versionName '2.5.6'
+        versionCode 46
+        versionName '2.5.7'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -89,6 +89,14 @@ android {
             applicationId 'com.study.languages.french'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en', 'ru'
+        }
+
+        russian {
+            minSdkVersion 21
+            dimension "mode"
+            applicationId 'com.study.languages.russian'
+            resValue("string", "applicationId", applicationId)
+
         }
 
         personal {
