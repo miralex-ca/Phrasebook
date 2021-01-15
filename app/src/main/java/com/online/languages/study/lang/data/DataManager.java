@@ -903,6 +903,10 @@ public class DataManager {
             locale = Locale.FRENCH;
         }
 
+        if (localString.equals("russian")) {
+            locale = new Locale("ru");
+        }
+
         return locale;
     }
 

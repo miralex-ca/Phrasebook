@@ -1,2 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~3943472061</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/1962523591</string>
+
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQoM5r73RUBbeBt+c0JbayyjPrOZ7ovbz94UCgxXlseebTxGzP6fnj1MY9W8EjsA3cYhrJOcQGjZKpWKFUC1rBAziNVE6Rn9PA0scNDtAVHAl+ZQfI77O6f2ZdxhE+JmT4zYBuhs3fIWVk7XMZUJ6FKNN9ZgHbip+mEQcQbvQy7f6iaxMmweCTv3wypWmPvNJQBTvgdOZt+v/rPioSbprihbllTn9bzl4Cuu4TwRaFhLa7cE3HWe5qNkKBZ1Dee2U6mgYZoMy1HFC64cYaqNjneXQdJV7hDamjY3LIJbU02e2a42XjA2uT7KU/HSuYFx6fDc6O0Ja+GuQa1xJfqpUQIDAQAB</string>
+
+    <string name="app_market_link" translatable="false">com.study.languages.french</string>
+
+    <string name="app_data_file" translatable="false">russian/data_en.json</string>
+    <string name="app_structure_file" translatable="false">russian/navstructure_en.json</string>
+
+    <string-array name="data_files">
+        <item>russian/data.json</item>
+        <item>russian/data_en.json</item>
+    </string-array>
+
+    <string name="backup_file_name" translatable="false">FRDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">endb</string>
+
+    <string name="app_name" translatable="false">Russian for Everyone</string>
+    <string name="nav_header_txt" translatable="false">Russian for Everyone</string>
+    <string name="app_info_file" translatable="false">info_en</string>
+
+    <string name="msg_version_name">(LR, version %s)</string>
+
+    <string name="voc_ex_link_first_desc" translatable="false">Russian/English translation</string>
+    <string name="voc_ex_link_second_desc" translatable="false">English/Russian translation </string>
+
+    <string name="dialog_edit_item_text">Russian text</string>
+
+    <string name="tabs_starred_display" translatable="false">always</string>
+
+    <string-array name="set_transcript_values">
+        <item>ipa</item>
+        <item>ru</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="set_transcript_default" translatable="false">ru</string>
+
+
+    <string-array name="set_transcript_list" >
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_2</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
+    <string name="set_transcript_2">IPA simplified</string>
+
+    <string name="locale_string" translatable="false">russian</string>
+
+
+</resources>
