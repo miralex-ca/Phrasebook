@@ -593,7 +593,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="ucat_delete_confirm">\nDelete this topic with all items?\n</string>
 
     <string name="ucat_edit_info_title">Info</string>
-    <string name="ucat_deleted_items">Deleted items: %d</string>
+    <string name="ucat_deleted_items">Deleted</string>
     <string name="ucat_new_item_dialog">New item</string>
     <string name="ucat_edit_item_dialog">Edit item</string>
     <string name="ucat_created_time">Created: %s</string>
@@ -717,5 +717,20 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="limit_txt">Limit:</string>
     <string name="menu_add_list">Add a new list</string>
 
+    <string name="empty_topics_list_hint">Here you can create your own topics with your words and phrases. You will also be able to create sections to group multiple topics.</string>
+
+    <string name="new_topic_hint">You can create your own topics and add new items.  New topics can be added with the ＋ button on this page.</string>
+    <string name="new_topic_hint_unpaid">You can create your own topics and add new items.  New topics can be added with the ＋ button on this page. The basic version allows to add up to 4 topics.</string>
+    <string name="new_topic">＋ New topic</string>
+
+    <string name="new_section_hint">You can also create sections to group multiple topics. New sections can be added from the menu of this page.</string>
+    <string name="new_section_hint_unpaid">You can also create sections to group multiple topics. New sections can be added from the menu of this page. The basic version allows to add up to 2 sections.</string>
+    <string name="new_section">＋ New section</string>
+    <string name="ucat_limit_hint">Items added: %d / %d</string>
+
+    <string name="new_items_hint_unpaid">Here you can add new words and phrases. The function \"Add a new list\" in the menu of this page helps to add multiple items at once. \n\nThe basic version allows to add up to %d items.</string>
+    <string name="new_items_hint">Here you can add new words and phrases. The function \"Add a new list\" in the menu of this page helps to add multiple items at once. \n\nA topic can include up to %d items.</string>
+
+    <string name="added_hint">Added: %d</string>
 
 </resources>

@@ -599,7 +599,7 @@
     <string name="ucat_delete_confirm">\nУдалить тему со всеми словами?\n</string>
 
     <string name="ucat_edit_info_title">Справка</string>
-    <string name="ucat_deleted_items">Удалено слов: %d</string>
+    <string name="ucat_deleted_items">Удалено</string>
     <string name="ucat_new_item_dialog">Новая запись</string>
     <string name="ucat_edit_item_dialog">Редактировать</string>
     <string name="ucat_created_time">Создано: %s</string>
@@ -711,5 +711,21 @@
     <string name="limit_txt">Лимит:</string>
     <string name="menu_add_list">Добавить список</string>
 
+    <string name="empty_topics_list_hint">Здесь вы можете создавать свои темы с новыми записями. Вы также сможете создавать разделы, чтобы объединить несколько тем.</string>
+
+    <string name="new_topic_hint">Вы можете создавать свои темы и добавлять новые записи. Темы можно добавлять с помощью кнопки ＋ на этой странице.</string>
+    <string name="new_topic_hint_unpaid">Вы можете создавать свои темы и добавлять новые записи. Темы можно добавлять с помощью кнопки ＋ на этой странице. В базовой версии можно добавить до 4 тем.</string>
+    <string name="new_topic">＋ Новая тема</string>
+
+    <string name="new_section_hint">Вы также можете создавать свои разделы, чтобы объединить несколько тем. Разделы можно добавлять из меню этой страницы.</string>
+    <string name="new_section_hint_unpaid">Вы также можете создавать свои разделы, чтобы объединить несколько тем. Разделы можно добавлять из меню этой страницы. В базовой версии можно добавить до 4 тем.</string>
+    <string name="new_section">＋ Новый раздел</string>
+
+    <string name="ucat_limit_hint">Добавлено записей: %d / %d</string>
+
+    <string name="new_items_hint_unpaid">Здесь вы можете добавлять новые записи. Функция «Добавить список» в меню этой страницы позволит добавить несколько записей за раз. \n\nВ базовой версии можно добавить %d записей в тему.</string>
+    <string name="new_items_hint">Здесь вы можете добавлять новые слова и выражения. Функция «Добавить список» в меню этой страницы позволит добавить несколько записей за раз. \n\nТема может содержать до %d записей.</string>
+
+    <string name="added_hint">Добавлено записей: %d</string>
 
 </resources>

@@ -338,6 +338,36 @@
 
                         <RelativeLayout
 
+                            android:visibility="gone"
+                            android:id="@+id/empty_list_msg"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:layout_marginTop="8dp"
+                            android:paddingBottom="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:gravity="center_horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:alpha="0.9"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="14sp"
+                                android:text="@string/empty_topics_list_hint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+
                             android:id="@+id/openUnpaidWrap"
                             android:visibility="gone"
                             android:layout_marginTop="18dp"
@@ -354,6 +384,9 @@
                                 app:cardCornerRadius="18dp"
 
                                 >
+
+
+
 
                                 <RelativeLayout
 

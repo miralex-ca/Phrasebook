@@ -166,9 +166,9 @@
 
             app:fabCustomSize="56dp"
 
-            app:maxImageSize="33dp"
+            app:maxImageSize="30dp"
             android:scaleType="center"
-            app:srcCompat="@drawable/ic_plus_fab"
+            app:srcCompat="@drawable/ic_plus_note"
             />
 
         <View

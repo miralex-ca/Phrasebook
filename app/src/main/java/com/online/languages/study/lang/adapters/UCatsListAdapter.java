@@ -126,7 +126,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         DataObject dataObject = dataList.get(position);
 
         if (layout.equals("compact")) type = 2;
-
         if (layout.equals("mixed") && !dataObject.type.equals(PARAM_GROUP)) type = 2;
 
         if (dataObject.id.equals("last")) type = 3;
@@ -311,40 +310,27 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         View archive = view.findViewById(R.id.archive);
 
 
-        moveToTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_CHANGE_ORDER);
-            }
-        });
+        moveToTop.setOnClickListener(v -> clickActionPopup(dataObject, ACTION_CHANGE_ORDER));
 
-        moveToGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_MOVE);
-            }
-        });
-
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_EDIT_GROUP);
-            }
-        });
+        moveToGroup.setOnClickListener(v -> clickActionPopup(dataObject, ACTION_MOVE));
 
 
-        archive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickActionPopup(dataObject, ACTION_ARCHIVE);
-            }
-        });
+
+
+        archive.setOnClickListener(v -> clickActionPopup(dataObject, ACTION_ARCHIVE));
+
+        String editAction = dataObject.type.equals("group")?  ACTION_EDIT_GROUP : ACTION_UPDATE;
+
+        edit.setOnClickListener(v -> clickActionPopup(dataObject, editAction));
+
+        if (layout.equals("compact") || layout.equals("mixed")) {
+            edit.setVisibility(View.VISIBLE);
+        }
 
         if(dataObject.type.equals("group")) {
             moveToGroup.setVisibility(View.GONE);
             edit.setVisibility(View.VISIBLE);
         }
-
 
 
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -376,9 +362,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             @Override
             public void run() {
                 // String id =  vocab.sectionTags.get(act);
-
                 activity.performAction(dataObject, type);
-
                 clickActive = true;
 
 

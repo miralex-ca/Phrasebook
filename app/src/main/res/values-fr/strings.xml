@@ -601,7 +601,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="ucat_delete_confirm">\nSupprimer ce thème avec toutes les entrées?\n</string>
 
     <string name="ucat_edit_info_title">Info</string>
-    <string name="ucat_deleted_items">Entrées supprimée: %d</string>
+    <string name="ucat_deleted_items">Supprimé</string>
     <string name="ucat_new_item_dialog">Nouvelle entrée</string>
     <string name="ucat_edit_item_dialog">Modifier l’entrée</string>
     <string name="ucat_created_time">Créé: %s</string>
@@ -729,5 +729,21 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="limit_txt">Limite:</string>
     <string name="menu_add_list">Ajouter une liste</string>
 
+    <string name="empty_topics_list_hint">Vous pouvez créer vos propres thèmes avec de nouvelles entrées. Vous pouvez également créer des sections pour regrouper plusieurs thèmes.</string>
+
+    <string name="new_topic_hint">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page.</string>
+    <string name="new_topic_hint_unpaid">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page. La version basique permet d’ajouter jusqu’à 4 thèmes.</string>
+    <string name="new_topic">＋ Nouveau thème</string>
+
+    <string name="new_section_hint">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page.</string>
+    <string name="new_section_hint_unpaid">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page. La version basique permet d’ajouter 2 sections.</string>
+    <string name="new_section">＋ Nouvelle section</string>
+
+    <string name="ucat_limit_hint">Entrées ajoutées: %d / %d</string>
+
+    <string name="new_items_hint_unpaid">Ici, vous pouvez ajouter de nouveaux mots et expressions. La fonction «Ajouter une nouvelle liste» du menu de cette page permet d’ajouter plusieurs entrées à la fois. \n\nLa version basique permet d’ajouter jusqu’à %d entrées.</string>
+    <string name="new_items_hint">Ici, vous pouvez ajouter de nouveaux mots et expressions. La fonction «Ajouter une nouvelle liste» du menu de cette page permet d’ajouter plusieurs entrées à la fois. \n\nUn thème peut contenir jusqu’à %d entrées</string>
+
+    <string name="added_hint">Entrées ajoutées: %d</string>
 
 </resources>

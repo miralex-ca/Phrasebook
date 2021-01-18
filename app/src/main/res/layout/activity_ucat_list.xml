@@ -56,6 +56,94 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <RelativeLayout
+
+                android:id="@+id/empty_list_msg"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:layout_marginTop="8dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    app:cardElevation="1dp"
+                    app:contentPadding="0dp"
+                    app:cardCornerRadius="10dp"
+
+                    style="@style/CardViewStyle.Widget"
+
+                    >
+
+
+                    <LinearLayout
+                        android:layout_margin="24dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+
+                            android:id="@+id/newTopicHint"
+                            android:alpha="0.95"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="14sp"
+                            android:text="@string/new_topic_hint"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+                        <Button
+                            android:layout_marginTop="2dp"
+                            android:onClick="openNewCat"
+                            android:textColor="?attr/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_topic"
+                            style="?android:attr/borderlessButtonStyle" />
+
+
+                        <TextView
+                            android:id="@+id/newSectionHint"
+                            android:layout_marginTop="16dp"
+                            android:alpha="0.95"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="14sp"
+                            android:text="@string/new_section_hint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+                        <Button
+                            android:layout_marginTop="2dp"
+                            android:onClick="newGroup"
+                            android:textColor="?attr/colorAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_section"
+                            style="?android:attr/borderlessButtonStyle" />
+
+                    </LinearLayout>
+
+
+
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:visibility="gone"

@@ -50,6 +50,10 @@ public class UDataListDialog {
 
     TextView alert;
 
+    private final int itemCharMax;
+    private final int translateCharMax;
+    private final int transcriptCharMax;
+
     private final MyCatEditActivity activity;
 
     public UDataListDialog(Context _context, MyCatEditActivity activity, int limit) {
@@ -57,6 +61,10 @@ public class UDataListDialog {
         this.activity = activity;
 
         itemsMax = Math.max(limit, 0);
+
+        itemCharMax = context.getResources().getInteger(R.integer.edit_text_length);
+        translateCharMax = context.getResources().getInteger(R.integer.edit_translation_length);
+        transcriptCharMax = context.getResources().getInteger(R.integer.edit_transcription_length);
 
     }
 
@@ -220,9 +228,9 @@ public class UDataListDialog {
 
             DataObject dataObject = new DataObject();
             String[] data = line.split(divider);
-            if ((data.length>0) ) dataObject.text = data[0].trim();
-            if (data.length>1) dataObject.info = data[1].trim();
-            if (data.length>2) dataObject.desc = data[2].trim();
+            if ((data.length>0) ) dataObject.text = getStringWithLimit(data[0], itemCharMax);
+            if (data.length>1) dataObject.info = getStringWithLimit(data[1], translateCharMax);
+            if (data.length>2) dataObject.desc = getStringWithLimit(data[2], transcriptCharMax);
 
 
             if (!textSanitizer(line).replace(divider, "").trim().equals(""))
@@ -242,6 +250,17 @@ public class UDataListDialog {
         else alert.setVisibility(View.GONE);
 
         return  dataObjects;
+    }
+
+    private String getStringWithLimit(String text, int limit) {
+
+        String string = text.trim();
+
+        if (string.length() > limit) {
+            string = string.substring(0, limit);
+        }
+
+        return string;
     }
 
     private static int dpToPixels(Context context, float dipValue) {

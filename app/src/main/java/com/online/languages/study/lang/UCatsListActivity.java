@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.DataModeDialog;
@@ -82,9 +83,7 @@ public class UCatsListActivity extends BaseActivity {
     DBHelper dbHelper;
     DataManager dataManager;
 
-
     OpenActivity openActivity;
-
 
     UCatsListAdapter adapter;
     ArrayList<DataObject> catsList;
@@ -115,6 +114,10 @@ public class UCatsListActivity extends BaseActivity {
     NewGroupDialog newGroupDialog;
     InfoDialog infoDialog;
 
+    View emptyMsg ;
+    boolean listIsEmpty;
+    int archiveListSize = 0;
+
 
 
     @Override
@@ -134,7 +137,7 @@ public class UCatsListActivity extends BaseActivity {
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
-
+        listIsEmpty = false;
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -150,6 +153,8 @@ public class UCatsListActivity extends BaseActivity {
         typeGroup = false;
 
         helperView = findViewById(R.id.list_wrapper);
+
+        emptyMsg = findViewById(R.id.empty_list_msg);
 
 
         dataManager = new DataManager(this, 1);
@@ -188,6 +193,11 @@ public class UCatsListActivity extends BaseActivity {
 
         openListView();
 
+        if (!dataManager.plus_Version) {
+            ((TextView)findViewById(R.id.newTopicHint)).setText(R.string.new_topic_hint_unpaid);
+            ((TextView)findViewById(R.id.newSectionHint)).setText(R.string.new_section_hint_unpaid);
+        }
+
 
 
     }
@@ -215,7 +225,6 @@ public class UCatsListActivity extends BaseActivity {
 
 
     public void openCompleteList(View view) {
-
         cutList = false;
         updateList();
         helperView.clearAnimation();
@@ -224,12 +233,10 @@ public class UCatsListActivity extends BaseActivity {
 
 
     public void updateList() {
-
         catsList  = getCatList();
         adapter = new UCatsListAdapter(this, catsList, this);
         recyclerView.setAdapter(adapter);
         checkArchiveIcon();
-
     }
 
 
@@ -257,6 +264,8 @@ public class UCatsListActivity extends BaseActivity {
        if (completeList.size() > limit) {
           if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
        }
+
+       listIsEmpty = completeList.size() == 0;
 
        return addLast(displayList, completeList);
 
@@ -299,14 +308,13 @@ public class UCatsListActivity extends BaseActivity {
 
 
 
-
     private void checkArchiveIcon() {
 
        int archiveSize = dataManager.getUcatsForArchive().size();
 
        if (! dataManager.plus_Version) {
-
            archiveSize = dataManager.getUcatsListForUnpaid(PARAM_UCAT_ARCHIVE).size();
+           archiveListSize = archiveSize;
        }
 
        if (archiveMenuIcon != null) {
@@ -316,7 +324,37 @@ public class UCatsListActivity extends BaseActivity {
                archiveMenuIcon.setVisible(false);
            }
        }
+
+        checkEmptyMsg();
+
     }
+
+    private void checkEmptyMsg()  {
+
+        if (listIsEmpty && archiveListSize <1) {
+            emptyMsg.setAlpha(0.0f);
+            emptyMsg.setVisibility(View.VISIBLE);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    emptyMsg.animate().alpha(1.0f).setDuration(150);
+                }
+            }, 50);
+
+        }
+        else {
+            emptyMsg.setVisibility(View.GONE);
+            emptyMsg.setAlpha(0.0f);
+        }
+        if (typeGroup) {
+            emptyMsg.setVisibility(View.GONE);
+            emptyMsg.setAlpha(0.0f);
+
+        }
+
+    }
+
 
 
     private void listLayoutDialog() {
@@ -615,6 +653,8 @@ public class UCatsListActivity extends BaseActivity {
 
         ArrayList<DataObject> newCatlist = getCatList();
 
+        checkEmptyMsg();
+
         for (DataObject catData: catsList) catData.status = STATUS_DELETED;
         for (DataObject newCat: newCatlist)  newCat.status = STATUS_NEW;
 
@@ -746,6 +786,9 @@ public class UCatsListActivity extends BaseActivity {
 
     }
 
+    public void openNewCat(View view) {
+        openNewCat( );
+    }
 
 
     public void openNewCat( ) {
@@ -865,6 +908,9 @@ public class UCatsListActivity extends BaseActivity {
             case R.id.new_group:
                 newGroup();
                 return true;
+            case R.id.new_group_tool:
+                newGroup();
+                return true;
             case R.id.edit_group:
                 editGroup();
                 return true;
@@ -877,6 +923,9 @@ public class UCatsListActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void newGroup(View view) {
+        newGroup();
+    }
 
     private void newGroup() {
 
@@ -993,6 +1042,7 @@ public class UCatsListActivity extends BaseActivity {
         MenuItem archiveMenuItem = menu.findItem(R.id.archive_item);
 
         if (typeGroup) {
+            menu.findItem(R.id.new_group_tool).setVisible(false);
             archiveMenuItem.setVisible(false);
             newGroupMenuIcon.setVisible(false);
             editGroupMenuIcon.setVisible(true);

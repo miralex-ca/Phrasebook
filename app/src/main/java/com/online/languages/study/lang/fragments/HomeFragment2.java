@@ -91,6 +91,7 @@ public class HomeFragment2 extends Fragment   {
     View newCat;
 
     View openPlusBtn;
+    View emptyMsg;
 
     Uri uri;
 
@@ -128,6 +129,8 @@ public class HomeFragment2 extends Fragment   {
         openPlusBtn = rootView.findViewById(R.id.openUnpaidWrap);
 
         View openMore = rootView.findViewById(R.id.openMore);
+
+        emptyMsg = rootView.findViewById(R.id.empty_list_msg);
 
         openUcatList.setOnClickListener(new View.OnClickListener() {
 
@@ -260,6 +263,8 @@ public class HomeFragment2 extends Fragment   {
         itemsCount.setText(String.format("%s%s", getString(R.string.user_items_count), countsVaules[1]));
 
 
+        manageEmptyMsg(Integer.parseInt(countsVaules[0]), emptyMsg);
+
         if (!dataManager.plus_Version) {
             manageUnpaidLimit(Integer.parseInt(countsVaules[0]));
         }
@@ -276,6 +281,17 @@ public class HomeFragment2 extends Fragment   {
         } else {
             newCat.setVisibility(View.VISIBLE);
             openPlusBtn.setVisibility(View.GONE);
+        }
+    }
+
+    private void manageEmptyMsg(int listSize, View text) {
+
+        boolean display = catsList.size() == 0 && listSize == 0;
+
+        if (display) {
+            text.setVisibility(View.VISIBLE);
+        } else {
+            text.setVisibility(View.GONE);
         }
     }
 

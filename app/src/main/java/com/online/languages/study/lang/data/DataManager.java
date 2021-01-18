@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
@@ -615,10 +616,11 @@ public class DataManager {
 
         for (DataObject ucat: list) {
 
+            Log.d("UCAT", ucat.title + ": type: " + ucat.type + ", parent: " + ucat.parent);
+
             if (ucat.type.equals(PARAM_GROUP)) {
 
                 if (!ucat.parent.equals(PARAM_UCAT_ARCHIVE)) {
-
                     ucat.parent = PARAM_UCAT_ROOT;
                 }
 
@@ -626,21 +628,25 @@ public class DataManager {
 
                 boolean found = false;
 
+                if (ucat.parent.equals(PARAM_UCAT_ARCHIVE)) found = true;
+
+                /// searching for cats in a GROUP that is not displayed
                 for (DataObject cat: list) {
-
                     if (cat.type.equals(PARAM_GROUP)) {
-
-                        if (ucat.parent.equals(cat.id) || ucat.parent.equals(PARAM_UCAT_ARCHIVE)) {
+                        if (ucat.parent.equals(cat.id)) {
                             found = true;
                            // Toast.makeText(context, "Found: " + ucat.title, Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
 
+                /// not sure why that is here, maybe for debug to see all
                 if (!found) {
                     ucat.parent = PARAM_UCAT_ROOT;
                 }
             }
+
+
         }
 
 

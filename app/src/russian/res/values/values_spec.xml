@@ -16,8 +16,8 @@
         <item>russian/data_en.json</item>
     </string-array>
 
-    <string name="backup_file_name" translatable="false">FRDB_backup.jpg</string>
-    <string name="backup_file_format" translatable="false">endb</string>
+    <string name="backup_file_name" translatable="false">RUDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">rudb</string>
 
     <string name="app_name" translatable="false">Russian for Everyone</string>
     <string name="nav_header_txt" translatable="false">Russian for Everyone</string>

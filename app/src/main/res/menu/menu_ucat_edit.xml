@@ -14,6 +14,23 @@
         android:title="@string/menu_delete_ucat"
         app:showAsAction="never" />
 
+
+    <item
+        android:visible="false"
+        android:id="@+id/add_list_tool"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_tool_list_plus"
+        android:title="@string/menu_add_list"
+        app:showAsAction="always" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/delete_ucat_tool"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_delete_toolbar"
+        android:title="@string/menu_delete_ucat"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/add_list"
         android:orderInCategory="100"
