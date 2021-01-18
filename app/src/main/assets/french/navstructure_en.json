@@ -48,16 +48,16 @@
 
         {"parent": "root", "type": "set", "id": "set_2_1", "title": "Basic vocabulary"},
 
-        {"parent": "root", "type": "simple", "id": "100200010", "title": "Travel by plane", "image": "cat/plane_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100200020", "title": "Travel by train", "image": "cat/train_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100200030", "title": "Travel by ship", "image": "cat/ship_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200010", "title": "Travel by Plane", "image": "cat/plane_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Travel by Train", "image": "cat/train_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Travel by Ship", "image": "cat/ship_cat.png"},
         {"parent": "root", "type": "simple", "id": "100300050", "title": "Transport", "image": "cat/transport_cat_p.png"},
 
         {"parent": "root", "type": "set", "id": "set_2_2", "title": "Phrases"},
 
-        {"parent": "root", "type": "simple", "id": "100200210", "title": "At the hotel"},
-        {"parent": "root", "type": "simple", "id": "100200220", "title": "Sightseeing tour"},
-        {"parent": "root", "type": "simple", "id": "100200230", "title": "Car rent"}
+        {"parent": "root", "type": "simple", "id": "100200210", "title": "At the Hotel"},
+        {"parent": "root", "type": "simple", "id": "100200220", "title": "Sightseeing Tour"},
+        {"parent": "root", "type": "simple", "id": "100200230", "title": "Car Rent"}
 
 
       ]
@@ -138,7 +138,7 @@
         {"parent": "root", "type": "simple", "id": "100500030", "title": "Fish & Seafood", "image": "cat/fish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500040", "title": "Vegetables", "image": "cat/vegetable_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500050", "title": "Fruit", "image": "cat/fruit_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100500060", "title": "Desserts", "image": "cat/dessert_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Desserts", "image": "cat/dessert_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500070", "title": "Drinks", "image": "cat/drink_cat.png"},
 
 
@@ -147,9 +147,9 @@
         {"parent": "root", "type": "simple", "id": "100500120", "title": "In a pub"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Additional topics"},
-        {"parent": "root", "type": "extra", "id": "100500210", "title": "Berries"},
-        {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts & Dried fruits"},
-        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs & Spices"},
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Berries", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts & Dried fruits", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs & Spices", "review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500240", "title": "Sauces & Condiments","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500250", "title": "Dairy Produce","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500260", "title": "Cereals","review":  "false"}
@@ -204,16 +204,16 @@
         {"parent": "root", "type": "simple", "id": "100700010", "title": "Parts of the Body", "image": "cat/body_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700020", "title": "Human Face", "image": "cat/face_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700030", "title": "Organs & Tissues", "image": "cat/organ_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100700050", "title": "Signs & Symptoms ", "image": "cat/symtom_cat.png","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100700040", "title": "Diseases", "image": "cat/desease_cat.png","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100700060", "title": "Injuries", "image": "cat/trauma_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700050", "title": "Signs & Symptoms ", "image": "cat/symtom_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Diseases", "image": "cat/desease_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700060", "title": "Injuries", "image": "cat/trauma_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700070", "title": "Treatment", "image": "cat/medical_cat.png","review":  "false"},
 
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Phrases"},
 
         {"parent": "root", "type": "simple", "id": "100700110", "title": "Seeing a Doctor"},
-        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of Diseases"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of Diseases", "review":  "false"},
         {"parent": "root", "type": "simple", "id": "100700130", "title": "At the Pharmacy"},
 
         {"parent": "root", "type": "set", "id": "set_7_3", "title": "Additional topics"},

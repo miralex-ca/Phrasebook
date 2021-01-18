@@ -310,5 +310,9 @@
     <integer name="_ex_opt_txt_size_small_sw600_land">17</integer>
     <integer name="_ex_opt_txt_size_smallest_sw600_land">16</integer>
 
+    <dimen name="ucat_empty_hint_padding">0dp</dimen>
+    <dimen name="ucat_empty_hint_padding_t">0dp</dimen>
+    <dimen name="ucat_empty_hint_margin">0dp</dimen>
+
 
 </resources>

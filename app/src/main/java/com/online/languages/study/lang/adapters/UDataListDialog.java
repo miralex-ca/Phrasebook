@@ -128,18 +128,12 @@ public class UDataListDialog {
                 .setCancelable(true)
 
                 .setNegativeButton(R.string.cancel_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        })
+                        (dialog, id) -> dialog.cancel())
                 .setPositiveButton(R.string.save_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
+                        (dialog, id) -> {
 
-                                //Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
 
-                            }
                         })
 
                 .setView(content);
@@ -151,30 +145,25 @@ public class UDataListDialog {
 
 
 
-        alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                boolean wantToCloseDialog = false;
+        alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+            boolean wantToCloseDialog = false;
 
-                if (itemEditText.getText().toString().trim().equals("")) {
+            if (itemEditText.getText().toString().trim().equals("")) {
 
-                    Toast.makeText(context, R.string.edit_item_enter_txt_msg, Toast.LENGTH_SHORT).show();
-                } else {
-                    wantToCloseDialog = true;
-                }
+                Toast.makeText(context, R.string.edit_item_enter_txt_msg, Toast.LENGTH_SHORT).show();
+            } else {
+                wantToCloseDialog = true;
+            }
 
-                if (wantToCloseDialog) {
+            if (wantToCloseDialog) {
 
-                    ArrayList<DataObject> objects = checkItems(getDataFromForm().text);
+                ArrayList<DataObject> objects = checkItems(getDataFromForm().text);
 
-                   if (objects.size() > itemsMax) objects = new ArrayList<>(objects.subList(0, itemsMax));;
+               if (objects.size() > itemsMax) objects = new ArrayList<>(objects.subList(0, itemsMax));;
 
-                    activity.addDataList(objects);
+                activity.addDataList(objects);
 
-                    alert.dismiss();
-                }
+                alert.dismiss();
             }
         });
 

@@ -170,5 +170,9 @@
     <integer name="popup_position">-180</integer>
     <integer name="card_grammar_limit_compact">10</integer>
 
+    <dimen name="ucat_empty_hint_padding">12dp</dimen>
+    <dimen name="ucat_empty_hint_padding_t">12dp</dimen>
+    <dimen name="ucat_empty_hint_margin">16dp</dimen>
+
 
 </resources>

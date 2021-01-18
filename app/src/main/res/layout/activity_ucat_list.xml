@@ -66,10 +66,11 @@
                 android:paddingTop="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:layout_marginRight="@dimen/ucat_empty_hint_margin"
+                android:layout_marginLeft="@dimen/ucat_empty_hint_margin"
                 android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
 
 
                 <androidx.cardview.widget.CardView
@@ -85,13 +86,17 @@
 
 
                     <LinearLayout
+
                         android:layout_margin="24dp"
                         android:orientation="vertical"
+                        android:paddingRight="@dimen/ucat_empty_hint_padding"
+                        android:paddingLeft="@dimen/ucat_empty_hint_padding"
+                        android:paddingTop="@dimen/ucat_empty_hint_padding_t"
+                        android:paddingBottom="@dimen/ucat_empty_hint_padding_t"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <TextView
-
                             android:id="@+id/newTopicHint"
                             android:alpha="0.95"
                             android:fontFamily="sans-serif-light"

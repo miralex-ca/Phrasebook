@@ -109,7 +109,7 @@
 
         {"parent": "root", "type": "set", "id": "set_4_2", "title": "Фразы"},
         {"parent": "root", "type": "simple", "id": "100400110", "title": "В магазине"},
-        {"parent": "root", "type": "simple", "id": "100400120", "title": "Оплата на кассе","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100400120", "title": "Оплата на кассе", "review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_4_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100400210", "title": "Нижнее белье","review":  "false"},
@@ -135,7 +135,7 @@
         {"parent": "root", "type": "simple", "id": "100500030", "title": "Рыба и морепродукты", "image": "cat/fish_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500040", "title": "Овощи", "image": "cat/vegetable_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500050", "title": "Фрукты", "image": "cat/fruit_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100500060", "title": "Десерт", "image": "cat/dessert_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Десерт", "image": "cat/dessert_cat.png"},
         {"parent": "root", "type": "simple", "id": "100500070", "title": "Напитки", "image": "cat/drink_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_5_2", "title": "Фразы"},
@@ -144,7 +144,7 @@
         {"parent": "root", "type": "simple", "id": "100500130", "title": "Заказ еды по телефону"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Дополнительные темы"},
-        {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды","review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды", "review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500220", "title": "Орехи и сухофрукты","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500230", "title": "Травы и пряности","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500240", "title": "Соусы и приправы","review":  "false"},
@@ -200,15 +200,15 @@
         {"parent": "root", "type": "simple", "id": "100700010", "title": "Части тела", "image": "cat/body_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700020", "title": "Лицо", "image": "cat/face_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700030", "title": "Органы и ткани", "image": "cat/organ_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100700050", "title": "Симптомы и жалобы", "image": "cat/symtom_cat.png","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни", "image": "cat/desease_cat.png","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100700060", "title": "Травмы", "image": "cat/trauma_cat.png","review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700050", "title": "Симптомы и жалобы", "image": "cat/symtom_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "Болезни", "image": "cat/desease_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100700060", "title": "Травмы", "image": "cat/trauma_cat.png"},
         {"parent": "root", "type": "simple", "id": "100700070", "title": "Лечебные средства", "image": "cat/medical_cat.png","review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Фразы"},
 
         {"parent": "root", "type": "simple", "id": "100700110", "title": "У врача"},
-        {"parent": "root", "type": "simple", "id": "100700120", "title": "Симптомы"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Симптомы", "review":  "false"},
         {"parent": "root", "type": "simple", "id": "100700130", "title": "В аптеке"},
 
         {"parent": "root", "type": "set", "id": "set_7_3", "title": "Дополнительные темы"},

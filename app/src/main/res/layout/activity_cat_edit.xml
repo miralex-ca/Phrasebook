@@ -151,7 +151,6 @@
 
                         <Button
 
-
                             android:visibility="invisible"
                             android:layout_marginTop="12dp"
                             android:onClick="updateUCat"
@@ -160,7 +159,7 @@
                             android:id="@+id/updateCatBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Сохранить"
+                            android:text="@string/save_txt"
                             style="?android:attr/borderlessButtonStyle" />
 
 
@@ -274,15 +273,15 @@
                             <TextView
                                 android:visibility="gone"
                                 android:id="@+id/newItemsHint"
-                                android:layout_marginTop="20dp"
-                                android:layout_marginBottom="20dp"
+                                android:layout_marginTop="25dp"
+                                android:layout_marginBottom="25dp"
                                 android:paddingLeft="12dp"
                                 android:paddingRight="12dp"
                                 android:layout_centerVertical="true"
-                                android:gravity="center"
+
                                 android:alpha="0.9"
                                 android:fontFamily="sans-serif-light"
-                                android:textSize="14sp"
+                                android:textSize="13sp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
 
