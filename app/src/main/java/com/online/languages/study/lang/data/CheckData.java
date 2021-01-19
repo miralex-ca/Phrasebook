@@ -121,6 +121,16 @@ public class CheckData {
             return this;
         }
 
+        public Builder all() {
+            this.checkGrammar = true;
+            this.checkMode = true;
+            this.checkValue = true;
+            this.checkBase = true;
+            this.checkFilter = true;
+            this.checkTranscript = true;
+            return this;
+        }
+
 
 
         public CheckData build() {

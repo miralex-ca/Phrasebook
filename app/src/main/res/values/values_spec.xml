@@ -22,8 +22,8 @@
 
 
     <string-array name="data_files">
-        <item>data_fr.json</item>
         <item>data.json</item>
+        <item>data_fr.json</item>
     </string-array>
 
     <string name="locale_string" translatable="false">english</string>

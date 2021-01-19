@@ -11,10 +11,6 @@
     <string name="app_data_file" translatable="false">data_fr.json</string>
     <string name="app_structure_file" translatable="false">navstructure_fr.json</string>
 
-    <string-array name="data_files">
-        <item>data.json</item>
-        <item>data_fr.json</item>
-    </string-array>
 
     <string name="backup_file_name" translatable="false">ENDB_backup.jpg</string>
     <string name="backup_file_format" translatable="false">endb</string>

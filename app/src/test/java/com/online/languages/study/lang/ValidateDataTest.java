@@ -64,6 +64,7 @@ public class ValidateDataTest {
                 .checkValue(true)
                 //.checkBase(false)
                 //.onlyValue()
+                .all()
                 .build();
 
         checkData.checkData();
