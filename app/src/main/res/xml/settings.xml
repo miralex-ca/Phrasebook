@@ -15,7 +15,7 @@
             android:title="@string/set_version_plus"
             android:summary="@string/set_version_plus_summary">
             <intent
-                android:targetPackage="@string/applicationId"
+                android:targetPackage="@string/app_package"
                 android:targetClass="com.online.languages.study.lang.GetPremium"/>
         </Preference>
 
@@ -168,7 +168,7 @@
             android:title="@string/set_backup_title"
             android:summary="@string/set_backup_desc">
             <intent
-                android:targetPackage="@string/applicationId"
+                android:targetPackage="@string/app_package"
                 android:targetClass="com.online.languages.study.lang.BackupActivity"/>
         </PreferenceScreen>
 

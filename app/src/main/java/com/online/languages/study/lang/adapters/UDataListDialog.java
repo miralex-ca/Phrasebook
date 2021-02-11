@@ -235,7 +235,6 @@ public class UDataListDialog {
 
         }
 
-
         else alert.setVisibility(View.GONE);
 
         return  dataObjects;

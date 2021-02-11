@@ -80,7 +80,7 @@ public class AppStartTest {
                     .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         }
 
-
+        /*
         /// opens section review page
         waitTime(150);
         ViewInteraction openReviewBtn = onView(
@@ -108,6 +108,8 @@ public class AppStartTest {
         openTest1Btn.perform(click());
         pressBack(); // back to section tests list
         pressBack(); // back to section
+        */
+
 
         /// open first category
         waitTime(100);

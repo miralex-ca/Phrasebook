@@ -700,7 +700,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             items.add(dataItem);
         }
 
-        Collections.reverse(items);
+        //// check ucat sort params and reverse list if newest goes first (not ascending by time)
+        String paramSort = dataManager.readParam(categoryObject.params, UCAT_PARAM_SORT);
+
+        if (!paramSort.equals(UCAT_PARAM_SORT_ASC)) Collections.reverse(items);
 
         int count = dataManager.dbHelper.insertUserDataItems(items);
 

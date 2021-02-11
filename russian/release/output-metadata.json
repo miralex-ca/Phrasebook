@@ -10,8 +10,8 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 50,
-      "versionName": "2.7.0",
+      "versionCode": 51,
+      "versionName": "2.7.1",
       "outputFile": "app-russian-release.apk"
     }
   ]
