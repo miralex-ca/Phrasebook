@@ -197,10 +197,10 @@
     <integer name="f_item_txt_size_smallest">21</integer>
 
 
-    <integer name="_f_info_txt_size_norm">18</integer>
-    <integer name="_f_info_txt_size_mid">16</integer>
-    <integer name="_f_info_txt_size_small">15</integer>
-    <integer name="_f_info_txt_size_smallest">14</integer>
+    <integer name="_f_info_txt_size_norm">22</integer>
+    <integer name="_f_info_txt_size_mid">20</integer>
+    <integer name="_f_info_txt_size_small">18</integer>
+    <integer name="_f_info_txt_size_smallest">15</integer>
 
     <integer name="_f_info_txt_size_norm_opt">18</integer>
     <integer name="_f_info_txt_size_mid_opt">16</integer>
@@ -289,13 +289,12 @@
 
     <dimen name="_cat_stat_data_padding">22dp</dimen>
 
-    <dimen name="cardCornerDefault">2dp</dimen>
+    <dimen name="cardCornerDefault">3dp</dimen>
     <dimen name="cardCornerSpec">2dp</dimen>
 
     <integer name="_ex_text_wrap_ex1">120</integer>
     <integer name="_ex_text_wrap_ex1_high">160</integer>
     <string name="fab_size">normal</string>
-
 
     <dimen name="goproTxtSize">14sp</dimen>
 
@@ -303,7 +302,6 @@
 
     <dimen name="cat_list_card_side_padding">0dp</dimen>
     <dimen name="cat_list_card_tb_padding">0dp</dimen>
-
 
     <integer name="_ex_opt_txt_size_norm_sw600_land">19</integer>
     <integer name="ex_opt_txt_size_medium_sw600_land">18</integer>

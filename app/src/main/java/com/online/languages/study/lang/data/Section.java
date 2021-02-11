@@ -124,13 +124,18 @@ public class Section {
 
     public void calculateProgress() {
 
-        familiarDataCount = studiedDataCount + knownDataCount;
-        unknownDataCount = allDataCount - familiarDataCount;
+        if (allDataCount > 0) {
+            familiarDataCount = studiedDataCount + knownDataCount;
+            unknownDataCount = allDataCount - familiarDataCount;
 
-        studiedPart = (100 * studiedDataCount / allDataCount);
-        knownPart = (100 * familiarDataCount/ allDataCount);
+            studiedPart = (100 * studiedDataCount / allDataCount);
+            knownPart = (100 * familiarDataCount/ allDataCount);
+            studiedResult = (100 * studiedDataCount/ allDataCount) * 20 /100;
+        }
 
-        studiedResult = (100 * studiedDataCount/ allDataCount) * 20 /100;
+
+
+
         knownResult =  knownPart * 30 / 100 ;
 
         controlTests = calculateControl ();

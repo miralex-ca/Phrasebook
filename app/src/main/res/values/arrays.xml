@@ -165,21 +165,21 @@
 
     <string-array name="set_data_mode_values">
         <item>11</item>
-        <item>@string/set_data_mode_default_value</item>
+        <item>21</item>
         <item>31</item>
     </string-array>
 
     <string name="set_data_mode_default_value" translatable="false">21</string>
 
-
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
-        <item>ipa</item>
-        <item>ru</item>
+        <item>@string/set_transcript_ipa</item>
+        <item>@string/set_transcript_alternative</item>
         <item>none</item>
     </string-array>
 
-    <string name="set_transcript_default" translatable="false">ipa</string>
-
+    <string name="set_transcript_ipa" translatable="false">ipa</string>
+    <string name="set_transcript_alternative" translatable="false">alternative</string>
+    <string name="set_transcript_default" translatable="false">@string/set_transcript_ipa</string>
 
     <string-array name="set_transcript_list" tools:ignore="InconsistentArrays">
         <item>@string/set_transcript_1</item>
@@ -305,6 +305,22 @@
 
     <string name="set_ucat_layout_default" translatable="false">normal</string>
 
+
+    <string-array name="set_transition_list">
+        <item>Slide</item>
+        <item>Fade</item>
+        <item>Device</item>
+        <item>None</item>
+    </string-array>
+
+    <string-array name="set_transition_values">
+        <item>@string/set_transition_default</item>
+        <item>fade</item>
+        <item>device</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="set_transition_default" translatable="false">slide</string>
 
     <string-array name="icon_pics_list">
         <item>///android_asset/pics/icons/account.png</item>

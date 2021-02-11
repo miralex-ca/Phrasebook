@@ -207,6 +207,7 @@
         <item name="iconGrid2">@drawable/ic_view_grid_2</item>
         <item name="iconTest">@drawable/ic_ex_assignment</item>
         <item name="iconCarousel">@drawable/ic_ex_cards</item>
+        <item name="iconTestAudio">@drawable/ic_ex_audio</item>
 
         <item name="cardCorner">@dimen/cardCornerDefault</item>
         <item name="cardCornerSpec">@dimen/cardCornerSpec</item>

@@ -162,10 +162,12 @@ public class CatTabFragment1 extends Fragment {
         updateList();
     }
 
-    private void updateList() {
+    public void updateList() {
 
         getDataList();
         adapter = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_NORM);
+
+
         recyclerView.setAdapter(adapter);
 
         adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_COMPACT);
@@ -173,6 +175,7 @@ public class CatTabFragment1 extends Fragment {
 
         adapterCard = new ContentCardAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_CARD, (CatActivity)getActivity());
         recyclerViewCard.setAdapter(adapterCard);
+
     }
 
     public void updateSort() {
@@ -191,6 +194,8 @@ public class CatTabFragment1 extends Fragment {
 
 
     public void getDataList() {
+
+        dataManager.dbHelper.checkMode();
         String id = CatActivity.categoryID;
         data = dataManager.getCatDBList(id);
         data = insertDivider(data);

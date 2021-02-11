@@ -86,13 +86,19 @@ public class ExRecycleAdapter extends RecyclerView.Adapter<ExRecycleAdapter.MyVi
             int drawableRes = typedValue.resourceId;
             holder.icon.setImageResource(drawableRes);
 
-        } else {
+        } else if (position == 3 && exercises) {
+            TypedValue typedValue = new TypedValue();
+            context.getTheme().resolveAttribute(R.attr.iconTestAudio, typedValue, true);
+            int drawableRes = typedValue.resourceId;
+            holder.icon.setImageResource(drawableRes);
+
+        }else {
             int result = results[ position ] ;
             if (results[0] > 0 || results[1] > 0 || results[2] > 0 || results[3] > 0) {
 
-                String resultTxt = String.valueOf(result) + "%";
+                String resultTxt = result + "%";
                 holder.progressBox.setVisibility(View.VISIBLE);
-                holder.progressTxt.setText(String.valueOf(resultTxt));
+                holder.progressTxt.setText(resultTxt);
             }
         }
 

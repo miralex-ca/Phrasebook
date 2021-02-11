@@ -1,6 +1,7 @@
 package com.online.languages.study.lang.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.MainActivity;
@@ -56,6 +58,8 @@ public class StatsFragment extends Fragment {
     ProgressBar studiedProgress;
 
     Boolean easy_mode;
+    MenuItem modeMenuItem;
+
     DataManager dataManager;
 
     DataModeDialog dataModeDialog;
@@ -139,9 +143,14 @@ public class StatsFragment extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        MenuItem menuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) menuItem.setVisible(true);
+        modeMenuItem = menu.findItem(R.id.easy_mode);
+        checkModeIcon();
 
+    }
+
+    private void checkModeIcon() {
+        easy_mode = dataManager.easyMode();
+        if (modeMenuItem != null) modeMenuItem.setVisible(easy_mode);
     }
 
     @Override
@@ -154,7 +163,7 @@ public class StatsFragment extends Fragment {
     }
 
     private void updateData() {
-
+        checkModeIcon();
         userStats.updateData();
         MainActivity.allDataList = userStats.getAllDataFromJson();
 
@@ -230,6 +239,8 @@ public class StatsFragment extends Fragment {
 
         setContent();
     }
+
+
 
     private void onGridClick(final View view, final int position) {
         new Handler().postDelayed(new Runnable() {
@@ -332,6 +343,8 @@ public class StatsFragment extends Fragment {
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         }
     }
+
+
 
 
 

@@ -46,6 +46,8 @@ public class ProgressStatsActivity extends BaseActivity {
     TextView knownProgressTxt, studiedProgressTxt;
 
     Boolean easy_mode;
+    MenuItem modeMenuItem;
+    MenuItem infoMenuItem;
     DataModeDialog dataModeDialog;
 
     OpenActivity openActivity;
@@ -136,7 +138,10 @@ public class ProgressStatsActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        checkModeIcon();
         updateContent();
+
     }
 
 
@@ -210,16 +215,20 @@ public class ProgressStatsActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_section_stats, menu);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        MenuItem infoMenuItem = menu.findItem(R.id.stats_info);
-
-        if (easy_mode) {
-            modeMenuItem.setVisible(true);
-            infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
-        }
+        modeMenuItem = menu.findItem(R.id.easy_mode);
+        infoMenuItem = menu.findItem(R.id.stats_info);
+        checkModeIcon();
 
         return true;
 
+    }
+
+    private void checkModeIcon() {
+        easy_mode = dataManager.easyMode();
+        modeMenuItem.setVisible(easy_mode);
+
+        if (easy_mode) infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
+        else infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
 

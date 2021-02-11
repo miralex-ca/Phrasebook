@@ -37,6 +37,8 @@ public class CheckData {
     boolean validateFilter = false;
     boolean validateTranscript = false;
 
+    boolean onlyData = false;
+
 
     public CheckData() {
         this.context = getAppContext();
@@ -54,6 +56,7 @@ public class CheckData {
         boolean checkBase = false;
         boolean checkFilter = false;
         boolean checkTranscript = false;
+        boolean onlyData = false;
 
         private final Context context;
 
@@ -63,6 +66,11 @@ public class CheckData {
 
         public Builder checkValue(boolean check) {
             this.checkValue = check;
+            return this;
+        }
+
+        public Builder onlyListData(boolean check) {
+            this.onlyData = check;
             return this;
         }
 
@@ -133,6 +141,8 @@ public class CheckData {
 
 
 
+
+
         public CheckData build() {
 
             CheckData test = new CheckData(context);
@@ -142,6 +152,7 @@ public class CheckData {
             test.validateBase = this.checkBase;
             test.validateFilter = this.checkFilter;
             test.validateTranscript = this.checkTranscript;
+            test.onlyData = this.onlyData;
 
             test.checkData();
 
@@ -171,6 +182,7 @@ public class CheckData {
         if (!res1.equals("none"))
           findingsData.add(res1);
 
+        
         String res2 = validateList(listTwo,  listTwoName);
         if (!res2.equals("none"))
             findingsData.add(res2);
@@ -243,6 +255,8 @@ public class CheckData {
 
         }
 
+
+
         String text = "";
 
         for (String findingText: findingsData) {
@@ -254,6 +268,7 @@ public class CheckData {
                 +  text;
 
         Log.d("Checking data", msg );
+
 
     }
 
@@ -276,6 +291,11 @@ public class CheckData {
             if (dataItem.info.equals("")) {
                 hasIssue = true;
                 msg += " has no info";
+            }
+
+            if (dataItem.trans1.equals("")) {
+                hasIssue = true;
+                msg += " has no transcription";
             }
 
             if (hasIssue) {

@@ -728,4 +728,10 @@
 
     <string name="added_hint">Добавлено записей: %d</string>
 
+    <string name="set_review_title">Обзор и Тесты раздела</string>
+    <string name="set_review_summary">Показывать Обзор и Тесты раздела на странице раздела</string>
+
+    <string name="items_mastered_label">Изучено записей</string>
+    <string name="items_familiar_label">Пройдено записей</string>
+
 </resources>

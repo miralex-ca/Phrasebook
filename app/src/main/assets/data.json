@@ -328,7 +328,7 @@
     {"id": "1002000200050", "item": "car (carriage)", "info": "вагон", "ipa": "kɑː, ˈkærɪʤ", "tr_ru": "каː, ˈкэридж"},
     {"id": "1002000200060", "mode": "-1", "item": "dining-car", "info": "вагон-ресторан", "ipa": "ˈdaɪnɪŋkɑː", "tr_ru": "ˈдайнин ка:"},
     {"id": "1002000200070", "item": "sleeping car", "info": "спальный вагон", "ipa": "ˈsliːpɪŋ kɑː", "tr_ru": "ˈслиːпин каː"},
-    {"id": "1002000200080", "item": "soft-seated car", "info": "магкий вагон", "ipa": "sɒft ˈsiːtɪd kɑː", "tr_ru": "софт ˈсиːтид каː"},
+    {"id": "1002000200080", "item": "soft-seated car", "info": "мягкий вагон", "ipa": "sɒft ˈsiːtɪd kɑː", "tr_ru": "софт ˈсиːтид каː"},
     {"id": "1002000200090", "mode": "20", "item": "compartment", "info": "купе", "ipa": "kəmˈpɑːtmənt", "tr_ru": "кэмˈпа:тмэнт"},
     {"id": "1002000200100", "item": "conductor", "info": "проводник", "ipa": "kənˈdʌktə", "tr_ru": "кэнˈдактэ"},
     {"id": "1002000200110", "item": "emergency brake", "info": "стоп-кран", "ipa": "ɪˈmɜːʤənsɪ breɪk", "tr_ru": "иˈмэːджэнси брэйк"},

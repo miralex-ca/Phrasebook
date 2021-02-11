@@ -25,6 +25,8 @@
             app:contentPadding="0dp"
             android:layout_gravity="center_horizontal"
 
+
+
             android:layout_width="match_parent"
             style="@style/CardViewStyle"
 
@@ -42,6 +44,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:onClick="openSectionStats"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
                 >
 
 
@@ -103,6 +109,9 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+
+                        android:visibility="gone"
+                        android:id="@+id/review_tests_card"
                         android:layout_height="wrap_content"
                         app:contentPadding="0dp"
                         android:layout_gravity="center_horizontal"

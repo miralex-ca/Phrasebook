@@ -248,9 +248,9 @@ public class CardsPagerAdapter extends PagerAdapter {
         int textLength = text.length();
         int tSize = context.getResources().getInteger(R.integer.f_info_txt_size_norm);
 
-        if ( textLength > 150) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_mid);
-        if ( textLength > 200) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_small);
-        if ( textLength > 240 ) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_smallest);
+        if ( textLength > 20) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_mid);
+        if ( textLength > 40) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_small);
+        if ( textLength > 50 ) tSize = context.getResources().getInteger(R.integer.f_info_txt_size_smallest);
         return tSize;
     }
 

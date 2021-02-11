@@ -40,7 +40,7 @@
                 android:layout_marginBottom="3dp"
                 android:textSize="11sp"
                 android:fontFamily="sans-serif-light"
-                android:text="Изучено записей"
+                android:text="@string/items_mastered_label"
                 android:maxLines="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -62,7 +62,7 @@
                 android:textColor="?attr/colorSecondaryText"
                 android:textSize="11sp"
                 android:fontFamily="sans-serif-light"
-                android:text="Пройдено записей"
+                android:text="@string/items_familiar_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

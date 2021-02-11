@@ -860,7 +860,7 @@ public class MainActivity extends BaseActivity
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
         i.putExtra(Constants.EXTRA_SECTION_ID, navStructure.sections.get(position).id);
         i.putExtra(Constants.EXTRA_SECTION_NUM, position);
-        startActivity(i);
+        startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
 
@@ -868,7 +868,7 @@ public class MainActivity extends BaseActivity
     public void openProgressStats(View view) {
         Intent i = new Intent(MainActivity.this, ProgressStatsActivity.class);
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
-        startActivity(i);
+        startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
 
@@ -888,7 +888,7 @@ public class MainActivity extends BaseActivity
     public void openDataTypeBySections (int type) {
         Intent i = new Intent(MainActivity.this, SectionStatsListActivity.class);
         i.putExtra(Constants.EXTRA_DATA_TYPE, type);
-        startActivity(i);
+        startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
 
@@ -898,7 +898,7 @@ public class MainActivity extends BaseActivity
         i.putParcelableArrayListExtra("dataItems", errorsList);
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
         i.putExtra(Constants.EXTRA_SECTION_ID, "errors");
-        startActivity(i);
+        startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
 
@@ -910,7 +910,7 @@ public class MainActivity extends BaseActivity
         i.putExtra("ex_type", 1);
         i.putExtra(Constants.EXTRA_CAT_TAG, "all");
         i.putParcelableArrayListExtra("dataItems", new ArrayList<Parcelable>());
-        startActivity(i);
+        startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
 

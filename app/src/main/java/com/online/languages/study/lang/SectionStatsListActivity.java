@@ -55,6 +55,8 @@ public class SectionStatsListActivity extends BaseActivity {
     Boolean full_version;
 
     Boolean easy_mode;
+    MenuItem modeMenuItem;
+
     DataModeDialog dataModeDialog;
     DataManager dataManager;
 
@@ -141,10 +143,15 @@ public class SectionStatsListActivity extends BaseActivity {
 
         getMenuInflater().inflate(R.menu.stats_mode, menu);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
+        modeMenuItem = menu.findItem(R.id.easy_mode);
+        checkModeIcon();
 
         return true;
+    }
+
+    private void checkModeIcon() {
+        easy_mode = dataManager.easyMode();
+        modeMenuItem.setVisible(easy_mode);
     }
 
     @Override
@@ -165,6 +172,7 @@ public class SectionStatsListActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         updateContent();
     }
 
@@ -172,9 +180,12 @@ public class SectionStatsListActivity extends BaseActivity {
         section = dbHelper.getSectionCatItemsStats(section);
         setContent();
         mAdapter.notifyDataSetChanged();
+        checkModeIcon();
     }
 
     public void setContent() {
+
+
 
         int dataCount = 0;
 

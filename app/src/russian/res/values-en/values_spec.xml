@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_transcript_2">IPA simplified</string>
+    <string name="dialog_edit_item_text">Russian text</string>
+    <string name="voc_ex_link_third_desc">Multiple choice test with audio</string>
+
+</resources>

@@ -184,6 +184,12 @@
             android:defaultValue="@string/set_test_all_limit_default"
             />
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_review_card"
+            android:title="@string/set_review_title"
+            android:summary = "@string/set_review_summary"
+            android:defaultValue="@bool/showReview" />
 
         <ListPreference
             app:iconSpaceReserved="false"
@@ -211,6 +217,22 @@
             android:key="set_del_stats_cat"
             android:title="@string/set_del_cat_stats"
             android:summary = "@string/set_del_cat_stats_summary"
+            android:defaultValue="false" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="set_transition"
+            android:title="Transition"
+            android:summary="Transition between activities"
+            android:entries="@array/set_transition_list"
+            android:entryValues="@array/set_transition_values"
+            android:defaultValue="@string/set_transition_default"
+            android:dialogTitle="Transition" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_mode_hint"
+            android:title="Display mode hint"
             android:defaultValue="false" />
 
 

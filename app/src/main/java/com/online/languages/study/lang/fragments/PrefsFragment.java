@@ -121,14 +121,27 @@ public class PrefsFragment extends PreferenceFragmentCompat {
 
         final ListPreference list = (ListPreference) getPreferenceManager().findPreference("theme");
 
-        list.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                Intent intent = getActivity().getIntent();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                getActivity().startActivity(intent);
+        list.setOnPreferenceChangeListener((preference, newValue) -> {
+            Intent intent = getActivity().getIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getActivity().startActivity(intent);
 
-                return true;
-            }
+            return true;
+        });
+
+        final ListPreference transitions = (ListPreference) getPreferenceManager().findPreference("set_transition");
+        transitions.setVisible(Constants.DEBUG);
+        //!getActivity().getResources().getBoolean(R.bool.tablet)
+
+        final SwitchPreferenceCompat modeHint = (SwitchPreferenceCompat) getPreferenceManager().findPreference("set_mode_hint");
+        modeHint.setVisible(Constants.DEBUG);
+
+
+        transitions.setOnPreferenceChangeListener((preference, newValue) -> {
+            Intent intent = getActivity().getIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            getActivity().startActivity(intent);
+            return true;
         });
 
 

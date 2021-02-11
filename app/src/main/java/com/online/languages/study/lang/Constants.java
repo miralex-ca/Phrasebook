@@ -80,6 +80,7 @@ public class Constants {
     /// normal 20, easy 10. This value is increased by 1 in settings and DBHelper for checking
 
 
+
     public static final String SET_DATA_SELECT = "data_select"; // default - dates, option - all
     public static final String DATA_SELECT_BASIC = "dates";
     public static final String DATA_SELECT_EXTRA = "all";
@@ -113,7 +114,7 @@ public class Constants {
 
     public static final int GALLERY_REQUESTCODE = 100;
 
-    public static final int TEST_CATS_MAX_FOR_BEST = 15;
+    public static final int TEST_CATS_MAX_FOR_BEST = 20;
     public static final int TEST_NEIGHBORS_RANGE = 10;
 
     public static final String FILTER_CHRONO = "chrono";
@@ -214,6 +215,7 @@ public class Constants {
 
     public static final String UCAT_PARAM_BOOKMARK_ON = "bookmarkon";
     public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";
+    public static final String TAG_STRICT_FILTER = "_tsf";
 
     public static final int UCAT_WIDGET_LIMIT = 6; // normal 6
     public static final int UCAT_LIST_LIMIT = 20;  // normal 20

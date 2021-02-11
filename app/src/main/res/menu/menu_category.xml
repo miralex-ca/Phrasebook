@@ -11,6 +11,14 @@
         app:showAsAction="ifRoom" />
 
     <item
+        android:id="@+id/hint_from_menu"
+        android:orderInCategory="150"
+        android:icon="@drawable/ic_tool_quest"
+        android:title="Mode info"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/sort_from_menu"
         android:orderInCategory="100"
         android:icon="@drawable/ic_sort"
@@ -32,6 +40,12 @@
         android:id="@+id/info_from_menu"
         android:orderInCategory="100"
         android:title="@string/menu_item_info"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mode_from_menu"
+        android:orderInCategory="100"
+        android:title="Mode"
         app:showAsAction="never" />
 
     <item

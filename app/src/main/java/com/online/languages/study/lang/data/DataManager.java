@@ -16,6 +16,7 @@ import com.online.languages.study.lang.tools.Computer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -40,6 +41,7 @@ import static com.online.languages.study.lang.Constants.SET_HOMECARDS;
 import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
 import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
+import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
@@ -55,6 +57,9 @@ public class DataManager {
     public SharedPreferences appSettings;
     private Computer computer;
     public  boolean plus_Version;
+    public long timer = 0;
+    private String alternativeTranscription = "";
+    private String currentTranscriptionType = "";
 
 
     public DataManager(Context _context) {
@@ -63,6 +68,7 @@ public class DataManager {
         computer = new Computer();
         appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         getParams();
+        checkAlternativeTranscription();
     }
 
     public DataManager(Context _context, Boolean getParams) {
@@ -83,15 +89,18 @@ public class DataManager {
         navCategories = dataFromJson.getAllUniqueCats();
     }
 
+    public void checkAlternativeTranscription() {
+        // get alternative transcription value
+        alternativeTranscription = context.getResources().getString(R.string.set_transcript_alternative);
+        currentTranscriptionType =  getTranscriptType();
+    }
 
     public ArrayList<DataItem> getCatDBList(String cat) {
 
         ArrayList<DataItem> items = new ArrayList<>();
 
         if (cat.contains(UC_PREFIX)) {
-
             items =  getUDataList(cat);
-
         } else {
             items =  dbHelper.getCatByTag(cat);
         }
@@ -104,30 +113,22 @@ public class DataManager {
         return dbHelper.getAllDataItems(navSection.uniqueCategories);
     }
 
-
-
-
-
     public String getTranscriptType() {
 
        String type = "ipa";
+       String defaultTrans = context.getString(R.string.set_transcript_default);
 
         if (context.getResources().getBoolean(R.bool.changeTranscript)) {
-            type = appSettings.getString("set_transript", "ipa");
+            type = appSettings.getString("set_transript", defaultTrans);
         }
-
         return type;
     }
 
     public String getTranscriptFromData(DataItem dataItem) {
 
-        String type = getTranscriptType();
-
         String text = dataItem.trans1;
-
-        if (type.equals("ru")) text = dataItem.trans2;
-
-        if (type.equals("none")) text = "";
+        if (currentTranscriptionType.equals(alternativeTranscription)) text = dataItem.trans2;
+        if (currentTranscriptionType.equals("none")) text = "";
 
         return text;
     }
@@ -808,8 +809,74 @@ public class DataManager {
     }
 
 
-    public ArrayList<DataItem> getAllItems() {
+    public ArrayList<DataItem> getSectionItems(String tSectionID) {
 
+        NavStructure navStructure = getNavStructure();
+        Section section = new Section(navStructure.getNavSectionByID(tSectionID), context);
+
+        ArrayList<String> catIdsForTests = new ArrayList<>(section.checkCatIds);
+
+        if (catIdsForTests.size() > TEST_CATS_MAX_FOR_BEST) {
+            Collections.shuffle(catIdsForTests);
+            catIdsForTests = new ArrayList<>(catIdsForTests.subList(0, TEST_CATS_MAX_FOR_BEST));
+        }
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<DataItem> data = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
+        db.close();
+
+        return  data;
+    }
+
+    public ArrayList<DataItem> getCatsItems(String[] cats) {
+
+        ArrayList<String> catIdsForTests = new ArrayList<>(Arrays.asList(cats));
+
+        if (catIdsForTests.size() > TEST_CATS_MAX_FOR_BEST) {
+            Collections.shuffle(catIdsForTests);
+          //  catIdsForTests = new ArrayList<>(catIdsForTests.subList(0, TEST_CATS_MAX_FOR_BEST));
+        }
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        ArrayList<DataItem> data = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
+        db.close();
+
+        return  data;
+    }
+
+
+    public void getTime(String msg) {
+        getTime(msg, false);
+    }
+
+
+    public void getTime(String msg, boolean dif) {
+      long time =  System.currentTimeMillis();
+
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
+        String date = sdf.format(time);
+
+        String info  = msg +": " + date;
+
+        if (dif) {
+
+            long diff = time - timer;
+
+            SimpleDateFormat difForm = new SimpleDateFormat("mm:ss.SSS");
+
+            info += " dif: "  + difForm.format(diff);
+        }
+
+
+        timer = time;
+
+        Log.d("Timing", info);
+
+    }
+
+    public ArrayList<DataItem> getAllItems() {
 
         ArrayList<DataItem> data = new ArrayList<>();
 
@@ -825,13 +892,16 @@ public class DataManager {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
+        if (checkIds.size() > TEST_CATS_MAX_FOR_BEST) {
+            Collections.shuffle(checkIds);
+            checkIds = new ArrayList<>(checkIds.subList(0, TEST_CATS_MAX_FOR_BEST));
+        }
+
         data = dbHelper.selectSimpleDataItemsByIds(db, checkIds);
 
         db.close();
 
         return  data;
-
-
     }
 
     public void removeCatData(String catId) {

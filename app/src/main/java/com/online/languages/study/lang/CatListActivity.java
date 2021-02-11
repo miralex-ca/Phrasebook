@@ -224,17 +224,18 @@ public class CatListActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         open = true;
 
         if (requestCode == 1) {
 
-            if(resultCode == CatListActivity.RESULT_OK){
-                int result=data.getIntExtra("result", -1);
+            if (resultCode == CatListActivity.RESULT_OK) {
+                int result = data.getIntExtra("result", -1);
                 checkStarred(result);
             }
         } else {
 
-            if (sectionId.equals("errors") ) {
+            if (sectionId.equals("errors")) {
                 dataItems = dataManager.checkDataItemsData(dataItems);
                 adapter.notifyDataSetChanged();
             } else {

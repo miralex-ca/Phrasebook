@@ -183,6 +183,7 @@
     <attr name="iconGrid2" format="reference" />
     <attr name="iconTest" format="reference" />
     <attr name="iconCarousel" format="reference" />
+    <attr name="iconTestAudio" format="reference" />
 
     <attr name="cardCorner" format="reference" />
     <attr name="cardCornerSpec" format="reference" />

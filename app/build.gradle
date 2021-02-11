@@ -38,8 +38,8 @@ android {
         applicationId "com.study.languages.master"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 47
-        versionName '2.6.0'
+        versionCode 50
+        versionName '2.7.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -50,6 +50,11 @@ android {
         buildConfigField ("boolean", "SIMPLIFIED", "false")
         buildConfigField ("boolean", "HOMECARDS", "false")
         buildConfigField ("boolean", "GALLERY", "false")
+
+        manifestPlaceholders = [
+                appIcon: "@mipmap/ic_launcher_en",
+                appIconRound: "@mipmap/ic_launcher_en"
+        ]
 
 
     }
@@ -97,6 +102,11 @@ android {
             applicationId 'com.study.languages.russian'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_ru",
+                    appIconRound: "@mipmap/ic_launcher_ru"
+            ]
 
         }
 

@@ -130,6 +130,7 @@
         <item name="iconGrid">@drawable/ic_view_grid_outline</item>
         <item name="iconGrid2">@drawable/ic_view_grid_2_outline</item>
         <item name="iconTest">@drawable/ic_ex_assignment_outline</item>
+        <item name="iconTestAudio">@drawable/ic_ex_audio_outline</item>
         <item name="iconCarousel">@drawable/ic_ex_carousel_outline</item>
 
         <item name="cardCorner">@dimen/cardCornerDefault_white</item>

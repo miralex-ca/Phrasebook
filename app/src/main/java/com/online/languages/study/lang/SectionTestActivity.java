@@ -55,6 +55,8 @@ public class SectionTestActivity extends BaseActivity {
 
     boolean speaking;
 
+    String[] catsIds;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +147,6 @@ public class SectionTestActivity extends BaseActivity {
         catIdsForTests.addAll(section.checkCatIds);
 
 
-
         for (NavCategory navCategory: navStructure.getNavSectionByID(tSectionID).uniqueCategories) {
 
             if (!navCategory.type.equals(Constants.CAT_TYPE_EXTRA)) {
@@ -154,13 +155,13 @@ public class SectionTestActivity extends BaseActivity {
                 extraCatIds.add(navCategory.id);
             }
             allCatIds.add(navCategory.id);
-
         }
-
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         basicData = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
+
+        catsIds = catIdsForTests.toArray(new String[0]);
 
         if (extraCatIds.size() > 0) extraData = dbHelper.selectSimpleDataItemsByIds(db, extraCatIds);
 
@@ -225,9 +226,11 @@ public class SectionTestActivity extends BaseActivity {
 
         i.putExtra(Constants.EXTRA_CAT_TAG, exTag);
 
+        i.putExtra(Constants.EXTRA_SECTION_ID, tSectionID);
 
-            i.putParcelableArrayListExtra("dataItems", basicData);
+        i.putExtra("ids", catsIds);
 
+        i.putParcelableArrayListExtra("dataItems", basicData);
 
 
         startActivityForResult(i, 1);;
@@ -253,6 +256,7 @@ public class SectionTestActivity extends BaseActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         getTestsResults();
 
     }

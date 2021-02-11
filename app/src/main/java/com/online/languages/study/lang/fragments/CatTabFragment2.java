@@ -129,8 +129,10 @@ public class CatTabFragment2 extends Fragment {
     }
 
 
-    private void  fillData() {
+    public void  fillData() {
 
+
+        dataManager.dbHelper.checkMode();
 
         exResults = new int[]{0, 0, 0, 0};
         exLinkTitles = new ArrayList<>();

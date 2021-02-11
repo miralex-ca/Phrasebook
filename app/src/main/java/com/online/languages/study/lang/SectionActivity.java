@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.CatsListAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
@@ -30,6 +31,8 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.data.ViewSection;
 import com.squareup.picasso.Picasso;
+
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
 public class SectionActivity extends BaseActivity {
 
@@ -61,6 +64,7 @@ public class SectionActivity extends BaseActivity {
     InfoDialog dataModeDialog;
     OpenActivity openActivity;
     DataManager dataManager;
+    MenuItem modeMenuItem;
 
 
     @Override
@@ -79,18 +83,15 @@ public class SectionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 
-
-
         setContentView(R.layout.activity_section);
+
+
+        checkDisplayReview();
+
 
         dataManager = new DataManager(this);
 
-        easy_mode = dataManager.easyMode();
-
         dataModeDialog = new InfoDialog(this);
-
-
-
 
         full_version = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
 
@@ -116,7 +117,7 @@ public class SectionActivity extends BaseActivity {
         recyclerView = findViewById(R.id.recycler_view);
 
         setTitle(getString(R.string.section_content_title));
-        if (easy_mode) setTitle(R.string.section_content_title_short);
+        //if (easy_mode) setTitle(R.string.section_content_title_short);
 
         viewSection.getProgress();
 
@@ -157,15 +158,30 @@ public class SectionActivity extends BaseActivity {
 
     }
 
+
+    private void checkDisplayReview() {
+
+        boolean displayReviewCard = appSettings.getBoolean("set_review_card", getResources().getBoolean(R.bool.showReview));
+
+        View card = findViewById(R.id.review_tests_card);
+
+        if (displayReviewCard) card.setVisibility(View.VISIBLE);
+        else card.setVisibility(View.GONE);
+
+    }
+
     private void updateContent() {
+        checkModeIcon();
         viewSection.getProgress();
         mAdapter = new CatsListAdapter(this, viewSection.categories, full_version);
         recyclerView.setAdapter(mAdapter);
+
     }
 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         updateContent();
     }
 
@@ -259,6 +275,16 @@ public class SectionActivity extends BaseActivity {
         openActivity.pageTransition();
     }
 
+    public void openSectionStats(View view) {
+        Intent i = new Intent(this, SectionStatsActivity.class);
+        i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
+        i.putExtra(Constants.EXTRA_SECTION_ID, tSectionID);
+        i.putExtra(Constants.EXTRA_SECTION_NUM, 0);
+        i.putExtra("from_section", PARAM_EMPTY);
+        startActivityForResult(i, 1);
+        openActivity.pageTransition();
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -270,11 +296,17 @@ public class SectionActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.stats_mode_info, menu);
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
+        modeMenuItem = menu.findItem(R.id.easy_mode);
 
-        if (easy_mode) modeMenuItem.setVisible(true);
+        checkModeIcon();
 
         return true;
+    }
+
+    private void checkModeIcon() {
+        dataManager.dbHelper.checkMode();
+        easy_mode = dataManager.easyMode();
+       if (modeMenuItem != null) modeMenuItem.setVisible(easy_mode);
     }
 
     @Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:text="@string/ex_option_foo"
 
     android:maxLines="@integer/limit_lines_option_less"

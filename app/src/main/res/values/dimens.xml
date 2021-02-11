@@ -190,6 +190,7 @@
     <integer name="f_info_txt_size_mid">@integer/_f_info_txt_size_mid</integer>
     <integer name="f_info_txt_size_small">@integer/_f_info_txt_size_small</integer>
     <integer name="f_info_txt_size_smallest">@integer/_f_info_txt_size_smallest</integer>
+
     <integer name="f_info_txt_size_norm_opt">@integer/_f_info_txt_size_norm_opt</integer>
     <integer name="f_info_txt_size_mid_opt">@integer/_f_info_txt_size_mid_opt</integer>
 

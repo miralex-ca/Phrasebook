@@ -52,7 +52,7 @@ public class UserStats {
 
 
     public void updateData() {
-
+        dbHelper.checkMode();
         getSectionsDataDB();
         getErrorsData();
         checkDataItemsStats();

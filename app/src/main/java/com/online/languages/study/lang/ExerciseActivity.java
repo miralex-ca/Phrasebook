@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 
@@ -189,12 +190,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         initSpeak = 0;
         autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default)); // TODO
 
-
-
-
         dataModeDialog = new DataModeDialog(this);
-
-
 
         forceSave = true;
         taskCheckedStatus = 0;
@@ -265,16 +261,9 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         originWordsList = getIntent().getParcelableArrayListExtra("dataItems");
 
 
-
-
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
-
-
-            originWordsList = dataManager.getAllItems();
+            originWordsList = new ArrayList<>();
         }
-
-
-
 
 
         exerciseController = new ExerciseController();
@@ -431,28 +420,47 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     private void getTasks () {
         int limit = Constants.QUEST_NUM;
 
+
+
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
-
             String lim =  appSettings.getString("test_all_limit", getString(R.string.set_test_all_limit_default));
-
             limit = Integer.parseInt(lim);
-
-            //Toast.makeText(this, "Len: "+ originWordsList.size(), Toast.LENGTH_SHORT).show();
-
         }
 
-        if (topicTag.contains(Constants.SECTION_TEST_PREFIX)) {
-            limit = Constants.SECTION_TEST_LIMIT;
-        }
+
 
         Collections.shuffle(originWordsList);
 
         ArrayList<DataItem> data = new ArrayList<>(originWordsList);
 
+
+        if (topicTag.contains(Constants.SECTION_TEST_PREFIX)) {
+            limit = Constants.SECTION_TEST_LIMIT;
+
+
+            if (getIntent().hasExtra(EXTRA_SECTION_ID)) {
+
+                //String msg = "Tags: " + topicTag + ":  "+ getIntent().getStringExtra(EXTRA_SECTION_ID);
+                //Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+               // data = dataManager.getSectionItems(getIntent().getStringExtra(EXTRA_SECTION_ID));
+
+            }
+
+
+            if (getIntent().hasExtra("ids")) {
+                data = dataManager.getCatsItems(getIntent().getStringArrayExtra("ids"));
+            }
+        }
+
+
+        if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+            data = dataManager.getAllItems();
+            exerciseAllData = new ExerciseDataCollect(context, data, exType);
+        }
+
         if (data.size() > limit) {
             data = new ArrayList<>(data.subList(0, limit));
         }
-
 
 
         exerciseAllData.generateTasks(data);
@@ -465,7 +473,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     private void startExercise(){
-
+        dataManager.getTime("Start start");
 
         resultShow = false;
 
@@ -484,12 +492,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         viewPagerAdapter = new ExercisePagerAdapter(this, exerciseController.tasks );
         viewPager.setAdapter(viewPagerAdapter);
 
-
+        dataManager.getTime("End start", true);
     }
 
 
     public void restartExercise() {
-
+        dataManager.getTime("Start restart");
         goToNextTask();
 
         btnResultBox.setVisibility(View.GONE);
@@ -505,6 +513,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         getTasks ();
 
         startExercise();
+
+        dataManager.getTime("End restart", true);
     }
 
     public int convertDimen(int dimen) {

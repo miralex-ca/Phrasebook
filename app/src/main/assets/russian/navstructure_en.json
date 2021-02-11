@@ -32,6 +32,7 @@
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Useful information"},
 
+        {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100300", "title": "Russian Alphabet", "param": "p_abc", "review":  "false"},
         {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100310", "title": "Countries","review":  "false"},
         {"parent": "root", "type": "extra", "spec": "items_list", "id": "100100320", "title": "Cities","review":  "false"}
 
@@ -110,7 +111,7 @@
 
         {"parent": "root", "type": "set", "id": "set_4_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100400110", "title": "In a Shop"},
-        {"parent": "root", "type": "simple", "id": "100400120", "title": "Payment"},
+        {"parent": "root", "type": "simple", "id": "100400120", "title": "Payment", "review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_4_3", "title": "Additional topics"},
         {"parent": "root", "type": "extra", "id": "100400210", "title": "Lingerie & Nightwear","review":  "false"},
@@ -144,12 +145,13 @@
 
         {"parent": "root", "type": "set", "id": "set_5_2", "title": "Phrases"},
         {"parent": "root", "type": "simple", "id": "100500110", "title": "In a restaurant"},
-        {"parent": "root", "type": "simple", "id": "100500120", "title": "In a pub"},
+        {"parent": "root", "type": "simple", "id": "100500120", "title": "In a pub", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100500130", "title": "Ordering food delivery"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Additional topics"},
-        {"parent": "root", "type": "extra", "id": "100500210", "title": "Berries"},
-        {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts & Dried fruits"},
-        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs & Spices"},
+        {"parent": "root", "type": "extra", "id": "100500210", "title": "Berries", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500220", "title": "Nuts & Dried fruits", "review":  "false"},
+        {"parent": "root", "type": "extra", "id": "100500230", "title": "Herbs & Spices", "review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500240", "title": "Sauces & Condiments","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500250", "title": "Dairy Produce","review":  "false"},
         {"parent": "root", "type": "extra", "id": "100500260", "title": "Cereals","review":  "false"}
@@ -177,7 +179,7 @@
         {"parent": "root", "type": "simple", "id": "100600070", "title": "Sea Animals", "image": "cat/sea_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_6_2", "title": "Phrases"},
-        {"parent": "root", "type": "simple", "id": "100600110", "title": "About weather"},
+        {"parent": "root", "type": "simple", "id": "100600110", "title": "About weather", "review":  "false"},
         {"parent": "root", "type": "simple", "id": "100600120", "title": "Leisure in nature", "review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_6_3", "title": "Additional topics"},
@@ -212,9 +214,9 @@
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Phrases"},
 
-        {"parent": "root", "type": "simple", "id": "100700110", "title": "Seeing a Doctor"},
-        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of Diseases"},
-        {"parent": "root", "type": "simple", "id": "100700130", "title": "At the Pharmacy"},
+        {"parent": "root", "type": "simple", "id": "100700110", "title": "Seeing a Doctor", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700120", "title": "Symptoms of Diseases", "review":  "false"},
+        {"parent": "root", "type": "simple", "id": "100700130", "title": "At the Pharmacy", "review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_7_3", "title": "Additional topics"},
         {"parent": "root", "type": "extra", "id": "100700210", "title": "Skeleton", "review":  "false"},
@@ -271,11 +273,8 @@
         {"parent": "root", "type": "simple", "id": "100900030", "title": "Calendar", "image": "cat/calendar_cat.png"},
         {"parent": "root", "type": "simple", "id": "100900040", "title": "Time", "image": "cat/time_cat.png"},
         {"parent": "root", "type": "simple", "id": "100900050", "title": "Adjectives", "image": "cat/quality_1_cat.png"},
-        {"parent": "root", "type": "simple", "id": "100900060", "title": "Most Common Verbs", "image": "cat/quality_2_cat.png"},
+        {"parent": "root", "type": "simple", "id": "100900060", "title": "Most Common Verbs", "image": "cat/quality_2_cat.png"}
 
-        {"parent": "root", "type": "set", "id": "set_9_3", "title": "Additional topics"},
-
-        {"parent": "root", "type": "extra", "id": "100900210", "title": "Prepositions", "review":  "false"}
 
 
       ]

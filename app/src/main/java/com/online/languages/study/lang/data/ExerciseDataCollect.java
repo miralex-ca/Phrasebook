@@ -1,6 +1,7 @@
 package com.online.languages.study.lang.data;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.DBHelper;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import static com.online.languages.study.lang.Constants.DEFAULT_TEST_RELACE_CAT;
 import static com.online.languages.study.lang.Constants.ITEM_FILTER_DIVIDER;
 import static com.online.languages.study.lang.Constants.ITEM_TAG;
+import static com.online.languages.study.lang.Constants.TAG_STRICT_FILTER;
 import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
 import static com.online.languages.study.lang.Constants.TEST_NEIGHBORS_RANGE;
 import static com.online.languages.study.lang.Constants.TEST_OPTIONS_NUM;
@@ -22,7 +24,7 @@ import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class ExerciseDataCollect {
 
-    ArrayList<DataItem> data = new ArrayList<>();
+    final ArrayList<DataItem> data;
     public ArrayList<ExerciseTask> tasks = new ArrayList<>();
 
     ArrayList<DataItem> dataTest = new ArrayList<>();
@@ -67,7 +69,7 @@ public class ExerciseDataCollect {
         dataFromJson = new DataFromJson(context);
         dbHelper = new DBHelper(context);
 
-        data = _data;
+        data = new ArrayList<>(_data);
 
 
         String[] ids = context.getResources().getStringArray(R.array.test_replace_cats);
@@ -337,7 +339,9 @@ public class ExerciseDataCollect {
     private DataItem getOption(DataItem dataItem, ArrayList<DataItem> options, ArrayList<DataItem> optionsList) {
 
 
-        DataItem option = optionsList.get(0);
+        DataItem option = new DataItem();
+         if (optionsList.size()> 0) option = optionsList.get(0);
+
 
         if (option.item.equals(dataItem.item)) {
            // option = optionsList.get(1);
@@ -384,7 +388,7 @@ public class ExerciseDataCollect {
 
 
 
-    private void getCatIdsFromDataItems(ArrayList<DataItem> dataItems) {
+    private void getCatIdsFromDataItems(ArrayList<DataItem> dataItems) { // TODO optimization
 
 
         ArrayList<String> ids = new ArrayList<>();
@@ -468,10 +472,12 @@ public class ExerciseDataCollect {
 
         ArrayList<DataItem> tOptions = new ArrayList<>();
 
-
+        String selection = "base";
 
         for (OptionsCatData optionsCat: optionsCatData) {
 
+
+            /// identifying the category of the item and category
             if (dataItem.id.matches(optionsCat.id + ".*") || dataItem.cat.equals(optionsCat.id)) {
 
 
@@ -479,76 +485,116 @@ public class ExerciseDataCollect {
                 tOptions = checkUniqueData( verifiedDiffer( optionsCat.options, dataItem ));
                 String tagFilter = ITEM_FILTER_DIVIDER + ITEM_TAG;
 
+                selection= "category";
+
                 // check items and options for tag
-
-                String select = "";
-                String info = "";
-                boolean show = false;
+               // String select = ""; String info = ""; boolean show = false;
 
 
-
-                if (dataItem.filter.contains(ITEM_TAG)  && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
+                // filter options by tag
+                if (dataItem.filter.contains(ITEM_TAG) ) {
                     String[] tags = getTagsFromFilter(dataItem.filter);
-
 
                     if (tags.length > 0) {
                         ArrayList<DataItem> taggedOptions = new ArrayList<>();
+                        ArrayList<DataItem> untaggedOptions = new ArrayList<>();
 
-                        for (DataItem tOption: tOptions) {
+                        String foundTag = "";
+
+                        for ( DataItem tOption: tOptions) {
+
                             boolean optionHasTag = false;
 
-                                for (String tag: tags) {
+                            for (String tag : tags) {
 
-                                    String checkTag = ITEM_TAG + tag;
+                                String checkTag = ITEM_TAG + tag;
 
-                                   if (tOption.filter.contains(checkTag)) {
-                                       optionHasTag = true;
-                                       break;
-                                   }
+                                if (tOption.filter.contains(checkTag)) {
+                                    optionHasTag = true;
+                                    foundTag = checkTag;
+                                    break;
                                 }
+                            }
 
-                                if (optionHasTag) {
-                                    taggedOptions.add(tOption);
-                                }
+                            if (optionHasTag) taggedOptions.add(tOption);
+                            else untaggedOptions.add(tOption);
 
                         }
 
-
+                        // reducing all options to only tagged
                         if (taggedOptions.size() > 0 ) {
-                            tOptions = new ArrayList<>(taggedOptions);
+
+                            if (taggedOptions.size() < TEST_OPTIONS_NUM && !foundTag.contains(TAG_STRICT_FILTER)) {
+
+                                Collections.shuffle(untaggedOptions);
+
+                                // define the size of required items list
+                                int required = TEST_OPTIONS_NUM - taggedOptions.size();
+
+                                // reduce untagged to required count
+                                if (untaggedOptions.size() > required)
+                                    untaggedOptions = new ArrayList<>(untaggedOptions.subList(0, required));
+
+                                // add options and finish selection
+                                    taggedOptions.addAll(untaggedOptions);
+                                    tOptions = new ArrayList<>(taggedOptions);
+                                    selection = "tagged plus added";
+
+                            } else {
+
+                                if (taggedOptions.size() == 1 ) {
+                                    int required = 2;
+                                    if (untaggedOptions.size() > required)
+                                        untaggedOptions = new ArrayList<>(untaggedOptions.subList(0, required));
+
+                                    taggedOptions.addAll(untaggedOptions);
+
+                                    tOptions = new ArrayList<>(taggedOptions);
+
+                                    selection = "tagged restricted + 2";
+                                } else {
+
+                                    tOptions = new ArrayList<>(taggedOptions);
+                                    selection = "tagged restricted";
+                                }
+
+
+                            }
                         }
-
                     }
-
                 }
 
 
-
+                // getting neighbor options
                 if (tOptions.size() > TEST_NEIGHBORS_RANGE && optionsCatData.size() <= TEST_CATS_MAX_FOR_BEST) {
                     tOptions = getNeighborOptions(tOptions, dataItem.id);
+                    selection = "neighbors";
                 }
 
 
+                /// add options from the collection
                 if (tOptions.size() < 3 && data.size() > 1) {
-                    tOptions = addOption (dataItem);
-
+                    if (!dataItem.filter.contains(TAG_STRICT_FILTER)) {
+                        tOptions = addOption (dataItem);
+                        selection = "test data";
+                    }
                 }
 
                 if (tOptions.size() < 2) {
                     ArrayList<DataItem> replacement = getReplaceOptions(dataItem);
                     if ( replacement.size() > 0) tOptions = replacement;
-                    select = "replace";
+                    selection = "replace";
+                    //select = "replace";
                 }
-
-
-
 
                 break;
             }
 
         }
 
-       // Toast.makeText(context, "Len: " + tOptions.size(), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(context, "Selection: " + selection, Toast.LENGTH_SHORT).show();
+
+        //Log.d("TSelect", dataItem.item + ": " + selection);
 
         return tOptions;
     }

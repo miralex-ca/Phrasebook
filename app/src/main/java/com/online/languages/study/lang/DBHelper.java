@@ -374,14 +374,16 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         cntx = context;
 
-        appSettings = PreferenceManager.getDefaultSharedPreferences(context);
-
-        String modeLevel = appSettings.getString(SET_DATA_MODE, cntx.getResources().getString(R.string.set_data_mode_default_value));
-
-        data_mode = Integer.parseInt(modeLevel); ///TODO check for improvement
+        checkMode();
 
         speaking_mode = appSettings.getBoolean("set_speak", true);
 
+    }
+
+    public void checkMode() {
+        appSettings = PreferenceManager.getDefaultSharedPreferences(cntx);
+        String modeLevel = appSettings.getString(SET_DATA_MODE, cntx.getResources().getString(R.string.set_data_mode_default_value));
+        data_mode = Integer.parseInt(modeLevel); ///TODO check for improvement
     }
 
 
@@ -455,7 +457,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 String asciiName = Normalizer.normalize(searchTerm, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 
-                String formattedText= searchTerm + " " + asciiName;
+                String removeAccents = searchTerm.replaceAll("[\u0301]", "");
+
+                String formattedText= searchTerm + " " + asciiName + " " + removeAccents;
 
                 ContentValues values = new ContentValues();
                 values.put(KEY_ITEM_ID, item.id);

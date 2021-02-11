@@ -48,6 +48,9 @@ import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.ACTION_VIEW;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_DESC;
@@ -98,10 +101,12 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     MenuItem addListToolItem;
     MenuItem deleteToolItem;
 
+    MenuItem viewMenuItem;
+
     View listParams;
     boolean speaking;
 
-
+    boolean showViewFromMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,8 +123,11 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         dataItems = new ArrayList<>();
 
+
         categoryObject = new DataObject();
         categoryObject.id = getIntent().getStringExtra(EXTRA_CAT_ID);
+
+        showViewFromMenu = !getIntent().hasExtra("view_ucat");
 
         setContentView(R.layout.activity_cat_edit);
 
@@ -337,7 +345,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         TextView txt = findViewById(R.id.createdDate);
         txt.setText(String.format(getString(R.string.ucat_created_time), time));
-        checkItemsCount();
+        checkItemsCount(dataItems.size());
 
         newDataItemAction = true;
 
@@ -511,11 +519,11 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
 
-        checkItemsCount();
+        checkItemsCount(dataItems.size());
 
     }
 
-    private void checkItemsCount() {
+    private void checkItemsCount(int dataSize) {
 
         int limit = !dataManager.plus_Version ? UDATA_LIMIT_UNPAID : UDATA_LIMIT;
         ((TextView) findViewById(R.id.ucatItemsCount)).setText(String.format(getString(R.string.ucat_limit_hint), dataItems.size(), limit));
@@ -524,11 +532,26 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         hint.setText(String.format(getString(R.string.new_items_hint), limit));
         if (!dataManager.plus_Version) hint.setText(String.format(getString(R.string.new_items_hint_unpaid), limit));
 
-        if (dataItems.size() == 0) {
+        if (dataSize == 0) {
             hint.setVisibility(View.VISIBLE);
         } else {
             hint.setVisibility(View.GONE);
         }
+
+        checkViewFromMenu(dataSize);
+
+    }
+
+    private void checkViewFromMenu(int dataListSize) {
+
+       if (viewMenuItem != null && showViewFromMenu) {
+
+           if (dataListSize > 0) {
+               viewMenuItem.setVisible(true);
+           } else {
+               viewMenuItem.setVisible(false);
+           }
+       }
     }
 
 
@@ -622,6 +645,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         } else if (id == R.id.add_list) {
             openAddListDialog();
             return true;
+        } else if (id == R.id.view_ucat_tool) {
+            viewUCat();
+            return true;
         } else if (id == R.id.add_list_tool) {
             openAddListDialog();
             return true;
@@ -694,6 +720,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         deleteToolItem = menu.findItem(R.id.delete_ucat_tool);
         addListMenuItem = menu.findItem(R.id.add_list);
         addListToolItem = menu.findItem(R.id.add_list_tool);
+        viewMenuItem = menu.findItem(R.id.view_ucat_tool);
 
         addListMenuItem.setEnabled(false);
 
@@ -702,6 +729,8 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             addListMenuItem.setEnabled(true);
             addListToolItem.setVisible(true);
         }
+
+        checkViewFromMenu(dataItems.size());
 
         checkDeleteItem();
 
@@ -897,6 +926,24 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     }
 
+
+    private void viewUCat() {
+
+        String id = categoryObject.id;
+        String title = categoryObject.title;
+
+        Intent i = new Intent(this, CatActivity.class);
+
+        i.putExtra(EXTRA_SECTION_ID, PARAM_UCAT_PARENT);
+        i.putExtra(Constants.EXTRA_CAT_ID, id);
+        i.putExtra("cat_title", title);
+        i.putExtra(Constants.EXTRA_CAT_SPEC, PARAM_EMPTY);
+        i.putExtra("from_edit", PARAM_EMPTY);
+
+        startActivityForResult(i, 10);
+
+
+    }
 
 
 }

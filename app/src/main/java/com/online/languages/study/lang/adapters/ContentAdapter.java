@@ -32,6 +32,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
     int grammarCharLimit = 10;
 
+    public boolean charLayout = false;
+
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView txt, translate, grammar;
@@ -53,6 +55,13 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         }
     }
 
+    public ContentAdapter(Context _context, ArrayList<DataItem> _dataList,
+                          int _show_status, String _theme, boolean divider, String _layoutType, boolean _charLayout) {
+
+        this( _context, _dataList,_show_status, _theme,  divider,  _layoutType);
+        charLayout = true;
+
+    }
 
     public ContentAdapter(Context _context, ArrayList<DataItem> _dataList,
                           int _show_status, String _theme, boolean divider, String _layoutType) {
@@ -91,15 +100,20 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
         View itemView;
 
-        if (viewType == 2) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_compact_2, parent, false);
-        } else if (viewType == 3) {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_divider, parent, false);
+        int layout = R.layout.category_list_item_norm;
 
-        }else {
-            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_item_norm, parent, false);
+        if (viewType == 2) {
+            layout = R.layout.category_list_item_compact_2;
+        } else if (viewType == 3) {
+            layout =  R.layout.category_list_item_divider;
+        } else if (viewType == 4) {
+            layout = R.layout.category_list_item_norm_char;
+        } else {
+            if (charLayout) layout = R.layout.category_list_item_norm_char;
+            else   layout = R.layout.category_list_item_norm;
         }
 
+        itemView = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -111,6 +125,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) type = 2;
 
         if (dataList.get(position).type.equals("divider")) type = 3;
+
+
         return type;
     }
 
@@ -123,7 +139,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         holder.translate.setText( dataItem.info);
         holder.helperView.setTag(dataItem.id);
 
-        if (position == 0 || autoDivider) holder.divider.setVisibility(View.INVISIBLE);
+        if (position == 0 || autoDivider)
+            holder.divider.setVisibility(View.INVISIBLE);
 
         if (dataItem.starred == 1) {
             holder.starIcon.setVisibility(View.VISIBLE);

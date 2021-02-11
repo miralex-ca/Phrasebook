@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.study.languages.russian",
+  "variantName": "processRussianReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 50,
+      "versionName": "2.7.0",
+      "outputFile": "app-russian-release.apk"
+    }
+  ]
+}

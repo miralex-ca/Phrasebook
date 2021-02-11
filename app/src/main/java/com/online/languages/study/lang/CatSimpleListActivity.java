@@ -87,6 +87,7 @@ public class CatSimpleListActivity extends BaseActivity {
     ArrayList<DataItem> data = new ArrayList<>();
 
     public String parentSectionId;
+    String catParam;
 
 
     @Override
@@ -114,6 +115,8 @@ public class CatSimpleListActivity extends BaseActivity {
 
         parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
         navStructure = dataManager.getNavStructure();
+
+        catParam  = navStructure.getNavCatFromSection(parentSectionId, categoryID).param;
 
         String title = getIntent().getStringExtra("cat_title");
 
@@ -235,6 +238,9 @@ public class CatSimpleListActivity extends BaseActivity {
 
         getDataList();
         adapter = new ContentAdapter( this, data, 0, themeTitle, false, CAT_LIST_VIEW_NORM);
+        if (catParam.contains("_abc"))
+            adapter = new ContentAdapter(this, data, 0, themeTitle, false, CAT_LIST_VIEW_NORM, true);
+
         recyclerView.setAdapter(adapter);
 
         adapterCompact = new ContentAdapter(this, data, 0, themeTitle, false, CAT_LIST_VIEW_COMPACT);

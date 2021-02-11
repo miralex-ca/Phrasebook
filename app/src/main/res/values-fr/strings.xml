@@ -746,4 +746,12 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="added_hint">Entrées ajoutées: %d</string>
 
+    <string name="set_review_title">Revue et Tests de la section</string>
+    <string name="set_review_summary">Afficher Revue et Tests de la section sur la page de la section</string>
+
+    <string name="items_mastered_label">Entrées maîtrisées</string>
+    <string name="items_familiar_label">Entrées familières</string>
+
+
+
 </resources>

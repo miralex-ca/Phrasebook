@@ -14,6 +14,8 @@ import com.online.languages.study.lang.data.DataObject;
 
 import java.util.ArrayList;
 
+import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
+
 
 public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.MyViewHolder> {
 
@@ -28,7 +30,7 @@ public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView icon;
+        ImageView icon, groupIcon;
         View selector, emptyTxt;
 
         TextView title;
@@ -39,8 +41,7 @@ public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.
             icon = view.findViewById(R.id.icon);
             title = view.findViewById(R.id.title);
             selector = view.findViewById(R.id.imgSelector);
-
-
+            groupIcon = view.findViewById(R.id.iconFolder);
         }
     }
 
@@ -76,6 +77,9 @@ public class GroupPickerAdapter extends RecyclerView.Adapter<GroupPickerAdapter.
         holder.icon.setTag(position);
 
        // if (position == 0) holder.emptyTxt.setVisibility(View.VISIBLE);
+
+        if (group.id.equals(PARAM_UCAT_ROOT))
+            holder.groupIcon.setImageResource(R.drawable.ic_list_main);
 
         if (selected == position) {
             holder.selector.setVisibility(View.VISIBLE);

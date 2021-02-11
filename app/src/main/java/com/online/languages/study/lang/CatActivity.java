@@ -15,6 +15,7 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,6 +83,8 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
     MenuItem sortMenuItem;
     private MenuItem bookmarkRadio;
+    MenuItem modeMenuItem;
+    MenuItem hintMenuItem;
 
 
     DataManager dataManager;
@@ -97,6 +100,10 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     private int MY_DATA_CHECK_CODE = 15;
 
     boolean speaking;
+    boolean fromEdit;
+    boolean displayModeHint;
+
+
 
 
     @Override
@@ -111,11 +118,15 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         setContentView(R.layout.activity_cat);
 
+
         dataManager = new DataManager(this);
         open = true;
 
+
         easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
+
+        fromEdit = getIntent().hasExtra("from_edit");
 
         showDelStats = appSettings.getBoolean("set_del_stats_cat", false);
 
@@ -127,10 +138,13 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         categoryID = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
         catSpec = getIntent().getStringExtra(Constants.EXTRA_CAT_SPEC);
 
+
         String title = getIntent().getStringExtra("cat_title");
 
 
         parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+
+
 
         setTitle(title);
 
@@ -235,6 +249,8 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         }
     }
+
+
 
 
 
@@ -399,13 +415,19 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
     }
 
+    private void checkModeIcon() {
+        easy_mode = dataManager.easyMode();
+        modeMenuItem.setVisible(easy_mode);
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_category, menu);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        if (easy_mode) modeMenuItem.setVisible(true);
+        modeMenuItem = menu.findItem(R.id.easy_mode);
+        checkModeIcon();
 
         changeLayoutBtn = menu.findItem(R.id.list_layout);
         applyLayoutStatus();
@@ -413,8 +435,12 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         bookmarkRadio = menu.findItem(R.id.bookmark);
         applyBookmarkStatus();
 
+        hintMenuItem = menu.findItem(R.id.hint_from_menu);
+        checkHint();
+
         if (categoryID.contains(UC_PREFIX)) {
-            menu.findItem(R.id.edit_from_menu).setVisible(true);
+            if (!fromEdit) menu.findItem(R.id.edit_from_menu).setVisible(true);
+            menu.findItem(R.id.mode_from_menu).setVisible(false);
             modeMenuItem.setVisible(false);
         }
 
@@ -433,10 +459,10 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         switch(id) {
             case android.R.id.home:
                 finish();
-                openActivity.pageBackTransition();
+                backTransition();
                 return true;
             case R.id.easy_mode:
-                dataModeDialog.openDialog();
+                easyModeHint();
                 return true;
             case R.id.sort_from_menu:
                 sortDialog();
@@ -453,11 +479,118 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             case R.id.remove_stats_from_menu:
                 deleteConfirmDialog();
                 return true;
+            case R.id.mode_from_menu:
+                listModeDialog();
+                return true;
+            case R.id.hint_from_menu:
+                 modeHint();
+                return true;
             case R.id.edit_from_menu:
                 openEditCat();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void checkHint() {
+
+        displayModeHint = appSettings.getBoolean("set_mode_hint", true);
+        if (categoryID.contains(UC_PREFIX)) displayModeHint = false;
+
+       if (displayModeHint)  {
+           if (easy_mode) {
+               displayModeHint = false;
+               saveModeHintDisplay();
+           }
+       }
+
+       hintMenuItem.setVisible(displayModeHint);
+
+    }
+
+    private void saveModeHintDisplay() {
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putBoolean("set_mode_hint", false);
+        editor.apply();
+    }
+
+
+    private void easyModeHint() {
+        //dataModeDialog.openDialog();
+
+        DataMode dataMode = new DataMode(this);
+        dataMode.createEasyDialog(getString(R.string.mode_dialog_title),
+                getString(R.string.mode_dialog_info), getString(R.string.mode_dialog_info_2));
+
+    }
+
+    private void modeHint() {
+        DataMode dataMode = new DataMode(this);
+        dataMode.createModeHint(getString(R.string.mode_dialog_title),
+                getString(R.string.mode_dialog_info), getString(R.string.mode_dialog_info_2));
+    }
+
+
+
+    private void listModeDialog() {
+        DataMode dataMode = new DataMode(this);
+        dataMode.createDialog2(getString(R.string.mode_dialog_title),
+                getString(R.string.mode_dialog_info), getString(R.string.mode_dialog_info_2));
+    }
+
+    private class DataMode extends DataModeDialog {
+
+        public DataMode(Context _context) {  super(_context);  }
+
+        @Override
+        public void callMode(int index) {
+           saveListMode(index);
+        }
+
+        @Override
+        public void callHint() {
+            saveModeHintDisplay();
+        }
+    }
+
+
+
+    private void saveListMode(int num) {
+
+        String orderValue = getResources().getStringArray(R.array.set_data_mode_values)[0];
+        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_data_mode_values)[1];
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putString(Constants.SET_DATA_MODE, orderValue);
+        editor.apply();
+
+        updateCatData();
+
+    }
+
+
+    public void updateCatData() {
+
+        getDataItems();
+
+        checkModeIcon();
+        checkHint();
+
+        CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
+        if (fragment1 != null) {
+
+            fragment1.updateList();
+        }
+
+        CatTabFragment2 fragment2 = (CatTabFragment2) adapter.getFragmentTwo();
+        if (fragment2 != null) {
+            fragment2.fillData();
+        }
+
+
+
     }
 
 
@@ -500,6 +633,11 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         dataManager.removeCatData(catId);
 
+        updateDataList();
+    }
+
+    private void updateDataList() {
+
         CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
         if (fragment1 != null) {
             fragment1.updateDataList();
@@ -509,13 +647,16 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         if (fragment2 != null) {
             fragment2.updateResults();
         }
+
     }
+
+
 
     private void openEditCat() {
 
         Intent i = new Intent(this, MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, categoryID);
-
+        i.putExtra("view_ucat", "hide");
         startActivityForResult(i, 10);
 
     }
@@ -594,7 +735,11 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        openActivity.pageBackTransition();
+        backTransition();
+    }
+
+    public void backTransition() {
+       if (!fromEdit) openActivity.pageBackTransition();
     }
 
     @Override
@@ -709,12 +854,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         if (launchesNum < 2) {
             adContainer.setVisibility(View.GONE);
         } else  {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    manageAd();
-                }
-            }, 100);
+            new Handler().postDelayed(() -> manageAd(), 100);
         }
     }
 

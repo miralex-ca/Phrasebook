@@ -4,7 +4,9 @@ package com.online.languages.study.lang.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.preference.PreferenceManager;
 
 import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.CatSimpleListActivity;
@@ -28,12 +30,13 @@ import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 public class OpenActivity  {
 
     Context context;
-
-
     private int requestCode = 1;
+    private String transition;
 
     public OpenActivity(Context _context) {
         context = _context;
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        transition = appSettings.getString("set_transition", context.getResources().getString(R.string.set_transition_default));
     }
 
 
@@ -74,13 +77,42 @@ public class OpenActivity  {
 
     public void pageTransition() {
         if ( !  context.getApplicationContext().getResources().getBoolean(R.bool.wide_width)) {
-            ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+            switch (transition) {
+                case "none":
+
+                    ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
+                    break;
+                case "fade":
+                    ((Activity) context).overridePendingTransition(R.anim.fade_in_2, R.anim.anim_none);
+                    break;
+                case "device":
+                    break;
+                default:
+                    ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    break;
+            }
+
+
         }
     }
 
     public void pageBackTransition() {
         if ( !context.getResources().getBoolean(R.bool.wide_width)) {
-            ((Activity) context).overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
+            switch (transition) {
+                case "none":
+                    ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
+                    break;
+                case "fade":
+                    ((Activity) context).overridePendingTransition(R.anim.fade_in_2, R.anim.fade_out_2);
+                    break;
+                case "device":
+                    break;
+                default:
+                    ((Activity) context).overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    break;
+            }
         }
     }
 

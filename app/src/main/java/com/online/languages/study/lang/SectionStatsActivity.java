@@ -60,6 +60,9 @@ public class SectionStatsActivity extends BaseActivity {
     Boolean full_version;
 
     Boolean easy_mode;
+    MenuItem modeMenuItem;
+    MenuItem infoMenuItem;
+
     InfoDialog dataModeDialog;
     DataManager dataManager;
 
@@ -84,7 +87,7 @@ public class SectionStatsActivity extends BaseActivity {
         full_version = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
 
         dataManager = new DataManager(this);
-        easy_mode = dataManager.easyMode();
+
         dataModeDialog = new InfoDialog(this);
 
         navStructure = getIntent().getParcelableExtra(Constants.EXTRA_NAV_STRUCTURE);
@@ -121,6 +124,8 @@ public class SectionStatsActivity extends BaseActivity {
         View sectionListLink = findViewById(R.id.sectionListLink);
         View sectionTestLink = findViewById(R.id.sectionTestLink);
 
+        displaySectionLink();
+
         if (navSection.type.equals("simple")) {
             sectionListLink.setVisibility(View.GONE);
             sectionTestLink.setVisibility(View.GONE);
@@ -133,13 +138,25 @@ public class SectionStatsActivity extends BaseActivity {
         updateContent();
         setStatsText(section);
 
+
+
     }
 
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        checkModeIcon();
         updateContent();
         setStatsText(section);
+
+    }
+
+    public void displaySectionLink() {
+        if (getIntent().hasExtra("from_section"))
+            findViewById(R.id.sectionLink).setVisibility(View.GONE);
+        else
+            findViewById(R.id.sectionLink).setVisibility(View.VISIBLE);
     }
 
 
@@ -329,17 +346,24 @@ public class SectionStatsActivity extends BaseActivity {
 
         getMenuInflater().inflate(R.menu.menu_section_stats, menu);
 
-        MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
-        MenuItem infoMenuItem = menu.findItem(R.id.stats_info);
+        modeMenuItem = menu.findItem(R.id.easy_mode);
+        infoMenuItem = menu.findItem(R.id.stats_info);
 
-        if (easy_mode) {
-            modeMenuItem.setVisible(true);
-            infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
-        }
+        checkModeIcon();
 
         return true;
 
     }
+
+    private void checkModeIcon() {
+        dbHelper.checkMode();
+        easy_mode = dataManager.easyMode();
+        modeMenuItem.setVisible(easy_mode);
+
+        if (easy_mode) infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
+        else infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
 
 
     public void openStudiedBySection (View view) {
