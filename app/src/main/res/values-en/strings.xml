@@ -154,7 +154,7 @@
     <string name="set_test_all_limit_dialog_title">General test</string>
 
     <string name="set_test_all_limit_1">30 tasks</string>
-    <string name="set_test_all_limit_2">60 tasks</string>
+    <string name="set_test_all_limit_2">50 tasks</string>
     <string name="set_test_all_limit_3">100 tasks</string>
 
     <string name="set_btm_nav_title">Display bottom navigation</string>
@@ -737,6 +737,7 @@ This will allow to restore your data from a previous backup. Note that this will
      The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.\n
     </string>
 
+    <string name="menu_item_mode">Data mode</string>
     <string name="mode_dialog_title">Data mode</string>
 
     <string name="mode_dialog_info">\nThe application has two modes, Standard and Simplified. When Simplified mode is enabled, only Beginner level items are displayed in the topics.

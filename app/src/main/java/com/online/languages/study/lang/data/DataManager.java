@@ -897,6 +897,8 @@ public class DataManager {
             checkIds = new ArrayList<>(checkIds.subList(0, TEST_CATS_MAX_FOR_BEST));
         }
 
+        //Toast.makeText(context, "Cats count: " + checkIds.size(), Toast.LENGTH_SHORT).show();
+
         data = dbHelper.selectSimpleDataItemsByIds(db, checkIds);
 
         db.close();

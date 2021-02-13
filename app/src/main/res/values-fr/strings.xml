@@ -161,7 +161,7 @@
     <string name="set_test_all_limit_dialog_title">Test général</string>
 
     <string name="set_test_all_limit_1">30 items</string>
-    <string name="set_test_all_limit_2">60 items</string>
+    <string name="set_test_all_limit_2">50 items</string>
     <string name="set_test_all_limit_3">100 items</string>
 
     <string name="set_btm_nav_title">Barre de navigation en bas</string>

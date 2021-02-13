@@ -43,6 +43,6 @@
     </string-array>
 
     <string name="locale_string" translatable="false">french</string>
-
+    <bool name="showReview">false</bool>
 
 </resources>

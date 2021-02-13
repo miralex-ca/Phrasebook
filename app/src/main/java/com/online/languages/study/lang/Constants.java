@@ -3,8 +3,8 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = true;  // TODO change in PRO
-    public static final boolean DEBUG = true;  /// should be true to see ads in debug
+    public static final boolean PRO = false;  // TODO change in PRO
+    public static final boolean DEBUG = false;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -62,13 +62,11 @@ public class Constants {
     public static final int TEST_OPTIONS_NUM = 4;
     public static final int TEST_LONG_OPTIONS_NUM = 3;
 
-
     public static final int TEST_LONG_OPTION_LEN = 40;
 
     public static final int DATA_MODE = 1;
 
     public static final String EXTRA_DATA_TYPE = "data_type";
-
 
     public static final int EX_IMG_TYPE = 4;
     public static final int EX_AUDIO_TYPE = 3;
@@ -79,12 +77,9 @@ public class Constants {
     public static final int DATA_MODE_DEFAULT = 10;
     /// normal 20, easy 10. This value is increased by 1 in settings and DBHelper for checking
 
-
-
     public static final String SET_DATA_SELECT = "data_select"; // default - dates, option - all
     public static final String DATA_SELECT_BASIC = "dates";
     public static final String DATA_SELECT_EXTRA = "all";
-
 
     public static final String STARRED_CAT_TAG = "starred";
     public static final String ERRORS_CAT_TAG = "errors";
@@ -126,29 +121,23 @@ public class Constants {
         UNKNOWN
     }
 
-
-
     public static final int OUTCOME_NONE = 0;
     public static final int OUTCOME_ADDED = 1;
     public static final int OUTCOME_REMOVED = 2;
     public static final int OUTCOME_LIMIT = 3;
 
-
     public static final int VIBRO_FAIL = 300;
-
 
     public static final String PARAM_EMPTY = "";
     public static final String PARAM_POPULATE = "populate";
     public static final String PARAM_UCAT_PARENT = "ucats"; // used for bookmarks to indicate user items
     public static final String PARAM_GROUP = "group";
 
-
     public static final String PARAM_LIMIT_REACHED = "limit_reached";
     public static final String PARAM_LIMIT_UNREACHED = "limit_unreached";
 
     public static final String ARG_NONE = "none";
     public static final String VALUE_SOUND_OFF = "0ff";
-
 
     public static final String ACTION_NONE = "none";
     public static final String ACTION_CREATE = "create";
@@ -161,13 +150,11 @@ public class Constants {
     public static final String ACTION_MOVE = "move";
     public static final String ACTION_EDIT_GROUP = "edit_group";
 
-
     public static final String STATUS_NEW = "new";
     public static final String STATUS_NORM = "norm";
     public static final String STATUS_DELETED = "deleted";
     public static final String STATUS_UPDATED = "updated";
     public static final String STATUS_UPDATED_SORT = "updated_sort";
-
 
     public static final String TAB_ITEMS = "normal";
     public static final String TAB_GALLERY = "gallery";

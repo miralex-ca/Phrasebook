@@ -19,10 +19,14 @@
 
 
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
-        <item>ipa</item>
-        <item>ru</item>
+        <item>@string/set_transcript_ipa</item>
+        <item>@string/set_transcript_alternative</item>
         <item>none</item>
     </string-array>
+    <string name="set_transcript_ipa" translatable="false">ipa</string>
+    <string name="set_transcript_alternative" translatable="false">alternative</string>
+    <string name="set_transcript_default" translatable="false">@string/set_transcript_ipa</string>
+
 
     <string-array name="set_transcript_list" tools:ignore="InconsistentArrays">
         <item>@string/set_transcript_1</item>

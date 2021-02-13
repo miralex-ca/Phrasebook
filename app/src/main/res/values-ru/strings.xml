@@ -161,9 +161,8 @@
     <string name="set_test_all_limit_dialog_title">Общий тест</string>
 
     <string name="set_test_all_limit_1">30 заданий</string>
-    <string name="set_test_all_limit_2">60 заданий</string>
+    <string name="set_test_all_limit_2">50 заданий</string>
     <string name="set_test_all_limit_3">100 заданий</string>
-
 
 
     <string name="set_btm_nav_title">Нижняя панели навигации</string>
@@ -174,7 +173,6 @@
     <string name="set_btm_nav_2">Отображать, оставить все элементы в меню</string>
     <string name="set_btm_nav_3">Не отображать</string>
     <string name="set_btm_nav_4">Отображать, убрать меню полностью</string>
-
 
 
     <string name="set_data_control_title">Выбор данных раздела</string>
@@ -733,5 +731,21 @@
 
     <string name="items_mastered_label">Изучено записей</string>
     <string name="items_familiar_label">Пройдено записей</string>
+
+    <string name="menu_item_mode">Режим данных</string>
+    <string name="mode_dialog_title">Режим данных</string>
+
+    <string name="mode_dialog_info">В приложении имеется два режима работы, Стандартный и Упрощенный. При активном Упрощенном режиме в темах отображаются только записи базового уровня обучения.
+   \n</string>
+
+    <string name="mode_dialog_info_2"> </string>
+
+    <string name="mode_dialog_opt_1_txt">Упрощённый режим</string>
+    <string name="mode_dialog_opt_1_desc">Отображаются записи базового уровня</string>
+    <string name="mode_dialog_opt_2_txt">Стандартный режим</string>
+    <string name="mode_dialog_opt_2_desc">Отображаются записи для разных уровней</string>
+    <string name="mode_dialog_opt_3_txt">Включить стандартный режим</string>
+    <string name="mode_dialog_opt_3_desc">Отображаются записи для разных уровней</string>
+    <string name="mode_hint_got">Понятно</string>
 
 </resources>

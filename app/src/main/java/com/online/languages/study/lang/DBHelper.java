@@ -2856,7 +2856,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String query = "SELECT * FROM " +TABLE_ITEMS_DATA
-                +" WHERE ("+conditionLike+") AND ("+KEY_ITEM_MODE+" < "+data_mode+")";
+                +" WHERE ("+conditionLike+") AND ("+KEY_ITEM_MODE+" < "+data_mode+") ORDER BY RANDOM()";
 
         Cursor cursor = db.rawQuery(query, null);
 

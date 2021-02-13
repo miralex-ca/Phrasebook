@@ -97,6 +97,11 @@ android {
             applicationId 'com.study.languages.french'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en', 'ru'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_fr",
+                    appIconRound: "@mipmap/ic_launcher_fr"
+            ]
         }
 
         russian {

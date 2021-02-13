@@ -45,7 +45,7 @@
     <item
         android:id="@+id/mode_from_menu"
         android:orderInCategory="100"
-        android:title="Mode"
+        android:title="@string/menu_item_mode"
         app:showAsAction="never" />
 
     <item

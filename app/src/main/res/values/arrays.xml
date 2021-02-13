@@ -21,8 +21,6 @@
 
     <string name="title_main_txt" translatable="false">@string/title_home_txt</string>
 
-
-
     <string-array name="themes">
         <item>@string/set_theme_default_name</item>
         <item>@string/set_theme_dark_name</item>
@@ -200,7 +198,6 @@
     </string-array>
 
     <string name="set_mode_default" translatable="false">default</string>
-
 
     <string-array name="home_card_1">
         <item>varyagi.jpg</item>
