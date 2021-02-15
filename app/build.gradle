@@ -33,11 +33,11 @@ android {
     }
 
 
-    compileSdkVersion 30
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.study.languages.master"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 29
         versionCode 51
         versionName '2.7.1'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
