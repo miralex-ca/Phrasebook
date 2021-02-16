@@ -16,6 +16,8 @@ public class AppStart extends AppCompatActivity {
 
     public static final String APP_LAUNCHES = "launches";  // имя файла настроек
     public static final String LAUNCHES_NUM = "launches_num"; // настройка
+    public static final String LAUNCHES_RATE_START = "launch_rate_start";
+    public static final String LAUNCHES_RATE_STARTED = "launch_rate_started";
 
     SharedPreferences appSettings;
 
@@ -37,6 +39,13 @@ public class AppStart extends AppCompatActivity {
         launchesNum++;
 
         mLaunches.edit().putInt(LAUNCHES_NUM, launchesNum).apply();
+
+        boolean requestStared = mLaunches.getBoolean(LAUNCHES_RATE_STARTED, false);
+
+        if (!requestStared) {
+            mLaunches.edit().putInt(LAUNCHES_RATE_START, launchesNum).apply();
+            mLaunches.edit().putBoolean(LAUNCHES_RATE_STARTED, true).apply();
+        }
 
 
 

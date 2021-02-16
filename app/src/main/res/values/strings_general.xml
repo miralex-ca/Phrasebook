@@ -95,11 +95,7 @@
     <string name="note_content" translatable="false">Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel. An eam dolor feugait urbanitas. Vim iisque alterum sapientem ut. Autem eleifend nam et, ferri solum est ne, latine prodesset id vix. \n\n Lorem ipsum dolor sit amet, mei homero aliquip adipiscing te, ei eos congue adipisci aliquando. Pro platonem definitionem at, legimus periculis eu mel.</string>
 
     <string name="archive_item_date_text" translatable="false">@string/archive_item_date_short</string>
-
-
-
-
-
+    <string name="google_play_address"  translatable="false">https://play.google.com/store/apps/details?id=</string>
 
 
 </resources>

@@ -48,11 +48,9 @@ public class BackupActivity extends BaseActivity {
     final static int MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1;
     final static int MY_PERMISSIONS_REQUEST_READ_STORAGE = 2;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(this);
         themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
@@ -229,14 +227,12 @@ public class BackupActivity extends BaseActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     MY_PERMISSIONS_REQUEST_READ_STORAGE);
-
         } else {
             // Permission has already been granted
             selectCSVFile();
         }
 
     }
-
 
 
     @Override
@@ -274,10 +270,6 @@ public class BackupActivity extends BaseActivity {
 
         }
     }
-
-
-
-
 
 
 

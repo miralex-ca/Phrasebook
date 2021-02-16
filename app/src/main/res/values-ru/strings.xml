@@ -748,4 +748,19 @@
     <string name="mode_dialog_opt_3_desc">Отображаются записи для разных уровней</string>
     <string name="mode_hint_got">Понятно</string>
 
+    <string name="rate_the_app_title">Поставить оценку</string>
+    <string name="rate_request_txt">Оцените наше приложение и помогите нам его улучшить! </string>
+
+    <string name="submit_rate_btn_txt">Оценить</string>
+    <string name="rate_later_btn">Позже</string>
+
+    <string name="send_rate_title">Оценка</string>
+    <string name="rating_feedback_hint">Расскажите, как мы можем улучшить наше приложение!</string>
+    <string name="rating_feedback_type">Введите текст</string>
+    <string name="send_rate_feedback_btn">Отправить отзыв</string>
+    <string name="contact_share">Рассказать друзьям</string>
+    <string name="share_chooser_title">Поделиться</string>
+    <string name="nav_share_txt">Поделиться</string>
+    <string name="share_advise_msg">Привет! Мне понравилось это приложение. Возможно, пригодится и тебе:\n</string>
+
 </resources>

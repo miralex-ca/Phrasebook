@@ -1,8 +1,12 @@
 package com.online.languages.study.lang.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.adapters.RateDialog;
 
 
 public class ContactFragment extends Fragment {
@@ -33,7 +38,25 @@ public class ContactFragment extends Fragment {
         View rateView = rootview.findViewById(R.id.rateAppLink);
         checkRateDisplay(rateView);
 
+        rateView.setOnClickListener(view -> {
+            rate();
+        });
+
+
+        View shareView = rootview.findViewById(R.id.contact_share);
+
+        shareView.setOnClickListener(view -> {
+            shareIntent();
+        });
+
+
         return rootview;
+    }
+
+
+    private void rate() {
+        RateDialog rateDialog = new RateDialog( getActivity());
+        rateDialog.createDialog("Rate", "Rate");
     }
 
 
@@ -53,6 +76,27 @@ public class ContactFragment extends Fragment {
         } else {
             rateView.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void getShareIntent() {
+
+        String pack = getString(R.string.app_market_link);
+
+        String text = getString(R.string.share_advise_msg) + getString(R.string.google_play_address) + pack;
+
+        ShareCompat.IntentBuilder.from(getActivity())
+                .setType("text/plain")
+                .setChooserTitle(R.string.share_chooser_title)
+                .setText(text)
+                .startChooser();
+
+    }
+
+
+    private void shareIntent() {
+        //startActivity(getShareIntent());
+
+        getShareIntent();
     }
 
 

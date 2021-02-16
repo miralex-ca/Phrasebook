@@ -257,6 +257,12 @@
             android:defaultValue="@string/set_sort_pers_default"
             />
 
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="set_rate_request"
+            android:title="Rate request"
+            android:defaultValue="true" />
+
 
         <ListPreference
             app:iconSpaceReserved="false"

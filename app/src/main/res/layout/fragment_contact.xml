@@ -17,7 +17,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/main_card_top"
         style="@style/CardWrapper.Width"
-
         >
 
         <androidx.cardview.widget.CardView

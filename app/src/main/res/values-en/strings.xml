@@ -443,14 +443,10 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="starrd_tab_info_count">Starred items (%d)</string>
     <string name="starrd_tab_gallery_count">Bookmarks (%d)</string>
 
-
-    <string name="msg_version_name">(LA, version %s)</string>
-
     <string name="menu_img_test">Complete a test</string>
 
     <string name="nav_more">More</string>
     <string name="nav_more_version">More</string>
-
 
     <string name="set_transcript_title">Transcription</string>
     <string name="set_transcript_summary">Current: %s</string>
@@ -755,6 +751,20 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="items_mastered_label">Mastered items</string>
     <string name="items_familiar_label">Familiar items</string>
+
+    <string name="rate_request_txt">Please rate our app and help \nus to improve it! </string>
+    <string name="rating_feedback_hint">Please let us know what we can do to improve our app!</string>
+    <string name="rating_feedback_type">Type here</string>
+    <string name="rate_the_app_title">Rate the app</string>
+    <string name="rate_later_btn">Rate later</string>
+    <string name="send_rate_title">Rating</string>
+    <string name="submit_rate_btn_txt">Submit</string>
+    <string name="send_rate_feedback_btn">Send feedback</string>
+    <string name="contact_share">Recommend this app</string>
+    <string name="share_chooser_title">Recommend</string>
+    <string name="nav_share_txt">Share App</string>
+    <string name="share_advise_msg">Hi! I like this app and I thought it might help you: \n</string>
+
 
 
 </resources>

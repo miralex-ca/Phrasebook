@@ -96,6 +96,36 @@
             android:orientation="horizontal"
             android:focusable="true"
             android:clickable="true"
+            android:id="@+id/contact_share"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/ContactItem"
+            android:onClick="rateApp"
+            >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_contact_share"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_share"
+                    style="@style/ContactText"
+
+                    />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:clickable="true"
             android:id="@+id/rateAppLink"
             android:background="?android:attr/selectableItemBackground"
             style="@style/ContactItem"
@@ -105,7 +135,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_google_play"
+                    app:srcCompat="@drawable/ic_contact_rate"
                      />
 
                 <TextView

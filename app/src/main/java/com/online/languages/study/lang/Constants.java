@@ -21,6 +21,9 @@ public class Constants {
 
     public static final String LIST_STUDIED = "studied";
 
+    public static final String SET_RATE_REQUEST = "set_rate_request";
+    public static final int LAUNCHES_BEFORE_RATE = 10;
+
     public static final int STARRED_LIMIT = 30;
     public static final int BOOKMARKS_LIMIT = 30;
 

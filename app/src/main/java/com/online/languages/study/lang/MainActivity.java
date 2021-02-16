@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -41,6 +42,7 @@ import android.widget.Toast;
 import com.online.languages.study.lang.adapters.MenuListAdapter;
 import com.online.languages.study.lang.adapters.NavigationDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.RateDialog;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
@@ -67,6 +69,8 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
+import static com.online.languages.study.lang.Constants.LAUNCHES_BEFORE_RATE;
+import static com.online.languages.study.lang.Constants.SET_RATE_REQUEST;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
@@ -136,7 +140,11 @@ public class MainActivity extends BaseActivity
     View appbar;
     String homeFrag = "all";
     View panelShadow;
+    int launchesNum;
 
+    boolean requestRate = false;
+
+    SharedPreferences mLaunches;
 
     public static final String SKU_PREMIUM = BuildConfig.SKU;
 
@@ -156,6 +164,8 @@ public class MainActivity extends BaseActivity
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(this);
         themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
+
+        mLaunches = getSharedPreferences(AppStart.APP_LAUNCHES, Context.MODE_PRIVATE);
 
         themeAdapter = new ThemeAdapter(this, themeTitle, true);
         themeAdapter.getTheme();
@@ -337,6 +347,8 @@ public class MainActivity extends BaseActivity
             }
         });
 
+        checkRateRequest();
+
     }
 
 
@@ -347,7 +359,6 @@ public class MainActivity extends BaseActivity
 
         boolean check = false;
 
-        SharedPreferences mLaunches = getSharedPreferences(AppStart.APP_LAUNCHES, Context.MODE_PRIVATE);
         int launchesNum = mLaunches.getInt(AppStart.LAUNCHES_NUM, 0);
 
         if ( (launchesNum % 10 == 0) &&  isNetworkAvailable()) check = true;
@@ -546,10 +557,39 @@ public class MainActivity extends BaseActivity
         }
     };
 
+    private void checkRateRequest() {
+
+        int launch_rate_start = mLaunches.getInt(AppStart.LAUNCHES_RATE_START, 0);
+        boolean request = appSettings.getBoolean(SET_RATE_REQUEST, true);
+        try {
+
+            int launch_rate = launch_rate_start + LAUNCHES_BEFORE_RATE;
+
+            //Toast.makeText(this, "Info: " + launchesNum +" - " + launch_rate + " - " + request,  Toast.LENGTH_SHORT ).show();
+
+            requestRate = (launchesNum == launch_rate)  && request;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void rateApp() {
+        RateDialog rateDialog = new RateDialog( this);
+        rateDialog.createDialog("Rate", "Rate");
+        requestRate = false;
+
+        SharedPreferences.Editor editor = appSettings.edit();
+        editor.putBoolean(SET_RATE_REQUEST, false);
+        editor.apply();
+    }
+
+
 
     public Boolean checkPrivilege() {
-        SharedPreferences mLaunches = getSharedPreferences(AppStart.APP_LAUNCHES, Context.MODE_PRIVATE);
-        int launchesNum = mLaunches.getInt(AppStart.LAUNCHES_NUM, 0);
+
+        launchesNum = mLaunches.getInt(AppStart.LAUNCHES_NUM, 0);
 
         if (launchesNum < 3 ) {
             hasPrivilege = true;
@@ -981,13 +1021,27 @@ public class MainActivity extends BaseActivity
             position  = 6;
         } else if (id == R.id.nav_contact) {
             position  = 7;
+        } else if (id == R.id.nav_share) {
+            position  = 8;
         }
 
-        onMenuItemClicker(position);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        return true;
+
+
+        if (position == 8) {
+
+            getShareIntent();
+            return false;
+
+        } else {
+
+            onMenuItemClicker(position);
+            return true;
+        }
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -1027,6 +1081,21 @@ public class MainActivity extends BaseActivity
 
         }
     };
+
+
+    private void getShareIntent() {
+
+        String pack = getString(R.string.app_market_link);
+
+        String text = getString(R.string.share_advise_msg) + getString(R.string.google_play_address) + pack;
+
+        ShareCompat.IntentBuilder.from(this)
+                .setType("text/plain")
+                .setChooserTitle(R.string.share_chooser_title)
+                .setText(text)
+                .startChooser();
+
+    }
 
 
     public void openNavDialog() {
@@ -1245,6 +1314,11 @@ public class MainActivity extends BaseActivity
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
         }
+
+        if (requestRate) {
+            new Handler().postDelayed(this::rateApp, 150);
+        }
+
     }
 
     @Override
