@@ -242,15 +242,13 @@
 
     <string name="easy_mode_dialog_title">Mode simplifié</string>
 
-    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichés.
-        \n\nVous pouvez changer le mode ici:
-        \n\n
-        Paramètres > Paramètres de données > Mode.
+    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichées.
+        \n\nVous pouvez changer le mode dans un thème ou les Paramètres de l’appli ou dans.
         \n
     </string>
 
     <string name="mode_info">\n
-        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichés dans les thèmes.
+        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichées dans les thèmes.
         \n\n
         Le mode actif peut affecter vos statistiques car il ne prend en compte que le statut des entrées disponibles dans ce mode. Un changement de mode n’affecte pas les résultats des tests, les résultats de la recherche, les statistiques d’erreurs ou la liste de Favoris.
         \n
@@ -460,9 +458,6 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="starred_tab_gallery">Galerie</string>
     <string name="starrd_tab_info_count">Favoris (%d)</string>
     <string name="starrd_tab_gallery_count">Signets (%d)</string>
-
-
-    <string name="msg_version_name">(LA, version %s)</string>
 
     <string name="menu_img_test">Passer le test</string>
 
@@ -752,6 +747,37 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="items_mastered_label">Entrées maîtrisées</string>
     <string name="items_familiar_label">Entrées familières</string>
 
+    <string name="mode_dialog_title">Mode de données</string>
 
+    <string name="mode_dialog_info">L’application dispose de deux modes. Lorsque le mode simplifié est activé, seules les entrées du niveau de base sont affichées dans les thèmes.
+   \n</string>
+
+    <string name="mode_dialog_info_2"> </string>
+
+    <string name="mode_dialog_opt_1_txt">Mode simplifié</string>
+    <string name="mode_dialog_opt_1_desc">Afficher seulement les entrées de base</string>
+    <string name="mode_dialog_opt_2_txt">Mode standard</string>
+    <string name="mode_dialog_opt_2_desc">Afficher les entrées pour différents niveaux</string>
+    <string name="mode_dialog_opt_3_txt">Activer le mode standard</string>
+    <string name="mode_dialog_opt_3_desc">Afficher les entrées pour différents niveaux</string>
+
+    <string name="mode_hint_got">Ne plus afficher</string>
+
+    <string name="menu_item_mode">Mode de données</string>
+
+    <string name="rate_request_txt">Évaluez notre appli et aidez-nous \n à l’améliorer! </string>
+    <string name="rating_feedback_hint">Merci de nous indiquer comment nous pouvons améliorer notre appli!</string>
+    <string name="rating_feedback_type">Entrez votre message</string>
+    <string name="rate_the_app_title">Évaluer l’application</string>
+    <string name="rate_later_btn">Plus tard</string>
+    <string name="send_rate_title">Note</string>
+    <string name="submit_rate_btn_txt">Envoyer</string>
+    <string name="send_rate_feedback_btn">Envoyer</string>
+    <string name="contact_share">Recommander l’application</string>
+    <string name="share_chooser_title">Recommender</string>
+    <string name="nav_share_txt">Partager l’appli</string>
+    <string name="share_advise_msg">Salut! J’aime bien sette appli et je pense qu’elle pourrait t’aider: \n</string>
+
+    <string name="msg_version_name">(%s, version %s)</string>
 
 </resources>

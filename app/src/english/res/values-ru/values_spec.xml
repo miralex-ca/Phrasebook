@@ -14,12 +14,10 @@
     <string name="voc_ex_link_first_desc">Англо-русский перевод</string>
     <string name="voc_ex_link_second_desc">Русско-английский перевод</string>
 
-    <string name="msg_version_name">(LE, версия %s)</string>
-
 
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
-        <item>ipa</item>
-        <item>ru</item>
+        <item>@string/set_transcript_ipa</item>
+        <item>@string/set_transcript_alternative</item>
         <item>none</item>
     </string-array>
 

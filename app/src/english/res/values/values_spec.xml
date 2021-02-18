@@ -19,7 +19,6 @@
     <string name="nav_header_txt">Apprenez l\'anglais!</string>
     <string name="app_info_file">info_fr</string>
 
-    <string name="msg_version_name">(LE, version %s)</string>
 
     <string name="voc_ex_link_first_desc">Traduction anglais-français</string>
     <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
@@ -36,6 +35,6 @@
         <item>@string/set_transcript_0</item>
     </string-array>
 
-
+    <bool name="showReview">false</bool>
 
 </resources>

@@ -123,7 +123,7 @@ public class RateDialog {
 
         String mailBody = editFeedback.getText().toString();
 
-        String version = String.format(context.getString(R.string.msg_version_name), versionName);
+        String version = String.format(context.getString(R.string.msg_version_name), context.getString(R.string.msg_version_abr), versionName);
 
         String mailSubject = subject + "   " + version;
 

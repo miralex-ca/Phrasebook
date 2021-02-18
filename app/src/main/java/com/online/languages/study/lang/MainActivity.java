@@ -1223,7 +1223,7 @@ public class MainActivity extends BaseActivity
         String versionName = BuildConfig.VERSION_NAME;
         if (fullVersion) versionName += "+";
 
-        String version = String.format(getString(R.string.msg_version_name), versionName);
+        String version = String.format(getString(R.string.msg_version_name), getString(R.string.msg_version_abr), versionName);
 
         String mailSubject = subject + " " + version;
 

@@ -765,6 +765,8 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="nav_share_txt">Share App</string>
     <string name="share_advise_msg">Hi! I like this app and I thought it might help you: \n</string>
 
+    <string name="msg_version_name">(%s, version %s)</string>
+
 
 
 </resources>

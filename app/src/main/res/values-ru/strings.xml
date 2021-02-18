@@ -475,10 +475,6 @@
     <string name="starrd_tab_info_count">Записи (%d)</string>
     <string name="starrd_tab_gallery_count">Закладки (%d)</string>
 
-
-
-    <string name="msg_version_name">(LA, версия %s)</string>
-
     <string name="menu_img_test">Пройти тест</string>
     <string name="menu_sort">Сортировка</string>
 
@@ -762,5 +758,7 @@
     <string name="share_chooser_title">Поделиться</string>
     <string name="nav_share_txt">Поделиться</string>
     <string name="share_advise_msg">Привет! Мне понравилось это приложение. Возможно, пригодится и тебе:\n</string>
+
+    <string name="msg_version_name">(%s, версия %s)</string>
 
 </resources>
