@@ -358,12 +358,17 @@ public class SectionStatsActivity extends BaseActivity {
     private void checkModeIcon() {
         dbHelper.checkMode();
         easy_mode = dataManager.easyMode();
-        modeMenuItem.setVisible(easy_mode);
 
-        if (easy_mode) infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
-        else infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        if (modeMenuItem != null && infoMenuItem != null) {
+
+            modeMenuItem.setVisible(easy_mode);
+
+            if (easy_mode) infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
+            else infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        }
+
     }
-
 
 
     public void openStudiedBySection (View view) {
