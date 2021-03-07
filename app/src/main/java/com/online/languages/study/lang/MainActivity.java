@@ -20,7 +20,7 @@ import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.core.view.ViewCompat;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -60,6 +60,7 @@ import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
 import com.online.languages.study.lang.fragments.StatsFragment;
+import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
 import com.online.languages.study.lang.util.Inventory;
@@ -352,9 +353,6 @@ public class MainActivity extends BaseActivity
     }
 
 
-
-
-
     private boolean needCheck() {
 
         boolean check = false;
@@ -443,7 +441,7 @@ public class MainActivity extends BaseActivity
         bottomNavBox = findViewById(R.id.bottomNavBox);
 
 
-        Boolean display = btmSetting.equals(getResources().getString(R.string.set_btm_nav_value_1)) || btmSetting.equals(getString(R.string.set_btm_nav_value_2)) || btmSetting.equals(getString(R.string.set_btm_nav_value_4));
+        boolean display = btmSetting.equals(getResources().getString(R.string.set_btm_nav_value_1)) || btmSetting.equals(getString(R.string.set_btm_nav_value_2)) || btmSetting.equals(getString(R.string.set_btm_nav_value_4));
 
         if (Build.VERSION.SDK_INT < 21) display = false;
 
@@ -458,11 +456,7 @@ public class MainActivity extends BaseActivity
                 bottomNavBox.setVisibility(View.VISIBLE);
 
                 if (navigationView != null) {
-                   if (btmSetting.equals(getString(R.string.set_btm_nav_value_1))) {
-                       navigationView.getMenu().setGroupVisible(R.id.grp1, false);
-                   } else {
-                       navigationView.getMenu().setGroupVisible(R.id.grp1, true);
-                   }
+                    navigationView.getMenu().setGroupVisible(R.id.grp1, !btmSetting.equals(getString(R.string.set_btm_nav_value_1)));
                     final View wrap = findViewById(R.id.fragmentWrapper);
 
                     bottomNavBox.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -500,11 +494,7 @@ public class MainActivity extends BaseActivity
 
             if (dataManager.gallerySection) {
 
-                if (btmSetting.equals(getString(R.string.set_btm_nav_value_1))) {
-                    navigation.getMenu().findItem(R.id.nav_gallery).setVisible(false);
-                } else {
-                    navigation.getMenu().findItem(R.id.nav_gallery).setVisible(true);
-                }
+                navigation.getMenu().findItem(R.id.nav_gallery).setVisible(!btmSetting.equals(getString(R.string.set_btm_nav_value_1)));
             }
             else {
                 navigation.getMenu().findItem(R.id.nav_gallery).setVisible(false);
@@ -535,25 +525,23 @@ public class MainActivity extends BaseActivity
         });
     }
 
-    IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
-        public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+    IabHelper.QueryInventoryFinishedListener mGotInventoryListener = (result, inventory) -> {
 
-            if (result.isFailure()) {
-                //showRes("Feilure to connect Google service API");
-                Log.d("Inapp", "Feilure to connect Google service API");
+        if (result.isFailure()) {
+            //showRes("Feilure to connect Google service API");
+            Log.d("Inapp", "Feilure to connect Google service API");
+        }
+        else {
+            Log.d("Inapp", "Success inventory.");
+
+            if (inventory.hasPurchase(SKU_PREMIUM)) {
+                changeVersion(true);
+                changeShowAd(false);
+            } else {
+                changeShowAd(true);
             }
-            else {
-                Log.d("Inapp", "Success inventory.");
 
-                if (inventory.hasPurchase(SKU_PREMIUM)) {
-                    changeVersion(true);
-                    changeShowAd(false);
-                } else {
-                    changeShowAd(true);
-                }
-
-                updateMenuList(menuActiveItem);
-            }
+            updateMenuList(menuActiveItem);
         }
     };
 
@@ -561,30 +549,32 @@ public class MainActivity extends BaseActivity
 
         int launch_rate_start = mLaunches.getInt(AppStart.LAUNCHES_RATE_START, 0);
         boolean request = appSettings.getBoolean(SET_RATE_REQUEST, true);
+
         try {
 
             int launch_rate = launch_rate_start + LAUNCHES_BEFORE_RATE;
-
-            //Toast.makeText(this, "Info: " + launchesNum +" - " + launch_rate + " - " + request,  Toast.LENGTH_SHORT ).show();
-
             requestRate = (launchesNum == launch_rate)  && request;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void rateApp() {
+
         RateDialog rateDialog = new RateDialog( this);
-        rateDialog.createDialog("Rate", "Rate");
+        rateDialog.createDialog();
+
         requestRate = false;
 
+        saveNoMoreRequest();
+    }
+
+    private void saveNoMoreRequest() {
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putBoolean(SET_RATE_REQUEST, false);
         editor.apply();
     }
-
 
 
     public Boolean checkPrivilege() {
@@ -744,22 +734,11 @@ public class MainActivity extends BaseActivity
 
         if (position == 0) {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    panelShadow.animate().alpha(0f).setDuration(200);
-                }
-            }, 150);
-
+            new Handler().postDelayed(() -> panelShadow.animate().alpha(0f).setDuration(200), 150);
 
         } else {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    panelShadow.animate().alpha(1f).setDuration(250);
-                }
-            }, 300);
+            new Handler().postDelayed(() -> panelShadow.animate().alpha(1f).setDuration(250), 300);
         }
 
 
@@ -769,20 +748,10 @@ public class MainActivity extends BaseActivity
     private void manageNoteFab(int position) {
 
         if (position == 4 ) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    fab.show();
-                }
-            }, 350);
+            new Handler().postDelayed(() -> fab.show(), 350);
         }
         else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    fab.hide();
-                }
-            }, 100);
+            new Handler().postDelayed(() -> fab.hide(), 100);
         }
 
     }
@@ -949,7 +918,7 @@ public class MainActivity extends BaseActivity
         Intent i = new Intent(MainActivity.this, ExerciseActivity.class);
         i.putExtra("ex_type", 1);
         i.putExtra(Constants.EXTRA_CAT_TAG, "all");
-        i.putParcelableArrayListExtra("dataItems", new ArrayList<Parcelable>());
+        i.putParcelableArrayListExtra("dataItems", new ArrayList<>());
         startActivityForResult(i, 25);
         openActivity.pageTransition();
     }
@@ -979,14 +948,11 @@ public class MainActivity extends BaseActivity
         ViewGroup v = (ViewGroup) view.getParent();
         View tagged = v.findViewById(R.id.tagged);
         final String tag = (String) tagged.getTag();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
 
-                GalleryFragment fragment = (GalleryFragment)fragmentManager.findFragmentByTag("gallery");
-               if (fragment!=null) fragment.openCatActivity(tag);
+            GalleryFragment fragment = (GalleryFragment)fragmentManager.findFragmentByTag("gallery");
+           if (fragment!=null) fragment.openCatActivity(tag);
 
-            }
         }, 50);
     }
 
@@ -1044,15 +1010,11 @@ public class MainActivity extends BaseActivity
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-           // updateMenuList(menuActiveItem);
-
-
 
             int id = item.getItemId();
             int position = 0;
@@ -1084,16 +1046,8 @@ public class MainActivity extends BaseActivity
 
 
     private void getShareIntent() {
-
-        String pack = getString(R.string.app_market_link);
-
-        String text = getString(R.string.share_advise_msg) + getString(R.string.google_play_address) + pack;
-
-        ShareCompat.IntentBuilder.from(this)
-                .setType("text/plain")
-                .setChooserTitle(R.string.share_chooser_title)
-                .setText(text)
-                .startChooser();
+        ContactAction contactAction = new ContactAction(this);
+        contactAction.share(this);
 
     }
 
@@ -1111,7 +1065,7 @@ public class MainActivity extends BaseActivity
         if (multipane) {
             goBack();
         } else {
-            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
             if (drawer.isDrawerOpen(GravityCompat.START)) {
                 drawer.closeDrawer(GravityCompat.START);
             } else {
@@ -1203,83 +1157,6 @@ public class MainActivity extends BaseActivity
     public void openGetPremium(View view) {
         Intent i = new Intent(MainActivity.this, GetPremium.class);
         startActivityForResult(i, 1);
-    }
-
-    public void sendFeedback(View view) {
-        sendMail(0);
-    }
-
-    public void sendReport(View view) {
-        sendMail(1);
-    }
-
-    private void sendMail(int type) {
-
-        String recepientEmail = getString(R.string.mail_address);
-
-        String subject = getString(R.string.msg_mail_subject);
-        if (type == 1 ) subject = getString(R.string.msg_mail_subject_error);
-
-        String versionName = BuildConfig.VERSION_NAME;
-        if (fullVersion) versionName += "+";
-
-        String version = String.format(getString(R.string.msg_version_name), getString(R.string.msg_version_abr), versionName);
-
-        String mailSubject = subject + " " + version;
-
-        Intent i = new Intent(Intent.ACTION_SENDTO);
-
-        String mailto = "mailto:" + recepientEmail +
-                "?subject=" + Uri.encode(mailSubject) +
-                "&body=" + Uri.encode("");
-
-
-        i.setData(Uri.parse(mailto));
-
-        try {
-            startActivity(Intent.createChooser(i, getString(R.string.msg_sending_mail)));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(MainActivity.this, R.string.msg_no_mail_client, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void visitSite(View view) {
-        openWebsite();
-    }
-
-    private void openWebsite() {
-
-        String url = "";
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        try {
-            startActivity(i);
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(MainActivity.this, R.string.msg_no_browser, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-
-    public void rateApp(View view) {
-        rateApplication();
-    }
-
-    private void rateApplication() {
-
-        String pack = getString(R.string.app_market_link);
-
-        //pack = context.getPackageName();
-        Uri uri = Uri.parse("market://details?id=" + pack);
-        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-        try {
-            startActivity(goToMarket);
-        } catch (ActivityNotFoundException e) {
-            startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + pack)));
-        }
     }
 
 

@@ -1,99 +1,103 @@
 package com.online.languages.study.lang.fragments;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-
-import androidx.core.app.ShareCompat;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.RateDialog;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
+import com.online.languages.study.lang.BuildConfig;
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.databinding.FragmentContactBinding;
+import com.online.languages.study.lang.tools.ContactAction;
+
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
 public class ContactFragment extends Fragment {
 
-    SharedPreferences appSettings;
+    public static final int SEND_MAIL_TYPE_MSG = 0;
+    public static final int SEND_MAIL_TYPE_REPORT = 1;
+    public static final String PARAM_APP_EN = "en";
+    public static final String PARAM_APP_FR = "fr";
+    public static final String PARAM_APP_JP = "jp";
 
+    private FragmentContactBinding binding;
+    private ContactAction contactAction;
 
     public ContactFragment() {
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        binding = FragmentContactBinding.inflate(inflater, container, false);
+
+        View view = binding.getRoot();
+
+        contactAction = new ContactAction(getActivity());
+
+        setOnClicks();
+
+        return view;
+    }
+
+
+    private void setOnClicks() {
+
+        binding.list.sendFeedback.setOnClickListener(v -> sendMail(SEND_MAIL_TYPE_MSG));
+        binding.list.sendReport.setOnClickListener(v -> sendMail(SEND_MAIL_TYPE_REPORT));
+        binding.list.contactShare.setOnClickListener(v -> contactAction.share(getActivity()));
+        binding.list.rateAppLink.setOnClickListener(v -> contactAction.rate());
+        binding.list.appEnglishLink.setOnClickListener(v -> openAppLink(PARAM_APP_EN));
+        binding.list.appFrenchLink.setOnClickListener(v -> openAppLink(PARAM_APP_FR));
+        binding.list.appJapaneseLink.setOnClickListener(v -> openAppLink(PARAM_APP_JP));
+
+    }
+
+
+    private void sendMail(int type) {
+
+        String email = getString(R.string.mail_address);
+
+        String subject = getString(R.string.msg_mail_subject);
+
+        if (type == SEND_MAIL_TYPE_REPORT) subject = getString(R.string.msg_mail_subject_error);
+
+        String mailSubject = subject + " " + contactAction.getAppVersionName();
+
+        contactAction.sendEmail(email, mailSubject, PARAM_EMPTY);
+
+    }
+
+
+    private void openAppLink(String app) {
+
+        String appLink = getString(R.string.app_market_link);
+
+        switch (app) {
+            case PARAM_APP_EN:
+                appLink = getString(R.string.en_market_link);
+                break;
+            case PARAM_APP_FR:
+                appLink = getString(R.string.fr_market_link);
+                break;
+            case PARAM_APP_JP:
+                appLink = getString(R.string.jp_market_link);
+                break;
+        }
+
+        contactAction.goToPlayStore(appLink);
 
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View rootview = inflater.inflate(R.layout.fragment_contact, container, false);
-
-        appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-        View rateView = rootview.findViewById(R.id.rateAppLink);
-
-        rateView.setOnClickListener(view -> {
-            rate();
-        });
-
-        View shareView = rootview.findViewById(R.id.contact_share);
-
-        shareView.setOnClickListener(view -> {
-            shareIntent();
-        });
-
-
-        return rootview;
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
-
-
-    private void rate() {
-        RateDialog rateDialog = new RateDialog( getActivity());
-        rateDialog.createDialog("Rate", "Rate");
-    }
-
-
-    public void checkRateDisplay(View rateView) {
-
-        boolean full_version = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
-        boolean hideRate = getResources().getBoolean(R.bool.hide_rate);
-
-        if (hideRate) {
-            if (full_version) {
-                rateView.setVisibility(View.VISIBLE);
-            } else {
-                rateView.setVisibility(View.GONE);
-            }
-        } else {
-            rateView.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private void getShareIntent() {
-
-        String pack = getString(R.string.app_market_link);
-
-        String text = getString(R.string.share_advise_msg) + getString(R.string.google_play_address) + pack;
-
-        ShareCompat.IntentBuilder.from(getActivity())
-                .setType("text/plain")
-                .setChooserTitle(R.string.share_chooser_title)
-                .setText(text)
-                .startChooser();
-
-    }
-
-
-    private void shareIntent() {
-        //startActivity(getShareIntent());
-
-        getShareIntent();
-    }
-
 
 }

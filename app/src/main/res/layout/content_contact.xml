@@ -1,154 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/ContactItem"
-            android:onClick="sendFeedback"
-            >
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/send_feedback"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_mail"
-                    />
+                    app:srcCompat="@drawable/ic_contact_mail" />
 
                 <TextView
+                    style="@style/ContactText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/contact_feedback"
-                    style="@style/ContactText"
-                    />
+                    android:text="@string/contact_feedback" />
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/ContactItem"
-            android:onClick="sendReport"
-            >
+            <LinearLayout
+                android:id="@+id/send_report"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_message"
-                     />
+                    app:srcCompat="@drawable/ic_contact_message" />
 
                 <TextView
+                    style="@style/ContactText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/contact_error"
-                    style="@style/ContactText"
 
                     />
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:visibility="gone"
-
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/ContactItem"
-            android:onClick="visitSite"
-            >
+            <LinearLayout
+                android:id="@+id/contact_share"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_web"
-                     />
+                    app:srcCompat="@drawable/ic_contact_share" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/contact_website"
                     style="@style/ContactText"
-
-                    />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:clickable="true"
-            android:id="@+id/contact_share"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/ContactItem"
-            android:onClick="rateApp"
-            >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_share"
-                    />
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/contact_share"
-                    style="@style/ContactText"
 
                     />
 
-        </LinearLayout>
+            </LinearLayout>
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:focusable="true"
-            android:clickable="true"
-            android:id="@+id/rateAppLink"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/ContactItem"
-            android:onClick="rateApp"
-            >
+            <LinearLayout
+                android:id="@+id/rateAppLink"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_contact_rate"
-                     />
+                    app:srcCompat="@drawable/ic_contact_rate" />
 
                 <TextView
+                    style="@style/ContactText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/contact_rate"
-                    style="@style/ContactText"
 
                     />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="?attr/colorCardDivider" />
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="20dp"
+                android:alpha="0.7"
+                android:text="@string/other_apps_txt"
+                android:textAllCaps="true"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:visibility="@integer/en_app_visibility"
+                android:id="@+id/app_english_link"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/contact_app_pic"
+                    app:srcCompat="@drawable/app_english" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/app_english_link"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/find_in_google_play"
+                        android:textSize="14sp"
+                        tools:text="Найти в Google Play" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@integer/fr_app_visibility"
+                android:id="@+id/app_french_link"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/contact_app_pic"
+                    app:srcCompat="@drawable/app_french" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/app_french_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/find_in_google_play"
+                        android:textSize="14sp"
+                        tools:text="Найти в Google Play" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/app_japanese_link"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/contact_app_pic"
+                    app:srcCompat="@drawable/app_japanese" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/app_japanese_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/find_in_google_play"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
 
-
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

@@ -782,4 +782,10 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="msg_version_name">(%s, version %s)</string>
 
+    <string name="app_french_name">Французский язык</string>
+    <string name="find_in_google_play">Найти в Google Play</string>
+    <string name="app_japanese_name">Японские иероглифы</string>
+    <string name="app_english_link">Английский язык</string>
+    <string name="other_apps_txt">Другие приложения</string>
+
 </resources>

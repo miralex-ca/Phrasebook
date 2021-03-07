@@ -243,4 +243,7 @@
     <attr name="colorUcatFamiliar" format="reference" />
     <attr name="colorUcatMastered" format="reference" />
 
+    <integer name="attr_view_visible">0</integer>
+    <integer name="attr_view_gone">2</integer>
+
 </resources>

@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:gravity="center_horizontal"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:focusableInTouchMode="true"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/main_card_top"
-        style="@style/CardWrapper.Width"
-        >
 
-        <androidx.cardview.widget.CardView
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        style="?attr/cardViewStyle"
-        app:cardCornerRadius="?attr/cardCornerSpec"
-        >
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="?attr/CardViewBorder"
-            />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:gravity="center_horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/card_padding"
-            android:minHeight="@dimen/card_main_min_height"
-            >
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/main_card_top"
+            style="@style/CardWrapper.Width">
+
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                style="?attr/cardViewStyle"
+                app:cardCornerRadius="?attr/cardCornerSpec">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder" />
+
+                <LinearLayout
+                    android:id="@+id/test"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:minHeight="@dimen/card_main_min_height">
 
 
-            <include layout="@layout/content_contact" />
+                    <include layout="@layout/content_contact"
+                        android:id="@+id/list"
+                        />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</layout>

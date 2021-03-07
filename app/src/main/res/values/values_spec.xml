@@ -29,5 +29,12 @@
 
     <string name="locale_string" translatable="false">english</string>
 
+    <string name="en_market_link" translatable="false">com.study.languages.english</string>
+    <string name="fr_market_link" translatable="false">com.study.languages.french</string>
+    <string name="jp_market_link" translatable="false">com.study_languages_online.kanji</string>
+
+    <integer name="en_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+
 
 </resources>
