@@ -21,7 +21,6 @@
         <item name="colorNavBgEnd">@color/colorNavBgEnd_n</item>
     </style>
 
-
     <string-array name="data_files">
         <item>data.json</item>
         <item>data_fr.json</item>
@@ -31,10 +30,14 @@
 
     <string name="en_market_link" translatable="false">com.study.languages.english</string>
     <string name="fr_market_link" translatable="false">com.study.languages.french</string>
+    <string name="ru_market_link" translatable="false">com.study.languages.russian</string>
     <string name="jp_market_link" translatable="false">com.study_languages_online.kanji</string>
+    <string name="hist_market_link" translatable="false">com.online.languages.study.ruhistory</string>
 
-    <integer name="en_app_visibility">@integer/attr_view_visible</integer>
-    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="fr_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="en_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
 
 
 </resources>

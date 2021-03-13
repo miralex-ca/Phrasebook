@@ -763,10 +763,12 @@
 
 
 
-    <string name="app_french_name">Французский язык</string>
-    <string name="find_in_google_play">Найти в Google Play</string>
-    <string name="app_japanese_name">Японские иероглифы</string>
     <string name="app_english_link">Английский язык</string>
+    <string name="app_french_name">Французский язык</string>
+    <string name="app_russian_name">Русский язык</string>
+    <string name="app_japanese_name">Японские иероглифы</string>
+    <string name="app_history_name">История России</string>
+    <string name="find_in_google_play">Найти в Google Play</string>
     <string name="other_apps_txt">Другие приложения</string>
 
 </resources>

@@ -29,8 +29,6 @@
     <string name="voc_ex_link_second_desc" translatable="false">English/Russian translation</string>
 
 
-
-
     <string name="tabs_starred_display" translatable="false">always</string>
 
     <string name="set_transcript_default" translatable="false">@string/set_transcript_alternative</string>
@@ -55,6 +53,8 @@
         <item>@string/set_data_mode_advanced</item>
     </string-array>
 
+
+    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
 
 
 

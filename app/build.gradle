@@ -44,8 +44,8 @@ android {
         applicationId "com.study.languages.master"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 53
-        versionName '2.8.1'
+        versionCode 54
+        versionName '2.8.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config

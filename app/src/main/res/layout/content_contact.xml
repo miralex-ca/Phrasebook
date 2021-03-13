@@ -183,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/find_in_google_play"
                         android:textSize="14sp"
-                        tools:text="Найти в Google Play" />
+                        tools:text="@string/find_in_google_play" />
 
 
                 </LinearLayout>
@@ -226,7 +226,50 @@
                         android:layout_height="wrap_content"
                         android:text="@string/find_in_google_play"
                         android:textSize="14sp"
-                        tools:text="Найти в Google Play" />
+                        tools:text="@string/find_in_google_play" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@integer/ru_app_visibility"
+                android:id="@+id/app_russian_link"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/contact_app_pic"
+                    app:srcCompat="@drawable/app_russian" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/app_russian_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/find_in_google_play"
+                        android:textSize="14sp"
+                        tools:text="@string/find_in_google_play" />
 
 
                 </LinearLayout>
@@ -268,6 +311,48 @@
                         android:layout_height="wrap_content"
                         android:text="@string/find_in_google_play"
                         android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@integer/hist_app_visibility"
+                android:id="@+id/app_history_link"
+                style="@style/ContactItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/contact_app_pic"
+                    app:srcCompat="@drawable/app_history" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/app_history_name"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/find_in_google_play"
+                        android:textSize="14sp"
+                        tools:text="@string/find_in_google_play" />
 
 
                 </LinearLayout>

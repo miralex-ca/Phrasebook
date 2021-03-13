@@ -45,4 +45,6 @@
     <string name="locale_string" translatable="false">french</string>
     <bool name="showReview">false</bool>
 
+    <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
+
 </resources>

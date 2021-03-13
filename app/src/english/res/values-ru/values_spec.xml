@@ -27,5 +27,8 @@
         <item>@string/set_transcript_0</item>
     </string-array>
 
+    <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="hist_app_visibility">@integer/attr_view_visible</integer>
 
 </resources>

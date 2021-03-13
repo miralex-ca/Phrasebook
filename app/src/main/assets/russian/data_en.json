@@ -178,7 +178,7 @@
     {"id": "1001001200050", "mode": "-1", "item": "Не за что.", "info": "Don't mention it. / Not at all", "ipa": "nʲˈe zə ʂtˈo.", "tr_ru": "nʲe za shto.", "pronounce": "Не́зашта", "base": "please"},
     {"id": "1001001200190", "item": "Не сто́ит.", "info": "It's all right.", "ipa": "nʲˈe stˈoɪt.", "tr_ru": "nʲe stoit.", "base": "please"},
     {"id": "1001001200060", "mode": "-1", "item": "Без пробле́м.", "info": "No problem.", "ipa": "bʲɪs‿ prɐblʲˈem.", "tr_ru": "bis‿ prablʲem."},
-    {"id": "1001001200070", "mode": "-1", "item": "Пожа́луйста ...", "info": "Please ...", "ipa": "pɐʐˈaləstə ...", "tr_ru": "pajalasta ...", "pronounce": "Please", "base": "please"},
+    {"id": "1001001200070", "mode": "-1", "item": "Пожа́луйста ...", "info": "Please ...", "ipa": "pɐʐˈaləstə ...", "tr_ru": "pajalasta ...", "base": "please"},
     {"id": "1001001200080", "mode": "20", "item": "Помоги́те мне, пожа́луйста.", "info": "Help me, please.", "ipa": "pəmɐɡʲˈitʲɪ mnʲˈe, pɐʐˈaləstə.", "tr_ru": "pamaɡiti mnʲe, pajalasta."},
     {"id": "1001001200090", "item": "Прости́те!", "info": "Sorry! Excuse me!", "ipa": "prɐsʲtʲˈitʲɪ!", "tr_ru": "prasʲtiti!", "base": "Pardon"},
     {"id": "1001001200100", "mode": "-1", "item": "Извини́те!", "info": "Excuse me!", "ipa": "ɪzvʲɪnʲˈitʲɪ!", "tr_ru": "izviniti!", "base": "Pardon"},

@@ -37,4 +37,7 @@
 
     <bool name="showReview">false</bool>
 
+    <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
+
+
 </resources>

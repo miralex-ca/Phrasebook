@@ -242,15 +242,13 @@
 
     <string name="easy_mode_dialog_title">Mode simplifié</string>
 
-    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichés.
-        \n\nVous pouvez changer le mode ici:
-        \n\n
-        Paramètres > Paramètres de données > Mode.
+    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichées.
+        \n\nVous pouvez changer le mode dans un thème ou les Paramètres de l’appli ou dans.
         \n
     </string>
 
     <string name="mode_info">\n
-        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichés dans les thèmes.
+        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichées dans les thèmes.
         \n\n
         Le mode actif peut affecter vos statistiques car il ne prend en compte que le statut des entrées disponibles dans ce mode. Un changement de mode n’affecte pas les résultats des tests, les résultats de la recherche, les statistiques d’erreurs ou la liste de Favoris.
         \n
@@ -751,16 +749,16 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="mode_dialog_title">Mode de données</string>
 
-    <string name="mode_dialog_info">L’application dispose de deux modes. Lorsque le mode simplifié est activé, seules les entrées du niveau de base sont affichés dans les thèmes.
+    <string name="mode_dialog_info">L’application dispose de deux modes. Lorsque le mode simplifié est activé, seules les entrées du niveau de base sont affichées dans les thèmes.
    \n</string>
 
     <string name="mode_dialog_info_2"> </string>
 
     <string name="mode_dialog_opt_1_txt">Mode simplifié</string>
-    <string name="mode_dialog_opt_1_desc">Afficher les entrées de base</string>
+    <string name="mode_dialog_opt_1_desc">Afficher seulement les entrées de base</string>
     <string name="mode_dialog_opt_2_txt">Mode standard</string>
     <string name="mode_dialog_opt_2_desc">Afficher les entrées pour différents niveaux</string>
-    <string name="mode_dialog_opt_3_txt">Activate Standard mode</string>
+    <string name="mode_dialog_opt_3_txt">Activer le mode standard</string>
     <string name="mode_dialog_opt_3_desc">Afficher les entrées pour différents niveaux</string>
 
     <string name="mode_hint_got">Ne plus afficher</string>
@@ -782,10 +780,13 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="msg_version_name">(%s, version %s)</string>
 
-    <string name="app_french_name">Французский язык</string>
-    <string name="find_in_google_play">Найти в Google Play</string>
-    <string name="app_japanese_name">Японские иероглифы</string>
-    <string name="app_english_link">Английский язык</string>
-    <string name="other_apps_txt">Другие приложения</string>
+
+    <string name="app_english_link">Aprenez l’anglais!</string>
+    <string name="app_french_name">Aprenez le français!</string>
+    <string name="app_russian_name">Apprenez le russe!</string>
+    <string name="app_japanese_name">Charactères japonais</string>
+    <string name="app_history_name">History of Russia</string>
+    <string name="find_in_google_play">Disponible sur Google Play</string>
+    <string name="other_apps_txt">Autres applications</string>
 
 </resources>

@@ -22,6 +22,8 @@ public class ContactFragment extends Fragment {
     public static final String PARAM_APP_EN = "en";
     public static final String PARAM_APP_FR = "fr";
     public static final String PARAM_APP_JP = "jp";
+    public static final String PARAM_APP_RU = "ru";
+    public static final String PARAM_APP_HIST = "hist";
 
     private FragmentContactBinding binding;
     private ContactAction contactAction;
@@ -53,7 +55,9 @@ public class ContactFragment extends Fragment {
         binding.list.rateAppLink.setOnClickListener(v -> contactAction.rate());
         binding.list.appEnglishLink.setOnClickListener(v -> openAppLink(PARAM_APP_EN));
         binding.list.appFrenchLink.setOnClickListener(v -> openAppLink(PARAM_APP_FR));
+        binding.list.appRussianLink.setOnClickListener(v -> openAppLink(PARAM_APP_RU));
         binding.list.appJapaneseLink.setOnClickListener(v -> openAppLink(PARAM_APP_JP));
+        binding.list.appHistoryLink.setOnClickListener(v -> openAppLink(PARAM_APP_HIST));
 
     }
 
@@ -83,6 +87,12 @@ public class ContactFragment extends Fragment {
                 break;
             case PARAM_APP_FR:
                 appLink = getString(R.string.fr_market_link);
+                break;
+            case PARAM_APP_RU:
+                appLink = getString(R.string.ru_market_link);
+                break;
+            case PARAM_APP_HIST:
+                appLink = getString(R.string.hist_market_link);
                 break;
             case PARAM_APP_JP:
                 appLink = getString(R.string.jp_market_link);

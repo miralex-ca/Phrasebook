@@ -767,6 +767,14 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="msg_version_name">(%s, version %s)</string>
 
+    <string name="app_english_link">Learn English!</string>
+    <string name="app_french_name">Learn French!</string>
+    <string name="app_russian_name">Learn Russian!</string>
+    <string name="app_japanese_name">Japanese characters</string>
+    <string name="app_history_name">History of Russian</string>
+    <string name="find_in_google_play">Get it on Google Play</string>
+    <string name="other_apps_txt">Other applications</string>
+
 
 
 </resources>
