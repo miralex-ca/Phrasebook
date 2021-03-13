@@ -98,6 +98,7 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle(R.string.title_card_txt);

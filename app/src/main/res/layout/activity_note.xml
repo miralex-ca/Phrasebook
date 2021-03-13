@@ -1,148 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.online.languages.study.lang.ReferenceActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="?attr/AppBarOverlayTheme">
+    <data>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:theme="?attr/ToolBarStyle"
-            app:popupTheme="?attr/PopupOverlayTheme" />
+        <variable
+            name="noteViewModel"
+            type="com.online.languages.study.lang.view_models.NoteViewModel" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:gravity="center_horizontal"
-        android:background="?attr/colorBaseBg"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        tools:context="com.online.languages.study.lang.ReferenceActivity">
 
-        <LinearLayout
-            android:focusableInTouchMode="true"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/main_card_top"
-            style="@style/CardWrapper.Width"
-            >
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="?attr/AppBarOverlayTheme">
 
-            <androidx.cardview.widget.CardView
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                style="@style/CardViewStyle"
-                >
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="?attr/PopupOverlayTheme"
+                app:theme="?attr/ToolBarStyle" />
 
-                <FrameLayout
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorBaseBg"
+            android:fillViewport="true"
+            android:gravity="center_horizontal"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                style="@style/CardWrapper.Width"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/main_card_top"
+                android:focusableInTouchMode="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="?attr/CardViewBorder"
-                    />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="@dimen/card_padding"
-                    android:minHeight="@dimen/card_main_min_height"
-                    >
-
-
-                    <RelativeLayout
-                        android:layout_marginTop="10dp"
+                    <FrameLayout
+                        style="?attr/CardViewBorder"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:minHeight="@dimen/card_main_min_height"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_padding">
 
                         <RelativeLayout
-                            android:visibility="visible"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_alignParentRight="true"
-                            >
-
-                            <ImageView
-                                android:id="@+id/noteIcon"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                />
-
-                        </RelativeLayout>
-
-
-                        <LinearLayout
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
+                            android:layout_marginTop="10dp">
+
 
                             <RelativeLayout
-                                android:id="@+id/titleWrap"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_alignParentRight="true"
+                                android:visibility="visible">
 
-                                <TextView
-                                    android:textIsSelectable="true"
-                                    android:layout_marginRight="100dp"
-                                    android:minHeight="80dp"
-                                    android:id="@+id/noteTitle"
-                                    android:textSize="25sp"
+                                <ImageView
+                                    android:id="@+id/noteIcon"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-
-                                <TextView
-                                    android:textIsSelectable="true"
-                                    android:visibility="gone"
-                                    android:layout_marginRight="0dp"
-                                    android:minHeight="50dp"
-                                    android:id="@+id/noteTitleNopic"
-                                    android:textSize="26sp"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true" />
 
                             </RelativeLayout>
 
-                            <TextView
-                                android:textIsSelectable="true"
-                                android:textColor="?attr/colorSecondaryText"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginBottom="30dp"
-                                android:id="@+id/noteContent"
-                                android:textSize="18sp"
+
+                            <LinearLayout
+
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
 
-                        </LinearLayout>
+                                <RelativeLayout
+                                    android:id="@+id/titleWrap"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:id="@+id/noteTitle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="100dp"
+                                        android:minHeight="80dp"
+                                        android:text="@{noteViewModel.noteLiveData.title}"
+                                        android:textIsSelectable="true"
+                                        android:textSize="25sp" />
 
 
-                    </RelativeLayout>
+                                    <TextView
+                                        android:id="@+id/noteTitleNopic"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="0dp"
+                                        android:minHeight="50dp"
+                                        android:text="@{noteViewModel.noteLiveData.title}"
+                                        android:textIsSelectable="true"
+                                        android:textSize="26sp"
+                                        android:visibility="gone" />
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:id="@+id/noteContent"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:text="@{noteViewModel.noteLiveData.content}"
+                                    android:textColor="?attr/colorSecondaryText"
+                                    android:textIsSelectable="true"
+                                    android:textSize="18sp" />
+
+                            </LinearLayout>
 
 
+                        </RelativeLayout>
 
-                </LinearLayout>
+                    </LinearLayout>
 
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
