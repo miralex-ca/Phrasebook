@@ -336,6 +336,8 @@ public class SearchActivity extends BaseActivity implements SearchView.OnQueryTe
         searchView.setIconified(false);
         searchView.requestFocus();
 
+
+
         return true;
     }
 

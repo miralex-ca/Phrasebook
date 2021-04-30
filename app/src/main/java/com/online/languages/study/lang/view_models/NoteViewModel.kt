@@ -41,13 +41,12 @@ class NoteViewModel(application: Application, _noteId: String) : ViewModel() {
         noteData = getNote()
         getNoteLiveData()
 
-        upload()
+        //upload()
 
         return noteData
     }
 
     fun upload() {
-
 
        CoroutineScope(Dispatchers.IO).launch {
            Log.i("Cor", "Hello from ${Thread.currentThread().name}")
@@ -57,10 +56,7 @@ class NoteViewModel(application: Application, _noteId: String) : ViewModel() {
             Log.i("Cor", "Hello from ${Thread.currentThread().name}")
         }
 
-
-
     }
-
 
     fun getNoteLiveData(): MutableLiveData<NoteData> {
         noteLiveData.value = noteData
@@ -70,6 +66,7 @@ class NoteViewModel(application: Application, _noteId: String) : ViewModel() {
     fun getNote() : NoteData? {
         return dataManager.dbHelper.getNote(noteId)
     }
+
 
     fun emptyImage(): Boolean {
         val picName = noteData!!.image
@@ -99,14 +96,11 @@ class NoteViewModel(application: Application, _noteId: String) : ViewModel() {
             }
         }
 
-
         if (!found) img = "none"
         return img
     }
 
-
 }
-
 
 
 class NoteViewModelFactory(private val mApplication: Application, private val mParam: String) : ViewModelProvider.Factory {

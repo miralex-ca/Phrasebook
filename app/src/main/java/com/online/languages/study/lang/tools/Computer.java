@@ -7,16 +7,11 @@ import java.util.Map;
 
 public class Computer {
 
-
-
-
     public Computer() {
 
     }
 
-
-
-    public Map<String, String> getCatProgress (
+    public Map<String, String> getCatProgress(
             ArrayList<String> catIds,
             boolean speaking,
             Map<String, ArrayList<String>> catMapWithTests) {
@@ -28,11 +23,11 @@ public class Computer {
         Map<String, String> catMapWithProgress = new HashMap<>();
 
 
-        for (String catId: catIds) {
+        for (String catId : catIds) {
 
             ArrayList<String> results = catMapWithTests.get(catId);
             assert results != null;
-            int  progress = calculateProgressByList(results, mode);
+            int progress = calculateProgressByList(results, mode);
 
             catMapWithProgress.put(catId, String.valueOf(progress));
         }
@@ -41,12 +36,13 @@ public class Computer {
     }
 
 
+
     public Map<String, ArrayList<String>> getCatExResults(ArrayList<String> catIdsList, Map<String, String> testsMap) {
         /// create tests results map by categories from test results map
 
         Map<String, ArrayList<String>> catsResultsMap = new HashMap<>();
 
-        for (String catId: catIdsList) {
+        for (String catId : catIdsList) {
 
             ArrayList<String> results = new ArrayList<>();
 
@@ -72,24 +68,22 @@ public class Computer {
 
 
     public int calculateProgressByList(ArrayList<String> results, String mode) {
+        //
 
         int ex1 = 0;
-        if ( results.get(0) != null) ex1 = Integer.parseInt(results.get(0));
+        if (results.get(0) != null) ex1 = Integer.parseInt(results.get(0));
 
         int ex2 = 0;
-        if ( results.get(1) != null) ex2 = Integer.parseInt(results.get(1));
+        if (results.get(1) != null) ex2 = Integer.parseInt(results.get(1));
 
         int ex3 = 0;
-        if ( results.get(2) != null) ex3 = Integer.parseInt(results.get(2));
+        if (results.get(2) != null) ex3 = Integer.parseInt(results.get(2));
 
         int result = (ex1 + ex2 + ex3) / 3;
         if (mode.equals("nosound")) result = (ex1 + ex2) / 2;
 
         return result;
     }
-
-
-
 
 
 }

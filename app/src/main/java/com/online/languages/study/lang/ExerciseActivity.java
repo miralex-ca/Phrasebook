@@ -473,7 +473,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     private void startExercise(){
-        dataManager.getTime("Start start");
+       // dataManager.getTime("Start start");
 
         resultShow = false;
 
@@ -492,7 +492,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         viewPagerAdapter = new ExercisePagerAdapter(this, exerciseController.tasks );
         viewPager.setAdapter(viewPagerAdapter);
 
-        dataManager.getTime("End start", true);
+       // dataManager.getTime("End start", true);
     }
 
 
