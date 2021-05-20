@@ -39,5 +39,4 @@
     <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
     <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
 
-
 </resources>

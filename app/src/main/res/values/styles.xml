@@ -217,6 +217,8 @@
         <item name="ToolBarStyle">@style/ToolBarStyle</item>
 
         <item name="CardViewBorder">@style/CardViewBorder</item>
+        <item name="CardViewBorder_task">@style/CardViewBorder</item>
+
         <item name="DetailTextTheme">@style/DetailTextTheme</item>
 
         <item name="colorAudioTestBtn">?attr/colorCardWidgetBg</item>
@@ -1092,6 +1094,12 @@
     <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="CustomDialog.Complete" parent="Theme.AppCompat.Dialog">
+
+
     </style>
 
 

@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.online.languages.study.lang.CatActivity;
@@ -371,6 +372,8 @@ public class HomeFragment2 extends Fragment   {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
+
+        //Toast.makeText(getActivity(), "Update: home 1" , Toast.LENGTH_SHORT).show();
 
         updateList();
 

@@ -30,7 +30,6 @@ import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 
 public class NewGroupDialog {
 
-
     Context context;
 
     private int itemCharMax;

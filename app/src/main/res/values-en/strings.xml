@@ -471,8 +471,8 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="menu_item_bookmark">Bookmark</string>
 
 
-    <string name="home_tab_1">Topics</string>
-    <string name="home_tab_2">My vocabulary</string>
+    <string name="home_tab_1">Vocabulary </string>
+    <string name="home_tab_2">My topics</string>
     <string name="menu_delete_ucat">Delete the topic</string>
 
     <string name="sort_udata_dialog_title">Sort items</string>
@@ -484,7 +484,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="set_ucat_layout_1">Normal</string>
     <string name="set_ucat_layout_2">Compact</string>
 
-    <string name="user_content_title">My vocabulary</string>
+    <string name="user_content_title">My topics</string>
     <string name="export_notification">"Export: "</string>
 
     <string name="archive_item_date">Created:  %s</string>
@@ -543,7 +543,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="note_img_empty">none</string>
     <string name="pick_device_icon">Find\non\n device</string>
 
-    <string name="user_vocabulary_title">My vocabulary</string>
+    <string name="user_vocabulary_title">My topics</string>
     <string name="user_topics_list">Topics list</string>
     <string name="new_topic_btn">＋ New topic</string>
     <string name="plus_version_more_lablel">More with PLUS version</string>
@@ -613,7 +613,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="item_status_studied_short">✓ Mastered</string>
 
     <string name="bookmarks_section_txt">"Section: "</string>
-    <string name="bookmarks_section_my_voc">Section: My vocabulary</string>
+    <string name="bookmarks_section_my_voc">Section: My topics</string>
 
     <string name="section_result_calculation">Total result calculation is based on the following stats:</string>
     <string name="plus_version_btn">PLUS version</string>
@@ -775,6 +775,89 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="find_in_google_play">Get it on Google Play</string>
     <string name="other_apps_txt">Other applications</string>
 
+
+    <string name="downgrade_priority_section">Lower the priority of the section \n «%s» </string>
+    <string name="tasks_clear_section">Clear the settings for the section \n «%s» </string>
+    <string name="nav_tasks_txt">Tasks</string>
+    <string name="task_dialog_hide">Do not display this task</string>
+    <string name="task_dialog_postpone">Postpone this task</string>
+    <string name="task_continue_topic">Continue learning the topic</string>
+    <string name="task_start_topic">Start learning the topic</string>
+    <string name="task_revise_topic">Revise items in the topic</string>
+    <string name="task_continue_section">Continue learning the section</string>
+    <string name="review_mastered_section">Review the section</string>
+
+    <string name="task_btn_section">Section</string>
+    <string name="task_btn_section_stats">Review stats</string>
+    <string name="task_section_links">Review vocabulary sections</string>
+
+    <string name="task_info">Tests result: %1$s%%  \u0020 \u0020 Section: %2$s </string>
+    <string name="task_revise_info">Test with items from %s topics</string>
+
+    <string name="task_section_info">Mastered items: %1$s%% (%2$s/%3$s) </string>
+
+    <string name="task_errors_txt">Review the list</string>
+    <string name="task_errors_title">Errors</string>
+    <string name="task_error_info">Items with errors: %s </string>
+    <string name="task_msg_info">Information</string>
+
+    <string name="dialog_complete_title">Well done!</string>
+    <string name="dialog_complete_revised">You have revised items from the section</string>
+    <string name="dialog_complete_revised_msg">You have revised items from the section</string>
+    <string name="dialog_complete_errors_corrected">All the errors have been corrected</string>
+
+    <string name="dialog_completed_tests_done">You have completed tests</string>
+    <string name="dialog_completed_progress">You have improved the progress</string>
+    <string name="tasks_loading">Loading tasks</string>
+
+
+    <string name="set_tasks_nav_title">Tasks (BETA)</string>
+    <string name="set_tasks_nav_summary">Display: %s</string>
+    <string name="set_tasks_nav_dialog_title">Display Tasks</string>
+
+    <string name="set_tasks_nav_home">On the home page (in a tab)</string>
+    <string name="set_tasks_nav_menu">In the app menu</string>
+    <string name="set_tasks_nav_none">Do not display</string>
+
+
+    <string name="task_info_act">Info about the section</string>
+    <string name="task_info_title">TASKS</string>
+
+    <string name="task_info_desc">
+        This section will offer some tasks to help you improve your learning progress.
+    </string>
+
+    <string name="task_info_btn_detail">More details</string>
+
+    <string name="task_info_dialog_title">Tasks (BETA)</string>
+
+    <string name="task_info_dialog_text"><![CDATA[
+
+     This section will suggest tasks to help improve your learning progress. The tasks will recommended topics and sections that you can start or continue to learn, and some tasks will also to revise the material studied. The following actions may be available for tasks: <br/> <br/>
+
+    - <b><i>Postpone the task</i></b>: the task will not be displayed for 12 hours, or until the section data are cleared, the data is reset, or you run the tests associated with this task. <br/><br/>
+    - <b><i>Do not display the task</i></b>: the task will be hidden until the section settings are cleared, or the data are reset, or you complete some tests associated with this task. <br/><br/>
+    - <b><i>Lower the priority of the section</i></b>: tasks associated with this section will be shown last. <br/><br/>
+    - <b><i>Clear section settings</i></b>: for this section, the data about hidden and postponed tasks, as well as about the priority of the section will be deleted. <br/> <br/>
+
+     In the application settings, you can change the location of the Tasks section: the section can be displayed either on the home page in an additional tab, or in the application navigation menu.
+     <br/> <br/>
+
+     <i> ATTENTION! This section is under development, so it is possible that in the future some functions (or even an entire section) may be changed or removed. </i>
+
+    ]]></string>
+
+    <string name="task_info_btn_clear">Data reset</string>
+    <string name="tasks_clear_data_confirm_title">Data reset</string>
+    <string name="tasks_clear_data_confirm_text">\nThe following tasks data will be deleted: \n
+         \n- Hidden tasks
+         \n- Postponed tasks
+         \n- Sections priority\n
+         \n Would you like to continue? \n
+
+    </string>
+
+    <string name="tasks_clear_data_msg">Resetting data …</string>
 
 
 </resources>

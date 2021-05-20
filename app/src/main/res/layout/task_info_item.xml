@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyle.Widget"
+            android:id="@+id/task_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="3dp"
+            app:cardElevation="1dp"
+
+            app:cardCornerRadius="8dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder_task"
+                />
+
+            <LinearLayout
+
+
+                android:id="@+id/card_box"
+                android:paddingLeft="16dp"
+                android:paddingTop="12dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/ll_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/view_errors"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:alpha="0.8"
+                                android:text="@string/task_info_act"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:textSize="13sp"
+                                tools:text="Start to learn a new topic" />
+
+                            <TextView
+                                android:text="@string/task_info_title"
+                                android:id="@+id/tv_text_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="17sp"
+                                android:textStyle="bold"
+                                tools:text="Information" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:background="@drawable/ic_task_info_bg"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="12dp"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_task_info" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginRight="24dp"
+
+                        android:text="@string/task_info_desc"
+
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif-light"
+                        android:id="@+id/tv_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Current progress: 0" />
+
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp"
+                        android:id="@+id/task_details"
+                        android:layout_below="@+id/tv_progress"
+                        android:layout_marginLeft="1dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+
+                            android:minHeight="36dp"
+
+                            android:id="@+id/btn_tasks_details"
+                            android:gravity="center_vertical"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_marginTop="0dp"
+                                app:srcCompat="@drawable/ic_task_help"
+                                android:id="@+id/view_section_icon"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"/>
+
+                            <TextView
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_marginTop="1dp"
+                                android:layout_marginRight="8dp"
+                                android:textSize="12sp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_toRightOf="@+id/view_section_icon"
+                                android:textAllCaps="true"
+                                android:text="@string/task_info_btn_detail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:minHeight="36dp"
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/btn_clear_data"
+                            android:gravity="center_vertical"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_task_clear_all"
+                                android:id="@+id/stats_icon"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"/>
+
+                            <TextView
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:layout_marginTop="2dp"
+                                android:textSize="12sp"
+                                android:layout_marginLeft="6dp"
+                                android:layout_toRightOf="@+id/stats_icon"
+                                android:textAllCaps="true"
+                                android:text="@string/task_info_btn_clear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

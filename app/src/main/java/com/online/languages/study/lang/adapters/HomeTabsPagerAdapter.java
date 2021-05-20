@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.online.languages.study.lang.fragments.HomeFragment1;
 import com.online.languages.study.lang.fragments.HomeFragment2;
+import com.online.languages.study.lang.recommend.TaskFragment;
 
 
 public class HomeTabsPagerAdapter extends FragmentPagerAdapter {
@@ -28,6 +29,8 @@ public class HomeTabsPagerAdapter extends FragmentPagerAdapter {
                 return new HomeFragment1();
             case 1:
                 return new HomeFragment2();
+            case 2:
+                return new TaskFragment();
 
             default:
                 return null;

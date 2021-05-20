@@ -3,8 +3,8 @@ package com.online.languages.study.lang;
 
 public class Constants {
 
-    public static final boolean PRO = false;  // TODO change in PRO
-    public static final boolean DEBUG = false;  /// should be true to see ads in debug
+    public static final boolean PRO = true;  // TODO change in PRO
+    public static final boolean DEBUG = true;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -31,7 +31,7 @@ public class Constants {
 
     public static final int RATE_INCLUDE = 4; // used for priority of unfamiliar dataItems in tests
 
-    public static final int QUEST_NUM = 100;  // limit for tests
+    public static final int QUEST_NUM = 100;  // 100 - prod limit for tests
     public static final int SECTION_TEST_LIMIT = 100;  //  100 for prod
     public static final int REVISE_NUM = 30;
 
@@ -221,5 +221,7 @@ public class Constants {
     public static final int TASK_DELAY_INCORRECT = 1800;
 
     public static final boolean SHOW_GRAMMAR = true;
+
+    public static final int TASK_REVISE_TEST_LIMIT = 40;
 
 }

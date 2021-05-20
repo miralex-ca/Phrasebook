@@ -12,6 +12,8 @@ public class ViewCategory {
     public String spec;
     public String image;
     public String tag;
+    public String sectionId;
+    public String sectionTitle;
 
     public Boolean unlocked;
 

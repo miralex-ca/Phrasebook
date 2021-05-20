@@ -57,6 +57,8 @@ public class ViewSection {
             NavCategory navCategory = cats.get(i);
 
             ViewCategory viewCategory = new ViewCategory(navCategory);
+            viewCategory.sectionId = navSection.id;
+            viewCategory.sectionTitle = navSection.title;
 
             if (navCategory.type.equals("group")) {
                 viewCategory.subgroup = countGroupByID(navSection, navCategory.id);

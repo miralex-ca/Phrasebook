@@ -312,5 +312,8 @@
     <dimen name="ucat_empty_hint_padding_t">0dp</dimen>
     <dimen name="ucat_empty_hint_margin">0dp</dimen>
 
+    <dimen name="task_margin_left">0dp</dimen>
+    <dimen name="task_margin_right">0dp</dimen>
+
 
 </resources>

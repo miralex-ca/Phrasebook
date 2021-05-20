@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            style="@style/CardViewStyle.Widget"
+            android:id="@+id/task_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="3dp"
+            app:cardElevation="1dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="?attr/CardViewBorder_task"
+                />
+
+
+            <LinearLayout
+
+                android:id="@+id/card_box"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingLeft="16dp"
+                android:paddingTop="12dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/ll_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/view_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+
+                            android:layout_marginRight="80dp"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tv_task"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="@string/task_continue_topic"
+                                android:textColor="#03A9F4"
+                                android:textSize="13sp"
+                                tools:text="Start to learn a new topic" />
+
+
+                            <TextView
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:id="@+id/tv_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                tools:text="People" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:background="@drawable/ic_task_progress_bg"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="10dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="12dp"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:id="@+id/task_icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_task_trend_up" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/view_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginRight="80dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="@string/task_start_topic"
+                                android:textColor="#FF460B"
+                                android:textSize="13sp"
+                                tools:text="Start to learn a new topic" />
+
+                            <TextView
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:id="@+id/tv_text_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                tools:text="People" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:background="@drawable/ic_task_new_bg"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="12dp"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:layout_marginLeft="1dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_task_import" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/view_completed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_marginRight="80dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="@string/task_revise_topic"
+                                android:textColor="#03C3A6"
+                                android:textSize="13sp"
+                                tools:text="Start to learn a new topic" />
+
+                            <TextView
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:id="@+id/tv_text_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:textSize="19sp"
+                                android:textStyle="bold"
+                                tools:text="People" />
+
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:background="@drawable/ic_task_update_bg"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="8dp"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="12dp"
+                            android:visibility="visible">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                app:srcCompat="@drawable/ic_task_update" />
+
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="18dp"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-light"
+                        android:id="@+id/tv_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Current progress: 0" />
+
+
+                    <View
+
+                        android:layout_alignParentRight="true"
+
+                        android:layout_below="@+id/tv_progress"
+                        android:id="@+id/bottomView"
+                        android:layout_width="100dp"
+                        android:layout_height="1dp" />
+
+
+                    <ImageView
+                        android:id="@+id/task_edit"
+
+                        android:layout_alignParentRight="true"
+                        android:layout_above="@+id/bottomView"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginRight="2dp"
+
+                        android:alpha="0.7"
+                        android:padding="5dp"
+                        android:focusable="true"
+                        android:clickable="true"
+                        android:background="?selectableItemBackgroundBorderless"
+
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+
+                        app:srcCompat="@drawable/ic_dots_menu" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

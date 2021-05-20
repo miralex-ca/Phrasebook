@@ -200,6 +200,7 @@
     <attr name="colorBtmNav_inactive" format="reference" />
 
     <attr name="CardViewBorder" format="reference" />
+    <attr name="CardViewBorder_task" format="reference" />
 
     <attr name="colorDrawerHeadDivider" format="reference" />
 

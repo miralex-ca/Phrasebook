@@ -25,6 +25,7 @@ public class MenuListAdapter extends BaseAdapter {
     private int activeItem;
     int hideItem;
     DataManager dataManager;
+    boolean tasksVisible = false;
 
     private int activeItemResourceId;
 
@@ -33,6 +34,7 @@ public class MenuListAdapter extends BaseAdapter {
             R.drawable.ic_nav_gallery,
             R.drawable.ic_nav_star,
             R.drawable.ic_nav_stats,
+            R.drawable.ic_nav_tasks,
             R.drawable.ic_nav_notes,
             R.drawable.ic_nav_settings,
             R.drawable.ic_nav_info,
@@ -56,6 +58,10 @@ public class MenuListAdapter extends BaseAdapter {
         TypedArray a = context.getTheme().obtainStyledAttributes(themeAdapter.styleTheme, new int[] {R.attr.multipane_menu_item_active_bg});
         activeItemResourceId = a.getResourceId(0, 0);
         a.recycle();
+
+        String tasksNavSetting = appSettings.getString("set_tasks_nav", context.getString(R.string.set_tasks_nav_default));
+
+        tasksVisible = tasksNavSetting.equals("menu");
 
     }
 
@@ -101,7 +107,15 @@ public class MenuListAdapter extends BaseAdapter {
             if (!dataManager.statsSection) view = lInflater.inflate(R.layout.null_item, null);
         }
 
-        if (position==4 || position==8) {
+        if ( position == 4)  {  // hide tasks if false in params
+            if (!tasksVisible) view = lInflater.inflate(R.layout.null_item, null);
+        }
+
+        if ( position == 5 && !tasksVisible)  {  // hide tasks if false in params
+            divider.setVisibility(View.VISIBLE);
+        }
+
+        if (position==4 || position==9) {
             divider.setVisibility(View.VISIBLE);
         }
 

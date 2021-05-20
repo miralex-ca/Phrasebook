@@ -221,7 +221,6 @@ public class SectionTestActivity extends BaseActivity {
 
         i.putExtra("ex_type", type);
 
-
         String exTag = Constants.SECTION_TEST_PREFIX + tSectionID;
 
         i.putExtra(Constants.EXTRA_CAT_TAG, exTag);

@@ -164,6 +164,7 @@
         <item name="colorTabIndicator">@color/colorTabIndicator_ww</item>
 
         <item name="CardViewBorder">@style/CardViewBorder_ww</item>
+        <item name="CardViewBorder_task">@style/CardViewBorder_task_ww</item>
 
         <item name="colorExOptionTxt">@color/colorExOptionTxt_ww</item>
         <item name="colorExDisabledTxt">@color/colorExDisabledTxt_ww</item>
@@ -210,6 +211,11 @@
 
     <style name="CardViewBorder_ww">
         <item name="android:background">@drawable/card_edge</item>
+        <item name="android:visibility">visible</item>
+    </style>
+
+    <style name="CardViewBorder_task_ww">
+        <item name="android:background">@drawable/card_edge_task</item>
         <item name="android:visibility">visible</item>
     </style>
 

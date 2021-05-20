@@ -317,17 +317,31 @@
     <dimen name="note_edit_icon_dialog_size">26dp</dimen>
 
     <style name="NavDialogItem" >
-        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingLeft">26dp</item>
         <item name="android:paddingRight">15dp</item>
-        <item name="android:paddingTop">18dp</item>
-        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">16dp</item>
     </style>
 
     <style name="NoteEditDialogItem" >
-        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingLeft">12dp</item>
         <item name="android:paddingRight">15dp</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">17dp</item>
+    </style>
+
+
+    <style name="TaskDialogItem" >
+        <item name="android:minHeight">60dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="TaskDialogItemText" >
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">18dp</item>
     </style>
 
 </resources>

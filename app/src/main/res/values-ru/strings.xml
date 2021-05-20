@@ -511,8 +511,8 @@
     <string name="set_mode_full_name">Версия PLUS</string>
 
 
-    <string name="home_tab_1">Разделы</string>
-    <string name="home_tab_2">Мой словарь</string>
+    <string name="home_tab_1">Словарь</string>
+    <string name="home_tab_2">Мои темы</string>
     <string name="menu_delete_ucat">Удалить тему</string>
 
     <string name="set_sort_desc">новые в начале</string>
@@ -525,7 +525,7 @@
     <string name="set_ucat_layout_2">Компактный</string>
     <string name="set_ucat_layout_3">Смешанный (компактный только для тем)</string>
 
-    <string name="user_content_title">Мой словарь</string>
+    <string name="user_content_title">Мои темы</string>
     <string name="export_notification">"Экспорт: "</string>
 
 
@@ -564,7 +564,7 @@
     <string name="set_version_plus_summary">Доступ к дополнительным функциям приложения</string>
     <string name="note_img_empty">Нет</string>
     <string name="pick_device_icon">Выбрать \nна\n устройстве</string>
-    <string name="user_vocabulary_title">Мой словарь</string>
+    <string name="user_vocabulary_title">Мои темы</string>
     <string name="user_topics_list">Полный список</string>
     <string name="new_topic_btn">＋ Новая тема</string>
     <string name="plus_version_more_lablel">Больше с версией PLUS</string>
@@ -614,7 +614,7 @@
     <string name="bookmarks_section_txt">"Раздел: "</string>
 
     <string name="section_result_calculation">Общий результат складывается из следующих составляющих:</string>
-    <string name="bookmarks_section_my_voc">Раздел: Мой словарь</string>
+    <string name="bookmarks_section_my_voc">Раздел: Мои темы</string>
     <string name="plus_version_btn">Версия PLUS</string>
     <string name="limit_cats_for_unpaid">\nДостигнут лимит тем обычной версии. Чтобы создавать больше тем, получите версию PLUS.\n</string>
     <string name="limit_groups_for_unpaid">\nДостигнут лимит тем обычной версии. Чтобы создавать больше разделов, получите версию PLUS.\n</string>
@@ -770,5 +770,97 @@
     <string name="app_history_name">История России</string>
     <string name="find_in_google_play">Найти в Google Play</string>
     <string name="other_apps_txt">Другие приложения</string>
+
+
+
+
+    <string name="downgrade_priority_section">Снизить приоритет раздела \n «%s» </string>
+    <string name="tasks_clear_section">Очистить настройки раздела \n «%s» </string>
+    <string name="nav_tasks_txt">Задания</string>
+    <string name="task_dialog_hide">Не показывать задание</string>
+    <string name="task_dialog_postpone">Отложить задание</string>
+    <string name="task_continue_topic">Продолжайте изучать тему</string>
+    <string name="task_start_topic">Начните изучать новую тему</string>
+    <string name="task_revise_topic">Повторите записи в разделе</string>
+    <string name="task_continue_section">Продолжите изучать раздел</string>
+    <string name="task_btn_section">Раздел</string>
+    <string name="task_btn_section_stats">Статистика</string>
+    <string name="task_section_links">Ссылки на словарные разделы</string>
+
+    <string name="task_info">Прогресс: %1$s%%  \u0020 \u0020 Раздел: %2$s </string>
+    <string name="task_revise_info">Тест на записи из пройденых %s тем</string>
+
+    <string name="task_section_info">Изучено записей: %1$s%% (%2$s/%3$s) </string>
+
+    <string name="task_errors_txt">Проверьте список</string>
+    <string name="task_errors_title">Ошибки</string>
+    <string name="task_error_info">Количество записей с ошибками: %s </string>
+    <string name="task_msg_info">Информация</string>
+    <string name="dialog_complete_revised">Вы повторили записи раздела</string>
+    <string name="dialog_complete_revised_msg">Записи успешно повторены</string>
+    <string name="dialog_complete_errors_corrected">Все ошибки исправлены</string>
+    <string name="dialog_complete_title">Отлично!</string>
+    <string name="dialog_completed_tests_done">Выполнены тесты в теме</string>
+    <string name="dialog_completed_progress">Улучшен прогресс в теме</string>
+    <string name="tasks_loading">Загрузка заданий</string>
+
+    <string name="review_mastered_section">Просмотрите изученный раздел</string>
+
+    <string name="set_tasks_nav_title">Задания (БЕТА)</string>
+    <string name="set_tasks_nav_summary">Отображать: %s</string>
+    <string name="set_tasks_nav_dialog_title">Отображать задания</string>
+
+    <string name="set_tasks_nav_home">На главной странице (во вкладке)</string>
+    <string name="set_tasks_nav_menu">В меню приложения</string>
+    <string name="set_tasks_nav_none">Не отображать</string>
+
+
+
+    <string name="task_info_act">Информация о разделе</string>
+    <string name="task_info_title">ЗАДАНИЯ</string>
+
+    <string name="task_info_desc">
+        В данном разделе предлагаются задания, чтобы вы могли улучшить свой прогресс в обучении.
+    </string>
+
+    <string name="task_info_btn_detail">Подробнее</string>
+
+    <string name="task_info_dialog_title">Задания (БЕТА)</string>
+
+    <string name="task_info_dialog_text"><![CDATA[
+
+    В данном разделе будут предлагаться задания, чтобы помочь улучшить ваш прогресс в обучении и закреплении пройденного материала.
+     <br/>
+     <br/>
+
+     Вам будут рекомендованы темы и разделы, которые вы можете начать или продолжить изучать, а также будут даваться задания на повторение изученного материала. Для заданий могут быть доступны следующие действия: <br/><br/>
+
+    - <b><i>Отложить задание</i></b>: задание не будет показываться в течение 12 часов, или пока не будут очищены настройки раздела, не будет сделан сброс данных, или вы не выполните тесты, связанные с этим заданием. <br/><br/>
+
+    - <b><i>Не показывать задание</i></b>: задание будет скрыто до тех пор, пока не будут очищены настройки раздела, не будет сделан сброс данных или вы не выполните тесты, связанные с этим заданием. <br/><br/>
+
+    - <b><i>Снизить приоритет раздела</i></b>: задания, которые связанны с данным разделом, будут показываться в последнюю очередь. <br/><br/>
+    - <b><i>Очистить настройки раздела</i></b>: для данного раздела будут удалены данные о скрытых и отложенных заданиях, а также о приоритете раздела. <br/><br/>
+
+    В настройках приложения можно изменить расположение раздела задание:  раздел может отображаться либо на главной странице в дополнительной вкладке, либо в меню навигации приложения.
+    <br/><br/>
+
+    <i>ВНИМАНИЕ! Данный раздел находится в стадии разработки, поэтому возможно, что в будущем некоторые функции (или даже целый раздел) могут быть изменены или удалены.</i>
+
+    <br/><br/> <br/>
+
+
+    ]]></string>
+
+    <string name="task_info_btn_clear">Сброс данных</string>
+    <string name="tasks_clear_data_confirm_title">Сброс данных</string>
+    <string name="tasks_clear_data_confirm_text">\nБудут удалены все данные о заданиях:\n
+        \n- скрытые задания
+        \n- отложенные задания
+        \n- данные о приоритете разделов \n
+        \n Хотите продолжить? \n
+    </string>
+
+    <string name="tasks_clear_data_msg">Сброс данных …</string>
 
 </resources>

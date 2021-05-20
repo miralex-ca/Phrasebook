@@ -267,11 +267,8 @@ public class DataManager {
 
         if (type == 1) resultDataItems.addAll(helperDataItems);
 
-
         return resultDataItems;
     }
-
-
 
 
     public Map<String, String> getCatProgress(ArrayList<String> catIds) {

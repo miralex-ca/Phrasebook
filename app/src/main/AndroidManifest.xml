@@ -41,6 +41,7 @@
             android:label="@string/title_activity_cat"
             android:theme="@style/AppTheme" />
         <activity
+            android:screenOrientation="behind"
             android:name="com.online.languages.study.lang.CatSimpleListActivity"
             android:theme="@style/AppTheme" />
 
@@ -70,6 +71,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SectionStatsActivity"
+            android:screenOrientation="behind"
             android:label="@string/title_activity_cat_stats"
             android:theme="@style/AppTheme" />
         <activity
@@ -94,6 +96,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.GetPremium"
+            android:screenOrientation="behind"
             android:label="@string/title_activity_get_premium"
             android:theme="@style/AppTheme" />
         <activity
@@ -114,6 +117,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.online.languages.study.lang.SearchActivity"
+            android:screenOrientation="behind"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -152,6 +156,7 @@
             android:theme="@style/AppTheme" />
 
         <activity
+            android:screenOrientation="behind"
             android:name="com.online.languages.study.lang.BackupActivity"
             android:theme="@style/AppTheme" />
 
@@ -171,10 +176,12 @@
         <activity android:name="com.online.languages.study.lang.BaseActivity" />
 
         <activity android:name="com.online.languages.study.lang.InfoListActivity"
+            android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
         <activity android:name="com.online.languages.study.lang.TextActivity"
+            android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
@@ -183,7 +190,18 @@
             android:theme="@style/AppTheme"
             />
 
+        <activity android:name="com.online.languages.study.lang.RecommendActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity android:name="com.online.languages.study.lang.TaskActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/AppTheme"
+            />
+
         <activity android:name="com.online.languages.study.lang.NoteEditActivity"
+            android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 

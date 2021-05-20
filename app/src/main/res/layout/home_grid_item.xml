@@ -26,9 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/home_card_padding"
+            android:id="@+id/image_wrapper"
             android:focusable="true"
             android:clickable="true"
-            android:id="@+id/image_wrapper"
             android:background="?android:attr/selectableItemBackground"
             android:orientation="horizontal" >
 

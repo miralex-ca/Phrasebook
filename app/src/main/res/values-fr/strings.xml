@@ -488,8 +488,8 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="menu_item_bookmark">Mettre en signet</string>
 
 
-    <string name="home_tab_1">Thèmes</string>
-    <string name="home_tab_2">Mon vocabulaire</string>
+    <string name="home_tab_1">Vocabulaire </string>
+    <string name="home_tab_2">Mes thèmes</string>
     <string name="menu_delete_ucat">Supprimer le thème</string>
 
     <string name="sort_udata_dialog_title">Trier les entrées</string>
@@ -501,7 +501,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="set_ucat_layout_1">Normal</string>
     <string name="set_ucat_layout_2">Compact</string>
 
-    <string name="user_content_title">Mon vocabulaire</string>
+    <string name="user_content_title">Mes thèmes</string>
     <string name="export_notification">"Export: "</string>
 
     <string name="archive_item_date">Créé:  %s</string>
@@ -560,7 +560,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="note_img_empty">Rien</string>
     <string name="pick_device_icon">Trouver \nsur\nl’appareil</string>
 
-    <string name="user_vocabulary_title">Mon vocabulaire</string>
+    <string name="user_vocabulary_title">Mes thèmes</string>
     <string name="user_topics_list">Liste de thèmes</string>
     <string name="new_topic_btn">＋ Nouveau thème</string>
     <string name="plus_version_more_lablel">Bien plus avec la version PLUS</string>
@@ -629,7 +629,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="item_status_studied_short">✓ Maîtrisé</string>
 
     <string name="bookmarks_section_txt">"Section: "</string>
-    <string name="bookmarks_section_my_voc">Section: Mon vocabulaire</string>
+    <string name="bookmarks_section_my_voc">Section: Mes thèmes</string>
 
     <string name="section_result_calculation">Le calcul du résultat total est basé sur les statistiques suivantes:</string>
     <string name="plus_version_btn">Version PLUS</string>
@@ -788,5 +788,88 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="app_history_name">History of Russia</string>
     <string name="find_in_google_play">Disponible sur Google Play</string>
     <string name="other_apps_txt">Autres applications</string>
+
+
+
+    <string name="downgrade_priority_section">Réduire la priorité de la section \n «%s» </string>
+    <string name="tasks_clear_section">Effacer les réglages pour la section \n «%s» </string>
+    <string name="nav_tasks_txt">Tâches</string>
+    <string name="task_dialog_hide">Ne pas afficher cette tâche</string>
+    <string name="task_dialog_postpone">Reporter cette tâche</string>
+    <string name="task_continue_topic">Continuez à apprendre le thème</string>
+    <string name="task_start_topic">Commencez à apprendre le thème</string>
+    <string name="task_revise_topic">Révisez les entrées du thème</string>
+    <string name="task_continue_section">Continuez à apprendre la section</string>
+    <string name="review_mastered_section">Révisez la section</string>
+
+    <string name="task_btn_section">Section</string>
+    <string name="task_btn_section_stats">Statistiques</string>
+    <string name="task_section_links">Vistez les sections du vocabulaire</string>
+
+    <string name="task_info">Résultat des tests: %1$s%%  \u0020 \u0020 Section: %2$s </string>
+    <string name="task_revise_info">Test avec les etrées de %s thème</string>
+
+    <string name="task_section_info">Entrées maîtrisées: %1$s%% (%2$s/%3$s) </string>
+
+    <string name="task_errors_txt">Vérifiez les entrées de la list</string>
+    <string name="task_errors_title">Erreurs</string>
+    <string name="task_error_info">Entrées aves des erreurs: %s </string>
+    <string name="task_msg_info">Information</string>
+
+    <string name="dialog_complete_title">Bon travail!</string>
+    <string name="dialog_complete_revised">Vous avez révisé les entrées de la section</string>
+    <string name="dialog_complete_revised_msg">Vous avez révisé les entrées de la section</string>
+    <string name="dialog_complete_errors_corrected">Toutes les erreurs ont été corrigées</string>
+
+    <string name="dialog_completed_tests_done">Vous avez terminé les tests</string>
+    <string name="dialog_completed_progress">Vous avez amélioré le progrès</string>
+    <string name="tasks_loading">Chargement des tâches</string>
+
+    <string name="set_tasks_nav_title">Tâches (BETA)</string>
+    <string name="set_tasks_nav_summary">Afficher: %s</string>
+    <string name="set_tasks_nav_dialog_title">Afficher les tâches</string>
+
+    <string name="set_tasks_nav_home">Sur la page d’accueil (dans un onglet)</string>
+    <string name="set_tasks_nav_menu">Dans le menu de l’application</string>
+    <string name="set_tasks_nav_none">Ne pas afficher</string>
+
+
+    <string name="task_info_act">Infos sur la section</string>
+    <string name="task_info_title">TÂCHES</string>
+
+    <string name="task_info_desc">
+        Cette section vous proposera des tâches pour favoriser vos progrès d’apprentissage.
+    </string>
+
+    <string name="task_info_btn_detail">Savoir plus</string>
+
+    <string name="task_info_dialog_title">Tâches (BETA)</string>
+
+    <string name="task_info_dialog_text"><![CDATA[
+
+Cette section vous proposera des tâches pour vous aider à améliorer vos progrès d’apprentissage. <br/><br/>
+
+Les tâches viseront des thèmes et des sections que vous pouvez commencer ou continuer à apprendre, et certaines tâches permettront également de réviser le matériel étudié. Les actions suivantes peuvent être disponibles pour les tâches: <br/> <br/>
+
+     - <b><i> Reporter la tâche </i> </b>: la tâche ne sera pas affichée pendant 12 heures, ou jusqu’à ce que les données de la section soient effacées, les données soient réinitialisées, ou que vous terminiez les tests associés à cette tâche. <br/> <br/>
+     - <b><i> Ne pas afficher la tâche </i> </b>: la tâche sera cachée jusqu’à ce que les réglages de la section soient effacés, ou que les données soient réinitialisées, ou que vous ayez terminé certains tests associés à cette tâche. <br/> <br/>
+     - <b><i> Diminuer la priorité de la section </i> </b>: les tâches associées à cette section seront affichées en dernier. <br/> <br/>
+     - <b><i>Effacer les réglages de la section </i> </b>: pour cette section, les données sur les tâches cachées et reportées, ainsi que sur la priorité de la section seront supprimées. <br/> <br/>
+
+
+    ]]></string>
+
+    <string name="task_info_btn_clear">Réinitialiser</string>
+    <string name="tasks_clear_data_confirm_title">Réinitialisation des données</string>
+    <string name="tasks_clear_data_confirm_text">\nLes données sur les tâches suivantes seront supprimées: \n
+         \n- Tâches cachées
+         \n- Tâches reportées
+         \n- Priorité des sections\n
+         \n Voulez-vous continuer? \n
+
+    </string>
+
+    <string name="tasks_clear_data_msg">Réinitialisation des données …</string>
+
 
 </resources>

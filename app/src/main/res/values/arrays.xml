@@ -13,6 +13,7 @@
         <item>@string/title_gallery_txt</item>
         <item>@string/title_starred_txt</item>
         <item>@string/title_stats_txt</item>
+        <item>@string/nav_tasks_txt</item>
         <item>@string/nav_notes_txt</item>
         <item>@string/title_settings_txt</item>
         <item>@string/title_info_txt</item>
@@ -327,6 +328,20 @@
         <item>///android_asset/pics/icons/account_green.png</item>
         <item>///android_asset/pics/icons/empty.png</item>
     </string-array>
+
+
+    <string-array name="set_tasks_nav_list">
+        <item>@string/set_tasks_nav_home</item>
+        <item>@string/set_tasks_nav_menu</item>
+        <item>@string/set_tasks_nav_none</item>
+    </string-array>
+
+    <string-array name="set_tasks_nav_values">
+        <item>home</item>
+        <item>menu</item>
+    </string-array>
+
+    <string name="set_tasks_nav_default" translatable="false">home</string>
 
 
 </resources>

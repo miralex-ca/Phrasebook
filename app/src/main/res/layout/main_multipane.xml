@@ -31,7 +31,19 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="?attr/PopupOverlayTheme"
 
-            />
+            >
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/toolbar_progress_bar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:indeterminateTint="?attr/colorToolbarIcon"
+                android:indeterminateTintMode="src_in"
+                android:layout_gravity="right"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

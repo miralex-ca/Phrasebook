@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
@@ -51,6 +52,7 @@ import java.util.Locale;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
+import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
 
 public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnInitListener {
 
@@ -446,14 +448,25 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             }
 
-
             if (getIntent().hasExtra("ids")) {
                 data = dataManager.getCatsItems(getIntent().getStringArrayExtra("ids"));
             }
         }
 
 
+        if (topicTag.contains("revise")) {
+
+            limit = TASK_REVISE_TEST_LIMIT;
+
+            if (getIntent().hasExtra("ids")) {
+                data = dataManager.getCatsItems(getIntent().getStringArrayExtra("ids"));
+                exerciseAllData = new ExerciseDataCollect(context, data, exType);
+            }
+        }
+
+
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+
             data = dataManager.getAllItems();
             exerciseAllData = new ExerciseDataCollect(context, data, exType);
         }
@@ -848,8 +861,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         dbHelper.setTestResult(tag, ex_type, result, forceSave);
 
         dbHelper.updateCatResult(tag, Constants.CAT_TESTS_NUM); // TODO check test count for cat
-
-
 
     }
 

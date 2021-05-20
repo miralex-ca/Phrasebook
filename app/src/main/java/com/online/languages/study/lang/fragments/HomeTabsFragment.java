@@ -1,5 +1,6 @@
 package com.online.languages.study.lang.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -9,9 +10,12 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.HomeTabsPagerAdapter;
+
+import java.util.List;
 
 import static com.online.languages.study.lang.Constants.HOME_TAB_ACTIVE;
 
@@ -45,8 +49,15 @@ public class HomeTabsFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.home_tab_1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.home_tab_2));
 
+
         int tabs = 2;
 
+        String tasksNavSetting = appSettings.getString("set_tasks_nav", getString(R.string.set_tasks_nav_default));
+
+        if (tasksNavSetting.equals("home")) {
+            tabs = 3;
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.nav_tasks_txt));
+        }
 
         viewPager = view.findViewById(R.id.container);
 
@@ -112,6 +123,21 @@ public class HomeTabsFragment extends Fragment {
 
        // Toast.makeText(getActivity(), "Update: " + i++, Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        List<Fragment> fragments = getChildFragmentManager().getFragments();
+
+        if (fragments != null) {
+            for (Fragment fragment : fragments) {
+
+                fragment.onActivityResult(requestCode, resultCode, data);
+
+            }
+        }
     }
 
 

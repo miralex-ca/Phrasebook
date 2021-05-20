@@ -70,6 +70,8 @@ public class Section {
     private String dataSelect = "dates";
     private Boolean haveExtra;
 
+    public long lastTime = 0;
+
 
     public Section() {}
 

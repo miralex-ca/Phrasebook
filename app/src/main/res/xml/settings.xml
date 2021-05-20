@@ -79,6 +79,16 @@
             android:defaultValue="@string/set_transcript_default"
             android:dialogTitle="@string/set_transcript_dialog" />
 
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="set_tasks_nav"
+            android:title="@string/set_tasks_nav_title"
+            android:summary="@string/set_tasks_nav_summary"
+            android:entries="@array/set_tasks_nav_list"
+            android:entryValues="@array/set_tasks_nav_values"
+            android:defaultValue="@string/set_tasks_nav_default"
+            android:dialogTitle="@string/set_tasks_nav_dialog_title" />
+
 
     </PreferenceCategory>
 
@@ -234,6 +244,12 @@
             android:key="set_mode_hint"
             android:title="Display mode hint"
             android:defaultValue="false" />
+
+
+
+
+
+
 
 
     </PreferenceCategory>

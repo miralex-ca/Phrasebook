@@ -14,6 +14,6 @@
     <bool name="wide">false</bool>
 
     <bool name="changeTranscript">true</bool>
-    <bool name="showReview">true</bool>
+    <bool name="showReview">false</bool>
 
 </resources>

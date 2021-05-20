@@ -60,12 +60,14 @@ import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
 import com.online.languages.study.lang.fragments.StatsFragment;
+import com.online.languages.study.lang.recommend.TaskFragment;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
 import com.online.languages.study.lang.util.Inventory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -109,6 +111,7 @@ public class MainActivity extends BaseActivity
     SectionFragment sectionFragment;
     GalleryFragment galleryFragment;
     NotesFragment notesFragment;
+    TaskFragment taskFragment;
 
     FragmentTransaction fPages;
     FragmentManager fragmentManager;
@@ -301,6 +304,7 @@ public class MainActivity extends BaseActivity
         statsFragment = new StatsFragment();
         galleryFragment = new GalleryFragment();
         notesFragment = new NotesFragment();
+        taskFragment = new TaskFragment();
 
         if (savedInstanceState != null) {
             menuActiveItem = savedInstanceState.getInt(ACITVE_MENU_ITEM, 0);
@@ -341,12 +345,7 @@ public class MainActivity extends BaseActivity
         statsFragment.setArguments(bundle);
         galleryFragment.setArguments(bundle);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               noteFabClick();
-            }
-        });
+        fab.setOnClickListener(view -> noteFabClick());
 
         checkRateRequest();
 
@@ -482,7 +481,21 @@ public class MainActivity extends BaseActivity
         }
 
         checkGalleryNavItem(navigationView);
+        checkTasksNavItem(navigationView);
+
         updateMenuList(menuActiveItem);
+    }
+
+    private void checkTasksNavItem(NavigationView navigationView) {
+
+        String tasksNavSetting = appSettings.getString("set_tasks_nav", getString(R.string.set_tasks_nav_default));
+
+        boolean displayTaskMenuItem = tasksNavSetting.equals("menu");
+
+       // Toast.makeText(this, "S: " + displayTaskMenuItem, Toast.LENGTH_SHORT).show();
+
+        navigationView.getMenu().findItem(R.id.nav_tasks).setVisible(displayTaskMenuItem);
+
     }
 
 
@@ -591,7 +604,7 @@ public class MainActivity extends BaseActivity
 
     public void openPage(int position) {
 
-        String[] tags = {"home", "gallery", "starred", "stats", "notes", "prefs", "desc", "contact"};
+        String[] tags = {"home", "gallery", "starred", "stats", "tasks", "notes", "prefs", "desc", "contact"};
         String tag = tags[position];
 
         fPages = fragmentManager.beginTransaction();
@@ -608,6 +621,7 @@ public class MainActivity extends BaseActivity
             fragmentManager.popBackStack(null, 0);
         }
 
+        hideToolBarProgress();
 
         fPages.setCustomAnimations(R.anim.fade_in, 0, R.anim.fade_in, 0);
 
@@ -624,12 +638,14 @@ public class MainActivity extends BaseActivity
         } else if (position == 3) {
             fPages.replace(R.id.content_fragment, statsFragment, tag);
         } else if (position == 4) {
-            fPages.replace(R.id.content_fragment, notesFragment, tag);
+            fPages.replace(R.id.content_fragment, taskFragment, tag);
         } else if (position == 5) {
-            fPages.replace(R.id.content_fragment, prefsFragment, tag);
+            fPages.replace(R.id.content_fragment, notesFragment, tag);
         } else if (position == 6) {
-            fPages.replace(R.id.content_fragment, infoFragment, tag);
+            fPages.replace(R.id.content_fragment, prefsFragment, tag);
         } else if (position == 7) {
+            fPages.replace(R.id.content_fragment, infoFragment, tag);
+        } else if (position == 8) {
             fPages.replace(R.id.content_fragment, contactFragment, tag);
         }
 
@@ -639,9 +655,23 @@ public class MainActivity extends BaseActivity
 
     }
 
+    private void hideToolBarProgress() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        if (toolbar != null) {
+
+            View progressBar = toolbar.findViewById(R.id.toolbar_progress_bar);
+            if (progressBar != null) progressBar.setVisibility(View.GONE);
+        }
+
+    }
+
+    public void updateMenuList() {
+        updateMenuList(menuActiveItem);
+    }
+
 
     public void updateMenuList(int activePosition) {
-        int[] menuItemsPosition = {0, 1, 2, 3, 4, 5, 6, 7, 8};
+        int[] menuItemsPosition = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         menuActiveItem = activePosition;
 
         if (multipane) {
@@ -689,6 +719,7 @@ public class MainActivity extends BaseActivity
                 //Toast.makeText(MainActivity.this, "Num: " + menuActiveItem + " : "+ activePosition, Toast.LENGTH_SHORT).show();
 
                 checkGalleryNavItem(navigationView);
+                checkTasksNavItem(navigationView);
 
                 //// enable drawer indicator
                 shouldBack = false;
@@ -747,7 +778,7 @@ public class MainActivity extends BaseActivity
 
     private void manageNoteFab(int position) {
 
-        if (position == 4 ) {
+        if (position == 5 ) {
             new Handler().postDelayed(() -> fab.show(), 350);
         }
         else {
@@ -979,16 +1010,18 @@ public class MainActivity extends BaseActivity
             position  = 2;
         } else if (id == R.id.nav_statistic) {
             position  = 3;
-        } else if (id == R.id.nav_notes) {
+        } else if (id == R.id.nav_tasks) {
             position  = 4;
-        } else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_notes) {
             position  = 5;
-        } else if (id == R.id.nav_info) {
+        } else if (id == R.id.nav_settings) {
             position  = 6;
-        } else if (id == R.id.nav_contact) {
+        } else if (id == R.id.nav_info) {
             position  = 7;
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_contact) {
             position  = 8;
+        } else if (id == R.id.nav_share) {
+            position  = 9;
         }
 
 
@@ -997,7 +1030,7 @@ public class MainActivity extends BaseActivity
 
 
 
-        if (position == 8) {
+        if (position == 9) {
 
             getShareIntent();
             return false;
@@ -1185,6 +1218,16 @@ public class MainActivity extends BaseActivity
             }
         }
 
+        Fragment fragmentTasks= fragmentManager.findFragmentByTag("tasks");
+        if (fragmentTasks != null) {
+            fragmentTasks.onActivityResult(requestCode, resultCode, data);
+        }
+
+        Fragment fragmentHome= fragmentManager.findFragmentByTag("home");
+        if (fragmentHome != null) {
+            fragmentHome.onActivityResult(requestCode, resultCode, data);
+        }
+
         if (requestCode == GALLERY_REQUESTCODE) {
             Fragment fragment = fragmentManager.findFragmentByTag("gallery");
             if (fragment != null) {
@@ -1195,6 +1238,8 @@ public class MainActivity extends BaseActivity
         if (requestRate) {
             new Handler().postDelayed(this::rateApp, 150);
         }
+
+
 
     }
 

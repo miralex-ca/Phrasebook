@@ -1,11 +1,14 @@
 package com.online.languages.study.lang.adapters;
 
 
-
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
+
 import androidx.appcompat.app.AlertDialog;
+
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -41,9 +44,9 @@ public class NavigationDialog {
         setMaxHeight = false;
 
 
-        act  = activity;
-    }
+        act = activity;
 
+    }
 
 
     public void openInfoDialog(String message) {
@@ -53,9 +56,10 @@ public class NavigationDialog {
     }
 
 
-
-
     private void createDialog(String title, String text) {
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        String tasksNavSetting = appSettings.getString("set_tasks_nav", context.getString(R.string.set_tasks_nav_default));
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomDialog);
@@ -64,43 +68,36 @@ public class NavigationDialog {
 
         View content = inflater.inflate(R.layout.nav_dialog, null);
 
-
+        View navItemTasks = content.findViewById(R.id.navItemTasks);
         View navItem1 = content.findViewById(R.id.navItem1);
         View navItem2 = content.findViewById(R.id.navItem2);
         View navItem3 = content.findViewById(R.id.navItem3);
         View navItem4 = content.findViewById(R.id.navItem4);
 
-        navItem1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dismissDialog(4);
-            }
-        });
+        if (!tasksNavSetting.equals("menu")) {
+
+            navItemTasks.setVisibility(View.GONE);
+            View divider = content.findViewById(R.id.task_devider);
+            divider.setVisibility(View.GONE);
+
+        }
 
 
-        navItem2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dismissDialog(5);
-            }
-        });
+        navItemTasks.setOnClickListener(v -> dismissDialog(4));
 
+        navItem1.setOnClickListener(v -> dismissDialog(5));
 
-        navItem3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dismissDialog(6);
-            }
-        });
+        navItem2.setOnClickListener(v -> dismissDialog(6));
 
+        navItem3.setOnClickListener(v -> dismissDialog(7));
 
-        navItem4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dismissDialog(7);
-            }
-        });
+        navItem4.setOnClickListener(v -> dismissDialog(8));
+
 
         //builder.setTitle(title);
 
         builder.setCancelable(true);
-                //.setMessage(text);
+        //.setMessage(text);
 
         builder.setView(content);
 
@@ -122,28 +119,13 @@ public class NavigationDialog {
 
         act.onMenuItemClicker(order);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> {
 
-                if (alert!= null) alert.dismiss();
+            if (alert != null) alert.dismiss();
 
-            }
         }, 180);
 
     }
 
 
-
-    private static int dpToPixels(Context context, float dipValue) {
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, metrics);
-    }
-
-    public void toast(String text) {
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-    }
-
-
-
-    }
+}

@@ -1,5 +1,6 @@
 package com.online.languages.study.lang.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import androidx.fragment.app.Fragment;
 
 import com.online.languages.study.lang.BuildConfig;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.RecommendActivity;
+import com.online.languages.study.lang.TaskActivity;
 import com.online.languages.study.lang.databinding.FragmentContactBinding;
 import com.online.languages.study.lang.tools.ContactAction;
 
@@ -49,7 +52,9 @@ public class ContactFragment extends Fragment {
 
     private void setOnClicks() {
 
-        binding.list.sendFeedback.setOnClickListener(v -> sendMail(SEND_MAIL_TYPE_MSG));
+        binding.list.sendFeedback.setOnClickListener(v -> {
+            sendMail(SEND_MAIL_TYPE_MSG);
+        });
         binding.list.sendReport.setOnClickListener(v -> sendMail(SEND_MAIL_TYPE_REPORT));
         binding.list.contactShare.setOnClickListener(v -> contactAction.share(getActivity()));
         binding.list.rateAppLink.setOnClickListener(v -> contactAction.rate());

@@ -256,14 +256,15 @@ public class CustomDataListActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            if(resultCode == CustomDataListActivity.RESULT_OK){
-                int result=data.getIntExtra("result", -1);
+            if (resultCode == CustomDataListActivity.RESULT_OK) {
+                int result = data.getIntExtra("result", -1);
                 checkStarred(result);
             }
         } else {
 
-            if (sectionId.equals("errors") ) {
+            if (sectionId.equals("errors")) {
                 dataItems = dataManager.checkDataItemsData(dataItems);
                 adapter.notifyDataSetChanged();
             } else {
@@ -370,6 +371,10 @@ public class CustomDataListActivity extends BaseActivity {
                 return true;
 
             case R.id.open_test:
+                openExercise();
+                return true;
+
+            case R.id.open_test_icon:
                 openExercise();
                 return true;
 

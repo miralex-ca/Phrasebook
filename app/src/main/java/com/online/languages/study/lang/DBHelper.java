@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.recommend.TaskItem;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.Category;
 import com.online.languages.study.lang.data.DataFromJson;
@@ -46,7 +47,6 @@ import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
 import static com.online.languages.study.lang.Constants.OUTCOME_NONE;
 import static com.online.languages.study.lang.Constants.OUTCOME_REMOVED;
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
@@ -83,6 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_USER_DATA_CATS = "user_data_cats";
     public static final String TABLE_USER_DATA_ITEMS = "user_data_items";
     public static final String TABLE_UCAT_UDATA = "table_ucat_udata";
+    public static final String TABLE_TASKS_DATA = "table_tasks_data";
 
     // common
     private static final String KEY_PRIMARY_ID = "id";
@@ -201,6 +202,21 @@ public class DBHelper extends SQLiteOpenHelper {
     //// user dataitem table columns
     private static final String KEY_UDC_UCAT_ID = "ucat_id";
     private static final String KEY_UDC_UDATA_ID = "udata_id";
+
+
+    //// task table columns
+
+    private static final String KEY_TASK_ID = "task_id";
+    private static final String KEY_TASK_SKIPPED_COUNT = "task_skipped_count";
+    private static final String KEY_TASK_SKIPPED_TIME = "task_skipped_time";
+    private static final String KEY_TASK_PRIORITY = "task_priority";
+    private static final String KEY_TASK_INFO = "task_info";
+    private static final String KEY_TASK_STATUS = "task_status";
+    private static final String KEY_TASK_TYPE = "task_type";
+    private static final String KEY_TASK_PARAMS = "task_params";
+    private static final String KEY_TASK_FILTER = "task_filter";
+    private static final String KEY_TASK_UPDATED = "task_updated";
+    private static final String KEY_TASK_UPDATED_SORT = "task_updated_sort";
 
 
     private static final String TABLE_ITEM_STRUCTURE  = "("
@@ -325,6 +341,22 @@ public class DBHelper extends SQLiteOpenHelper {
             + ")";
 
 
+    private static final String TABLE_TASKS_STRUCTURE = "("
+            + KEY_TASK_ID + " TEXT,"
+            + KEY_TASK_SKIPPED_COUNT + " INTEGER,"
+            + KEY_TASK_SKIPPED_TIME + " INTEGER,"
+            + KEY_TASK_PRIORITY + " INTEGER,"
+            + KEY_TASK_INFO + " TEXT,"
+            + KEY_TASK_STATUS + " TEXT,"
+            + KEY_TASK_TYPE + " TEXT,"
+            + KEY_TASK_PARAMS + " TEXT,"
+            + KEY_TASK_FILTER + " TEXT,"
+            + KEY_TASK_UPDATED + " INTEGER,"
+            + KEY_TASK_UPDATED_SORT + " INTEGER"
+            + ")";
+
+
+
     private static final String TABLE_ITEMS_STRUCTURE = TABLE_ITEMS_DATA + TABLE_ITEM_STRUCTURE;
 
     private static final String TABLE_USER_ITEMS_STRUCTURE = TABLE_USER_DATA + TABLE_USER_STRUCTURE;
@@ -366,6 +398,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_NOTES_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_NOTES_DATA + TABLE_NOTES_STRUCTURE;
 
+    private static final String CREATE_TASKS_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_TASKS_DATA + TABLE_TASKS_STRUCTURE;
+
+
     private int data_mode = 0;
     private boolean speaking_mode;
 
@@ -402,6 +437,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_UDATA_TABLE);
         db.execSQL(CREATE_UDC_TABLE);
 
+        db.execSQL(CREATE_TASKS_TABLE);
+
 
         InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
         infoNotesManager.postStartNotes(DBHelper.this, db);
@@ -414,6 +451,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         populateDB(db);
         sanitizeDB(db);
+
+        if (newVersion > 2) {
+            db.execSQL(CREATE_TASKS_TABLE); // creates tables if not exist
+        }
 
         InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
         infoNotesManager.postUpdateNotes(DBHelper.this, db, newVersion);
@@ -584,6 +625,10 @@ public class DBHelper extends SQLiteOpenHelper {
         String action = "nothing";
 
         String ex_id = cat_id+"_"+ex_type;
+
+        if (ex_id.contains("revise_")) {
+            ex_id = cat_id;
+        }
 
         if (result > 100) result = 100;
 
@@ -1724,8 +1769,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-
-
         for (DataObject category: categories) {
 
             Cursor cursor = db.rawQuery(query, new String[]{category.id});
@@ -1817,10 +1860,199 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
+    }
+
+
+    public void saveTask(String taskId, int priority) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        saveTask(db, taskId, priority);
+        db.close();
+    }
+
+    public void saveTask(SQLiteDatabase db, String taskId, int priority) {
+
+        long time = System.currentTimeMillis();
+
+        if (priority == -5) {
+            time = 0;
+        }
+
+        Cursor cursor = db.query(TABLE_TASKS_DATA, null,
+                KEY_TASK_ID + " = ? ",
+                new String[]{ taskId }, null, null, null);
+
+        if (cursor.moveToNext()) {
+
+
+            ContentValues newValues = new ContentValues();
+
+            newValues.put(KEY_TASK_SKIPPED_TIME, time);
+            newValues.put(KEY_TASK_UPDATED, time);
+            newValues.put(KEY_TASK_PRIORITY, priority);
+
+            db.update(TABLE_TASKS_DATA, newValues,
+                    KEY_TASK_ID + " = ? ",
+                    new String[]{ taskId });
+
+        } else {
+
+            ContentValues values = new ContentValues();
+            values.put(KEY_TASK_ID, taskId);
+            values.put(KEY_TASK_SKIPPED_TIME, time);
+            values.put(KEY_TASK_UPDATED, time);
+            values.put(KEY_TASK_PRIORITY, priority);
+
+            db.insert(TABLE_TASKS_DATA, null, values);
+
+        }
+
+        cursor.close();
 
     }
 
 
+    public int deleteAllTasks() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int t = 0;
+
+        db.beginTransaction();
+
+        try {
+
+            // db.execSQL("delete from "+ TABLE_TASKS_DATA);
+            t = db.delete(TABLE_TASKS_DATA, null,null);
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+        db.close();
+
+        return  t;
+    }
+
+    public void deleteTasksWithId(String taskId) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+       // Log.i("task", "Task id : " + taskId);
+
+        db.beginTransaction();
+
+        try {
+
+            db.delete(TABLE_TASKS_DATA, KEY_TASK_ID + " LIKE ? OR " + KEY_TASK_ID + " LIKE ?",
+
+                    new String[]{taskId + "%", "%_" + taskId + "%"} );
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+        db.close();
+
+    }
+
+
+    public ArrayList<TaskItem> getTasksStats(ArrayList<TaskItem> tasks) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ArrayList<TaskItem> taskItems = new ArrayList<>();
+
+        for (TaskItem taskItem: tasks) {
+
+
+
+            //// getting completed time from tests
+            Cursor cursor = db.query(TABLE_TESTS_DATA,  null,
+                    KEY_TEST_TAG +" LIKE ?", new String[] { taskItem.getId()+"%" },
+                    null, null, KEY_TEST_TIME + " DESC");
+
+            if (cursor.moveToFirst()) {
+                long time = cursor.getLong(cursor.getColumnIndex(KEY_TEST_TIME));
+                taskItem.setTimeCompleted(  time   );
+
+                if (taskItem.getId().contains("revise")) {
+                    int progress = cursor.getInt(cursor.getColumnIndex(KEY_TEST_PROGRESS));
+                    taskItem.setProgress(progress);
+                    //Log.i("task", "Task id : " + taskItem.getId() + " - " + taskItem.getTimeCompleted() );
+                }
+
+            }
+
+
+            cursor.close();
+
+            /// getting stats from tasks database
+
+            Cursor statsCursor = db.query(TABLE_TASKS_DATA, null,
+                    KEY_TASK_ID + " = ? ",
+                    new String[]{String.valueOf(taskItem.getId())}, null, null, null);
+
+            if (statsCursor.moveToNext()) {
+                taskItem.setPriority(statsCursor.getInt(statsCursor.getColumnIndex(KEY_TASK_PRIORITY)));
+                taskItem.setSkippedTime( statsCursor.getLong(statsCursor.getColumnIndex(KEY_TASK_SKIPPED_TIME)) );
+            }
+            statsCursor.close();
+
+            String sectionId = taskItem.getSectionStats().getSectionId();
+
+            Cursor priorityCursor = db.query(TABLE_TASKS_DATA, null,
+                    KEY_TASK_ID + " = ? ",
+                    new String[]{sectionId}, null, null, null);
+
+            if (priorityCursor.moveToNext()) {
+                taskItem.setPriority(priorityCursor.getInt(statsCursor.getColumnIndex(KEY_TASK_PRIORITY)));
+            }
+
+            priorityCursor.close();
+
+
+            taskItems.add(taskItem);
+
+        }
+
+        db.close();
+
+        return taskItems;
+
+    }
+
+    public ArrayList<TaskItem> getTasksTimeByTests(ArrayList<TaskItem> tasks) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ArrayList<TaskItem> taskItems = new ArrayList<>();
+
+        for (TaskItem taskItem: tasks) {
+
+            Cursor cursor = db.query(TABLE_TESTS_DATA,  null,
+                    KEY_TEST_TAG +" LIKE ?", new String[] { taskItem.getId()+"%" },
+                    null, null, KEY_TEST_TIME + " DESC");
+
+            if (cursor.moveToFirst()) {
+                long time = cursor.getLong(cursor.getColumnIndex(KEY_TEST_TIME));
+                taskItem.setTimeCompleted(  time   );
+            }
+
+            taskItems.add(taskItem);
+
+            cursor.close();
+        }
+
+
+        db.close();
+
+        return taskItems;
+
+    }
 
 
     public void updateNote(NoteData note) {
@@ -3310,29 +3542,33 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Map<String, String> getTestsByCatId(ArrayList<String> catIds, SQLiteDatabase db ) {
 
-        StringBuilder conditions = new StringBuilder("WHERE ");  /// build request for all required tests
-
-        for (int i = 0; i < catIds.size(); i++) {
-            String condition = KEY_TEST_TAG + " LIKE '" + catIds.get(i) + "%' ";
-            if (i != 0) condition = "OR " + condition;
-            conditions.append(condition);
-        }
-
-        String query = "SELECT * FROM " + TABLE_TESTS_DATA + " " + conditions;
-        Cursor cursor = db.rawQuery(query, null);
-
         Map<String,String> myMap = new HashMap<>();
 
-        try {
-            while (cursor.moveToNext()) {
-                myMap.put(cursor.getString(cursor.getColumnIndex(KEY_TEST_TAG)),
-                        cursor.getString(cursor.getColumnIndex(KEY_TEST_PROGRESS)));
+        if (catIds.size() > 0) {
 
+            StringBuilder conditions = new StringBuilder("WHERE ");  /// build request for all required tests
+
+            for (int i = 0; i < catIds.size(); i++) {
+                String condition = KEY_TEST_TAG + " LIKE '" + catIds.get(i) + "%' ";
+                if (i != 0) condition = "OR " + condition;
+                conditions.append(condition);
             }
-        } finally {
-            cursor.close();
-        }
 
+            String query = "SELECT * FROM " + TABLE_TESTS_DATA + " " + conditions;
+            Cursor cursor = db.rawQuery(query, null);
+
+
+            try {
+                while (cursor.moveToNext()) {
+                    myMap.put(cursor.getString(cursor.getColumnIndex(KEY_TEST_TAG)),
+                            cursor.getString(cursor.getColumnIndex(KEY_TEST_PROGRESS)));
+
+                }
+            } finally {
+                cursor.close();
+            }
+
+        }
 
 
         return myMap;
@@ -3446,7 +3682,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-
     public UserStatsData checkAppStatsDB(UserStatsData userStatsData) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -3505,10 +3740,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Map<String,String> myMap = new HashMap<>();
 
+        long lastTime = 0;
+
         try {
             while (tcursor.moveToNext()) {
                 int result = Integer.valueOf(tcursor.getString(tcursor.getColumnIndex(KEY_TEST_PROGRESS)));
 
+                //long testTime = tcursor.getLong(tcursor.getColumnIndex(KEY_TEST_TIME));
+                //if (testTime > lastTime) lastTime = testTime;
 
                 myMap.put(
                         tcursor.getString(tcursor.getColumnIndex(KEY_TEST_TAG)),
@@ -3521,6 +3760,7 @@ public class DBHelper extends SQLiteOpenHelper {
             tcursor.close();
         }
 
+        section.lastTime = lastTime;
         section.controlMap = myMap;
         section.controlTests = allResult / Constants.SECTION_TESTS_NUM;
 

@@ -48,7 +48,7 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.settings);
 
         screen = getPreferenceScreen();
-        preferenceParent = (PreferenceGroup) findPreference("interface");
+        preferenceParent = findPreference("interface");
 
         Preference hidden = getPreferenceManager().findPreference("hidden");
         screen.removePreference(hidden);
@@ -82,20 +82,31 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         final ListPreference btm = (ListPreference) getPreferenceManager().findPreference("btm_nav");
         if (Build.VERSION.SDK_INT < 21) btm.setVisible(false);
 
-        btm.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                new android.os.Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        ((MainActivity)getActivity()).bottomNavDisplay();
-                    }
-                }, 200);
-                return true;
-            }
+        btm.setOnPreferenceChangeListener((preference, newValue) -> {
+            new android.os.Handler().postDelayed(() -> {
+
+                ((MainActivity) getActivity()).bottomNavDisplay();
+
+            }, 200);
+            return true;
         });
 
 
+        final ListPreference tasks = getPreferenceManager().findPreference("set_tasks_nav");
 
-        final SwitchPreferenceCompat nightModePref = (SwitchPreferenceCompat) getPreferenceManager().findPreference("night_mode");
+        if (tasks != null) {
+            tasks.setOnPreferenceChangeListener((preference, newValue) -> {
+                new android.os.Handler().postDelayed(() -> {
+
+                    ((MainActivity) getActivity()).updateMenuList();
+
+                }, 200);
+                return true;
+            });
+        }
+
+
+        final SwitchPreferenceCompat nightModePref = getPreferenceManager().findPreference("night_mode");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
             nightModePref.setVisible(true);
@@ -104,22 +115,18 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         }
 
 
-        nightModePref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                    public boolean onPreferenceChange(Preference preference, Object newValue) {
-                        new android.os.Handler().postDelayed(new Runnable() {
-                            public void run() {
-                                Intent intent = Objects.requireNonNull(getActivity()).getIntent();
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                getActivity().startActivity(intent);
-                            }
-                        }, 600);
-                        return true;
-                    }
-                });
+        nightModePref.setOnPreferenceChangeListener((preference, newValue) -> {
+            new android.os.Handler().postDelayed(() -> {
+                Intent intent = getActivity().getIntent();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getActivity().startActivity(intent);
+            }, 600);
+            return true;
+        });
 
 
 
-        final ListPreference list = (ListPreference) getPreferenceManager().findPreference("theme");
+        final ListPreference list = getPreferenceManager().findPreference("theme");
 
         list.setOnPreferenceChangeListener((preference, newValue) -> {
             Intent intent = getActivity().getIntent();
@@ -129,11 +136,11 @@ public class PrefsFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-        final ListPreference transitions = (ListPreference) getPreferenceManager().findPreference("set_transition");
+        final ListPreference transitions = getPreferenceManager().findPreference("set_transition");
         transitions.setVisible(Constants.DEBUG);
         //!getActivity().getResources().getBoolean(R.bool.tablet)
 
-        final SwitchPreferenceCompat modeHint = (SwitchPreferenceCompat) getPreferenceManager().findPreference("set_mode_hint");
+        final SwitchPreferenceCompat modeHint = getPreferenceManager().findPreference("set_mode_hint");
         modeHint.setVisible(Constants.DEBUG);
 
 
