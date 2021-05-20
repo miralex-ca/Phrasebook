@@ -835,7 +835,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
      This section will suggest tasks to help improve your learning progress. The tasks will recommended topics and sections that you can start or continue to learn, and some tasks will also to revise the material studied. The following actions may be available for tasks: <br/> <br/>
 
-    - <b><i>Postpone the task</i></b>: the task will not be displayed for 12 hours, or until the section data are cleared, the data is reset, or you run the tests associated with this task. <br/><br/>
+    - <b><i>Postpone the task</i></b>: the task will not be displayed for 12 hours, or until the section data are cleared, the data is reset, or you complete a test associated with this task. <br/><br/>
     - <b><i>Do not display the task</i></b>: the task will be hidden until the section settings are cleared, or the data are reset, or you complete some tests associated with this task. <br/><br/>
     - <b><i>Lower the priority of the section</i></b>: tasks associated with this section will be shown last. <br/><br/>
     - <b><i>Clear section settings</i></b>: for this section, the data about hidden and postponed tasks, as well as about the priority of the section will be deleted. <br/> <br/>

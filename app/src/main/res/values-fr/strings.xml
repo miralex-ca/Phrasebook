@@ -851,10 +851,15 @@ Cette section vous proposera des tâches pour vous aider à améliorer vos progr
 
 Les tâches viseront des thèmes et des sections que vous pouvez commencer ou continuer à apprendre, et certaines tâches permettront également de réviser le matériel étudié. Les actions suivantes peuvent être disponibles pour les tâches: <br/> <br/>
 
-     - <b><i> Reporter la tâche </i> </b>: la tâche ne sera pas affichée pendant 12 heures, ou jusqu’à ce que les données de la section soient effacées, les données soient réinitialisées, ou que vous terminiez les tests associés à cette tâche. <br/> <br/>
+     - <b><i> Reporter la tâche </i> </b>: la tâche ne sera pas affichée pendant 12 heures, ou jusqu’à ce que les données de la section soient effacées, les données soient réinitialisées, ou que vous terminiez un test associé à cette tâche. <br/> <br/>
      - <b><i> Ne pas afficher la tâche </i> </b>: la tâche sera cachée jusqu’à ce que les réglages de la section soient effacés, ou que les données soient réinitialisées, ou que vous ayez terminé certains tests associés à cette tâche. <br/> <br/>
      - <b><i> Diminuer la priorité de la section </i> </b>: les tâches associées à cette section seront affichées en dernier. <br/> <br/>
      - <b><i>Effacer les réglages de la section </i> </b>: pour cette section, les données sur les tâches cachées et reportées, ainsi que sur la priorité de la section seront supprimées. <br/> <br/>
+
+      Dans les paramètres de l’application, vous pouvez modifier l’emplacement de la section Tâches: la section peut être affichée soit sur la page d’accueil dans un onglet supplémentaire, soit dans le menu de navigation de l’application.
+      <br/> <br/>
+
+      <i> ATTENTION! Cette section est en cours de développement, il est donc possible qu’à l’avenir certaines fonctions (ou même une section entière) soient modifiées ou supprimées. </i>
 
 
     ]]></string>
