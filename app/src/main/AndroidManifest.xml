@@ -103,6 +103,12 @@
             android:name="com.online.languages.study.lang.SectionActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="com.online.languages.study.lang.SectionTActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/AppTheme" />
+
         <activity
             android:name="com.online.languages.study.lang.SubSectionActivity"
             android:screenOrientation="behind"
@@ -196,6 +202,11 @@
             />
 
         <activity android:name="com.online.languages.study.lang.TaskActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/AppTheme"
+            />
+
+        <activity android:name="com.online.languages.study.lang.practice.PracticeActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />

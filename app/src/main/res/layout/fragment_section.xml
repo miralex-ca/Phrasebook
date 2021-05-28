@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:gravity="center_horizontal"
+        android:background="?attr/colorBaseBg"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/main_card_top"
+            style="@style/CardWrapper.Width">
+
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                android:layout_gravity="center_horizontal"
+
+
+                android:layout_width="match_parent"
+                style="@style/CardViewStyle"
+
+                android:minHeight="80dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder" />
+
+
+                <LinearLayout
+
+                    android:id="@+id/section_top_info"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?android:attr/selectableItemBackground">
+
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/card_stats_side"
+                        android:paddingRight="@dimen/card_stats_side"
+
+                        android:paddingTop="@dimen/card_stats_top"
+                        android:paddingBottom="@dimen/card_stats_btm"
+
+                        android:orientation="vertical">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="20dp">
+
+                            <ImageView
+                                android:id="@+id/catImage"
+                                android:layout_alignParentRight="true"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp" />
+
+                            <TextView
+                                android:maxLines="1"
+                                android:id="@+id/sectionTitle"
+                                android:textSize="@dimen/section_title_txt_size"
+
+                                android:layout_marginRight="100dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/sectionDesc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+
+                                android:maxLines="3"
+                                android:ellipsize="end"
+
+                                android:layout_below="@+id/sectionTitle"
+                                android:layout_marginRight="90dp"
+                                android:layout_marginTop="@dimen/section_desc_txt_top"
+                                android:textSize="@dimen/section_desc_txt_size" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:visibility="gone"
+                android:id="@+id/review_tests_card"
+                android:layout_height="wrap_content"
+                app:contentPadding="0dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                style="@style/CardViewStyle.Widget">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="?attr/CardViewBorder" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        android:weightSum="1">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight=".5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:focusable="true"
+                                android:clickable="true"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:onClick="openSectionList"
+                                android:id="@+id/openSectionReview"
+                                android:padding="14dp"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <RelativeLayout
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:layout_marginLeft="@dimen/section_list_img_left"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_centerInParent="true"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        app:srcCompat="@drawable/outline_list" />
+
+                                </RelativeLayout>
+
+                                <LinearLayout
+
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_marginLeft="@dimen/section_list_txt_left"
+                                        android:textSize="@dimen/section_list_txt_size"
+                                        android:text="@string/section_list_title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+
+                                    <TextView
+
+                                        android:visibility="gone"
+
+                                        android:layout_marginTop="3dp"
+                                        android:layout_marginBottom="6dp"
+
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:textSize="11sp"
+                                        android:text="@string/section_list_desc"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            android:layout_height="match_parent"
+                            android:background="?attr/colorCardDivider" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight=".5"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:focusable="true"
+                                android:clickable="true"
+                                android:background="?android:attr/selectableItemBackground"
+                                android:padding="14dp"
+                                android:onClick="openSectionTest"
+                                android:id="@+id/openSectionTest"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <RelativeLayout
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/section_list_img_left"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+
+                                    <ImageView
+                                        android:id="@+id/test_icon"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_centerVertical="true"
+                                        app:srcCompat="@drawable/outline_test" />
+
+
+                                    <LinearLayout
+
+                                        android:layout_toRightOf="@+id/test_icon"
+                                        android:layout_centerVertical="true"
+
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+
+                                            android:layout_marginLeft="@dimen/section_list_txt_left"
+                                            android:textSize="@dimen/section_list_txt_size"
+                                            android:text="@string/section_tests_title"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+
+                                        <TextView
+
+
+                                            android:visibility="gone"
+
+                                            android:layout_marginTop="3dp"
+                                            android:layout_marginBottom="6dp"
+
+                                            android:maxLines="1"
+                                            android:ellipsize="end"
+                                            android:textSize="11sp"
+                                            android:text="@string/sections_title_desc"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+
+                                    <ImageView
+
+                                        android:id="@+id/icon_lock"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginRight="4dp"
+                                        android:visibility="gone"
+
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+
+                                        app:srcCompat="@drawable/ic_lock" />
+
+
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <include layout="@layout/section_list_include" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

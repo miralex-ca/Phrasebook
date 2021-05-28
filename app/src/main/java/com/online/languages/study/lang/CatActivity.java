@@ -173,6 +173,9 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
+        if ( getIntent().hasExtra("open_tab_1")) {
+            viewPager.setCurrentItem(1);
+        }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

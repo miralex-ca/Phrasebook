@@ -788,7 +788,8 @@ public class ExerciseDataCollect {
     }
 
 
-
-
-
+    public void getMultiChoiceTaskList(String test) {
+        DetailFromJson dataFromJson = new DetailFromJson(context);
+        tasks = dataFromJson.getTest(test);
+    }
 }

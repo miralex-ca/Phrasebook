@@ -52,6 +52,10 @@ public class ExerciseTask implements Parcelable {
 
     }
 
+    public ExerciseTask() {
+
+    }
+
     @Override
     public int describeContents(){
         return 0;

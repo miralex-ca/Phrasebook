@@ -62,7 +62,10 @@ public class ExerciseResultActivity extends BaseActivity {
 
         setTitle(R.string.test_result_title);
 
-        testResult = new TestResult(this, originList);
+        int resType  = 0;
+        if (getIntent().hasExtra("multichoice")) resType  = 1;
+
+        testResult = new TestResult(this, originList, resType);
 
         ArrayList<TestResult.ResultCategory> cats;
 

@@ -42,6 +42,7 @@ import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.SHOW_DIVIDER;
 
 
 public class UserListTabFragment1 extends Fragment {
@@ -97,12 +98,13 @@ public class UserListTabFragment1 extends Fragment {
         recyclerView = rootView.findViewById(R.id.my_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
+
+        if (SHOW_DIVIDER) recyclerView.addItemDecoration( new DividerItemDecoration(getActivity()) );
 
         recyclerViewCompact = rootView.findViewById(R.id.my_recycler_view_compact);
         RecyclerView.LayoutManager mLayoutManagerCompact = new LinearLayoutManager(getActivity());
         recyclerViewCompact.setLayoutManager(mLayoutManagerCompact);
-        recyclerViewCompact.addItemDecoration( new DividerItemDecoration(getActivity()) );
+        if (SHOW_DIVIDER) recyclerViewCompact.addItemDecoration( new DividerItemDecoration(getActivity()) );
 
 
         recyclerViewCard = rootView.findViewById(R.id.my_recycler_view_card);

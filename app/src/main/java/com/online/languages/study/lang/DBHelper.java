@@ -10,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.practice.QuestData;
 import com.online.languages.study.lang.recommend.TaskItem;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.Category;
@@ -36,9 +37,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
+import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.GROUPS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
@@ -84,6 +87,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_USER_DATA_ITEMS = "user_data_items";
     public static final String TABLE_UCAT_UDATA = "table_ucat_udata";
     public static final String TABLE_TASKS_DATA = "table_tasks_data";
+    public static final String TABLE_QUEST_DATA = "table_quest_data";
+    public static final String TABLE_QSTATS_DATA = "table_qstats";
 
     // common
     private static final String KEY_PRIMARY_ID = "id";
@@ -104,6 +109,30 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_ITEM_SEARCH = "item_search";
     private static final String KEY_ITEM_TRANS1 = "item_trans1";
     private static final String KEY_ITEM_TRANS2 = "item_trans2";
+
+
+    private static final String KEY_QUEST_ID = "quest_id";
+    private static final String KEY_QUEST_CAT_ID = "quest_cat_id";
+    private static final String KEY_QUEST_LEVEL = "quest_level";
+    private static final String KEY_QUEST_LEVEL_GLOBAL = "quest_level_g";
+    private static final String KEY_QUEST_MODE = "quest_mode";
+    private static final String KEY_QUEST_QUEST = "quest_quest";
+    private static final String KEY_QUEST_TASK = "quest_task";
+    private static final String KEY_QUEST_CORRECT = "quest_correct";
+    private static final String KEY_QUEST_OPTIONS = "quest_options";
+    private static final String KEY_QUEST_PRONOUNCE = "quest_pronounce";
+    private static final String KEY_QUEST_IMAGE= "quest_image";
+    private static final String KEY_QUEST_FILTER= "quest_filter";
+
+
+    private static final String KEY_QSTATS_ID = "qstats_id";
+    private static final String KEY_QSTATS_COUNT_TR= "qstats_count_tr";
+    private static final String KEY_QSTATS_COUNT_AUDIO = "qstats_count_audio";
+    private static final String KEY_QSTATS_CORRECT = "qstats_correct";
+    private static final String KEY_QSTATS_CORRECT_TIME = "qstats_correct_time";
+    private static final String KEY_QSTATS_ERROR= "qstats_errors";
+    private static final String KEY_QSTATS_ERROR_TIME = "qstats_errors_time";
+
 
 
     //// cats table
@@ -237,6 +266,33 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_ITEM_DIVIDER + " TEXT"
             + ")";
 
+    private static final String TABLE_QUEST_STRUCTURE  = "("
+
+            + KEY_QUEST_ID + " TEXT,"
+            + KEY_QUEST_CAT_ID + " TEXT,"
+            + KEY_QUEST_LEVEL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_LEVEL_GLOBAL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_MODE + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_QUEST + " TEXT,"
+            + KEY_QUEST_TASK + " TEXT,"
+            + KEY_QUEST_CORRECT + " TEXT,"
+            + KEY_QUEST_OPTIONS + " TEXT,"
+            + KEY_QUEST_PRONOUNCE + " TEXT,"
+            + KEY_QUEST_IMAGE + " TEXT,"
+            + KEY_QUEST_FILTER + " TEXT"
+            + ")";
+
+    private static final String TABLE_QSTATS_STRUCTURE  = "("
+
+            + KEY_QSTATS_ID + " TEXT,"
+            + KEY_QSTATS_COUNT_TR + " INTEGER DEFAULT 0,"
+            + KEY_QSTATS_COUNT_AUDIO + " INTEGER DEFAULT 0,"
+            + KEY_QSTATS_CORRECT + " INTEGER DEFAULT 0,"
+            + KEY_QSTATS_CORRECT_TIME + " INTEGER DEFAULT 0,"
+            + KEY_QSTATS_ERROR + " INTEGER DEFAULT 0,"
+            + KEY_QSTATS_ERROR_TIME + " INTEGER DEFAULT 0"
+            + ")";
+
 
     private static final String TABLE_USER_STRUCTURE = "("
             + KEY_USER_ITEM_ID + " TEXT,"
@@ -359,6 +415,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_ITEMS_STRUCTURE = TABLE_ITEMS_DATA + TABLE_ITEM_STRUCTURE;
 
+    private static final String TABLE_QUESTS_STRUCTURE = TABLE_QUEST_DATA + TABLE_QUEST_STRUCTURE;
+
+
     private static final String TABLE_USER_ITEMS_STRUCTURE = TABLE_USER_DATA + TABLE_USER_STRUCTURE;
 
     private static final String TABLE_DETAILS_STRUCTURE = TABLE_DETAILS_DATA + TABLE_DETAIL_STRUCTURE;
@@ -373,6 +432,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_ITEMS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_USER_ITEMS_STRUCTURE;
 
     private static final String CREATE_ITEMS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_ITEMS_STRUCTURE;
+
+    private static final String CREATE_QUESTS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTS_STRUCTURE;
+
+    private static final String CREATE_STATS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_QSTATS_DATA + TABLE_QSTATS_STRUCTURE;
 
     private static final String CREATE_DETAILS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_DETAILS_STRUCTURE;
 
@@ -438,7 +501,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_UDC_TABLE);
 
         db.execSQL(CREATE_TASKS_TABLE);
-
+        db.execSQL(CREATE_STATS_TABLE_IF_EXISTS);
 
         InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
         infoNotesManager.postStartNotes(DBHelper.this, db);
@@ -454,6 +517,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (newVersion > 2) {
             db.execSQL(CREATE_TASKS_TABLE); // creates tables if not exist
+            db.execSQL(CREATE_STATS_TABLE_IF_EXISTS);
         }
 
         InfoNotesManager infoNotesManager = new InfoNotesManager(cntx);
@@ -480,6 +544,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         DetailFromJson detailFromJson= new DetailFromJson(cntx);
         ArrayList<DetailItem> allDetails = detailFromJson.getAllData();
+
+
+        ArrayList<QuestData> allQuests = detailFromJson.getAllQuests();
 
 
         db.beginTransaction();
@@ -545,6 +612,40 @@ public class DBHelper extends SQLiteOpenHelper {
                 db.insert(TABLE_DETAILS_DATA, null, values);
             }
 
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+        db.beginTransaction();
+        try {
+
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUEST_DATA);
+            db.execSQL(CREATE_QUESTS_TABLE_IF_EXISTS);
+
+            for (QuestData item: allQuests) {
+
+                ContentValues values = new ContentValues();
+
+                values.put(KEY_QUEST_ID, item.getId());
+                values.put(KEY_QUEST_CAT_ID, item.getCategoryId() );
+                values.put(KEY_QUEST_LEVEL, item.getLevel() );
+                values.put(KEY_QUEST_LEVEL_GLOBAL, item.getLevel() );
+                values.put(KEY_QUEST_MODE, item.getLevel() );
+
+                values.put(KEY_QUEST_QUEST, item.getQuest() );
+                values.put(KEY_QUEST_TASK, item.getTask());
+                values.put(KEY_QUEST_OPTIONS, item.getOptions());
+                values.put(KEY_QUEST_CORRECT, item.getCorrect());
+                values.put(KEY_QUEST_PRONOUNCE, item.getPronounce());
+                values.put(KEY_QUEST_IMAGE, item.getImage() );
+                values.put(KEY_QUEST_FILTER, item.getFilter() );
+
+                db.insert(TABLE_QUEST_DATA, null, values);
+
+            }
 
             db.setTransactionSuccessful();
 
@@ -1862,6 +1963,65 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
     }
 
+    public void setPracticeTask(String w_id, int type, String result) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        long time = System.currentTimeMillis();
+
+
+        Cursor cursor = db.query(TABLE_QSTATS_DATA, null,
+                KEY_QSTATS_ID + " = ? ",
+                new String[]{ w_id }, null, null, null);
+
+        int countTR = 0;
+        int countAudio = 0;
+
+        if (cursor.moveToNext()) {
+
+            countTR = cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_TR));
+            countAudio = cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_AUDIO));
+
+            int correct = cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_CORRECT)) + 1;
+
+            if (type == EX_AUDIO_TYPE) countAudio++;
+            else countTR++;
+
+            ContentValues newValues = new ContentValues();
+
+            newValues.put(KEY_QSTATS_COUNT_TR, countTR);
+            newValues.put(KEY_QSTATS_COUNT_AUDIO, countAudio);
+            newValues.put(KEY_QSTATS_CORRECT, correct);
+            newValues.put(KEY_QSTATS_CORRECT_TIME, time);
+
+
+            db.update(TABLE_QSTATS_DATA, newValues,
+                    KEY_QSTATS_ID + " = ? ",
+                    new String[]{ w_id});
+
+        } else {
+
+            if (type == EX_AUDIO_TYPE) countAudio++;
+            else countTR++;
+
+            ContentValues values = new ContentValues();
+            values.put(KEY_QSTATS_ID, w_id);
+            values.put(KEY_QSTATS_COUNT_TR, countTR);
+            values.put(KEY_QSTATS_COUNT_AUDIO, countAudio);
+            values.put(KEY_QSTATS_CORRECT, 1);
+            values.put(KEY_QSTATS_CORRECT_TIME, time);
+
+            db.insert(TABLE_QSTATS_DATA, null, values);
+
+        }
+
+        cursor.close();
+
+
+        db.close();
+
+    }
+
 
     public void saveTask(String taskId, int priority) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -2384,6 +2544,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public void setWordResult(String w_id) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         String action = "nothing";
 
@@ -2437,6 +2598,8 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
     }
+
+
 
     public void setError(String w_id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -3694,7 +3857,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    Section checkSectionStatsDB(Section section) {
+    public Section checkSectionStatsDB(Section section) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         section = checkSectionStatsDB(db, section);
@@ -3726,6 +3889,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private Section getSectionTestsResults(SQLiteDatabase db, Section section) {
 
 
+
+
         //section.testResults = getSectionCatsTestsResults(db, section);
 
         section.testResults = getSectionCatsExResults(db, section);
@@ -3752,6 +3917,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 myMap.put(
                         tcursor.getString(tcursor.getColumnIndex(KEY_TEST_TAG)),
                         tcursor.getString(tcursor.getColumnIndex(KEY_TEST_PROGRESS)) );
+
+
 
 
                 allResult += result;
@@ -4674,6 +4841,134 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<QuestData> getQuestsByCatIds(ArrayList<String> catIds) {
+
+        ArrayList<QuestData> items = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        StringBuilder conditionLike = new StringBuilder("");
+
+        for (int i = 0; i < catIds.size(); i++) {
+
+            String itemLike = KEY_QUEST_CAT_ID + " LIKE '" + catIds.get(i) + "%' ";
+
+            if (i != 0) {
+                itemLike = "OR " +  itemLike;
+            }
+
+            conditionLike.append(itemLike);
+        }
+
+        String questsQuery = "SELECT * FROM " + TABLE_QUEST_DATA + " WHERE (" + conditionLike +") ";
+
+        Cursor cursor = db.rawQuery(questsQuery, null);
+
+        try {
+            while (cursor.moveToNext()) {
+
+
+               // items.add(getSimpleItemFromCursor(cursor));
+
+                items.add( getQuestFromCursor( cursor) );
+            }
+        } finally {
+            cursor.close();
+        }
+
+        db.close();
+
+        return items;
+    }
+
+
+    public ArrayList<ArrayList<QuestData>> getGroupedQuestsByCatIds(ArrayList<String> catIds) {
+
+        ArrayList< ArrayList<QuestData>> groupedItemsList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        for (String catId : catIds) {
+
+            ArrayList<QuestData> categoryQuest = new ArrayList<>();
+
+            String questsQuery = "SELECT * FROM " + TABLE_QUEST_DATA
+
+                    +" a LEFT JOIN " + TABLE_QSTATS_DATA
+
+                    +" b ON a." + KEY_QUEST_ID + " = b." + KEY_QSTATS_ID
+
+                   + " WHERE " + KEY_QUEST_CAT_ID + " LIKE '" + catId + "%' ";
+
+
+            Cursor cursor = db.rawQuery(questsQuery, null);
+
+            try {
+                while (cursor.moveToNext()) {
+
+                    categoryQuest.add( getQuestFromCursor( cursor) );
+                }
+            } finally {
+                cursor.close();
+            }
+
+            groupedItemsList.add( categoryQuest );
+
+        }
+
+
+        db.close();
+
+        return groupedItemsList;
+    }
+
+
+    private QuestData getQuestFromCursor(Cursor cursor) {
+
+        String quest = cursor.getString(cursor.getColumnIndex(KEY_QUEST_QUEST));
+        String correct = cursor.getString(cursor.getColumnIndex(KEY_QUEST_CORRECT));
+        String options = cursor.getString(cursor.getColumnIndex(KEY_QUEST_OPTIONS));
+
+        QuestData item = new QuestData(quest, correct, options);
+
+        item.setId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_ID)) );
+        item.setCategoryId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_CAT_ID)) );
+
+        item.setLevel( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_LEVEL)) );
+        item.setLevelGlobal( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_LEVEL_GLOBAL)) );
+        item.setMode( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_MODE)) );
+
+        item.setPronounce( cursor.getString(cursor.getColumnIndex(KEY_QUEST_PRONOUNCE)) );
+
+        item.setCountTr( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_TR)) );
+        item.setCountAudio( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_AUDIO)) );
+
+        return item;
+    }
+
+
+    public int deleteQuestsStast() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int t = 0;
+
+        db.beginTransaction();
+
+        try {
+
+
+            t = db.delete(TABLE_QSTATS_DATA, null,null);
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
+        db.close();
+
+        return  t;
+    }
 
 
 

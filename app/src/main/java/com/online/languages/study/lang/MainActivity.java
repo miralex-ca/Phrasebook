@@ -1,22 +1,18 @@
 package com.online.languages.study.lang;
 
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -64,10 +60,8 @@ import com.online.languages.study.lang.recommend.TaskFragment;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
-import com.online.languages.study.lang.util.Inventory;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -876,7 +870,7 @@ public class MainActivity extends BaseActivity
                 }
             }
 
-            Intent i = new Intent(MainActivity.this, SectionActivity.class);
+            Intent i = new Intent(MainActivity.this, SectionActivity.class); /// TODO check the links
             openActivity.openSection(i, navStructure, navSection.id, "root");
         }
 

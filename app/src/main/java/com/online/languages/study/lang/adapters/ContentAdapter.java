@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.practice.OnSectionCatsListClick;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     int grammarCharLimit = 10;
 
     public boolean charLayout = false;
+
+
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -273,6 +276,10 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
 
     }
+
+
+
+
 
 
 }

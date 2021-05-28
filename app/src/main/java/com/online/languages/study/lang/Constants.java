@@ -71,6 +71,7 @@ public class Constants {
 
     public static final String EXTRA_DATA_TYPE = "data_type";
 
+    public static final int EX_ORIG_TR = 1;
     public static final int EX_IMG_TYPE = 4;
     public static final int EX_AUDIO_TYPE = 3;
 
@@ -223,5 +224,7 @@ public class Constants {
     public static final boolean SHOW_GRAMMAR = true;
 
     public static final int TASK_REVISE_TEST_LIMIT = 40;
+
+    public static final boolean SHOW_DIVIDER = false;
 
 }

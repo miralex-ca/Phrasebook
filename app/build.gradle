@@ -44,8 +44,8 @@ android {
         applicationId "com.study.languages.master"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 55
-        versionName '2.8.2'
+        versionCode 56
+        versionName '3.1.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -61,7 +61,6 @@ android {
                 appIcon: "@mipmap/ic_launcher_en",
                 appIconRound: "@mipmap/ic_launcher_en"
         ]
-
 
     }
     buildTypes {

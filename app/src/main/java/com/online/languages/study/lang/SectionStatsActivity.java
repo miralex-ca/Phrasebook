@@ -28,6 +28,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
+import com.online.languages.study.lang.practice.PracticeActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -303,9 +304,21 @@ public class SectionStatsActivity extends BaseActivity {
     }
 
 
-    public void openSectionTest(View view) {
+    public void openSectionTests(View view) {
 
         Intent i = new Intent(SectionStatsActivity.this, SectionTestActivity.class);
+
+        i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
+        i.putExtra(Constants.EXTRA_SECTION_ID, tSectionID);
+
+
+        startActivityForResult(i, 1);
+        openActivity.pageTransition();
+    }
+
+    public void openSectionTest(View view) {
+
+        Intent i = new Intent(this, PracticeActivity.class);
 
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
         i.putExtra(Constants.EXTRA_SECTION_ID, tSectionID);

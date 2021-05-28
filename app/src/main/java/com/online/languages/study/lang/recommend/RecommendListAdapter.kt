@@ -26,7 +26,6 @@ open class RecommendListAdapter(context: Context?, var list: ArrayList<TaskItem>
 
     var context: Context? = null
 
-
     init {
         this.context = context
     }
@@ -173,7 +172,7 @@ open class RecommendListAdapter(context: Context?, var list: ArrayList<TaskItem>
         container.tvProgress.text = taskInfo
 
         if (task.sectionStats.masteredPercent < 2) {
-            container.tvTaskAction.text = "Изучайте раздел"
+            container.tvTaskAction.text = context!!.getString(R.string.task_start_section)
         }
 
         if (task.sectionStats.masteredPercent > 96) {

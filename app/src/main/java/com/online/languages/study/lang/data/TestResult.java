@@ -1,6 +1,7 @@
 package com.online.languages.study.lang.data;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.online.languages.study.lang.DBHelper;
 
@@ -33,7 +34,7 @@ public class TestResult {
     }
 
 
-    public TestResult(Context _context, ArrayList<DataItem> _data) {
+    public TestResult(Context _context, ArrayList<DataItem> _data, int type) {
         dataItems = new ArrayList<>(_data);
         context  = _context;
         dbHelper = new DBHelper(context );
@@ -49,7 +50,56 @@ public class TestResult {
         errorSections = new ArrayList<>();
         errorCategories = new ArrayList<>();
 
-        getData();
+        if (type == 1) getDataDirect();
+        else  getData();
+    }
+
+
+    public void getDataDirect() {
+
+        ResultCategory resultCategory = new ResultCategory();
+
+        for (DataItem dataItem: dataItems) {
+
+            if (dataItem.testError == 1) {
+                testErrors.add(dataItem);
+            }
+
+            if (dataItem.testError == -1) {
+
+                unanswered.add(dataItem);
+            }
+
+            if (dataItem.testError != 0) {
+
+                resultCategory.errors.add(dataItem);
+
+            }
+
+            resultCategory.dataItems.add(dataItem);
+
+            if (resultCategory.dataItems.size() > 0) {
+
+                String str = "";
+
+                str = getCategoryContent(resultCategory, str);
+
+                resultCategory.content = str;
+
+                 Log.i("ResCont", str);
+            }
+
+        }
+
+        resultCategory.title = "Test";
+
+        categories.add(resultCategory);
+        sections.add(resultCategory);
+
+        errorSections = getErrorCats(sections);
+        errorCategories = getErrorCats(categories);
+
+        //structureData();
     }
 
 
@@ -104,13 +154,7 @@ public class TestResult {
 
                     String str = "";
 
-                    for (int i = 0; i< category.errors.size(); i++) {
-
-                        DataItem dataItem = category.errors.get(i);
-
-                        if (i!=0) str += "<br><br>";
-                        str = str + "<b>" + dataItem.item + "</b><br>" + dataItem.info;
-                    }
+                    str = getCategoryContent(section, str);
 
                     category.content = str;
                     categories.add(category);
@@ -122,13 +166,7 @@ public class TestResult {
 
                 String str = "";
 
-                for (int i = 0; i< section.errors.size(); i++) {
-
-                    DataItem dataItem = section.errors.get(i);
-
-                    if (i!=0) str += "<br><br>";
-                    str = str + "<b>" + dataItem.item + "</b><br>" + dataItem.info;
-                }
+                str = getCategoryContent(section, str);
 
                 section.content = str;
                 sections.add(section);
@@ -138,6 +176,18 @@ public class TestResult {
         errorSections = getErrorCats(sections);
         errorCategories = getErrorCats(categories);
 
+    }
+
+    private String getCategoryContent(ResultCategory category, String str) {
+
+        for (int i = 0; i < category.errors.size(); i++) {
+
+            DataItem dataItem = category.errors.get(i);
+
+            if (i != 0) str += "<br><br>";
+            str = str + "<b>" + dataItem.item + "</b><br>" + dataItem.info;
+        }
+        return str;
     }
 
     public ArrayList<ResultCategory> getErrorCats(ArrayList<ResultCategory> cats) {

@@ -9,9 +9,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.practice.QuestData;
+import com.online.languages.study.lang.practice.QuestManager;
 import com.online.languages.study.lang.tools.Computer;
 
 import java.text.SimpleDateFormat;
@@ -42,6 +46,7 @@ import static com.online.languages.study.lang.Constants.SET_SIMPLIFIED;
 import static com.online.languages.study.lang.Constants.SET_STATS;
 import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
 import static com.online.languages.study.lang.Constants.TEST_CATS_MAX_FOR_BEST;
+import static com.online.languages.study.lang.Constants.TEST_OPTIONS_NUM;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
@@ -991,6 +996,90 @@ public class DataManager {
 
 
 
+    public ArrayList<ExerciseTask> getQuestsByCatIds(String[] strIds) {
+
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
+
+        ArrayList<QuestData> questsByCatIds = dbHelper.getQuestsByCatIds(ids);
+
+        ArrayList<ExerciseTask> tasks = new ArrayList<>();
+
+        for (QuestData quest: questsByCatIds) {
+
+            ExerciseTask exerciseTask = getExerciseTaskFromQuest(quest);
+
+            tasks.add(exerciseTask);
+
+        }
+
+        return tasks;
+    }
+
+
+    public ArrayList<ExerciseTask> getSortedQuestsByCatIds(String[] strIds, int exerciseType) {
+
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
+
+        ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedQuestsByCatIds(ids);
+
+        QuestManager questManager = new QuestManager(questsByCatIds);
+        questManager.setExerciseType(exerciseType);
+
+        questManager.processData();
+
+        ArrayList<QuestData>  quests = questManager.getMainList();
+
+        ArrayList<ExerciseTask> tasks = new ArrayList<>();
+
+        for (QuestData quest: quests) {
+
+            ExerciseTask exerciseTask = getExerciseTaskFromQuest(quest);
+
+            tasks.add(exerciseTask);
+
+        }
+
+        return tasks;
+    }
+
+
+
+
+    @NonNull
+    private ExerciseTask getExerciseTaskFromQuest(QuestData quest) {
+        ExerciseTask exerciseTask = new ExerciseTask();
+
+        exerciseTask.quest = quest.getQuest();
+        exerciseTask.questInfo = quest.getCorrect();
+        exerciseTask.options = new ArrayList<>();
+
+        exerciseTask.data = new DataItem();
+        exerciseTask.data.item = exerciseTask.quest ;
+
+        exerciseTask.data.pronounce = !quest.getPronounce().equals("")? quest.getPronounce(): exerciseTask.quest;
+
+        String optString = quest.getOptions();
+        String[] options = optString.split("\\|");
+
+        Collections.addAll(exerciseTask.options, options);
+        Collections.shuffle(exerciseTask.options);
+
+        int optNum = TEST_OPTIONS_NUM - 1;
+
+        if (exerciseTask.options.size() > optNum ) {
+            exerciseTask.options = new ArrayList<>(exerciseTask.options.subList(0, optNum));
+        }
+
+        exerciseTask.options.add(0, quest.getCorrect());
+
+        exerciseTask.savedInfo = quest.getId();
+
+        DataItem dataItem = new DataItem(exerciseTask.quest, exerciseTask.questInfo);
+        dataItem.id = exerciseTask.savedInfo;
+
+
+        return exerciseTask;
+    }
 
 
 }

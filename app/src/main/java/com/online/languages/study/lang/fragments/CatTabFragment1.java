@@ -35,6 +35,7 @@ import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.SHOW_DIVIDER;
 
 
 public class CatTabFragment1 extends Fragment {
@@ -165,12 +166,11 @@ public class CatTabFragment1 extends Fragment {
     public void updateList() {
 
         getDataList();
-        adapter = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_NORM);
-
+        adapter = new ContentAdapter(getActivity(), data, showStatus, theme, !SHOW_DIVIDER, CAT_LIST_VIEW_NORM);
 
         recyclerView.setAdapter(adapter);
 
-        adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_COMPACT);
+        adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, !SHOW_DIVIDER, CAT_LIST_VIEW_COMPACT);
         recyclerViewCompact.setAdapter(adapterCompact);
 
         adapterCard = new ContentCardAdapter(getActivity(), data, showStatus, theme, false, CAT_LIST_VIEW_CARD, (CatActivity)getActivity());

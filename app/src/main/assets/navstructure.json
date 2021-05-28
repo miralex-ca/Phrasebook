@@ -27,9 +27,9 @@
 
         {"parent": "root", "type": "set", "id": "set_1_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100100110", "title": "Приветствия и прощания", "review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100120", "title": "Формулы вежливости","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100130", "title": "Знание языка","review":  "true"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100110", "title": "Приветствия и прощания", "review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100120", "title": "Формулы вежливости","review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100130", "title": "Знание языка","review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Полезная информация"},
 

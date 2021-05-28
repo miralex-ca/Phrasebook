@@ -784,6 +784,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="task_continue_topic">Continue learning the topic</string>
     <string name="task_start_topic">Start learning the topic</string>
     <string name="task_revise_topic">Revise items in the topic</string>
+    <string name="task_start_section">Start learning the section</string>
     <string name="task_continue_section">Continue learning the section</string>
     <string name="review_mastered_section">Review the section</string>
 

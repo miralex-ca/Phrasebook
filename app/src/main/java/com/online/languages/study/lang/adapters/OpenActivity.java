@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.CatSimpleListActivity;
 import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.GalleryActivity;
 import com.online.languages.study.lang.ImageListActivity;
 import com.online.languages.study.lang.MapActivity;
@@ -18,8 +19,14 @@ import com.online.languages.study.lang.MapListActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.SubSectionActivity;
 import com.online.languages.study.lang.TextActivity;
+import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
+import com.online.languages.study.lang.practice.CallActivity;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
 import static com.online.languages.study.lang.Constants.CAT_SPEC_TEXT;
@@ -27,16 +34,20 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
-public class OpenActivity  {
+public class OpenActivity  implements CallActivity {
 
     Context context;
     private int requestCode = 1;
     private String transition;
+    public boolean callCustomAct;
+    public boolean openExTab;
 
     public OpenActivity(Context _context) {
         context = _context;
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         transition = appSettings.getString("set_transition", context.getResources().getString(R.string.set_transition_default));
+        callCustomAct = false;
+        openExTab = false;
     }
 
 
@@ -57,15 +68,27 @@ public class OpenActivity  {
         intent.putExtra(Constants.EXTRA_CAT_ID, cat_id);
         intent.putExtra("cat_title", title);
         intent.putExtra(Constants.EXTRA_CAT_SPEC, spec);
+        if (openExTab ) intent.putExtra("open_tab_1", PARAM_EMPTY);
         return intent;
     }
 
 
     public void callActivity(Intent intent) {
-        ((Activity) context).startActivityForResult(intent, requestCode);
-        pageTransition();
-        requestCode = 1;
+
+        if (callCustomAct) {
+            callActivityWithIntent(intent);
+            pageTransition();
+        } else {
+
+            ((Activity) context).startActivityForResult(intent, requestCode);
+            pageTransition();
+            requestCode = 1;
+
+        }
+
     }
+
+
 
 
     public void setOrientation() {
@@ -114,6 +137,23 @@ public class OpenActivity  {
                     break;
             }
         }
+    }
+
+    public void openMultiTest(String cat_id, String title, int testType) {
+
+        Intent intent = createIntent(context, ExerciseActivity.class);
+
+        intent.putExtra(Constants.EXTRA_CAT_TAG, cat_id);
+
+        intent.putExtra("ex_type", testType);
+        intent.putExtra("cat_title", title);
+        intent.putExtra("multichoice", true);
+
+        intent.putParcelableArrayListExtra("dataItems", new ArrayList<DataItem>());
+
+        ((Activity) context).startActivityForResult(intent, requestCode);
+
+        pageTransition();
     }
 
     public void openSection(Intent intent, NavStructure navStructure, String section_id, String parent) {
@@ -225,6 +265,8 @@ public class OpenActivity  {
     }
 
 
-
+    @Override
+    public void callActivityWithIntent(@NotNull Intent intent) {
 
     }
+}

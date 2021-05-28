@@ -14,12 +14,13 @@ import android.widget.TextView;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.ViewCategory;
+import com.online.languages.study.lang.practice.OnSectionCatsListClick;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 
-public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyViewHolder> {
+public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyViewHolder> implements OnSectionCatsListClick {
 
 
     private Context context;
@@ -36,6 +37,8 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
 
     Boolean full_version;
     Boolean show;
+
+
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -116,6 +119,13 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
         holder.sectionItemBox.setTag(position);
 
 
+        holder.sectionItemBox.setOnClickListener(view -> {
+
+            clickOnListItem(position);
+
+        });
+
+
         String title = category.title;
 
         if (!category.desc.equals("")) {
@@ -151,26 +161,7 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
         }
 
 
-
-        if (progress > 0) {
-            holder.progressBox.setVisibility(View.VISIBLE);
-            holder.progressTxt.setText(progress + "%");
-
-            holder.progressTxt.setTextColor(colorProgress.setCatColorFromAttr(progress));
-
-            if (progress > 95 ) {
-                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_perfect);
-            } else if (progress > 79) {
-                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_great);
-            } else if (progress > 49) {
-                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_good);
-            } else if (progress > 20) {
-                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_bad);
-            } else {
-                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_low);
-            }
-        }
-
+        displayProgress(holder, progress);
 
 
         if (!dataSelect.equals("all")) {
@@ -199,15 +190,38 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
 
         holder.title.setText(title);
 
+        addCatImage(holder, category);
 
+    }
 
+    private void addCatImage(MyViewHolder holder, ViewCategory category) {
         Picasso.with(context )
                 .load("file:///android_asset/pics/"+ category.image)
                 // .transform(new RoundedTransformation(0,0))
                 .fit()
                 .centerCrop()
                 .into(holder.image);
+    }
 
+    private void displayProgress(MyViewHolder holder, int progress) {
+        if (progress > 0) {
+            holder.progressBox.setVisibility(View.VISIBLE);
+            holder.progressTxt.setText(progress + "%");
+
+            holder.progressTxt.setTextColor(colorProgress.setCatColorFromAttr(progress));
+
+            if (progress > 95 ) {
+                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_perfect);
+            } else if (progress > 79) {
+                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_great);
+            } else if (progress > 49) {
+                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_good);
+            } else if (progress > 20) {
+                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_bad);
+            } else {
+                holder.progressCircle.setImageResource(R.drawable.ic_cat_progress_low);
+            }
+        }
     }
 
     @Override
@@ -216,5 +230,9 @@ public class CatsListAdapter extends RecyclerView.Adapter<CatsListAdapter.MyView
     }
 
 
+    @Override
+    public void clickOnListItem(int position) {
+
+    }
 
 }

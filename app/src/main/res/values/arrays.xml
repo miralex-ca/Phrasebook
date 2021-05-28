@@ -333,12 +333,13 @@
     <string-array name="set_tasks_nav_list">
         <item>@string/set_tasks_nav_home</item>
         <item>@string/set_tasks_nav_menu</item>
-        <item>@string/set_tasks_nav_none</item>
+        <!-- item>@string/set_tasks_nav_none</item -->
     </string-array>
 
     <string-array name="set_tasks_nav_values">
         <item>home</item>
         <item>menu</item>
+        <item>none</item>
     </string-array>
 
     <string name="set_tasks_nav_default" translatable="false">home</string>

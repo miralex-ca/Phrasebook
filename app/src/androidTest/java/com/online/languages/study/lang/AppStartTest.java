@@ -63,12 +63,9 @@ public class AppStartTest {
         DataManager dataManager = new DataManager(mActivityTestRule.getActivity());
         dataManager.getParams();
 
-
         waitTime(250);
 
-
         onView(withId(R.id.tab_layout)).perform(selectTabAtPosition(0));
-
 
         waitTime(250);
 

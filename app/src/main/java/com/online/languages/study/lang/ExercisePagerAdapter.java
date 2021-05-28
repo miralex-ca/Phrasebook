@@ -33,6 +33,7 @@ import java.util.Random;
 
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.TASK_DELAY_CORRECT;
 import static com.online.languages.study.lang.Constants.TASK_DELAY_INCORRECT;
 
@@ -40,7 +41,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     private Context context;
     private ArrayList<ExerciseTask> tasks;
-
 
     private int type = 1;
 
@@ -160,7 +160,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         exerciseTask.correct = correctOptionIndex;
 
-
         for (int i = 0; i < optionLen; i++) {
             buildRadio(inflater, radioGroup);
         }
@@ -205,7 +204,7 @@ class ExercisePagerAdapter extends PagerAdapter {
                 public void onClick(View v) {
                     if (!ExerciseActivity.exCheckedStatus) {
                         int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
-                        RadioButton checkedRadioButton = (RadioButton) radioGroup.findViewById(checkedRadioButtonId);
+                        RadioButton checkedRadioButton = radioGroup.findViewById(checkedRadioButtonId);
                         if (checkedRadioButton != null) {
 
                                 setDefaultRadio(radioGroup);
@@ -328,7 +327,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         radiogroup.setTag(correctTag);
         for (int i = 0; i < radiogroup.getChildCount(); i++) {
 
-            String optionTxt = task.options.get(i);
+            String optionTxt = task.options.get(i).trim();
 
             RadioButton radio = (RadioButton) radiogroup.getChildAt(i);
 
@@ -427,14 +426,10 @@ class ExercisePagerAdapter extends PagerAdapter {
         if (checkedIndex == correctTag) {
             if (ExerciseActivity.exButtonShow) {
                 if (addToCorrect) {
-                    ExerciseActivity.correctAnswers++;
-                    if ( saveStats && !savedInfo.equals("") ) dbHelper.setWordResult(savedInfo);
-                    saveCompleted(savedInfo, 0);
+                    saveCorrect(saveStats, savedInfo);
                 }
             } else {
-                ExerciseActivity.correctAnswers++;
-                if ( saveStats && !savedInfo.equals("") )  dbHelper.setWordResult(savedInfo);
-                saveCompleted(savedInfo, 0);
+                saveCorrect(saveStats, savedInfo);
             }
 
 
@@ -450,16 +445,12 @@ class ExercisePagerAdapter extends PagerAdapter {
 
             showWrong(radioGroup);
 
-
-
             if (ExerciseActivity.exButtonShow) {
                 if (addToCorrect) {
-                    if ( saveStats && !savedInfo.equals("") )  dbHelper.setError(savedInfo);
-                    saveCompleted(savedInfo, 1);
+                    saveError(saveStats, savedInfo);
                 }
             } else {
-                if ( saveStats && !savedInfo.equals("") )  dbHelper.setError(savedInfo);
-                saveCompleted(savedInfo, 1);
+                saveError(saveStats, savedInfo);
             }
 
 
@@ -468,6 +459,31 @@ class ExercisePagerAdapter extends PagerAdapter {
         return correct_answer;
     }
 
+    private void saveError(Boolean saveStats, String savedInfo) {
+        if (saveStats && !savedInfo.equals("")) {
+
+                dbHelper.setError(savedInfo);
+
+        }
+        saveCompleted(savedInfo, 1);
+    }
+
+    private void saveCorrect(Boolean saveStats, String savedInfo) {
+        ExerciseActivity.correctAnswers++;
+        if (saveStats && !savedInfo.equals(PARAM_EMPTY)) {
+            if (savedInfo.contains("pr_")) {
+
+                dbHelper.setPracticeTask(savedInfo, type, "");
+
+            } else {
+
+                dbHelper.setWordResult(savedInfo);
+            }
+
+
+        }
+        saveCompleted(savedInfo, 0);
+    }
 
 
     private void insertImage (ExerciseTask task, View itemView, int position) {

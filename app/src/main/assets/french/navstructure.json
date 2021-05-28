@@ -27,9 +27,9 @@
 
         {"parent": "root", "type": "set", "id": "set_1_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100100110", "title": "Приветствия и прощания", "review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100120", "title": "Формулы вежливости","review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100100130", "title": "Знание языка","review":  "true"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100110", "title": "Приветствия и прощания", "review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100120", "title": "Формулы вежливости","review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100100130", "title": "Знание языка","review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_1_3", "title": "Полезная информация"},
 
@@ -56,9 +56,9 @@
 
         {"parent": "root", "type": "set", "id": "set_2_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100200210", "title": "В гостинице"},
-        {"parent": "root", "type": "simple", "id": "100200220", "title": "На экскурсии"},
-        {"parent": "root", "type": "simple", "id": "100200230", "title": "Аренда автомобиля"}
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100200210", "title": "В гостинице"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100200220", "title": "На экскурсии"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100200230", "title": "Аренда автомобиля"}
 
       ]
     },
@@ -81,8 +81,8 @@
         {"parent": "root", "type": "simple", "id": "100300060", "title": "Автомобиль", "image": "cat/car_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_3_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100300110", "title": "В городе"},
-        {"parent": "root", "type": "simple", "id": "100300120", "title": "В транспорте"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100300110", "title": "В городе"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100300120", "title": "В транспорте"},
 
         {"parent": "root", "type": "set", "id": "set_3_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100300210", "title": "Вывески, таблички","review":  "false"}
@@ -108,8 +108,8 @@
         {"parent": "root", "type": "simple", "id": "100400060", "title": "Парфюмерия", "image": "cat/perfume_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_4_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100400110", "title": "В магазине"},
-        {"parent": "root", "type": "simple", "id": "100400120", "title": "Оплата на кассе", "review":  "true"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100400110", "title": "В магазине"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100400120", "title": "Оплата на кассе", "review":  "true"},
 
         {"parent": "root", "type": "set", "id": "set_4_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100400210", "title": "Нижнее белье","review":  "false"},
@@ -139,9 +139,9 @@
         {"parent": "root", "type": "simple", "id": "100500070", "title": "Напитки", "image": "cat/drink_cat.png"},
 
         {"parent": "root", "type": "set", "id": "set_5_2", "title": "Фразы"},
-        {"parent": "root", "type": "simple", "id": "100500110", "title": "В ресторане"},
-        {"parent": "root", "type": "simple", "id": "100500120", "title": "В баре"},
-        {"parent": "root", "type": "simple", "id": "100500130", "title": "Заказ еды по телефону"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100500110", "title": "В ресторане"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100500120", "title": "В баре"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100500130", "title": "Заказ еды по телефону"},
 
         {"parent": "root", "type": "set", "id": "set_5_3", "title": "Дополнительные темы"},
         {"parent": "root", "type": "extra", "id": "100500210", "title": "Ягоды", "review":  "false"},
@@ -173,8 +173,8 @@
 
         {"parent": "root", "type": "set", "id": "set_6_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100600110", "title": "О погоде"},
-        {"parent": "root", "type": "simple", "id": "100600120", "title": "На природе", "review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100600110", "title": "О погоде"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100600120", "title": "На природе", "review":  "false"},
 
         {"parent": "root", "type": "set", "id": "set_6_3", "title": "Дополнительные темы"},
 
@@ -207,9 +207,9 @@
 
         {"parent": "root", "type": "set", "id": "set_7_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100700110", "title": "У врача"},
-        {"parent": "root", "type": "simple", "id": "100700120", "title": "Симптомы", "review":  "false"},
-        {"parent": "root", "type": "simple", "id": "100700130", "title": "В аптеке"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100700110", "title": "У врача"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100700120", "title": "Симптомы", "review":  "false"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100700130", "title": "В аптеке"},
 
         {"parent": "root", "type": "set", "id": "set_7_3", "title": "Дополнительные темы"},
 
@@ -239,8 +239,8 @@
 
         {"parent": "root", "type": "set", "id": "set_8_2", "title": "Фразы"},
 
-        {"parent": "root", "type": "simple", "id": "100800110", "title": "Мой дом"},
-        {"parent": "root", "type": "simple", "id": "100800120", "title": "Аренда жилья"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100800110", "title": "Мой дом"},
+        {"parent": "root", "type": "simple", "spec": "phrases", "id": "100800120", "title": "Аренда жилья"},
 
         {"parent": "root", "type": "set", "id": "set_8_3", "title": "Дополнительные темы"},
 

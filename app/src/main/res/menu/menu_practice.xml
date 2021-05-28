@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:icon="@drawable/ic_delete_toolbar"
+        android:id="@+id/delete_note"
+        android:orderInCategory="100"
+        android:title="@string/menu_delete_note"
+        app:showAsAction="never" />
+
+
+</menu>

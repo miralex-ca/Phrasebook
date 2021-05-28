@@ -393,6 +393,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         Intent intent = new Intent(ExerciseActivity.this, ExerciseResultActivity.class);
 
+        if (getIntent().hasExtra("practice"))  intent.putExtra("multichoice", true);
+
 
         ArrayList<DataItem> results = new ArrayList<>();
 
@@ -400,7 +402,10 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             DataItem item = new DataItem();
             item.id = task.savedInfo;
+            item.item = task.quest;
+            item.info = task.questInfo;
             item.testError = -1;
+
 
             for (DataItem dataItem: completed) {
                 if (task.savedInfo.equals(dataItem.id)) {
@@ -477,12 +482,35 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
         exerciseAllData.generateTasks(data);
+
+        if (getIntent().hasExtra("multichoice")) {
+
+            exerciseAllData.getMultiChoiceTaskList(topicTag); // also check TestResult getDataDirect()
+
+            if (exerciseAllData.tasks.size() > limit) {
+
+                Collections.shuffle(exerciseAllData.tasks);
+
+                exerciseAllData.tasks = new ArrayList<>(exerciseAllData.tasks.subList(0, limit));
+            }
+        }
+
         exerciseAllData.shuffleTasks();
+
+
+        if (getIntent().hasExtra("practice")) {
+
+            if (getIntent().hasExtra("ids")) {
+
+                exerciseAllData.tasks = dataManager.getSortedQuestsByCatIds(  getIntent().getStringArrayExtra("ids") , exType );
+
+            }
+        }
+
 
         exerciseController.tasks = exerciseAllData.tasks;
 
     }
-
 
 
     private void startExercise(){

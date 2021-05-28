@@ -783,6 +783,7 @@
     <string name="task_start_topic">Начните изучать новую тему</string>
     <string name="task_revise_topic">Повторите записи в разделе</string>
     <string name="task_continue_section">Продолжите изучать раздел</string>
+    <string name="task_start_section">Изучайте раздел</string>
     <string name="task_btn_section">Раздел</string>
     <string name="task_btn_section_stats">Статистика</string>
     <string name="task_section_links">Ссылки на словарные разделы</string>
