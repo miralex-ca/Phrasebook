@@ -113,38 +113,24 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         View itemView = inflater.inflate(R.layout.exercise_item, container, false);
 
-
-        if (ExerciseActivity.exType == 2) {
-          //  itemView = inflater.inflate(R.layout.exercise_item_tr, container, false);
-
-          //  type = 2;
-        }
-
         type = ExerciseActivity.exType; // TODO remove
 
         exerciseTask = new ExerciseTask(tasks.get(position));
 
         TextView text = itemView.findViewById(R.id.fCardText);
         TextView transcript = itemView.findViewById(R.id.fTranscriptBox);
-
         final RadioGroup radioGroup = itemView.findViewById(R.id.radioGroup1);
 
         radioGroup.removeAllViews();
-
-        int paddingDp = 10;
-        float density = context.getResources().getDisplayMetrics().density;
-        int paddingPixel = (int)(paddingDp * density);
-
-
-        radioGroup.setPadding(paddingPixel,0,0,0);  //// left paadding for options
+        setGroupPadding(radioGroup);
 
         lessOptions = false;
         int longCount = 0;
         for (String optionTxt: exerciseTask.options) {
             if (optionTxt.length() > textLongNum) longCount++;
         }
-        if (longCount > 1) lessOptions = true;
 
+        if (longCount > 1) lessOptions = true;
 
 
         if (lessOptions) {
@@ -160,16 +146,7 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         exerciseTask.correct = correctOptionIndex;
 
-        for (int i = 0; i < optionLen; i++) {
-            buildRadio(inflater, radioGroup);
-        }
-
-
         LinearLayout quest = itemView.findViewById(R.id.exQuest);
-
-        if (!ExerciseActivity.exShowTranscript || ExerciseActivity.exType == 2) {
-            transcript.setVisibility(View.GONE);
-        }
 
         if (ExerciseActivity.exButtonShow) {
             changeHeight(quest, ExerciseActivity.exTxtHeight);
@@ -180,50 +157,29 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         text.setText( exerciseTask.quest);
         setTextStyle(text, exerciseTask.quest);
-
         transcript.setText( exerciseTask.questInfo );
+
+        if (!ExerciseActivity.exShowTranscript || ExerciseActivity.exType == 2) {
+            transcript.setVisibility(View.GONE);
+        }
 
         if (type == EX_IMG_TYPE ) {
             insertImage(exerciseTask, itemView, position);
         }
 
-
         if (type == EX_AUDIO_TYPE ) {
              insertAudio(exerciseTask, itemView, position);
         }
 
+
+        insertOptions(inflater, radioGroup, optionLen);
         setExOptions(radioGroup, exerciseTask);
+        setResponsesClick(position, radioGroup);
 
-
-        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-
-            RadioButton radio = (RadioButton) radioGroup.getChildAt(i);
-
-            radio.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!ExerciseActivity.exCheckedStatus) {
-                        int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
-                        RadioButton checkedRadioButton = radioGroup.findViewById(checkedRadioButtonId);
-                        if (checkedRadioButton != null) {
-
-                                setDefaultRadio(radioGroup);
-                                checkedRadioButton.setTextColor( ContextCompat.getColor(  context , activeColor) );
-                            if (!ExerciseActivity.exButtonShow) {
-                                ExerciseActivity.exCheckedStatus = true;
-                                checkItem(radioGroup, position);
-                            }
-                        }
-                    }
-                }
-            });
-
-        }
 
         itemView.setTag("myview" + position);
+
         container.addView(itemView);
-
-
 
         return itemView;
 
@@ -232,7 +188,58 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     }
 
+    private void insertOptions(LayoutInflater inflater, RadioGroup radioGroup, int optionLen) {
+        for (int i = 0; i < optionLen; i++) {
+            buildRadio(inflater, radioGroup);
+        }
+    }
 
+    private void setGroupPadding(RadioGroup radioGroup) {
+        int paddingDp = 10;
+        float density = context.getResources().getDisplayMetrics().density;
+        int paddingPixel = (int)(paddingDp * density);
+        radioGroup.setPadding(paddingPixel,0,0,0);  //// left paadding for options
+    }
+
+    private void setResponsesClick(int position, RadioGroup radioGroup) {
+
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+
+            RadioButton radio = (RadioButton) radioGroup.getChildAt(i);
+
+            radio.setOnClickListener(v -> {
+
+                if (!ExerciseActivity.exCheckedStatus) {
+
+                    RadioButton checkedRadioButton = getCheckedItem(radioGroup);
+
+                    if (checkedRadioButton != null) {
+
+                        highlightCheckedItem(radioGroup, checkedRadioButton);
+
+                        if (!ExerciseActivity.exButtonShow) {
+
+                            ExerciseActivity.exCheckedStatus = true;
+                            checkItem(radioGroup, position);
+
+                        }
+                    }
+                }
+
+            });
+
+        }
+    }
+
+    private RadioButton getCheckedItem(RadioGroup radioGroup) {
+        int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+        return radioGroup.findViewById(checkedRadioButtonId);
+    }
+
+    private void highlightCheckedItem(RadioGroup radioGroup, RadioButton checkedRadioButton) {
+        setDefaultRadio(radioGroup);
+        checkedRadioButton.setTextColor( ContextCompat.getColor(  context , activeColor) );
+    }
 
 
     private void changeHeight(LinearLayout quest, int height) {
@@ -289,6 +296,7 @@ class ExercisePagerAdapter extends PagerAdapter {
 
 
         radio.setLayoutParams(new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT));
+
         radioGroup.addView(radio);
 
     }
@@ -302,11 +310,8 @@ class ExercisePagerAdapter extends PagerAdapter {
             textView.setTypeface(null, Typeface.BOLD);
         }
 
-
         int questLongTextSize = textLongSize(text);
         textView.setTextSize(questLongTextSize);
-
-
 
     }
 
@@ -324,6 +329,7 @@ class ExercisePagerAdapter extends PagerAdapter {
     private void setExOptions(RadioGroup radiogroup, ExerciseTask task) {
 
         int[] correctTag = new int[]{ task.correct };
+
         radiogroup.setTag(correctTag);
         for (int i = 0; i < radiogroup.getChildCount(); i++) {
 
@@ -401,27 +407,15 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         Boolean saveStats = ExerciseActivity.saveStats;
 
+        int checkedIndex = -1;
+
         int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
         RadioButton checkedRadioButton = (RadioButton)radioGroup.findViewById(checkedRadioButtonId);
-        int checkedIndex = radioGroup.indexOfChild(checkedRadioButton);
+        checkedIndex = radioGroup.indexOfChild(checkedRadioButton);
 
-        int[] data = (int[]) radioGroup.getTag() ;
-        int correctTag = data[0];
-
-        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-            RadioButton radio = (RadioButton) radioGroup.getChildAt(i);
-            radio.setEnabled(false);
-            radio.setTextColor(ContextCompat.getColor(context, disableColor));
-
-            if (i == correctTag) {
-                radio.setTextColor(ContextCompat.getColor(context, R.color.radio_correct));
-            }
-        }
-
-
+        int correctTag = getCorrectTag(radioGroup);
 
         String savedInfo = tasks.get(position).savedInfo;  ///// must get position
-
 
         if (checkedIndex == correctTag) {
             if (ExerciseActivity.exButtonShow) {
@@ -432,18 +426,13 @@ class ExercisePagerAdapter extends PagerAdapter {
                 saveCorrect(saveStats, savedInfo);
             }
 
-
             correct_answer = true;
             showCorrect(radioGroup);
 
         }else{
 
-            if (checkedRadioButton != null) {
-                checkedRadioButton.setTextColor(ContextCompat.getColor(context, R.color.red_snack));
-                checkedRadioButton.setPaintFlags(checkedRadioButton.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            }
-
-            showWrong(radioGroup);
+            highlightError(checkedRadioButton);
+            showErrorBanner(radioGroup);
 
             if (ExerciseActivity.exButtonShow) {
                 if (addToCorrect) {
@@ -452,11 +441,38 @@ class ExercisePagerAdapter extends PagerAdapter {
             } else {
                 saveError(saveStats, savedInfo);
             }
-
-
         }
 
         return correct_answer;
+    }
+
+    private void highlightError(RadioButton checkedRadioButton) {
+        if (checkedRadioButton != null) {
+            checkedRadioButton.setTextColor(ContextCompat.getColor(context, R.color.red_snack));
+            checkedRadioButton.setPaintFlags(checkedRadioButton.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+    }
+
+    private int getCorrectTag(RadioGroup radioGroup) {
+
+        int[] data = (int[]) radioGroup.getTag() ;
+        int correctTag = data[0];
+
+        highlightCorrect(radioGroup, correctTag);
+
+        return correctTag;
+    }
+
+    private void highlightCorrect(RadioGroup radioGroup, int correctTag) {
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            RadioButton radio = (RadioButton) radioGroup.getChildAt(i);
+            radio.setEnabled(false);
+            radio.setTextColor(ContextCompat.getColor(context, disableColor));
+
+            if (i == correctTag) {
+                radio.setTextColor(ContextCompat.getColor(context, R.color.radio_correct));
+            }
+        }
     }
 
     private void saveError(Boolean saveStats, String savedInfo) {
@@ -555,7 +571,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         ExerciseActivity.showCheckResult (view, message, background, textColor);
     }
 
-    private void showWrong (View view) {
+    private void showErrorBanner(View view) {
         String message = context.getResources().getString(R.string.ex_txt_incorrect);
         int background = ContextCompat.getColor(context, R.color.red_snack);
         int textColor = ContextCompat.getColor(context, R.color.red_snack_txt);
