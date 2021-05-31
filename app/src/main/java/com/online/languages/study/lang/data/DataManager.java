@@ -323,6 +323,8 @@ public class DataManager {
     }
 
 
+
+
     private class TimeStarredComparator implements Comparator<DataItem> {
         @Override
         public int compare(DataItem o1, DataItem o2) {
@@ -1042,21 +1044,51 @@ public class DataManager {
         return tasks;
     }
 
+    public ArrayList<ExerciseTask> getSortedBuildQuestsByCatIds(String[] strIds, int exerciseType) {
+
+        ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
+
+        ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedBuildQuestsByCatIds(ids);
+
+        QuestManager questManager = new QuestManager(questsByCatIds);
+        questManager.setExerciseType(exerciseType);
+
+        questManager.processData();
+
+        ArrayList<QuestData>  quests = questManager.getMainList();
+
+        ArrayList<ExerciseTask> tasks = new ArrayList<>();
+
+        for (QuestData quest: quests) {
+
+            ExerciseTask exerciseTask = getBuildExerciseTaskFromQuest(quest);
+
+            tasks.add(exerciseTask);
+
+        }
+
+        return tasks;
+    }
 
 
 
-    @NonNull
+
+
     private ExerciseTask getExerciseTaskFromQuest(QuestData quest) {
         ExerciseTask exerciseTask = new ExerciseTask();
 
         exerciseTask.quest = quest.getQuest();
         exerciseTask.questInfo = quest.getCorrect();
-        exerciseTask.options = new ArrayList<>();
 
         exerciseTask.data = new DataItem();
         exerciseTask.data.item = exerciseTask.quest ;
 
         exerciseTask.data.pronounce = !quest.getPronounce().equals("")? quest.getPronounce(): exerciseTask.quest;
+
+        exerciseTask.option = quest.getOptions();
+
+        exerciseTask.options = new ArrayList<>();
+        exerciseTask.answers = new ArrayList<>();
 
         String optString = quest.getOptions();
         String[] options = optString.split("\\|");
@@ -1081,5 +1113,63 @@ public class DataManager {
         return exerciseTask;
     }
 
+
+    private ExerciseTask getBuildExerciseTaskFromQuest(QuestData quest) {
+
+        ExerciseTask exerciseTask = new ExerciseTask();
+
+        exerciseTask.quest = quest.getQuest();
+        exerciseTask.questInfo = quest.getCorrect();
+
+        exerciseTask.data = new DataItem();
+        exerciseTask.data.item = exerciseTask.quest ;
+
+        exerciseTask.option = quest.getOptions();
+
+        exerciseTask.params = quest.getParams();
+
+        exerciseTask.response = quest.getCorrect();
+        exerciseTask.data.pronounce = !quest.getPronounce().equals("")? quest.getPronounce(): exerciseTask.response;
+
+        exerciseTask.options = new ArrayList<>();
+        exerciseTask.answers = new ArrayList<>();
+
+        String answersString = quest.getCorrect();
+
+        String[] answers = answersString.split("\\|");
+
+        if (answers.length > 1) {
+            exerciseTask.response = answers[0];
+        }
+
+        Collections.addAll(exerciseTask.answers, answers);
+
+        exerciseTask.savedInfo = quest.getId();
+
+        DataItem dataItem = new DataItem(exerciseTask.quest, exerciseTask.questInfo);
+        dataItem.id = exerciseTask.savedInfo;
+
+        return exerciseTask;
+    }
+
+
+    public String getQuestParamValue(String paramsString, String searchedParam) {
+
+        String paramValue = "";
+
+        String[] params = paramsString.split("&");
+
+        for (String param: params) {
+
+            if (param.contains(searchedParam)) {
+                String[] paramSplit = param.split("=");
+
+                if (paramSplit.length >1) paramValue = paramSplit[1];
+                else paramValue = param;
+            }
+        }
+
+        return paramValue;
+    }
 
 }

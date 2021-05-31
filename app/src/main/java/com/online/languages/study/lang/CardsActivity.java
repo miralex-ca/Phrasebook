@@ -428,18 +428,28 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         String counterTxt = String.format(getResources().getString(R.string.f_counter_txt), position+1, wordListLength);
         fCounterInfoBox.setText(counterTxt);
 
-        if (!nextButton.isEnabled()) { nextButton.setEnabled(true);}
-        if (!prevButton.isEnabled()) { prevButton.setEnabled(true);}
+        if (!nextButton.isEnabled()) { enableButton(nextButton);}
+        if (!prevButton.isEnabled()) { enableButton(prevButton);}
 
         if (position == 0) {
-            prevButton.setEnabled(false);
+            disableButton(prevButton);
         } else if (position >=  (wordListLength-1) ){
-            nextButton.setEnabled(false);
+            disableButton(nextButton);
         }
 
 
          autoPlay(position);
 
+    }
+
+    private void disableButton(Button btn) {
+        btn.setEnabled(false);
+        btn.setAlpha(0.6f);
+    }
+
+    private static void enableButton(Button btn) {
+        btn.setEnabled(true);
+        btn.setAlpha(1.0f);
     }
 
     private void autoPlay(final int position) {

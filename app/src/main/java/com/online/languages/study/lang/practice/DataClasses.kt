@@ -35,6 +35,8 @@ data class QuestData(val quest: String, val correct: String, val options: String
     var countTr = 0
     var countAudio = 0
 
+    var params = ""
+
 }
 
 

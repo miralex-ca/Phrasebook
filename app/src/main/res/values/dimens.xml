@@ -221,7 +221,7 @@
     <dimen name="ex_btns_margin_top">8dp</dimen>
     <dimen name="ex_mark_txt_size">35sp</dimen>
     <dimen name="ex_mark_margin_top">25dp</dimen>
-    <dimen name="ex_mark_margin_bottom">30dp</dimen>
+    <dimen name="ex_mark_margin_bottom">20dp</dimen>
     <dimen name="ex_btn_rslt_side">20dp</dimen>
 
     <dimen name="ex_btn_rslt_txt_size">17sp</dimen>

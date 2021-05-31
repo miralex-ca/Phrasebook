@@ -28,6 +28,7 @@
 
 
     <string name="tests_file" translatable="false">tests/test_quests.json</string>
+    <string name="build_tests_file" translatable="false">tests/test_quests_build.json</string>
 
     <string name="locale_string" translatable="false">english</string>
 
@@ -42,7 +43,7 @@
     <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
     <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
 
-    <bool name="display_section_practice">false</bool>
+    <bool name="display_section_practice">true</bool>
 
 
 </resources>

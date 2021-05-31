@@ -1,0 +1,12 @@
+{
+  "data":
+  [
+
+    {"id": "tc_pr_100100010_1", "cat_id": "100100010", "quest": "Здравствуйте, Майкл!", "correct": "Hello, Michael!|Michael, hello!", "options": "hello Michael goodbye"},
+    {"id": "tc_pr_100100010_2", "cat_id": "100100010", "quest": "Доброе утро, Кэрол!", "correct": "Good morning, Carol!| Carol, good morning!", "options": "good morning Carol evening hi"},
+    {"id": "tc_pr_100100010_3", "cat_id": "100100010", "quest": "Добрый вечер, Пол!", "correct": "Good evening, Paul!", "options": "good evening Paul morning thanks"},
+    {"id": "tc_pr_100100010_4", "cat_id": "100100010", "quest": "До свидания, Хелен!", "correct": "Goodbye, Helen!", "options": "goodbye Helen"},
+    {"id": "tc_pr_100100010_5", "cat_id": "100100010", "quest": "Привет, Линда!", "correct": "Hi, Linda!", "options": "hi Linda bye how"},
+    {"id": "tc_pr_100100010_6", "cat_id": "100100010", "quest": "Спасибо, Марк!", "correct": "Thank you, Mark!", "options": "thank you Mark how are hi"}
+  ]
+}

@@ -17,6 +17,8 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.constructor.ConstructorActivity;
+import com.online.languages.study.lang.constructor.ExerciseBuildActivity;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavCategory;
@@ -86,6 +88,21 @@ public class PracticeFragment extends Fragment {
 
         binding.cardTestAudio.setOnClickListener(v-> openAudioTest ());
 
+        binding.cardTestConstructor.setOnClickListener(v-> {
+           // openConstructor();
+
+            openBuildTest("test_1", "Тест", 1);
+
+        });
+
+    }
+
+    private void openConstructor() {
+        Intent intent = new Intent(activityContext, ConstructorActivity.class);
+
+        startActivityForResult(intent, 1);
+
+        openActivity.pageTransition();
     }
 
     private void getData() {
@@ -173,6 +190,28 @@ public class PracticeFragment extends Fragment {
         openActivity.pageTransition();
     }
 
+
+    public void openBuildTest(String cat_id, String title, int testType) {
+
+        String[] stringArray = sectionStudiedIds.toArray(new String[0]);
+
+        Intent intent = new Intent(activityContext, ExerciseBuildActivity.class);
+
+        intent.putExtra(Constants.EXTRA_CAT_TAG, cat_id);
+
+        intent.putExtra("ex_type", testType);
+        intent.putExtra("cat_title", title);
+        intent.putExtra("practice", true);
+
+        intent.putExtra("ids", stringArray);
+
+        intent.putParcelableArrayListExtra("dataItems", new ArrayList<DataItem>());
+
+        startActivityForResult(intent, 1);
+
+        openActivity.pageTransition();
+
+    }
 
 
 

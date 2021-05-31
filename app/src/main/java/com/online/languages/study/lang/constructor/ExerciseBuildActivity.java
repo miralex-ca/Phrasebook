@@ -1,4 +1,4 @@
-package com.online.languages.study.lang;
+package com.online.languages.study.lang.constructor;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,13 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
@@ -35,6 +29,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.material.snackbar.Snackbar;
+import com.online.languages.study.lang.BaseActivity;
+import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.DBHelper;
+
+import com.online.languages.study.lang.ExerciseResultActivity;
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.ThemedActivity;
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
@@ -55,11 +63,9 @@ import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
 
-public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnInitListener {
+public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeech.OnInitListener {
 
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
+
 
 
     static String topicTag;
@@ -97,17 +103,16 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     public int exCardHeight = 330;
     public int exCardMoreHeight = 360;
 
-    private MenuItem exShowBtnRadio;
 
     private MenuItem exSaveStatsRadio;
     private static Snackbar mSnackbar;
 
     static CustomViewPager viewPager;
-    ExercisePagerAdapter viewPagerAdapter;
+    ExerciseBuildPagerAdapter viewPagerAdapter;
 
     public static Boolean fShowTranscript;
 
-    public static Boolean exButtonShow;
+
     static Context context;
     public static Boolean exShowTranscript;
 
@@ -156,18 +161,11 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         super.onCreate(savedInstanceState);
 
 
-        //Toast.makeText(this, "Len: " , Toast.LENGTH_SHORT).show();
-
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
 
         dataManager = new DataManager(this);
 
 
-        setContentView(R.layout.activity_exercise);
+        setContentView(R.layout.activity_exercise_build);
 
         openActivity = new OpenActivity(this);
 
@@ -180,7 +178,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         setTitle(R.string.title_test_txt);
 
 
-        exButtonShow = true;
         exCheckedStatus = false;
         revision = false;
         testing = false;
@@ -216,7 +213,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         context = this;
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        exButtonShow = appSettings.getBoolean("ex_buttons_show", false);
+
         Boolean showTranscript = appSettings.getBoolean("transcript_show", true) && appSettings.getBoolean("transcript_show_ex", true);
 
         saveStats = appSettings.getBoolean("test_all_save", true);
@@ -241,8 +238,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         buttonsContainer = findViewById(R.id.btnContainer);
         exerciseField = findViewById(R.id.exField);
 
-
-        setExBtnStatus(exButtonShow);
 
         exTxtHeight = getResources().getInteger(R.integer.ex_text_wrap);
         exTxtMoreHeight = getResources().getInteger(R.integer.ex_text_wrap_high);
@@ -298,7 +293,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         if (restore) delay = 0;
 
-        new android.os.Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             public void run() {
                 exerciseAllData = new ExerciseDataCollect(context, originWordsList, exType);
                 startExercise();
@@ -326,11 +321,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
 
-        if (exType == EX_AUDIO_TYPE) {
-            speaking = true;
-        } else {
-            speaking = false;
-        }
+        speaking = appSettings.getBoolean("set_speak", true);
 
         if (speaking) {
             checkTTSIntent();
@@ -371,9 +362,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
 
-
-
-
     private void restaureChecked (int type) {
 
         if (type == 1) {
@@ -392,7 +380,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     public void openResult(View view) {
 
-        Intent intent = new Intent(ExerciseActivity.this, ExerciseResultActivity.class);
+        Intent intent = new Intent(ExerciseBuildActivity.this, ExerciseResultActivity.class);
 
         if (getIntent().hasExtra("practice"))  intent.putExtra("multichoice", true);
 
@@ -404,7 +392,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             DataItem item = new DataItem();
             item.id = task.savedInfo;
             item.item = task.quest;
-            item.info = task.questInfo;
+            item.info = task.response;
             item.testError = -1;
 
 
@@ -499,11 +487,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exerciseAllData.shuffleTasks();
 
 
+
         if (getIntent().hasExtra("practice")) {
 
             if (getIntent().hasExtra("ids")) {
 
-                exerciseAllData.tasks = dataManager.getSortedQuestsByCatIds(  getIntent().getStringArrayExtra("ids") , exType );
+                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(  getIntent().getStringArrayExtra("ids") , exType );
 
             }
         }
@@ -531,7 +520,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         showPage(0);
 
-        viewPagerAdapter = new ExercisePagerAdapter(this, exerciseController.tasks );
+        viewPagerAdapter = new ExerciseBuildPagerAdapter(this, exerciseController.tasks );
         viewPager.setAdapter(viewPagerAdapter);
 
        // dataManager.getTime("End start", true);
@@ -548,7 +537,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exResultBox.setVisibility(View.GONE);
         exerciseField.setVisibility(View.VISIBLE);
 
-        applyExBtnStatus(exButtonShow, false);
+
 
         taskCheckedStatus= 0;
 
@@ -588,121 +577,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         card.getLayoutParams().height = h;
         card.setLayoutParams(card.getLayoutParams());
 
-        applyExBtnStatus(exButtonShow, false);
-    }
-
-    private void applyExBtnStatus(Boolean btnStatus, Boolean animation) {
-        if (btnStatus) {
-            showBtn(animation);
-        } else {
-            hideBtn(animation);
-        }
-        exShowBtnRadio.setChecked(btnStatus);
-    }
-
-
-
-    private void setExBtnStatus(Boolean btnStatus) {
-        if (btnStatus) {
-            buttonsContainer.setVisibility(View.VISIBLE);
-        } else {
-            buttonsContainer.setVisibility(View.GONE);
-        }
-    }
-
-    private void hideBtn(Boolean animation) {
-        if (animation) {
-            animatedBtnHide();
-        } else {
-
-            buttonsContainer.setVisibility(View.GONE);
-            changeHeight(exTxtMoreHeight);
-        }
-    }
-
-    private void animatedBtnHide() {
-        buttonsContainer.animate().alpha(0.0f).setDuration(150)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        buttonsContainer.setVisibility(View.GONE);
-                        changeHeightAnimated(exTxtMoreHeight);
-                    }
-                });
-    }
-
-    private void showBtn(Boolean animation) {
-        if (animation) {
-            animatedBtnShow();
-        } else {
-            changeHeight(exTxtHeight);
-            buttonsContainer.setVisibility(View.VISIBLE);
-        }
-    }
-
-    private void animatedBtnShow() {
-
-        View tView = viewPager.findViewWithTag("myview" + viewPager.getCurrentItem());
-        LinearLayout  exQuest = (LinearLayout) tView.findViewById(R.id.exQuest);
-
-        final View nextView = viewPager.findViewWithTag("myview" + (viewPager.getCurrentItem()+1) );
-        final int h = convertDimen(exTxtHeight);
-
-        ResizeHeight resizeHeight = new ResizeHeight(exQuest, h);
-        resizeHeight.setDuration(150);
-        exQuest.startAnimation(resizeHeight);
-
-        resizeHeight.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-
-                if (nextView != null) {
-                    View nexQuest =  nextView.findViewById(R.id.exQuest);
-                    nexQuest.getLayoutParams().height = h;
-                    nexQuest.setLayoutParams(nexQuest.getLayoutParams());
-                }
-
-
-                buttonsContainer.setAlpha(0.0f);
-                buttonsContainer.setVisibility(View.VISIBLE);
-                buttonsContainer.animate().alpha(1f).setDuration(200)
-                        .setListener(null);
-
-            }
-
-            public void onAnimationRepeat(Animation arg0) {}
-            public void onAnimationStart(Animation arg0) {}
-        });
-    }
-
-
-    public void changeHeightAnimated(int height) {
-
-        View tView = viewPager.findViewWithTag("myview" + viewPager.getCurrentItem());
-        LinearLayout  exQuest = (LinearLayout) tView.findViewById(R.id.exQuest);
-
-        final View nextView = viewPager.findViewWithTag("myview" + (viewPager.getCurrentItem()+1) );
-        final int h = convertDimen(height);
-
-        ResizeHeight resizeHeight = new ResizeHeight(exQuest, h);
-        resizeHeight.setDuration(150);
-        exQuest.startAnimation(resizeHeight);
-
-        resizeHeight.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-
-                if (nextView != null) {
-                    View nexQuest =  nextView.findViewById(R.id.exQuest);
-                    nexQuest.getLayoutParams().height = h;
-                    nexQuest.setLayoutParams(nexQuest.getLayoutParams());
-                }
-            }
-
-            public void onAnimationRepeat(Animation arg0) {}
-            public void onAnimationStart(Animation arg0) {}
-        });
-
     }
 
 
@@ -737,27 +611,20 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         String counterTxt = String.format(getResources().getString(R.string.f_counter_txt), position+1, wordListLength);
         fCounterInfoBox.setText(counterTxt);
 
-        //Toast.makeText(this, "Len: "+ wordListLength, Toast.LENGTH_SHORT).show();
 
         if (!nextButton.isEnabled()) {
-
             enableButton(nextButton); //nextButton.setEnabled(true);
-
         }
 
-       // if (!checkButton.isEnabled()) { checkButton.setEnabled(true);}
 
         if (position >=  (wordListLength-1) ){
+
             disableButton(nextButton); // nextButton.setEnabled(false);
+
         }
 
-       // if (resultShow) exGoToResult();
 
 
-
-        if (position <  (wordListLength) ){
-            autoPlay(position);
-        }
     }
 
     public void clickToNext(View view) {
@@ -787,20 +654,20 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     public void exCheck(View view) {
         int position = viewPager.getCurrentItem();
-        View tView = viewPager.findViewWithTag("myview" + position);
-        RadioGroup group = tView.findViewById(R.id.radioGroup1);
 
-        viewPagerAdapter.exCheckItem(group, position);
+        View tView = viewPager.findViewWithTag("myview" + position);
+
+        viewPagerAdapter.exCheckItem(tView, position);
 
         taskCheckedStatus = 1;
 
         if ( position >= (wordListLength-1)  ) {
-            if (exButtonShow)  {
+
                 btnResultBox.setVisibility(View.VISIBLE);
                 btnGroupBox.setVisibility(View.GONE);
                 taskCheckedStatus = 2;
 
-            }
+
         }
     }
 
@@ -831,7 +698,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exResTxt.setAlpha(0.0f);
         exResultDetail.setAlpha(0.0f);
         exRestartBtn.setAlpha(0.0f);
-
 
         ViewGroup icons = exResultBox.findViewById(R.id.result_icons);
 
@@ -882,7 +748,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         exMarkTxtV.animate().alpha(1.0f).setDuration(250).setInterpolator(new DecelerateInterpolator());
 
-        new android.os.Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             public void run() {
                 exResTxt.animate().alpha(1.0f).setDuration(250).setInterpolator(new DecelerateInterpolator());
 
@@ -891,7 +757,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         }, 160);
 
-        new android.os.Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             public void run() {
                 exRestartBtn.animate().alpha(1.0f).setDuration(250).setInterpolator(new DecelerateInterpolator());
             }
@@ -952,11 +818,11 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_exercise, menu);
-        exShowBtnRadio =  menu.findItem(R.id.exBtnSettings);
+
         exSaveStatsRadio =  menu.findItem(R.id.test_save);
 
 
-        exShowBtnRadio.setChecked(exButtonShow);
+
 
         MenuItem autoplayMenuItem = menu.findItem(R.id.fAutoplay);
         if (speaking) autoplayMenuItem.setVisible(true);
@@ -988,11 +854,13 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         if ( topicTag.equals(Constants.ALL_CAT_TAG) ) {
             if (saveStats) applySaveStatsStatus(false);
             saveStats = false;
-            if (! dataManager.simplified) exSaveStatsRadio.setEnabled(false);
+            if (! dataManager.simplified) {
+
+                exSaveStatsRadio.setEnabled(false);
+            }
         }
 
     }
-
 
     private void disableButton(Button btn) {
         btn.setEnabled(false);
@@ -1035,9 +903,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
                 restartFromMenu();
                 return true;
-            case R.id.exBtnSettings:
-                changeExBtnStatus();
-                return true;
+
             case R.id.test_save:
                 changeSaveStatsStatus();
                 return true;
@@ -1055,7 +921,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         int delay = 300;
         if (originWordsList.size() > 50) delay = 350;
 
-        new android.os.Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             public void run() {
                 restartExercise();
             }
@@ -1065,26 +931,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
 
-    private void changeExBtnStatus() {
-        if (exButtonShow) {
-            exButtonShow = false;
-            btnResultBox.setVisibility(View.GONE);
-            if (exCheckedStatus)  {
-                new android.os.Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        goToNextTask();
-                    }
-                }, 1000);
-            }
-        } else {
-            exButtonShow = true;
-        }
-        SharedPreferences.Editor editor = appSettings.edit();
-        editor.putBoolean("ex_buttons_show", exButtonShow);
-        editor.apply();
-        applyExBtnStatus(exButtonShow, true);
 
-    }
 
     private void changeSaveStatsStatus() {
         saveStats = !saveStats;
@@ -1193,8 +1040,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         }
     }
 
-
-
     private void autoPlay(final int position) {
 
         if (autoPlay.equals("none")) return;
@@ -1207,7 +1052,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             if (initSpeak == 0 ) {
 
-                new android.os.Handler().postDelayed(new Runnable() {
+                new Handler().postDelayed(new Runnable() {
                     public void run() {
 
                         if (initSpeak == 0) speakWords(text);
@@ -1228,7 +1073,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     }
-
 
     private void autoPlayDialog() {
 

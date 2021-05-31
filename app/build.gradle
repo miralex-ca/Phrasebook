@@ -219,6 +219,8 @@ dependencies {
     // optional - ReactiveStreams support for LiveData
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
 
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
+
 
 
 }

@@ -3,7 +3,9 @@
     <!-- Base application theme. -->
 
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+
+        <item name="colorControlHighlight">#34939393</item>
 
         <item name="preferenceTheme">@style/AppTheme.CustomPreferenceThemeOverlay</item>
         <!-- Customize your theme here. -->
@@ -900,15 +902,31 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="buttonControl">
+    <style name="buttonControl" parent="@style/Widget.MaterialComponents.Button">
+
         <item name="android:textColor">?attr/colorBtnText</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
+        <item name="materialThemeOverlay">@style/buttonThemeOverlay</item>
+
+    </style>
+
+    <style name="MyShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="buttonThemeOverlay">
+        <item name="colorPrimary">?attr/colorButtonNormal</item>
     </style>
 
     <style name="exImageWrapper">
         <item name="android:layout_width">match_parent</item>
     </style>
 
+
     <style name="exBtns" parent="buttonControl">
+
         <item name="android:paddingTop">@dimen/ex_btn_padding</item>
         <item name="android:paddingBottom">@dimen/ex_btn_padding</item>
         <item name="android:layout_marginTop">@dimen/ex_btn_container_padding</item>
@@ -935,10 +953,10 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">@dimen/ex_mark_margin_top</item>
         <item name="android:layout_marginBottom">@dimen/ex_mark_margin_bottom</item>
-        <item name="android:textSize">@dimen/ex_mark_txt_size</item>
+        <item name="android:textSize">28sp</item>
     </style>
 
-    <style name="exResultBox">
+    <style name="exResultBox" >
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:minHeight">200dp</item>
         <item name="android:gravity">center</item>
@@ -955,13 +973,13 @@
         <item name="android:textSize">21sp</item>
     </style>
 
-    <style name="exBtnRestart">
+    <style name="exBtnRestart"  parent="buttonControl">
         <item name="android:layout_marginTop">@dimen/ex_btn_rslt_margin_top</item>
         <item name="android:layout_marginBottom">15dp</item>
-        <item name="android:paddingLeft">35dp</item>
-        <item name="android:paddingRight">35dp</item>
-        <item name="android:paddingTop">18dp</item>
-        <item name="android:paddingBottom">18dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
         <item name="android:textSize">@dimen/ex_btn_rslt_txt_size</item>
     </style>
 
@@ -1163,5 +1181,7 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_gravity">center_vertical</item>
     </style>
+
+
 
 </resources>

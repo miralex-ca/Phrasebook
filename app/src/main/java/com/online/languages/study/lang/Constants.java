@@ -35,7 +35,7 @@ public class Constants {
     public static final int SECTION_TEST_LIMIT = 100;  //  100 for prod
     public static final int REVISE_NUM = 30;
 
-    static final String EXTRA_KEY_WORDS = "dataItems";
+    public static final String EXTRA_KEY_WORDS = "dataItems";
     public static final String EXTRA_CAT_TAG = "cat_tag";
 
     public static final String EXTRA_SECTION_NUM = "section_num";

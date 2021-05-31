@@ -88,6 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_UCAT_UDATA = "table_ucat_udata";
     public static final String TABLE_TASKS_DATA = "table_tasks_data";
     public static final String TABLE_QUEST_DATA = "table_quest_data";
+    public static final String TABLE_QUEST_BUILD = "table_quest_build";
     public static final String TABLE_QSTATS_DATA = "table_qstats";
 
     // common
@@ -123,6 +124,21 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String KEY_QUEST_PRONOUNCE = "quest_pronounce";
     private static final String KEY_QUEST_IMAGE= "quest_image";
     private static final String KEY_QUEST_FILTER= "quest_filter";
+
+
+    private static final String KEY_QUEST_B_ID = "quest_b_id";
+    private static final String KEY_QUEST_B_CAT_ID = "quest_b_cat_id";
+    private static final String KEY_QUEST_B_LEVEL = "quest_b_level";
+    private static final String KEY_QUEST_B_LEVEL_GLOBAL = "quest_b_level_g";
+    private static final String KEY_QUEST_B_MODE = "quest_b_mode";
+    private static final String KEY_QUEST_B_QUEST = "quest_b_quest";
+    private static final String KEY_QUEST_B_TASK = "quest_b_task";
+    private static final String KEY_QUEST_B_CORRECT = "quest_b_correct";
+    private static final String KEY_QUEST_B_OPTIONS = "quest_b_options";
+    private static final String KEY_QUEST_B_PRONOUNCE = "quest_b_pronounce";
+    private static final String KEY_QUEST_B_IMAGE= "quest_b_image";
+    private static final String KEY_QUEST_B_PARAMS= "quest_b_params";
+    private static final String KEY_QUEST_B_FILTER= "quest_b_filter";
 
 
     private static final String KEY_QSTATS_ID = "qstats_id";
@@ -282,6 +298,23 @@ public class DBHelper extends SQLiteOpenHelper {
             + KEY_QUEST_FILTER + " TEXT"
             + ")";
 
+    private static final String TABLE_QUEST_B_STRUCTURE  = "("
+
+            + KEY_QUEST_B_ID + " TEXT,"
+            + KEY_QUEST_B_CAT_ID + " TEXT,"
+            + KEY_QUEST_B_LEVEL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_B_LEVEL_GLOBAL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_B_MODE + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_B_QUEST + " TEXT,"
+            + KEY_QUEST_B_TASK + " TEXT,"
+            + KEY_QUEST_B_CORRECT + " TEXT,"
+            + KEY_QUEST_B_OPTIONS + " TEXT,"
+            + KEY_QUEST_B_PRONOUNCE + " TEXT,"
+            + KEY_QUEST_B_IMAGE + " TEXT,"
+            + KEY_QUEST_B_PARAMS + " TEX,"
+            + KEY_QUEST_B_FILTER + " TEXT"
+            + ")";
+
     private static final String TABLE_QSTATS_STRUCTURE  = "("
 
             + KEY_QSTATS_ID + " TEXT,"
@@ -434,6 +467,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_ITEMS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_ITEMS_STRUCTURE;
 
     private static final String CREATE_QUESTS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_QUESTS_STRUCTURE;
+
+    private static final String CREATE_QUESTS_B_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST_BUILD + TABLE_QUEST_B_STRUCTURE;
 
     private static final String CREATE_STATS_TABLE_IF_EXISTS = "CREATE TABLE IF NOT EXISTS " + TABLE_QSTATS_DATA + TABLE_QSTATS_STRUCTURE;
 
@@ -654,6 +689,45 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
 
+        ArrayList<QuestData> allBuildQuests = detailFromJson.getAllBuildQuests();
+
+        db.beginTransaction();
+        try {
+
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUEST_BUILD);
+            db.execSQL(CREATE_QUESTS_B_TABLE_IF_EXISTS);
+
+            for (QuestData item: allBuildQuests) {
+
+                ContentValues values = new ContentValues();
+
+                values.put(KEY_QUEST_B_ID, item.getId());
+                values.put(KEY_QUEST_B_CAT_ID, item.getCategoryId() );
+                values.put(KEY_QUEST_B_LEVEL, item.getLevel() );
+                values.put(KEY_QUEST_B_LEVEL_GLOBAL, item.getLevel() );
+                values.put(KEY_QUEST_B_MODE, item.getLevel() );
+
+                values.put(KEY_QUEST_B_QUEST, item.getQuest() );
+                values.put(KEY_QUEST_B_TASK, item.getTask());
+                values.put(KEY_QUEST_B_OPTIONS, item.getOptions());
+                values.put(KEY_QUEST_B_CORRECT, item.getCorrect());
+                values.put(KEY_QUEST_B_PRONOUNCE, item.getPronounce());
+                values.put(KEY_QUEST_B_IMAGE, item.getImage() );
+                values.put(KEY_QUEST_B_PARAMS, item.getParams() );
+                values.put(KEY_QUEST_B_FILTER, item.getFilter() );
+
+                //Log.i("Quest", "quest: " + values.getAsString(KEY_QUEST_B_CORRECT));
+
+                db.insert(TABLE_QUEST_BUILD, null, values);
+
+            }
+
+            db.setTransactionSuccessful();
+
+        } finally {
+            db.endTransaction();
+        }
+
 
     }
 
@@ -721,7 +795,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    void setTestResult(String cat_id, int ex_type, int result, Boolean forceSave) {
+    public void setTestResult(String cat_id, int ex_type, int result, Boolean forceSave) {
         SQLiteDatabase db = this.getWritableDatabase();
         String action = "nothing";
 
@@ -4915,10 +4989,71 @@ public class DBHelper extends SQLiteOpenHelper {
 
         }
 
+        db.close();
+
+        return groupedItemsList;
+    }
+
+    public ArrayList<ArrayList<QuestData>> getGroupedBuildQuestsByCatIds(ArrayList<String> catIds) {
+
+        ArrayList< ArrayList<QuestData>> groupedItemsList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        for (String catId : catIds) {
+
+            ArrayList<QuestData> categoryQuest = new ArrayList<>();
+
+            String questsQuery = "SELECT * FROM " + TABLE_QUEST_BUILD
+
+                    +" a LEFT JOIN " + TABLE_QSTATS_DATA
+
+                    +" b ON a." + KEY_QUEST_B_ID + " = b." + KEY_QSTATS_ID
+
+                    + " WHERE " + KEY_QUEST_B_CAT_ID + " LIKE '" + catId + "%' ";
+
+
+            Cursor cursor = db.rawQuery(questsQuery, null);
+
+            try {
+                while (cursor.moveToNext()) {
+
+                    categoryQuest.add( getBuildQuestFromCursor( cursor) );
+                }
+            } finally {
+                cursor.close();
+            }
+
+            groupedItemsList.add( categoryQuest );
+
+        }
 
         db.close();
 
         return groupedItemsList;
+    }
+
+    private QuestData getBuildQuestFromCursor(Cursor cursor) {
+
+        String quest = cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_QUEST));
+        String correct = cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_CORRECT));
+        String options = cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_OPTIONS));
+
+        QuestData item = new QuestData(quest, correct, options);
+
+        item.setId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_ID)) );
+        item.setCategoryId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_CAT_ID)) );
+
+        item.setLevel( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_LEVEL)) );
+        item.setLevelGlobal( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_LEVEL_GLOBAL)) );
+        item.setMode( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_MODE)) );
+
+        item.setPronounce( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_PRONOUNCE)) );
+        item.setParams( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_PARAMS)) );
+
+        item.setCountTr( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_TR)) );
+        item.setCountAudio( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_AUDIO)) );
+
+        return item;
     }
 
 

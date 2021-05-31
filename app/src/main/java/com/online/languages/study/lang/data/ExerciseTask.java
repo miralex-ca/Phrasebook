@@ -10,8 +10,12 @@ public class ExerciseTask implements Parcelable {
 
     public String quest;
     public String questInfo;
-    public ArrayList<String> options;
+    public ArrayList<String> options = new ArrayList<>();
+    public ArrayList<String> answers = new ArrayList<>();
+    public String option;
     public int correct;
+    public String response;
+    public String params = "";
     public String savedInfo;
     public DataItem data = new DataItem();
 
@@ -19,6 +23,10 @@ public class ExerciseTask implements Parcelable {
         quest = newTask.quest;
         questInfo = newTask.questInfo;
         options = new ArrayList<>(newTask.options);
+        answers = new ArrayList<>(newTask.answers);
+        response = newTask.response;
+        params = newTask.params;
+        option = newTask.option;
         correct = newTask.correct;
         savedInfo = newTask.savedInfo;
         data = newTask.data;
@@ -42,13 +50,18 @@ public class ExerciseTask implements Parcelable {
     public ExerciseTask(Parcel parcel){
 
         options = new ArrayList<>();
+        answers = new ArrayList<>();
 
         this.quest = parcel.readString();
         this.questInfo = parcel.readString();
         this.savedInfo = parcel.readString();
         this.correct = parcel.readInt();
+        this.option = parcel.readString();
+        this.response = parcel.readString();
+        this.params = parcel.readString();
         this.data = parcel.readParcelable(DataItem.class.getClassLoader());
         parcel.readList(options, null);
+        parcel.readList(answers, null);
 
     }
 
@@ -66,9 +79,13 @@ public class ExerciseTask implements Parcelable {
         dest.writeString(quest);
         dest.writeString(questInfo);
         dest.writeString(savedInfo);
+        dest.writeString(option);
+        dest.writeString(response);
+        dest.writeString(params);
         dest.writeInt(correct);
         dest.writeParcelable(data, flags);
         dest.writeList(options);
+        dest.writeList(answers);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

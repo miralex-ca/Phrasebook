@@ -3,10 +3,10 @@
 
     <color name="splash_color">#FFFFFF</color>
 
-    <color name="colorPrimary">#2B8DE3</color>
-    <color name="colorPrimaryDark">#0976D5</color>
+    <color name="colorPrimary">#3EA1F8</color>
+    <color name="colorPrimaryDark">#198BED</color>
     <color name="colorAccent">#1E88E5</color>
-    <color name="colorButtonNormal">#e1e1e1</color>
+    <color name="colorButtonNormal">#F1F1F1</color>
 
 
     <color name="colorBtmNav_active">#0A7BDD</color>

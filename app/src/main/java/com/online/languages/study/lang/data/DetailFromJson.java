@@ -257,4 +257,55 @@ public class DetailFromJson {
 
 
     }
+
+
+    public ArrayList<QuestData> getAllBuildQuests() {
+
+        ArrayList<QuestData> questData = new ArrayList<>();
+
+        try {
+
+            JSONObject obj = new JSONObject(loadJSONFromAsset(context.getString(R.string.build_tests_file)));
+
+            JSONArray tasksList = obj.getJSONArray("data");
+
+            for (int i = 0; i < tasksList.length(); i++) {
+
+                JSONObject taskObject = tasksList.getJSONObject(i);
+
+                String question = taskObject.has("quest") ? taskObject.getString("quest") : "";
+                String correct = taskObject.has("correct") ? taskObject.getString("correct") : "";
+                String options = taskObject.has("options") ? taskObject.getString("options") : "";
+                String id = taskObject.has("id") ? taskObject.getString("id") : "";
+                String categoryId = taskObject.has("cat_id") ? taskObject.getString("cat_id") : "";
+                String level = taskObject.has("level") ? taskObject.getString("level") : "0";
+                String levelGlobal = taskObject.has("level_g") ? taskObject.getString("level_g") : "0";
+                String mode = taskObject.has("mode") ? taskObject.getString("mode") : "0";
+
+                String task = taskObject.has("task") ? taskObject.getString("task") : "";
+
+                String pronounce = taskObject.has("pronounce") ? taskObject.getString("pronounce") : "";
+                String image = taskObject.has("image") ? taskObject.getString("image") : "";
+                String filter = taskObject.has("filter") ? taskObject.getString("filter") : "";
+                String params = taskObject.has("params") ? taskObject.getString("params") : "";
+
+                QuestData quest = new QuestData(question, correct, options, id, categoryId, level, task, pronounce, image, filter);
+                quest.setLevelGlobal(Integer.parseInt(levelGlobal));
+                quest.setMode(Integer.parseInt(mode));
+                quest.setParams(params);
+
+                questData.add(quest);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return questData;
+
+
+
+    }
 }

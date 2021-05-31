@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/exCard"
             style="?attr/cardViewStyle"
-            app:cardCornerRadius="?attr/cardCornerSpec"
             >
 
             <FrameLayout
@@ -94,19 +93,18 @@
                             style="@style/fCountInfoBox"  />
 
 
-
-
                         </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/btnContainer"
                         android:layout_width="match_parent"
-                        android:background="?attr/colorExBottomBox"
+
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginBottom="1dp"
                         android:layout_height="wrap_content">
 
                         <View
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="?attr/colorExBottomDivider"
@@ -127,7 +125,9 @@
                                 android:gravity="center"
                                 android:weightSum="1" >
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
+
+                                    android:layout_margin="10dp"
                                     android:text="@string/ex_check_btn_txt"
                                     android:id="@+id/exCheck"
                                     android:onClick="exCheck"
@@ -138,7 +138,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="@dimen/button_width" />
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:text="@string/ex_next_btn_txt"
                                     android:id="@+id/exNext"
                                     android:onClick="clickToNext"
@@ -157,7 +157,8 @@
                             android:orientation="horizontal"
                             android:gravity="center"
                             android:visibility="gone">
-                            <Button
+
+                            <com.google.android.material.button.MaterialButton
                                 android:text="@string/ex_show_result_btn_txt"
                                 android:id="@+id/exBtnResult"
                                 android:onClick="exShowResult"
@@ -186,6 +187,96 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/exMarkTxt" />
+
+
+                    <RelativeLayout
+                        android:layout_marginBottom="18dp"
+                        android:id="@+id/result_icons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/box_very_bad"
+                            android:padding="20dp"
+                            android:background="@drawable/ic_emo_sad_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_emo_sad"
+                                android:layout_width="@dimen/result_icon_size"
+                                android:layout_height="@dimen/result_icon_size" />
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/box_bad"
+                            android:padding="20dp"
+                            android:background="@drawable/ic_emo_bad_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_emo_bad"
+                                android:layout_width="@dimen/result_icon_size"
+                                android:layout_height="@dimen/result_icon_size" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/box_good"
+                            android:padding="20dp"
+                            android:background="@drawable/ic_emo_good_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_emo_good"
+                                android:layout_width="@dimen/result_icon_size"
+                                android:layout_height="@dimen/result_icon_size" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/box_very_good"
+                            android:padding="20dp"
+                            android:background="@drawable/ic_emo_very_good_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_emo_very_good"
+                                android:layout_width="@dimen/result_icon_size"
+                                android:layout_height="@dimen/result_icon_size" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/box_great"
+                            android:padding="20dp"
+                            android:background="@drawable/ic_emo_great_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                app:srcCompat="@drawable/ic_emo_great"
+                                android:layout_width="@dimen/result_icon_size"
+                                android:layout_height="@dimen/result_icon_size" />
+
+                        </RelativeLayout>
+
+
+
+
+                    </RelativeLayout>
+
                     <!-- difference with ph in textSize -->
                     <TextView
                         android:id="@+id/exResultTxt"
@@ -220,11 +311,15 @@
 
                     </LinearLayout>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
+                        app:icon="@drawable/ic_replay"
+                        app:iconTint="@color/color_text"
+                        app:iconGravity="end"
                         android:text="@string/ex_restart_btn_txt"
                         android:id="@+id/exBtnRestart"
                         android:onClick="clickRestart"
                         style="@style/exBtnRestart"
+                        android:layout_marginBottom="30dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 

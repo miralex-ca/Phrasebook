@@ -9,7 +9,7 @@ import static com.online.languages.study.lang.Constants.SET_THEME_DEFAULT;
 public class ThemedActivity extends BaseActivity {
 
     ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
+    public SharedPreferences appSettings;
     public String themeTitle;
 
     @Override
