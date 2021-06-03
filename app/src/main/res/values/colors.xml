@@ -27,7 +27,7 @@
     <color name="ex_link_result">#e1e7ea</color>
     <color name="ex_link_result_txt">#000000</color>
 
-    <color name="colorExActiveTxt">#546e7a</color>
+
 
     <color name="colorContactIcon">#78909C</color>
 
@@ -261,6 +261,19 @@
 
     <color name="colorCreateFabBtn">#448AFF</color>
     <color name="colorCreateFabIcon">#FFFFFF</color>
+
+
+    <color name="colorExActiveTxt">#1C9EDA</color>
+
+    <color name="colorExOptionBgSelect">#63D2E1E8</color>
+    <color name="colorExOptionBgActive">#2394B6D1</color>
+
+    <color name="colorExOptionBgCorrect">#3471F677</color>
+    <color name="colorExOptionBgError">#22FF8A80</color>
+
+    <color name="colorExOptionTxtCorrect">#DF09B600</color>
+    <color name="colorExOptionTxtError">#FF1744</color>
+
 
 
 </resources>

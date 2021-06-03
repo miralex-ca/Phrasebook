@@ -109,7 +109,7 @@
     <integer name="_ex_opt_txt_size_small">16</integer>
     <integer name="_ex_opt_txt_size_smallest">15</integer>
 
-    <integer name="ex_text_long_num">40</integer>
+    <integer name="ex_text_long_num">36</integer>
 
     <dimen name="_ex_quest_wrap_padding_side">16dp</dimen>
 
@@ -122,6 +122,9 @@
     <dimen name="_ex_link_padding_btm_inline">12dp</dimen>
 
     <dimen name="goproTxtSize">16sp</dimen>
+
+
+    <dimen name="ex_option_normal_minheight">42dp</dimen>
 
 
 </resources>

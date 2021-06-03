@@ -54,6 +54,7 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
+import static com.online.languages.study.lang.ExercisePagerAdapter.CLICK_SOURCE_BUTTON;
 
 public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnInitListener {
 
@@ -241,6 +242,13 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         buttonsContainer = findViewById(R.id.btnContainer);
         exerciseField = findViewById(R.id.exField);
 
+        Button exBtnResult = findViewById(R.id.exBtnResult);
+        Button exRestartBtn = exResultBox.findViewById(R.id.exBtnRestart);
+
+        checkButton.setOnClickListener(this::exCheck);
+        nextButton.setOnClickListener(this::clickToNext);
+        exBtnResult.setOnClickListener(this::exShowResult);
+        exRestartBtn.setOnClickListener(this::clickRestart);
 
         setExBtnStatus(exButtonShow);
 
@@ -335,6 +343,11 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         if (speaking) {
             checkTTSIntent();
         }
+
+
+
+
+
 
 
     }
@@ -790,7 +803,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         View tView = viewPager.findViewWithTag("myview" + position);
         RadioGroup group = tView.findViewById(R.id.radioGroup1);
 
-        viewPagerAdapter.exCheckItem(group, position);
+        viewPagerAdapter.exCheckItem(group, position, CLICK_SOURCE_BUTTON);
 
         taskCheckedStatus = 1;
 
@@ -832,8 +845,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exResultDetail.setAlpha(0.0f);
         exRestartBtn.setAlpha(0.0f);
 
-
         ViewGroup icons = exResultBox.findViewById(R.id.result_icons);
+        if (context.getResources().getBoolean(R.bool.small_height) ) icons.setVisibility(View.GONE);
 
         int iconsCount = icons.getChildCount();
 
@@ -867,7 +880,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             icons.findViewById(R.id.box_good).setVisibility(View.VISIBLE);
         }
-
 
 
         exMarkTxt.setText(markTxt);

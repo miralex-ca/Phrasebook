@@ -193,7 +193,7 @@
                                     <RelativeLayout
                                         android:visibility="gone"
                                         android:id="@+id/header_error"
-                                        android:background="#F60202"
+                                        android:background="#FB4D4D"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content">
 
@@ -231,7 +231,7 @@
 
                                     <RelativeLayout
                                         android:visibility="gone"
-                                        android:background="#2FCD2A"
+                                        android:background="#45CC40"
                                         android:id="@+id/header_correct"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content">

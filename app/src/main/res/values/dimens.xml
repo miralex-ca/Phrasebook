@@ -225,7 +225,7 @@
     <dimen name="ex_btn_rslt_side">20dp</dimen>
 
     <dimen name="ex_btn_rslt_txt_size">17sp</dimen>
-    <dimen name="ex_btn_rslt_margin_top">50dp</dimen>
+    <dimen name="ex_btn_rslt_margin_top">25dp</dimen>
 
     <dimen name="ex_sheet_padding_top">@dimen/_ex_sheet_padding_top</dimen>
     <dimen name="ex_sheet_padding_side">@dimen/_ex_sheet_padding_side</dimen>
@@ -247,7 +247,7 @@
     <integer name="ex_card_wrap_high">@integer/_ex_card_wrap_high</integer>
 
 
-    <integer name="ex_text_long_num">36</integer>
+    <integer name="ex_text_long_num">30</integer>
 
 
     <integer name="ex_text_wrap_tr">70</integer>
@@ -315,6 +315,7 @@
     <dimen name="account_icon_height">100dp</dimen>
 
     <dimen name="note_edit_icon_dialog_size">26dp</dimen>
+
 
     <style name="NavDialogItem" >
         <item name="android:paddingLeft">26dp</item>

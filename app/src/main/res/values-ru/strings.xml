@@ -796,6 +796,7 @@
     <string name="task_errors_txt">Проверьте список</string>
     <string name="task_errors_title">Ошибки</string>
     <string name="task_error_info">Количество записей с ошибками: %s </string>
+    <string name="task_error_overlimit">более %s </string>
     <string name="task_msg_info">Информация</string>
     <string name="dialog_complete_revised">Вы повторили записи раздела</string>
     <string name="dialog_complete_revised_msg">Записи успешно повторены</string>

@@ -130,7 +130,7 @@
                                     android:layout_margin="10dp"
                                     android:text="@string/ex_check_btn_txt"
                                     android:id="@+id/exCheck"
-                                    android:onClick="exCheck"
+
                                     android:maxLines="1"
                                     android:ellipsize="end"
                                     style="@style/exBtns.Left"
@@ -141,7 +141,6 @@
                                 <com.google.android.material.button.MaterialButton
                                     android:text="@string/ex_next_btn_txt"
                                     android:id="@+id/exNext"
-                                    android:onClick="clickToNext"
                                     style="@style/exBtns.Right"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -161,7 +160,6 @@
                             <com.google.android.material.button.MaterialButton
                                 android:text="@string/ex_show_result_btn_txt"
                                 android:id="@+id/exBtnResult"
-                                android:onClick="exShowResult"
                                 style="@style/exBtns.ShowRslt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" />
@@ -317,7 +315,6 @@
                         app:iconGravity="end"
                         android:text="@string/ex_restart_btn_txt"
                         android:id="@+id/exBtnRestart"
-                        android:onClick="clickRestart"
                         style="@style/exBtnRestart"
                         android:layout_marginBottom="30dp"
                         android:layout_width="wrap_content"

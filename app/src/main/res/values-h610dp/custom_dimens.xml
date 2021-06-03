@@ -70,4 +70,11 @@
     <integer name="_ex_opt_txt_size_smallest_sw600_land">18</integer>
 
 
+    <dimen name="ex_option_normal_minheight">46dp</dimen>
+    <dimen name="ex_option_radio_left">9dp</dimen>
+    <dimen name="ex_option_text_left">7dp</dimen>
+
+    <bool name="shorter_option">false</bool>
+
+
 </resources>

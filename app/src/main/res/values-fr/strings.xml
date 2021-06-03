@@ -808,13 +808,14 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="task_section_links">Vistez les sections du vocabulaire</string>
 
     <string name="task_info">Résultat des tests: %1$s%%  \u0020 \u0020 Section: %2$s </string>
-    <string name="task_revise_info">Test avec les etrées de %s thème</string>
+    <string name="task_revise_info">Test avec les entrées de %s thème</string>
 
     <string name="task_section_info">Entrées maîtrisées: %1$s%% (%2$s/%3$s) </string>
 
     <string name="task_errors_txt">Vérifiez les entrées de la list</string>
     <string name="task_errors_title">Erreurs</string>
     <string name="task_error_info">Entrées aves des erreurs: %s </string>
+    <string name="task_error_overlimit">plus %s </string>
     <string name="task_msg_info">Information</string>
 
     <string name="dialog_complete_title">Bon travail!</string>

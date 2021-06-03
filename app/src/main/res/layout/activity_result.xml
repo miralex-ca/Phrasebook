@@ -43,7 +43,7 @@
     </RelativeLayout>
 
     <View
-        android:background="?attr/colorDialogBackground"
+        android:background="@drawable/screem_result_bottom"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="20dp" />

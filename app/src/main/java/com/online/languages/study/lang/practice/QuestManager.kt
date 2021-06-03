@@ -57,6 +57,9 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         }
 
 
+
+
+
         sortByExType(mainList)
 
         //mainList.sortBy { it.countTr }
@@ -78,7 +81,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         if (exerciseType == EX_ORIG_TR) firstRowQuests.sortBy { it.quest.countTr }
         if (exerciseType == EX_AUDIO_TYPE) firstRowQuests.sortBy { it.quest.countAudio }
 
-        Log.i("Quest", "quest: ${firstRowQuests[0].quest.correct}: ${firstRowQuests[0].quest.countTr} - ${firstRowQuests[0].quest.countAudio}")
+       // Log.i("Quest", "quest: ${firstRowQuests[0].quest.correct}: ${firstRowQuests[0].quest.countTr} - ${firstRowQuests[0].quest.countAudio}")
 
         return firstRowQuests[0].listNum
     }
@@ -86,7 +89,12 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
     private fun checkGroupsSort(listedQuestsGroup: ArrayList<ArrayList<QuestData>>?) {
 
+
+
+
         listedQuestsGroup?.forEach { list ->
+
+            Log.i("Quest", "quests list: " + list.size)
 
             if (list.size > 0 )  {
 

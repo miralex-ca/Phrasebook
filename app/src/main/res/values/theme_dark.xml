@@ -19,8 +19,6 @@
 
     <color name="colorContactIcon_dark">#F5F5F5</color>
 
-
-
     <color name="colorDetailBar_dark">#222</color>
     <color name="colorDetail_dark">#444</color>
 
@@ -28,7 +26,13 @@
 
     <color name="colorStarDetail_dark">#fff</color>
 
+    <color name="colorExActiveTxt_dk">#75CFF8</color>
+    <color name="colorExOptionTxtCorrect_dk">#DF5AFF52</color>
+    <color name="colorExOptionTxtError_dk">#FD5172</color>
 
+    <color name="colorExOptionBgSelect_dk">#43CBE6F3</color>
+    <color name="colorExOptionBgActive_dk">#4194B6D1</color>
+    
     <color name="colorDetailToolbarText_dark">#fff</color>
     <color name="colorDetailToolbarSecText_dark">#fff</color>
     <color name="colorSpeakerIcon_dark">#fff</color>
@@ -216,9 +220,17 @@
 
         <item name="colorExOptionTxt">@color/colorExOptionTxt_dark</item>
         <item name="colorExDisabledTxt">@color/colorExDisabledTxt</item>
-        <item name="colorExActiveTxt">@color/colorExAccent_dk</item>
 
-        <item name="colorRadioAccent">@color/colorExAccent_dk</item>
+        <item name="colorExActiveTxt">@color/colorExActiveTxt_dk</item>
+        <item name="colorRadioAccent">@color/colorExActiveTxt_dk</item>
+
+        <item name="colorExOptionBgSelect">@color/colorExOptionBgSelect_dk</item>
+        <item name="colorExOptionBgActive">@color/colorExOptionBgActive_dk</item>
+
+        <item name="colorExOptionTxtCorrect">@color/colorExOptionTxtCorrect_dk</item>
+        <item name="colorExOptionTxtError">@color/colorExOptionTxtError_dk</item>
+
+
 
         <item name="colorExBottomDivider">@color/colorExBottomDivider_dark</item>
 

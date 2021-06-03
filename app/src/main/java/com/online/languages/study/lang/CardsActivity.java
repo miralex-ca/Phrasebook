@@ -149,6 +149,9 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
         prevButton = findViewById(R.id.back_btn);
         nextButton = findViewById(R.id.next_btn);
 
+        prevButton.setOnClickListener(this::vPrev);
+        nextButton.setOnClickListener(this::vNext);
+
         viewPager = findViewById(R.id.cardsPager);
 
         startFlashcard(false);

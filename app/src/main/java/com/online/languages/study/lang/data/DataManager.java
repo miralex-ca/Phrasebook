@@ -1048,7 +1048,11 @@ public class DataManager {
 
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
 
+
+
         ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedBuildQuestsByCatIds(ids);
+
+
 
         QuestManager questManager = new QuestManager(questsByCatIds);
         questManager.setExerciseType(exerciseType);
@@ -1057,15 +1061,20 @@ public class DataManager {
 
         ArrayList<QuestData>  quests = questManager.getMainList();
 
+
+
         ArrayList<ExerciseTask> tasks = new ArrayList<>();
 
         for (QuestData quest: quests) {
 
             ExerciseTask exerciseTask = getBuildExerciseTaskFromQuest(quest);
 
+
             tasks.add(exerciseTask);
 
         }
+
+
 
         return tasks;
     }

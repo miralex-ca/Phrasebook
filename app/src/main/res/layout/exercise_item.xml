@@ -134,32 +134,16 @@
             <RadioGroup
                 android:id="@+id/radioGroup1"
                 android:layout_width="0dp"
-                android:layout_weight=".89"
+                android:layout_weight=".95"
                 android:layout_height = "wrap_content"
                 android:theme="@style/RadioTheme"
                 android:minHeight = "@dimen/ex_radiogroup_min_height"
                 style="@style/exRadioGroup" >
 
                 <!-- difference with ph in minHeight and count -->
-                <RadioButton
-                    android:id="@+id/radioBtn1"
-                    android:text="@string/ex_option_foo"
-                    style="@style/exRadioBtn.Short" />
 
-                <RadioButton
-                    android:id="@+id/radioBtn2"
-                    android:text="@string/ex_option_foo"
-                    style="@style/exRadioBtn.Short" />
 
-                <RadioButton
-                    android:id="@+id/radioBtn3"
-                    android:text="@string/ex_option_foo"
-                    style="@style/exRadioBtn.Short" />
 
-                <RadioButton
-                    android:id="@+id/radioBtn4"
-                    android:text="OPt"
-                    style="@style/exRadioBtn.Short" />
 
             </RadioGroup>
 

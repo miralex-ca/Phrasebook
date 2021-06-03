@@ -70,7 +70,6 @@
     <dimen name="_detail_appbar_height">330dp</dimen>
 
 
-
     <dimen name="_cat_stat_data_padding">30dp</dimen>
 
     <dimen name="_card_stats_top">16dp</dimen>
@@ -80,5 +79,8 @@
 
     <integer name="_ex_text_long_num_sw600">90</integer>
     <integer name="_ex_text_long_num_sw720">90</integer>
+
+
+    <dimen name="ex_option_normal_minheight">60dp</dimen>
 
 </resources>

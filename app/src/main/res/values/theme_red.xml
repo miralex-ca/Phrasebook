@@ -32,6 +32,9 @@
     <color name="colorBookmark_red">#66020202</color>
     <color name="colorBookmarkBorder_red">#20050505</color>
 
+    <color name="colorExActiveTxt_red">#546e7a</color>
+
+    <color name="colorExActiveTxt_red_dk">#B0BEC5</color>
 
 
     <style name="RedTheme" parent="DefaultTheme">

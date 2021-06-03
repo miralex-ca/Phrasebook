@@ -800,6 +800,7 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="task_errors_txt">Review the list</string>
     <string name="task_errors_title">Errors</string>
     <string name="task_error_info">Items with errors: %s </string>
+    <string name="task_error_overlimit">more than %s </string>
     <string name="task_msg_info">Information</string>
 
     <string name="dialog_complete_title">Well done!</string>

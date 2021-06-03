@@ -2,47 +2,30 @@ package com.online.languages.study.lang.constructor;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.TypedArray;
-import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.google.android.flexbox.FlexboxLayout;
-import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
-import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseTask;
 
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
-import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
-import static com.online.languages.study.lang.Constants.TASK_DELAY_CORRECT;
-import static com.online.languages.study.lang.Constants.TASK_DELAY_INCORRECT;
 
 class ExerciseBuildPagerAdapter extends PagerAdapter {
 
@@ -205,7 +188,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
             //ExerciseBuildActivity.speak(t.getText().toString());
             ////////////
 
-
             tvBox.setAlpha(0.0f);
 
             Vibrator vibe = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -312,7 +294,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
         ViewGroup flexTarget = root.findViewById(R.id.flex_target);
 
-
         view.getLayoutParams().height = 0;
         view.setLayoutParams(view.getLayoutParams());
         ConstructorFragment.ResizeAnimation resizeAnimation = new ConstructorFragment.ResizeAnimation(view, 0);
@@ -331,8 +312,7 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
     }
 
 
-
-    boolean exCheckItem(View root, int position)  {
+    void exCheckItem(View root, int position)  {
 
         boolean correct_answer = false;
 
@@ -370,7 +350,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
         }
 
-        return correct_answer;
     }
 
     private void getResponse(View root, StringBuilder response) {
@@ -427,13 +406,10 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
                 if (response.equals(correctString)) checkResult = RESPONSE_CORRECT_ALT;
             }
-        } else {
-
-            String correctString = checkString(exerciseTask.response);
-
-            if (response.equals(correctString)) checkResult = RESPONSE_CORRECT;
-
         }
+
+        String correctString = checkString(exerciseTask.response);
+        if (response.equals(correctString)) checkResult = RESPONSE_CORRECT;
 
         return checkResult;
     }

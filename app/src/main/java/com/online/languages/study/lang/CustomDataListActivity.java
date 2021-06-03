@@ -208,7 +208,18 @@ public class CustomDataListActivity extends BaseActivity {
 
         if (sectionId.equals("errors") ) {
             adapterListType = 0;
-            dataItems = getIntent().getParcelableArrayListExtra("dataItems");
+            dataItems = new ArrayList<>();
+
+            ArrayList<DataItem> errors = getIntent().getParcelableArrayListExtra("dataItems");
+
+            if (errors.size() > 30) {
+
+                dataItems.addAll(errors.subList(0, 30));
+
+            } else {
+                dataItems.addAll(errors);
+            }
+
             dataItems = dataManager.checkDataItemsData(dataItems);
 
         } else {

@@ -169,7 +169,19 @@ public class StatsFragment extends Fragment {
 
         MainActivity.oldestDataList = userStats.getOldestLIst();
         errorsList = userStats.userStatsData.errorsWords;
-        MainActivity.errorsList = userStats.userStatsData.errorsWords;
+
+        ArrayList<DataItem> errorsList = new ArrayList<>();
+
+        if (userStats.userStatsData.errorsWords.size() >  30) {
+            errorsList.addAll(userStats.userStatsData.errorsWords.subList(0, 30));
+        } else {
+            errorsList.addAll(userStats.userStatsData.errorsWords);
+        }
+
+
+        MainActivity.errorsList = errorsList;
+
+
     }
 
 

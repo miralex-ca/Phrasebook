@@ -3828,7 +3828,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 +" WHERE (a."+KEY_ITEM_ERRORS +" > ?) "
                 // + " AND (b."+KEY_ITEM_MODE+" < "+data_mode+")"
 
-                +"ORDER BY a."+KEY_ITEM_TIME_ERROR+" DESC LIMIT 30";
+                +"ORDER BY a."+KEY_ITEM_TIME_ERROR+" DESC LIMIT 31";
 
         Cursor errorsCursor = db.rawQuery(query, new String[]{"0"});
 

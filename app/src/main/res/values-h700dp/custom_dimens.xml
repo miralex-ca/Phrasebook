@@ -117,7 +117,7 @@
     <integer name="_ex_opt_txt_size_small">19</integer>
     <integer name="_ex_opt_txt_size_smallest">18</integer>
 
-    <integer name="ex_text_long_num">50</integer>
+    <integer name="ex_text_long_num">44</integer>
 
     <integer name="_ex_text_long_num_sw600">50</integer>
 
@@ -152,8 +152,13 @@
 
     <dimen name="goproTxtSize">18sp</dimen>
 
+    <dimen name="ex_option_normal_minheight">55dp</dimen>
+    <dimen name="ex_option_radio_left">10dp</dimen>
+    <dimen name="ex_option_text_left">10dp</dimen>
 
+    <bool name="shorter_option">true</bool>
 
-
+    <dimen name="ex_btn_rslt_margin_top">50dp</dimen>
+    <dimen name="result_icon_size">45dp</dimen>
 
 </resources>

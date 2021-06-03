@@ -134,7 +134,15 @@ open class RecommendListAdapter(context: Context?, var list: ArrayList<TaskItem>
 
     private fun addErrorsWidget(container: TaskErrorsItemBinding?, task: TaskItem, position: Int) {
 
-        val taskInfo = String.format(context!!.getString(R.string.task_error_info), task.progress)
+        var errorsCountString: String = task.progress.toString()
+        if (task.progress > 30)  errorsCountString = String.format(context!!.getString(R.string.task_error_overlimit), "30")
+
+        val taskInfo = String.format(context!!.getString(R.string.task_error_info), errorsCountString)
+
+        if (task.progress > 30) {
+
+
+        }
 
         container!!.tvProgress.text = taskInfo
 

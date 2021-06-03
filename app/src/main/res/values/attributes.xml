@@ -108,6 +108,13 @@
     <attr name="colorExActiveTxt" format="reference" />
     <attr name="colorRadioAccent" format="reference" />
 
+    <attr name="colorExOptionBgSelect" format="reference" />
+    <attr name="colorExOptionBgActive" format="reference" />
+    <attr name="colorExOptionBgError" format="reference" />
+    <attr name="colorExOptionBgCorrect" format="reference" />
+    <attr name="colorExOptionTxtCorrect" format="reference" />
+    <attr name="colorExOptionTxtError" format="reference" />
+
     <attr name="colorExBottomDivider" format="reference" />
     <attr name="colorExBottomBox" format="reference" />
 

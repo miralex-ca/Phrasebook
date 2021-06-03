@@ -119,6 +119,17 @@
         <item name="colorExActiveTxt">@color/colorExActiveTxt</item>
         <item name="colorRadioAccent">@color/colorExActiveTxt</item>
 
+
+        <item name="colorExOptionBgSelect">@color/colorExOptionBgSelect</item>
+        <item name="colorExOptionBgActive">@color/colorExOptionBgActive</item>
+
+        <item name="colorExOptionBgError">@color/colorExOptionBgError</item>
+        <item name="colorExOptionBgCorrect">@color/colorExOptionBgCorrect</item>
+
+        <item name="colorExOptionTxtCorrect">@color/colorExOptionTxtCorrect</item>
+        <item name="colorExOptionTxtError">@color/colorExOptionTxtError</item>
+
+
         <item name="colorExBottomDivider">@color/colorExBottomDivider</item>
         <item name="colorExBottomBox">@color/colorExBottomBox</item>
 
@@ -1180,6 +1191,11 @@
         <item name="android:layout_width">45dp</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+
+    <style name="option_button">
+        <item name="colorControlHighlight">?attr/colorExOptionBgSelect</item>
     </style>
 
 
