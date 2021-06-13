@@ -773,7 +773,7 @@ public class MainActivity extends BaseActivity
     private void manageNoteFab(int position) {
 
         if (position == 5 ) {
-            new Handler().postDelayed(() -> fab.show(), 350);
+            new Handler().postDelayed(() -> fab.show(), 500);
         }
         else {
             new Handler().postDelayed(() -> fab.hide(), 100);

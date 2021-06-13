@@ -112,6 +112,7 @@
 
 
             <TextView
+                android:textColor="?attr/colorExOptionTxt"
                 android:id="@+id/option_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

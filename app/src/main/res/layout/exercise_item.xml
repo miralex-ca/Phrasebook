@@ -48,7 +48,6 @@
                 android:layout_height="50dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-
                 android:id="@+id/fab"
                 app:elevation="3dp"
                 android:layout_width="wrap_content"
@@ -131,8 +130,11 @@
             android:weightSum="1"
             >
             <!-- difference with ph in layout_weight -->
-            <RadioGroup
+            <LinearLayout
+
+                android:orientation="vertical"
                 android:id="@+id/radioGroup1"
+
                 android:layout_width="0dp"
                 android:layout_weight=".95"
                 android:layout_height = "wrap_content"
@@ -140,12 +142,8 @@
                 android:minHeight = "@dimen/ex_radiogroup_min_height"
                 style="@style/exRadioGroup" >
 
-                <!-- difference with ph in minHeight and count -->
 
-
-
-
-            </RadioGroup>
+            </LinearLayout>
 
         </LinearLayout>
 

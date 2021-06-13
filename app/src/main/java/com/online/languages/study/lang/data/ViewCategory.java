@@ -3,7 +3,7 @@ package com.online.languages.study.lang.data;
 public class ViewCategory {
 
 
-    public String title;
+    public String title = "";
     public String id;
     public String desc;
     public int progress;

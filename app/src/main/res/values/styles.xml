@@ -5,7 +5,7 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
 
-        <item name="colorControlHighlight">#34939393</item>
+        <item name="colorControlHighlight">#3B939393</item>
 
         <item name="preferenceTheme">@style/AppTheme.CustomPreferenceThemeOverlay</item>
         <!-- Customize your theme here. -->

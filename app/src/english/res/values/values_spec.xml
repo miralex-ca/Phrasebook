@@ -39,7 +39,12 @@
 
     <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
 
+<!--
     <string name="tests_file" translatable="false">tests/test_quests_en.json</string>
+    <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
+-->
+
+    <bool name="display_section_practice">false</bool>
 
 
 </resources>

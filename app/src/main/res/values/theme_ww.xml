@@ -36,7 +36,9 @@
 
     <color name="colorExOptionTxt_ww">#00E5FF</color>
     <color name="colorExDisabledTxt_ww">#9200e5ff</color>
+
     <color name="colorExAccent_ww">#A7FFEB</color>
+    <color name="colorExActiveTxt_ww">#75CFF8</color>
 
 
     <color name="colorDrawerMenuBg_ww">#14141e</color>
@@ -168,6 +170,7 @@
 
         <item name="colorExOptionTxt">@color/colorExOptionTxt_ww</item>
         <item name="colorExDisabledTxt">@color/colorExDisabledTxt_ww</item>
+
         <item name="colorExActiveTxt">@color/colorExAccent_ww</item>
         <item name="colorRadioAccent">@color/colorExAccent_ww</item>
 
@@ -269,7 +272,6 @@
         <item name="android:visibility">gone</item>
     </style>
 
-
     <style name="PopupOverlayTheme_ww" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:colorBackground">@color/colorMenu_ww</item>
     </style>
@@ -277,7 +279,6 @@
     <!-- Alert Dialog Theme -->
     <style name="AppCompatAlert_ww" parent="Theme.AppCompat.Dialog.Alert">
         <!-- item name="android:background">?attr/colorDialogBg</item -->
-
 
         <item name="android:colorBackground">?attr/colorDialogBg</item>
         <item name="colorAccent">@color/colorAccent_ww</item>

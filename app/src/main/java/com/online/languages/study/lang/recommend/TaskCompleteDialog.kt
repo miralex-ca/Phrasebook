@@ -2,6 +2,7 @@ package com.online.languages.study.lang.recommend
 
 import android.content.Context
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.online.languages.study.lang.Constants.PARAM_EMPTY
 import com.online.languages.study.lang.R
@@ -9,6 +10,7 @@ import com.online.languages.study.lang.recommend.Task.Companion.TASK_REVISED_MIN
 import com.online.languages.study.lang.adapters.RoundedTransformation
 import com.online.languages.study.lang.databinding.FragmentTaskBinding
 import com.squareup.picasso.Picasso
+import java.lang.NullPointerException
 
 class TaskCompleteDialog(var context: Context, var binding: FragmentTaskBinding, var expected: TaskItem, val task: TaskItem) {
 
@@ -18,7 +20,7 @@ class TaskCompleteDialog(var context: Context, var binding: FragmentTaskBinding,
         const val ICON_GOOD = "task_good.png"
         const val ICON_INFO = "info.png"
 
-        const val DIALOG_DISPLAY_TIME: Long = 2000
+        const val DIALOG_DISPLAY_TIME: Long = 2500
     }
 
 
@@ -150,7 +152,16 @@ class TaskCompleteDialog(var context: Context, var binding: FragmentTaskBinding,
         val text = context.getString(R.string.dialog_completed_tests_done)
         val icon = ICON_DONE
 
-        prepareMessage(title, text, task.viewCategory!!.title, icon)
+
+
+        try {
+            prepareMessage(title, text, task.viewCategory.title, icon)
+
+        } catch (e: Exception){
+            Log.i ("Task: ", "Mess:  - ${task.viewCategory.title}")
+        }
+
+
 
     }
 
@@ -161,7 +172,6 @@ class TaskCompleteDialog(var context: Context, var binding: FragmentTaskBinding,
         setMessage(text, detail)
         setIcon(icon)
     }
-
 
     fun setTitle(text: String) {
         binding.tvMsgTitle.text = text

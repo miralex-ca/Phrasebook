@@ -9,7 +9,7 @@ data class TaskItem(val name: String, val time: Int, var progress: Int) {
         this.id = id
     }
 
-    var viewCategory: ViewCategory? = null
+    var viewCategory: ViewCategory = ViewCategory()
 
     var type: String = ""
 

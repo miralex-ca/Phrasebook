@@ -801,7 +801,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     public void exCheck(View view) {
         int position = viewPager.getCurrentItem();
         View tView = viewPager.findViewWithTag("myview" + position);
-        RadioGroup group = tView.findViewById(R.id.radioGroup1);
+        ViewGroup group = tView.findViewById(R.id.radioGroup1);
 
         viewPagerAdapter.exCheckItem(group, position, CLICK_SOURCE_BUTTON);
 

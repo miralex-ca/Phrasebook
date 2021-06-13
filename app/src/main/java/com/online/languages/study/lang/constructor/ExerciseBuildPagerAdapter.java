@@ -2,7 +2,9 @@ package com.online.languages.study.lang.constructor;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
@@ -42,7 +45,8 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
     private final int RESPONSE_CORRECT_ALT = 2;
     private final int RESPONSE_ERROR = 0;
     DataManager dataManager;
-
+    boolean playResult;
+    boolean playSelect;
 
     private final int BUILD_TYPE_INSERT = 1;
 
@@ -55,6 +59,12 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
         dataManager = new DataManager(context);
         dbHelper = dataManager.dbHelper;
+
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        playResult = appSettings.getBoolean("play_result", true);
+        playSelect = appSettings.getBoolean("play_select", false);
+
 
     }
 
@@ -133,7 +143,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
             txtBtn.setText(text);
 
-
             btn.setTag("t"+i);
 
             btn.setOnClickListener(v -> {
@@ -143,8 +152,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
             flexOptions.addView(btn);
 
         }
-
-
 
     }
 
@@ -185,7 +192,8 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
             TextView tv = tvBox.findViewById(R.id.txtT);
             tv.setText( t.getText().toString());
 
-            //ExerciseBuildActivity.speak(t.getText().toString());
+            if (playSelect) ExerciseBuildActivity.speak(t.getText().toString());
+
             ////////////
 
             tvBox.setAlpha(0.0f);
@@ -269,7 +277,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
                 t.setText(cap);
 
             }
-
 
             //Toast.makeText(this, "Text: "+ cap, Toast.LENGTH_SHORT).show();
         }
@@ -440,16 +447,25 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
         }
 
-        new android.os.Handler().postDelayed(() -> {
-            ExerciseBuildActivity.speak(task.response);
-        }, 200);
+        setResponseSpeaker(task, msg);
 
+    }
+
+    private void setResponseSpeaker(ExerciseTask task, View msg) {
         View speaker = msg.findViewById(R.id.speakerIcon);
+
+        if (ExerciseBuildActivity.speaking) speaker.setVisibility(View.VISIBLE);
+
         speaker.setOnClickListener(view -> {
             ExerciseBuildActivity.speak(task.response);
         });
 
+        if (playResult) {
+            new android.os.Handler().postDelayed(() -> ExerciseBuildActivity.speak(task.response), 200);
+        }
+
     }
+
 
     private String checkString(String string) {
 
@@ -517,5 +533,20 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
         return isInsert;
     }
 
+    public void setPlayResult(boolean checked) {
+        playResult = checked;
+        
+    }
+
+    public void setPlaySelect(boolean checked) {
+        playSelect = checked;
+
+    }
+
+
+
+
 
 }
+
+

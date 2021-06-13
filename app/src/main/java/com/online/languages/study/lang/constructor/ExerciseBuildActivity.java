@@ -16,6 +16,7 @@ import android.speech.tts.TextToSpeech;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +25,8 @@ import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -66,8 +69,6 @@ import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
 public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeech.OnInitListener {
 
 
-
-
     static String topicTag;
     ArrayList<DataItem> wordList = new ArrayList<>();
     ArrayList<String> catWordsTxt = new ArrayList<>();
@@ -96,7 +97,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     static int correctAnswers;
     static ArrayList<DataItem> completed;
 
-    public static Boolean  exCheckedStatus;
+    public static Boolean exCheckedStatus;
     public static int exType = 1;
     public static int exTxtHeight = 120;
     public static int exTxtMoreHeight = 160;
@@ -151,7 +152,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
     private static TextToSpeech myTTS;
     private int MY_DATA_CHECK_CODE = 0;
-    boolean speaking = false;
+    static boolean speaking = false;
     static int initSpeak = 0;
     String autoPlay;
 
@@ -159,7 +160,6 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
         dataManager = new DataManager(this);
@@ -196,9 +196,9 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         taskCheckedStatus = 0;
 
         if (topicTag.equals(Constants.STARRED_CAT_TAG)) {
-           String save =  appSettings.getString("starred_save_type", "0");
+            String save = appSettings.getString("starred_save_type", "0");
 
-           if (save.equals("1")) forceSave = false;
+            if (save.equals("1")) forceSave = false;
 
         } else {
             forceSave = true;
@@ -247,8 +247,8 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
 
         if (exType == 2) {
-          //  exTxtHeight -= 0;
-          //  exTxtMoreHeight -= 0;
+            //  exTxtHeight -= 0;
+            //  exTxtMoreHeight -= 0;
         }
 
         viewPager = findViewById(R.id.testPager);
@@ -275,7 +275,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
             boolean restaured = savedInstanceState.getBoolean("result_show");
 
-            taskCheckedStatus  = savedInstanceState.getInt("checked_status");
+            taskCheckedStatus = savedInstanceState.getInt("checked_status");
 
             if (!restaured) {
                 restore = true;  // TODO restore
@@ -286,7 +286,6 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
                 if (taskCheckedStatus > 0) restaureChecked(taskCheckedStatus);
             }
         }
-
 
 
         int delay = 200;
@@ -301,24 +300,23 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         }, delay);
 
 
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
                 showPage(position);
 
-               // Toast.makeText(getApplicationContext(), "Checked: "+ taskCheckedStatus, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), "Checked: "+ taskCheckedStatus, Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrollStateChanged(int state) {
+            }
         });
-
-
 
 
         speaking = appSettings.getBoolean("set_speak", true);
@@ -333,15 +331,15 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
     private void checkTTSIntent() {
 
-        if (! speaking ) return;
+        if (!speaking) return;
 
         PackageManager pm = getPackageManager();
         final Intent checkTTSIntent = new Intent();
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
 
-        ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
+        ResolveInfo resolveInfo = pm.resolveActivity(checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY);
 
-        if( resolveInfo == null ) {
+        if (resolveInfo == null) {
             Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
             speaking = false;
 
@@ -360,9 +358,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     }
 
 
-
-
-    private void restaureChecked (int type) {
+    private void restaureChecked(int type) {
 
         if (type == 1) {
             disableButton(checkButton); //checkButton.setEnabled(false);
@@ -382,12 +378,12 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         Intent intent = new Intent(ExerciseBuildActivity.this, ExerciseResultActivity.class);
 
-        if (getIntent().hasExtra("practice"))  intent.putExtra("multichoice", true);
+        if (getIntent().hasExtra("practice")) intent.putExtra("multichoice", true);
 
 
         ArrayList<DataItem> results = new ArrayList<>();
 
-        for (ExerciseTask task: exerciseController.tasks) {
+        for (ExerciseTask task : exerciseController.tasks) {
 
             DataItem item = new DataItem();
             item.id = task.savedInfo;
@@ -396,7 +392,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
             item.testError = -1;
 
 
-            for (DataItem dataItem: completed) {
+            for (DataItem dataItem : completed) {
                 if (task.savedInfo.equals(dataItem.id)) {
                     item.testError = dataItem.testError;
                 }
@@ -407,22 +403,19 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         }
 
         intent.putParcelableArrayListExtra("dataItems", results);
-             startActivityForResult(intent,1);
-             overridePendingTransition(R.anim.fade_in_2, 0);
+        startActivityForResult(intent, 1);
+        overridePendingTransition(R.anim.fade_in_2, 0);
     }
 
 
-
-    private void getTasks () {
+    private void getTasks() {
         int limit = Constants.QUEST_NUM;
 
 
-
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
-            String lim =  appSettings.getString("test_all_limit", getString(R.string.set_test_all_limit_default));
+            String lim = appSettings.getString("test_all_limit", getString(R.string.set_test_all_limit_default));
             limit = Integer.parseInt(lim);
         }
-
 
 
         Collections.shuffle(originWordsList);
@@ -438,7 +431,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
                 //String msg = "Tags: " + topicTag + ":  "+ getIntent().getStringExtra(EXTRA_SECTION_ID);
                 //Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-               // data = dataManager.getSectionItems(getIntent().getStringExtra(EXTRA_SECTION_ID));
+                // data = dataManager.getSectionItems(getIntent().getStringExtra(EXTRA_SECTION_ID));
 
             }
 
@@ -487,12 +480,11 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         exerciseAllData.shuffleTasks();
 
 
-
         if (getIntent().hasExtra("practice")) {
 
             if (getIntent().hasExtra("ids")) {
 
-                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(  getIntent().getStringArrayExtra("ids") , exType );
+                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(getIntent().getStringArrayExtra("ids"), exType);
 
             }
         }
@@ -503,14 +495,14 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     }
 
 
-    private void startExercise(){
-       // dataManager.getTime("Start start");
+    private void startExercise() {
+        // dataManager.getTime("Start start");
 
         resultShow = false;
 
         if (!restore) {
 
-            getTasks ();
+            getTasks();
 
             correctAnswers = 0;
             completed = new ArrayList<>();
@@ -520,10 +512,10 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         showPage(0);
 
-        viewPagerAdapter = new ExerciseBuildPagerAdapter(this, exerciseController.tasks );
+        viewPagerAdapter = new ExerciseBuildPagerAdapter(this, exerciseController.tasks);
         viewPager.setAdapter(viewPagerAdapter);
 
-       // dataManager.getTime("End start", true);
+        // dataManager.getTime("End start", true);
     }
 
 
@@ -538,10 +530,9 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         exerciseField.setVisibility(View.VISIBLE);
 
 
+        taskCheckedStatus = 0;
 
-        taskCheckedStatus= 0;
-
-        getTasks ();
+        getTasks();
 
         startExercise();
 
@@ -555,11 +546,11 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
     private void manageCardHeightAndButtons() {
 
-            changeHeight(exTxtHeight);
-            manageCardHeight();
+        changeHeight(exTxtHeight);
+        manageCardHeight();
     }
 
-    private void manageCardHeight(){
+    private void manageCardHeight() {
         final View card = findViewById(R.id.exCard);
 
         card.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -580,21 +571,19 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     }
 
 
-
-
     public void changeHeight(int height) {
 
         int h = convertDimen(height);
 
         View tView = viewPager.findViewWithTag("myview" + viewPager.getCurrentItem());
-        LinearLayout  exQuest = tView.findViewById(R.id.exQuest);
+        LinearLayout exQuest = tView.findViewById(R.id.exQuest);
 
         exQuest.getLayoutParams().height = h;
         exQuest.setLayoutParams(exQuest.getLayoutParams());
 
-        View nextView = viewPager.findViewWithTag("myview" + (viewPager.getCurrentItem()+1) );
+        View nextView = viewPager.findViewWithTag("myview" + (viewPager.getCurrentItem() + 1));
         if (nextView != null) {
-            View nexQuest =  nextView.findViewById(R.id.exQuest);
+            View nexQuest = nextView.findViewById(R.id.exQuest);
             nexQuest.getLayoutParams().height = h;
             nexQuest.setLayoutParams(nexQuest.getLayoutParams());
         }
@@ -608,7 +597,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
     private void showPage(int position) {
 
-        String counterTxt = String.format(getResources().getString(R.string.f_counter_txt), position+1, wordListLength);
+        String counterTxt = String.format(getResources().getString(R.string.f_counter_txt), position + 1, wordListLength);
         fCounterInfoBox.setText(counterTxt);
 
 
@@ -617,12 +606,11 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         }
 
 
-        if (position >=  (wordListLength-1) ){
+        if (position >= (wordListLength - 1)) {
 
             disableButton(nextButton); // nextButton.setEnabled(false);
 
         }
-
 
 
     }
@@ -644,12 +632,12 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
             enableButton(checkButton); //checkButton.setEnabled(true);
         }
 
-        if  ( viewPager.getCurrentItem() >= (wordListLength-1) ) {
+        if (viewPager.getCurrentItem() >= (wordListLength - 1)) {
             exGoToResult();
         } else {
-            viewPager.setCurrentItem(viewPager.getCurrentItem()+1, true );
+            viewPager.setCurrentItem(viewPager.getCurrentItem() + 1, true);
         }
-        if (mSnackbar!= null && mSnackbar.isShown()) mSnackbar.dismiss();
+        if (mSnackbar != null && mSnackbar.isShown()) mSnackbar.dismiss();
     }
 
     public void exCheck(View view) {
@@ -661,22 +649,20 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         taskCheckedStatus = 1;
 
-        if ( position >= (wordListLength-1)  ) {
+        if (position >= (wordListLength - 1)) {
 
-                btnResultBox.setVisibility(View.VISIBLE);
-                btnGroupBox.setVisibility(View.GONE);
-                taskCheckedStatus = 2;
+            btnResultBox.setVisibility(View.VISIBLE);
+            btnGroupBox.setVisibility(View.GONE);
+            taskCheckedStatus = 2;
 
 
         }
     }
 
 
-
     public void exShowResult(View view) {
         exGoToResult();
     }
-
 
 
     public static void exGoToResult() {
@@ -687,7 +673,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
 
         final View exMarkTxtV = exResultBox.findViewById(R.id.exResultMark);
-        final View exResTxt =  exResultBox.findViewById(R.id.exResultTxt);
+        final View exResTxt = exResultBox.findViewById(R.id.exResultTxt);
         final View exRestartBtn = exResultBox.findViewById(R.id.exBtnRestart);
 
 
@@ -703,7 +689,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         int iconsCount = icons.getChildCount();
 
-        for (int i=0; i < iconsCount; i++) {
+        for (int i = 0; i < iconsCount; i++) {
             icons.getChildAt(i).setVisibility(View.GONE);
         }
 
@@ -713,7 +699,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         String markTxt = context.getResources().getString(R.string.ex_result_txt_good);
         int markColor = ContextCompat.getColor(context, R.color.answer_good);
 
-        if (res > 95 ) {
+        if (res > 95) {
             markTxt = context.getResources().getString(R.string.ex_result_txt_excellent);
             markColor = ContextCompat.getColor(context, R.color.answer_excellent);
             icons.findViewById(R.id.box_great).setVisibility(View.VISIBLE);
@@ -721,11 +707,11 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
             markTxt = context.getResources().getString(R.string.ex_result_txt_verygood);
             markColor = ContextCompat.getColor(context, R.color.answer_verygood);
             icons.findViewById(R.id.box_very_good).setVisibility(View.VISIBLE);
-        } else if (res > 20 && res < 50 ) {
+        } else if (res > 20 && res < 50) {
             markTxt = context.getResources().getString(R.string.ex_result_txt_bad);
             markColor = ContextCompat.getColor(context, R.color.answer_satisfactory);
             icons.findViewById(R.id.box_bad).setVisibility(View.VISIBLE);
-        } else if (res < 21 ) {
+        } else if (res < 21) {
             markTxt = context.getResources().getString(R.string.ex_result_txt_verybad);
             markColor = ContextCompat.getColor(context, R.color.answer_bad);
             icons.findViewById(R.id.box_very_bad).setVisibility(View.VISIBLE);
@@ -735,14 +721,13 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         }
 
 
-
         exMarkTxt.setText(markTxt);
         exMarkTxt.setTextColor(markColor);
-        String txt = String.format(context.getResources().getString(R.string.ex_result_txt), correctAnswers, wordListLength, (int)res );
+        String txt = String.format(context.getResources().getString(R.string.ex_result_txt), correctAnswers, wordListLength, (int) res);
         exResultTxt.setText(txt);
 
         if (res > 0) {
-            saveExResult(topicTag, exType, (int)res );
+            saveExResult(topicTag, exType, (int) res);
             correctAnswers = 0;
         }
 
@@ -752,7 +737,8 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
             public void run() {
                 exResTxt.animate().alpha(1.0f).setDuration(250).setInterpolator(new DecelerateInterpolator());
 
-               if (showDetail) exResultDetail.animate().alpha(.95f).setDuration(250).setInterpolator(new DecelerateInterpolator());
+                if (showDetail)
+                    exResultDetail.animate().alpha(.95f).setDuration(250).setInterpolator(new DecelerateInterpolator());
 
             }
         }, 160);
@@ -810,7 +796,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         }
         snackTextView.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        if ( !(context.getResources().getBoolean(R.bool.small_height)) ) mSnackbar.show();
+        if (!(context.getResources().getBoolean(R.bool.small_height))) mSnackbar.show();
 
     }
 
@@ -819,9 +805,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_exercise, menu);
 
-        exSaveStatsRadio =  menu.findItem(R.id.test_save);
-
-
+        exSaveStatsRadio = menu.findItem(R.id.test_save);
 
 
         MenuItem autoplayMenuItem = menu.findItem(R.id.fAutoplay);
@@ -829,7 +813,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         else autoplayMenuItem.setVisible(false);
 
         // if (tablet) manageCardHeightAndButtons();
-       // else applyExBtnStatus(exButtonShow, false);
+        // else applyExBtnStatus(exButtonShow, false);
 
         applySaveStatsStatus(saveStats);
 
@@ -841,7 +825,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     }
 
 
-    private void setSaveStatsForAll () {
+    private void setSaveStatsForAll() {
 
         if (exType == EX_IMG_TYPE) {
             saveStats = false;
@@ -849,12 +833,12 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
             return;
         }
 
-        if (appSettings.getBoolean(Constants.SET_VERSION_TXT, false))  return;
+        if (appSettings.getBoolean(Constants.SET_VERSION_TXT, false)) return;
 
-        if ( topicTag.equals(Constants.ALL_CAT_TAG) ) {
+        if (topicTag.equals(Constants.ALL_CAT_TAG)) {
             if (saveStats) applySaveStatsStatus(false);
             saveStats = false;
-            if (! dataManager.simplified) {
+            if (!dataManager.simplified) {
 
                 exSaveStatsRadio.setEnabled(false);
             }
@@ -894,7 +878,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
+        switch (id) {
             case android.R.id.home:
                 finish();
                 openActivity.pageBackTransition();
@@ -931,8 +915,6 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     }
 
 
-
-
     private void changeSaveStatsStatus() {
         saveStats = !saveStats;
         SharedPreferences.Editor editor = appSettings.edit();
@@ -944,7 +926,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
     private void applySaveStatsStatus(Boolean status) {
         exSaveStatsRadio.setChecked(status);
 
-        if (!restore) if (!status) notifyNotSaved ();
+        if (!restore) if (!status) notifyNotSaved();
 
     }
 
@@ -955,7 +937,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Snackbar.make(fCounterInfoBox, Html.fromHtml("<font color=\"#ffffff\">"+ statsMsg +"</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                Snackbar.make(fCounterInfoBox, Html.fromHtml("<font color=\"#ffffff\">" + statsMsg + "</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         }, 250);
 
@@ -969,7 +951,7 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         //---save whatever you need to persist—
         // outState.putParcelable("controller", control );
-        outState.putParcelable("controller", exerciseController );
+        outState.putParcelable("controller", exerciseController);
 
         outState.putParcelableArrayList(Constants.EXTRA_KEY_WORDS, wordList);
         outState.putInt("correct", correctAnswers);
@@ -983,8 +965,6 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         super.onSaveInstanceState(outState);
 
     }
-
-
 
 
     //// TTS integration
@@ -1031,11 +1011,10 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
         final Locale locale = dataManager.getLocale();
 
         if (initStatus == TextToSpeech.SUCCESS) {
-            if(myTTS.isLanguageAvailable(locale)==TextToSpeech.LANG_AVAILABLE)
+            if (myTTS.isLanguageAvailable(locale) == TextToSpeech.LANG_AVAILABLE)
                 myTTS.setLanguage(locale);
             //  speakBtn.setVisibility(View.VISIBLE);
-        }
-        else if (initStatus == TextToSpeech.ERROR) {
+        } else if (initStatus == TextToSpeech.ERROR) {
             //Toast.makeText(this, "Sorry! Text To Speech failed...", Toast.LENGTH_LONG).show();
         }
     }
@@ -1048,9 +1027,9 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         final String text = dataManager.getPronounce(exerciseController.tasks.get(position).data);
 
-        if (position == 0 ) {
+        if (position == 0) {
 
-            if (initSpeak == 0 ) {
+            if (initSpeak == 0) {
 
                 new Handler().postDelayed(new Runnable() {
                     public void run() {
@@ -1076,63 +1055,75 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
     private void autoPlayDialog() {
 
+
+        boolean playResult = appSettings.getBoolean("play_result", true);
+        boolean playSelect = appSettings.getBoolean("play_select", false);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default));
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        int checkedItem = 0;
-
-        if (autoPlay.equals("none"))  checkedItem = 1;
-
-        builder.setTitle(getString(R.string.set_flash_autoplay_dialog_title))
-
-                .setSingleChoiceItems(R.array.set_flash_autoplay_list, checkedItem, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        saveAutoplay(which);
-                        dialog.dismiss();
-                    }
-                })
-
-                .setCancelable(true)
-
-                .setNegativeButton(R.string.dialog_close_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
+        View content = inflater.inflate(R.layout.dialog_audio_settings, null);
 
 
-        AlertDialog alert = builder.create();
-        alert.show();
+        CheckBox checkBoxAudioResult = content.findViewById(R.id.checkbox_result);
+        checkBoxAudioResult.setChecked(playResult);
+
+        checkBoxAudioResult.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            changeAudioResultStatus(isChecked);
+        });
+
+        CheckBox checkBoxAudioSelect = content.findViewById(R.id.checkbox_select);
+        checkBoxAudioSelect.setChecked(playSelect);
+
+        checkBoxAudioSelect.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            changeAudiSelectStatus(isChecked);
+        });
+
+        builder.setView(content);
+
+        builder.setTitle(R.string.set_flash_autoplay_dialog_title);
+
+        builder.setCancelable(true);
+
+        builder.setNegativeButton(R.string.dialog_close_txt,
+                (dialog, id) -> dialog.cancel());
+
+        builder.show();
+
+
+
 
     }
 
-    private void saveAutoplay(int num) {
+    private void changeAudioResultStatus(boolean checked) {
 
-        String orderValue = getResources().getStringArray(R.array.set_flash_autoplay_values)[0];
-        if (num == 1) orderValue  = getResources().getStringArray(R.array.set_flash_autoplay_values)[1];
+        viewPagerAdapter.setPlayResult(checked);
+        saveAutoplay("play_result", checked);
+    }
+
+    private void changeAudiSelectStatus(boolean checked) {
+
+        viewPagerAdapter.setPlaySelect(checked);
+        saveAutoplay("play_select", checked);
+    }
+
+    private void saveAutoplay(String settingName, boolean checked) {
 
         SharedPreferences.Editor editor = appSettings.edit();
-        editor.putString("set_test_autoplay", orderValue);
+        editor.putBoolean(settingName, checked);
         editor.apply();
-
-        autoPlay = orderValue;
-
 
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
 
-        if(myTTS != null){
+        if (myTTS != null) {
             myTTS.shutdown();
         }
     }
-
 
 
 }

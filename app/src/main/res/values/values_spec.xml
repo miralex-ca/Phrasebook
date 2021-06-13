@@ -43,7 +43,7 @@
     <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
     <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
 
-    <bool name="display_section_practice">true</bool>
+    <bool name="display_section_practice">false</bool>
 
 
 </resources>

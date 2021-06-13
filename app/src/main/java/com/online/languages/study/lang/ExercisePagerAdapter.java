@@ -1,5 +1,6 @@
 package com.online.languages.study.lang;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.viewpager.widget.PagerAdapter;
@@ -42,8 +44,10 @@ import static com.online.languages.study.lang.Constants.TASK_DELAY_INCORRECT;
 
 class ExercisePagerAdapter extends PagerAdapter {
 
-    private Context context;
-    private ArrayList<ExerciseTask> tasks;
+    public static final String OPTION_UNCHECKED = "unchecked";
+    public static final String OPTION_CHECKED = "checked";
+    private final Context context;
+    private final ArrayList<ExerciseTask> tasks;
 
     private int type = 1;
 
@@ -51,8 +55,8 @@ class ExercisePagerAdapter extends PagerAdapter {
     private int disableColor;
     private int activeColor;
 
-    private int correctColor;
-    private int errorColor;
+    private final int correctColor;
+    private final int errorColor;
 
     private DBHelper dbHelper;
 
@@ -60,14 +64,15 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     private ExerciseTask exerciseTask;
 
-    private String exOptTitleLong;
+
+    private final String exOptTitleLong;
     private String exOptTitleShort;
     private String exOptTitleLongLess;
 
     private int taskDelay = TASK_DELAY_INCORRECT;
 
 
-    private int textLongNum;
+    private final int textLongNum;
     DataManager dataManager;
     private final static int CLICK_SOURCE_OPTION = 1;
     public final static int CLICK_SOURCE_BUTTON = 2;
@@ -147,8 +152,9 @@ class ExercisePagerAdapter extends PagerAdapter {
     }
 
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
@@ -160,28 +166,17 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         TextView text = itemView.findViewById(R.id.fCardText);
         TextView transcript = itemView.findViewById(R.id.fTranscriptBox);
-        final RadioGroup radioGroup = itemView.findViewById(R.id.radioGroup1);
+        final ViewGroup radioGroup = itemView.findViewById(R.id.radioGroup1);
 
-        radioGroup.removeAllViews();
+       // radioGroup.removeAllViews();
 
         if (shortTextTest) setGroupPadding(radioGroup);
 
         lessOptions = false;
 
-        int longCount = 0;
-        for (String optionTxt: exerciseTask.options) {
-            if (optionTxt.length() > textLongNum) longCount++;
-        }
-
-        if (longCount > 1) lessOptions = true;
-
-        if (lessOptions) {
-            exerciseTask.options = new ArrayList<>(exerciseTask.options.subList(0, Constants.TEST_LONG_OPTIONS_NUM));
-        }
+        checkOptionsLength();
 
         int optionLen = exerciseTask.options.size();
-
-
         Random rand = new Random();
         int correctOptionIndex = rand.nextInt(optionLen);
         Collections.rotate(exerciseTask.options.subList(0, correctOptionIndex+1), -1);
@@ -195,7 +190,6 @@ class ExercisePagerAdapter extends PagerAdapter {
         } else {
             changeHeight(quest, ExerciseActivity.exTxtMoreHeight);
         }
-        
 
         text.setText( exerciseTask.quest);
         setTextStyle(text, exerciseTask.quest);
@@ -213,7 +207,6 @@ class ExercisePagerAdapter extends PagerAdapter {
              insertAudio(exerciseTask, itemView, position);
         }
 
-
         insertOptions(inflater, radioGroup, optionLen);
 
         setExOptions(radioGroup, exerciseTask);
@@ -228,28 +221,33 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     }
 
-    private void insertOptions(LayoutInflater inflater, RadioGroup radioGroup, int optionLen) {
+    private void checkOptionsLength() {
+        int longCount = 0;
+        for (String optionTxt: exerciseTask.options) {
+            if (optionTxt.length() > textLongNum) longCount++;
+        }
+
+        if (longCount > 1) lessOptions = true;
+
+        if (lessOptions) {
+            exerciseTask.options = new ArrayList<>(exerciseTask.options.subList(0, Constants.TEST_LONG_OPTIONS_NUM));
+        }
+    }
+
+    private void insertOptions(LayoutInflater inflater, ViewGroup radioGroup, int optionLen) {
         for (int i = 0; i < optionLen; i++) {
             buildRadio(inflater, radioGroup);
         }
     }
 
-    private void buildRadio(LayoutInflater inflater, RadioGroup radioGroup) {
+    private void buildRadio(LayoutInflater inflater, ViewGroup radioGroup) {
 
-        String exOpt = exOptTitleLong;
-
-
-        if (lessOptions) {
-            exOpt = exOptTitleLongLess;
-        }
-
-        /// possibility to inflate view depending on the cases (exOpt):
-        /// "long" - normal (not short) option, may be used both for words and phrases
-        //// "long_less" used for decreased number of very long options
-        /// default - anything else
-
-
-
+        // String exOpt = exOptTitleLong;
+        // if (lessOptions)    exOpt = exOptTitleLongLess;
+        // possibility to inflate view depending on the cases (exOpt):
+        // "long" - normal (not short) option, may be used both for words and phrases
+        // "long_less" used for decreased number of very long options
+        // default - anything else
 
         View radioItem =  inflater.inflate(R.layout.radion_option_tem, null);
 
@@ -275,12 +273,12 @@ class ExercisePagerAdapter extends PagerAdapter {
 
 
 
-    private void setResponsesClick(int position, RadioGroup radioGroup) {
+    private void setResponsesClick(int position, ViewGroup radioGroup) {
 
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
 
             View radio =   radioGroup.getChildAt(i);
-                radio.setTag("unchecked");
+                radio.setTag(OPTION_UNCHECKED);
                 ((RadioButton) radio.findViewById(R.id.radio_button)).setChecked(false);
 
                 radio.findViewById(R.id.option_selector_active).setVisibility(View.GONE);
@@ -313,25 +311,25 @@ class ExercisePagerAdapter extends PagerAdapter {
     }
 
 
-    private void setItemChecked(RadioGroup radioGroup, View v) {
+    private void setItemChecked(ViewGroup radioGroup, View v) {
         for (int n = 0; n < radioGroup.getChildCount(); n++) {
 
             View option = radioGroup.getChildAt(n);
 
-            option.setTag("unchecked");
+            option.setTag(OPTION_UNCHECKED);
 
             ((RadioButton) option.findViewById(R.id.radio_button)).setChecked(false);
             option.findViewById(R.id.option_selector_active).setVisibility(View.GONE);
         }
 
-        v.setTag("checked");
+        v.setTag(OPTION_CHECKED);
         ((RadioButton) v.findViewById(R.id.radio_button)).setChecked(true);
 
          v.findViewById(R.id.option_selector_active).setVisibility(View.VISIBLE);
 
     }
 
-    private int getCheckedItemIndex(RadioGroup radioGroup) {
+    private int getCheckedItemIndex(ViewGroup radioGroup) {
 
         int foundViewIndex = -1;
 
@@ -343,16 +341,13 @@ class ExercisePagerAdapter extends PagerAdapter {
            }
         }
 
-
         return foundViewIndex;
 
     }
 
-    private void highlightCheckedItem(RadioGroup radioGroup, int checkedIndex) {
+    private void highlightCheckedItem(ViewGroup radioGroup, int checkedIndex) {
 
         setDefaultRadio(radioGroup);
-
-        //checkedRadioButton.setTextColor( ContextCompat.getColor(  context , activeColor) );
 
         View radio = radioGroup.getChildAt(checkedIndex);
 
@@ -377,14 +372,12 @@ class ExercisePagerAdapter extends PagerAdapter {
         return view == object;
     }
 
-    private void setDefaultRadio(RadioGroup radioGroup) {
+    private void setDefaultRadio(ViewGroup radioGroup) {
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             View radio = radioGroup.getChildAt(i);
             ((TextView) radio.findViewById(R.id.option_text)).setTextColor(ContextCompat.getColor(context, optionColor));
         }
     }
-
-
 
 
     private void setTextStyle(TextView textView, String text) {
@@ -411,7 +404,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         return tSize;
     }
 
-    private void setExOptions(RadioGroup radiogroup, ExerciseTask task) {
+    private void setExOptions(ViewGroup radiogroup, ExerciseTask task) {
 
         int[] correctTag = new int[]{ task.correct };
 
@@ -421,11 +414,9 @@ class ExercisePagerAdapter extends PagerAdapter {
 
             String optionTxt = task.options.get(i).trim();
 
-
             View radio = radiogroup.getChildAt(i);
 
             boolean textBold = type==2 || type == EX_IMG_TYPE;
-
 
              setTextStyleAndSize(optionTxt, radio, textBold);
 
@@ -443,7 +434,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         if ( textBold ) {
             ((TextView)radio.findViewById(R.id.option_text)).setTypeface(null, Typeface.BOLD);
-           //((TextView)radio.findViewById(R.id.option_text)).setTypeface(Typeface.create("sans-serif-light", Typeface.BOLD));
         } else {
             ((TextView)radio.findViewById(R.id.option_text)).setTypeface(null, Typeface.NORMAL);
         }
@@ -474,11 +464,11 @@ class ExercisePagerAdapter extends PagerAdapter {
     }
 
 
-    private void checkItem(final RadioGroup _radioGroup, final int _position) {
+    private void checkItem(final ViewGroup _radioGroup, final int _position) {
         new android.os.Handler().postDelayed(() -> checkItemByRadio(_radioGroup, _position), 300);
     }
 
-    private void checkItemByRadio(RadioGroup _radioGroup, int _position) {
+    private void checkItemByRadio(ViewGroup _radioGroup, int _position) {
 
        boolean correct = exCheckItem(_radioGroup, _position, CLICK_SOURCE_OPTION);
 
@@ -492,7 +482,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         }, taskDelay);
     }
 
-    boolean exCheckItem(RadioGroup radioGroup, int position, int source)  {
+    boolean exCheckItem(ViewGroup radioGroup, int position, int source)  {
 
         boolean correct_answer = false;
 
@@ -500,7 +490,6 @@ class ExercisePagerAdapter extends PagerAdapter {
         ExerciseActivity.exCheckedStatus = true;
 
         Boolean saveStats = ExerciseActivity.saveStats;
-
 
         int checkedIndex = getCheckedItemIndex(radioGroup);
 
@@ -537,14 +526,8 @@ class ExercisePagerAdapter extends PagerAdapter {
         return correct_answer;
     }
 
-    private void highlightError(RadioButton checkedRadioButton) {
-        if (checkedRadioButton != null) {
-            checkedRadioButton.setTextColor(ContextCompat.getColor(context, R.color.red_snack));
-            checkedRadioButton.setPaintFlags(checkedRadioButton.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
-    }
 
-    private int getCorrectTag(RadioGroup radioGroup) {
+    private int getCorrectTag(ViewGroup radioGroup) {
 
         int[] data = (int[]) radioGroup.getTag() ;
         int correctTag = data[0];
@@ -554,7 +537,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         return correctTag;
     }
 
-    private void highlightCorrect(RadioGroup radioGroup, int correctTag) {
+    private void highlightCorrect(ViewGroup radioGroup, int correctTag) {
 
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             View radio =  radioGroup.getChildAt(i);
@@ -602,7 +585,6 @@ class ExercisePagerAdapter extends PagerAdapter {
         if (saveStats && !savedInfo.equals("")) {
 
                 dbHelper.setError(savedInfo);
-
         }
         saveCompleted(savedInfo, 1);
     }
@@ -618,8 +600,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
                 dbHelper.setWordResult(savedInfo);
             }
-
-
         }
         saveCompleted(savedInfo, 0);
     }
@@ -628,7 +608,6 @@ class ExercisePagerAdapter extends PagerAdapter {
     private void insertImage (ExerciseTask task, View itemView, int position) {
 
         ImageView image = itemView.findViewById(R.id.exImage);
-
 
         ExerciseActivity.fCounterInfoBox.setVisibility(View.GONE);
 
@@ -639,7 +618,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         textWrapper.setVisibility(View.GONE);
         imageWrapper.setVisibility(View.VISIBLE);
-
 
         String counter = (position+1) + "/" +tasks.size();
 
@@ -657,7 +635,6 @@ class ExercisePagerAdapter extends PagerAdapter {
 
     private void insertAudio (ExerciseTask task, View itemView, int position) {
 
-
         View textWrapper = itemView.findViewById(R.id.exTextWrapper);
 
         View audioWrapper = itemView.findViewById(R.id.exAudioWrapper);
@@ -666,16 +643,9 @@ class ExercisePagerAdapter extends PagerAdapter {
 
         audioWrapper.setVisibility(View.VISIBLE);
 
-
         final String speakTxt = dataManager.getPronounce(exerciseTask.data);
 
-
-        audioWrapper.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            ExerciseActivity.speak(speakTxt);
-                                        }
-                                    }
+        audioWrapper.setOnClickListener(v -> ExerciseActivity.speak(speakTxt)
 
         );
 

@@ -214,9 +214,7 @@
         <item name="colorMenuIconInfo">?attr/colorMenuIconColor</item>
         <item name="colorMenuIconContact">?attr/colorMenuIconColor</item>
 
-
         <item name="colorMenuIconColor">@color/colorMenuIconColor_dark</item>
-
 
         <item name="colorExOptionTxt">@color/colorExOptionTxt_dark</item>
         <item name="colorExDisabledTxt">@color/colorExDisabledTxt</item>
@@ -229,8 +227,6 @@
 
         <item name="colorExOptionTxtCorrect">@color/colorExOptionTxtCorrect_dk</item>
         <item name="colorExOptionTxtError">@color/colorExOptionTxtError_dk</item>
-
-
 
         <item name="colorExBottomDivider">@color/colorExBottomDivider_dark</item>
 

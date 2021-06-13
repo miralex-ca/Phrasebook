@@ -253,6 +253,7 @@ public class TaskFragment extends Fragment {
 
         } else {
             if (taskItem.getProgress() > 10) openActivity.openExTab = true;
+
             openActivity.openFromViewCat(navStructure, taskItem.getViewCategory().sectionId, taskItem.getViewCategory());
             openActivity.openExTab = false;
         }
