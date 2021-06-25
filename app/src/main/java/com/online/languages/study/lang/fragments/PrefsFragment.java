@@ -144,6 +144,15 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         modeHint.setVisible(Constants.DEBUG);
 
 
+
+        final ListPreference mode = getPreferenceManager().findPreference("data_mode");
+        boolean displayMode = getActivity().getResources().getBoolean(R.bool.display_mode);
+
+        if (!displayMode) {
+            if(mode != null)  mode.setVisible(false);
+        }
+
+
         transitions.setOnPreferenceChangeListener((preference, newValue) -> {
             Intent intent = getActivity().getIntent();
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -42,7 +42,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.study.languages.master"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 60
         versionName '3.3.0'
@@ -106,6 +106,19 @@ android {
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher_fr",
                     appIconRound: "@mipmap/ic_launcher_fr"
+            ]
+        }
+
+        spanish {
+            minSdkVersion 21
+            dimension "mode"
+            applicationId 'com.study.languages.spanish'
+            resValue("string", "applicationId", applicationId)
+            //resConfigs 'en', 'ru'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_es",
+                    appIconRound: "@mipmap/ic_launcher_es"
             ]
         }
 

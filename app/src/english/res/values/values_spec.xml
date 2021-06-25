@@ -44,7 +44,7 @@
     <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
 -->
 
-    <bool name="display_section_practice">false</bool>
+    <bool name="display_section_practice">true</bool>
 
 
 </resources>

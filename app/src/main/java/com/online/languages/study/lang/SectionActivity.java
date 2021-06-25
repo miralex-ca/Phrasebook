@@ -31,6 +31,7 @@ public class SectionActivity extends ThemedActivity {
     DataManager dataManager;
 
     MenuItem modeMenuItem;
+    MenuItem modeInfoItem;
 
     ViewPager viewPager;
     SectionPagerAdapter adapter;
@@ -155,6 +156,11 @@ public class SectionActivity extends ThemedActivity {
         dataManager.dbHelper.checkMode();
         easy_mode = dataManager.easyMode();
         if (modeMenuItem != null) modeMenuItem.setVisible(easy_mode);
+
+        if (!getResources().getBoolean(R.bool.display_mode)) {
+            modeMenuItem.setVisible(false);
+            modeInfoItem.setVisible(false);
+        }
     }
 
     @Override
@@ -168,8 +174,10 @@ public class SectionActivity extends ThemedActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.section_tabs_menu, menu);
         modeMenuItem = menu.findItem(R.id.easy_mode);
+        modeInfoItem = menu.findItem(R.id.info_from_menu);
 
         checkModeIcon();
+
 
         return true;
     }

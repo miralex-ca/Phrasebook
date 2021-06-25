@@ -355,6 +355,7 @@ public class SectionStatsActivity extends BaseActivity {
 
         checkModeIcon();
 
+
         return true;
 
     }
@@ -369,6 +370,11 @@ public class SectionStatsActivity extends BaseActivity {
 
             if (easy_mode) infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
             else infoMenuItem.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+            if (!getResources().getBoolean(R.bool.display_mode)) {
+                modeMenuItem.setVisible(false);
+                infoMenuItem.setVisible(false);
+            }
 
         }
 

@@ -105,7 +105,7 @@ public class SectionListActivity extends BaseActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration( new DividerItemDecoration(this) );
+        //recyclerView.addItemDecoration( new DividerItemDecoration(this) );
         recyclerView.setAdapter(adapter);
 
         openView(recyclerView);

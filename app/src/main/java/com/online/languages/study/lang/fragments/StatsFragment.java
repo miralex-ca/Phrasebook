@@ -146,11 +146,21 @@ public class StatsFragment extends Fragment {
         modeMenuItem = menu.findItem(R.id.easy_mode);
         checkModeIcon();
 
+
+
     }
 
     private void checkModeIcon() {
         easy_mode = dataManager.easyMode();
-        if (modeMenuItem != null) modeMenuItem.setVisible(easy_mode);
+        if (modeMenuItem != null) {
+
+            modeMenuItem.setVisible(easy_mode);
+
+
+            if (!getResources().getBoolean(R.bool.display_mode)) {
+                modeMenuItem.setVisible(false);
+            }
+        }
     }
 
     @Override

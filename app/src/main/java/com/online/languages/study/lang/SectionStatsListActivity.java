@@ -146,12 +146,18 @@ public class SectionStatsListActivity extends BaseActivity {
         modeMenuItem = menu.findItem(R.id.easy_mode);
         checkModeIcon();
 
+
+
         return true;
     }
 
     private void checkModeIcon() {
         easy_mode = dataManager.easyMode();
         modeMenuItem.setVisible(easy_mode);
+
+        if (!getResources().getBoolean(R.bool.display_mode)) {
+            modeMenuItem.setVisible(false);
+        }
     }
 
     @Override

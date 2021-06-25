@@ -265,6 +265,10 @@ public class InfoListActivity extends BaseActivity {
         MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
         if (easy_mode) modeMenuItem.setVisible(true);
 
+        if (!getResources().getBoolean(R.bool.display_mode)) {
+            modeMenuItem.setVisible(false);
+        }
+
         return true;
     }
 

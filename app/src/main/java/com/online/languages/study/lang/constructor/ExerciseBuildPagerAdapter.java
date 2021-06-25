@@ -50,7 +50,6 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
     private final int BUILD_TYPE_INSERT = 1;
 
-
     TextView textView;
 
     ExerciseBuildPagerAdapter(Context _context, ArrayList<ExerciseTask> _tasks) {
@@ -288,7 +287,7 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
     private ArrayList<String> getOptions(String string) {
         ArrayList<String> options = new ArrayList<>();
         String str = string.trim();
-        str = str.replaceAll("[.,;?!]", "");
+        str = str.replaceAll("[.,;?!¡¿]", "");
 
         String[] separated = str.split(" ");
         Collections.addAll(options, separated);
@@ -470,7 +469,7 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
     private String checkString(String string) {
 
         string = string.trim();
-        string = string.replaceAll("[.,;?!]", "").toUpperCase();
+        string = string.replaceAll("[.,;?!¡¿]", "").toUpperCase();
 
         return string;
     }

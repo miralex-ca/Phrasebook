@@ -45,5 +45,6 @@
 
     <bool name="display_section_practice">false</bool>
 
+    <bool name="display_mode">true</bool>
 
 </resources>

@@ -451,6 +451,12 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             menu.findItem(R.id.remove_stats_from_menu).setVisible(false);
         }
 
+        if (!getResources().getBoolean(R.bool.display_mode)) {
+            modeMenuItem.setVisible(false);
+            hintMenuItem.setVisible(false);
+            menu.findItem(R.id.mode_from_menu).setVisible(false);
+        }
+
 
         return true;
     }

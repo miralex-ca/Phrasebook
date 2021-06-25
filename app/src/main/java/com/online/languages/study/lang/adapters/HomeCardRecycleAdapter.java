@@ -104,7 +104,7 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
                     .load("file:///android_asset/pics/"+ section.image )
                     .fit()
                     .centerCrop()
-                    .transform(new RoundedCornersTransformation(5,5))
+                    .transform(new RoundedCornersTransformation(8,6))
                     .into(holder.icon);
         }
 

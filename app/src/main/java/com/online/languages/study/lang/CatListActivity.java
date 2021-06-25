@@ -312,6 +312,9 @@ public class CatListActivity extends BaseActivity {
             getMenuInflater().inflate(R.menu.stats_mode_info, menu);
             MenuItem modeMenuItem = menu.findItem(R.id.easy_mode);
             if (easy_mode) modeMenuItem.setVisible(true);
+            if (!getResources().getBoolean(R.bool.display_mode)) {
+                modeMenuItem.setVisible(false);
+            }
 
         }
 

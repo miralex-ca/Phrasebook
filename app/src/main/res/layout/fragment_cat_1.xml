@@ -36,7 +36,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
                 style="?attr/cardViewStyle"
-                app:cardCornerRadius="?attr/cardCornerSpec"
                 >
 
                 <FrameLayout
@@ -88,7 +87,6 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
                     style="?attr/cardViewStyle"
-                    app:cardCornerRadius="?attr/cardCornerSpec"
                     >
 
                     <FrameLayout

@@ -298,6 +298,9 @@ public class SectionActivitySimple extends BaseActivity {
         modeMenuItem = menu.findItem(R.id.easy_mode);
 
         checkModeIcon();
+        if (!getResources().getBoolean(R.bool.display_mode)) {
+            modeMenuItem.setVisible(false);
+        }
 
         return true;
     }

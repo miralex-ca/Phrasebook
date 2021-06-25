@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Испанский язык</string>
+    <string name="nav_header_txt">Испанский язык</string>
+    <string name="app_info_file">info_ru</string>
+
+    <string name="app_structure_file" translatable="false">spanish/navstructure_ru.json</string>
+    <string name="app_data_file" translatable="false">spanish/data_ru.json</string>
+
+    <string name="tests_file" translatable="false">spanish/test_quests_ru.json</string>
+    <string name="build_tests_file" translatable="false">spanish/test_build_ru.json</string>
+
+</resources>

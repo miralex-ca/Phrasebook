@@ -985,6 +985,11 @@ public class DataManager {
             locale = Locale.FRENCH;
         }
 
+        if (localString.equals("spanish")) {
+
+            locale = new Locale("es");
+        }
+
         if (localString.equals("russian")) {
             locale = new Locale("ru");
         }

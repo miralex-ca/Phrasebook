@@ -10,7 +10,7 @@
       android:layout_margin="3dp"
       android:layout_height="wrap_content"
       app:contentPadding="0dp"
-      app:cardCornerRadius="?attr/cardCornerSpec"
+      app:cardCornerRadius="5dp"
 
       style="@style/CardViewStyle"
       >
