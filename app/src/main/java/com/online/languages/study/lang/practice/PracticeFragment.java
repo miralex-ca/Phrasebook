@@ -49,8 +49,16 @@ public class PracticeFragment extends Fragment {
     ArrayList<String> catIds;
 
     ArrayList<String> sectionCatIds;
-    ArrayList<String> sectionStudiedWordsIds;
+
     ArrayList<String> sectionStudiedIds;
+    ArrayList<String> sectionUnStudiedIds;
+
+    ArrayList<String> sectionWordCatIds;
+    ArrayList<String> sectionStudiedWordsIds;
+    ArrayList<String> sectionUnStudiedWordsIds;
+
+
+    ArrayList<String> sectionIdsForTest;
 
     public PracticeFragment() { }
 
@@ -110,8 +118,13 @@ public class PracticeFragment extends Fragment {
         catIds = new ArrayList<>();
 
         sectionCatIds = new ArrayList<>();
-        sectionStudiedWordsIds = new ArrayList<>();
         sectionStudiedIds = new ArrayList<>();
+        sectionUnStudiedIds = new ArrayList<>();
+
+        sectionWordCatIds = new ArrayList<>();
+        sectionStudiedWordsIds = new ArrayList<>();
+        sectionUnStudiedWordsIds = new ArrayList<>();
+
 
         final NavSection navSectionByID = navStructure.getNavSectionByID(sectionID);
 
@@ -125,17 +138,19 @@ public class PracticeFragment extends Fragment {
 
             String categoryResult = mapCategoriesResult.get(catId);
 
-            if (Integer.parseInt(categoryResult) > 30) {
+            for (NavCategory navCategory: navSectionByID.navCategories) {
+                if (navCategory.id.equals(catId) && !(navCategory.spec.equals("phrases"))) {
 
-                for (NavCategory navCategory: navSectionByID.navCategories) {
-                    if (navCategory.id.equals(catId) && !(navCategory.spec.equals("phrases"))) {
-                        sectionStudiedWordsIds.add(catId);
-                    }
+                    sectionWordCatIds.add(catId);
+
+                    if (Integer.parseInt(categoryResult) > 20)   sectionStudiedWordsIds.add(catId);
+                    else sectionUnStudiedWordsIds.add(catId);
+
                 }
-
-                sectionStudiedIds.add(catId);
-
             }
+
+            if (Integer.parseInt(categoryResult) > 20)  sectionStudiedIds.add(catId);
+            else sectionUnStudiedIds.add(catId);
 
         }
 
@@ -176,13 +191,18 @@ public class PracticeFragment extends Fragment {
 
         String[] stringArray = sectionStudiedWordsIds.toArray(new String[0]);
 
+        stringArray = sectionStudiedWordsIds.toArray(new String[0]);
+
         Intent i = new Intent(activityContext, ExerciseActivity.class) ;
 
         i.putExtra("ex_type", 1);
 
         i.putExtra(Constants.EXTRA_SECTION_ID, sectionID);
-        i.putExtra(Constants.EXTRA_CAT_TAG, "revise_p_"+sectionID);
+        i.putExtra(Constants.EXTRA_CAT_TAG, "rev_pr_"+sectionID);
+
         i.putExtra("ids", stringArray);
+        i.putExtra("unstudied_ids", sectionUnStudiedWordsIds.toArray(new String[0]));
+
         i.putParcelableArrayListExtra("dataItems", new ArrayList<>());
 
         startActivityForResult(i, 1);

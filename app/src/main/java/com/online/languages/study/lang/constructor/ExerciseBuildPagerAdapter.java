@@ -335,7 +335,7 @@ class ExerciseBuildPagerAdapter extends PagerAdapter {
 
         boolean correctResponse = checkResponse(String.valueOf(response.toString()), tasks.get(position), root);
 
-        String savedInfo = exerciseTask.savedInfo;
+        String savedInfo = tasks.get(position).savedInfo;
 
         if (correctResponse) {
 

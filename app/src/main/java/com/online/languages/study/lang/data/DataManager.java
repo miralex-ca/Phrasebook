@@ -849,6 +849,20 @@ public class DataManager {
     }
 
 
+    public ArrayList<DataItem> getItemsByCatIds(String[] cats) {
+
+        ArrayList<String> catIdsForTests = new ArrayList<>(Arrays.asList(cats));
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        ArrayList<DataItem> data = dbHelper.getDataItemsByCatIds(db, catIdsForTests);
+
+        db.close();
+
+        return  data;
+    }
+
+
     public void getTime(String msg) {
         getTime(msg, false);
     }

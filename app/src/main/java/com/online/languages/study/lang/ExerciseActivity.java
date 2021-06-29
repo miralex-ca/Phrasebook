@@ -45,6 +45,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
+import com.online.languages.study.lang.practice.VocCollectManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -472,6 +473,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         }
 
+        if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+
+            data = dataManager.getAllItems();
+            exerciseAllData = new ExerciseDataCollect(context, data, exType);
+        }
+
 
         if (topicTag.contains("revise")) {
 
@@ -483,12 +490,31 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         }
 
+        if (topicTag.contains("_pr_")) {
 
-        if (topicTag.equals(Constants.ALL_CAT_TAG)) {
+            limit = 30;
 
-            data = dataManager.getAllItems();
-            exerciseAllData = new ExerciseDataCollect(context, data, exType);
+            if (getIntent().hasExtra("ids")) {
+
+                String[] studiedIDs = getIntent().getStringArrayExtra("ids");
+                String[] unstudiedIDs = getIntent().getStringArrayExtra("unstudied_ids");
+
+                data = dataManager.getItemsByCatIds(studiedIDs);
+                ArrayList<DataItem> unStudiedData = dataManager.getItemsByCatIds(unstudiedIDs);
+
+                VocCollectManager vocCollectManager = new VocCollectManager(data, unStudiedData);
+
+                if (studiedIDs != null) vocCollectManager.setStudiedIds(studiedIDs);
+                if (unstudiedIDs != null) vocCollectManager.setUnStudiedIds(unstudiedIDs);
+
+                vocCollectManager.processData();
+
+                data = vocCollectManager.getMainListDataItems();
+
+                exerciseAllData = new ExerciseDataCollect(context, data, exType);
+            }
         }
+
 
         if (data.size() > limit) {
             data = new ArrayList<>(data.subList(0, limit));
@@ -509,7 +535,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         }
 
-        exerciseAllData.shuffleTasks();
+        if (!topicTag.contains("_pr_")) exerciseAllData.shuffleTasks();
 
 
         if (getIntent().hasExtra("practice")) {
@@ -520,6 +546,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             }
         }
+
+
 
 
         exerciseController.tasks = exerciseAllData.tasks;

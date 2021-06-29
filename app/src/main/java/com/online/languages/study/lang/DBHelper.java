@@ -3919,6 +3919,46 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<DataItem> getDataItemsByCatIds(SQLiteDatabase db, ArrayList<String> catIds) {
+
+        ArrayList<DataItem> items = new ArrayList<>();
+
+        if (catIds.size() == 0) return  items;
+
+        StringBuilder conditionLike = new StringBuilder("");
+
+
+        for (int i = 0; i < catIds.size(); i++) {
+            String like = "a."+KEY_ITEM_ID + " LIKE '" + catIds.get(i)+ "%' ";
+
+            if (i != 0) {
+                like = "OR " + like;
+            }
+            conditionLike.append(like);
+        }
+
+
+        String query = "SELECT * FROM "
+                //+TABLE_USER_DATA +" a INNER JOIN "+TABLE_ITEMS_DATA  +" b ON a.user_item_id=b.item_id"
+
+                +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA +" b ON a.item_id = b.user_item_id"
+
+                +" WHERE ("+conditionLike+")";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try {
+            while (cursor.moveToNext()) {
+                items.add(getItemFromCursor(cursor));
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return  items;
+    }
+
+
     public UserStatsData checkAppStatsDB(UserStatsData userStatsData) {
 
         SQLiteDatabase db = this.getWritableDatabase();
