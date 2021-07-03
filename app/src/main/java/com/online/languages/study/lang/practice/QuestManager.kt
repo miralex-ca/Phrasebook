@@ -1,6 +1,6 @@
 package com.online.languages.study.lang.practice
 
-import com.online.languages.study.lang.Constants
+import android.util.Log
 import com.online.languages.study.lang.Constants.EX_AUDIO_TYPE
 import com.online.languages.study.lang.Constants.EX_ORIG_TR
 import kotlin.collections.ArrayList
@@ -16,12 +16,15 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
     var mainList = ArrayList<QuestData>()
     var exerciseType = 0
 
+    var requiredLevel = 0
 
 
     var reviseGroupsList = ArrayList<ArrayList<QuestData>>()
 
+
     fun processData() {
 
+        // we're getting quests with stats grouped by topics
         checkGroupsSort(listedQuestsGroup)
 
         sortGroupsList()
@@ -29,6 +32,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         collectMainList()
 
     }
+
 
     private fun sortGroupsList() {
 
@@ -42,6 +46,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
         listedQuestsGroup.clear()
         listedQuestsGroup.addAll(groups)
+
 
     }
 
@@ -59,8 +64,6 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
             mainList.addAll( items.shuffled() )
 
         }
-
-
 
         addForReviseIfUnderLimit()
 
@@ -244,7 +247,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
 
     private fun checkGroupsSort(listedQuestsGroup: ArrayList<ArrayList<QuestData>>?) {
-
+    /// sort by count in groups
 
         listedQuestsGroup?.forEach { list ->
 
@@ -252,7 +255,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
             if (list.size > 0 )  {
 
-                val listMin = ArrayList<QuestData>()
+                var listMin = ArrayList<QuestData>()
                 val listHigher = ArrayList<QuestData>()
 
                 for (item in list) {
@@ -261,26 +264,66 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                     if (count > PRACTICE_COUNT_SHUFFLE ) {
                         listHigher.add(item)
-                    }
-                    else {
-
+                    } else {
                         listMin.add(item)
                     }
 
                 }
+
+                listMin = checkListForLevel(listMin)
 
                 sortByExType(listMin)
 
                 list.clear()
                 list.addAll(listMin)
 
-
                 reviseGroupsList.add(listHigher)
-
 
             }
         }
     }
+
+
+    private fun checkListForLevel(questList: ArrayList<QuestData>): ArrayList<QuestData> {
+
+        val cutByLevel = ArrayList<QuestData>()
+
+        questList.forEach {
+
+            val matchesLevel = checkQuestLevel(it)
+
+            if (matchesLevel) {
+                cutByLevel.add(it)
+            }
+        }
+
+        return cutByLevel
+    }
+
+
+    private fun checkQuestLevel(quest: QuestData): Boolean {
+
+        val levels = getRequiredLevels()
+
+        var matchesLevel = false
+
+        levels.forEach{ level ->
+
+            //Log.i("Quests", "level $level")
+            //Log.i("Quests", "level qu ${quest.levelGlobal}")
+
+            if ( quest.levelGlobal in level) {
+
+                matchesLevel = true
+
+            }
+        }
+
+        return matchesLevel
+    }
+
+
+
 
     private fun sortByExType(list: java.util.ArrayList<QuestData>) {
         if (exerciseType == EX_ORIG_TR) list.sortBy { it.countTr }
@@ -291,6 +334,32 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
         return if (exerciseType == EX_AUDIO_TYPE) quest.countAudio
                else quest.countTr
+    }
+
+    private fun getRequiredLevels(): ArrayList<IntRange> {
+
+        val levels = ArrayList<IntRange>()
+
+        when (requiredLevel) {
+
+            0 -> {
+                levels.add(0..10000)
+            }
+
+            1 -> {
+                levels.add(1100..1150)
+            }
+
+            2 -> {
+                levels.add(1120..1120)
+                levels.add(1200..5000)
+            }
+
+            else -> levels.add(0..2000)
+
+        }
+
+        return levels
     }
 
 

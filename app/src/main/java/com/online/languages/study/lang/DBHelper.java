@@ -667,7 +667,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_QUEST_ID, item.getId());
                 values.put(KEY_QUEST_CAT_ID, item.getCategoryId() );
                 values.put(KEY_QUEST_LEVEL, item.getLevel() );
-                values.put(KEY_QUEST_LEVEL_GLOBAL, item.getLevel() );
+                values.put(KEY_QUEST_LEVEL_GLOBAL, item.getLevelGlobal() );
                 values.put(KEY_QUEST_MODE, item.getLevel() );
 
                 values.put(KEY_QUEST_QUEST, item.getQuest() );

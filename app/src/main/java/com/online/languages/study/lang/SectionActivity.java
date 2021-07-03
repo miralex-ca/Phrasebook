@@ -155,12 +155,17 @@ public class SectionActivity extends ThemedActivity {
     private void checkModeIcon() {
         dataManager.dbHelper.checkMode();
         easy_mode = dataManager.easyMode();
-        if (modeMenuItem != null) modeMenuItem.setVisible(easy_mode);
+        if (modeMenuItem != null) {
 
-        if (!getResources().getBoolean(R.bool.display_mode)) {
-            modeMenuItem.setVisible(false);
-            modeInfoItem.setVisible(false);
+            modeMenuItem.setVisible(easy_mode);
+
+            if (!getResources().getBoolean(R.bool.display_mode)) {
+                modeMenuItem.setVisible(false);
+                modeInfoItem.setVisible(false);
+            }
         }
+
+
     }
 
     @Override

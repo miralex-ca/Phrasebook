@@ -178,6 +178,7 @@ public class PracticeFragment extends Fragment {
         intent.putExtra("practice", true);
 
         intent.putExtra("ids", stringArray);
+        intent.putExtra("unstudied_ids", sectionUnStudiedIds.toArray(new String[0]));
 
         intent.putParcelableArrayListExtra("dataItems", new ArrayList<DataItem>());
 
@@ -224,6 +225,8 @@ public class PracticeFragment extends Fragment {
         intent.putExtra("practice", true);
 
         intent.putExtra("ids", stringArray);
+
+        intent.putExtra("unstudied_ids", sectionUnStudiedIds.toArray(new String[0]));
 
         intent.putParcelableArrayListExtra("dataItems", new ArrayList<DataItem>());
 

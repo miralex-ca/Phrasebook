@@ -542,7 +542,10 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
             if (getIntent().hasExtra("ids")) {
 
-                exerciseAllData.tasks = dataManager.getSortedQuestsByCatIds(  getIntent().getStringArrayExtra("ids") , exType );
+                String[] studiedList = getIntent().getStringArrayExtra("ids");
+                String[] unstudiedList = getIntent().getStringArrayExtra("unstudied_ids");
+
+                exerciseAllData.tasks = dataManager.getSortedQuestsByCatIds( studiedList , exType, unstudiedList );
 
             }
         }

@@ -484,7 +484,10 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
             if (getIntent().hasExtra("ids")) {
 
-                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(getIntent().getStringArrayExtra("ids"), exType);
+                String[] studiedList = getIntent().getStringArrayExtra("ids");
+                String[] unstudiedList = getIntent().getStringArrayExtra("unstudied_ids");
+
+                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(studiedList, exType, unstudiedList);
 
             }
         }

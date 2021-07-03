@@ -1,5 +1,6 @@
 package com.online.languages.study.lang.practice
 
+import android.util.Log
 import com.online.languages.study.lang.data.DataItem
 import kotlin.collections.ArrayList
 
@@ -7,7 +8,7 @@ import kotlin.collections.ArrayList
 class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudiedCatsItems: ArrayList<DataItem>) {
 
     companion object {
-        const val PRACTICE_VOC_LIMIT = 20
+        const val PRACTICE_VOC_LIMIT = 30
         val PROGRESS_START_RANGE = 0..5
         const val PROGRESS_MASTERED_CAT = 85
         const val PROGRESS_MASTERED_CAT_STUDIED = 80
@@ -59,6 +60,8 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         val allCompleted = checkCatsForMasteredItems(catsIDs, catsItems) // check if some cats are not mastered
 
+        Log.i("Quest", "quests: ${allCompleted}")
+
         sortStudiedByDateAndScore()
         studiedSortedItems.addAll(studiedCatsItems)
 
@@ -73,7 +76,7 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         val groups: ArrayList<ItemsGroup> = sortItemsInGroupsByIds(catsIDs, catsItems)
         groups.forEach { group -> calculateGroupProgress(group) }
 
-        groups.forEach { if (it.progress < PROGRESS_MASTERED_CAT_STUDIED) allCompleted = false }
+        groups.forEach { if (Integer.valueOf(it.stats) < PROGRESS_MASTERED_CAT_STUDIED) allCompleted = false }
 
         return allCompleted
     }
@@ -135,7 +138,7 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         sortedGroups.forEach {
 
-            if (it.progress > 2) it.items = unknownToFrontAndShuffle( it.items )
+            if (Integer.valueOf(it.stats) > 2) it.items = unknownToFrontAndShuffle( it.items )
 
             sortedItemsList.addAll(it.items)
 
@@ -166,7 +169,7 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         val groups: ArrayList<ItemsGroup> = ArrayList()
 
-        catsIDs.forEach { groups.add(ItemsGroup(ArrayList(), 0, it)) }
+        catsIDs.forEach { groups.add(ItemsGroup(ArrayList(), "0", it)) }
         sortItemsByGroup(groups, catsItems)
 
         return groups
@@ -178,12 +181,17 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         val startProgressGroup: ArrayList<ItemsGroup> = ArrayList()
         val completedGroup: ArrayList<ItemsGroup> = ArrayList()
 
+        Log.i("Quest", "quests: progress ${groups.size} }")
+
         for (group in groups) {
+
             calculateGroupProgress(group)
 
+            Log.i("Quest", "quests: gr ${group.id}  - ${group.stats}")
+
             when {
-                group.progress in PROGRESS_START_RANGE -> startProgressGroup.add(group)
-                group.progress > PROGRESS_MASTERED_CAT -> completedGroup.add(group)
+                Integer.valueOf(group.stats) in PROGRESS_START_RANGE -> startProgressGroup.add(group)
+                Integer.valueOf(group.stats) > PROGRESS_MASTERED_CAT -> completedGroup.add(group)
                 else -> progressGroup.add(group)
             }
         }
@@ -191,13 +199,17 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         val sortedGroups: ArrayList<ItemsGroup> = ArrayList()
 
         /// if this is the first cat to learn, leave just this cat
+
+        Log.i("Quest", "quests: ${startProgressGroup.size} ; ${progressGroup.size}")
+
         if (progressGroup.size == 0 && completedGroup.size == 0 && startProgressGroup.size > 1) {
+
 
             sortedGroups.add(startProgressGroup[0])
 
         } else {
 
-            sortedGroups.addAll(progressGroup.sortedByDescending { it.progress })
+            sortedGroups.addAll(progressGroup.sortedByDescending { it.stats })
             sortedGroups.addAll(startProgressGroup)
             sortedGroups.addAll(completedGroup)
         }
@@ -222,6 +234,7 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         var progress = 0
 
+
         if (group.items.size != 0) {
 
             var totalCount = 0
@@ -233,13 +246,14 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
             if (progress > 100) progress = 100
         }
 
-        group.progress = progress
+
+        group.stats = progress.toString()
 
     }
 
 
     data class ItemsGroup(var items: ArrayList<DataItem>,
-                          var progress: Int,
+                          var stats: String,
                           val id: String
     )
 

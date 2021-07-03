@@ -1037,9 +1037,15 @@ public class DataManager {
     }
 
 
-    public ArrayList<ExerciseTask> getSortedQuestsByCatIds(String[] strIds, int exerciseType) {
+    public ArrayList<ExerciseTask> getSortedQuestsByCatIds(String[] strIds, int exerciseType, String[] unstudiedIds) {
 
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
+        ArrayList<String> unstudied = new ArrayList<>(Arrays.asList(unstudiedIds));
+
+        if (ids.size() == 0) {
+            ids = unstudied;
+        }
+
 
         ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedQuestsByCatIds(ids);
 
@@ -1063,11 +1069,14 @@ public class DataManager {
         return tasks;
     }
 
-    public ArrayList<ExerciseTask> getSortedBuildQuestsByCatIds(String[] strIds, int exerciseType) {
+    public ArrayList<ExerciseTask> getSortedBuildQuestsByCatIds(String[] strIds, int exerciseType, String[] unstudiedIds) {
 
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
+        ArrayList<String> unstudied = new ArrayList<>(Arrays.asList(unstudiedIds));
 
-
+        if (ids.size() == 0) {
+            ids = unstudied;
+        }
 
         ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedBuildQuestsByCatIds(ids);
 
