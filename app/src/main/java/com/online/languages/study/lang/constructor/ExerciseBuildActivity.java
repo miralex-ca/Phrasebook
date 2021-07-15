@@ -56,6 +56,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
+import com.online.languages.study.lang.practice.QuestCollector;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,6 +66,7 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
+import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
 
 public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeech.OnInitListener {
 
@@ -487,7 +489,20 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
                 String[] studiedList = getIntent().getStringArrayExtra("ids");
                 String[] unstudiedList = getIntent().getStringArrayExtra("unstudied_ids");
 
-                exerciseAllData.tasks = dataManager.getSortedBuildQuestsByCatIds(studiedList, exType, unstudiedList);
+                int testLevel = 1;
+
+                if (getIntent().hasExtra("level"))
+                    testLevel = getIntent().getIntExtra("level", 1);
+
+                QuestCollector questCollector = new QuestCollector(dataManager.dbHelper, exType, testLevel);
+                questCollector.setType(TEST_BUILD);
+
+                questCollector.setStudiedIds(studiedList);
+                questCollector.setUnStudiedIds(unstudiedList);
+
+                questCollector.processData();
+
+                exerciseAllData.tasks = questCollector.getMainList();
 
             }
         }

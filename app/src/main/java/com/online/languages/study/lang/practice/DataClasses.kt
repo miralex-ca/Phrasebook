@@ -12,7 +12,7 @@ data class QuestData(val quest: String, val correct: String, val options: String
 
         this.id = id
         this.categoryId = categoryId
-        this.level = parseInt(level)
+        this.level = level
         this.task = task
         this.pronounce = pronounce
         this.image = image
@@ -21,7 +21,7 @@ data class QuestData(val quest: String, val correct: String, val options: String
 
     }
 
-    var level = 0
+    var level: String = ""
     var levelGlobal = 0
     var mode = 0
 

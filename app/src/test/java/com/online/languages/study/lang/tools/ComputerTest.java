@@ -120,7 +120,22 @@ public class ComputerTest {
     }
 
 
+    @Test
+    public void computer_calculatePercent_returnPercent() {
 
+        int percent = SUT.calculatePercent(20, 100);
+
+        Assert.assertThat(percent, is(20));
+
+        percent = SUT.calculatePercent(20, 0);
+
+        Assert.assertThat(percent, is(0));
+
+        percent = SUT.calculatePercent(20, 40);
+
+        Assert.assertThat(percent, is(50));
+
+    }
 
 
 }

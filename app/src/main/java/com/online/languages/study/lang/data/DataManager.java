@@ -323,8 +323,6 @@ public class DataManager {
     }
 
 
-
-
     private class TimeStarredComparator implements Comparator<DataItem> {
         @Override
         public int compare(DataItem o1, DataItem o2) {
@@ -1027,6 +1025,8 @@ public class DataManager {
 
         for (QuestData quest: questsByCatIds) {
 
+
+
             ExerciseTask exerciseTask = getExerciseTaskFromQuest(quest);
 
             tasks.add(exerciseTask);
@@ -1037,7 +1037,9 @@ public class DataManager {
     }
 
 
-    public ArrayList<ExerciseTask> getSortedQuestsByCatIds(String[] strIds, int exerciseType, String[] unstudiedIds) {
+    public ArrayList<ExerciseTask> getSortedQuestsByCatIds( String[] strIds, int exerciseType,
+                                                            String[] unstudiedIds, int level) {
+
 
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
         ArrayList<String> unstudied = new ArrayList<>(Arrays.asList(unstudiedIds));
@@ -1047,7 +1049,9 @@ public class DataManager {
         }
 
 
-        ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedQuestsByCatIds(ids);
+        ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedQuestsByCatIds(ids, level, 1);
+        if (questsByCatIds.size() == 0) questsByCatIds = dbHelper.getGroupedQuestsByCatIds(unstudied, level, 1);
+
 
         QuestManager questManager = new QuestManager(questsByCatIds);
         questManager.setExerciseType(exerciseType);
@@ -1080,15 +1084,12 @@ public class DataManager {
 
         ArrayList<ArrayList<QuestData>> questsByCatIds = dbHelper.getGroupedBuildQuestsByCatIds(ids);
 
-
-
         QuestManager questManager = new QuestManager(questsByCatIds);
         questManager.setExerciseType(exerciseType);
 
         questManager.processData();
 
         ArrayList<QuestData>  quests = questManager.getMainList();
-
 
 
         ArrayList<ExerciseTask> tasks = new ArrayList<>();
@@ -1207,6 +1208,33 @@ public class DataManager {
         }
 
         return paramValue;
+    }
+
+    public int checkPracticeLevel(String sectionID) {
+
+        int requiredLevel = 1;
+        int levelsCount = 6;
+
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (int i = 0; i < levelsCount; i++) {
+
+            int progress = dbHelper.checkSectionPracticeLevelProgress(db, sectionID, i+1);
+
+
+            if (progress == -1) break;
+
+            if (progress < 80 ) {
+                requiredLevel = i + 1;
+                break;
+            }
+
+        }
+
+        db.close();
+
+        return requiredLevel;
     }
 
 }

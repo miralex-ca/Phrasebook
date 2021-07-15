@@ -12,6 +12,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
+
 import static org.junit.Assert.*;
 
 @Config(sdk = {Build.VERSION_CODES.O_MR1})
@@ -19,6 +20,8 @@ import static org.junit.Assert.*;
 public class PreReleaseTest {
 
     private Context mockContext;
+
+
 
     @Before
     public void setUp() {

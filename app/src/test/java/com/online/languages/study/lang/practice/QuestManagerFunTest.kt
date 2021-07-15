@@ -1,12 +1,13 @@
 package com.online.languages.study.lang.practice
 
-
-
+import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
+
+import org.junit.Assert.*
 import org.junit.Test
 
-class QuestManagerTest {
+class QuestManagerFunTest {
 
     lateinit var SUT: QuestManager
 
@@ -34,6 +35,7 @@ class QuestManagerTest {
 
     }
 
+
     @Test
     fun checkGetGroupsCounts_12_5_returnCounts() {
 
@@ -48,6 +50,7 @@ class QuestManagerTest {
 
         assertThat(matrix[0]).isEqualTo(12)
         assertThat(matrix[1]).isEqualTo(5)
+
 
     }
 
@@ -72,6 +75,7 @@ class QuestManagerTest {
     }
 
 
+
     private fun initQuestArrayWithCount(count: Int) : ArrayList<QuestData> {
 
         val list: ArrayList<QuestData> = ArrayList()
@@ -81,7 +85,5 @@ class QuestManagerTest {
 
         return list
     }
-
-
 
 }

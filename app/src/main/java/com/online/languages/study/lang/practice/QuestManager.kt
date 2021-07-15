@@ -1,61 +1,116 @@
 package com.online.languages.study.lang.practice
 
+
 import android.util.Log
+import android.widget.Toast
+import com.online.languages.study.lang.App
 import com.online.languages.study.lang.Constants.EX_AUDIO_TYPE
 import com.online.languages.study.lang.Constants.EX_ORIG_TR
-import kotlin.collections.ArrayList
+import com.online.languages.study.lang.R
+import com.online.languages.study.lang.tools.Computer
+
+/*
+
+we get a list of quest groups collected by topics and level
+
+==== checkGroupsSort ====
+We leave in each group only unstudied items (below or equal PRACTICE_COUNT_SHUFFLE)
+Other items go into the list for revision which collects items from all topics and shuffle them
+
+====== sortGroupsList ====
+Groups are sorted by count of completed tasks (excluding base level tasks)
+
+if we have unstudied groups are sorted based on the completion progress (more than 50% excluding base tasks)
+
+=== collectMainList ========
+
+- Items are collected from groups by portions (based on count UNSTUDIED_GROUP_ITEMS_ADDED)
+- If there are not enough of unstudied items, they are added from the revision list
+
+
+ */
 
 
 class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
     companion object {
         const val PRACTICE_LIMIT = 20
+        const val UNSTUDIED_GROUP_ITEMS_ADDED = 10
         const val PRACTICE_COUNT_SHUFFLE = 0
+        const val UNSTUDIED_GROUP_PROGRESS_MIN = 50
     }
 
+    var unstudiedItemsAdded = UNSTUDIED_GROUP_ITEMS_ADDED
+    var testTaskLimit = PRACTICE_LIMIT
     var mainList = ArrayList<QuestData>()
     var exerciseType = 0
 
+    var unstudiedWithProgressMap = HashMap<String, Int> ()
+
+    var unstudied = false
+
     var requiredLevel = 0
 
-
+    val questDataList = ArrayList<QuestGroupData>()
     var reviseGroupsList = ArrayList<ArrayList<QuestData>>()
 
 
     fun processData() {
 
         // we're getting quests with stats grouped by topics
+        //Log.i("Quest", "quest list size: ${ listedQuestsGroup[0].size }")
+
         checkGroupsSort(listedQuestsGroup)
 
         sortGroupsList()
 
         collectMainList()
 
+        //Log.i("Quest", "quest main list size: ${ mainList.size }")
+
     }
 
 
     private fun sortGroupsList() {
 
-        val groups = ArrayList<ArrayList<QuestData>>()
+       // questDataList.sortBy { getRequiredCounter(it.quests[0]) }
 
-        for (group in listedQuestsGroup) {
-            if (group.size > 0) groups.add(group)
+        //printQuestGroupData(questDataList)
+
+        if (unstudied) {
+
+            questDataList.sortBy {it.completedProgress}
+
+            questDataList.sortByDescending {it.progressCat}
+
+
+        } else {
+            questDataList.sortBy {it.completedCount}
         }
 
-        groups.sortBy { getRequiredCounter(it[0]) }
+       // printQuestGroupData(questDataList)
 
         listedQuestsGroup.clear()
-        listedQuestsGroup.addAll(groups)
 
+
+        if (reviseGroupsList.size == 0 && questDataList.size > 0) {
+
+            listedQuestsGroup.add( questDataList[0].quests)
+
+        } else {
+
+            questDataList.forEach{
+                listedQuestsGroup.add(it.quests)
+            }
+
+        }
 
     }
 
 
     private fun collectMainList() {
 
-
        val matrix = getGroupsCounts()
-
 
         for ((index, group) in listedQuestsGroup.withIndex()) {
 
@@ -68,6 +123,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         addForReviseIfUnderLimit()
 
     }
+
 
     fun getGroupsCounts(): ArrayList<Int> {
 
@@ -86,23 +142,22 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                 var size = listData[index]
 
-                if (size > 10) size = 10
+                if (size > unstudiedItemsAdded) size = unstudiedItemsAdded
 
                 listData[index] -= size
                 listMatrix[index] += size
 
                 checkRemainder(listData, listMatrix)
 
-                if (totalQuestsCount(listMatrix) >= PRACTICE_LIMIT) break
+                if (totalQuestsCount(listMatrix) >= testTaskLimit) break
             }
 
-            if (totalQuestsCount(listMatrix) >= PRACTICE_LIMIT ) break
+            if (totalQuestsCount(listMatrix) >= testTaskLimit ) break
             if (totalQuestsCount(listData) <= 0 ) break
 
             i++
             if (i > 1000) break
         }
-
 
         return listMatrix
 
@@ -118,7 +173,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
     private fun checkRemainder(listData: ArrayList<Int>, listMatrix: ArrayList<Int>) {
 
-        var remainder = PRACTICE_LIMIT - totalQuestsCount(listMatrix)
+        var remainder = testTaskLimit - totalQuestsCount(listMatrix)
 
         if (remainder in 1..4) {
 
@@ -152,7 +207,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                 val itemsFromGroup = ArrayList( group.subList(0, size))
 
-                val remain = PRACTICE_LIMIT - (mainList.size + itemsFromGroup.size)
+                val remain = testTaskLimit - (mainList.size + itemsFromGroup.size)
 
 
                 if (remain in 1..5) {
@@ -171,7 +226,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                 mainList.addAll(itemsFromGroup.shuffled())
 
-                if (mainList.size > PRACTICE_LIMIT) break
+                if (mainList.size > testTaskLimit) break
 
             }
 
@@ -180,16 +235,30 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
     }
 
     private fun addForReviseIfUnderLimit() {
-        if (mainList.size > PRACTICE_LIMIT) {
-            mainList = ArrayList(mainList.subList(0, PRACTICE_LIMIT))
+
+        if (mainList.size < 5) {
+            mixStudiedWithUnstudied()
+        }
+
+
+        if (mainList.size > testTaskLimit) {
+
+            mainList = ArrayList(mainList.subList(0, testTaskLimit))
+
         } else {
 
-            val remain = PRACTICE_LIMIT - mainList.size
+            val remain = testTaskLimit - mainList.size
 
             if (remain > 0) {
                 mainList.addAll(collectMainListFromCompleted(reviseGroupsList, remain))
             }
         }
+
+
+    }
+
+    private fun mixStudiedWithUnstudied() {
+        Toast.makeText(App.getAppContext(), "Mix with unstudied", Toast.LENGTH_LONG).show()
     }
 
     private fun collectMainListFromCompleted(groupsList: ArrayList<ArrayList<QuestData>>, remain: Int) : ArrayList<QuestData> {
@@ -249,38 +318,91 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
     private fun checkGroupsSort(listedQuestsGroup: ArrayList<ArrayList<QuestData>>?) {
     /// sort by count in groups
 
+        val questDataArray = ArrayList<QuestGroupData>()
+
         listedQuestsGroup?.forEach { list ->
 
-           // Log.i("Quest", "quests list: " + list.size)
+            //Log.i("Quest", "quests list: " + list.size)
+
+
 
             if (list.size > 0 )  {
 
-                var listMin = ArrayList<QuestData>()
+                val listMin = ArrayList<QuestData>()
                 val listHigher = ArrayList<QuestData>()
+
+                var countNotBaseTasks = 0
+                var countNotBaseTasksCompleted = 0
+                var completedCount = 0
 
                 for (item in list) {
 
                     val count = getRequiredCounter(item)
 
+                   if (!item.filter.contains("#base")) {
+
+                       completedCount += count
+                       countNotBaseTasks ++
+
+                       if (count > 0) countNotBaseTasksCompleted ++
+
+                   }
+
+
                     if (count > PRACTICE_COUNT_SHUFFLE ) {
-                        listHigher.add(item)
+
+                        if (levelToRevise(item))
+                            listHigher.add(item)
+
                     } else {
                         listMin.add(item)
                     }
-
                 }
 
-                listMin = checkListForLevel(listMin)
+               // listMin = checkListForLevel(listMin)
 
                 sortByExType(listMin)
 
                 list.clear()
                 list.addAll(listMin)
 
-                reviseGroupsList.add(listHigher)
+                if (listMin.size > 0) {
+                    val groupData = QuestGroupData(listMin, completedCount)
+                    groupData.id = listMin[0].categoryId
+                    groupData.progressCat = unstudiedWithProgressMap.getOrElse(groupData.id) {0}
+
+                    val progress = Computer.calculatePercent(countNotBaseTasksCompleted, countNotBaseTasks )
+                    if (progress > UNSTUDIED_GROUP_PROGRESS_MIN) groupData.completedProgress = progress
+
+                    questDataArray.add(groupData)
+                }
+
+               if (listHigher.size > 0) reviseGroupsList.add(listHigher)
 
             }
         }
+
+        questDataList.clear()
+        questDataList.addAll(questDataArray)
+
+    }
+
+    private fun levelToRevise(item: QuestData): Boolean {
+
+        var revise = true
+
+        val lowerLevel = requiredLevel-2
+
+        if (item.level.contains("l" + (lowerLevel) + "l")) {
+
+          // if (requiredLevel > 2 && (item.levelGlobal == 1120) ) revise = false
+
+           if ( (item.levelGlobal == 1100 ) && getRequiredCounter(item) > 2 ) revise = false
+
+
+        }
+
+        return revise
     }
 
 
@@ -362,8 +484,30 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         return levels
     }
 
+    private fun printQuestGroupData(list: ArrayList<QuestGroupData>) {
+
+        Log.i("Quest", "List")
+
+        list.forEach{
+
+            val id = it.quests[0].categoryId
+
+            Log.i("Quest", "group $id size ${it.quests.size}, completed ${it.completedCount} progress ${it.completedProgress}%")
+
+        }
+
+
+    }
+
 
     data class QuestFromList(val quest: QuestData, val listNum: Int)
+
+    data class QuestGroupData(val quests: ArrayList<QuestData>, var completedCount: Int) {
+
+        var completedProgress = 0
+        var progressCat = 0
+        var id = ""
+    }
 
 
 }

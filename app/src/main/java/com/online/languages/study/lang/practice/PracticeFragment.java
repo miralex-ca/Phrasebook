@@ -33,8 +33,6 @@ import java.util.Map;
 
 public class PracticeFragment extends Fragment {
 
-
-
     private FragmentPracticeBinding binding;
 
     OpenActivity openActivity;
@@ -49,7 +47,6 @@ public class PracticeFragment extends Fragment {
     ArrayList<String> catIds;
 
     ArrayList<String> sectionCatIds;
-
     ArrayList<String> sectionStudiedIds;
     ArrayList<String> sectionUnStudiedIds;
 
@@ -57,8 +54,7 @@ public class PracticeFragment extends Fragment {
     ArrayList<String> sectionStudiedWordsIds;
     ArrayList<String> sectionUnStudiedWordsIds;
 
-
-    ArrayList<String> sectionIdsForTest;
+    int testLevel = 2;
 
     public PracticeFragment() { }
 
@@ -113,7 +109,8 @@ public class PracticeFragment extends Fragment {
         openActivity.pageTransition();
     }
 
-    private void getData() {
+
+    public void getData() {
 
         catIds = new ArrayList<>();
 
@@ -145,14 +142,38 @@ public class PracticeFragment extends Fragment {
 
                     if (Integer.parseInt(categoryResult) > 20)   sectionStudiedWordsIds.add(catId);
                     else sectionUnStudiedWordsIds.add(catId);
-
                 }
             }
 
             if (Integer.parseInt(categoryResult) > 20)  sectionStudiedIds.add(catId);
             else sectionUnStudiedIds.add(catId);
-
         }
+
+        checkPracticeParams();
+
+    }
+
+    private void checkPracticeParams() {
+
+        String topics = "Темы: " + sectionStudiedIds.size() + "/" + sectionCatIds.size();
+
+        binding.tvParamsTopics.setText(topics);
+
+        testLevel = checkRequiredLevel();
+
+        //if (sectionStudiedIds.size() > 0 && testLevel <2 ) testLevel = 2;
+
+        String level = "Сложность: "+testLevel+ "/5";
+
+        binding.tvTestLevel.setText(level);
+
+
+    }
+
+    private int checkRequiredLevel() {
+
+       return dataManager.checkPracticeLevel(sectionID);
+
 
     }
 
@@ -176,6 +197,7 @@ public class PracticeFragment extends Fragment {
         intent.putExtra("ex_type", testType);
         intent.putExtra("cat_title", title);
         intent.putExtra("practice", true);
+        intent.putExtra("level", testLevel);
 
         intent.putExtra("ids", stringArray);
         intent.putExtra("unstudied_ids", sectionUnStudiedIds.toArray(new String[0]));
@@ -224,6 +246,8 @@ public class PracticeFragment extends Fragment {
         intent.putExtra("cat_title", title);
         intent.putExtra("practice", true);
 
+        intent.putExtra("level", testLevel);
+
         intent.putExtra("ids", stringArray);
 
         intent.putExtra("unstudied_ids", sectionUnStudiedIds.toArray(new String[0]));
@@ -235,7 +259,6 @@ public class PracticeFragment extends Fragment {
         openActivity.pageTransition();
 
     }
-
 
 
 

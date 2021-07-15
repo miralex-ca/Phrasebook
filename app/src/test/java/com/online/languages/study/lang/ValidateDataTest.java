@@ -17,7 +17,6 @@ import org.robolectric.annotation.Config;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-@Config(sdk = {Build.VERSION_CODES.O_MR1})
 @RunWith(RobolectricTestRunner.class)
 public class ValidateDataTest {
 

@@ -58,4 +58,11 @@ public class SectionPagerAdapter extends FragmentStatePagerAdapter {
         return registeredFragments.get(position);
     }
 
+    public Fragment getFragmentOne() {
+        return registeredFragments.get(0);
+    }
+    public Fragment getFragmentTwo() {
+        return registeredFragments.get(1);
+    }
+
 }

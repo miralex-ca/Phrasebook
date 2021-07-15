@@ -85,5 +85,17 @@ public class Computer {
         return result;
     }
 
+    public static int calculatePercent(int partCount, int totalCount) {
+
+        int percent = 0;
+
+        if (totalCount > 0)  {
+
+            percent = (partCount*100) / totalCount;
+        }
+
+        return percent;
+    }
+
 
 }

@@ -5,7 +5,9 @@ import com.online.languages.study.lang.data.DataItem
 import kotlin.collections.ArrayList
 
 
-class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudiedCatsItems: ArrayList<DataItem>) {
+class VocCollectManager( var studiedCatsItems: ArrayList<DataItem>,
+                         var unstudiedCatsItems: ArrayList<DataItem>
+                         ) {
 
     companion object {
         const val PRACTICE_VOC_LIMIT = 30
@@ -15,16 +17,17 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
     }
 
-    private var mixStudiedAndUnknown = true
+    var mixStudiedAndUnknown = true
 
     var mainListDataItems = ArrayList<DataItem>()
 
     var studiedIds: Array<String> = emptyArray()
     var unStudiedIds: Array<String> = emptyArray()
 
-    private var unstudiedSortedItems: ArrayList<DataItem> = ArrayList()
     private var studiedSortedItems: ArrayList<DataItem> = ArrayList()
+    private var unstudiedSortedItems: ArrayList<DataItem> = ArrayList()
 
+    private var unstudiedSortedMasteredGroups: ArrayList<ItemsGroup> = ArrayList()
     private var prepareList = ArrayList<DataItem>()
 
 
@@ -52,69 +55,140 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         else list
     }
 
-
     private fun sortStudiedGroups(): ArrayList<DataItem> {
 
         val catsIDs = studiedIds
         val catsItems = studiedCatsItems
 
-        val allCompleted = checkCatsForMasteredItems(catsIDs, catsItems) // check if some cats are not mastered
+        val allCompleted =
+            checkCatsForMasteredItems(catsIDs, catsItems) // check if some cats are not mastered
 
-        Log.i("Quest", "quests: ${allCompleted}")
+        //printList(studiedSortedItems)
 
-        sortStudiedByDateAndScore()
         studiedSortedItems.addAll(studiedCatsItems)
+
+        sortItemsListByDateAndScore(studiedSortedItems)
 
         return selectFinalList(allCompleted, studiedSortedItems)
 
     }
 
-    private fun checkCatsForMasteredItems(catsIDs: Array<String>, catsItems: ArrayList<DataItem>): Boolean {
+    private fun printList(list: ArrayList<DataItem>) {
+        var i = 0
+        list.forEach{
+            i++
+            Log.i("Quest", "item ${i}: ${it.item} - ${it.rate} - ${it.time}")
+        }
+    }
+
+    private fun checkCatsForMasteredItems(
+        catsIDs: Array<String>,
+        catsItems: ArrayList<DataItem>
+    ): Boolean {
 
         var allCompleted = true
 
         val groups: ArrayList<ItemsGroup> = sortItemsInGroupsByIds(catsIDs, catsItems)
         groups.forEach { group -> calculateGroupProgress(group) }
 
-        groups.forEach { if (Integer.valueOf(it.stats) < PROGRESS_MASTERED_CAT_STUDIED) allCompleted = false }
+        groups.forEach {
+
+            if ( it.progress < PROGRESS_MASTERED_CAT_STUDIED) allCompleted = false
+        }
 
         return allCompleted
     }
 
-    private fun selectFinalList(allCompleted: Boolean, sortedItemsList: ArrayList<DataItem>): ArrayList<DataItem> {
+    private fun selectFinalList(
+        allCompleted: Boolean,
+        sortedStudiedItemsArray: ArrayList<DataItem>
+    ): ArrayList<DataItem> {
 
         var mixWithUnstudied = allCompleted
 
         if (!mixStudiedAndUnknown) mixWithUnstudied = false
 
-        var sortedStudiedItemsList = sortedItemsList
-
         val finalLIst: ArrayList<DataItem> = ArrayList()
 
-        val halfTestLimit = PRACTICE_VOC_LIMIT / 2
+        if (mixWithUnstudied && (unstudiedSortedItems.size > 0)) {
 
+            val mixedStudiedAndUnstudied = mixSortedStudiedAndUnstudied(sortedStudiedItemsArray)
 
-        if (mixWithUnstudied && (unstudiedSortedItems.size > halfTestLimit)) {
-
-            sortedStudiedItemsList = cutListIfLimit(sortedStudiedItemsList, halfTestLimit)
-
-            unstudiedSortedItems = cutListIfLimit(unstudiedSortedItems, PRACTICE_VOC_LIMIT - sortedStudiedItemsList.size)
-
-            finalLIst.addAll(sortedStudiedItemsList.shuffled())
-            finalLIst.addAll(unstudiedSortedItems)
+            finalLIst.addAll(mixedStudiedAndUnstudied)
 
         } else {
 
-            finalLIst.addAll(sortedStudiedItemsList)
+            val shuffledSortedStudiedItems = cutListIfLimit(sortedStudiedItemsArray, PRACTICE_VOC_LIMIT).shuffled()
+
+            finalLIst.addAll(shuffledSortedStudiedItems)
         }
         return finalLIst
     }
 
-    private fun sortStudiedByDateAndScore() {
+    private fun mixSortedStudiedAndUnstudied(sortedStudiedItemsArray: ArrayList<DataItem>): ArrayList<DataItem> {
 
-        studiedCatsItems.sortBy { it.id }
-        studiedCatsItems.sortBy { it.time }
-        studiedCatsItems.sortBy { it.rate }
+        // happens when studied items are mastered, and unstudied are available
+
+        var sortedStudiedItemsList = sortedStudiedItemsArray
+        val halfTestLimit = PRACTICE_VOC_LIMIT / 2
+
+
+        if (unstudiedSortedItems.size < halfTestLimit) {
+
+            val limit = PRACTICE_VOC_LIMIT - unstudiedSortedItems.size
+            sortedStudiedItemsList = cutListIfLimit(sortedStudiedItemsList, limit)
+
+        } else {
+
+
+            /// add mastered items from unstudied topics to studied items
+
+            val masteredFromUnstudiedTopicList = masteredFromUnstudiedTopics()
+
+            sortedStudiedItemsList.addAll( masteredFromUnstudiedTopicList )
+
+            sortItemsListByDateAndScore(sortedStudiedItemsList)
+
+            sortedStudiedItemsList = cutListIfLimit(sortedStudiedItemsList, halfTestLimit)
+
+
+            /// add the rest from the list of unstudied
+
+            val limit = PRACTICE_VOC_LIMIT - sortedStudiedItemsList.size
+
+
+            unstudiedSortedItems = cutListIfLimit(unstudiedSortedItems, limit)
+
+        }
+
+        val finalLIst: ArrayList<DataItem> = ArrayList()
+
+        finalLIst.addAll(sortedStudiedItemsList.shuffled())
+
+        finalLIst.addAll(unstudiedSortedItems)
+
+        return finalLIst
+    }
+
+    private fun masteredFromUnstudiedTopics(): ArrayList<DataItem> {
+
+        val masteredFromUnstudiedTopics = ArrayList<DataItem>()
+
+        unstudiedSortedMasteredGroups.forEach{ group ->
+            masteredFromUnstudiedTopics.addAll(group.items)
+        }
+
+
+        return masteredFromUnstudiedTopics
+
+
+    }
+
+    private fun sortItemsListByDateAndScore(list: ArrayList<DataItem> ) {
+
+        list.sortBy { it.id }
+        list.sortBy { it.time }
+        list.sortBy { it.rate }
     }
 
 
@@ -126,11 +200,14 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         sortItemsByGroupsProgress(catsIDs, catsItems, sortedItemsList)
 
+
     }
 
-    private fun sortItemsByGroupsProgress(catsIDs: Array<String>,
-                                          catsItems: ArrayList<DataItem>,
-                                          sortedItemsList: ArrayList<DataItem>) {
+    private fun sortItemsByGroupsProgress(
+        catsIDs: Array<String>,
+        catsItems: ArrayList<DataItem>,
+        sortedItemsList: ArrayList<DataItem>
+    ) {
 
         val groups: ArrayList<ItemsGroup> = sortItemsInGroupsByIds(catsIDs, catsItems)
 
@@ -138,20 +215,19 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         sortedGroups.forEach {
 
-            if (Integer.valueOf(it.stats) > 2) it.items = unknownToFrontAndShuffle( it.items )
+            if ( it.progress > 2) it.items = unknownToFrontAndShuffle(it.items)
 
             sortedItemsList.addAll(it.items)
-
         }
     }
 
 
-    private fun unknownToFrontAndShuffle( list : ArrayList<DataItem>) : ArrayList<DataItem> {
+    private fun unknownToFrontAndShuffle(list: ArrayList<DataItem>): ArrayList<DataItem> {
 
-        val unknownList : ArrayList<DataItem> = ArrayList()
-        val knownList : ArrayList<DataItem> = ArrayList()
+        val unknownList: ArrayList<DataItem> = ArrayList()
+        val knownList: ArrayList<DataItem> = ArrayList()
 
-        list.forEach{
+        list.forEach {
 
             if (it.rate == 0) unknownList.add(it)
             else knownList.add(it)
@@ -165,11 +241,14 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
     }
 
-    private fun sortItemsInGroupsByIds(catsIDs: Array<String>, catsItems: ArrayList<DataItem>): ArrayList<ItemsGroup> {
+    private fun sortItemsInGroupsByIds(
+        catsIDs: Array<String>,
+        catsItems: ArrayList<DataItem>
+    ): ArrayList<ItemsGroup> {
 
         val groups: ArrayList<ItemsGroup> = ArrayList()
 
-        catsIDs.forEach { groups.add(ItemsGroup(ArrayList(), "0", it)) }
+        catsIDs.forEach { groups.add(ItemsGroup(ArrayList(), 0, it)) }
         sortItemsByGroup(groups, catsItems)
 
         return groups
@@ -181,17 +260,13 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         val startProgressGroup: ArrayList<ItemsGroup> = ArrayList()
         val completedGroup: ArrayList<ItemsGroup> = ArrayList()
 
-        Log.i("Quest", "quests: progress ${groups.size} }")
-
         for (group in groups) {
 
             calculateGroupProgress(group)
 
-            Log.i("Quest", "quests: gr ${group.id}  - ${group.stats}")
-
             when {
-                Integer.valueOf(group.stats) in PROGRESS_START_RANGE -> startProgressGroup.add(group)
-                Integer.valueOf(group.stats) > PROGRESS_MASTERED_CAT -> completedGroup.add(group)
+                group.progress in PROGRESS_START_RANGE -> startProgressGroup.add(group)
+                group.progress > PROGRESS_MASTERED_CAT -> completedGroup.add(group)
                 else -> progressGroup.add(group)
             }
         }
@@ -199,20 +274,20 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
         val sortedGroups: ArrayList<ItemsGroup> = ArrayList()
 
         /// if this is the first cat to learn, leave just this cat
-
-        Log.i("Quest", "quests: ${startProgressGroup.size} ; ${progressGroup.size}")
-
         if (progressGroup.size == 0 && completedGroup.size == 0 && startProgressGroup.size > 1) {
-
 
             sortedGroups.add(startProgressGroup[0])
 
         } else {
 
-            sortedGroups.addAll(progressGroup.sortedByDescending { it.stats })
+            sortedGroups.addAll(progressGroup.sortedByDescending { it.progress })
             sortedGroups.addAll(startProgressGroup)
-            sortedGroups.addAll(completedGroup)
+            if (studiedCatsItems.size == 0) sortedGroups.addAll(completedGroup)
+
         }
+
+        unstudiedSortedMasteredGroups.addAll(completedGroup)
+
 
         return sortedGroups
     }
@@ -234,7 +309,6 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
 
         var progress = 0
 
-
         if (group.items.size != 0) {
 
             var totalCount = 0
@@ -246,15 +320,15 @@ class VocCollectManager(var studiedCatsItems: ArrayList<DataItem>, var unstudied
             if (progress > 100) progress = 100
         }
 
-
-        group.stats = progress.toString()
+        group.progress = progress
 
     }
 
 
-    data class ItemsGroup(var items: ArrayList<DataItem>,
-                          var stats: String,
-                          val id: String
+    data class ItemsGroup(
+        var items: ArrayList<DataItem>,
+        var progress: Int,
+        val id: String
     )
 
 

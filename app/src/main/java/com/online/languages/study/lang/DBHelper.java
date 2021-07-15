@@ -8,7 +8,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Range;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.online.languages.study.lang.practice.QuestData;
 import com.online.languages.study.lang.recommend.TaskItem;
@@ -39,6 +42,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
+import kotlin.ranges.IntRange;
+
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
@@ -66,6 +71,7 @@ import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
+import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -286,7 +292,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             + KEY_QUEST_ID + " TEXT,"
             + KEY_QUEST_CAT_ID + " TEXT,"
-            + KEY_QUEST_LEVEL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_LEVEL + " TEXT,"
             + KEY_QUEST_LEVEL_GLOBAL + " INTEGER DEFAULT 0,"
             + KEY_QUEST_MODE + " INTEGER DEFAULT 0,"
             + KEY_QUEST_QUEST + " TEXT,"
@@ -302,7 +308,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             + KEY_QUEST_B_ID + " TEXT,"
             + KEY_QUEST_B_CAT_ID + " TEXT,"
-            + KEY_QUEST_B_LEVEL + " INTEGER DEFAULT 0,"
+            + KEY_QUEST_B_LEVEL + " TEXT,"
             + KEY_QUEST_B_LEVEL_GLOBAL + " INTEGER DEFAULT 0,"
             + KEY_QUEST_B_MODE + " INTEGER DEFAULT 0,"
             + KEY_QUEST_B_QUEST + " TEXT,"
@@ -668,7 +674,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_QUEST_CAT_ID, item.getCategoryId() );
                 values.put(KEY_QUEST_LEVEL, item.getLevel() );
                 values.put(KEY_QUEST_LEVEL_GLOBAL, item.getLevelGlobal() );
-                values.put(KEY_QUEST_MODE, item.getLevel() );
+                values.put(KEY_QUEST_MODE, item.getMode() );
 
                 values.put(KEY_QUEST_QUEST, item.getQuest() );
                 values.put(KEY_QUEST_TASK, item.getTask());
@@ -704,8 +710,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 values.put(KEY_QUEST_B_ID, item.getId());
                 values.put(KEY_QUEST_B_CAT_ID, item.getCategoryId() );
                 values.put(KEY_QUEST_B_LEVEL, item.getLevel() );
-                values.put(KEY_QUEST_B_LEVEL_GLOBAL, item.getLevel() );
-                values.put(KEY_QUEST_B_MODE, item.getLevel() );
+                values.put(KEY_QUEST_B_LEVEL_GLOBAL, item.getLevelGlobal() );
+                values.put(KEY_QUEST_B_MODE, item.getMode() );
 
                 values.put(KEY_QUEST_B_QUEST, item.getQuest() );
                 values.put(KEY_QUEST_B_TASK, item.getTask());
@@ -3536,9 +3542,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<DataItem> getCatByTag(String cat) {  //// mode for cat
 
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ArrayList<DataItem> items = getDataItemsByCatId(db, cat);
+
+        db.close();
+
+        return items;
+    }
+
+
+
+    public ArrayList<DataItem> getDataItemsByCatId(SQLiteDatabase db, String cat) {
+
         ArrayList<DataItem> items = new ArrayList<>();
 
-        SQLiteDatabase db = this.getWritableDatabase();
         String idPrefix = cat + "%";
 
         String query = "SELECT * FROM "
@@ -3555,10 +3573,39 @@ public class DBHelper extends SQLiteOpenHelper {
         } finally {
             cursor.close();
         }
-
-        db.close();
         return items;
     }
+
+
+    public int[] getDataItemsCountsByCatId(SQLiteDatabase db, String cat) {
+
+        int studiedItems = 0;
+        int totalItems = 0;
+
+        String idPrefix = cat + "%";
+
+        String query = "SELECT * FROM "
+                +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA
+                +" b ON a.item_id=b.user_item_id"
+                +" WHERE (a.item_id LIKE ?) AND (a.item_mode < "+data_mode+") ORDER BY a.id";
+
+        Cursor cursor = db.rawQuery(query, new String[]{idPrefix});
+        totalItems  = cursor.getCount();
+
+        try {
+            while (cursor.moveToNext()) {
+
+                int rate = cursor.getInt(cursor.getColumnIndex(KEY_ITEM_SCORE));
+                if (rate > 0 ) studiedItems ++;
+            }
+        } finally {
+            cursor.close();
+        }
+
+        return new int[]{studiedItems, totalItems};
+    }
+
+
 
 
 
@@ -3943,7 +3990,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA +" b ON a.item_id = b.user_item_id"
 
-                +" WHERE ("+conditionLike+")";
+                +" WHERE ("+conditionLike+") AND (a."+KEY_ITEM_MODE+" < "+data_mode+")";
+
+
+        /// TODO add filter my mode
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -4996,34 +5046,48 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<ArrayList<QuestData>> getGroupedQuestsByCatIds(ArrayList<String> catIds) {
+    public ArrayList<ArrayList<QuestData>> getGroupedQuestsByCatIds(ArrayList<String> catIds, int level, int dataType) {
 
         ArrayList< ArrayList<QuestData>> groupedItemsList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
+
+
+        //Toast.makeText(cntx, "Alert", Toast.LENGTH_SHORT).show();
 
         for (String catId : catIds) {
 
             ArrayList<QuestData> categoryQuest = new ArrayList<>();
 
-            String questsQuery = "SELECT * FROM " + TABLE_QUEST_DATA
+            String questsQuery;
 
-                    +" a LEFT JOIN " + TABLE_QSTATS_DATA
-
-                    +" b ON a." + KEY_QUEST_ID + " = b." + KEY_QSTATS_ID
-
-                   + " WHERE " + KEY_QUEST_CAT_ID + " LIKE '" + catId + "%' ";
-
+            if (dataType == TEST_BUILD) questsQuery = getBuildQuery(level, catId);
+            else questsQuery = getMultichoiceQuery(level, catId);
 
             Cursor cursor = db.rawQuery(questsQuery, null);
 
             try {
                 while (cursor.moveToNext()) {
 
-                    categoryQuest.add( getQuestFromCursor( cursor) );
+                    QuestData quest;
+
+                    if (dataType == TEST_BUILD) quest = getBuildQuestFromCursor( cursor);
+                    else quest = getQuestFromCursor( cursor);
+
+                    if (quest.getFilter().contains("#base") && !quest.getLevel().contains("l"+level+"l") ) {
+
+                        if (questHasLowerLevel(quest, level)) categoryQuest.add(quest);
+
+                    } else {
+
+                        categoryQuest.add( quest );
+
+                    }
                 }
             } finally {
                 cursor.close();
             }
+
+           // Log.i("Quest", "group : size " +  + categoryQuest.size() );
 
             groupedItemsList.add( categoryQuest );
 
@@ -5033,6 +5097,66 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return groupedItemsList;
     }
+
+
+    private String getMultichoiceQuery(int level, String catId) {
+
+        return "SELECT * FROM " + TABLE_QUEST_DATA
+
+                + " a LEFT JOIN " + TABLE_QSTATS_DATA
+
+                + " b ON a." + KEY_QUEST_ID + " = b." + KEY_QSTATS_ID
+
+                + " WHERE (a." + KEY_QUEST_CAT_ID + " LIKE '" + catId + "%' )"
+
+                + " AND ( (a." + KEY_QUEST_LEVEL + " LIKE '%l" + level + "l%') "
+
+                + " OR (a." + KEY_QUEST_FILTER + " LIKE '%#base%' "
+                      +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 2 ))) ";
+
+    }
+
+    private String getBuildQuery(int level, String catId) {
+
+        return "SELECT * FROM " + TABLE_QUEST_BUILD
+
+                + " a LEFT JOIN " + TABLE_QSTATS_DATA
+
+                + " b ON a." + KEY_QUEST_B_ID + " = b." + KEY_QSTATS_ID
+
+                + " WHERE (a." + KEY_QUEST_B_CAT_ID + " LIKE '" + catId + "%' )"
+
+                + " AND ( (a." + KEY_QUEST_B_LEVEL + " LIKE '%l" + level + "l%') "
+
+                + " OR (a." + KEY_QUEST_B_FILTER + " LIKE '%#base%' "
+
+                +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 2 ))) ";
+
+    }
+
+    private boolean questHasLowerLevel(QuestData quest, int level) {
+
+        boolean hasLowerLevel = false;
+
+        int levels = 10;
+
+        for (int i = 0; i < levels; i++) {
+
+            String lvlString = "l"+ i + "l";
+
+            //Log.i("Quest", "lvl : " +  lvlString + ": "  + quest.getFilter().contains(lvlString) + " - " + i + " - " + level);
+
+            if (quest.getLevel().contains(lvlString) && i < level) {
+                hasLowerLevel = true;
+                break;
+            }
+
+        }
+
+        return hasLowerLevel ;
+    }
+
+
 
     public ArrayList<ArrayList<QuestData>> getGroupedBuildQuestsByCatIds(ArrayList<String> catIds) {
 
@@ -5055,10 +5179,11 @@ public class DBHelper extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(questsQuery, null);
 
             try {
-                while (cursor.moveToNext()) {
 
+                while (cursor.moveToNext()) {
                     categoryQuest.add( getBuildQuestFromCursor( cursor) );
                 }
+
             } finally {
                 cursor.close();
             }
@@ -5083,7 +5208,7 @@ public class DBHelper extends SQLiteOpenHelper {
         item.setId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_ID)) );
         item.setCategoryId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_CAT_ID)) );
 
-        item.setLevel( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_LEVEL)) );
+        item.setLevel( cursor.getString(cursor.getColumnIndex(KEY_QUEST_B_LEVEL)) );
         item.setLevelGlobal( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_LEVEL_GLOBAL)) );
         item.setMode( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_B_MODE)) );
 
@@ -5108,7 +5233,7 @@ public class DBHelper extends SQLiteOpenHelper {
         item.setId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_ID)) );
         item.setCategoryId( cursor.getString(cursor.getColumnIndex(KEY_QUEST_CAT_ID)) );
 
-        item.setLevel( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_LEVEL)) );
+        item.setLevel( cursor.getString(cursor.getColumnIndex(KEY_QUEST_LEVEL)) );
         item.setLevelGlobal( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_LEVEL_GLOBAL)) );
         item.setMode( cursor.getInt(cursor.getColumnIndex(KEY_QUEST_MODE)) );
 
@@ -5116,6 +5241,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         item.setCountTr( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_TR)) );
         item.setCountAudio( cursor.getInt(cursor.getColumnIndex(KEY_QSTATS_COUNT_AUDIO)) );
+
+        item.setFilter(cursor.getString(cursor.getColumnIndex(KEY_QUEST_FILTER)) );
 
         return item;
     }
@@ -5146,8 +5273,59 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
+    public int checkSectionPracticeLevelProgress(SQLiteDatabase db, String sectionID, int level) {
 
 
+            ArrayList<QuestData> categoryQuest = new ArrayList<>();
 
 
+            String totalCountQuery = "SELECT * FROM " + TABLE_QUEST_DATA
+
+                    + " WHERE (" + KEY_QUEST_CAT_ID + " LIKE '" + sectionID + "%' ) "
+
+                    + "AND (" + KEY_QUEST_LEVEL + " LIKE '%l" + level + "l%') ";
+
+
+            //Log.i("Quest", "query " + questsQuery);
+
+            Cursor cursorTotal = db.rawQuery(totalCountQuery, null);
+
+
+        String studiedQuery = "SELECT * FROM " + TABLE_QUEST_DATA
+
+                +" a LEFT JOIN " + TABLE_QSTATS_DATA
+
+                +" b ON a." + KEY_QUEST_ID + " = b." + KEY_QSTATS_ID
+
+                + " WHERE (a." + KEY_QUEST_CAT_ID + " LIKE '" + sectionID + "%' ) "
+
+                + "AND (a." + KEY_QUEST_LEVEL+ " LIKE '%l" + level + "l%') "
+
+                + "AND (b." + KEY_QSTATS_CORRECT + " > 1 ) ";
+
+
+        Cursor cursorStudied = db.rawQuery(studiedQuery, null);
+
+
+        int total = cursorTotal.getCount();
+        int studied = cursorStudied.getCount();
+
+        int progress = 0;
+
+        if (total > 0 ) {
+
+            progress = studied * 100 / total;
+
+        } else {
+            progress = - 1;
+        }
+
+        //Log.i("Quests", "query: lvl "+ level + ": " + studied + " / " + total + " -> " + progress);
+
+        cursorTotal.close();
+        cursorStudied.close();
+
+
+        return progress;
+    }
 }

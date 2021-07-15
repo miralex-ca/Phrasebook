@@ -45,6 +45,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
+import com.online.languages.study.lang.practice.QuestCollector;
 import com.online.languages.study.lang.practice.VocCollectManager;
 
 import java.util.ArrayList;
@@ -346,11 +347,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         }
 
 
-
-
-
-
-
     }
 
 
@@ -381,12 +377,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         }
     }
-
-
-
-
-
-
 
     private void restaureChecked (int type) {
 
@@ -545,12 +535,21 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
                 String[] studiedList = getIntent().getStringArrayExtra("ids");
                 String[] unstudiedList = getIntent().getStringArrayExtra("unstudied_ids");
 
-                exerciseAllData.tasks = dataManager.getSortedQuestsByCatIds( studiedList , exType, unstudiedList );
+                int testLevel = 0;
+
+                if (getIntent().hasExtra("level"))
+                    testLevel=getIntent().getIntExtra("level", 0);
+
+                QuestCollector questCollector = new QuestCollector(dataManager.dbHelper, exType, testLevel );
+                questCollector.setStudiedIds(studiedList);
+                questCollector.setUnStudiedIds(unstudiedList);
+
+                questCollector.processData();
+
+                exerciseAllData.tasks = questCollector.getMainList();
 
             }
         }
-
-
 
 
         exerciseController.tasks = exerciseAllData.tasks;

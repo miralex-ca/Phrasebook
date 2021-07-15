@@ -47,6 +47,166 @@
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="3dp"
                     app:cardCornerRadius="8dp"
+                    app:cardElevation="1dp"
+
+                    >
+
+                    <FrameLayout
+                        style="?attr/CardViewBorder_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                    <LinearLayout
+
+                        android:id="@+id/wrap_info"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="8dp">
+
+                        <RelativeLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp">
+
+                                <ImageView
+
+                                    android:alpha="0.4"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:background="?selectableItemBackgroundBorderless"
+                                    android:padding="1dp"
+
+                                    android:layout_marginRight="10dp"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_alignParentRight="true"
+                                    app:srcCompat="@drawable/ic_practice_info" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_marginTop="4dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Параметры упражнений"
+                                        android:textSize="17sp"
+                                        />
+
+                                </LinearLayout>
+
+
+
+
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+
+                                android:id="@+id/tv_test_level"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="14dp"
+                                android:layout_marginRight="24dp"
+                                android:layout_marginBottom="1dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="Сложность"
+                                android:textSize="14sp"
+                                />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:id="@+id/tv_params_topics"
+
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="24dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="sans-serif-light"
+                                android:text="Темы: 1/5"
+                                android:textSize="14sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                        <View
+
+                            android:layout_alignParentRight="true"
+
+                            android:layout_below="@+id/wrap_info"
+                            android:id="@+id/bottomView"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp" />
+
+
+                        <ImageView
+                            android:id="@+id/params_practice_edit"
+
+                            android:layout_alignParentRight="true"
+                            android:layout_above="@+id/bottomView"
+                            android:layout_marginBottom="2dp"
+                            android:layout_marginRight="2dp"
+
+                            android:alpha="0.7"
+                            android:padding="5dp"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="?selectableItemBackgroundBorderless"
+
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+
+                            app:srcCompat="@drawable/ic_dots_menu" />
+
+
+
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewStyle.Widget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="3dp"
+                    app:cardCornerRadius="8dp"
 
                     app:cardElevation="1dp"
 
@@ -135,7 +295,7 @@
 
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="2dp"
                                 android:layout_marginRight="24dp"
                                 android:layout_marginBottom="24dp"
                                 android:fontFamily="sans-serif-light"
@@ -247,7 +407,7 @@
 
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="2dp"
                                 android:layout_marginRight="24dp"
                                 android:layout_marginBottom="24dp"
                                 android:fontFamily="sans-serif-light"
@@ -357,7 +517,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="2dp"
                                 android:layout_marginRight="24dp"
                                 android:layout_marginBottom="24dp"
                                 android:fontFamily="sans-serif-light"
@@ -470,7 +630,7 @@
 
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="2dp"
                                 android:layout_marginRight="24dp"
                                 android:layout_marginBottom="24dp"
                                 android:fontFamily="sans-serif-light"
