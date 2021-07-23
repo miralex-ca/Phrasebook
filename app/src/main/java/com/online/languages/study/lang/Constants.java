@@ -227,4 +227,13 @@ public class Constants {
 
     public static final boolean SHOW_DIVIDER = false;
 
+    public static final String PRACTICE_LIMIT_SETTING = "pr_limit_param";
+    public static final int PRACTICE_LIMIT_DEFAULT = 20;
+
+    public static final String PRACTICE_LEVEL_SETTING = "pr_level_param_";
+    public static final String PRACTICE_MIX_SETTING = "pr_mix_param_";
+    public static final String PRACTICE_MIXED_PARAM = "mixed";
+
+    public static final String PRACTICE_AUTOLEVEL_SETTING = "pr_autolevel_param";
+    public static final String PRACTICE_EXCLUDED_SETTING = "pr_excluded_param_";
 }

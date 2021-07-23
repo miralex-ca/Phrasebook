@@ -31,4 +31,7 @@
     <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
     <integer name="hist_app_visibility">@integer/attr_view_visible</integer>
 
+    <string name="tests_file" translatable="false">tests/test_quests_en.json</string>
+    <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
+
 </resources>

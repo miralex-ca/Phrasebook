@@ -55,6 +55,10 @@ import java.util.Locale;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIXED_PARAM;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIX_SETTING;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
 import static com.online.languages.study.lang.ExercisePagerAdapter.CLICK_SOURCE_BUTTON;
 
@@ -480,19 +484,24 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         }
 
-        if (topicTag.contains("_pr_")) {
+        if (topicTag.contains("_vocab")) {
 
-            limit = 30;
+            limit = Integer.parseInt(appSettings.getString(PRACTICE_LIMIT_SETTING, String.valueOf(PRACTICE_LIMIT_DEFAULT)));
 
             if (getIntent().hasExtra("ids")) {
 
                 String[] studiedIDs = getIntent().getStringArrayExtra("ids");
                 String[] unstudiedIDs = getIntent().getStringArrayExtra("unstudied_ids");
 
+                String sectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+
+                String mixWithUnstudied = appSettings.getString(PRACTICE_MIX_SETTING+sectionId, PRACTICE_MIXED_PARAM);
+
                 data = dataManager.getItemsByCatIds(studiedIDs);
                 ArrayList<DataItem> unStudiedData = dataManager.getItemsByCatIds(unstudiedIDs);
 
                 VocCollectManager vocCollectManager = new VocCollectManager(data, unStudiedData);
+                vocCollectManager.setMixStudiedAndUnknown(mixWithUnstudied.equals(PRACTICE_MIXED_PARAM));
 
                 if (studiedIDs != null) vocCollectManager.setStudiedIds(studiedIDs);
                 if (unstudiedIDs != null) vocCollectManager.setUnStudiedIds(unstudiedIDs);
@@ -530,6 +539,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         if (getIntent().hasExtra("practice")) {
 
+            limit = Integer.parseInt(appSettings.getString(PRACTICE_LIMIT_SETTING, String.valueOf(PRACTICE_LIMIT_DEFAULT)));
+
             if (getIntent().hasExtra("ids")) {
 
                 String[] studiedList = getIntent().getStringArrayExtra("ids");
@@ -540,7 +551,15 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
                 if (getIntent().hasExtra("level"))
                     testLevel=getIntent().getIntExtra("level", 0);
 
+                String sectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+
+                String mixWithUnstudied = appSettings.getString(PRACTICE_MIX_SETTING+sectionId, PRACTICE_MIXED_PARAM);
+
                 QuestCollector questCollector = new QuestCollector(dataManager.dbHelper, exType, testLevel );
+
+                questCollector.setMixWithUnstudied(mixWithUnstudied.equals(PRACTICE_MIXED_PARAM));
+
+                questCollector.setTaskLimit(limit);
                 questCollector.setStudiedIds(studiedList);
                 questCollector.setUnStudiedIds(unstudiedList);
 
@@ -918,6 +937,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exResultTxt.setText(txt);
 
         if (res > 0) {
+            //Toast.makeText(context, "D " + topicTag, Toast.LENGTH_SHORT).show();
             saveExResult(topicTag, exType, (int)res );
             correctAnswers = 0;
         }

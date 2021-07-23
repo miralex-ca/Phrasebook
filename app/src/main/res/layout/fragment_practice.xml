@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    tools:ignore="UselessParent"
+    tools:ignore="UselessParent|ContentDescription"
 
     >
 
@@ -37,7 +37,6 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-
                 <androidx.cardview.widget.CardView
                     style="@style/CardViewStyle.Widget"
                     android:layout_width="match_parent"
@@ -46,166 +45,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="3dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="1dp"
 
-                    >
-
-                    <FrameLayout
-                        style="?attr/CardViewBorder_task"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-
-
-                    <LinearLayout
-
-                        android:id="@+id/wrap_info"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="8dp">
-
-                        <RelativeLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <RelativeLayout
-
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp">
-
-                                <ImageView
-
-                                    android:alpha="0.4"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:background="?selectableItemBackgroundBorderless"
-                                    android:padding="1dp"
-
-                                    android:layout_marginRight="10dp"
-                                    android:layout_width="26dp"
-                                    android:layout_height="26dp"
-                                    android:layout_alignParentRight="true"
-                                    app:srcCompat="@drawable/ic_practice_info" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_marginTop="4dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Параметры упражнений"
-                                        android:textSize="17sp"
-                                        />
-
-                                </LinearLayout>
-
-
-
-
-
-                            </RelativeLayout>
-
-                        </RelativeLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-
-                                android:id="@+id/tv_test_level"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="14dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="1dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Сложность"
-                                android:textSize="14sp"
-                                />
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-
-                                android:id="@+id/tv_params_topics"
-
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="16dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Темы: 1/5"
-                                android:textSize="14sp"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                        <View
-
-                            android:layout_alignParentRight="true"
-
-                            android:layout_below="@+id/wrap_info"
-                            android:id="@+id/bottomView"
-                            android:layout_width="100dp"
-                            android:layout_height="1dp" />
-
-
-                        <ImageView
-                            android:id="@+id/params_practice_edit"
-
-                            android:layout_alignParentRight="true"
-                            android:layout_above="@+id/bottomView"
-                            android:layout_marginBottom="2dp"
-                            android:layout_marginRight="2dp"
-
-                            android:alpha="0.7"
-                            android:padding="5dp"
-                            android:focusable="true"
-                            android:clickable="true"
-                            android:background="?selectableItemBackgroundBorderless"
-
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
-
-                            app:srcCompat="@drawable/ic_dots_menu" />
-
-
-
-                    </RelativeLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    style="@style/CardViewStyle.Widget"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="3dp"
                     app:cardCornerRadius="8dp"
 
                     app:cardElevation="1dp"
@@ -225,85 +65,57 @@
                         android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
-
                         android:id="@+id/card_test_vocabulary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="12dp">
+
+                        style="@style/practice_card_box">
 
                         <RelativeLayout
-                            android:id="@+id/ll_box"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <RelativeLayout
+                                style="@style/practice_card_icon"
+                                android:background="@drawable/ic_practice_voc_bg"
+                                android:visibility="visible">
 
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_marginTop="8dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="sans-serif-light"
-                                        android:text="Лексический тест"
-                                        android:textSize="20sp"
-                                        android:textStyle="bold"
-                                        tools:text="Information" />
-
-                                </LinearLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="12dp"
-                                    android:background="@drawable/ic_task_info_bg"
-                                    android:padding="8dp"
-                                    android:visibility="visible">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_practice_text" />
-
-                                </RelativeLayout>
-
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_practice_voc"
+                                    tools:ignore="ContentDescription" />
 
                             </RelativeLayout>
 
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_vocab_test"
+                                    style="@style/practice_card_title"
+                                    />
+
+
+                                <TextView
+                                    android:id="@+id/pr_vocab_result"
+                                    style="@style/practice_card_result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_vocab_test_desc"
+                                    />
+
+                            </LinearLayout>
+
                         </RelativeLayout>
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="24dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Тест с записями из данного раздела"
-                                android:textSize="12sp"
-                                tools:text="Current progress: 0" />
-
-                        </RelativeLayout>
 
                     </LinearLayout>
 
@@ -342,78 +154,49 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="12dp">
+
+                        style="@style/practice_card_box"
+                        >
 
                         <RelativeLayout
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <RelativeLayout
+                                style="@style/practice_card_icon"
+                                android:background="@drawable/ic_practice_translate_bg"
+                                android:visibility="visible">
 
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_marginTop="8dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="sans-serif-light"
-                                        android:text="Тест на перевод фраз"
-                                        android:textSize="20sp"
-                                        android:textStyle="bold"
-                                        tools:text="Information" />
-
-                                </LinearLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="12dp"
-                                    android:background="@drawable/ic_task_info_bg"
-                                    android:padding="8dp"
-                                    android:visibility="visible">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_practice_book" />
-
-                                </RelativeLayout>
-
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_practice_translate"
+                                    tools:ignore="ContentDescription" />
 
                             </RelativeLayout>
 
-                        </RelativeLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_translate_test"
+                                    style="@style/practice_card_title" />
 
-                            <TextView
 
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/pr_phrases_result"
+                                    style="@style/practice_card_result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_translate_test_desc" />
 
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="24dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Тест с записями из данного раздела"
-                                android:textSize="12sp"
-                                tools:text="Current progress: 0" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -454,76 +237,51 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="12dp">
+
+                        style="@style/practice_card_box"
+                        >
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <RelativeLayout
+                                style="@style/practice_card_icon"
+                                android:layout_marginRight="12dp"
+                                android:background="@drawable/ic_task_info_bg"
+                                android:visibility="visible"
+                                tools:ignore="RtlHardcoded">
 
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_marginTop="8dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="sans-serif-light"
-                                        android:text="Тест на аудирование"
-                                        android:textSize="20sp"
-                                        android:textStyle="bold"
-                                        tools:text="Information" />
-
-                                </LinearLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="12dp"
-                                    android:background="@drawable/ic_task_info_bg"
-                                    android:padding="8dp"
-                                    android:visibility="visible">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_practice_audio" />
-
-                                </RelativeLayout>
-
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_practice_audio"
+                                    tools:ignore="ContentDescription" />
 
                             </RelativeLayout>
 
-                        </RelativeLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_audio_test"
+                                    style="@style/practice_card_title" />
 
-                            <TextView
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="24dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Тест с записями из данного раздела"
-                                android:textSize="12sp"
-                                tools:text="Current progress: 0" />
+                                <TextView
+                                    android:id="@+id/pr_audio_result"
+                                    style="@style/practice_card_result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_audio_test_desc" />
+
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -531,8 +289,6 @@
 
 
                 </androidx.cardview.widget.CardView>
-
-
 
                 <androidx.cardview.widget.CardView
                     style="@style/CardViewStyle.Widget"
@@ -543,9 +299,7 @@
                     android:layout_marginEnd="4dp"
                     android:layout_marginBottom="3dp"
                     app:cardCornerRadius="8dp"
-
                     app:cardElevation="1dp"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -563,84 +317,238 @@
                         android:focusable="true"
 
                         android:id="@+id/card_test_constructor"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingTop="12dp">
+
+                        style="@style/practice_card_box"
+                        >
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
+
                             <RelativeLayout
+                                android:background="@drawable/ic_practice_build_bg"
+                                android:visibility="visible"
+                                style="@style/practice_card_icon">
 
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp">
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_marginTop="8dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="sans-serif-light"
-                                        android:text="Составление фраз"
-                                        android:textSize="20sp"
-                                        android:textStyle="bold"
-                                        tools:text="Information" />
-
-                                </LinearLayout>
-
-                                <RelativeLayout
-                                    android:layout_width="48dp"
-                                    android:layout_height="48dp"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="6dp"
-                                    android:layout_marginRight="12dp"
-                                    android:background="@drawable/ic_task_info_bg"
-                                    android:padding="8dp"
-                                    android:visibility="visible">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_centerInParent="true"
-                                        app:srcCompat="@drawable/ic_practice_build" />
-
-                                </RelativeLayout>
-
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerInParent="true"
+                                    app:srcCompat="@drawable/ic_practice_build"
+                                    tools:ignore="ContentDescription" />
 
                             </RelativeLayout>
 
-                        </RelativeLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_buid_test"
+                                    style="@style/practice_card_title" />
 
-                            <TextView
 
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/pr_build_result"
+                                    style="@style/practice_card_result"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/practice_build_test_desc" />
 
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="24dp"
-                                android:layout_marginBottom="24dp"
-                                android:fontFamily="sans-serif-light"
-                                android:text="Тест на составление фразы из слов"
-                                android:textSize="12sp"
-                                tools:text="Current progress: 0" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
                     </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewStyle.Widget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="3dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="1dp"
+
+                    >
+
+                    <FrameLayout
+                        style="?attr/CardViewBorder_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                    <RelativeLayout
+                        android:background="#00000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+
+                            android:id="@+id/wrap_info"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingLeft="24dp"
+                            android:paddingTop="8dp">
+
+                            <RelativeLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <RelativeLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    >
+
+
+                                    <ImageView
+
+                                        android:id="@+id/practice_paraams_icon"
+                                        android:alpha="0.7"
+                                        android:clickable="true"
+                                        android:focusable="true"
+                                        android:background="?selectableItemBackgroundBorderless"
+                                        android:padding="1dp"
+                                        android:layout_marginRight="14dp"
+                                        android:layout_width="28dp"
+                                        android:layout_height="28dp"
+                                        android:layout_alignParentRight="true"
+                                        app:srcCompat="@drawable/ic_practice_settings" />
+
+                                    <LinearLayout
+                                        android:layout_marginTop="4dp"
+                                        android:gravity="center_vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:fontFamily="sans-serif-light"
+                                            android:textStyle="bold"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/practice_tests_settings"
+                                            android:textSize="16sp"
+
+
+                                            />
+
+                                    </LinearLayout>
+
+
+                                </RelativeLayout>
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_marginTop="6dp"
+                                android:layout_marginBottom="16dp"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+
+                                    android:id="@+id/tv_test_level"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/practice_param_desc_text" />
+
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_params_topics"
+
+                                    style="@style/practice_param_desc_text"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/tv_params_limit"
+                                    style="@style/practice_param_desc_text"
+                                    />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <View
+
+                            android:layout_alignParentRight="true"
+
+                            android:layout_below="@+id/wrap_info"
+                            android:id="@+id/bottomView"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            tools:ignore="RtlHardcoded" />
+
+
+                        <ImageView
+
+                            android:visibility="gone"
+                            android:id="@+id/params_practice_info"
+                           android:layout_toLeftOf="@+id/params_practice_edit"
+                            android:layout_above="@+id/bottomView"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="16dp"
+
+                            android:alpha="0.4"
+                            android:padding="3dp"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="?selectableItemBackgroundBorderless"
+
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+
+                            app:srcCompat="@drawable/ic_practice_info"
+                            tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+                        <ImageView
+                            android:id="@+id/params_practice_edit"
+                            android:layout_alignParentRight="true"
+                            android:layout_above="@+id/bottomView"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="12dp"
+
+                            android:alpha="0.7"
+                            android:padding="3dp"
+                            android:focusable="true"
+                            android:clickable="true"
+                            android:background="?selectableItemBackgroundBorderless"
+
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+
+                            app:srcCompat="@drawable/ic_practice_params_edit"
+                            tools:ignore="ContentDescription,RtlHardcoded" />
+
+
+
+                    </RelativeLayout>
 
 
                 </androidx.cardview.widget.CardView>

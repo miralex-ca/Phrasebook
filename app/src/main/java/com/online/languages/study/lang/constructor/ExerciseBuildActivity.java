@@ -65,6 +65,10 @@ import java.util.Locale;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIXED_PARAM;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIX_SETTING;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
 import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
 
@@ -484,19 +488,29 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
         if (getIntent().hasExtra("practice")) {
 
+            limit = Integer.parseInt(appSettings.getString(PRACTICE_LIMIT_SETTING, String.valueOf(PRACTICE_LIMIT_DEFAULT)));
+
             if (getIntent().hasExtra("ids")) {
 
                 String[] studiedList = getIntent().getStringArrayExtra("ids");
                 String[] unstudiedList = getIntent().getStringArrayExtra("unstudied_ids");
 
-                int testLevel = 1;
+                int testLevel = 0;
 
                 if (getIntent().hasExtra("level"))
-                    testLevel = getIntent().getIntExtra("level", 1);
+                    testLevel=getIntent().getIntExtra("level", 0);
+
+                String sectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+
+                String mixWithUnstudied = appSettings.getString(PRACTICE_MIX_SETTING+sectionId, PRACTICE_MIXED_PARAM);
 
                 QuestCollector questCollector = new QuestCollector(dataManager.dbHelper, exType, testLevel);
+
+                questCollector.setMixWithUnstudied(mixWithUnstudied.equals(PRACTICE_MIXED_PARAM));
+
                 questCollector.setType(TEST_BUILD);
 
+                questCollector.setTaskLimit(limit);
                 questCollector.setStudiedIds(studiedList);
                 questCollector.setUnStudiedIds(unstudiedList);
 
@@ -506,7 +520,6 @@ public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeec
 
             }
         }
-
 
         exerciseController.tasks = exerciseAllData.tasks;
 

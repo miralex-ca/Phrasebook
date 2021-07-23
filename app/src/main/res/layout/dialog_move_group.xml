@@ -8,7 +8,6 @@
     android:layout_height="match_parent">
 
 
-
     <RelativeLayout
         android:elevation="3dp"
         android:padding="12dp"

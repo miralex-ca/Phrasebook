@@ -82,11 +82,11 @@ public class SectionActivity extends ThemedActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Темы"));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.section_topics_tab));
 
         if (displayPractice) {
 
-            tabLayout.addTab(tabLayout.newTab().setText("Практика"));
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.section_practice_tab));
             tabLayout.setVisibility(View.VISIBLE);
         } else {
             tabLayout.setVisibility(View.GONE);

@@ -861,5 +861,52 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="tasks_clear_data_msg">Resetting data …</string>
 
+    <string name="practice_info_title">Training</string>
+    <string name="practice_info_content">Information</string>
+
+    <string name="current_level">"Current: "</string>
+
+    <string name="difficulty_level">"Difficulty level: "</string>
+    <string name="studied_topcs_count">"Studied topics: "</string>
+    <string name="practice_tasks_limit">"Tasks limit: "</string>
+    <string name="practice_last_result">"Last result:  "</string>
+    <string name="practice_last_date">"       Date: "</string>
+
+
+    <string name="practice_vocab_test">Vocabulary test</string>
+    <string name="practice_vocab_test_desc">Choose the translation for words and expressions from this section</string>
+    <string name="practice_translate_test">Phrases translation test</string>
+    <string name="practice_translate_test_desc">Choose the translation for phrases including words and expressions from this section</string>
+    <string name="practice_audio_test">Listening test</string>
+    <string name="practice_audio_test_desc">Listen and translate phrases including words and expressions from this section</string>
+    <string name="practice_buid_test">Build sentences</string>
+    <string name="practice_build_test_desc">Build phrases including words and expressions from this section</string>
+    <string name="practice_tests_settings">Training settings</string>
+    <string name="practice_settings_dialog_title">Training settings</string>
+    <string name="practice_setting_difficulty_level">Difficulty level</string>
+    <string name="practice_setting_autolevel_desc">Set automatically</string>
+    <string name="practice_setting_current_level">Current level:</string>
+    <string name="practice_setting_level_desc">The minimum difficulty level for the tasks in training tests.</string>
+    <string name="practice_setting_tasks_limit">Tasks limit</string>
+    <string name="practice_setting_tasks_limit_desc">The maximum number of tasks that can be added in training tests. The setting applies to all sections.</string>
+    <string name="practice_setting_studied_topics">Studied topics</string>
+    <string name="practice_setting_zero_topics">Currently, you have no studied topics in this section, and items from different topics will be added to the tests.</string>
+    <string name="practice_setting_topics_list_desc">List of topics that have priority in the tests tasks:</string>
+    <string name="practice_setting_unstudied_mix">Items from unexplored topics</string>
+    <string name="practice_setting_unstudied_mix_desc">Items from unexplored topics may be added in the training tests.</string>
+
+    <string name="section_topics_tab">Topics</string>
+    <string name="section_practice_tab">Training</string>
+
+    <string name="pr_limit_tasks_20">20 tasks</string>
+    <string name="pr_limit_tasks_25">25 tasks</string>
+    <string name="pr_limit_tasks_30">30 tasks</string>
+
+    <string name="pr_level_basic">Beginner</string>
+    <string name="pr_level_easy">Easy</string>
+    <string name="pr_level_normal">Normal</string>
+
+    <string name="pr_unstudied_mixed">Added</string>
+    <string name="pr_unstudied_mixed_not">Not added</string>
 
 </resources>

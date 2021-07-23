@@ -807,7 +807,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String ex_id = cat_id+"_"+ex_type;
 
-        if (ex_id.contains("revise_")) {
+        if (ex_id.contains("revise_") || ex_id.contains("practice_")) {
             ex_id = cat_id;
         }
 
@@ -3859,6 +3859,32 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public String[] getTestByTestId(SQLiteDatabase db, String testId) {
+
+
+            String[] testData = new String[] {testId, "0", "0"};
+
+
+            Cursor cursor = db.query(TABLE_TESTS_DATA,  null,
+                     KEY_TEST_TAG +" = ?", new String[] { testId },
+                     null, null, null);
+
+
+            try {
+                while (cursor.moveToNext()) {
+
+                    testData[1] = cursor.getString(cursor.getColumnIndex(KEY_TEST_PROGRESS));
+                    testData[2] = String.valueOf(cursor.getLong(cursor.getColumnIndex(KEY_TEST_TIME)));
+
+                }
+            } finally {
+                cursor.close();
+            }
+
+        return testData;
+
+    }
+
 
 
 
@@ -5073,6 +5099,8 @@ public class DBHelper extends SQLiteOpenHelper {
                     if (dataType == TEST_BUILD) quest = getBuildQuestFromCursor( cursor);
                     else quest = getQuestFromCursor( cursor);
 
+                    //Log.i("Quest", "quest: size " +  quest.getQuest() );
+
                     if (quest.getFilter().contains("#base") && !quest.getLevel().contains("l"+level+"l") ) {
 
                         if (questHasLowerLevel(quest, level)) categoryQuest.add(quest);
@@ -5111,8 +5139,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 + " AND ( (a." + KEY_QUEST_LEVEL + " LIKE '%l" + level + "l%') "
 
-                + " OR (a." + KEY_QUEST_FILTER + " LIKE '%#base%' "
-                      +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 2 ))) ";
+                + " OR (a." + KEY_QUEST_FILTER + " LIKE '%#base%' ))";
+                    //  +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 6 ))) ";
 
     }
 
@@ -5128,9 +5156,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 + " AND ( (a." + KEY_QUEST_B_LEVEL + " LIKE '%l" + level + "l%') "
 
-                + " OR (a." + KEY_QUEST_B_FILTER + " LIKE '%#base%' "
+                + " OR (a." + KEY_QUEST_B_FILTER + " LIKE '%#base%' ))";
 
-                +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 2 ))) ";
+              //  +" AND (b." + KEY_QSTATS_CORRECT +" IS NULL OR b." + KEY_QSTATS_CORRECT +" < 2 ))) ";
 
     }
 
@@ -5273,15 +5301,25 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public int checkSectionPracticeLevelProgress(SQLiteDatabase db, String sectionID, int level) {
+    public int checkSectionPracticeLevelProgress(SQLiteDatabase db, ArrayList<String> sectionCatIds, int level) {
 
 
-            ArrayList<QuestData> categoryQuest = new ArrayList<>();
+            StringBuilder idsCondition = new StringBuilder("");
+
+        for (int i = 0; i < sectionCatIds.size(); i++) {
+
+            String like = "a."+ KEY_QUEST_CAT_ID + " = " + sectionCatIds.get(i) + " ";
+
+            if (i != 0) {
+                like = "OR " + like;
+            }
+            idsCondition.append(like);
+        }
 
 
             String totalCountQuery = "SELECT * FROM " + TABLE_QUEST_DATA
 
-                    + " WHERE (" + KEY_QUEST_CAT_ID + " LIKE '" + sectionID + "%' ) "
+                    + " a WHERE (" + idsCondition + " ) "
 
                     + "AND (" + KEY_QUEST_LEVEL + " LIKE '%l" + level + "l%') ";
 
@@ -5297,7 +5335,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 +" b ON a." + KEY_QUEST_ID + " = b." + KEY_QSTATS_ID
 
-                + " WHERE (a." + KEY_QUEST_CAT_ID + " LIKE '" + sectionID + "%' ) "
+                + " WHERE (" + idsCondition + " ) "
 
                 + "AND (a." + KEY_QUEST_LEVEL+ " LIKE '%l" + level + "l%') "
 

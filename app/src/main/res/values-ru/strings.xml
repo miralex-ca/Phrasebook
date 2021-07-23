@@ -865,4 +865,51 @@
 
     <string name="tasks_clear_data_msg">Сброс данных …</string>
 
+    <string name="practice_info_title">Практика</string>
+    <string name="practice_info_content">Информация</string>
+
+    <string name="current_level">"Текущий: "</string>
+
+    <string name="difficulty_level">"Уровень сложности: "</string>
+    <string name="studied_topcs_count">"Изучаемые темы: "</string>
+    <string name="practice_tasks_limit">"Количество заданий: "</string>
+    <string name="practice_last_result">"Последний результат:  "</string>
+    <string name="practice_last_date">"       Дата:\u00A0"</string>
+
+    <string name="practice_vocab_test">Лексический тест</string>
+    <string name="practice_vocab_test_desc">Выбор перевода слов и выражений данного раздела</string>
+    <string name="practice_translate_test">Тест на перевод фраз</string>
+    <string name="practice_translate_test_desc">Выбор перевода для фраз из слов и выражений данного раздела</string>
+    <string name="practice_audio_test">Тест на аудирование</string>
+    <string name="practice_audio_test_desc">Перевод озвученных фраз из слов и выражений данного раздела</string>
+    <string name="practice_buid_test">Тест на составление фраз</string>
+    <string name="practice_build_test_desc">Составление фраз из слов и выражений данного раздела</string>
+    <string name="practice_tests_settings">Параметры упражнений</string>
+    <string name="practice_settings_dialog_title">Параметры</string>
+    <string name="practice_setting_difficulty_level">Уровень сложности</string>
+    <string name="practice_setting_autolevel_desc">Определять автоматически</string>
+    <string name="practice_setting_current_level">Текущий уровень:</string>
+    <string name="practice_setting_level_desc">Минимальный уровень сложности, который учитывается при подборе заданий</string>
+    <string name="practice_setting_tasks_limit">Количество заданий</string>
+    <string name="practice_setting_tasks_limit_desc">Максимальное количество заданий в упражнениях. Настройка применятеся ко всем разделам.</string>
+    <string name="practice_setting_studied_topics">Изучаемые темы</string>
+    <string name="practice_setting_zero_topics">На данный момент у вас нет изучаемых тем в этом разделе, поэтому в упражнения будут добавляься записи из разных тем.</string>
+    <string name="practice_setting_topics_list_desc">Список тем, который имеют приоритет при подборе заданий</string>
+    <string name="practice_setting_unstudied_mix">Записи из неизученных тем</string>
+    <string name="practice_setting_unstudied_mix_desc">Добавление записей из неизученных тем</string>
+
+    <string name="section_topics_tab">Темы</string>
+    <string name="section_practice_tab">Практика</string>
+
+    <string name="pr_limit_tasks_20">20 заданий</string>
+    <string name="pr_limit_tasks_25">25 заданий</string>
+    <string name="pr_limit_tasks_30">30 заданий</string>
+
+    <string name="pr_level_basic">Базовый</string>
+    <string name="pr_level_easy">Легкий</string>
+    <string name="pr_level_normal">Нормальный</string>
+
+    <string name="pr_unstudied_mixed">Добавляются</string>
+    <string name="pr_unstudied_mixed_not">Не добавляются</string>
+
 </resources>

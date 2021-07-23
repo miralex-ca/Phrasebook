@@ -27,8 +27,8 @@
     </string-array>
 
 
-    <string name="tests_file" translatable="false">tests/test_quests.json</string>
-    <string name="build_tests_file" translatable="false">tests/test_quests_build.json</string>
+    <string name="tests_file" >tests/test_quests.json</string>
+    <string name="build_tests_file" >tests/test_quests_build.json</string>
 
     <string name="locale_string" translatable="false">english</string>
 

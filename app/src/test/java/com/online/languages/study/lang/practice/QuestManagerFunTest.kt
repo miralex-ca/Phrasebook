@@ -16,6 +16,7 @@ class QuestManagerFunTest {
 
         val list: ArrayList<ArrayList<QuestData>> = ArrayList()
         SUT = QuestManager(list)
+        SUT.testTaskLimit  = 20
     }
 
     @Test

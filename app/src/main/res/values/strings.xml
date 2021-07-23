@@ -878,7 +878,53 @@ Les tâches viseront des thèmes et des sections que vous pouvez commencer ou co
 
     <string name="tasks_clear_data_msg">Réinitialisation des données …</string>
 
+    <string name="practice_info_title">Pratique</string>
+    <string name="practice_info_content">Information</string>
 
+    <string name="current_level">"Actuel: "</string>
+
+    <string name="difficulty_level">"Niveau de difficulté: "</string>
+    <string name="studied_topcs_count">"Sujets étudiés: "</string>
+    <string name="practice_tasks_limit">"Limite de tâches: "</string>
+    <string name="practice_last_result">"Dernier résultat:  "</string>
+    <string name="practice_last_date">"       Date: "</string>
+
+
+    <string name="practice_vocab_test">Test de vocabulaire</string>
+    <string name="practice_vocab_test_desc">Choisissez la traduction des mots et expressions de cette section</string>
+    <string name="practice_translate_test">Traduction de phrases</string>
+    <string name="practice_translate_test_desc">Choisissez la traduction des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_audio_test">Test d’écoute</string>
+    <string name="practice_audio_test_desc">Écoutez et traduisez des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_buid_test">Construisez des phrases</string>
+    <string name="practice_build_test_desc">Construisez des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_tests_settings">Paramètres d’entraînement</string>
+    <string name="practice_settings_dialog_title">Paramètres d’entraînement</string>
+    <string name="practice_setting_difficulty_level">Niveau de difficulté</string>
+    <string name="practice_setting_autolevel_desc">Définir automatiquement</string>
+    <string name="practice_setting_current_level">Niveau actuel:</string>
+    <string name="practice_setting_level_desc">Le plus bas niveau de difficulté minimum pour les tâches des tests d’entraînement.</string>
+    <string name="practice_setting_tasks_limit">Limite de tâches</string>
+    <string name="practice_setting_tasks_limit_desc">Le nombre maximum de tâches pouvant être ajoutées dans les tests d’entraînement. Ce réglage s’applique à toutes les sections.</string>
+    <string name="practice_setting_studied_topics">Thème étudiés</string>
+    <string name="practice_setting_zero_topics">Actuellement, vous n’avez aucun thème étudié dans cette section. Des mots de différents thèmes seront ajoutés aux tests.</string>
+    <string name="practice_setting_topics_list_desc">Liste des thèmes prioritaires pour les tâches dans les tests:</string>
+    <string name="practice_setting_unstudied_mix">Éléments de thèmes inexplorés</string>
+    <string name="practice_setting_unstudied_mix_desc">Les mots et les expression des thèmes inexplorés peuvent être ajoutés dans les tests d’entraînement.</string>
+
+    <string name="section_topics_tab">Thèmes</string>
+    <string name="section_practice_tab">Entraînement</string>
+
+    <string name="pr_limit_tasks_20">20 éléments</string>
+    <string name="pr_limit_tasks_25">25 éléments</string>
+    <string name="pr_limit_tasks_30">30 éléments</string>
+
+    <string name="pr_level_basic">Débutant</string>
+    <string name="pr_level_easy">Facile</string>
+    <string name="pr_level_normal">Normal</string>
+
+    <string name="pr_unstudied_mixed">Ajoutés</string>
+    <string name="pr_unstudied_mixed_not">Pas ajoutés</string>
 
 
 </resources>

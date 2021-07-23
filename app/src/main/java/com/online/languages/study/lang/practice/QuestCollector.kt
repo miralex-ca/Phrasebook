@@ -17,8 +17,8 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
     companion object {
         const val TEST_MULTICHOICE = 1
         const val TEST_BUILD = 2
+        const val PRACTICE_LIMIT = 20
     }
-
 
     var studiedIds = emptyArray<String>()
     var unStudiedIds = emptyArray<String>()
@@ -26,9 +26,9 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
     var type = TEST_MULTICHOICE
     var mixWithUnstudied = true
 
-
     val mainList = ArrayList<ExerciseTask>()
 
+    var taskLimit = PRACTICE_LIMIT
 
     fun processData() {
 
@@ -46,8 +46,9 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
             questsByCatIds = getQuestsByCatIds(unStudiedIdsList)
         }
 
-
         val questManager = QuestManager(questsByCatIds)
+        questManager.testTaskLimit = taskLimit
+        questManager.requiredLevel = testLevel
 
         if (studiedIds.isEmpty()) {
             questManager.unstudied = true
@@ -61,7 +62,27 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
 
         questManager.processData()
 
-        val quests = questManager.mainList
+        var quests = questManager.mainList
+
+        if (mixWithUnstudied && questManager.addUnstudied) {
+
+            val unstudiedQuestsByCatIds = getQuestsByCatIds(unStudiedIdsList)
+
+            val unstudiedQuestManager = QuestManager(unstudiedQuestsByCatIds)
+
+            unstudiedQuestManager.testTaskLimit = questManager.testTaskLimit
+            unstudiedQuestManager.requiredLevel = questManager.requiredLevel
+
+            unstudiedQuestManager.unstudied = true
+            unstudiedQuestManager.exerciseType = testType
+            unstudiedQuestManager.unstudiedWithProgressMap = questManager.unstudiedWithProgressMap
+
+            unstudiedQuestManager.processData()
+
+            quests = joinStudiedAndUnstudied(quests, unstudiedQuestManager.mainList, questManager.testTaskLimit)
+
+        }
+
 
         val tasks = ArrayList<ExerciseTask>()
 
@@ -76,6 +97,33 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
 
         mainList.clear()
         mainList.addAll(tasks)
+
+    }
+
+    private fun joinStudiedAndUnstudied(
+        studiedQuests: ArrayList<QuestData>,
+        unStudiedQuests: ArrayList<QuestData>,
+        limit: Int
+    ) : ArrayList<QuestData> {
+
+
+        val unstudiedQuestsList = if (unStudiedQuests.size > limit/2)
+        {
+            ArrayList(unStudiedQuests.subList(0, limit/2))
+
+        } else {
+            unStudiedQuests
+        }
+
+        val quests = if (studiedQuests.size > limit - unstudiedQuestsList.size) {
+            ArrayList(studiedQuests.subList(0, limit - unstudiedQuestsList.size ))
+        } else {
+            studiedQuests
+        }
+
+        quests.addAll(unstudiedQuestsList)
+
+        return quests
 
     }
 
@@ -132,7 +180,7 @@ class QuestCollector(val dbHelper: DBHelper, val testType: Int, val testLevel: I
         val optNum = Constants.TEST_OPTIONS_NUM - 1
 
         if (exerciseTask.options.size > optNum) {
-            exerciseTask.options = java.util.ArrayList(exerciseTask.options.subList(0, optNum))
+            exerciseTask.options = ArrayList(exerciseTask.options.subList(0, optNum))
         }
 
         exerciseTask.options.add(0, quest.correct)

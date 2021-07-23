@@ -344,5 +344,43 @@
 
     <string name="set_tasks_nav_default" translatable="false">home</string>
 
+        <string-array name="practice_limit_array">
+            <item>@string/pr_limit_tasks_20</item>
+            <item>@string/pr_limit_tasks_25</item>
+            <item>@string/pr_limit_tasks_30</item>
+        </string-array>
+
+    <string-array name="practice_limit_array_values">
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <string name="pr_limit_default" translatable="false">20</string>
+
+    <string-array name="practice_level_array">
+        <item>@string/pr_level_easy</item>
+        <item>@string/pr_level_normal</item>
+    </string-array>
+
+    <string-array name="practice_level_array_values">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string name="pr_level_default" translatable="false">1</string>
+
+    <string-array name="practice_mix_array">
+        <item>@string/pr_unstudied_mixed</item>
+        <item>@string/pr_unstudied_mixed_not</item>
+    </string-array>
+
+
+
+    <string-array name="practice_mix_array_values">
+        <item>mixed</item>
+        <item>unmixed</item>
+    </string-array>
+
 
 </resources>

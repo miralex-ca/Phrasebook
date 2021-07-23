@@ -38,6 +38,8 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         const val UNSTUDIED_GROUP_ITEMS_ADDED = 10
         const val PRACTICE_COUNT_SHUFFLE = 0
         const val UNSTUDIED_GROUP_PROGRESS_MIN = 50
+        const val FILTER_BASE = "#base"
+        const val FILTER_EASY = "#easy"
     }
 
     var unstudiedItemsAdded = UNSTUDIED_GROUP_ITEMS_ADDED
@@ -54,11 +56,14 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
     val questDataList = ArrayList<QuestGroupData>()
     var reviseGroupsList = ArrayList<ArrayList<QuestData>>()
 
+    var addUnstudied = false
+
 
     fun processData() {
 
+        unstudiedItemsAdded = testTaskLimit/2
+
         // we're getting quests with stats grouped by topics
-        //Log.i("Quest", "quest list size: ${ listedQuestsGroup[0].size }")
 
         checkGroupsSort(listedQuestsGroup)
 
@@ -75,8 +80,6 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
        // questDataList.sortBy { getRequiredCounter(it.quests[0]) }
 
-        //printQuestGroupData(questDataList)
-
         if (unstudied) {
 
             questDataList.sortBy {it.completedProgress}
@@ -87,8 +90,6 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         } else {
             questDataList.sortBy {it.completedCount}
         }
-
-       // printQuestGroupData(questDataList)
 
         listedQuestsGroup.clear()
 
@@ -116,12 +117,27 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
             val items =  ArrayList(group.subList(0, matrix[index]))
 
-            mainList.addAll( items.shuffled() )
+            items.shuffle()
+
+            mainList.addAll( moveBaseToFront(items) )
 
         }
 
         addForReviseIfUnderLimit()
 
+    }
+
+    private fun moveBaseToFront(items: ArrayList<QuestData>): ArrayList<QuestData> {
+
+        val sortedItems = ArrayList<QuestData>()
+
+        items.forEach { item ->
+
+            if (item.filter.contains(FILTER_BASE)) sortedItems.add(0, item )
+            else sortedItems.add(item)
+        }
+
+        return sortedItems
     }
 
 
@@ -139,6 +155,7 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
         while (true) {
 
             for (index  in listedQuestsGroup.indices ) {
+
 
                 var size = listData[index]
 
@@ -258,7 +275,10 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
     }
 
     private fun mixStudiedWithUnstudied() {
-        Toast.makeText(App.getAppContext(), "Mix with unstudied", Toast.LENGTH_LONG).show()
+
+        if (!unstudied) addUnstudied = true
+
+       // Toast.makeText(App.getAppContext(), "Mix with unstudied", Toast.LENGTH_LONG).show()
     }
 
     private fun collectMainListFromCompleted(groupsList: ArrayList<ArrayList<QuestData>>, remain: Int) : ArrayList<QuestData> {
@@ -337,9 +357,11 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                 for (item in list) {
 
+
+
                     val count = getRequiredCounter(item)
 
-                   if (!item.filter.contains("#base")) {
+                   if (!item.filter.contains(FILTER_BASE)) {
 
                        completedCount += count
                        countNotBaseTasks ++
@@ -348,14 +370,17 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
                    }
 
-
                     if (count > PRACTICE_COUNT_SHUFFLE ) {
 
                         if (levelToRevise(item))
+
                             listHigher.add(item)
 
                     } else {
+
                         listMin.add(item)
+
+
                     }
                 }
 
@@ -393,11 +418,16 @@ class QuestManager(var listedQuestsGroup: ArrayList<ArrayList<QuestData>>) {
 
         val lowerLevel = requiredLevel-2
 
-        if (item.level.contains("l" + (lowerLevel) + "l")) {
+
+
+        if (! item.level.contains("l" + requiredLevel + "l")) {
+
+            if  (item.filter.contentEquals(FILTER_EASY) && getRequiredCounter(item) > 1 ) revise = false
+
+            //Log.i("Quest", "quest ${item.quest} - ${item.level} + $requiredLevel")
 
           // if (requiredLevel > 2 && (item.levelGlobal == 1120) ) revise = false
-
-           if ( (item.levelGlobal == 1100 ) && getRequiredCounter(item) > 2 ) revise = false
+          // if ( (item.levelGlobal == 1100 ) && getRequiredCounter(item) > 2 ) revise = false
 
 
         }

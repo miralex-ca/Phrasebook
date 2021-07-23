@@ -1193,9 +1193,86 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
-
     <style name="option_button">
         <item name="colorControlHighlight">?attr/colorExOptionBgSelect</item>
+    </style>
+
+    <style name="practice_card_title">
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginRight">65dp</item>
+    </style>
+
+    <style name="practice_card_desc">
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="practice_card_result">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">41dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:alpha">0.7</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:layout_marginRight">65dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="practice_card_icon">
+        <item name="android:layout_width">46dp</item>
+        <item name="android:layout_height">46dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:padding">9dp</item>
+    </style>
+
+    <style name="practice_card_box">
+        <item name="android:paddingLeft">22dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="pr_param_title">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="pr_setting_spinner">
+        <item name="android:minWidth">150dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:popupBackground">?attr/colorDialogBg</item>
+    </style>
+
+    <style name="pr_setting_desc">
+        <item name="android:alpha">0.7</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="practice_param_item_wrap">
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <style name="practice_param_desc_text">
+        <item name="android:alpha">0.7</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginRight">24dp</item>
+        <item name="android:layout_marginBottom">1dp</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
 

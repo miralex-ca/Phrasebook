@@ -1210,7 +1210,7 @@ public class DataManager {
         return paramValue;
     }
 
-    public int checkPracticeLevel(String sectionID) {
+    public int checkPracticeLevel(ArrayList<String> catIdsList) {
 
         int requiredLevel = 1;
         int levelsCount = 6;
@@ -1220,8 +1220,7 @@ public class DataManager {
 
         for (int i = 0; i < levelsCount; i++) {
 
-            int progress = dbHelper.checkSectionPracticeLevelProgress(db, sectionID, i+1);
-
+            int progress = dbHelper.checkSectionPracticeLevelProgress(db, catIdsList, i+1);
 
             if (progress == -1) break;
 
@@ -1229,12 +1228,49 @@ public class DataManager {
                 requiredLevel = i + 1;
                 break;
             }
-
         }
 
         db.close();
 
         return requiredLevel;
     }
+
+
+
+    public ArrayList<String[]> getPracticeTests(String[] testIds) {
+
+        ArrayList<String[]> data = new ArrayList<>();
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        for (String testId : testIds) {
+            String[] testData =  dbHelper.getTestByTestId(db, testId);
+
+            String desc = context.getString(R.string.practice_last_result) + testData[1] + "%";
+            long time = Long.parseLong(testData[2]);
+            String replace = "replace";
+
+            if (time == 0)  {
+                replace = "none";
+            }
+            else {
+                desc += context.getString(R.string.practice_last_date) + formatToDate(time) ;
+            }
+
+            data.add(new String[]{testId, desc, replace });
+        }
+
+
+        db.close();
+
+        return data;
+    }
+
+    public String formatToDate (long time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
+        return  sdf.format(new Date(time));
+    }
+
 
 }

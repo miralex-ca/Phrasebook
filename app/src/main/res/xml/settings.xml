@@ -239,16 +239,12 @@
             android:defaultValue="@string/set_transition_default"
             android:dialogTitle="Transition" />
 
+
         <SwitchPreferenceCompat
             app:iconSpaceReserved="false"
             android:key="set_mode_hint"
             android:title="Display mode hint"
             android:defaultValue="false" />
-
-
-
-
-
 
 
 
@@ -306,12 +302,10 @@
             android:key="test_all_save"
             android:defaultValue="true" />
 
-
         <SwitchPreferenceCompat
             android:key="full_version"
             android:title="Full version"
             android:defaultValue="false" />
-
 
         <SwitchPreferenceCompat
             android:key="show_ad"
