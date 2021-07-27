@@ -41,7 +41,7 @@ android {
 
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.study.languages.master"
+        applicationId "com.study.languages.phrasebook.master"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 60
@@ -82,7 +82,7 @@ android {
 
         develop {
             dimension "mode"
-            applicationId 'com.study.languages.develop'
+            applicationId 'com.study.languages.phrasebook.develop'
             resValue("string", "applicationId", applicationId)
 
         }
@@ -91,7 +91,7 @@ android {
         english {
             minSdkVersion 21
             dimension "mode"
-            applicationId 'com.study.languages.english'
+            applicationId 'com.study.languages.phrasebook.spanish'
             resValue("string", "applicationId", applicationId)
             resConfigs 'fr', 'ru'
         }
@@ -99,7 +99,7 @@ android {
         french {
             minSdkVersion 21
             dimension "mode"
-            applicationId 'com.study.languages.french'
+            applicationId 'com.study.languages.phrasebook.spanish'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en', 'ru'
 
@@ -112,7 +112,7 @@ android {
         spanish {
             minSdkVersion 21
             dimension "mode"
-            applicationId 'com.study.languages.spanish'
+            applicationId 'com.study.languages.phrasebook.spanish'
             resValue("string", "applicationId", applicationId)
             //resConfigs 'en', 'ru'
 
@@ -125,7 +125,7 @@ android {
         russian {
             minSdkVersion 21
             dimension "mode"
-            applicationId 'com.study.languages.russian'
+            applicationId 'com.study.languages.phrasebook.russian'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en'
 
@@ -139,14 +139,14 @@ android {
         personal {
             minSdkVersion 21
             dimension "mode"
-            applicationId 'com.study.languages.personal'
+            applicationId 'com.study.languages.phrasebook.personal'
             resValue("string", "applicationId", applicationId)
 
         }
 
         apptest {
             dimension "mode"
-            applicationId 'com.study.languages.tester'
+            applicationId 'com.study.languages.phrasebook.tester'
             resValue("string", "applicationId", applicationId)
             buildConfigField ("boolean", "SIMPLIFIED", "true")
             buildConfigField ("boolean", "HOMECARDS", "true")

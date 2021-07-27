@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 
@@ -68,8 +69,6 @@ public class UserListTabFragment1 extends Fragment {
     boolean open;
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -81,7 +80,7 @@ public class UserListTabFragment1 extends Fragment {
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
-        showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
+        showStatus = Integer.parseInt(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
 
@@ -127,7 +126,7 @@ public class UserListTabFragment1 extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 View animObj = view.findViewById(R.id.animObj);
-                onItemClick(animObj, position);
+                onItemClick(animObj);
             }
             @Override
             public void onLongClick(View view, int position) {
@@ -140,7 +139,7 @@ public class UserListTabFragment1 extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 View animObj = view.findViewById(R.id.animObj);
-                onItemClick(animObj, position);
+                onItemClick(animObj);
             }
             @Override
             public void onLongClick(View view, int position) {
@@ -285,34 +284,18 @@ public class UserListTabFragment1 extends Fragment {
     }
 
 
-    private void onItemClick(final View view, final int position) {
+    private void onItemClick(final View view) {
 
         if (open) {
+            new Handler(Looper.getMainLooper()).postDelayed(() -> ((UserListActivity)getActivity()).showAlertDialog(view), 50);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    ((UserListActivity)getActivity()).showAlertDialog(view);
-                }
-            }, 50);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    open = true;
-                }
-            }, 200);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> open = true, 200);
         }
     }
 
 
     private void openView(final View view) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                view.setVisibility(View.VISIBLE);
-            }
-        }, 40);
+        new Handler().postDelayed(() -> view.setVisibility(View.VISIBLE), 40);
     }
 
 
@@ -339,7 +322,7 @@ public class UserListTabFragment1 extends Fragment {
 
     public void checkStarred(int delay){
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 findRemoved(data);
@@ -482,6 +465,8 @@ public class UserListTabFragment1 extends Fragment {
 
 
     public void updateList() {
+
+        showStatus = Integer.parseInt(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         adapter = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_NORM);
         adapterCompact = new ContentAdapter(getActivity(), data, showStatus, theme, true, CAT_LIST_VIEW_COMPACT);

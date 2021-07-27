@@ -27,14 +27,12 @@
         app:showAsAction="ifRoom" />
 
 
-
     <item
         android:id="@+id/list_layout"
         android:orderInCategory="100"
         android:icon="@drawable/ic_view_list_big"
         android:title="@string/menu_layout"
         app:showAsAction="ifRoom" />
-
 
     <item
         android:id="@+id/info_from_menu"
@@ -46,6 +44,12 @@
         android:id="@+id/mode_from_menu"
         android:orderInCategory="100"
         android:title="@string/menu_item_mode"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/settings_from_menu"
+        android:orderInCategory="100"
+        android:title="@string/title_settings_txt"
         app:showAsAction="never" />
 
     <item

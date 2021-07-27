@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.online.languages.study.lang.fragments.UserListTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment2;
+import com.online.languages.study.lang.fragments.UserListTrainingFragment;
 
 
 public class UserListViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -26,7 +27,7 @@ public class UserListViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new UserListTabFragment1();
             case 1:
-                return new UserListTabFragment2();
+                return new UserListTrainingFragment();
             default:
                 return null;
         }

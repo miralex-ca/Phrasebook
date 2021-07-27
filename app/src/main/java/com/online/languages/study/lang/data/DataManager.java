@@ -1250,12 +1250,17 @@ public class DataManager {
             long time = Long.parseLong(testData[2]);
             String replace = "replace";
 
+
+
             if (time == 0)  {
                 replace = "none";
             }
             else {
                 desc += context.getString(R.string.practice_last_date) + formatToDate(time) ;
             }
+
+           // Log.i("Quest", "res"  + testData[1] + "% , time " + time + " - " + replace);
+
 
             data.add(new String[]{testId, desc, replace });
         }
@@ -1267,9 +1272,15 @@ public class DataManager {
     }
 
     public String formatToDate (long time) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
         return  sdf.format(new Date(time));
+    }
+
+
+    public ArrayList<String[]> getCategoryTestsResult(String[] testIds) {
+        return getPracticeTests(testIds);
     }
 
 

@@ -40,7 +40,6 @@ import static com.online.languages.study.lang.Constants.SHOW_DIVIDER;
 
 public class CatTabFragment1 extends Fragment {
 
-
     ArrayList<DataItem> data = new ArrayList<>();
     DataManager dataManager;
     SharedPreferences appSettings;
@@ -54,7 +53,6 @@ public class CatTabFragment1 extends Fragment {
     String theme;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -62,7 +60,7 @@ public class CatTabFragment1 extends Fragment {
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         theme = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-        showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
+        showStatus = Integer.parseInt(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         dataManager = new DataManager(getActivity());
 
@@ -164,6 +162,8 @@ public class CatTabFragment1 extends Fragment {
     }
 
     public void updateList() {
+
+        showStatus = Integer.parseInt(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
 
         getDataList();
         adapter = new ContentAdapter(getActivity(), data, showStatus, theme, !SHOW_DIVIDER, CAT_LIST_VIEW_NORM);

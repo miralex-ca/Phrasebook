@@ -9,6 +9,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import com.google.android.material.tabs.TabLayout;
@@ -27,6 +28,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.online.languages.study.lang.adapters.CatViewPagerAdapter;
+import com.online.languages.study.lang.adapters.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -36,6 +38,7 @@ import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.CatTabFragment2;
+import com.online.languages.study.lang.fragments.TrainingFragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -138,12 +141,9 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         categoryID = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
         catSpec = getIntent().getStringExtra(Constants.EXTRA_CAT_SPEC);
 
-
         String title = getIntent().getStringExtra("cat_title");
 
-
         parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
-
 
 
         setTitle(title);
@@ -159,12 +159,12 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.section_tab1_title));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.section_tab2_title));
+
         viewPager = findViewById(R.id.container);
 
         adapter = new CatViewPagerAdapter
@@ -465,40 +465,56 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                backTransition();
-                return true;
-            case R.id.easy_mode:
-                easyModeHint();
-                return true;
-            case R.id.sort_from_menu:
-                sortDialog();
-                return true;
-            case R.id.list_layout:
-                changeLayoutStatus();
-                return true;
-            case R.id.bookmark:
-                changeBookmark();
-                return true;
-            case R.id.info_from_menu:
-                infoMessage();
-                return true;
-            case R.id.remove_stats_from_menu:
-                deleteConfirmDialog();
-                return true;
-            case R.id.mode_from_menu:
-                listModeDialog();
-                return true;
-            case R.id.hint_from_menu:
-                 modeHint();
-                return true;
-            case R.id.edit_from_menu:
-                openEditCat();
-                return true;
+        if (id == android.R.id.home) {
+            finish();
+            backTransition();
+            return true;
+        } else if (id == R.id.easy_mode) {
+            easyModeHint();
+            return true;
+        } else if (id == R.id.sort_from_menu) {
+            sortDialog();
+            return true;
+        } else if (id == R.id.list_layout) {
+            changeLayoutStatus();
+            return true;
+        } else if (id == R.id.bookmark) {
+            changeBookmark();
+            return true;
+        } else if (id == R.id.info_from_menu) {
+            infoMessage();
+            return true;
+        } else if (id == R.id.remove_stats_from_menu) {
+            deleteConfirmDialog();
+            return true;
+        } else if (id == R.id.mode_from_menu) {
+            listModeDialog();
+            return true;
+        } else if (id == R.id.settings_from_menu) {
+            settingsDialog();
+
+            return true;
+        } else if (id == R.id.hint_from_menu) {
+            modeHint();
+            return true;
+        } else if (id == R.id.edit_from_menu) {
+            openEditCat();
+            return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void settingsDialog() {
+
+        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this){
+            @Override
+            public void practiceDialogCloseCallback() {
+
+                new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
+            }
+        };
+
+        categoryParamsDialog.showParams();
     }
 
 
@@ -587,19 +603,20 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         checkModeIcon();
         checkHint();
 
-        CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
-        if (fragment1 != null) {
+        updateFragmentsData();
+    }
 
+    private void updateFragmentsData() {
+        CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
+
+        if (fragment1 != null) {
             fragment1.updateList();
         }
 
-        CatTabFragment2 fragment2 = (CatTabFragment2) adapter.getFragmentTwo();
-        if (fragment2 != null) {
-            fragment2.fillData();
+        TrainingFragment trainingFragment = (TrainingFragment) adapter.getFragmentTwo();
+        if (trainingFragment != null) {
+            trainingFragment.getData();
         }
-
-
-
     }
 
 
@@ -646,20 +663,8 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void updateDataList() {
-
-        CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
-        if (fragment1 != null) {
-            fragment1.updateDataList();
-        }
-
-        CatTabFragment2 fragment2 = (CatTabFragment2) adapter.getFragmentTwo();
-        if (fragment2 != null) {
-            fragment2.updateResults();
-        }
-
+        updateFragmentsData();
     }
-
-
 
     private void openEditCat() {
 
@@ -703,12 +708,16 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
-        if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
-        } else if (listType.equals(CAT_LIST_VIEW_NORM)) {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
-        } else {
-            changeLayoutBtn.setIcon(R.drawable.ic_view_list_card);
+        switch (listType) {
+            case CAT_LIST_VIEW_COMPACT:
+                changeLayoutBtn.setIcon(R.drawable.ic_view_list_card);
+                break;
+            case CAT_LIST_VIEW_NORM:
+                changeLayoutBtn.setIcon(R.drawable.ic_view_list_column);
+                break;
+            default:
+                changeLayoutBtn.setIcon(R.drawable.ic_view_list_big);
+                break;
         }
     }
 
@@ -716,12 +725,16 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
-        if (listType.equals(CAT_LIST_VIEW_NORM)) {
-            listType = CAT_LIST_VIEW_COMPACT;
-        } else if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
-            listType = CAT_LIST_VIEW_CARD;
-        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
-            listType = CAT_LIST_VIEW_NORM;
+        switch (listType) {
+            case CAT_LIST_VIEW_NORM:
+                listType = CAT_LIST_VIEW_COMPACT;
+                break;
+            case CAT_LIST_VIEW_COMPACT:
+                listType = CAT_LIST_VIEW_CARD;
+                break;
+            case CAT_LIST_VIEW_CARD:
+                listType = CAT_LIST_VIEW_NORM;
+                break;
         }
 
         SharedPreferences.Editor editor = appSettings.edit();
@@ -758,7 +771,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        if (requestCode == 1) {
+        if (requestCode == 1) {  /// return from detail dialog
 
             if(resultCode == RESULT_OK){
 
@@ -769,7 +782,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
                     fragment.checkStarred(result, 180);
                 }
             }
-        } else if (requestCode == 10) {
+        } else if (requestCode == 10) {  ///// editing category
 
             if(resultCode == 50) {
 
@@ -797,12 +810,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             }
 
         } else {
-
-            CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
-            if (fragment != null) {
-                fragment.checkDataList();
-            }
-
+            updateFragmentsData();
         }
 
 
@@ -977,16 +985,20 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         }
         else if (initStatus == TextToSpeech.ERROR) {
 
-
-
         }
     }
 
     @Override
     public void finish() {
 
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(EXTRA_CAT_ID, categoryID);
+        setResult(RESULT_OK,returnIntent);
+
         if (speaking) speakWords("");
         super.finish();
+
+
     }
 
 

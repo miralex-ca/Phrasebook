@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cat_item_wrap"
 
     android:gravity="center_horizontal"
@@ -106,6 +107,7 @@
 
 
                         <TextView
+                            tools:text="Title"
                             android:textStyle="bold"
                             android:fontFamily="sans-serif-light"
                             android:textSize="20sp"
@@ -151,21 +153,21 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                tools:text="Description"
+                                android:visibility="gone"
                                 android:layout_marginTop="2dp"
                                 android:minHeight="30dp"
-                                android:visibility="gone"
-
                                 android:id="@+id/description"
                                 android:maxLines="2"
                                 android:ellipsize="end"
                                 android:textSize="14sp"
-                                android:text="Описание"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 />
 
 
                             <RelativeLayout
+                                android:visibility="visible"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginBottom="4dp"
                                 android:id="@+id/progress_wrap"
@@ -173,58 +175,77 @@
                                 android:layout_height="wrap_content">
 
 
+
                                 <TextView
+                                    tools:text="Category description"
                                     android:textSize="13sp"
                                     android:id="@+id/itemsCount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     />
 
-                                <TextView
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/familiarWrap"
                                     android:layout_toRightOf="@+id/itemsCount"
                                     android:layout_marginLeft="14dp"
-                                    android:textSize="13sp"
-                                    android:id="@+id/familiarCountTxt"
-                                    android:text="@string/ucat_familiar_items"
+                                    android:orientation="horizontal"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
+                                    android:layout_height="wrap_content">
 
-                                <TextView
-                                    android:textStyle="bold"
-                                    android:fontFamily="sans-serif-light"
-                                    android:layout_toRightOf="@+id/familiarCountTxt"
-                                    android:textColor="?attr/colorUcatFamiliar"
-                                    android:layout_marginLeft="2dp"
-                                    android:textSize="13sp"
-                                    android:id="@+id/familiarCount"
-                                    android:text="0"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
+                                    <TextView
+                                        android:textSize="13sp"
+                                        android:id="@+id/familiarCountTxt"
+                                        android:text="@string/ucat_familiar_items"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
 
-                                <TextView
-                                    android:layout_toRightOf="@+id/familiarCount"
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:fontFamily="sans-serif-light"
+                                        android:textColor="?attr/colorUcatFamiliar"
+                                        android:layout_marginLeft="2dp"
+                                        android:textSize="13sp"
+                                        android:id="@+id/familiarCount"
+                                        android:text="0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:visibility="gone"
+                                    android:id="@+id/masteredWrap"
+                                    android:orientation="horizontal"
+                                    android:layout_toRightOf="@+id/familiarWrap"
                                     android:layout_marginLeft="14dp"
-                                    android:textSize="13sp"
-                                    android:id="@+id/masteredCountTxt"
-                                    android:text="@string/ucat_mastered_items"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
+                                    android:layout_height="wrap_content">
 
-                                <TextView
-                                    android:textStyle="bold"
-                                    android:fontFamily="sans-serif-light"
-                                    android:layout_toRightOf="@+id/masteredCountTxt"
-                                    android:textColor="?attr/colorUcatMastered"
-                                    android:layout_marginLeft="2dp"
-                                    android:textSize="13sp"
-                                    android:id="@+id/masteredCount"
-                                    android:text="0"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
+                                    <TextView
+                                        android:textSize="13sp"
+                                        android:id="@+id/masteredCountTxt"
+                                        android:text="@string/ucat_mastered_items"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:fontFamily="sans-serif-light"
+                                        android:textColor="?attr/colorUcatMastered"
+                                        android:layout_marginLeft="2dp"
+                                        android:textSize="13sp"
+                                        android:id="@+id/masteredCount"
+                                        android:text="0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+
+                                </LinearLayout>
+
 
                             </RelativeLayout>
 
@@ -232,6 +253,7 @@
                         </LinearLayout>
 
                         <TextView
+                            tools:text="Additional desc"
                             android:textColor="?attr/colorSecondaryText"
                             android:layout_marginLeft="1dp"
                             android:textSize="12sp"

@@ -143,51 +143,54 @@
                                     android:layout_height="wrap_content"
                                     />
 
-                                <TextView
-                                    android:layout_toRightOf="@+id/itemsCount"
-                                    android:layout_marginLeft="14dp"
-                                    android:textSize="12sp"
-                                    android:id="@+id/familiarCountTxt"
-                                    android:text="@string/ucat_familiar_items"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
+                                <RelativeLayout
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:layout_marginLeft="14dp"
+                                        android:textSize="12sp"
+                                        android:id="@+id/familiarCountTxt"
+                                        android:text="@string/ucat_familiar_items"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:fontFamily="sans-serif-light"
+                                        android:layout_toRightOf="@+id/familiarCountTxt"
+                                        android:textColor="?attr/colorUcatFamiliar"
+                                        android:layout_marginLeft="2dp"
+                                        android:textSize="12sp"
+                                        android:id="@+id/familiarCount"
+                                        android:text="0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    <TextView
+                                        android:layout_toRightOf="@+id/familiarCount"
+                                        android:layout_marginLeft="14dp"
+                                        android:textSize="12sp"
+                                        android:id="@+id/masteredCountTxt"
+                                        android:text="@string/ucat_mastered_items"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                    <TextView
+                                        android:textStyle="bold"
+                                        android:fontFamily="sans-serif-light"
+                                        android:layout_toRightOf="@+id/masteredCountTxt"
+                                        android:textColor="?attr/colorUcatMastered"
+                                        android:layout_marginLeft="2dp"
+                                        android:textSize="12sp"
+                                        android:id="@+id/masteredCount"
+                                        android:text="0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </RelativeLayout>
 
-                                <TextView
-                                    android:textStyle="bold"
-                                    android:fontFamily="sans-serif-light"
-                                    android:layout_toRightOf="@+id/familiarCountTxt"
-                                    android:textColor="?attr/colorUcatFamiliar"
-                                    android:layout_marginLeft="2dp"
-                                    android:textSize="12sp"
-                                    android:id="@+id/familiarCount"
-                                    android:text="0"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
 
-                                <TextView
-                                    android:layout_toRightOf="@+id/familiarCount"
-                                    android:layout_marginLeft="14dp"
-                                    android:textSize="12sp"
-                                    android:id="@+id/masteredCountTxt"
-                                    android:text="@string/ucat_mastered_items"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
-
-                                <TextView
-                                    android:textStyle="bold"
-                                    android:fontFamily="sans-serif-light"
-                                    android:layout_toRightOf="@+id/masteredCountTxt"
-                                    android:textColor="?attr/colorUcatMastered"
-                                    android:layout_marginLeft="2dp"
-                                    android:textSize="12sp"
-                                    android:id="@+id/masteredCount"
-                                    android:text="0"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
 
                             </RelativeLayout>
 
@@ -318,6 +321,8 @@
                                     android:layout_height="26dp"
 
                                     app:srcCompat="@drawable/ic_action_edit" />
+
+
 
                             </LinearLayout>
 

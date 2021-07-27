@@ -73,6 +73,7 @@
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon</item>
 
 
+        <item name="AppBarOverlayTheme">@style/AppBarOverlayTheme</item>
 
     </style>
 

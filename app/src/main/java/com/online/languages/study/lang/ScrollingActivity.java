@@ -28,6 +28,7 @@ import com.online.languages.study.lang.data.DetailItem;
 
 import java.util.Locale;
 
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
@@ -440,7 +441,13 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     public void finish() {
 
         Intent returnIntent = new Intent();
+
         returnIntent.putExtra("result", itemPostion);
+
+        if (getIntent().hasExtra(EXTRA_CAT_ID)) {
+            String cat = getIntent().getStringExtra(EXTRA_CAT_ID);
+            returnIntent.putExtra(EXTRA_CAT_ID, cat);
+        }
 
         if (starStatusChanged) {
             setResult(RESULT_OK,returnIntent);

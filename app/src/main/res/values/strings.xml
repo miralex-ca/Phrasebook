@@ -925,6 +925,16 @@ Les tâches viseront des thèmes et des sections que vous pouvez commencer ou co
 
     <string name="pr_unstudied_mixed">Ajoutés</string>
     <string name="pr_unstudied_mixed_not">Pas ajoutés</string>
+    <string name="practice_cards_title">Карточки</string>
+    <string name="practice_cards_desc">Изучение отдельных слов и выражений данной темы</string>
+    <string name="dialog_param_transcript_title">Транскрипция</string>
+    <string name="dialog_param_transcript_desc">Отображать траскрипцию</string>
+    <string name="dialog_param_status_display_title">Статус изученности</string>
+    <string name="dialog_param_status_display_desc">Отображать статус изучить</string>
+    <string name="dialog_param_results_title">Результаты упражнений</string>
+    <string name="dialog_param_result_checkbox_text">Отображать результаты</string>
+    <string name="dialog_param_results_desc">Отображать результаты упражнений</string>
+    <string name="topic_access_in_plus_version">\nТема доступна в версии PLUS</string>
 
 
 </resources>

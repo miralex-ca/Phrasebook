@@ -236,4 +236,7 @@ public class Constants {
 
     public static final String PRACTICE_AUTOLEVEL_SETTING = "pr_autolevel_param";
     public static final String PRACTICE_EXCLUDED_SETTING = "pr_excluded_param_";
+
+    public static final int SECTION_REVIEW_MAX_MODE = 1;
+
 }

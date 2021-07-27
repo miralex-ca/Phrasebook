@@ -6,16 +6,19 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.online.languages.study.lang.adapters.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -24,6 +27,7 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.fragments.UserListTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment2;
+import com.online.languages.study.lang.fragments.UserListTrainingFragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -61,7 +65,8 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
     boolean open;
 
     private TextToSpeech myTTS;
-    private int MY_DATA_CHECK_CODE = 15;
+    private final int MY_DATA_CHECK_CODE = 15;
+    private final int RESULT_CODE_FROM_TEST = 10;
 
     boolean speaking;
 
@@ -126,10 +131,8 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
             }
         });
 
-
         speaking = appSettings.getBoolean("set_speak", true);
         checkTTSIntent();
-
     }
 
 
@@ -149,18 +152,10 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
         } else {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-                }
-            }, 100);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE), 100);
 
         }
     }
-
 
 
     public void changeStarred(View view) {
@@ -180,34 +175,22 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
     public void openCard(View view) {
 
         View animObj = view.findViewById(R.id.animObj);
-        int position = (int) view.getTag();
 
-        if (open) openDetailDialog(animObj, position);
+        if (open) openDetailDialog(animObj);
 
     }
 
-
-    public void openDetailDialog(final View view, final int position) {
+    public void openDetailDialog(final View view) {
 
         if (open) {
 
             if (speaking) speakWords("");
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showAlertDialog(view);
-                }
-            }, 50);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> showAlertDialog(view), 50);
 
             open = false;
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    open = true;
-                }
-            }, 200);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> open = true, 200);
         }
     }
 
@@ -224,19 +207,16 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     private void getVocab() {
-
         topicData = dataManager.getStarredWords(true);
         exerciseData = topicData;
         cardData = topicData;
         setPageTitle(topicData.size());
-
     }
 
     public void setPageTitle(int count) {
         String title = String.format(getString(R.string.starred_title), count);
         setTitle(title);
     }
-
 
     public void checkEx() {
         if (topicData.size() < Constants.LIMIT_STARRED_EX) {
@@ -271,7 +251,8 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
         i.putExtra(Constants.EXTRA_CAT_TAG, Constants.STARRED_CAT_TAG);
 
-        startActivity(i);
+        startActivityForResult(i, RESULT_CODE_FROM_TEST);
+
         openActivity.pageTransition();
     }
 
@@ -282,17 +263,15 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
         super.onActivityResult(requestCode, resultCode, data);
         open = true;
 
-        if (requestCode == 1) {
+        if (requestCode == 1) {  /// back from detail activity
             if (resultCode == UserListActivity.RESULT_OK) {
 
                 UserListTabFragment1 fragment = (UserListTabFragment1) adapter.getFragmentOne();
                 if (fragment != null) {
                     fragment.checkStarred();
-
                 }
             }
         }
-
 
         if (requestCode == MY_DATA_CHECK_CODE) {
 
@@ -304,34 +283,71 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(installTTSIntent);
-
             }
         }
 
-
+        if (requestCode == RESULT_CODE_FROM_TEST) {
+            updateTestsList();
+        }
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                openActivity.pageBackTransition();
-                return true;
-            case R.id.list_layout:
-                changeLayoutStatus();
-                return true;
-            case R.id.starred_del_results:
-                deleteStarredExResults();
-                return true;
-            case R.id.info_item:
-                showInfoDialog();
-                return true;
+
+        if (id == android.R.id.home) {
+            finish();
+            openActivity.pageBackTransition();
+            return true;
+        } else if (id == R.id.list_layout) {
+            changeLayoutStatus();
+            return true;
+        } else if (id == R.id.settings_from_menu) {
+            settingsDialog();
+            return true;
+        } else if (id == R.id.starred_del_results) {
+            deleteStarredExResults();
+            return true;
+        } else if (id == R.id.info_item) {
+            showInfoDialog();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void settingsDialog() {
+
+        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this){
+            @Override
+            public void practiceDialogCloseCallback() {
+
+                new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
+            }
+        };
+
+        categoryParamsDialog.showParams();
+    }
+
+    private void updateCatData() {
+
+        UserListTabFragment1 fragment1 = (UserListTabFragment1) adapter.getFragmentOne();
+
+        if (fragment1 != null) {
+            fragment1.updateList();
+        }
+
+        updateTestsList();
+
+    }
+
+    private void updateTestsList() {
+        UserListTrainingFragment trainingFragment = (UserListTrainingFragment) adapter.getFragmentTwo();
+        if (trainingFragment != null) {
+            trainingFragment.getData();
+        }
+    }
+
 
     private void showInfoDialog() {
         InfoDialog infoDialog = new InfoDialog(this);
@@ -366,12 +382,16 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
-        if (listType.equals(CAT_LIST_VIEW_NORM)) {
-            listType = CAT_LIST_VIEW_COMPACT;
-        } else if (listType.equals(CAT_LIST_VIEW_COMPACT)) {
-            listType = CAT_LIST_VIEW_CARD;
-        } else if (listType.equals(CAT_LIST_VIEW_CARD)) {
-            listType = CAT_LIST_VIEW_NORM;
+        switch (listType) {
+            case CAT_LIST_VIEW_NORM:
+                listType = CAT_LIST_VIEW_COMPACT;
+                break;
+            case CAT_LIST_VIEW_COMPACT:
+                listType = CAT_LIST_VIEW_CARD;
+                break;
+            case CAT_LIST_VIEW_CARD:
+                listType = CAT_LIST_VIEW_NORM;
+                break;
         }
 
         SharedPreferences.Editor editor = appSettings.edit();
@@ -388,41 +408,25 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
         if (position == 1) {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    changeLayoutBtn.setVisible(false);
-                }
-            }, 400);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> changeLayoutBtn.setVisible(false), 400);
 
         } else {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    changeLayoutBtn.setVisible(true);
-                }
-            }, 400);
-
+            new Handler(Looper.getMainLooper()).postDelayed(() -> changeLayoutBtn.setVisible(true), 400);
         }
 
     }
 
-
-
     private  void deleteStarredExResults() {
 
-        String[] topic = new String[2];
+        String[] topic = new String[3];
         topic[0] = Constants.STARRED_CAT_TAG +"_1";
         topic[1] = Constants.STARRED_CAT_TAG +"_2";
-        topic[1] = Constants.STARRED_CAT_TAG +"_3";
+        topic[2] = Constants.STARRED_CAT_TAG +"_3";
 
         dbHelper.deleteExData(topic);
 
-        UserListTabFragment2 fragment = (UserListTabFragment2) adapter.getFragmentTwo();
-        if (fragment != null) {
-            fragment.updateResults();
-        }
+        updateTestsList();
 
     }
 
@@ -474,7 +478,6 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
             //  speakBtn.setVisibility(View.VISIBLE);
         }
         else if (initStatus == TextToSpeech.ERROR) {
-
 
 
         }

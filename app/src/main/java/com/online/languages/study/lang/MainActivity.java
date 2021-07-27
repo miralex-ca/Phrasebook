@@ -49,6 +49,7 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.ContactFragment;
 import com.online.languages.study.lang.fragments.GalleryFragment;
 import com.online.languages.study.lang.fragments.HomeFragment;
+import com.online.languages.study.lang.fragments.HomeFragment2;
 import com.online.languages.study.lang.fragments.HomeTabsFragment;
 import com.online.languages.study.lang.fragments.InfoFragment;
 import com.online.languages.study.lang.fragments.NotesFragment;
@@ -106,6 +107,9 @@ public class MainActivity extends BaseActivity
     GalleryFragment galleryFragment;
     NotesFragment notesFragment;
     TaskFragment taskFragment;
+
+    HomeFragment2 homeFragment2;
+
 
     FragmentTransaction fPages;
     FragmentManager fragmentManager;
@@ -299,6 +303,7 @@ public class MainActivity extends BaseActivity
         galleryFragment = new GalleryFragment();
         notesFragment = new NotesFragment();
         taskFragment = new TaskFragment();
+        homeFragment2 = new HomeFragment2();
 
         if (savedInstanceState != null) {
             menuActiveItem = savedInstanceState.getInt(ACITVE_MENU_ITEM, 0);
@@ -338,6 +343,8 @@ public class MainActivity extends BaseActivity
         homeTabsFragment.setArguments(bundle);
         statsFragment.setArguments(bundle);
         galleryFragment.setArguments(bundle);
+
+        homeFragment2.setArguments(bundle);
 
         fab.setOnClickListener(view -> noteFabClick());
 
@@ -630,7 +637,7 @@ public class MainActivity extends BaseActivity
         } else if (position == 2) {
             fPages.replace(R.id.content_fragment, starredFragment, tag);
         } else if (position == 3) {
-            fPages.replace(R.id.content_fragment, statsFragment, tag);
+            fPages.replace(R.id.content_fragment, homeFragment2, tag);
         } else if (position == 4) {
             fPages.replace(R.id.content_fragment, taskFragment, tag);
         } else if (position == 5) {
@@ -757,9 +764,9 @@ public class MainActivity extends BaseActivity
             return;
         }
 
-        if (position == 0) {
+        if (position == 100) {
 
-            new Handler().postDelayed(() -> panelShadow.animate().alpha(0f).setDuration(200), 150);
+          //  new Handler().postDelayed(() -> panelShadow.animate().alpha(0f).setDuration(200), 150);
 
         } else {
 
@@ -870,7 +877,7 @@ public class MainActivity extends BaseActivity
                 }
             }
 
-            Intent i = new Intent(MainActivity.this, SectionActivity.class); /// TODO check the links
+            Intent i = new Intent(MainActivity.this, SectionReviewActivity.class); /// TODO check the links
             openActivity.openSection(i, navStructure, navSection.id, "root");
         }
 

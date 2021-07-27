@@ -14,7 +14,7 @@
     <string name="nav_home_txt">Главная</string>
     <string name="nav_gallery_txt">Галерея</string>
     <string name="nav_starred_txt">Избранное</string>
-    <string name="nav_stats_txt">Статистика</string>
+    <string name="nav_stats_txt">Мои темы</string>
     <string name="nav_notes_txt">Заметки</string>
     <string name="nav_settings_txt">Настройки</string>
     <string name="nav_info_txt">Справка</string>
@@ -24,7 +24,7 @@
     <string name="title_home_txt">Главная</string>
     <string name="title_gallery_txt">Галерея</string>
     <string name="title_starred_txt">Избранное</string>
-    <string name="title_stats_txt">Статистика</string>
+    <string name="title_stats_txt">Личный словарь</string>
     <string name="title_settings_txt">Настройки</string>
     <string name="title_info_txt">Справка</string>
     <string name="title_contact_txt">Контакты/отзыв</string>
@@ -572,7 +572,7 @@
     <string name="user_topics_count">"Добавлено тем:  "</string>
     <string name="user_items_count">"Добавлено записей:  "</string>
     <string name="ucat_date">Дата:  %s</string>
-    <string name="ucat_items_count">Записей: %s</string>
+    <string name="ucat_items_count">Добавлено записей: %s</string>
     <string name="ucat_familiar_items">"Пройдено: "</string>
     <string name="ucat_mastered_items">"Изучено: "</string>
     <string name="open_more">Открыть больше</string>

@@ -2,11 +2,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <string-array name="test_replace_cats">
-        <item>100500050</item> <!-- fruit -->
+        <item>100400050</item> <!-- fruit -->
     </string-array>
-
 
     <string-array name="menu_titles">
         <item>@string/title_home_txt</item>
@@ -24,25 +22,22 @@
 
     <string-array name="themes">
         <item>@string/set_theme_default_name</item>
-        <item>@string/set_theme_dark_name</item>
+        <!-- item>@string/set_theme_dark_name</item -->
         <item>@string/set_theme_smoky_name</item>
-        <item>@string/set_theme_red_name</item>
+        <!-- item>@string/set_theme_red_name</item -->
         <item>@string/set_theme_white_name</item>
         <item>@string/set_theme_ww_name</item>
     </string-array>
 
 
-
-
     <string-array name="themes_values">
         <item>default</item>
-        <item>dark</item>
+        <!-- item>dark</item -->
         <item>smoky</item>
-        <item>red</item>
+        <!-- item>red</item -->
         <item>white</item>
         <item>westworld</item>
     </string-array>
-
 
 
     <string name="set_theme_default" translatable="false">default</string>

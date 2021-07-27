@@ -19,7 +19,6 @@
     <string name="nav_header_txt">Apprenez l\'anglais!</string>
     <string name="app_info_file">info_fr</string>
 
-
     <string name="voc_ex_link_first_desc">Traduction anglais-français</string>
     <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
 
@@ -44,7 +43,16 @@
     <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
 -->
 
-    <bool name="display_section_practice">true</bool>
+    <bool name="display_section_practice">false</bool>
+
+    <color name="colorPrimary">#FF7158</color>
+    <color name="colorPrimaryDark">#EF6351</color>
+    <color name="colorAccent">#FF9800</color>
+
+    <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
+    <color name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</color>
+
+
 
 
 </resources>

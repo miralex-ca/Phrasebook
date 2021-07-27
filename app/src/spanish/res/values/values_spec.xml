@@ -43,4 +43,36 @@
     <bool name="display_mode">false</bool>
 
 
+    <color name="colorPrimary">#FF7158</color>
+    <color name="colorPrimaryDark">#EF6351</color>
+    <color name="colorAccent">#FF7F5F</color>
+
+    <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
+    <color name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</color>
+
+    <color name="colorCreateFabBtn">#FB7655</color>
+    <color name="colorCreateFabIcon">#FFFFFF</color>
+
+
+    <color name="colorNavBgStart">#D54431</color>
+    <color name="colorNavBgCenter">#E85B49</color>
+    <color name="colorNavBgEnd">#FD7E6D</color>
+
+    <style name="DefaultNightThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_red_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_red_n</item>
+        <item name="colorAccent">@color/colorAccent_red_n</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_red_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_red_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_red_n</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_red_n</item>
+
+    </style>
+
+
 </resources>

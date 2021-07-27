@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.UCatsListActivity;
 import com.online.languages.study.lang.data.DataObject;
@@ -36,16 +39,18 @@ import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
 
 
-public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyViewHolder>    {
+public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyViewHolder> {
 
-    private Context context;
-    private ArrayList<DataObject> dataList;
-    private UCatsListActivity activity;
+    private final Context context;
+    private final ArrayList<DataObject> dataList;
+    private final UCatsListActivity activity;
     private PopupWindow popupwindow_obj;
-    private String layout;
+    private final String layout;
 
     private boolean clickActive;
-    private String folder;
+    private final String folder;
+    private boolean displayStatus;
+
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -87,13 +92,15 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
 
     public UCatsListAdapter(Context context, ArrayList<DataObject> dataList, UCatsListActivity activity) {
-        this.context  = context;
+        this.context = context;
         this.dataList = dataList;
         this.activity = activity;
         clickActive = true;
 
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
         layout = appSettings.getString("set_ucat_list", "normal");
+
+        displayStatus = !appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT).equals("0");
 
         folder = context.getString(R.string.group_pics_folder);
 
@@ -105,7 +112,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         View itemView;
 
-
         if (viewType == 3) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item_more, parent, false);
         } else if (viewType == 2) {
@@ -113,7 +119,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         } else {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.ucat_list_item, parent, false);
         }
-
 
         return new MyViewHolder(itemView);
     }
@@ -139,27 +144,20 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         final DataObject dataObject = dataList.get(position);
 
-        holder.title.setText( dataObject.title);
+        holder.title.setText(dataObject.title);
 
         Locale current = context.getResources().getConfiguration().locale;
 
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG,  current);
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG, current);
 
-        String formattedDate = dateFormat.format( new Date( dataObject.time_created) );
+        String formattedDate = dateFormat.format(new Date(dataObject.time_created));
 
-        holder.desc.setText(String.format(context.getString(R.string.ucat_date), formattedDate));
-
-        holder.itemsCount.setText(String.format(context.getString(R.string.ucat_items_count), String.valueOf(dataObject.count)));
+        holder.desc.setText(String.format(context.getString(R.string.ucat_created_time), formattedDate));
 
 
         if (dataObject.id.equals("last")) {
             manageMoreView(holder.mainWrap, dataObject);
-
         }
-
-
-        holder.familiarCount.setText("" + dataObject.progress_1 );
-        holder.masteredCount.setText("" + dataObject.progress );
 
 
         if (dataObject.info.contains(UCAT_PARAM_BOOKMARK_ON)) {
@@ -184,16 +182,14 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             holder.description.setVisibility(View.VISIBLE);
 
             String desc =
-              context.getResources().getQuantityString(R.plurals.topic_plurals, dataObject.count, dataObject.count);
+                    context.getResources().getQuantityString(R.plurals.topic_plurals, dataObject.count, dataObject.count);
 
             if (dataObject.desc.equals(PARAM_EMPTY)) {
-
                 holder.description.setText(desc);
 
             } else {
                 holder.description.setText(dataObject.desc);
                 holder.desc.setText(desc);
-
             }
 
             if (emptyImage(dataObject.image)) {
@@ -202,71 +198,79 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
                 holder.icon.setVisibility(View.VISIBLE);
 
-                Picasso.with( context )
+                Picasso.with(context)
                         .load(FOLDER_PICS + folder + dataObject.image)
                         .fit()
                         .centerCrop()
-                        .transform(new RoundedCornersTransformation(10,0))
+                        .transform(new RoundedCornersTransformation(10, 0))
                         .into(holder.icon);
+
             }
 
 
         } else {
-            holder.progressWrap.setVisibility(View.VISIBLE);
+
             holder.rightEditWrap.setVisibility(View.VISIBLE);
-            holder.description.setVisibility(View.GONE);
             holder.icon.setVisibility(View.GONE);
 
-           // holder.rightEditWrap.setVisibility(View.VISIBLE);
+            manageCatDescText(holder.itemsCount, holder.desc, dataObject);
         }
 
 
-        holder.wrap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.openMyCat(dataObject);
-            }
+        holder.wrap.setOnClickListener(v -> activity.openMyCat(dataObject));
+
+        holder.edit.setOnClickListener(v -> clickAction(dataObject, ACTION_UPDATE));
+
+        holder.bookmark.setOnClickListener(v ->
+                setBookmark(dataObject, holder.bookmarkOn, holder.bookmarkOff));
+
+
+        final View v = holder.settings;
+
+        v.setOnClickListener(v1 -> {
+            View view = v1.findViewById(R.id.position);
+            popupwindow_obj = popupDisplay(dataObject);
+            popupwindow_obj.showAsDropDown(view, 0, 0);
+            clickActive = true;
         });
-
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickAction(dataObject, ACTION_UPDATE);
-            }
-        });
-
-
-
-        holder.bookmark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setBookmark(dataObject, holder.bookmarkOn, holder.bookmarkOff);
-            }
-        });
-
-
-
-        final  View v = holder.settings;
-
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = v.findViewById(R.id.position);
-                popupwindow_obj = popupDisplay(dataObject);
-                popupwindow_obj.showAsDropDown(view,0, 0);
-                clickActive = true;
-            }
-        });
-
 
 
     }
+
 
     @Override
     public int getItemCount() {
         return dataList.size();
     }
 
+
+    private void manageCatDescText(TextView description, TextView details, DataObject category) {
+
+        String count = String.format(context.getString(R.string.ucat_items_count), category.count + "");
+
+
+        if (displayStatus && category.progress_1 > 0) {
+
+            String progressCount;
+
+            if (category.progress > category.count/5) { /// info about mastered if 20% are mastered
+
+                progressCount = context.getString(R.string.ucat_mastered_items) + category.progress;
+
+            } else {
+                progressCount = context.getString(R.string.ucat_familiar_items) + category.progress_1;
+            }
+
+            count = count + "     " + progressCount;
+        }
+
+        if (category.desc.trim().equals(PARAM_EMPTY)) {
+            description.setText(count);
+        } else {
+            description.setText(category.desc);
+            details.setText(count);
+        }
+    }
 
     private boolean emptyImage(String picName) {
 
@@ -279,17 +283,17 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         return noImage;
     }
 
-    private void setBookmark (DataObject dataObject, View bookmarkOn, View bookmarkOff) {
+    private void setBookmark(DataObject dataObject, View bookmarkOn, View bookmarkOff) {
 
         boolean bookmarked = activity.bookmarkCat(dataObject);
 
-            if (bookmarked) {
-                bookmarkOn.setVisibility(View.VISIBLE);
-                bookmarkOff.setVisibility(View.GONE);
-            } else {
-                bookmarkOn.setVisibility(View.GONE);
-                bookmarkOff.setVisibility(View.VISIBLE);
-            }
+        if (bookmarked) {
+            bookmarkOn.setVisibility(View.VISIBLE);
+            bookmarkOff.setVisibility(View.GONE);
+        } else {
+            bookmarkOn.setVisibility(View.GONE);
+            bookmarkOff.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -299,7 +303,7 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         View view;
 
-        LayoutInflater inflater = (LayoutInflater)   context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         view = inflater.inflate(R.layout.popup_actions_ucat, null);
 
@@ -315,11 +319,9 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         moveToGroup.setOnClickListener(v -> clickActionPopup(dataObject, ACTION_MOVE));
 
 
-
-
         archive.setOnClickListener(v -> clickActionPopup(dataObject, ACTION_ARCHIVE));
 
-        String editAction = dataObject.type.equals("group")?  ACTION_EDIT_GROUP : ACTION_UPDATE;
+        String editAction = dataObject.type.equals("group") ? ACTION_EDIT_GROUP : ACTION_UPDATE;
 
         edit.setOnClickListener(v -> clickActionPopup(dataObject, editAction));
 
@@ -327,11 +329,10 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
             edit.setVisibility(View.VISIBLE);
         }
 
-        if(dataObject.type.equals("group")) {
+        if (dataObject.type.equals("group")) {
             moveToGroup.setVisibility(View.GONE);
             edit.setVisibility(View.VISIBLE);
         }
-
 
         popupWindow.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -344,29 +345,22 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setHeight(view.getMeasuredHeight());
 
-
         popupWindow.setContentView(view);
-
 
         return popupWindow;
     }
-
-
 
 
     private void clickAction(final DataObject dataObject, final String type) {
 
         clickActive = false;
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // String id =  vocab.sectionTags.get(act);
-                activity.performAction(dataObject, type);
-                clickActive = true;
+        new Handler().postDelayed(() -> {
+            // String id =  vocab.sectionTags.get(act);
+            activity.performAction(dataObject, type);
+            clickActive = true;
 
 
-            }
         }, 40);
 
     }
@@ -376,17 +370,14 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
         clickActive = false;
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // String id =  vocab.sectionTags.get(act);
+        new Handler().postDelayed(() -> {
+            // String id =  vocab.sectionTags.get(act);
 
-                activity.performAction(dataObject, type);
+            activity.performAction(dataObject, type);
 
-                popupwindow_obj.dismiss();
-                clickActive = true;
+            popupwindow_obj.dismiss();
+            clickActive = true;
 
-            }
         }, 80);
 
     }
@@ -394,10 +385,10 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
 
     private void manageMoreView(View view, DataObject dataObject) {
 
-       View wrapper = view.findViewById(R.id.openMoreWrap);
-       TextView moreTitle = view.findViewById(R.id.openMoreTxt);
+        View wrapper = view.findViewById(R.id.openMoreWrap);
+        TextView moreTitle = view.findViewById(R.id.openMoreTxt);
 
-       moreTitle.setText(dataObject.title);
+        moreTitle.setText(dataObject.title);
 
         if (dataObject.info.equals("hide")) {
             wrapper.setVisibility(View.GONE);
@@ -407,8 +398,6 @@ public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyVi
         }
 
     }
-
-
 
 
 }

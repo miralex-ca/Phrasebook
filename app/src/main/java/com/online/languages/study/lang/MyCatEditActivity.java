@@ -69,10 +69,13 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     TextView title, content;
 
     private TextView titleCharCounter;
-
     private EditText titleEditText;
 
+    private TextView descCharCounter;
+    private EditText descEditText;
+
     int titleCharMax = 50;
+    int descCharMax = 60;
 
     DataManager dataManager;
     InfoDialog infoDialog;
@@ -150,17 +153,24 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_toolbar);
 
         setTitle("");
 
         titleCharMax = getResources().getInteger(R.integer.ucat_title_limit);
+        descCharMax = getResources().getInteger(R.integer.ucat_desc_limit);
 
         titleCharCounter = findViewById(R.id.titleCharCounter);
         titleCharCounter.setText("0/"+titleCharMax);
         titleEditText = findViewById(R.id.editTitle);
+
+        descCharCounter = findViewById(R.id.descCharCounter);
+        descCharCounter.setText("0/" + descCharMax);
+        descEditText = findViewById(R.id.editDesc);
+
 
         createBtn = findViewById(R.id.createBtn);
         updateCatBtn = findViewById(R.id.updateCatBtn);
@@ -178,6 +188,8 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         });
 
         titleEditText.addTextChangedListener(titleEditorWatcher);
+        descEditText.addTextChangedListener(descEditorWatcher);
+
 
         prepareCat();
 
@@ -203,14 +215,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         } else {
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-                }
-            }, 100);
+            new Handler().postDelayed(() -> startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE), 100);
 
         }
     }
@@ -218,16 +223,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
     public void editClick(final DataItem dataItem, String type) {
 
         if (type.equals(ACTION_UPDATE)) {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    openDataItem(dataItem.id);
-
-                }
-            }, 50);
-
+            new Handler().postDelayed(() -> openDataItem(dataItem.id), 50);
         }
 
         if (type.equals(ACTION_DELETE)) confirmDeletion(dataItem.id);
@@ -272,18 +268,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         builder.setCancelable(false);
 
-        builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                deleteItem(id);
-            }
-        });
+        builder.setPositiveButton(R.string.continue_txt, (dialog, which) -> deleteItem(id));
 
-        builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.cancel_txt, (dialog, which) -> {
 
-            }
         });
 
         builder.show();
@@ -312,9 +300,9 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             categoryObject  = dataManager.dbHelper.getUCat(categoryObject.id);
 
             titleEditText.setText(categoryObject.title);
+            descEditText.setText(categoryObject.desc);
 
             TextView txt = findViewById(R.id.createdDate);
-
 
             txt.setText(String.format(getString(R.string.ucat_created_time), dataManager.formatTime(categoryObject.time_created)));
             newDataItemAction = true;
@@ -331,8 +319,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         categoryObject.id = catData[0];
         String time = catData[1];
-
-
 
         createBtn.animate()
                 .alpha(0f)
@@ -356,6 +342,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         listParams.animate().alpha(1.0f).start();
 
         titleEditText.clearFocus();
+        descEditText.clearFocus();
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(titleEditText.getWindowToken(), 0);
@@ -379,6 +366,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         if (catBtnAction) {
 
             String title = textSanitizer(titleEditText.getText().toString());
+            String desc = textSanitizer(descEditText.getText().toString());
 
             if (title.trim().equals("")) {
 
@@ -387,11 +375,13 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             } else {
                 catBtnAction = false;
 
-                String[] catData = dataManager.dbHelper.createUCat(textSanitizer(title));
+                String[] catData = dataManager.dbHelper.createUCat(textSanitizer(title), textSanitizer(desc));
 
                 categoryObject.title = textSanitizer(title);
-
                 titleEditText.setText(categoryObject.title);
+
+                categoryObject.desc = textSanitizer(desc);
+                descEditText.setText(categoryObject.desc);
 
                 showCreated(catData);
 
@@ -402,19 +392,23 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     public void updateUCat(View view) {
 
-
             String title = titleEditText.getText().toString();
+            String desc = descEditText.getText().toString();
 
             if (title.trim().equals("")) {
                 infoDialog.simpleDialog(getString(R.string.ucat_saving_alert), getString(R.string.ucat_enter_title_alert));
             } else {
 
                 categoryObject.title = textSanitizer(title);
+                categoryObject.desc = textSanitizer(desc);
+
                 categoryObject = dataManager.dbHelper.updateUCatTitle(categoryObject);
 
                 titleEditText.setText(categoryObject.title);
-
                 titleEditText.clearFocus();
+
+                descEditText.setText(categoryObject.desc);
+                descEditText.clearFocus();
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(titleEditText.getWindowToken(), 0);
@@ -430,14 +424,15 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         if (!categoryObject.id.contains(UC_PREFIX)) return;
 
-        if (str.trim().equals(categoryObject.title)) {
+        if (str.trim().equals(categoryObject.title) || str.trim().equals(categoryObject.desc)) {
 
             updateCatBtn.setVisibility(View.INVISIBLE);
 
         } else {
             updateCatBtn.setVisibility(View.VISIBLE);
         }
-    };
+    }
+
 
 
     private void editItem() {
@@ -450,6 +445,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
             } else {
                 newItemDialog.showCustomDialog(getString(R.string.ucat_new_item_dialog));
                 titleEditText.clearFocus();
+                descEditText.clearFocus();
             }
 
         }
@@ -546,11 +542,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
        if (viewMenuItem != null && showViewFromMenu) {
 
-           if (dataListSize > 0) {
-               viewMenuItem.setVisible(true);
-           } else {
-               viewMenuItem.setVisible(false);
-           }
+           viewMenuItem.setVisible(dataListSize > 0);
        }
     }
 
@@ -580,19 +572,10 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
         builder.setCancelable(false);
 
-        builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton(R.string.continue_txt, (dialog, which) -> deleteUCat(categoryObject.id));
 
-                deleteUCat(categoryObject.id);
-            }
-        });
+        builder.setNegativeButton(R.string.cancel_txt, (dialog, which) -> {
 
-        builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
         });
 
         builder.show();
@@ -601,7 +584,7 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
 
     private void deleteUCat(String id) {
 
-        int num =  dataManager.dbHelper.deleteUCat(id);
+         dataManager.dbHelper.deleteUCat(id);
 
         infoDialog.toast(getString(R.string.ucat_deleted_items));
 
@@ -770,6 +753,23 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         }
     };
 
+    private final TextWatcher descEditorWatcher = new TextWatcher() {
+
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            String str = s.length() + "/" + descCharMax;
+            descCharCounter.setText(str);
+
+            checkCatTitleChanges(s.toString());
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+    };
+
 
     //// TTS integration
 
@@ -871,7 +871,6 @@ public class MyCatEditActivity extends BaseActivity implements TextToSpeech.OnIn
         super.onSaveInstanceState(outState);
 
     }
-
 
 
     public void sortDialog(View view) {

@@ -112,6 +112,11 @@
             android:theme="@style/AppTheme" />
 
         <activity
+            android:name="com.online.languages.study.lang.SectionReviewActivity"
+            android:screenOrientation="behind"
+            android:theme="@style/AppTheme" />
+
+        <activity
             android:name="com.online.languages.study.lang.SectionActivitySimple"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />

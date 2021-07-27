@@ -884,41 +884,34 @@ public class UCatsListActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                openActivity.pageBackTransition();
-                return true;
-
-            case R.id.archive_item:
-                openArchive();
-                return true;
-
-            case R.id.archive_icon:
-                openArchive();
-                return true;
-            case R.id.menu_ucat_layout:
-                listLayoutDialog();
-                return true;
-
-            case R.id.info_item:
-                showInfoDialog();
-                return true;
-
-            case R.id.new_group:
-                newGroup();
-                return true;
-            case R.id.new_group_tool:
-                newGroup();
-                return true;
-            case R.id.edit_group:
-                editGroup();
-                return true;
-
-            case R.id.delete_group:
-                deleteGroup();
-                return true;
-
+        if (id == android.R.id.home) {
+            finish();
+            openActivity.pageBackTransition();
+            return true;
+        } else if (id == R.id.archive_item) {
+            openArchive();
+            return true;
+        } else if (id == R.id.archive_icon) {
+            openArchive();
+            return true;
+        } else if (id == R.id.menu_ucat_layout) {
+            listLayoutDialog();
+            return true;
+        } else if (id == R.id.info_item) {
+            showInfoDialog();
+            return true;
+        } else if (id == R.id.new_group) {
+            newGroup();
+            return true;
+        } else if (id == R.id.new_group_tool) {
+            newGroup();
+            return true;
+        } else if (id == R.id.edit_group) {
+            editGroup();
+            return true;
+        } else if (id == R.id.delete_group) {
+            deleteGroup();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

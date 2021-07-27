@@ -60,6 +60,7 @@ import static com.online.languages.study.lang.Constants.PARAM_LIMIT_REACHED;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ARCHIVE;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
+import static com.online.languages.study.lang.Constants.SECTION_REVIEW_MAX_MODE;
 import static com.online.languages.study.lang.Constants.SET_DATA_MODE;
 import static com.online.languages.study.lang.Constants.STARRED_TAB_ACTIVE;
 import static com.online.languages.study.lang.Constants.TAB_GALLERY;
@@ -892,7 +893,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
 
-    public String[] createUCat(String catTitle) {
+    public String[] createUCat(String catTitle, String desc) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -901,7 +902,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_UCAT_TITLE, catTitle);
-        values.put(KEY_UCAT_DESC, "");
+        values.put(KEY_UCAT_DESC, desc);
         values.put(KEY_UCAT_PARAMS, "");
         values.put(KEY_UCAT_PARENT, "");
         values.put(KEY_UCAT_CREATED, time );
@@ -1143,6 +1144,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(KEY_UCAT_TITLE, dataObject.title);
+        values.put(KEY_UCAT_DESC, dataObject.desc);
         values.put(KEY_UCAT_UPDATED, dataObject.time_updated );
 
         Cursor cursor = db.query(TABLE_USER_DATA_CATS,  null,
@@ -3467,6 +3469,48 @@ public class DBHelper extends SQLiteOpenHelper {
         return items;
     }
 
+    public ArrayList<ArrayList<DataItem>> getSectionGroupsDataItems(ArrayList<NavCategory> navCategories) {
+
+        ArrayList<ArrayList<DataItem>> groups = new ArrayList<>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query =  "SELECT * FROM "
+                +TABLE_ITEMS_DATA +" a LEFT JOIN "+TABLE_USER_DATA
+                +" b ON a.item_id=b.user_item_id"
+                +" WHERE (a."+KEY_ITEM_ID + " LIKE ?) AND (a."+KEY_ITEM_MODE+" <= "+SECTION_REVIEW_MAX_MODE+") ORDER BY a.id";
+
+        for (int i = 0; i < navCategories.size(); i++) {
+
+            NavCategory navCategory = navCategories.get(i);
+            ArrayList<DataItem> items = new ArrayList<>();
+
+            if (navCategory.review) {
+
+                Cursor cursor = db.rawQuery(query, new String[]{navCategory.id + "%"});
+
+                try {
+                    while (cursor.moveToNext()) {
+
+                        DataItem item = getItemFromCursor(cursor);
+                        item.cat = navCategory.id;
+                        items.add(item);
+
+
+                    }
+                } finally {
+                    cursor.close();
+                }
+            }
+
+            groups.add(items);
+        }
+
+        db.close();
+
+        return groups;
+    }
+
 
 
     public UserStats getAllDataItemsStats(UserStats stats) {  /// TODO fix it
@@ -3861,14 +3905,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public String[] getTestByTestId(SQLiteDatabase db, String testId) {
 
-
             String[] testData = new String[] {testId, "0", "0"};
-
 
             Cursor cursor = db.query(TABLE_TESTS_DATA,  null,
                      KEY_TEST_TAG +" = ?", new String[] { testId },
                      null, null, null);
-
 
             try {
                 while (cursor.moveToNext()) {
@@ -4682,7 +4723,6 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
     }
-
 
 
     public int deleteExData(String[] cat_tag) {

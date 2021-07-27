@@ -45,7 +45,6 @@ public class HomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +69,9 @@ public class HomeFragment extends Fragment {
         DataManager dataManager = new DataManager(getActivity(), true);
 
         int recycleType = 1;
+
+        int spanCount = 1;
+
         if (dataManager.homecards) {
             recyclerView.setVisibility(View.GONE);
             recyclerViewCards.setVisibility(View.VISIBLE);
@@ -77,10 +79,13 @@ public class HomeFragment extends Fragment {
         } else {
             recyclerView.setVisibility(View.VISIBLE);
             recyclerViewCards.setVisibility(View.GONE);
+
+            recycleType = 3;
+            spanCount = 2;
+
         }
 
 
-        int spanCount = 1;
         if (tablet) {
             spanCount = 3;
             recycleType = 3;
@@ -97,6 +102,7 @@ public class HomeFragment extends Fragment {
 
 
         recyclerView.setLayoutManager(mLayoutManager);
+
         recyclerView.setAdapter(mAdapter);
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);

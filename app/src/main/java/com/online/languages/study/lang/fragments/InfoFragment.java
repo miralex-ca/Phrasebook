@@ -108,6 +108,7 @@ public class InfoFragment extends Fragment {
         } catch (IOException e) {
             return null;
         }
+
         return builder.toString();
     }
 

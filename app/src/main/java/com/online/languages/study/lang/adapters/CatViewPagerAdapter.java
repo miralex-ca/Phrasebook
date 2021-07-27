@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.CatTabFragment2;
+import com.online.languages.study.lang.fragments.TrainingFragment;
 
 
 public class CatViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -26,7 +27,7 @@ public class CatViewPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new CatTabFragment1();
             case 1:
-                return new CatTabFragment2();
+                return new TrainingFragment();
             default:
                 return null;
         }

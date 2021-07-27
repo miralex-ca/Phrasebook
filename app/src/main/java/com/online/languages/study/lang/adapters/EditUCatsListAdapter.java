@@ -3,12 +3,16 @@ package com.online.languages.study.lang.adapters;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
 import com.squareup.picasso.Picasso;
@@ -28,6 +32,7 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
     private Context context;
     private ArrayList<DataObject> dataList;
     private String folder;
+    private boolean displayStatus;
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -54,6 +59,9 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
         this.context  = context;
         this.dataList = dataList;
         folder = context.getString(R.string.group_pics_folder);
+
+        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
+        displayStatus = !appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT).equals("0");
     }
 
 
@@ -76,20 +84,22 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
         holder.title.setText( dataObject.title);
 
         Locale current = context.getResources().getConfiguration().locale;
-
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT,  current);
 
-        String formattedDate = dateFormat.format(  new Date( dataObject.time_created) );
+        //String formattedDate = dateFormat.format(  new Date( dataObject.time_created) );
+        //holder.desc.setText(context.getString(R.string.home_ucat_date) + formattedDate );
 
-        holder.desc.setText(context.getString(R.string.home_ucat_date) + formattedDate );
+        //holder.itemsCount.setText(String.format(context.getString(R.string.home_ucat_list_progress), String.valueOf(dataObject.progress), String.valueOf(dataObject.count)));
 
-        holder.itemsCount.setText(String.format(context.getString(R.string.home_ucat_list_progress), String.valueOf(dataObject.progress), String.valueOf(dataObject.count)));
+
+        manageCatDescText(holder.desc, holder.itemsCount, dataObject);
+
 
         if (dataObject.type.equals(PARAM_GROUP)) {
 
             holder.itemsCount.setVisibility(View.GONE);
 
-            if (dataObject.desc.equals(PARAM_EMPTY)) {
+            if (dataObject.desc.trim().equals(PARAM_EMPTY)) {
 
                 String desc =
                         context.getResources().getQuantityString(R.plurals.topic_plurals, dataObject.count, dataObject.count);
@@ -120,6 +130,52 @@ public class EditUCatsListAdapter extends RecyclerView.Adapter<EditUCatsListAdap
         }
 
     }
+
+
+
+    private void manageCatDescText(TextView countDesc, TextView timeInfo, DataObject category) {
+
+
+
+        String count = context.getString(R.string.cat_stats_total_items) + category.count;
+
+        //    count = String.format(context.getString(R.string.ucat_items_count), category.count + "");
+
+        countDesc.setText(count);
+
+        if (displayStatus && category.progress_1 > 0) {
+
+            String progressCount;
+
+            if (category.progress > category.count/5) { /// info about mastered if 20% are mastered
+
+                progressCount = context.getString(R.string.ucat_mastered_items) + category.progress;
+
+            } else {
+                progressCount = context.getString(R.string.ucat_familiar_items) + category.progress_1;
+            }
+
+            timeInfo.setText(progressCount);
+
+        } else {
+
+
+            Locale current = context.getResources().getConfiguration().locale;
+            DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT,  current);
+            String formattedDate = dateFormat.format(  new Date( category.time_created) );
+
+            timeInfo.setText(String.format(context.getString(R.string.ucat_date), formattedDate));
+
+        }
+
+
+        if (!category.desc.trim().equals(PARAM_EMPTY)) {
+            timeInfo.setVisibility(View.GONE);
+            countDesc.setText(category.desc);
+        }
+
+    }
+
 
     private void removeMargins (View v) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {

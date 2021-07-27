@@ -165,6 +165,7 @@ public class GalleryFragment extends Fragment {
         recyclerView.setSelected(true);
         recyclerView.setAdapter(mAdapter);
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
+
         itemsList.addView(item);
 
     }

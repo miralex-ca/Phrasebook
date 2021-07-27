@@ -230,6 +230,8 @@ public class DataFromJson {
 
                     cat.unlocked = section.unlocked;
 
+                    if (category.has("unlocked")) cat.unlocked = !category.getString("unlocked").equals("false");
+
                     if (category.has("desc")) cat.desc = category.getString("desc");
                     else cat.desc = "";
 

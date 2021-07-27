@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cat_item_wrap"
+
+    android:focusable="true"
+    android:clickable="true"
+    android:background="?android:attr/selectableItemBackground">
+
+    <View
+        android:visibility="invisible"
+        android:id="@+id/catItemDivider"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#2C8D8D8D"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/animObj"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="22dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="10dp"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:gravity="top|left"
+                android:id="@+id/itemText"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="sans-serif-light"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:gravity="top|left"
+                android:id="@+id/itemInfo"
+                android:layout_width="match_parent"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorCatSecondaryText"
+                />
+
+        </LinearLayout>
+
+
+        <ImageView
+            tools:visibility="visible"
+
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            app:srcCompat="@drawable/ic_star_borded"
+            android:id="@+id/voclistStar"
+            android:visibility="gone"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

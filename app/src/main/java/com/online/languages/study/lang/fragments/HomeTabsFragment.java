@@ -46,18 +46,13 @@ public class HomeTabsFragment extends Fragment {
 
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
         tabLayout.addTab(tabLayout.newTab().setText(R.string.home_tab_1));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.home_tab_2));
+        //tabLayout.addTab(tabLayout.newTab().setText(R.string.home_tab_2));
 
+        int tabs = 1;
 
-        int tabs = 2;
-
-        String tasksNavSetting = appSettings.getString("set_tasks_nav", getString(R.string.set_tasks_nav_default));
-
-        if (tasksNavSetting.equals("home")) {
-            tabs = 3;
-            tabLayout.addTab(tabLayout.newTab().setText(R.string.nav_tasks_txt));
-        }
+       // String tasksNavSetting = appSettings.getString("set_tasks_nav", getString(R.string.set_tasks_nav_default));
 
         viewPager = view.findViewById(R.id.container);
 
@@ -73,7 +68,6 @@ public class HomeTabsFragment extends Fragment {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 setTab( tab.getPosition());
             }
 
@@ -94,8 +88,6 @@ public class HomeTabsFragment extends Fragment {
         viewPager.setCurrentItem(activeTab, false);
 
     }
-
-
 
     public void setTab(int num) {
         viewPager.setCurrentItem(num);

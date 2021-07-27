@@ -38,7 +38,6 @@ public class CatTabFragment2 extends Fragment {
     ArrayList<String> exLinkDesc;
     int[] exResults = {0,0,0,0};
 
-
     String catSpec;
 
     TextView catTotalCount, catKnownCount, catStudiedCount, catProgress;
@@ -94,7 +93,6 @@ public class CatTabFragment2 extends Fragment {
         View divide = rootView.findViewById(R.id.carDivider);
 
 
-
         if (!dataManager.simplified) minCardHeight.setMinimumHeight(0);
 
         if (dataManager.simplified) {
@@ -131,7 +129,6 @@ public class CatTabFragment2 extends Fragment {
 
     public void  fillData() {
 
-
         dataManager.dbHelper.checkMode();
 
         exResults = new int[]{0, 0, 0, 0};
@@ -149,7 +146,6 @@ public class CatTabFragment2 extends Fragment {
         if (catResults != null && results.size()>0) results = catResults.get(catId);
 
 
-        assert results != null;
         exResults[1] = Integer.parseInt(results.get(0));
         exResults[2] = Integer.parseInt(results.get(1));
         exResults[3] = Integer.parseInt(results.get(2));
@@ -178,11 +174,7 @@ public class CatTabFragment2 extends Fragment {
 
         setStats(results);
 
-
     }
-
-
-
 
 
     public void setStats(ArrayList<String> results) {

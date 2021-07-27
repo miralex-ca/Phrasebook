@@ -50,7 +50,6 @@ public class SectionListActivity extends BaseActivity {
     OpenActivity openActivity;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -67,8 +66,6 @@ public class SectionListActivity extends BaseActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_section_list);
-
-
 
         dataModeDialog = new DataModeDialog(this);
 

@@ -76,9 +76,9 @@ public class SectionListAdapter extends RecyclerView.Adapter<SectionListAdapter.
 
         holder.txt.setText( dataItem.item);
         holder.translate.setText( dataItem.info);
+
         holder.helperView.setTag(R.id.item_id, dataItem.id);
         holder.helperView.setTag(R.id.item_type, dataItem.type);
-
 
         if (dataItem.starred == 1) {
             holder.starIcon.setVisibility(View.VISIBLE);
