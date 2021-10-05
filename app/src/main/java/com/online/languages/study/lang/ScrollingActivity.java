@@ -31,6 +31,7 @@ import java.util.Locale;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
+import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnInitListener {
@@ -58,6 +59,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     boolean speaking;
     MenuItem starMenuItem;
     DataManager dataManager;
+    boolean displayGrammar;
 
 
     @Override
@@ -78,6 +80,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         starrable = getIntent().getBooleanExtra("starrable", false);
 
         sourceType = getIntent().getIntExtra("source", 0); // 0 - list, 1 - search
+        displayGrammar = getResources().getBoolean(R.bool.display_grammar);
 
 
         Drawable background = getWindow().getDecorView().getBackground();  background.setAlpha(0);
@@ -207,6 +210,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
         grammar.setTextSize(getGrammarTxtSize(gr.length(), transcript.length()));
         grammar.setText(gr);
 
+        if (!displayGrammar )  grammar.setVisibility(View.GONE);
 
         TextView addInfo = findViewById(R.id.add_info);
 

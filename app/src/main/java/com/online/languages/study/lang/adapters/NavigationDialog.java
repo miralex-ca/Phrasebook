@@ -2,19 +2,14 @@ package com.online.languages.study.lang.adapters;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 
 import androidx.appcompat.app.AlertDialog;
 
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.R;
@@ -58,9 +53,6 @@ public class NavigationDialog {
 
     private void createDialog(String title, String text) {
 
-        SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(context);
-        String tasksNavSetting = appSettings.getString("set_tasks_nav", context.getString(R.string.set_tasks_nav_default));
-
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.CustomDialog);
 
@@ -68,22 +60,21 @@ public class NavigationDialog {
 
         View content = inflater.inflate(R.layout.nav_dialog, null);
 
-        View navItemTasks = content.findViewById(R.id.navItemTasks);
+        View navItemAdditions = content.findViewById(R.id.nav_dialog_additions);
         View navItem1 = content.findViewById(R.id.navItem1);
         View navItem2 = content.findViewById(R.id.navItem2);
         View navItem3 = content.findViewById(R.id.navItem3);
         View navItem4 = content.findViewById(R.id.navItem4);
 
-        if (!tasksNavSetting.equals("menu")) {
 
-            navItemTasks.setVisibility(View.GONE);
-            View divider = content.findViewById(R.id.task_devider);
+        if (!context.getResources().getBoolean(R.bool.display_additions)) {
+            navItemAdditions.setVisibility(View.GONE);
+            View divider = content.findViewById(R.id.additions_divider);
             divider.setVisibility(View.GONE);
-
         }
 
 
-        navItemTasks.setOnClickListener(v -> dismissDialog(4));
+        navItemAdditions.setOnClickListener(v -> dismissDialog(4));
 
         navItem1.setOnClickListener(v -> dismissDialog(5));
 

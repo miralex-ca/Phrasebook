@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_info_file" translatable="false">info_fr</string>
+    <string name="app_structure_file" translatable="false">italian/navstructure_fr.json</string>
+    <string name="app_data_file" translatable="false">italian/data_fr.json</string>
+
+</resources>

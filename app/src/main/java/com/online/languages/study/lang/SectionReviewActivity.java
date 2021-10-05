@@ -3,8 +3,10 @@ package com.online.languages.study.lang;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.GestureDetector;
@@ -42,6 +44,7 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.GalleryFragment;
+import com.online.languages.study.lang.tools.CheckPlusVersion;
 import com.online.languages.study.lang.tools.TopicIcons;
 
 import java.util.ArrayList;
@@ -77,6 +80,11 @@ public class SectionReviewActivity extends ThemedActivity {
     private MenuItem changeLayoutBtn;
     String sectionListLayout = CAT_LIST_VIEW_COMPACT;
 
+    private static final int DIALOG_OPEN = 1;
+    private static final int DIALOG_CLOSED = 0;
+    private int dialogStatus = DIALOG_CLOSED;
+    CheckPlusVersion checkPlusVersion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -90,7 +98,7 @@ public class SectionReviewActivity extends ThemedActivity {
 
         dataModeDialog = new DataModeDialog(this);
 
-        fullVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
+        //fullVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
 
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
@@ -106,14 +114,12 @@ public class SectionReviewActivity extends ThemedActivity {
 
         setTitle(navSection.title);
 
-        int showStatus = Integer.valueOf(appSettings.getString("show_status", Constants.STATUS_SHOW_DEFAULT));
-
-        itemsList = findViewById(R.id.items_list);
-
         catSetsList = new ArrayList<>();
         groupsList = new ArrayList<>();
 
+        checkPlusVersion = new CheckPlusVersion(this, appSettings);
         dataManager = new DataManager(this);
+        itemsList = findViewById(R.id.items_list);
 
         getGroupsData();
 
@@ -144,9 +150,12 @@ public class SectionReviewActivity extends ThemedActivity {
             catSet.category = category;
             catSet.dataItemsList = items;
 
-            catSetsList.add(catSet);
 
-            addList(catSet);
+                catSetsList.add(catSet);
+                addList(catSet);
+
+
+
         }
 
     }
@@ -160,12 +169,9 @@ public class SectionReviewActivity extends ThemedActivity {
         TextView title = item.findViewById(R.id.section_list_title);
         title.setText(group.category.title);
 
-
         View header = item.findViewById(R.id.section_list_header);
 
-       boolean fullVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
-
-        if (!fullVersion && !group.category.unlocked) {
+        if (checkPlusVersion.isNotPlusVersion() && !group.category.unlocked) {
 
             ImageView img = item.findViewById(R.id.section_list_img);
 
@@ -174,7 +180,21 @@ public class SectionReviewActivity extends ThemedActivity {
             header.setOnClickListener(v -> openPremiumDialog());
 
         } else {
-            header.setOnClickListener(v -> openCategory(group.category));
+
+            if (group.category.spec.equals("example")) {
+
+                ImageView img = item.findViewById(R.id.section_list_img);
+                img.setVisibility(View.GONE);
+                header.setBackground(null);
+                title.setTypeface(null, Typeface.NORMAL);
+
+            } else {
+                header.setOnClickListener(v -> openCategory(group.category));
+
+            }
+
+
+
         }
 
 
@@ -259,32 +279,20 @@ public class SectionReviewActivity extends ThemedActivity {
 
         // checkStarred(position);
 
-        assert v != null;
         v.vibrate(vibLen);
     }
 
 
     private void openView(final View view) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                view.setVisibility(View.VISIBLE);
-            }
-        }, 80);
+        new Handler(Looper.getMainLooper()).postDelayed(() ->
+                view.setVisibility(View.VISIBLE), 80);
     }
 
-
-    private void onItemClick(final View view, final int position) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // showAlertDialog(view, position);
-            }
-        }, 50);
-    }
 
 
     public void showAlertDialog(DataItem dataItem) {
+
+        if (dialogStatus == DIALOG_OPEN) return;
 
         Intent intent = new Intent(this, ScrollingActivity.class);
 
@@ -298,6 +306,11 @@ public class SectionReviewActivity extends ThemedActivity {
         startActivityForResult(intent, 1);
 
         overridePendingTransition(R.anim.slide_in_down, 0);
+
+        dialogStatus = DIALOG_OPEN;
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> dialogStatus = DIALOG_CLOSED, 200);
+
     }
 
 
@@ -305,6 +318,7 @@ public class SectionReviewActivity extends ThemedActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
+        dialogStatus = DIALOG_CLOSED;
 
         if (requestCode == 1) {
 
@@ -326,7 +340,6 @@ public class SectionReviewActivity extends ThemedActivity {
 
                 checkStarred(cat);
             }
-
         }
     }
 
@@ -339,7 +352,6 @@ public class SectionReviewActivity extends ThemedActivity {
 
         int position = -1;
 
-
         for (int i = 0; i < catSetsList.size(); i++) {
 
             CatSet cat = catSetsList.get(i);
@@ -347,36 +359,12 @@ public class SectionReviewActivity extends ThemedActivity {
             if (cat.category.id.equals(cat_id)) {
                 position = i;
             }
-
         }
 
         catSetsList.get(position).dataItemsList = groupsList.get(position);
 
         if (position > -1) setListAdapter(catSetsList.get(position), list);
 
-        // RecyclerView.LayoutManager manager = list.getLayoutManager();
-        // if (manager != null) updateStarInList(manager, 0, false);
-
-    }
-
-
-    private void updateStarInList(RecyclerView.LayoutManager manager, int position, boolean display) {
-        View p = manager.findViewByPosition(position);
-        updateStarIcon(p, display);
-    }
-
-
-    private void updateStarIcon(View parent, boolean display) {
-        if (parent != null) {
-            View star = parent.findViewById(R.id.voclistStar);
-            if (display) {
-                star.setAlpha(0f);
-                star.setVisibility(View.VISIBLE);
-                star.animate().alpha(1f).setDuration(150);
-            } else {
-                star.animate().alpha(0f).setDuration(150);
-            }
-        }
     }
 
 
@@ -452,7 +440,7 @@ public class SectionReviewActivity extends ThemedActivity {
 
 
     private void infoMessage() {
-        dataModeDialog.createDialog(getString(R.string.info_txt), getString(R.string.info_star_txt));
+        dataModeDialog.createDialog(getString(R.string.info_txt), getString(R.string.info_star_review_txt));
     }
 
 

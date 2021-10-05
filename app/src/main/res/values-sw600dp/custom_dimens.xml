@@ -177,5 +177,9 @@
     <dimen name="task_margin_left">20dp</dimen>
     <dimen name="task_margin_right">20dp</dimen>
 
+    <dimen name="home_card_top">@dimen/home_card_top_s600</dimen>
+    <dimen name="home_card_texts_min_height">@dimen/home_card_texts_min_height_s600</dimen>
+    <dimen name="home_card_icon_size">90dp</dimen>
+
 
 </resources>

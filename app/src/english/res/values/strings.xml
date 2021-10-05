@@ -1,0 +1,967 @@
+<resources>
+
+    <string name="app_name_basic">Guide de conversation</string>
+    <string name="nav_header_txt_basic">Guide de conversation</string>
+
+    <string name="spanish_phrasebook_app_title">Guide de conversation espagnol</string>
+    <string name="german_phrasebook_app_title">Guide de conversation allemand</string>
+    <string name="italian_phrasebook_app_title">Guide de conversation italien</string>
+    <string name="french_phrasebook_app_title">Guide de conversation français</string>
+    <string name="english_phrasebook_app_title">Guide de conversation anglais</string>
+
+
+    <string name="action_settings">Settings</string>
+
+    <string name="contact_error">Signaler une erreur</string>
+    <string name="contact_feedback">Envoyer un email</string>
+    <string name="contact_pro">Version PLUS</string>
+    <string name="contact_rate">Évaluer l’application</string>
+    <string name="contact_website">Visiter le site web</string>
+
+
+    <string name="nav_gallery_txt">Galerie</string>
+    <string name="nav_starred_txt">Favoris</string>
+    <string name="nav_stats_txt">Mes thèmes</string>
+    <string name="nav_settings_txt">Paramètres</string>
+    <string name="nav_info_txt">Information</string>
+    <string name="nav_contact_txt">Contacts/commentaires</string>
+
+
+    <string name="title_gallery_txt">Galerie</string>
+    <string name="title_starred_txt">Favoris</string>
+    <string name="title_stats_txt">Vocabulaire personnel</string>
+    <string name="title_settings_txt">Paramètres</string>
+    <string name="title_info_txt">Information</string>
+    <string name="title_contact_txt">Contacts/commentaires</string>
+
+
+    <string name="title_test_txt">Test</string>
+    <string name="title_card_txt">Cartes</string>
+
+    <string name="title_starred_activity">Favoris</string>
+    <string name="title_errors_txt">Erreurs</string>
+    <string name="title_custom_txt">Liste</string>
+
+
+    <string name="voc_ex_link_card_title">Cartes</string>
+    <string name="voc_ex_link_first_title">Test 1</string>
+    <string name="voc_ex_link_second_title">Test 2</string>
+
+    <string name="starred_ex_link_title">Test avec les favoris</string>
+
+    <string name="voc_ex_link_first_desc">Choisir la tradiction</string>
+    <string name="voc_ex_link_second_desc">Choisir la tradiction</string>
+
+    <string name="section_ex_link_title_1">Test général 1</string>
+    <string name="section_ex_link_title_2">Test général 2</string>
+    <string name="section_ex_link_title_3">Test général 3</string>
+
+
+
+    <string name="voc_ex_link_third_title">Test 3</string>
+    <string name="voc_ex_link_card_desc">Examen des entrées une par une</string>
+
+
+    <string name="voc_ex_link_third_desc">Choisir la tradiction pour l’audio</string>
+
+
+
+    <!-- flashcard -->
+    <string name="f_menu_show_translate">Afficher la réponse</string>
+    <string name="f_menu_shuffle">Mélanger les cartes</string>
+    <string name="f_menu_reflect">Inverser</string>
+    <string name="f_menu_restart">Relancer</string>
+    <string name="f_activity_title">Cartes</string>
+    <string name="f_counter_txt">%1$d / %2$d</string>
+    <string name="f_show_translate_txt">AFFICHER LA RÉPONSE</string>
+    <string name="f_back_btn_txt">Précédent</string>
+    <string name="f_next_btn_txt">Suivant</string>
+
+    <string name="ex_menu_buttons">Boutons</string>
+
+    <string name="set_ex_buttons">Afficher les boutons</string>
+    <!-- helper -->
+    <string name="ex_text_foo">Texte</string>
+    <string name="image_desc">Image</string>
+
+
+    <!-- exercise -->
+
+    <string name="ex_menu_restart">Relancer</string>
+    <string name="ex_counter_txt">%1$d / %2$d</string>
+    <string name="ex_option_foo">Option</string>
+    <string name="ex_txt_title">Exercice</string>
+    <string name="ex_txt_correct">CORRECT</string>
+    <string name="ex_txt_incorrect">INCORRECT</string>
+    <string name="ex_check_btn_txt">Valider</string>
+    <string name="ex_show_result_btn_txt">Afficher le résultat</string>
+    <string name="ex_restart_btn_txt">Relancer</string>
+    <string name="ex_next_btn_txt">Suivant</string>
+
+    <string name="ex_result_txt_excellent">EXCELLENT!</string>
+    <string name="ex_result_txt_verygood">TRÈS BIEN!</string>
+    <string name="ex_result_txt_good">BIEN!</string>
+    <string name="ex_result_txt_verybad">TRÈS MAL!</string>
+    <string name="ex_result_txt_bad">PAS BIEN</string>
+
+    <string name="ex_result_txt">Réponses correctes: %1$d from %2$d \n Résultat:\u00A0\u00A0\u00A0 %3$d%%</string>
+
+
+
+    <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
+
+
+
+
+    <string name="starred_limit">La limite de favoris est atteinte.</string>
+    <string name="dialog_close_txt">Fermer</string>
+    <string name="continue_txt">Continuer</string>
+    <string name="menu_item_info">Info</string>
+
+    <string name="starred_lessons_results">Afficher les résultats de leçons</string>
+
+    <string name="set_starred_result_summary">Test results display</string>
+
+
+    <string name="set_interface">INTERFACE</string>
+    <string name="set_app_theme_title">Thèmes</string>
+
+    <string name="set_theme_default_name">Par défaut</string>
+    <string name="set_theme_dark_name">Noir</string>
+    <string name="set_theme_smoky_name">Sombre</string>
+    <string name="set_theme_red_name">Red</string>
+    <string name="set_theme_white_name">Blanc</string>
+    <string name="set_theme_ww_name">Contraste</string>
+
+    <string name="set_starred_sort_title">Trier la liste des favoris</string>
+    <string name="set_starred_sort_sum">Courant: %s</string>
+    <string name="set_starred_sort_title_dialog">Trier la liste</string>
+    <string name="set_starred_section">FAVORIS</string>
+
+
+    <string-array name="starred_list_sort">
+        <item>Le plus récent en premier</item>
+        <item>Le plus récent en dernier</item>
+        <item>Selon l’ordre de catégories</item>
+    </string-array>
+
+
+    <string name="set_starred_save_title">Enregistrer les résultats de tests</string>
+    <string name="set_starred_save_sum">Courant: %s</string>
+    <string name="set_starred_save_title_dialog">Save results</string>
+
+    <string-array name="starred_list_save">
+        <item>Derniers résultats </item>
+        <item>Meilleurs résultats</item>
+    </string-array>
+
+    <string name="set_control_title">Résultats de tests d’une section</string>
+    <string name="set_control_summary">Utilser dans les statistiques: %s</string>
+    <string name="set_control_dialog_title">Utilser</string>
+
+    <string name="set_control_tests_one">Si les résultats sont meilleurs</string>
+    <string name="set_control_tests_two">Toujours</string>
+    <string name="set_control_tests_three">Jamais</string>
+
+    <string name="set_test_all_limit_title">Nombre d’items dans le test général </string>
+    <string name="set_test_all_limit_summary">Maximum: %s</string>
+    <string name="set_test_all_limit_dialog_title">Test général</string>
+
+    <string name="set_test_all_limit_1">30 items</string>
+    <string name="set_test_all_limit_2">50 items</string>
+    <string name="set_test_all_limit_3">100 items</string>
+
+    <string name="set_btm_nav_title">Barre de navigation en bas</string>
+    <string name="set_btm_nav_summary">%s</string>
+    <string name="set_btm_nav_dialog_title">Barre de navigation en bas</string>
+
+    <string name="set_btm_nav_1">Afficher la barre et supprimer les éléments dans le menu</string>
+    <string name="set_btm_nav_2">Afficher la barre et afficher tous les éléments dans le menu</string>
+    <string name="set_btm_nav_3">Ne pas afficher</string>
+    <string name="set_btm_nav_4">Afficher la barre et supprimer le menu</string>
+
+    <string name="set_data_control_title">Données pour les statistiques</string>
+
+    <string name="set_data_control_summary">Statistique d’une section inclut: %s</string>
+    <string name="set_data_control_dialog_title">Statistique d’une section</string>
+
+    <string name="set_data_control_dates">Thèmes de base seulement</string>
+    <string name="set_data_control_all">Thèmes de base et thèmes supplémentaires</string>
+
+    <string name="set_data_mode_title">Mode</string>
+    <string name="set_data_mode_summary">Courant: %s</string>
+    <string name="set_data_mode_dialog_title">Choisir le mode</string>
+
+
+    <string name="set_data_mode_default">Standard</string>
+    <string name="set_data_mode_easy">Simplifié (seulement des mots et des expressions de base)</string>
+    <string name="set_data_mode_advanced">Avancé</string>
+
+    <string name="set_mode_sum">Courant: %s</string>
+
+    <string name="set_mode_default_name">Basique</string>
+    <string name="set_mode_full_name">Version PLUS</string>
+
+    <string name="set_show_status">Statut dans les listes</string>
+    <string name="set_show_status_summary">Afficher: %s</string>
+    <string name="set_show_status_dialog_title">Afficher le statut</string>
+
+    <string name="set_show_status_one">Automatiquement</string>
+    <string name="set_show_status_two">Toujours</string>
+    <string name="set_show_status_three">Jamais</string>
+
+    <string name="set_detail_txt">Taille du text dans les détails</string>
+    <string name="set_detail_txt_summary">Courant: %s</string>
+    <string name="set_detail_txt_dialog_title">Font size</string>
+
+    <string name="set_detail_txt_small">Petit</string>
+    <string name="set_detail_txt_medium">Moyen</string>
+    <string name="set_detail_txt_large">Grand</string>
+
+    <string name="stats_info_txt">Info sur les statistiques</string>
+    <string name="starred_lessons_remove">Réinitialiser les résultats</string>
+
+    <string name="title_activity_reference">Référence</string>
+
+
+    <!-- string name="app_market_link">@string/app_market_link_pro</string -->
+
+    <string name="msg_sending_mail">Envoyer un commentaire &#8230;</string>
+    <string name="msg_no_mail_client">lient de messagerie n’est pas installé</string>
+    <string name="msg_mail_subject">Commentaire sur l’appli</string>
+    <string name="msg_mail_subject_error">Signaler une erreur</string>
+    <string name="msg_no_browser">Browser is not installed.</string>
+    <string name="no_data_msg">Il n’y a pas de données</string>
+
+    <string name="correct_errors">Corriger les erreurs</string>
+    <string name="errors_box_title">Erreurs faites dans les tests</string>
+
+
+    <string name="section_stats_info">Le résultat total d’une section dépend du résultat moyen des tests, du nombre d’entrées familières et du nombre d’entrées maîtrisés. Chacun de ces indicateurs peut ajouter le pourcentage suivant au résultat total:
+
+        \n\n- Résultat moyen des tests: + 50% (si tous les tests ont le résulat de 100%)
+        \n- Entrées familières: + 30% (si tous les entrées ont le statut Familier)
+         \n- Entrées maîtrisées: + 20% (si tous les entrées ont le statut Maîtrisé)\n</string>
+
+    <string name="progress_info">Ici, vous pouvez voir les statistiques sur les statuts des entrées dans toute l’application ou dans chaque section.
+        \n\n Une entrée peut avoir différents statuts selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points. Les statuts des entrées incluent:
+        \n\n — Nouveau (0 points)\n — Familier (1-2 points)\n — Maîtrisé (3-4 points) </string>
+
+    <string name="easy_mode_dialog_title">Mode simplifié</string>
+
+    <string name="easy_mode_info">\nActuellement, le mode simplifié est activé  où seulement des entrées du niveau basique sont affichées.
+        \n\nVous pouvez changer le mode dans un thème ou les Paramètres de l’appli ou dans.
+        \n
+    </string>
+
+    <string name="mode_info">\n
+        L’application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichées dans les thèmes.
+        \n\n
+        Le mode actif peut affecter vos statistiques car il ne prend en compte que le statut des entrées disponibles dans ce mode. Un changement de mode n’affecte pas les résultats des tests, les résultats de la recherche, les statistiques d’erreurs ou la liste de Favoris.
+        \n
+    </string>
+
+
+
+
+    <string name="get_premium_txt">Bien plus avec la version PLUS!</string>
+    <string name="title_activity_get_premium">Version PLUS</string>
+
+    <string name="get_premium_activity">Version PLUS</string>
+    <string name="purchase_txt"> </string>
+
+    <string name="purchase_txt_1">Pas de pubs!</string>
+    <string name="purchase_txt_2">Obtenez l’accès à tous les thèmes!</string>
+    <string name="purchase_txt_3">Créez un nombre illimité de thèmes et sections!</string>
+    <string name="purchase_txt_4">Ajoutez jusqu’à 100 entrées dans un thème!</string>
+
+    <string name="get_premium_thank">Merci beaucoup!</string>
+    <string name="get_premium_continue">Continuer</string>
+    <string name="get_premium_buy">Acheter</string>
+    <string name="get_premium_buy_price">Acheter pour %s</string>
+    <string name="purchased_txt">Clickez sur «Continuer» pour retourner à la page d’Accueil</string>
+    <string name="fullversion_desc_txt">Vous avez la version PLUS.</string>
+
+
+    <string name="ex_save_stats">Sauvegarder la statistique</string>
+
+    <string name="stats_test_all_desc">Test avec des entrées de tous les thèmes</string>
+    <string name="stats_test_old_desc">Test avec des entrées maîtrisé et familières</string>
+
+    <string name="ex_link_desc_pers_1">Test: Description / Person</string>
+    <string name="ex_link_desc_pers_2">Test: Person / Description</string>
+
+    <string name="ex_link_desc_term_1">Test: Definition / Term</string>
+    <string name="ex_link_desc_term_2">Test: Term / Definition</string>
+
+    <string name="ex_link_desc_misc_1">Test: Description / Item</string>
+    <string name="ex_link_desc_misc_2">Test: Item/ Description</string>
+
+    <string name="ex_link_desc_star_1">Test: Description / Item</string>
+    <string name="ex_link_desc_star_2">Test: Item / Description</string>
+
+
+    <string name="cat_progress_txt">Résultat moyen \ndes tests</string>
+
+    <string name="section_content_title">Aperçu de la section</string>
+    <string name="section_content_title_short">Contenu de la section</string>
+    <string name="persons_title">Persons</string>
+
+    <string name="detail_img_info_txt">Image: %s</string>
+
+    <string name="backup_info"><![CDATA[
+<br/>
+<b>Importez vos données</b>
+<br/><br/>
+
+Vous pouvez exporter vos données et en avoir une copie sauvegardée en toute sécurité au cas où vous changez de téléphone ou vous avez besoin de de le réinitialiser. Ceci sauvegardera toutes vos données actuelles et les exportera en fichier <strong> %s </strong>. Le fichier de sauvegarde est enregistré par défaut dans le dossier <b>Download</b>, mais le chemin d’accès à ce dossier peut varier d’un appareil à l’autre.
+
+<br/><br/>
+<strong>Importez vos données</strong>
+<br/><br/>
+
+Ceci vous permettra de restaurer vos données à partir d’une précédente sauvegarde. Notez que ceci effacera toutes les données actuelles et les remplacera par le fichier importé. Nous faisons de notre mieux pour assurer l’importation des données sur n’importe quel appareil, mais nous ne pouvons pas garantir qu’elle peut être accomplie dans tous les cas. Si vous avez quelques difficultés, veuillez nous contacter via la page Contacts et nous en informer.
+
+<br/><br/>
+
+    ]]></string>
+
+
+    <string name="info_txt">Info</string>
+    <string name="backup_page_title">Export/Import</string>
+    <string name="no_import_data">info non disponible</string>
+    <string name="last_import_dat">Dernière importation: %s</string>
+    <string name="no_access">Action non autorisée</string>
+    <string name="export_title">Exportez vos données</string>
+    <string name="export_desc">
+        <![CDATA[ Vous pouvez exporter vos données et en avoir une copie sauvegardée en toute sécurité sur votre appareil. Ceci sauvegardera toutes vos données actuelles et les exportera en fichier <b> %s </b>. ]]>
+    </string>
+    <string name="export_btn">Exporter en fichier</string>
+    <string name="import_title">Importez vos données</string>
+    <string name="import_desc">Restaurez vos données à partir d’une précédente sauvegarde. Ceci effacera toutes les données actuelles.</string>
+    <string name="import_btn">Importer d’un fichier</string>
+    <string name="import_last_desc">Dernière importation</string>
+    <string name="import_last_info">"Dernière importation: "</string>
+
+    <string name="cancel_txt">Annuler</string>
+
+
+    <string name="info_star_txt">\nVous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste. Vous pouvez également appuyer longuement sur une entrée si vous souhaitez l’ajouter aux Favoris ou retirer des Favoris.
+\n</string>
+
+    <string name="info_img_starred">\nVous pouvez retirer une entrée des Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste. Vous pouvez également appuyer longuement sur une entrée dans la liste si vous souhaitez la retirer des Favoris.\n</string>
+
+    <string name="starred_menu_info">Info</string>
+
+    <string name="starred_gallery_info">info ( %1$d ).</string>
+
+    <string name="info_gallery_txt">\nInfo  \n</string>
+
+    <string name="maps_info">\Info\n</string>
+    <string name="info_menu_map">Info</string>
+
+    <string name="menu_easy_mode">Mode simplifié</string>
+    <string name="menu_search">Recherche</string>
+    <string name="menu_layout">Affichage</string>
+    <string name="menu_fullscreen">Plein écran</string>
+    <string name="menu_open_cat">Ouvrir le thème</string>
+    <string name="menu_sort">Trier la liste</string>
+    <string name="stats_page_activity">Statistiques de la section</string>
+    <string name="stats_total">TOTAL: %d%%</string>
+    <string name="stats_tests">Tests:   %d%% * 0.5</string>
+    <string name="stats_familiar">Familier: %d%% * 0.3</string>
+    <string name="stats_studied">Maîtrisé:  %d%%  * 0.2</string>
+    <string name="no_entries_msg">Pas de données</string>
+    <string name="total_result">Résultat total</string>
+    <string name="stats_percent">+ %d%%</string>
+    <string name="stats_studied_percent">Maîtrisé: %d%%</string>
+    <string name="stats_familier_percent">Familier: %d%%</string>
+    <string name="stats_unknown_percent">Inconnu: %d%%</string>
+    <string name="section_studied_title"> </string>
+    <string name="section_familiar_title"> </string>
+    <string name="section_unknown_title"> </string>
+    <string name="status_studied">statut «Maîtrisé»</string>
+    <string name="status_familiar">statut «Maîtrisé» ou «Familier»</string>
+    <string name="status_unknown">statut «Inconnu»</string>
+    <string name="pro_content">Disponible dans la version PLUS</string>
+    <string name="section_tests_titile">Tests de la section</string>
+    <string name="subsection_title">Sous-section</string>
+    <string name="starred_title">Favoris (%d)</string>
+    <string name="section_review_title">Aperçu de la section</string>
+    <string name="stats_progress_title">Statistiques du progrès</string>
+    <string name="search_hint">Recherche</string>
+    <string name="no_search_result"><![CDATA[Aucun résulat trouvé pour: <br> <b><i> %1$s </i></b>]]></string>
+    <string name="load_more">Afficher encore %d de %d</string>
+    <string name="pic_name_label">Image: %s</string>
+    <string name="pic_info_title">Image info</string>
+    <string name="starred_pic_title">Favoris (%d)</string>
+    <string name="test_result_title">Résultat du test</string>
+    <string name="total_tasks">Nombre d’items: %d</string>
+    <string name="test_errors">Erreurs: %d</string>
+    <string name="tasks_missed">Items sautés: %d</string>
+    <string name="entries_updated">Etrées mises à jour: %d</string>
+    <string name="studied_tab">Maîtrisé</string>
+    <string name="familiar_tab">Familier</string>
+    <string name="unknown_tab">Inconnu</string>
+    <string name="errors_label">Erreurs: %d</string>
+    <string name="section_errors_label">Erreurs: %d</string>
+    <string name="cats_studied">Thèmes étudiés:</string>
+    <string name="result_task_count">Nombre d’items: %d</string>
+    <string name="result_incorrect_count">Incorrect: %d</string>
+    <string name="item_status_unknown">Statut: inconnu</string>
+    <string name="item_status_familiar">Statut: familier</string>
+    <string name="item_status_studied">Statut: maîtrisé</string>
+    <string name="cats_data_list_title">Statistiques par thèmes</string>
+    <string name="loading">Chargement …</string>
+    <string name="stats_test_result">"Résultats des tests: "</string>
+    <string name="stats_familiar_label">"Familier: "</string>
+    <string name="stats_studied_label">"Maîtrisé: "</string>
+    <string name="stats_general_result">Résultat total de la section</string>
+    <string name="studied_btn_txt">Maîtrisé</string>
+    <string name="familiar_btn_txt">Familier</string>
+    <string name="unknown_btn_txt">Inconnu</string>
+    <string name="stats_open_section">Ouvrir la section</string>
+    <string name="stats_open_section_list">Aperçu de la section</string>
+    <string name="stats_open_list_desc">Liste de mots et d’expressions</string>
+    <string name="stats_open_tests">Tests de section</string>
+    <string name="stats_open_tests_desc">Tests avec des mots de tous les thèmes</string>
+    <string name="open_results_details">Informations détaillées sur le résultat</string>
+    <string name="circle_familiar_lbl">Familier</string>
+    <string name="circle_studied_lbl">Maîtrisé</string>
+    <string name="result_errors_info">STATISTIQUES D’ERREURS</string>
+    <string name="result_total_info">Résultat total</string>
+    <string name="search_no_result">Aucun résulat trouvé</string>
+    <string name="search_load_more">Afficher plus</string>
+    <string name="section_list_title">Revue</string>
+    <string name="section_list_desc">Liste</string>
+    <string name="section_tests_title">Tests</string>
+    <string name="sections_title_desc">Tests</string>
+    <string name="pic_link">Reference</string>
+    <string name="image_info_title">Image</string>
+    <string name="image_info_desc">Description</string>
+    <string name="cat_stats_title">Statistiques du thème</string>
+    <string name="cat_stats_total_items">"Nombre d’entrées: "</string>
+    <string name="cat_stats_total_items_short">"Nombre d’entrées: "</string>
+    <string name="cat_stats_familliar_count">Familier</string>
+    <string name="cat_stats_studied_count">Maîtrisé</string>
+    <string name="reference_title">Référence</string>
+    <string name="open_reference">Afficher les informations</string>
+    <string name="starred_items_title">Entrées ajoutées aux favoris</string>
+
+    <string name="open_starred">AFFICHER TOUS LES FAVORIS</string>
+    <string name="recently_starred">LES PLUS RÉCENTS </string>
+
+    <string name="open_bookmarks">AFFICHER TOUS LES SIGNETS</string>
+    <string name="recent_bookmarks">LES PLUS RÉCENTS</string>
+
+    <string name="sections_stats_title">Statistiques de sections</string>
+    <string name="stats_general_test">Test général</string>
+    <string name="stats_revision">Révision</string>
+    <string name="progress_studied_label">Maîtrisé</string>
+    <string name="progress_familiar_label">Familier</string>
+    <string name="progress_unknown_label">Inconnu</string>
+    <string name="result_skipped_task">Liste de réponses incorrectes:</string>
+    <string name="starred_tab_info">Info</string>
+    <string name="starred_tab_gallery">Galerie</string>
+    <string name="starrd_tab_info_count">Favoris (%d)</string>
+    <string name="starrd_tab_gallery_count">Signets (%d)</string>
+
+    <string name="menu_img_test">Passer le test</string>
+
+    <string name="nav_more">Autre</string>
+    <string name="nav_more_version">Autre</string>
+
+
+    <string name="set_transcript_title">Transcription</string>
+    <string name="set_transcript_summary">Courant: %s</string>
+    <string name="set_transcript_dialog">Choisissez la transcription</string>
+
+    <string name="set_transcript_1">IPA (internationale)</string>
+    <string name="set_transcript_2">Alternative</string>
+    <string name="set_transcript_0">Ne pas afficher</string>
+
+
+    <string name="set_flash_autoplay_title">Paramètres des sons</string>
+    <string name="set_flash_autoplay_summary">Courant: %s</string>
+    <string name="set_flash_autoplay_dialog_title">Sons</string>
+
+    <string name="set_flash_autoplay_1">Jouer le son automatiquement</string>
+    <string name="set_flash_autoplay_2">Jouer le son manuellement</string>
+
+    <string name="set_speak_title">Activer les sons</string>
+    <string name="set_speak_on">Utiliser un synthétiseur vocal</string>
+    <string name="set_speak_off">Les sons sont désactivés</string>
+
+    <string name="menu_item_bookmark">Mettre en signet</string>
+
+
+    <string name="home_tab_1">Vocabulaire </string>
+    <string name="home_tab_2">Mes thèmes</string>
+    <string name="menu_delete_ucat">Supprimer le thème</string>
+
+    <string name="sort_udata_dialog_title">Trier les entrées</string>
+    <string name="set_sort_desc">Le plus récent en premier</string>
+    <string name="set_sort_asc">Le plus récent en dernier</string>
+
+
+    <string name="set_ucat_layout_dialog_title">Affichage de la liste</string>
+    <string name="set_ucat_layout_1">Normal</string>
+    <string name="set_ucat_layout_2">Compact</string>
+
+    <string name="user_content_title">Mes thèmes</string>
+    <string name="export_notification">"Export: "</string>
+
+    <string name="archive_item_date">Créé:  %s</string>
+    <string name="archive_item_date_short">Date: %s</string>
+
+
+    <string name="udata_limit_dialog_title">La limite est atteinte.</string>
+    <string name="udata_limit_dialog_text">\nUn thème ne peut pas inclure plus de %s entrées.\n</string>
+
+
+    <string name="udata_limit_dialog_title_unpaid">La limite est atteinte.</string>
+    <string name="udata_limit_dialog_text_unpaid">\nUn thème ne peut pas inclure plus de %s entrées.\n</string>
+
+    <string name="nav_notes_txt">Notes</string>
+
+    <string name="note_img_edit">Modifier</string>
+    <string name="note_title_edit">Titre</string>
+    <string name="note_txt_edit">Texte</string>
+    <string name="note_save">Enregistrer</string>
+
+    <string name="savaing_note_title">Enregistrer la note</string>
+    <string name="empty_note_msg">\nLa note est vide. Veuillez saisir un texte. \n</string>
+    <string name="apply_btn">Appliquer</string>
+    <string name="pick_note_icon_title">Choisissez une image</string>
+
+    <string name="note_title_txt">Note</string>
+    <string name="menu_delete_note">Supprimer la note</string>
+    <string name="menu_edit_note">Modifier la note</string>
+
+
+    <string name="set_night_theme">Mode nuit pour les thèmes claires</string>
+    <string name="set_night_theme_on">Activé</string>
+    <string name="set_night_theme_off">Désactivé</string>
+
+    <string name="set_tts">Paramètres de la synthèse vocale</string>
+    <string name="set_tts_summary">Ouvrir les paramètres de l’appareil</string>
+
+    <string name="set_data_section">PARAMÈTRES DE DONNÉES</string>
+    <string name="set_misc">DIVERS</string>
+
+    <string name="set_backup_title">Exportez/Importez vos données</string>
+    <string name="set_backup_desc">Sauvegardes et synchronisation entre les appareils</string>
+
+    <string name="set_version_plus">Version PLUS</string>
+    <string name="set_version_plus_summary">Profitez des avantages de la version PLUS!</string>
+
+    <string name="confirmation_txt">Confirmation</string>
+    <string name="starred_confirm_title">Confirmer la suppression</string>
+    <string name="set_starred_confirm_summary">Confirmer la la suppression des favoris</string>
+    <string name="starred_confirm_desc">Vous êtes sur le point de supprimer ce favori, souhaitez-vous confirmer cette suppression?</string>
+    <string name="dont_ask_again">Ne plus me demander</string>
+
+    <string name="section_tab1_title">Liste</string>
+    <string name="section_tab2_title">Pratique</string>
+
+    <string name="note_img_empty">Rien</string>
+    <string name="pick_device_icon">Trouver \nsur\nl’appareil</string>
+
+    <string name="user_vocabulary_title">Mes thèmes</string>
+    <string name="user_topics_list">Liste de thèmes</string>
+    <string name="new_topic_btn">＋ Nouveau thème</string>
+    <string name="plus_version_more_lablel">Bien plus avec la version PLUS</string>
+    <string name="open_all_user_topics">Afficher tous les thèmes</string>
+    <string name="user_topics_count">"Thèmes ajoutés:  "</string>
+    <string name="user_items_count">"Entrées ajoutées:  "</string>
+
+    <string name="ucat_date">Date:  %s</string>
+    <string name="ucat_items_count">Nombre d’entrées: %s</string>
+
+    <string name="ucat_familiar_items">"Familier: "</string>
+    <string name="ucat_mastered_items">"Maîtrisé: "</string>
+    <string name="open_more">Afficher plus</string>
+    <string name="home_ucat_date">"Date: "</string>
+    <string name="home_ucat_list_progress">Maîtrisé:  %s/%s</string>
+
+    <string name="load_more_items">Afficher encore %s </string>
+
+    <string name="popup_menu_edit">Modifier</string>
+    <string name="popup_menu_unarchive">Désarchiver</string>
+    <string name="popup_menu_delete">Supprimer</string>
+    <string name="popup_menu_move_top">Placer en haut</string>
+    <string name="popup_menu_archive">Archiver</string>
+    <string name="popup_menu_view">Afficher</string>
+
+    <string name="ucat_edit_title">Titre du thème</string>
+    <string name="ucat_edit_create">Créer le thème</string>
+    <string name="ucat_new_item">＋ Nouvelle entrée </string>
+
+    <string name="ucat_saving_alert">Enregistrer le thème</string>
+    <string name="ucat_enter_title_alert">Entrez le titre du thème.</string>
+
+    <string name="ucat_delete_confirm">\nSupprimer ce thème avec toutes les entrées?\n</string>
+
+    <string name="ucat_edit_info_title">Info</string>
+    <string name="ucat_deleted_items">Supprimé</string>
+    <string name="ucat_new_item_dialog">Nouvelle entrée</string>
+    <string name="ucat_edit_item_dialog">Modifier l’entrée</string>
+    <string name="ucat_created_time">Créé: %s</string>
+    <string name="ucat_item_deleted_msg">Supprimé</string>
+    <string name="ucat_delete_item_confirm">\nSupprimer cette entrée?\n</string>
+    <string name="ucat_delete_item_confirm_last">\nSupprimer la dernière entrée?\n</string>
+
+    <string name="dialog_edit_item_more">" Afficher plus"</string>
+    <string name="dialog_edit_item_less">" Afficher moins"</string>
+    <string name="save_txt">Enregister</string>
+    <string name="edit_item_enter_txt_msg">Entrez un texte</string>
+    <string name="dialog_edit_item_text">texte original</string>
+    <string name="dialog_edit_item_translation">traduction</string>
+    <string name="dialog_edit_item_listen">Écouter</string>
+    <string name="dialog_edit_item_nosound">Pas de son</string>
+    <string name="dialog_edit_item_transcription">Transcription</string>
+    <string name="dialog_edit_item_grammar">Grammaire</string>
+    <string name="dialog_edit_item_extra">Information supplémentaire</string>
+
+    <string name="starred_bookmarks_title">Signets (%d)</string>
+    <string name="starred_bookmark_header">Thèmes ajoutés aux signets</string>
+
+    <string name="starred_bookmark_info">Les signets peuvent être ajoutés dans le menu des thèmes (%1$d signets au maximum).</string>
+    <string name="info_list_txt">\nItems from this topic cannot be starred, and they are not included in tests and exercises.\n</string>
+
+    <string name="starred_words_info">On peut ajouter jusqu’à %1$d favoris dans la liste d’un thème ou d’une section. </string>
+
+    <string name="item_status_unknown_short">Inconnu</string>
+    <string name="item_status_familiar_short">✓ Familier</string>
+    <string name="item_status_studied_short">✓ Maîtrisé</string>
+
+    <string name="bookmarks_section_txt">"Section: "</string>
+    <string name="bookmarks_section_my_voc">Section: Mes thèmes</string>
+
+    <string name="section_result_calculation">Le calcul du résultat total est basé sur les statistiques suivantes:</string>
+    <string name="plus_version_btn">Version PLUS</string>
+
+    <string name="limit_cats_for_unpaid">\nVous avez atteint la limite de thèmes dans la version basique. Obtenez la version PLUS pour ajouter plus de thèmes.\n</string>
+
+    <string name="menu_ucats_list_layout">Affichage de la liste</string>
+    <string name="menu_open_archive">Ouvrir l’archive</string>
+    <string name="delete_note_confirm">\nSupprimer cette note?\n</string>
+    <string name="archive_title">Аrchive</string>
+    <string name="stats_not_saved_msg">La statistique n’est pas sauvegardée</string>
+
+
+
+    <string name="info_bookmark_list">\nVous pouvez supprimer un signet en cliquant longuement sur un élément de la liste, ou vous pouvez supprimer le signet dans le menu du thème.\n</string>
+
+    <string name="info_ucat_list">\nVous pouvez ajouter vos propres thèmes avec des entrées dont vous avez besoin. Dans la version basique, vous pouvez ajouter jusqu’à 4hèmes.
+        Les thèmes et les entrées que vous ajoutez ne sont pas inclus dans les statistiques générales, mais vous pouvez voir les résultats de leur tests et les statuts de leurs entrées sur la page du thème.
+        Pour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.
+  \n</string>
+    <string name="info_ucat_archive">\nPour retirer un thème de la liste principale sans le supprimer, vous pouvez l’archiver. Si vous désarchivez un thème, il est placé en haut de la liste principale.  \n</string>
+
+    <string name="ucat_edit_info_txt">\nPour créer un nouveau thème, vous devez saisir son titre. Vous pouvez modifier le titre d’un thème à tout moment. Dans la version basique, vous pouvez ajouter jusqu’à 20 entrées à un sujet.\n</string>
+
+    <string name="delete_stats_from_menu">Supprimer les statistiques</string>
+
+    <string name="delete_stats_confirm_text">\nVoulez-vous vraiment supprimer tous les résultats des tests et les statistiques des entrées dans ce thème?\n</string>
+    <string name="delete_stats_process">Suppression de statistiques …</string>
+
+    <string name="set_del_cat_stats">Supprimer les statistiques du thème</string>
+    <string name="set_del_cat_stats_summary">Afficher le bouton pour supprimer les statistiques dans le menu du thème</string>
+
+    <string name="errors_count">Erreurs: %d</string>
+
+    <string name="popup_menu_move">Déplacer</string>
+    <string name="create_group_title">Nouvelle section</string>
+    <string name="edit_group_title">Modifier la section</string>
+    <string name="edit_section_title_txt">Titre</string>
+    <string name="edit_section_desc_text">Description</string>
+    <string name="delete_group_title">Supprimer la section</string>
+    <string name="delete_group_msg">\nLa section ne peut être supprimée que si elle n’inclut aucun thème. Vous pouvez archiver, supprimer ou déplacer les thèmes de la section, et puis vous pourrez la supprimer.\n</string>
+    <string name="delete_groupt_confirm">\nÊtes-vous sûr(e) de vouloir supprimer cette section?\n</string>
+    <string name="delete_process">Suppression …</string>
+    <string name="menu_new_group">Nouvelle section</string>
+    <string name="menu_delete_group">Supprimer la section</string>
+    <string name="edit_group">Modifier la section</string>
+    <string name="move_to_section_btn">Déplacer</string>
+    <string name="move_topic_to_title">Déplacer vers …</string>
+    <string name="main_list_txt">La liste principale ⇑ </string>
+    <string name="no_groups">Aucune section n’est encore disponible. Vous pouvez créer une nouvelle section à partir du menu de la page ou en utilisant le bouton ci-dessous.</string>
+
+    <string name="create_dialog_unpaid_title">Créer une nouvelle section</string>
+    <string name="create_new_section_btn">Créer une nouvelle section</string>
+    <string name="limit_groups_for_unpaid">\nVous avez atteint la limite de sections dans la version basique. Obtenez la version PLUS pour ajouter plus de sections.\n</string>
+
+    <string name="set_ucat_layout_3">Mixte (compact uniquement pour les thèmes)</string>
+
+    <plurals name="topic_plurals">
+        <item quantity="one">Section avec %1$d thème</item>
+        <item quantity="other">Section avec %1$d thèmes</item>
+    </plurals>
+
+
+
+    <string name="notes_archive_title">Archive de notes</string>
+    <string name="info_note_archive">\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.  \n</string>
+
+
+    <string name="info_notes_title">Information</string>
+
+    <string name="info_notes_text">\nVous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste principales de notes dans la rubrique Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. On peut modifier le titre, l’icône et le texte d’une note à tout moment.
+        \n\nVous pouvez ouvrir un menu d’actionы pour une note en appuyant longuement sur cette note dans la liste principale. Depuis ce menu, la note peut être placée en haut de la liste principale, éditée, archivée ou supprimée.
+        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes. \n</string>
+
+
+    <string name="first_note_title">Rubrique Notes</string>
+
+    <string name="first_note_text">Vous pouvez sauvegarder toutes informations textuelles dans vos notes. Vous pouvez trouver la liste principales de notes dans la rubrique Notes, et vous pouvez aussi trouver des notes en utilisant la fonction de Recherche dans l’application. On peut modifier le titre, l’icône et le texte d’une note à tout moment.
+        \n\nVous pouvez ouvrir un menu d’actionы pour une note en appuyant longuement sur cette note dans la liste principale. Depuis ce menu, la note peut être placée en haut de la liste principale, éditée, archivée ou supprimée.
+        \n\nPour retirer une note de la liste principale sans la supprimer, vous pouvez l’archiver. Si vous désarchivez une note, elle est placée en haut de la liste de notes.
+
+    </string>
+
+    <plurals name="item_plurals">
+        <item quantity="one">%d entrée</item>
+        <item quantity="other">%d entrées</item>
+    </plurals>
+    <string name="add_list_dialog_text">Vous pouvez ajouter %s dans ce thème. Chaque nouvelle entrée doit commencer par une nouvelle ligne. </string>
+    <string name="values_separator">Les valeurs seront séparées par</string>
+    <string name="add_list_edit_hint">texte %s traduction</string>
+    <string name="add_list_title">Ajouter une liste</string>
+    <string name="limit_txt">Limite:</string>
+    <string name="menu_add_list">Ajouter une liste</string>
+
+    <string name="empty_topics_list_hint">Vous pouvez créer vos propres thèmes avec de nouvelles entrées. Vous pouvez également créer des sections pour regrouper plusieurs thèmes.</string>
+
+    <string name="new_topic_hint">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page.</string>
+    <string name="new_topic_hint_unpaid">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page. La version basique permet d’ajouter jusqu’à 5 thèmes.</string>
+    <string name="new_topic">＋ Nouveau thème</string>
+
+    <string name="new_section_hint">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page.</string>
+    <string name="new_section_hint_unpaid">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page. La version basique permet d’ajouter 3 sections.</string>
+    <string name="new_section">＋ Nouvelle section</string>
+
+    <string name="ucat_limit_hint">Entrées ajoutées: %d / %d</string>
+
+    <string name="new_items_hint_unpaid">Ici, vous pouvez ajouter de nouveaux mots et expressions. La fonction «Ajouter une nouvelle liste» du menu de cette page permet d’ajouter plusieurs entrées à la fois. \n\nLa version basique permet d’ajouter jusqu’à %d entrées.</string>
+    <string name="new_items_hint">Ici, vous pouvez ajouter de nouveaux mots et expressions. La fonction «Ajouter une nouvelle liste» du menu de cette page permet d’ajouter plusieurs entrées à la fois. \n\nUn thème peut contenir jusqu’à %d entrées</string>
+
+    <string name="added_hint">Entrées ajoutées: %d</string>
+
+    <string name="set_review_title">Revue et Tests de la section</string>
+    <string name="set_review_summary">Afficher Revue et Tests de la section sur la page de la section</string>
+
+    <string name="items_mastered_label">Entrées maîtrisées</string>
+    <string name="items_familiar_label">Entrées familières</string>
+
+    <string name="mode_dialog_title">Mode de données</string>
+
+    <string name="mode_dialog_info">L’application dispose de deux modes. Lorsque le mode simplifié est activé, seules les entrées du niveau de base sont affichées dans les thèmes.
+   \n</string>
+
+    <string name="mode_dialog_info_2"> </string>
+
+    <string name="mode_dialog_opt_1_txt">Mode simplifié</string>
+    <string name="mode_dialog_opt_1_desc">Afficher seulement les entrées de base</string>
+    <string name="mode_dialog_opt_2_txt">Mode standard</string>
+    <string name="mode_dialog_opt_2_desc">Afficher les entrées pour différents niveaux</string>
+    <string name="mode_dialog_opt_3_txt">Activer le mode standard</string>
+    <string name="mode_dialog_opt_3_desc">Afficher les entrées pour différents niveaux</string>
+
+    <string name="mode_hint_got">Ne plus afficher</string>
+
+    <string name="menu_item_mode">Mode de données</string>
+
+    <string name="rate_request_txt">Évaluez notre appli et aidez-nous \n à l’améliorer! </string>
+    <string name="rating_feedback_hint">Merci de nous indiquer comment nous pouvons améliorer notre appli!</string>
+    <string name="rating_feedback_type">Entrez votre message</string>
+    <string name="rate_the_app_title">Évaluer l’application</string>
+    <string name="rate_later_btn">Plus tard</string>
+    <string name="send_rate_title">Note</string>
+    <string name="submit_rate_btn_txt">Envoyer</string>
+    <string name="send_rate_feedback_btn">Envoyer</string>
+    <string name="contact_share">Recommander l’application</string>
+    <string name="share_chooser_title">Recommender</string>
+    <string name="nav_share_txt">Partager l’appli</string>
+    <string name="share_advise_msg">Salut! J’aime bien sette appli et je pense qu’elle pourrait t’aider: \n</string>
+
+
+    <string name="app_english_link">Aprenez l’anglais!</string>
+    <string name="app_french_name">Aprenez le français!</string>
+    <string name="app_russian_name">Apprenez le russe!</string>
+    <string name="app_japanese_name">Charactères japonais</string>
+    <string name="app_history_name">History of Russia</string>
+    <string name="find_in_google_play">Disponible sur Google Play</string>
+    <string name="other_apps_txt">Autres applications</string>
+
+
+
+    <string name="downgrade_priority_section">Réduire la priorité de la section \n «%s» </string>
+    <string name="tasks_clear_section">Effacer les réglages pour la section \n «%s» </string>
+    <string name="nav_addition_txt">Additions</string>
+    <string name="task_dialog_hide">Ne pas afficher cette tâche</string>
+    <string name="task_dialog_postpone">Reporter cette tâche</string>
+    <string name="task_continue_topic">Continuez à apprendre le thème</string>
+    <string name="task_start_topic">Commencez à apprendre le thème</string>
+    <string name="task_revise_topic">Révisez les entrées du thème</string>
+    <string name="task_start_section">Apprenez la section</string>
+    <string name="task_continue_section">Continuez à apprendre la section</string>
+    <string name="review_mastered_section">Révisez la section</string>
+
+    <string name="task_btn_section">Section</string>
+    <string name="task_btn_section_stats">Statistiques</string>
+    <string name="task_section_links">Vistez les sections du vocabulaire</string>
+
+    <string name="task_info">Résultat des tests: %1$s%%  \u0020 \u0020 Section: %2$s </string>
+    <string name="task_revise_info">Test avec les entrées de %s thème</string>
+
+    <string name="task_section_info">Entrées maîtrisées: %1$s%% (%2$s/%3$s) </string>
+
+    <string name="task_errors_txt">Vérifiez les entrées de la list</string>
+    <string name="task_errors_title">Erreurs</string>
+    <string name="task_error_info">Entrées aves des erreurs: %s </string>
+    <string name="task_error_overlimit">plus %s </string>
+    <string name="task_msg_info">Information</string>
+
+    <string name="dialog_complete_title">Bon travail!</string>
+    <string name="dialog_complete_revised">Vous avez révisé les entrées de la section</string>
+    <string name="dialog_complete_revised_msg">Vous avez révisé les entrées de la section</string>
+    <string name="dialog_complete_errors_corrected">Toutes les erreurs ont été corrigées</string>
+
+    <string name="dialog_completed_tests_done">Vous avez terminé les tests</string>
+    <string name="dialog_completed_progress">Vous avez amélioré le progrès</string>
+    <string name="tasks_loading">Chargement des tâches</string>
+
+    <string name="set_tasks_nav_title">Tâches (BETA)</string>
+    <string name="set_tasks_nav_summary">Afficher: %s</string>
+    <string name="set_tasks_nav_dialog_title">Afficher les tâches</string>
+
+    <string name="set_tasks_nav_home">Sur la page d’accueil (dans un onglet)</string>
+    <string name="set_tasks_nav_menu">Dans le menu de l’application</string>
+    <string name="set_tasks_nav_none">Ne pas afficher</string>
+
+
+    <string name="task_info_act">Infos sur la section</string>
+    <string name="task_info_title">TÂCHES</string>
+
+    <string name="task_info_desc">
+        Cette section vous proposera des tâches pour favoriser vos progrès d’apprentissage.
+    </string>
+
+    <string name="task_info_btn_detail">Savoir plus</string>
+
+    <string name="task_info_dialog_title">Tâches (BETA)</string>
+
+    <string name="task_info_dialog_text"><![CDATA[
+
+Cette section vous proposera des tâches pour vous aider à améliorer vos progrès d’apprentissage. <br/><br/>
+
+Les tâches viseront des thèmes et des sections que vous pouvez commencer ou continuer à apprendre, et certaines tâches permettront également de réviser le matériel étudié. Les actions suivantes peuvent être disponibles pour les tâches: <br/> <br/>
+
+     - <b><i> Reporter la tâche </i> </b>: la tâche ne sera pas affichée pendant 12 heures, ou jusqu’à ce que les données de la section soient effacées, les données soient réinitialisées, ou que vous terminiez un test associé à cette tâche. <br/> <br/>
+     - <b><i> Ne pas afficher la tâche </i> </b>: la tâche sera cachée jusqu’à ce que les réglages de la section soient effacés, ou que les données soient réinitialisées, ou que vous ayez terminé certains tests associés à cette tâche. <br/> <br/>
+     - <b><i> Diminuer la priorité de la section </i> </b>: les tâches associées à cette section seront affichées en dernier. <br/> <br/>
+     - <b><i>Effacer les réglages de la section </i> </b>: pour cette section, les données sur les tâches cachées et reportées, ainsi que sur la priorité de la section seront supprimées. <br/> <br/>
+
+      Dans les paramètres de l’application, vous pouvez modifier l’emplacement de la section Tâches: la section peut être affichée soit sur la page d’accueil dans un onglet supplémentaire, soit dans le menu de navigation de l’application.
+      <br/> <br/>
+
+      <i> ATTENTION! Cette section est en cours de développement, il est donc possible qu’à l’avenir certaines fonctions (ou même une section entière) soient modifiées ou supprimées. </i>
+
+
+    ]]></string>
+
+    <string name="task_info_btn_clear">Réinitialiser</string>
+    <string name="tasks_clear_data_confirm_title">Réinitialisation des données</string>
+    <string name="tasks_clear_data_confirm_text">\nLes données sur les tâches suivantes seront supprimées: \n
+         \n- Tâches cachées
+         \n- Tâches reportées
+         \n- Priorité des sections\n
+         \n Voulez-vous continuer? \n
+
+    </string>
+
+    <string name="tasks_clear_data_msg">Réinitialisation des données …</string>
+
+    <string name="practice_info_title">Pratique</string>
+    <string name="practice_info_content">Information</string>
+
+    <string name="current_level">"Actuel: "</string>
+
+    <string name="difficulty_level">"Niveau de difficulté: "</string>
+    <string name="studied_topcs_count">"Sujets étudiés: "</string>
+    <string name="practice_tasks_limit">"Limite de tâches: "</string>
+    <string name="practice_last_result">"Dernier résultat:  "</string>
+    <string name="practice_last_date">\nComplété:\u00A0</string>
+
+    <string name="practice_vocab_test">Test de traduction</string>
+    <string name="practice_vocab_test_desc">Choisissez la traduction des mots et des expressions de ce thème.</string>
+    <string name="practice_translate_test">Traduction inverse</string>
+    <string name="practice_translate_test_desc">Choisissez la traduction des mots et des expressions de ce thème.</string>
+    <string name="practice_audio_test">Test d’écoute</string>
+    <string name="practice_audio_test_desc">Écoutez et traduisez des des mots et des expressions de ce thème.</string>
+    <string name="practice_buid_test">Construisez des phrases</string>
+    <string name="practice_build_test_desc">Construisez des phrases comprenant des mots et des expressions de e thème.</string>
+    <string name="practice_tests_settings">Paramètres d’entraînement</string>
+    <string name="practice_settings_dialog_title">Paramètres d’entraînement</string>
+    <string name="practice_setting_difficulty_level">Niveau de difficulté</string>
+    <string name="practice_setting_autolevel_desc">Définir automatiquement</string>
+    <string name="practice_setting_current_level">Niveau actuel:</string>
+    <string name="practice_setting_level_desc">Le plus bas niveau de difficulté minimum pour les tâches des tests d’entraînement.</string>
+    <string name="practice_setting_tasks_limit">Limite de tâches</string>
+    <string name="practice_setting_tasks_limit_desc">Le nombre maximum de tâches pouvant être ajoutées dans les tests d’entraînement. Ce réglage s’applique à toutes les sections.</string>
+    <string name="practice_setting_studied_topics">Thème étudiés</string>
+    <string name="practice_setting_zero_topics">Actuellement, vous n’avez aucun thème étudié dans cette section. Des mots de différents thèmes seront ajoutés aux tests.</string>
+    <string name="practice_setting_topics_list_desc">Liste des thèmes prioritaires pour les tâches dans les tests:</string>
+    <string name="practice_setting_unstudied_mix">Éléments de thèmes inexplorés</string>
+    <string name="practice_setting_unstudied_mix_desc">Les mots et les expression des thèmes inexplorés peuvent être ajoutés dans les tests d’entraînement.</string>
+
+    <string name="section_topics_tab">Thèmes</string>
+    <string name="section_practice_tab">Entraînement</string>
+
+    <string name="pr_limit_tasks_20">20 éléments</string>
+    <string name="pr_limit_tasks_25">25 éléments</string>
+    <string name="pr_limit_tasks_30">30 éléments</string>
+
+    <string name="pr_level_basic">Débutant</string>
+    <string name="pr_level_easy">Facile</string>
+    <string name="pr_level_normal">Normal</string>
+
+    <string name="pr_unstudied_mixed">Ajoutés</string>
+    <string name="pr_unstudied_mixed_not">Pas ajoutés</string>
+
+    <string name="info_star_review_txt">\nVous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste.\n</string>
+
+    <string name="date_format_with_time">yyyy-MM-dd à H:mm</string>
+
+    <string name="topic_access_in_plus_version">\nL’acces est disponible dans la version PLUS.\n</string>
+
+    <string name="practice_cards_title">Cartes éclair</string>
+
+    <string name="practice_cards_desc">Révisez et apprenez des mots et des expressions de ce thème.</string>
+    <string name="dialog_param_transcript_title">Transcription</string>
+
+    <string name="dialog_param_status_display_title">Statut du niveau de maîtrise</string>
+
+    <string name="dialog_param_results_title">Résultats des tests</string>
+    <string name="dialog_param_result_checkbox_text">Afficher les résultats</string>
+
+    <string name="dialog_param_transcript_desc">Options d’affichage de la transcription dans l’appli.</string>
+    <string name="dialog_param_transcription_1">Options d’affichage de la transcription dans l’appli. Actuellement, la transcription API (alphabet phonétique international) est affichée.</string>
+    <string name="dialog_param_transcription_2">Options pour afficher la transcription dans l’appli. Actuellement, la transcription n’est pas affichée.</string>
+    <string name="dialog_param_transcription_3">Options d’affichage de la transcription dans l’appli.</string>
+
+    <string name="dialog_param_status_display_desc">Options pour afficher les niveaux de maîtrise (inconnu, familier, maîtrisé) dans l’appli.</string>
+    <string name="dialog_param_status_1">Seuls les statuts Familier et Maîtrisé sont affichés dans l’application.</string>
+    <string name="dialog_param_status_2">Tous les statuts (Inconnu, Familier, Maîtrisé) sont affichés dans l’application.</string>
+    <string name="dialog_param_status_3">Les statuts du niveau de maîtrise (inconnu, familier, maîtrisé) ne s’afficheront pas dans l’appli.</string>
+
+    <string name="dialog_param_results_desc">Paramètre d’affichage des résultats dans la description des tests.</string>
+    <string name="dialog_param_results_display">Les derniers résultats et le temps d’accomplissement sont affichés dans la description des tests.</string>
+    <string name="dialog_param_results_hide">La description des tests ne comprend pas les résultats et le temps d’accomplissement.</string>
+
+    <string name="nav_menu_home_text">Accueil</string>
+    <string name="nav_menu_phrasebook_text">Guide de conversation</string>
+
+
+</resources>

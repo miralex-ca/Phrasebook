@@ -60,6 +60,29 @@ class TopicIcons {
         resourcesMap["day"] = R.drawable.ic_topic_day
         resourcesMap["number"] = R.drawable.ic_topic_number
         resourcesMap["counter"] = R.drawable.ic_topic_counter
+        resourcesMap["meet"] = R.drawable.ic_topic_meet
+        resourcesMap["people"] = R.drawable.ic_topic_people
+        resourcesMap["form"] = R.drawable.ic_topic_form
+        resourcesMap["family"] = R.drawable.ic_topic_family
+        resourcesMap["job"] = R.drawable.ic_topic_job
+        resourcesMap["profession"] = R.drawable.ic_topic_tool
+        resourcesMap["language"] = R.drawable.ic_topic_language
+        resourcesMap["transport"] = R.drawable.ic_topic_transport
+        resourcesMap["sightseeing"] = R.drawable.ic_topic_museum
+        resourcesMap["clothes"] = R.drawable.ic_topic_clothes
+        resourcesMap["colors"] = R.drawable.ic_topic_colors
+        resourcesMap["size"] = R.drawable.ic_topic_rule
+        resourcesMap["quality"] = R.drawable.ic_topic_good
+        resourcesMap["utensil"] = R.drawable.ic_topic_ustensils
+        resourcesMap["roadsign"] = R.drawable.ic_topic_roadsign
+        resourcesMap["sad"] = R.drawable.ic_topic_sad
+        resourcesMap["police"] = R.drawable.ic_topic_police
+        resourcesMap["quest"] = R.drawable.ic_topic_quest
+        resourcesMap["house"] = R.drawable.ic_topic_house
+        resourcesMap["arm"] = R.drawable.ic_topic_arm
+        resourcesMap["organ"] = R.drawable.ic_topic_organ
+        resourcesMap["pill"] = R.drawable.ic_topic_pill
+        resourcesMap["person"] = R.drawable.ic_topic_person
 
 
 

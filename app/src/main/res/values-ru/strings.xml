@@ -1,7 +1,14 @@
 <resources>
 
+    <string name="app_name_basic">Разговорник</string>
+    <string name="nav_header_txt_basic">Разговорник</string>
 
-    <string name="app_name">Иностранный язык</string>
+
+    <string name="spanish_phrasebook_app_title">Испанский разговорник</string>
+    <string name="german_phrasebook_app_title">Немецкий разговорник</string>
+    <string name="italian_phrasebook_app_title">Итальянский разговорник</string>
+    <string name="french_phrasebook_app_title">Французский разговорник</string>
+    <string name="english_phrasebook_app_title">Английский разговорник</string>
 
     <string name="action_settings">Settings</string>
 
@@ -11,7 +18,7 @@
     <string name="contact_rate">Оценить приложение</string>
     <string name="contact_website">Посетить веб-сайт</string>
 
-    <string name="nav_home_txt">Главная</string>
+
     <string name="nav_gallery_txt">Галерея</string>
     <string name="nav_starred_txt">Избранное</string>
     <string name="nav_stats_txt">Мои темы</string>
@@ -21,7 +28,6 @@
     <string name="nav_contact_txt">Контакты/отзыв</string>
 
 
-    <string name="title_home_txt">Главная</string>
     <string name="title_gallery_txt">Галерея</string>
     <string name="title_starred_txt">Избранное</string>
     <string name="title_stats_txt">Личный словарь</string>
@@ -254,10 +260,10 @@
 
     <string name="purchase_txt"> </string>
 
-    <string name="purchase_txt_1">Неограниченное количество собственных тем!</string>
-    <string name="purchase_txt_2">Неограниченное количество собственных разделов!</string>
-    <string name="purchase_txt_3">Добавляйте до 100 записей в тему!</string>
-    <string name="purchase_txt_4">Отсутствие рекламы!</string>
+    <string name="purchase_txt_1">Отсутствие рекламы!</string>
+    <string name="purchase_txt_2">Доступ ко всем темам во всех разделах!</string>
+    <string name="purchase_txt_3">Неограниченное количество собственных тем и разделов!</string>
+    <string name="purchase_txt_4">Добавляйте до 100 записей в тему!</string>
 
 
     <string name="get_premium_thank">Спасибо!</string>
@@ -604,7 +610,7 @@
     <string name="dialog_edit_item_less">" Меньше"</string>
     <string name="save_txt">Сохранить</string>
     <string name="edit_item_enter_txt_msg">Введите текст</string>
-    <string name="dialog_edit_item_text">английский текст</string>
+    <string name="dialog_edit_item_text">исходный текст</string>
     <string name="dialog_edit_item_translation">перевод</string>
     <string name="dialog_edit_item_listen">Прослушать</string>
     <string name="dialog_edit_item_nosound">Без звука</string>
@@ -626,7 +632,7 @@
 
     <string name="info_bookmark_list">\nВы можете удалить темы из закладок долгим нажатием на элемент списка, а также из меню темы.\n</string>
 
-    <string name="info_ucat_list">\nВы можете добавлять свои темы для изучения с любыми записями, которые вам потребуются. В обычной версии можно добавить не более 4 тем.
+    <string name="info_ucat_list">\nВы можете добавлять свои темы для изучения с любыми записями, которые вам потребуются. В обычной версии можно добавить не более 5 тем.
         \n\nДобавленные темы и записи не учитываются в общей статистике, но статистику изучения можно посмотреть в самой теме.
         \n\nЧтобы убрать тему из основного списка без удаления, ее можно поместить в архив. При извлечении из архива тема помещается в верх основного списка.
         \n</string>
@@ -708,11 +714,11 @@
     <string name="empty_topics_list_hint">Здесь вы можете создавать свои темы с новыми записями. Вы также сможете создавать разделы, чтобы объединить несколько тем.</string>
 
     <string name="new_topic_hint">Вы можете создавать свои темы и добавлять новые записи. Темы можно добавлять с помощью кнопки ＋ на этой странице.</string>
-    <string name="new_topic_hint_unpaid">Вы можете создавать свои темы и добавлять новые записи. Темы можно добавлять с помощью кнопки ＋ на этой странице. В базовой версии можно добавить до 4 тем.</string>
+    <string name="new_topic_hint_unpaid">Вы можете создавать свои темы и добавлять новые записи. Темы можно добавлять с помощью кнопки ＋ на этой странице. В базовой версии можно добавить до 5 тем.</string>
     <string name="new_topic">＋ Новая тема</string>
 
     <string name="new_section_hint">Вы также можете создавать свои разделы, чтобы объединить несколько тем. Разделы можно добавлять из меню этой страницы.</string>
-    <string name="new_section_hint_unpaid">Вы также можете создавать свои разделы, чтобы объединить несколько тем. Разделы можно добавлять из меню этой страницы. В базовой версии можно добавить до 4 тем.</string>
+    <string name="new_section_hint_unpaid">Вы также можете создавать свои разделы, чтобы объединить несколько тем. Разделы можно добавлять из меню этой страницы. В базовой версии можно добавить до 3 разделов .</string>
     <string name="new_section">＋ Новый раздел</string>
 
     <string name="ucat_limit_hint">Добавлено записей: %d / %d</string>
@@ -776,7 +782,7 @@
 
     <string name="downgrade_priority_section">Снизить приоритет раздела \n «%s» </string>
     <string name="tasks_clear_section">Очистить настройки раздела \n «%s» </string>
-    <string name="nav_tasks_txt">Задания</string>
+    <string name="nav_addition_txt">Дополнения</string>
     <string name="task_dialog_hide">Не показывать задание</string>
     <string name="task_dialog_postpone">Отложить задание</string>
     <string name="task_continue_topic">Продолжайте изучать тему</string>
@@ -874,16 +880,16 @@
     <string name="studied_topcs_count">"Изучаемые темы: "</string>
     <string name="practice_tasks_limit">"Количество заданий: "</string>
     <string name="practice_last_result">"Последний результат:  "</string>
-    <string name="practice_last_date">"       Дата:\u00A0"</string>
+    <string name="practice_last_date">\nВыполнено:\u00A0</string>
 
-    <string name="practice_vocab_test">Лексический тест</string>
-    <string name="practice_vocab_test_desc">Выбор перевода слов и выражений данного раздела</string>
-    <string name="practice_translate_test">Тест на перевод фраз</string>
-    <string name="practice_translate_test_desc">Выбор перевода для фраз из слов и выражений данного раздела</string>
+    <string name="practice_vocab_test">Тест на перевод</string>
+    <string name="practice_vocab_test_desc">Выбор перевода слов и выражений данной темы.</string>
+    <string name="practice_translate_test">Обратный перевод</string>
+    <string name="practice_translate_test_desc">Выбор перевод слов и выражений данной темы.</string>
     <string name="practice_audio_test">Тест на аудирование</string>
-    <string name="practice_audio_test_desc">Перевод озвученных фраз из слов и выражений данного раздела</string>
+    <string name="practice_audio_test_desc">Выбор перевода для озвученных слов и выражений данной темы.</string>
     <string name="practice_buid_test">Тест на составление фраз</string>
-    <string name="practice_build_test_desc">Составление фраз из слов и выражений данного раздела</string>
+    <string name="practice_build_test_desc">Составление фраз из слов и выражений данной темы.</string>
     <string name="practice_tests_settings">Параметры упражнений</string>
     <string name="practice_settings_dialog_title">Параметры</string>
     <string name="practice_setting_difficulty_level">Уровень сложности</string>
@@ -911,5 +917,40 @@
 
     <string name="pr_unstudied_mixed">Добавляются</string>
     <string name="pr_unstudied_mixed_not">Не добавляются</string>
+
+    <string name="info_star_review_txt">\nДля дополнительной работы отдельные записи можно добавить в избранное. В избранное можно добавить, выбрав запись в списке и нажав на иконку со звездочкой в появившемся окне.\n</string>
+
+    <string name="date_format_with_time">yyyy-MM-dd в H:mm</string>
+
+    <string name="topic_access_in_plus_version">\nТема доступна в версии PLUS</string>
+
+    <string name="practice_cards_title">Карточки</string>
+
+    <string name="practice_cards_desc">Изучение отдельных слов и выражений данной темы</string>
+    <string name="dialog_param_transcript_title">Транскрипция</string>
+
+    <string name="dialog_param_status_display_title">Статус изученности</string>
+
+    <string name="dialog_param_results_title">Результаты тестов</string>
+    <string name="dialog_param_result_checkbox_text">Отображать результаты</string>
+
+    <string name="dialog_param_transcript_desc">Настройка отображения транскрипции в приложении.</string>
+    <string name="dialog_param_transcription_1">Настройка отображения транскрипции в приложении. Сейчас отображается международная транскрипция.</string>
+    <string name="dialog_param_transcription_2">Настройка отображения транскрипции в приложении. Сейчас транскрипция не отображается.</string>
+    <string name="dialog_param_transcription_3">Настройка отображения транскрипции в приложении. </string>
+
+    <string name="dialog_param_status_display_desc">Настройка отображения статуса изученности записей в приложении.</string>
+    <string name="dialog_param_status_1">Статус изученности записи будет отображаться, только если запись имеет статус пройденной или изученной.</string>
+    <string name="dialog_param_status_2">Статус изученности записи будет отображаться для записей с любым статусом.</string>
+    <string name="dialog_param_status_3">Статус изученности записи не будет отображаться в приложении.</string>
+
+    <string name="dialog_param_results_desc">Настройка отображения результатов в списке тестов.</string>
+    <string name="dialog_param_results_display">Последние результаты и дата выполнения отображаются в списке тестов темы.</string>
+    <string name="dialog_param_results_hide">В списке тестов темы отображется только описание теста. Результат отображаться не будет.</string>
+
+
+    <string name="nav_menu_home_text">Главная</string>
+    <string name="nav_menu_phrasebook_text">Разговорник</string>
+
 
 </resources>

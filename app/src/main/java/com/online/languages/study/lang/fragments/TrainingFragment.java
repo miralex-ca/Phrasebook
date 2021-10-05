@@ -51,6 +51,8 @@ public class TrainingFragment extends Fragment implements TrainingFragmentMethod
 
         dataManager = new DataManager(activityContext);
 
+        checkAudioTestDisplay();
+
         getCategoryId();
 
         getData();
@@ -131,10 +133,8 @@ public class TrainingFragment extends Fragment implements TrainingFragmentMethod
     }
 
     private void openVocabularyTest() {
-
         openExercise(1);
     }
-
 
     private void openPhraseTest() {
         openExercise(2);
@@ -144,6 +144,16 @@ public class TrainingFragment extends Fragment implements TrainingFragmentMethod
         openExercise(3);
     }
 
+
+    private void checkAudioTestDisplay() {
+
+        boolean display = appSettings.getBoolean("set_speak", true);
+        if (display) {
+            binding.audioTestBox.setVisibility(View.VISIBLE);
+        } else {
+            binding.audioTestBox.setVisibility(View.GONE);
+        }
+    }
 
 
 }

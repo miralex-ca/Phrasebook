@@ -25,53 +25,52 @@ import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_NAV_STRUCTURE;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 
-public class TextActivity extends BaseActivity {
-
-
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
+public class TextActivity extends ThemedActivity {
 
     OpenActivity openActivity;
 
-    String sectionId;
-    String catId;
     NavStructure navStructure;
     NavSection navSection;
 
     String htmlStart = "<!DOCTYPE html><html><head><style>";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
         openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
         setContentView(R.layout.activity_reference);
 
+        String resName = "";
+        String title = "";
 
-        sectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
-        catId = getIntent().getStringExtra(EXTRA_CAT_ID);
-        navStructure = getIntent().getParcelableExtra(EXTRA_NAV_STRUCTURE);
+        if (getIntent().hasExtra("source_id")) {
 
-        NavCategory navCategory = navStructure.getNavCatFromSection(sectionId, catId);
+            resName = getIntent().getStringExtra("source_id");
+            title = getIntent().getStringExtra("page_title");
 
-        setTitle(navCategory.title);
+        } else {
+
+            String sectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
+            String catId = getIntent().getStringExtra(EXTRA_CAT_ID);
+            navStructure = getIntent().getParcelableExtra(EXTRA_NAV_STRUCTURE);
+            NavCategory navCategory = navStructure.getNavCatFromSection(sectionId, catId);
+
+            resName = navCategory.id;
+            title = navCategory.title;
+        }
+
+
+
+        setTitle(title);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         WebView webView = findViewById(R.id.webView);
-
-        String resName = navCategory.id;
 
         Context context = getBaseContext();
 

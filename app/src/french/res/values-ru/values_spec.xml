@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-
     <string name="app_data_file" translatable="false">french/data.json</string>
     <string name="app_structure_file">french/navstructure.json</string>
-
-    <string name="app_name">Французский для всех</string>
-    <string name="nav_header_txt">Французский для всех</string>
 
     <string name="app_info_file">info</string>
 
@@ -17,16 +13,15 @@
 
     <string name="dialog_edit_item_text">французский текст</string>
 
-
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
         <item>@string/set_transcript_ipa</item>
         <item>@string/set_transcript_alternative</item>
         <item>none</item>
     </string-array>
+
     <string name="set_transcript_ipa" translatable="false">ipa</string>
     <string name="set_transcript_alternative" translatable="false">alternative</string>
     <string name="set_transcript_default" translatable="false">@string/set_transcript_ipa</string>
-
 
     <string-array name="set_transcript_list" tools:ignore="InconsistentArrays">
         <item>@string/set_transcript_1</item>

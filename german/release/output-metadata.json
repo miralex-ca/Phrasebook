@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.study.languages.phrasebook.german",
+  "variantName": "germanRelease",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 78,
+      "versionName": "3.4.8",
+      "outputFile": "app-german-release.apk"
+    }
+  ]
+}

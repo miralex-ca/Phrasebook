@@ -1,0 +1,161 @@
+{
+  "params": {
+    "simplified": false,
+    "homecards": false,
+    "gallery": false
+
+  },
+
+  "sections":
+  [
+    {"tag": "section_1", "title": "Communication", "id": "10010",
+      "title_short": "Communication",
+      "desc_short": "",
+      "desc": "",
+      "image": "cat/contacts.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100100010", "title": "Salutations", "image": "greeting"},
+        {"parent": "root", "type": "simple", "id": "100100020", "title": "Formules de politesse", "image": "contact"}
+
+      ]
+    },
+
+    {"tag": "section_22", "title": "Contacts", "id": "10020",
+      "title_short": "Contacts",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/handshake.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Gens"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Famille"},
+        {"parent": "root", "type": "simple", "id": "100200040", "title": "Professions"},
+        {"parent": "root", "type": "simple", "id": "100200050", "title": "Langues", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_2", "title": "Voyage", "id": "10030",
+      "title_short": "Voyage",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/travel.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100300010", "title": "À l'hôtel", "image": "hotel"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "Voyage en avion", "image": "plane"}
+
+      ]
+    },
+
+    {"tag": "section_3", "title": "Ville", "id": "10040",
+      "title_short": "Ville",
+      "desc": "",
+      "desc_short": "",
+      "image": "picto/section_city.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100400010", "title": "Dans la ville", "image": "city"},
+        {"parent": "root", "type": "simple", "id": "100400020", "title": "Organisations", "image": "town"},
+        {"parent": "root", "type": "simple", "id": "100400030", "title": "Sites touristiques", "image": "town"},
+        {"parent": "root", "type": "simple", "id": "100400040", "title": "Transport", "unlocked": "false"}
+
+      ]
+    },
+
+    {"tag": "section_5", "title": "Achats", "id": "10051",
+      "title_short": "Achats",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/shop.png",
+      "categories":
+      [
+
+
+        {"parent": "root", "type": "simple", "id": "100510010", "title": "Magasins", "image": "store"},
+        {"parent": "root", "type": "simple", "id": "100510020", "title": "Vêtements", "image": "cart"}
+
+      ]
+    },
+
+    {"tag": "section_4", "title": "Repas", "id": "10050",
+      "desc": "",
+      "title_short": "Repas",
+      "desc_short": "",
+      "image": "cat/food.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100500010", "title": "Dans un restaurant", "image": "resto"},
+        {"parent": "root", "type": "simple", "id": "100500020", "title": "Repas", "image": "food"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Viande", "image": "meat"},
+        {"parent": "root", "type": "simple", "id": "100500040", "title": "Poisson et fruits de mer", "image": "fish"},
+        {"parent": "root", "type": "simple", "id": "100500050", "title": "Légumes", "image": "vegetable"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Fruits", "image": "fruit"},
+        {"parent": "root", "type": "simple", "id": "100500070", "title": "Boissons", "image": "drink"},
+        {"parent": "root", "type": "simple", "id": "100500080", "title": "Desserts", "image": "dessert"}
+
+      ]
+    },
+
+    {"tag": "section_6", "title": "Santé", "id": "10060",
+      "desc": "",
+      "title_short": "Santé",
+      "desc_short": "",
+      "image": "cat/health.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100600010", "title": "Consulter un médecin", "image": "sick"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "À la pharmacie", "image": "pharmacy"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Pharmacie (vocabulaire)", "image": "medicine"}
+
+      ]
+    },
+
+    {"tag": "section_7", "title": "Panneaux", "id": "10070",
+      "desc": "",
+      "title_short": "Panneaux",
+      "desc_short": "",
+      "image": "cat/sign.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "Panneaux et inscriptions", "image":  "sign"}
+      ]
+    },
+
+    {"tag": "section_8", "title": "Temps", "id": "10080",
+      "desc": "",
+      "title_short": "Temps",
+      "desc_short": "",
+      "image": "cat/time.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Temps", "image":  "time"},
+        {"parent": "root", "type": "simple", "id": "100800020", "title": "Durée", "image":  "timer"},
+        {"parent": "root", "type": "simple", "id": "100800030", "title": "Mois", "image":  "calendar"},
+        {"parent": "root", "type": "simple", "id": "100800040", "title": "Jours de la semaine", "image":  "day"}
+
+      ]
+    },
+
+    {"tag": "section_8", "title": "Nombres", "id": "10090",
+      "desc": "",
+      "title_short": "Nombres",
+      "desc_short": "",
+      "image": "cat/numbers.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100900010", "title": "Nombres", "image":  "number"}
+      ]
+    }
+
+
+  ]
+
+
+}
+

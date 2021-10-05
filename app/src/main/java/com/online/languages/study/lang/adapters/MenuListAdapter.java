@@ -25,7 +25,7 @@ public class MenuListAdapter extends BaseAdapter {
     private int activeItem;
     int hideItem;
     DataManager dataManager;
-    boolean tasksVisible = false;
+    boolean additionsVisible = false;
 
     private int activeItemResourceId;
 
@@ -34,7 +34,7 @@ public class MenuListAdapter extends BaseAdapter {
             R.drawable.ic_nav_gallery,
             R.drawable.ic_nav_star,
             R.drawable.ic_nav_stats,
-            R.drawable.ic_nav_tasks,
+            R.drawable.ic_nav_addition,
             R.drawable.ic_nav_notes,
             R.drawable.ic_nav_settings,
             R.drawable.ic_nav_info,
@@ -59,9 +59,7 @@ public class MenuListAdapter extends BaseAdapter {
         activeItemResourceId = a.getResourceId(0, 0);
         a.recycle();
 
-        String tasksNavSetting = appSettings.getString("set_tasks_nav", context.getString(R.string.set_tasks_nav_default));
-
-        tasksVisible = tasksNavSetting.equals("menu");
+        additionsVisible = context.getResources().getBoolean(R.bool.display_additions);
 
     }
 
@@ -107,11 +105,11 @@ public class MenuListAdapter extends BaseAdapter {
             if (!dataManager.statsSection) view = lInflater.inflate(R.layout.null_item, null);
         }
 
-        if ( position == 4)  {  // hide tasks if false in params
-            if (!tasksVisible) view = lInflater.inflate(R.layout.null_item, null);
+        if ( position == 4)  {  // hide additions if false in params
+            if (!additionsVisible) view = lInflater.inflate(R.layout.null_item, null);
         }
 
-        if ( position == 5 && !tasksVisible)  {  // hide tasks if false in params
+        if ( position == 5 && !additionsVisible)  {  // hide tasks if false in params
             divider.setVisibility(View.VISIBLE);
         }
 

@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">Испанский язык</string>
-    <string name="nav_header_txt">Испанский язык</string>
-    <string name="app_info_file">info_ru</string>
+    <string name="app_name_basic">Испанский разговорник</string>
+    <string name="nav_header_txt_basic">Испанский разговорник</string>
+
+    <string name="nav_header_txt">Испанский разговорник</string>
+    <string name="app_info_file">info</string>
 
     <string name="app_structure_file" translatable="false">spanish/navstructure_ru.json</string>
     <string name="app_data_file" translatable="false">spanish/data_ru.json</string>
 
     <string name="tests_file" translatable="false">spanish/test_quests_ru.json</string>
     <string name="build_tests_file" translatable="false">spanish/test_build_ru.json</string>
+
+    <string name="dialog_edit_item_text">испанский текст</string>
+
+
+    <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="en_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="hist_app_visibility">@integer/attr_view_visible</integer>
+
+    <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
+        <item>@string/set_transcript_ipa</item>
+        <item>@string/set_transcript_alternative</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="set_transcript_list" tools:ignore="InconsistentArrays">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_2</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
+    <string name="set_transcript_default" translatable="false">@string/set_transcript_alternative</string>
 
 </resources>

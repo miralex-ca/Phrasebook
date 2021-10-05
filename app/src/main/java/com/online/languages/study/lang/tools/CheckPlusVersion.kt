@@ -31,7 +31,10 @@ class CheckPlusVersion {
 
     fun isPlusVersion(): Boolean {
         return plusVersion
+    }
 
+    fun isNotPlusVersion(): Boolean {
+        return !plusVersion
     }
 
 

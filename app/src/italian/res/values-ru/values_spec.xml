@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_data_file" translatable="false">italian/data_ru.json</string>
+    <string name="app_structure_file">italian/navstructure_ru.json</string>
+
+    <string name="app_info_file">info</string>
+
+
+    <string name="msg_version_name">(LI, версия %s)</string>
+
+    <string name="dialog_edit_item_text">итальянский текст</string>
+
+    <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
+        <item>@string/set_transcript_ipa</item>
+        <item>@string/set_transcript_alternative</item>
+        <item>none</item>
+    </string-array>
+
+    <string name="set_transcript_ipa" translatable="false">ipa</string>
+    <string name="set_transcript_alternative" translatable="false">alternative</string>
+    <string name="set_transcript_default" translatable="false">@string/set_transcript_alternative</string>
+
+    <string-array name="set_transcript_list" tools:ignore="InconsistentArrays">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_2</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
+    <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
+    <integer name="hist_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="en_app_visibility">@integer/attr_view_visible</integer>
+
+
+</resources>

@@ -11,60 +11,13 @@
  <body>
 
 
-
-<b class="section">Starred</b>
-
- <p>
-
-The starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it.
-
- </p>
-
- <b class="section">Statistics</b>
+<b class="section">Favorites</b>
 
  <p>
- The Statistics page displays your overall progress and sections results, as well as general info about items statuses in the application. You can also complete the General Test that includes tasks with randomly selected items from all sections of the application. Also, you can complete the Revision Test with items (maximum 30) that you had encountered in tests previously.
+
+The starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. You can star an item by clicking the Star icon in the popup which appear when you tap this item in a list. You can also tap and hold the item you want to star or unstar it on the topics page.
+
  </p>
-
-
- <b class="section">Item status</b>
- <p>
- An item may have various statuses according to the score obtained in tests and exercises.
- The score is calculated as follows: +1 point for each correct response, -1 for each incorrect response. The highest score is 4 points.
- Items statuses include:<br><br>
- - 0 points: <i>Unknown</i> <br>
- - 1-2 points: <i>Familiar</i> (highlighted with blue)<br>
- - 3-4 points: <i>Mastered</i> (highlighted with green) <br><br>
- If an item gets the highest score (4 points), errors count will be reset back to 0.
- </p>
-
-
-
-<b class="section">Section total result</b>
-
-<p>
-The total result of a section depends on the average tests result, the number of familiar items and the number of mastered items. Each of these indicators can add the following percentage to the total result:
-
-</p>
-<p>
-- Average tests result: +50% (if all tests have 100% result)</br>
-- Familiar items: +30% (if all items have been studied)</br>
-- Mastered: +20% (if all items have been mastered)
-</p>
-<p>
-You can learn more about how the result for a specific section is calculated on this Section statistics page by clicking on the Total result field.
-</p>
-
-
-
- <b class="section">Mode</b>
-
-  <p>
-
-The application has two modes, Standard and Simplified which can be applied in the Settings. When Simplified mode is enabled, only Beginner level items are displayed in the topics. The active mode can affect your statistics since it takes into account the status of only those items that are available in this mode. A change of mode does not affect test results, search results, error statistics or starred items.
-
-  </p>
-
 
 
 <b class="section">Flashcards</b>
@@ -82,11 +35,20 @@ if you've chosen it in the settings, after you press the button "Check".
 The correct answer will be highlighted with green.
 </p>
 
-
+ <b class="section">Item status</b>
+ <p>
+ An item may have various statuses according to the score obtained in tests and exercises.
+ The score is calculated as follows: +1 point for each correct response, -1 for each incorrect response. The highest score is 4 points.
+ Items statuses include:<br><br>
+ - 0 points: <i>Unknown</i> <br>
+ - 1-2 points: <i>Familiar</i> (highlighted with blue)<br>
+ - 3-4 points: <i>Mastered</i> (highlighted with green) <br><br>
+ If an item gets the highest score (4 points), errors count will be reset back to 0.
+ </p>
 
 <b class="section">Export/Import</b>
 <p>
-You can export your data and have a copy of it safely stored in case you change phone or you need to reset it. This will take a snapshot of your current data and export it as a file. This will allow to restore (import) your data from this backup file in the future. Note that this will errase all the current data and replace it by the new import, so make sure this is what you want before proceeding. You can find this feature on the Settings page.
+You can export your data and have a copy of it safely stored in case you change phone or you need to reset it. This will take a snapshot of your current data and export it as a file. This will allow to restore (import) your data from this backup file in the future. Note that this will remove all the current data and replace it by the new import, so make sure this is what you want before proceeding. You can find this feature on the Settings page.
 
 </p>
 

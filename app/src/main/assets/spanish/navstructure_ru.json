@@ -9,24 +9,37 @@
   "sections":
   [
     {"tag": "section_1", "title": "Общение", "id": "10010",
-      "title_short": "Полезные фразы",
-      "desc_short": "Знакомство, семья, профессии",
-      "desc": "Знакомство, семья, профессии, страны, знание языков",
-
+      "title_short": "Общение",
+      "desc_short": "Приветствия, формулы вежливости",
+      "desc": "Приветствия, формулы вежливости",
       "image": "cat/contacts.png",
       "categories":
       [
-
-        {"parent": "root", "type": "set", "id": "set_1_1", "title": "Основной словарь"},
-
-        {"parent": "root", "type": "simple", "id": "100100010", "title": "Приветствия и прощания","image": "greeting"},
-        {"parent": "root", "type": "simple", "id": "100100020", "title": "Формулы вежливости","image": "contact"},
-        {"parent": "root", "type": "simple", "id": "100100030", "title": "Согласие/Отказ","image": "agree"}
+        {"parent": "root", "type": "simple", "id": "100100010", "title": "Приветствия и прощания", "image": "greeting"},
+        {"parent": "root", "type": "simple", "id": "100100020", "title": "Формулы вежливости", "image": "contact"},
+        {"parent": "root", "type": "simple", "id": "100100030", "title": "Согласие/Отказ", "image": "agree"}
 
       ]
     },
 
-    {"tag": "section_2", "title": "Путешествие", "id": "10020",
+    {"tag": "section_2", "title": "Знакомство, встреча", "id": "10020",
+      "title_short": "Знакомство",
+      "desc": "Семья, профессии",
+      "desc_short": "Семья, профессии",
+      "image": "cat/handshake.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100200010", "title": "Знакомство", "image": "meet"},
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Люди", "image": "people"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Личная информация", "image": "form"},
+        {"parent": "root", "type": "simple", "id": "100200040", "title": "Семья", "image": "family"},
+        {"parent": "root", "type": "simple", "id": "100200050", "title": "Работа, занятие", "image": "job"},
+        {"parent": "root", "type": "simple", "id": "100200060", "title": "Професии", "image": "profession"},
+        {"parent": "root", "type": "simple", "id": "100200070", "title": "Знание языка", "image": "language", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_3", "title": "Путешествие", "id": "10030",
       "desc": "Перелет, гостиница, транспорт",
       "title_short": "Путешествие",
       "desc_short": "Перелет, гостиница, транспорт, экскурсия",
@@ -34,25 +47,25 @@
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "100200010", "title": "В аэропорту", "image": "plane"},
-        {"parent": "root", "type": "simple", "id": "100200020", "title": "В гостинице", "image": "hotel"},
-        {"parent": "root", "type": "simple", "id": "100200030", "title": "Словарь"}
+        {"parent": "root", "type": "simple", "id": "100300010", "title": "В аэропорту", "image": "plane"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "В гостинице", "image": "hotel"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Словарь", "unlocked": "false"}
 
 
       ]
     },
 
-    {"tag": "section_3", "title": "Город", "id": "10030",
-      "desc": "Транспорт, учереждения, экскурсия по городу",
+    {"tag": "section_4", "title": "Город", "id": "10040",
       "title_short": "Город",
+      "desc": "Транспорт, учереждения, экскурсия по городу",
       "desc_short": "Транспорт, учереждения, экскурсия по городу",
       "image": "picto/section_city.png",
       "categories":
       [
-
-        {"parent": "root", "type": "simple", "id": "100300010", "title": "В городе", "image": "city"},
-        {"parent": "root", "type": "simple", "id": "100300020", "title": "Город (словарь)", "image": "town"}
-
+        {"parent": "root", "type": "simple", "id": "100400010", "title": "В городе", "image": "city"},
+        {"parent": "root", "type": "simple", "id": "100400020", "title": "Город (словарь)", "image": "town"},
+        {"parent": "root", "type": "simple", "id": "100400040", "title": "Достопримечательности", "image": "sightseeing"},
+        {"parent": "root", "type": "simple", "id": "100400050", "title": "Транспорт", "image": "transport", "unlocked": "false"}
       ]
     },
 
@@ -64,14 +77,17 @@
       "categories":
       [
 
-
         {"parent": "root", "type": "simple", "id": "100500010", "title": "Магазины", "image": "store"},
-        {"parent": "root", "type": "simple", "id": "100500020", "title": "Магазин (словарь)", "image": "cart"}
+        {"parent": "root", "type": "simple", "id": "100500020", "title": "Магазин (словарь)", "image": "cart"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Одежда", "image": "clothes"},
+        {"parent": "root", "type": "simple", "id": "100500040", "title": "Цвет", "image": "colors"},
+        {"parent": "root", "type": "simple", "id": "100500050", "title": "Размер", "image": "size"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Качества", "image": "quality", "unlocked": "false"}
 
       ]
     },
 
-    {"tag": "section_4", "title": "Еда", "id": "10040",
+    {"tag": "section_6", "title": "Еда", "id": "10060",
       "desc": "Овощи, фрукты, мясо, рыба, десерт, напитки и т.д.",
       "title_short": "Еда",
       "desc_short": "Еда: описание",
@@ -79,20 +95,19 @@
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "100400010", "title": "В ресторане", "image": "resto"},
-        {"parent": "root", "type": "simple", "id": "100400110", "title": "Основные продукты", "image": "food"},
-        {"parent": "root", "type": "simple", "id": "100400020", "title": "Мясо и птица", "image": "meat"},
-        {"parent": "root", "type": "simple", "id": "100400030", "title": "Рыба и морепродкты", "image": "fish"},
-        {"parent": "root", "type": "simple", "id": "100400040", "title": "Овощи", "image": "vegetable"},
-        {"parent": "root", "type": "simple", "id": "100400050", "title": "Фрукты, ягоды, орехи", "image": "fruit"},
-        {"parent": "root", "type": "simple", "id": "100400060", "title": "Напитки", "image": "drink"},
-        {"parent": "root", "type": "simple", "id": "100400070", "title": "Десерт", "image": "dessert"}
-
+        {"parent": "root", "type": "simple", "id": "100600010", "title": "В ресторане", "image": "resto"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "Основные продукты", "image": "food"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Мясо и птица", "image": "meat"},
+        {"parent": "root", "type": "simple", "id": "100600040", "title": "Рыба и морепродукты", "image": "fish"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Овощи", "image": "vegetable"},
+        {"parent": "root", "type": "simple", "id": "100600060", "title": "Фрукты, ягоды, орехи", "image": "fruit"},
+        {"parent": "root", "type": "simple", "id": "100600070", "title": "Напитки", "image": "drink"},
+        {"parent": "root", "type": "simple", "id": "100600080", "title": "Десерт", "image": "dessert"},
+        {"parent": "root", "type": "simple", "id": "100600090", "title": "Столовые приборы", "image": "utensil", "unlocked": "false"}
       ]
     },
 
-
-    {"tag": "section_6", "title": "Здоровье", "id": "10060",
+    {"tag": "section_7", "title": "Здоровье", "id": "10070",
       "desc": "Части тела, органы, болезни, приём у врача и т.д.",
       "title_short": "Здоровье",
       "desc_short": "Части тела, органы, болезни, приём у врача и т.д.",
@@ -100,54 +115,80 @@
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "100600010", "title": "У врача", "image": "sick"},
-        {"parent": "root", "type": "simple", "id": "100600020", "title": "В аптеке", "image": "pharmacy"},
-        {"parent": "root", "type": "simple", "id": "100600030", "title": "В аптеке (словарь)", "image": "medicine"}
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "У врача", "image": "sick"},
+        {"parent": "root", "type": "simple", "id": "100700020", "title": "Части тела", "image": "arm"},
+        {"parent": "root", "type": "simple", "id": "100700030", "title": "Органы и ткани", "image": "organ"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "В аптеке", "image": "pharmacy"},
+        {"parent": "root", "type": "simple", "id": "100700050", "title": "В аптеке (словарь)", "image": "pill", "unlocked": "false"}
 
       ]
     },
 
-    {"tag": "section_7", "title": "Вывески и знаки", "id": "10070",
+    {"tag": "section_8", "title": "Экстренная ситуация", "id": "10080",
       "desc": "",
-      "title_short": "",
+      "title_short": "Экстренная ситуация",
+      "desc_short": "",
+      "image": "cat/emergency.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Экстренная ситуация", "image":  "sad"},
+        {"parent": "root", "type": "simple", "id": "100800020", "title": "Полиция", "image":  "police", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_9", "title": "Вывески и знаки", "id": "10090",
+      "desc": "Указатели, дорожные знаки",
+      "title_short": "Вывески и знаки",
       "desc_short": "",
       "image": "cat/sign.png",
       "categories":
       [
-
-        {"parent": "root", "type": "simple", "id": "100700010", "title": "Вывески", "image":  "sign"}
-
+        {"parent": "root", "type": "simple", "id": "100900010", "title": "Вывески", "image":  "sign"},
+        {"parent": "root", "type": "simple", "id": "100900020", "title": "Дорожные знаки", "image": "roadsign", "unlocked": "false"}
       ]
     },
 
-    {"tag": "section_8", "title": "Время", "id": "10080",
-      "desc": "Комнаты, мебель, посуда, бытовые приборы",
-      "title_short": "Дом",
-      "desc_short": "Комнаты, мебель, посуда, бытовые приборы",
+    {"tag": "section_10", "title": "Время", "id": "10100",
+      "desc": "",
+      "title_short": "Время",
+      "desc_short": "Выражения времени, продолжительности",
       "image": "cat/time.png",
       "categories":
       [
 
-        {"parent": "root", "type": "simple", "id": "100800010", "title": "Время", "image":  "time"},
-        {"parent": "root", "type": "simple", "id": "100800020", "title": "Продолжительность", "image":  "timer"},
-        {"parent": "root", "type": "simple", "id": "100800030", "title": "Месяцы", "image":  "calendar"},
-        {"parent": "root", "type": "simple", "id": "100800040", "title": "Дни недели", "image":  "day"}
-
-
+        {"parent": "root", "type": "simple", "id": "101000010", "title": "Время", "image":  "time"},
+        {"parent": "root", "type": "simple", "id": "101000020", "title": "Продолжительность", "image":  "timer"},
+        {"parent": "root", "type": "simple", "id": "101000030", "title": "Дни недели", "image":  "day"},
+        {"parent": "root", "type": "simple", "id": "101000040", "title": "Месяцы", "image":  "calendar"}
       ]
     },
 
-    {"tag": "section_8", "title": "Числительные", "id": "10090",
-      "desc": "Комнаты, мебель, посуда, бытовые приборы",
-      "title_short": "Дом",
-      "desc_short": "Комнаты, мебель, посуда, бытовые приборы",
+
+
+    {"tag": "section_11", "title": "Местоимения, вопросы", "id": "10110",
+      "desc": "",
+      "title_short": "Местоимения, вопросы",
+      "desc_short": "",
+      "image": "cat/questions.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "101100010", "title": "Личные местоимения", "image":  "person"},
+        {"parent": "root", "type": "simple", "id": "101100020", "title": "Притяжательные местоимения"},
+        {"parent": "root", "type": "simple", "id": "101100030", "title": "Вопросы", "image":  "quest", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_12", "title": "Числительные", "id": "10120",
+      "desc": "Количественные, порядковые числительные",
+      "title_short": "Числительные",
+      "desc_short": "",
       "image": "cat/numbers.png",
       "categories":
       [
-
-        {"parent": "root", "type": "simple", "id": "100900010", "title": "Числительные", "image":  "number"}
-
-
+        {"parent": "root", "type": "simple", "id": "101200010", "title": "Числительные от 1 до 10", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200020", "title": "Числительные  от 11 до 100", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200030", "title": "Числительные  от 100 и более", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200040", "title": "Порядковые числительные", "image":  "counter", "unlocked": "false"}
       ]
     }
 

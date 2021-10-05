@@ -2,7 +2,17 @@
 
 <resources>
 
+    <string name="app_name_basic">Travel Phrasebook</string>
+    <string name="nav_header_txt_basic">Travel Phrasebook</string>
 
+    <string name="spanish_phrasebook_app_title">Spanish Phrasebook</string>
+    <string name="german_phrasebook_app_title">German Phrasebook</string>
+    <string name="italian_phrasebook_app_title">Italian Phrasebook</string>
+    <string name="french_phrasebook_app_title">French Phrasebook</string>
+    <string name="english_phrasebook_app_title">English Phrasebook</string>
+
+    <string name="voc_ex_link_first_desc">Choose the translation</string>
+    <string name="voc_ex_link_second_desc">Choose the translation</string>
 
     <string name="action_settings">Settings</string>
 
@@ -12,18 +22,16 @@
     <string name="contact_rate">Rate the app</string>
     <string name="contact_website">Visit website</string>
 
-    <string name="nav_home_txt">Home</string>
     <string name="nav_gallery_txt">Gallery</string>
     <string name="nav_starred_txt">Favorites</string>
-    <string name="nav_stats_txt">Statistics</string>
+    <string name="nav_stats_txt">My topics</string>
     <string name="nav_settings_txt">Settings</string>
     <string name="nav_info_txt">Info</string>
     <string name="nav_contact_txt">Contacts/feedback</string>
 
-    <string name="title_home_txt">Home</string>
     <string name="title_gallery_txt">Gallery</string>
     <string name="title_starred_txt">Favorites</string>
-    <string name="title_stats_txt">Statistics</string>
+    <string name="title_stats_txt">Personal vocabulary</string>
     <string name="title_settings_txt">Settings</string>
     <string name="title_info_txt">Info</string>
     <string name="title_contact_txt">Contacts/feedback</string>
@@ -235,9 +243,6 @@
 
     <string name="easy_mode_dialog_title">Simplified mode</string>
 
-
-
-
     <string name="get_premium_txt">Get more with PLUS version!</string>
     <string name="title_activity_get_premium">PLUS version</string>
 
@@ -245,10 +250,11 @@
     <string name="purchase_txt">
     </string>
 
-    <string name="purchase_txt_1">Create an unlimited number of your own topics!</string>
-    <string name="purchase_txt_2">Create an unlimited number of your own sections!</string>
-    <string name="purchase_txt_3">Add up to 100 items in a topic!</string>
-    <string name="purchase_txt_4">Remove all ads!</string>
+    <string name="purchase_txt_1">Remove all ads!</string>
+    <string name="purchase_txt_2">Get the access to all topics!</string>
+    <string name="purchase_txt_3">Create an unlimited number of your own topics and sections!</string>
+    <string name="purchase_txt_4">Add up to 100 items in a topic!</string>
+
 
     <string name="get_premium_thank">Thank you!</string>
     <string name="get_premium_continue">Continue</string>
@@ -331,7 +337,6 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="starred_gallery_info">info ( %1$d ).</string>
 
     <string name="info_gallery_txt">\nInfo  \n</string>
-
 
 
     <string name="maps_info">\Info\n</string>
@@ -630,7 +635,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="info_bookmark_list">\nYou can remove a topic from bookmarks by long clicking on a list item, or you can remove the bookmark in the topic menu.\n</string>
 
-    <string name="info_ucat_list">\nYou can add your own topics with any items you need. In the basic version, you can add up to 4 topics.
+    <string name="info_ucat_list">\nYou can add your own topics with any items you need. In the basic version, you can add up to 5 topics.
         \n\nTopics and items that you add are not included in the general statistics, but their test results and item statuses can be viewed on the topic\'s page.
        \n\nTo remove a topic from the main list without deleting it, you can archive it. If you unarchive a topic, it is placed at the top of the main list.  \n</string>
 
@@ -706,11 +711,11 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="empty_topics_list_hint">Here you can create your own topics with your words and phrases. You will also be able to create sections to group multiple topics.</string>
 
     <string name="new_topic_hint">You can create your own topics and add new items.  New topics can be added with the ＋ button on this page.</string>
-    <string name="new_topic_hint_unpaid">You can create your own topics and add new items.  New topics can be added with the ＋ button on this page. The basic version allows to add up to 4 topics.</string>
+    <string name="new_topic_hint_unpaid">You can create your own topics and add new items.  New topics can be added with the ＋ button on this page. The basic version allows to add up to 5 topics.</string>
     <string name="new_topic">＋ New topic</string>
 
     <string name="new_section_hint">You can also create sections to group multiple topics. New sections can be added from the menu of this page.</string>
-    <string name="new_section_hint_unpaid">You can also create sections to group multiple topics. New sections can be added from the menu of this page. The basic version allows to add up to 2 sections.</string>
+    <string name="new_section_hint_unpaid">You can also create sections to group multiple topics. New sections can be added from the menu of this page. The basic version allows to add up to 3 sections.</string>
     <string name="new_section">＋ New section</string>
     <string name="ucat_limit_hint">Items added: %d / %d</string>
 
@@ -778,7 +783,7 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="downgrade_priority_section">Lower the priority of the section \n «%s» </string>
     <string name="tasks_clear_section">Clear the settings for the section \n «%s» </string>
-    <string name="nav_tasks_txt">Tasks</string>
+    <string name="nav_addition_txt">Additions</string>
     <string name="task_dialog_hide">Do not display this task</string>
     <string name="task_dialog_postpone">Postpone this task</string>
     <string name="task_continue_topic">Continue learning the topic</string>
@@ -870,17 +875,17 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="studied_topcs_count">"Studied topics: "</string>
     <string name="practice_tasks_limit">"Tasks limit: "</string>
     <string name="practice_last_result">"Last result:  "</string>
-    <string name="practice_last_date">"       Date: "</string>
+    <string name="practice_last_date">\nCompleted:\u00A0</string>
 
 
-    <string name="practice_vocab_test">Vocabulary test</string>
+    <string name="practice_vocab_test">Translation test</string>
     <string name="practice_vocab_test_desc">Choose the translation for words and expressions from this section</string>
-    <string name="practice_translate_test">Phrases translation test</string>
-    <string name="practice_translate_test_desc">Choose the translation for phrases including words and expressions from this section</string>
+    <string name="practice_translate_test">Reverse translation</string>
+    <string name="practice_translate_test_desc">Choose the translation for words and expressions from this section</string>
     <string name="practice_audio_test">Listening test</string>
-    <string name="practice_audio_test_desc">Listen and translate phrases including words and expressions from this section</string>
+    <string name="practice_audio_test_desc">Listen and translate words and expressions from this topic</string>
     <string name="practice_buid_test">Build sentences</string>
-    <string name="practice_build_test_desc">Build phrases including words and expressions from this section</string>
+    <string name="practice_build_test_desc">Build phrases including words and expressions from this topic.</string>
     <string name="practice_tests_settings">Training settings</string>
     <string name="practice_settings_dialog_title">Training settings</string>
     <string name="practice_setting_difficulty_level">Difficulty level</string>
@@ -908,5 +913,42 @@ This will allow to restore your data from a previous backup. Note that this will
 
     <string name="pr_unstudied_mixed">Added</string>
     <string name="pr_unstudied_mixed_not">Not added</string>
+
+    <string name="info_star_review_txt">\nThe starred items feature allows you to bookmark specific items so you can quickly find them under Starred section from the main menu. \n\nYou can star an item by clicking the Star icon in the popup which appears when you tap this item in a list.
+\n</string>
+
+    <string name="date_format_with_time">MMM d, yyyy, \'at\' H:mm </string>
+
+    <string name="topic_access_in_plus_version">\nThe access to this topic is available in PLUS version.</string>
+
+    <string name="practice_cards_title">Flashcards</string>
+
+    <string name="practice_cards_desc">Review and learn words and expressions from this topic one by one.</string>
+
+    <string name="dialog_param_transcript_title">Transcription</string>
+
+    <string name="dialog_param_status_display_title">Items statuses</string>
+
+    <string name="dialog_param_results_title">Tests results</string>
+    <string name="dialog_param_result_checkbox_text">Display results</string>
+
+    <string name="dialog_param_transcript_desc">Options for displaying the transcription in the application.</string>
+    <string name="dialog_param_transcription_1">Options for displaying the transcription in the app. Currently, the IPA (international phonetic alphabet) transcription is displayed.</string>
+    <string name="dialog_param_transcription_2">Options for displaying the transcription in the app. The transcription is currently not displayed.</string>
+    <string name="dialog_param_transcription_3">Options for displaying the transcription in the application.</string>
+
+    <string name="dialog_param_status_display_desc">Options for displaying the items statuses (unknown, familiar, mastered) in the application.</string>
+    <string name="dialog_param_status_1">Only familiar and mastered statuses are displayed in the application.</string>
+    <string name="dialog_param_status_2">All statuses (unknown, familiar, mastered) are displayed in the application.</string>
+    <string name="dialog_param_status_3">Items statuses (unknown, familiar, mastered) won\'t display in the application.</string>
+
+    <string name="dialog_param_results_desc">Setting for displaying completion results in the tests description.</string>
+    <string name="dialog_param_results_display">Last results and completion time are displayed in the tests description.</string>
+    <string name="dialog_param_results_hide">Tests description won\'t include the completion results.</string>
+
+
+    <string name="nav_menu_home_text">Home</string>
+    <string name="nav_menu_phrasebook_text">Phrasebook</string>
+
 
 </resources>

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
-import static com.online.languages.study.lang.Constants.SHOW_GRAMMAR;
+
 
 
 public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.MyViewHolder> {
@@ -38,6 +38,7 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
     private DataManager dataManager;
 
     boolean speaking;
+    boolean displayGrammar;
 
     CatActivity catActivity;
     UserListActivity starredActivity;
@@ -121,6 +122,7 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
         dataManager = new DataManager(context);
 
         grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit);
+        displayGrammar = context.getResources().getBoolean(R.bool.display_grammar);
 
     }
 
@@ -173,7 +175,7 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
 
         String grammar = dataItem.grammar.replace("n. ", "").replace(".", "");
 
-        if (SHOW_GRAMMAR && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
+        if (displayGrammar && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
             holder.grammar.setVisibility(View.VISIBLE);
             holder.grammar.setText(grammar);
         } else {

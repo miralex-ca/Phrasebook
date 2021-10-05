@@ -79,50 +79,9 @@
             android:defaultValue="@string/set_transcript_default"
             android:dialogTitle="@string/set_transcript_dialog" />
 
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="set_tasks_nav"
-            android:title="@string/set_tasks_nav_title"
-            android:summary="@string/set_tasks_nav_summary"
-            android:entries="@array/set_tasks_nav_list"
-            android:entryValues="@array/set_tasks_nav_values"
-            android:defaultValue="@string/set_tasks_nav_default"
-            android:dialogTitle="@string/set_tasks_nav_dialog_title" />
-
 
     </PreferenceCategory>
 
-
-
-    <PreferenceCategory
-        android:key="data"
-        android:title="@string/set_data_section"
-
-        >
-
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="data_mode"
-            android:title="@string/set_data_mode_title"
-            android:summary="@string/set_data_mode_summary"
-            android:entries="@array/set_data_mode_list"
-            android:entryValues="@array/set_data_mode_values"
-            android:defaultValue="@string/set_data_mode_default_value"
-            android:dialogTitle="@string/set_data_mode_dialog_title" />
-
-
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="data_select"
-            android:title="@string/set_data_control_title"
-            android:summary="@string/set_data_control_summary"
-            android:entries="@array/set_data_control_tests_list"
-            android:entryValues="@array/data_control_tests_list_values"
-            android:defaultValue="dates"
-            android:dialogTitle="@string/set_data_control_dialog_title" />
-
-
-    </PreferenceCategory>
 
 
     <PreferenceCategory
@@ -140,21 +99,6 @@
             android:entryValues="@array/starred_list_sort_values"
             android:dialogTitle="@string/set_starred_sort_title_dialog" />
 
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="starred_save_type"
-            android:title="@string/set_starred_save_title"
-            android:summary="@string/set_starred_save_sum"
-            android:defaultValue="0"
-            android:entries="@array/starred_list_save"
-            android:entryValues="@array/starred_list_save_values"
-            android:dialogTitle="@string/set_starred_save_title_dialog" />
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="false"
-            android:key="show_starred_results"
-            android:title="@string/starred_lessons_results"
-            android:defaultValue="true" />
 
         <SwitchPreferenceCompat
             app:iconSpaceReserved="false"
@@ -182,34 +126,6 @@
                 android:targetClass="com.online.languages.study.lang.BackupActivity"/>
         </PreferenceScreen>
 
-
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="test_all_limit"
-            android:title="@string/set_test_all_limit_title"
-            android:summary="@string/set_test_all_limit_summary"
-            android:dialogTitle="@string/set_test_all_limit_dialog_title"
-            android:entries="@array/set_test_all_limit_list"
-            android:entryValues="@array/set_test_all_limit_values"
-            android:defaultValue="@string/set_test_all_limit_default"
-            />
-
-        <SwitchPreferenceCompat
-            app:iconSpaceReserved="false"
-            android:key="set_review_card"
-            android:title="@string/set_review_title"
-            android:summary = "@string/set_review_summary"
-            android:defaultValue="@bool/showReview" />
-
-        <ListPreference
-            app:iconSpaceReserved="false"
-            android:key="control_tests"
-            android:title="@string/set_control_title"
-            android:summary="@string/set_control_summary"
-            android:entries="@array/set_control_tests_list"
-            android:entryValues="@array/control_tests_list_values"
-            android:defaultValue="1"
-            android:dialogTitle="@string/set_control_dialog_title" />
 
         <Preference
             app:iconSpaceReserved="false"
@@ -318,6 +234,45 @@
             android:summaryOff ="Не отображается"
             android:summaryOn ="Отображается в строке состояния"
             android:defaultValue="false" />
+
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="data_mode"
+            android:title="@string/set_data_mode_title"
+            android:summary="@string/set_data_mode_summary"
+            android:entries="@array/set_data_mode_list"
+            android:entryValues="@array/set_data_mode_values"
+            android:defaultValue="@string/set_data_mode_default_value"
+            android:dialogTitle="@string/set_data_mode_dialog_title" />
+
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="data_select"
+            android:title="@string/set_data_control_title"
+            android:summary="@string/set_data_control_summary"
+            android:entries="@array/set_data_control_tests_list"
+            android:entryValues="@array/data_control_tests_list_values"
+            android:defaultValue="dates"
+            android:dialogTitle="@string/set_data_control_dialog_title" />
+
+        <ListPreference
+            app:iconSpaceReserved="false"
+            android:key="starred_save_type"
+            android:title="@string/set_starred_save_title"
+            android:summary="@string/set_starred_save_sum"
+            android:defaultValue="0"
+            android:entries="@array/starred_list_save"
+            android:entryValues="@array/starred_list_save_values"
+            android:dialogTitle="@string/set_starred_save_title_dialog" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            android:key="show_starred_results"
+            android:title="@string/starred_lessons_results"
+            android:defaultValue="true" />
+
 
     </PreferenceCategory>
 

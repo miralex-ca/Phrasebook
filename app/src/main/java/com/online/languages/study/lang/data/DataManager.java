@@ -50,8 +50,8 @@ import static com.online.languages.study.lang.Constants.TEST_OPTIONS_NUM;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
-
 
 public class DataManager {
 
@@ -126,6 +126,11 @@ public class DataManager {
         if (context.getResources().getBoolean(R.bool.changeTranscript)) {
             type = appSettings.getString("set_transript", defaultTrans);
         }
+
+        if (!context.getResources().getBoolean(R.bool.display_transcription_settings)) {
+            type = "none";
+        }
+
         return type;
     }
 
@@ -133,7 +138,7 @@ public class DataManager {
 
         String text = dataItem.trans1;
         if (currentTranscriptionType.equals(alternativeTranscription)) text = dataItem.trans2;
-        if (currentTranscriptionType.equals("none")) text = "";
+        if (currentTranscriptionType.equals("none") && !dataItem.id.contains(UD_PREFIX)) text = "";
 
         return text;
     }
@@ -1002,6 +1007,15 @@ public class DataManager {
             locale = new Locale("es");
         }
 
+        if (localString.equals("italian")) {
+            locale = new Locale("it");
+        }
+
+        if (localString.equals("german")) {
+
+            locale = Locale.GERMAN;
+        }
+
         if (localString.equals("russian")) {
             locale = new Locale("ru");
         }
@@ -1251,12 +1265,11 @@ public class DataManager {
             String replace = "replace";
 
 
-
             if (time == 0)  {
                 replace = "none";
             }
             else {
-                desc += context.getString(R.string.practice_last_date) + formatToDate(time) ;
+                desc += context.getString(R.string.practice_last_date) + testDateFormat(time) ;
             }
 
            // Log.i("Quest", "res"  + testData[1] + "% , time " + time + " - " + replace);
@@ -1271,9 +1284,11 @@ public class DataManager {
         return data;
     }
 
-    public String formatToDate (long time) {
+    public String testDateFormat (long time) {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String format = context.getString(R.string.date_format_with_time);
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.CANADA);
 
         return  sdf.format(new Date(time));
     }

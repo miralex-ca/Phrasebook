@@ -108,6 +108,7 @@ open class RecommendListAdapter(context: Context?, var list: ArrayList<TaskItem>
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
         val task = list[position]
 
         when (holder.itemViewType) {

@@ -91,8 +91,8 @@ public class HomeFragment extends Fragment {
             recycleType = 3;
 
             if (getResources().getBoolean(R.bool.tablet_land)) {
-                spanCount = 2;
-                recycleType = 1;
+                spanCount = 4;
+               // recycleType = 1;
             }
         }
 

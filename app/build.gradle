@@ -44,8 +44,8 @@ android {
         applicationId "com.study.languages.phrasebook.master"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 60
-        versionName '3.3.0'
+        versionCode 73
+        versionName '3.4.1'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -87,19 +87,25 @@ android {
 
         }
 
-
         english {
-            minSdkVersion 21
+            versionCode 76
+            versionName '3.4.6'
             dimension "mode"
-            applicationId 'com.study.languages.phrasebook.spanish'
+            applicationId 'com.study.languages.phrasebook.english'
             resValue("string", "applicationId", applicationId)
             resConfigs 'fr', 'ru'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_en_ph",
+                    appIconRound: "@mipmap/ic_launcher_en_ph"
+            ]
         }
 
         french {
-            minSdkVersion 21
+            versionCode 77
+            versionName '3.4.7'
             dimension "mode"
-            applicationId 'com.study.languages.phrasebook.spanish'
+            applicationId 'com.study.languages.phrasebook.french'
             resValue("string", "applicationId", applicationId)
             resConfigs 'en', 'ru'
 
@@ -110,15 +116,44 @@ android {
         }
 
         spanish {
-            minSdkVersion 21
+            versionCode 79
+            versionName '3.4.9'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.spanish'
             resValue("string", "applicationId", applicationId)
-            //resConfigs 'en', 'ru'
+            resConfigs 'en', 'ru', 'fr'
 
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher_es",
                     appIconRound: "@mipmap/ic_launcher_es"
+            ]
+        }
+
+        german {
+            versionCode 78
+            versionName '3.4.8'
+            dimension "mode"
+            applicationId 'com.study.languages.phrasebook.german'
+            resValue("string", "applicationId", applicationId)
+            resConfigs 'en', 'ru', 'fr'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_de",
+                    appIconRound: "@mipmap/ic_launcher_de"
+            ]
+        }
+
+        italian {
+            versionCode 79
+            versionName '3.4.9'
+            dimension "mode"
+            applicationId 'com.study.languages.phrasebook.italian'
+            resValue("string", "applicationId", applicationId)
+            resConfigs 'en', 'ru', 'fr'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_it",
+                    appIconRound: "@mipmap/ic_launcher_it"
             ]
         }
 

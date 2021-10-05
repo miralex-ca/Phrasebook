@@ -1,5 +1,4 @@
 
-
     body {padding: 0em; font-size: 1em}
 
     p {font-size: 0.80em; text-align: justify}
@@ -11,73 +10,35 @@
  <body>
 
 
-
 <b class="section">Favoris</b>
 
  <p>
 
-Vous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l'icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste. Vous pouvez également appuyer longuement sur une entrée si vous souhaitez l’ajouter aux Favoris ou retirer des Favoris.
+Vous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l'icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste.
 
  </p>
 
- <b class="section">Statistiques</b>
-
- <p>
-La page Statistiques affiche votre progression globale et les résultats des sections, ainsi que des informations générales sur les statuts des entrées dans l'application. Vous pouvez également compléter le test général qui comprend des entrées de toutes les sections sélectionnées au hasard. En outre, vous pouvez compléter le test de révision avec des éléments (30 maximum) que vous avez rencontrés dans les tests précédemment.
- </p>
-
-
- <b class="section">Item status</b>
- <p>
-Une entrée peut avoir différents statuts selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points.
-
-Les statuts des entrées incluent:<br><br>
- - 0 points: <i>Nouveau</i> <br>
- - 1-2 points: <i>Familier</i> (couleur bleue)<br>
- - 3-4 points: <i>Maîtrisé</i> (couleur verte) <br><br>
-
-Si une entrée obtient le score maximal (4 points), le nombre d'erreurs sera remis à 0.
- </p>
-
-
-
-<b class="section">Résultat total de la section</b>
-
-<p>
-Le résultat total d'une section dépend du résultat moyen des tests, du nombre d'entrées familières et du nombre d'entrées maîtrisés. Chacun de ces indicateurs peut ajouter le pourcentage suivant au résultat total:
-
-</p>
-<p>
-- Résultat moyen des tests: + 50% (si tous les tests ont le résulat de 100%) </br>
-- Entrées familières: + 30% (si tous les entrées ont le statut Familier) </br>
-- Entrées maîtrisées: + 20% (si tous les entrées ont le statut Maîtrisé)
-</p>
-<p>
-Vous pouvez en savoir plus sur la façon dont le résultat d'une section spécifique est calculé sur la page de statistiques de cette section en cliquant sur le Résultat total de la section.
-</p>
-
-
- <b class="section">Mode</b>
-
-  <p>
-
-L'application dispose de deux modes, Standard et Simplifié qui peuvent être appliqués dans les Paramètres. Lorsque le mode simplifié est activé, seules les entrées du niveau élémentaire sont affichés dans les thèmes. Le mode actif peut affecter vos statistiques car il ne prend en compte que le statut des entrées disponibles dans ce mode. Un changement de mode n'affecte pas les résultats des tests, les résultats de la recherche, les statistiques d'erreurs ou la liste de Favoris.
-
-  </p>
-
-
-<b class="section">Cartes</b>
+<b class="section">Cartes éclair</b>
 <p>
 Les cartes peuvent être utiles pour étudier ou réviser les entrées une par une. Par défaut, la traduction d'une entrée est cachée, et votre but est de vous en souvenir. Au cas où vous ne pouvez pas vous rappeler la traduction, vous pouvez la voir en appuyant sur le texte “Afficher la réponse”.
 </p>
-
 
 <b class="section">Tests</b>
 <p>
 Dans les tests, vous devez choisir une réponse parmi 3 à 4 options. La réponse sélectionnée sera évaluée automatiquement ou, si vous l'avez choisi dans les paramètres, après avoir appuyé sur le bouton “Valider”. La bonne réponse sera sera marquée par la couleur verte.
 </p>
 
+ <b class="section">Statut du niveau de maîtrise</b>
+ <p>
+Une entrée peut avoir différents statuts du niveau de maîtrise selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points.
 
+Les niveaux de maîtrise incluent:<br><br>
+ - 0 points: <i>Inconnu</i> <br>
+ - 1-2 points: <i>Familier</i> (couleur bleue)<br>
+ - 3-4 points: <i>Maîtrisé</i> (couleur verte) <br><br>
+
+Si une entrée obtient le score maximal (4 points), le nombre d'erreurs sera remis à 0.
+ </p>
 
 <b class="section">Export/Import</b>
 <p>

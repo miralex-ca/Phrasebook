@@ -46,6 +46,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.fragments.AdditionsFragment;
 import com.online.languages.study.lang.fragments.ContactFragment;
 import com.online.languages.study.lang.fragments.GalleryFragment;
 import com.online.languages.study.lang.fragments.HomeFragment;
@@ -57,7 +58,6 @@ import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
 import com.online.languages.study.lang.fragments.StatsFragment;
-import com.online.languages.study.lang.recommend.TaskFragment;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity
     SectionFragment sectionFragment;
     GalleryFragment galleryFragment;
     NotesFragment notesFragment;
-    TaskFragment taskFragment;
+    AdditionsFragment additionsFragment;
 
     HomeFragment2 homeFragment2;
 
@@ -288,7 +288,6 @@ public class MainActivity extends BaseActivity
 
              bottomNavDisplay();
 
-
         }
 
         fragmentManager = getSupportFragmentManager();
@@ -302,7 +301,7 @@ public class MainActivity extends BaseActivity
         statsFragment = new StatsFragment();
         galleryFragment = new GalleryFragment();
         notesFragment = new NotesFragment();
-        taskFragment = new TaskFragment();
+        additionsFragment = new AdditionsFragment();
         homeFragment2 = new HomeFragment2();
 
         if (savedInstanceState != null) {
@@ -482,20 +481,17 @@ public class MainActivity extends BaseActivity
         }
 
         checkGalleryNavItem(navigationView);
-        checkTasksNavItem(navigationView);
+
+        checkAdditionsNavItem(navigationView);
 
         updateMenuList(menuActiveItem);
     }
 
-    private void checkTasksNavItem(NavigationView navigationView) {
+    private void checkAdditionsNavItem(NavigationView navigationView) {
 
-        String tasksNavSetting = appSettings.getString("set_tasks_nav", getString(R.string.set_tasks_nav_default));
+        boolean displayTaskMenuItem = getResources().getBoolean(R.bool.display_additions);
 
-        boolean displayTaskMenuItem = tasksNavSetting.equals("menu");
-
-       // Toast.makeText(this, "S: " + displayTaskMenuItem, Toast.LENGTH_SHORT).show();
-
-        navigationView.getMenu().findItem(R.id.nav_tasks).setVisible(displayTaskMenuItem);
+        navigationView.getMenu().findItem(R.id.nav_additions).setVisible(displayTaskMenuItem);
 
     }
 
@@ -639,7 +635,7 @@ public class MainActivity extends BaseActivity
         } else if (position == 3) {
             fPages.replace(R.id.content_fragment, homeFragment2, tag);
         } else if (position == 4) {
-            fPages.replace(R.id.content_fragment, taskFragment, tag);
+            fPages.replace(R.id.content_fragment, additionsFragment, tag);
         } else if (position == 5) {
             fPages.replace(R.id.content_fragment, notesFragment, tag);
         } else if (position == 6) {
@@ -720,7 +716,7 @@ public class MainActivity extends BaseActivity
                 //Toast.makeText(MainActivity.this, "Num: " + menuActiveItem + " : "+ activePosition, Toast.LENGTH_SHORT).show();
 
                 checkGalleryNavItem(navigationView);
-                checkTasksNavItem(navigationView);
+                checkAdditionsNavItem(navigationView);
 
                 //// enable drawer indicator
                 shouldBack = false;
@@ -1011,7 +1007,7 @@ public class MainActivity extends BaseActivity
             position  = 2;
         } else if (id == R.id.nav_statistic) {
             position  = 3;
-        } else if (id == R.id.nav_tasks) {
+        } else if (id == R.id.nav_additions) {
             position  = 4;
         } else if (id == R.id.nav_notes) {
             position  = 5;

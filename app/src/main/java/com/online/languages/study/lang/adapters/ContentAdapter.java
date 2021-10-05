@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
-import static com.online.languages.study.lang.Constants.SHOW_GRAMMAR;
 
 
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHolder> {
@@ -32,6 +31,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
     private boolean autoDivider;
 
     int grammarCharLimit = 10;
+    boolean displayGrammar;
 
     public boolean charLayout = false;
 
@@ -85,7 +85,9 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
         }
 
         grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit);
-        if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit_compact);;
+        if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) grammarCharLimit = context.getResources().getInteger(R.integer.card_grammar_limit_compact);
+
+        displayGrammar = context.getResources().getBoolean(R.bool.display_grammar);
 
     }
 
@@ -161,7 +163,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.MyViewHo
 
         String grammar = dataItem.grammar.replace("n. ", "").replace(".", "");
 
-        if (SHOW_GRAMMAR && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
+        if (displayGrammar && grammar.length() > 0 && grammar.length() < grammarCharLimit) {
             holder.grammar.setVisibility(View.VISIBLE);
             holder.grammar.setText(grammar);
         } else {

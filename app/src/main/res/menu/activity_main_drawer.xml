@@ -29,9 +29,9 @@
     <group android:id="@+id/grp2" android:checkableBehavior="single" >
 
         <item
-            android:id="@+id/nav_tasks"
-            android:icon="@drawable/ic_nav_tasks"
-            android:title="@string/nav_tasks_txt" />
+            android:id="@+id/nav_additions"
+            android:icon="@drawable/ic_nav_addition"
+            android:title="@string/nav_addition_txt" />
 
         <item
             android:id="@+id/nav_notes"

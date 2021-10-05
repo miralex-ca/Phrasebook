@@ -58,17 +58,6 @@ public class PrefsFragment extends PreferenceFragmentCompat {
 
         DataManager dataManager = new DataManager(getActivity(), true);
 
-        Preference data = getPreferenceManager().findPreference("data");
-
-        if (dataManager.simplified) {
-            screen.removePreference(data);
-            controlTests.setVisible(false);
-            sortPers.setVisible(false);
-        }
-
-        if (!dataManager.dataLevels) {
-            screen.removePreference(data);
-        }
 
 
         SharedPreferences appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -91,19 +80,6 @@ public class PrefsFragment extends PreferenceFragmentCompat {
             return true;
         });
 
-
-        final ListPreference tasks = getPreferenceManager().findPreference("set_tasks_nav");
-
-        if (tasks != null) {
-            tasks.setOnPreferenceChangeListener((preference, newValue) -> {
-                new android.os.Handler().postDelayed(() -> {
-
-                    ((MainActivity) getActivity()).updateMenuList();
-
-                }, 200);
-                return true;
-            });
-        }
 
 
         final SwitchPreferenceCompat nightModePref = getPreferenceManager().findPreference("night_mode");
@@ -151,6 +127,15 @@ public class PrefsFragment extends PreferenceFragmentCompat {
         if (!displayMode) {
             if(mode != null)  mode.setVisible(false);
         }
+
+
+        final ListPreference transcriptionsSettings = getPreferenceManager().findPreference("set_transript");
+        boolean displayTranscriptionSettings = getActivity().getResources().getBoolean(R.bool.display_transcription_settings);
+
+        if (!displayTranscriptionSettings) {
+            if(transcriptionsSettings!= null)  transcriptionsSettings.setVisible(false);
+        }
+
 
 
         transitions.setOnPreferenceChangeListener((preference, newValue) -> {

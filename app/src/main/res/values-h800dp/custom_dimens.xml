@@ -83,4 +83,7 @@
 
     <dimen name="ex_option_normal_minheight">60dp</dimen>
 
+    <dimen name="home_card_top_s600">26dp</dimen>
+    <dimen name="home_card_texts_min_height_s600">65dp</dimen>
+
 </resources>

@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.study.languages.french",
-  "variantName": "processFrenchReleaseResources",
+  "applicationId": "com.study.languages.phrasebook.french",
+  "variantName": "frenchRelease",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 54,
-      "versionName": "2.8.2",
+      "versionCode": 77,
+      "versionName": "3.4.7",
       "outputFile": "app-french-release.apk"
     }
   ]

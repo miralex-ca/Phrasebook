@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">@string/italian_phrasebook_app_title</string>
+    <string name="nav_header_txt" translatable="false">@string/italian_phrasebook_app_title</string>
+    <string name="dialog_edit_item_text">Italian text</string>
+
+    <string name="msg_version_abr" translatable="false">IT</string>
+
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~3383613876</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/1244535691</string>
+
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2Yt8Z2fXEI2aktS1jiQyMAPhXOiJWEKt0+Ers/BwlVJ46q4bJdpMuafUBVJk3Uck5v63gVtcC9QVSWeqRGD2lGIKSJbhdrD5326VmYEV7+DGarEYiCPfV9eERPpZhR2mzKfCXpXAHy0pE2A4LR9RAIEcHjra6FFPGK5kWgjTCWpfuVQVwBjk2G1NXTLPtUsvubhlE59HRTdaockLtNO/m9NZzkKyKvTogWo59jnkSHnJjxxZUDiRC4wYuajQhHgOsTEgby5nCE8oK/6oOoXvvnc8r61XFcVix59qKCaRpdcKmXeCHTlUDHZYfVy2H4XHRwwMU/PLKCz0JudRWi7x9wIDAQAB</string>
+
+    <string name="app_market_link" translatable="false">com.study.languages.phrasebook.italian</string>
+
+    <string name="app_data_file" translatable="false">italian/data_en.json</string>
+    <string name="app_structure_file" translatable="false">italian/navstructure_en.json</string>
+
+    <string name="locale_string" translatable="false">italian</string>
+
+    <string name="backup_file_name" translatable="false">ITDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">itdb</string>
+
+    <string name="app_info_file" translatable="false">info_en</string>
+
+    <string name="tabs_starred_display" translatable="false">always</string>
+
+    <bool name="display_transcription_settings">true</bool>
+
+    <string-array name="set_transcript_values" >
+        <item>ipa</item>
+        <item>none</item>
+    </string-array>
+
+    <string-array name="set_transcript_list">
+        <item>@string/set_transcript_1</item>
+        <item>@string/set_transcript_0</item>
+    </string-array>
+
+    <bool name="showReview">false</bool>
+
+    <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
+
+    <!--
+        <string name="tests_file" translatable="false">tests/test_quests_en.json</string>
+        <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
+    -->
+
+    <bool name="display_mode">false</bool>
+
+
+    <color name="colorPrimary">#77CF97</color>
+    <color name="colorPrimaryDark">#5DC683</color>
+    <color name="colorAccent">#FF5F5F</color>
+
+    <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
+    <color name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</color>
+
+    <color name="colorCreateFabBtn">#F67474</color>
+    <color name="colorCreateFabIcon">#FFFFFF</color>
+
+    <color name="colorNavBgStart">#D55353</color>
+    <color name="colorNavBgCenter">#E84949</color>
+    <color name="colorNavBgEnd">#FD6D6D</color>
+
+    <color name="colorContactIcon">#757474</color>
+    <color name="colorPrimaryDialog">#505050</color>
+
+    <color name="colorToolbarText_n">#9CFDBF</color>
+    <color name="colorToolbarSecText_n">#B29CFDBF</color>
+    <color name="colorBtmNav_active_n">#FFFFFF</color>
+    <color name="colorAccent_n">#FD9898</color>
+
+    <color name="colorNavBgStart_n">#712020</color>
+    <color name="colorNavBgCenter_n">#853131</color>
+    <color name="colorNavBgEnd_n">#B82C2C</color>
+
+    <style name="DefaultNightThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_n</item>
+        <item name="colorAccent">@color/colorAccent_n</item>
+
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_n</item>
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_red_n</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_red_n</item>
+
+    </style>
+
+    <style name="ToolBarStyle_n">
+        <item name="android:textColorPrimary">@color/colorToolbarText_n</item>
+        <item name="android:textColorSecondary">@color/colorToolbarSecText_n</item>
+    </style>
+
+    <string-array name="additions">
+        <item>alphabet_es_ru</item>
+    </string-array>
+
+    <string name="title_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
+    <string name="nav_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
+    <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
+
+    <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+
+
+</resources>

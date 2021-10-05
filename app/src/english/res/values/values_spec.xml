@@ -1,26 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~5617902072</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/3283382776</string>
 
-    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkgtUL0w+YuiWAtnMVbLQ1racScuPdv5Jtuf5rU+IODWjq7oMUzxX/yHWW4UiQD0jM7Vl8ppwbp665DHi0LR9sIQsqzJTYvA2dGb+0GE0LHe2xBVzX0eEBhzkXAxIUDgzIdJlchl3/R6eYz4TCr1zMN79oaLmdBD6y5pQE4zBEFHStCb9mJRhxYfqusAl/kjzZSEUIneKVH72zvgQJ0W1iyOKevQNivNGK60PVq4wp/r9iFTtZG5mfpSELIMKETWgJ8w1/KNJLflpswQSrJWbSzua3sjlP+U4VBzvbdRzuMS2Ij3dToXU7Seep3msBYcl8yhmWmy9W/vDTsYGoheapQIDAQAB</string>
+    <string name="app_name" translatable="false">@string/english_phrasebook_app_title</string>
+    <string name="nav_header_txt" translatable="false">@string/english_phrasebook_app_title</string>
 
-    <string name="app_market_link" translatable="false">com.study.languages.english</string>
+    <string name="app_info_file" translatable="false">info_fr</string>
+    
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~1218369552</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/7261033728</string>
 
-    <string name="app_data_file" translatable="false">data_fr.json</string>
-    <string name="app_structure_file" translatable="false">navstructure_fr.json</string>
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtMedEZcNs2dW7XCAIfSasKOyrhk1I4CHBPLJo+0cJAj/yGCTG+NyvrNIaoDZ7MrMwA5tLW51HtqKPa5ccxdMX2yLugGYYbFfXdOBHHMzBi+2PXunBSxtQM3XYY1ZgRTbsvuR0yJ4HBT7flpzHUE2f9FbdQtodOhHpgAhWeykB83XZqGNwevgSVmKcQL33wXebrXqlr1IP8Js28UXJb05srnAFaiQFw7AZatyhtOYHFcSAcaDkHMETLmvInZiK0HQ6Rvnm82l+nNwqzaiJowdQjd2AcBPIzQsINMFaTs/2Q2TsbFdl0XbDKN7P7zRy4Zub1B/L5lOrlWwsaIst/JT4wIDAQAB</string>
+
+    <string name="app_market_link" translatable="false">com.study.languages.phrasebook.english</string>
+
+    <string name="app_data_file" translatable="false">english/data_en.json</string>
+    <string name="app_structure_file" translatable="false">english/navstructure_en.json</string>
+
+    <string-array name="data_files">
+        <item>english/data_en.json</item>
+    </string-array>
+
+    <bool name="display_mode">false</bool>
+
+    <string name="backup_file_name" translatable="false">EPDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">epdb</string>
 
 
-    <string name="backup_file_name" translatable="false">ENDB_backup.jpg</string>
-    <string name="backup_file_format" translatable="false">endb</string>
 
-    <string name="app_name">Learn English</string>
-    <string name="nav_header_txt">Apprenez l\'anglais!</string>
-    <string name="app_info_file">info_fr</string>
-
-    <string name="voc_ex_link_first_desc">Traduction anglais-français</string>
-    <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
+    <string name="msg_version_name">(EP, version %s)</string>
 
     <string name="tabs_starred_display" translatable="false">always</string>
 
@@ -34,25 +42,50 @@
         <item>@string/set_transcript_0</item>
     </string-array>
 
+    <string name="locale_string" translatable="false">english</string>
+
     <bool name="showReview">false</bool>
 
     <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
 
-<!--
-    <string name="tests_file" translatable="false">tests/test_quests_en.json</string>
-    <string name="build_tests_file" translatable="false">tests/test_quests_build_en.json</string>
--->
 
-    <bool name="display_section_practice">false</bool>
-
-    <color name="colorPrimary">#FF7158</color>
-    <color name="colorPrimaryDark">#EF6351</color>
-    <color name="colorAccent">#FF9800</color>
+    <color name="colorPrimary">#6197E6</color>
+    <color name="colorPrimaryDark">#5184D1</color>
+    <color name="colorAccent">#FF5F64</color>
 
     <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
     <color name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</color>
 
+    <color name="colorCreateFabBtn">#FB6969</color>
+    <color name="colorCreateFabIcon">#FFFFFF</color>
 
+    <color name="colorNavBgStart">#D3434F</color>
+    <color name="colorNavBgCenter">#E35858</color>
+    <color name="colorNavBgEnd">#FD6D6D</color>
 
+    <color name="colorContactIcon">#757474</color>
+    <color name="colorPrimaryDialog">#505050</color>
+
+    <style name="DefaultNightThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_red_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_red_n</item>
+        <item name="colorAccent">@color/colorAccent_red_n</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_red_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_red_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_red_n</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_red_n</item>
+
+    </style>
+
+    <string name="title_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
+    <string name="nav_home_txt_basic" translatable="false">@string/nav_menu_home_text</string>
+    <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
+
+    <bool name="display_transcription_settings">true</bool>
 
 </resources>

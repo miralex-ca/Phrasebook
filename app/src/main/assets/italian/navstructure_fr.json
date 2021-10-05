@@ -1,0 +1,203 @@
+{
+  "params": {
+    "simplified": false,
+    "homecards": false,
+    "gallery": false
+
+  },
+
+  "sections":
+  [
+    {"tag": "section_1", "title": "Conversation", "id": "10010",
+      "title_short": "Conversation",
+      "desc_short": "",
+      "desc": "",
+      "image": "cat/contacts.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100100010", "title": "Salutations", "image": "greeting"},
+        {"parent": "root", "type": "simple", "id": "100100020", "title": "Formules de politesse", "image": "contact"},
+        {"parent": "root", "type": "simple", "id": "100100030", "title": "Consentement / Refus", "image": "agree"}
+
+      ]
+    },
+
+    {"tag": "section_2", "title": "Contacts", "id": "10020",
+      "title_short": "Contacts",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/handshake.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100200010", "title": "Faire connaissance", "image": "meet"},
+        {"parent": "root", "type": "simple", "id": "100200020", "title": "Gens", "image": "people"},
+        {"parent": "root", "type": "simple", "id": "100200030", "title": "Informations personnelles", "image": "form"},
+        {"parent": "root", "type": "simple", "id": "100200040", "title": "Famille", "image": "family"},
+        {"parent": "root", "type": "simple", "id": "100200050", "title": "Travail et occupation", "image": "job"},
+        {"parent": "root", "type": "simple", "id": "100200060", "title": "Professions", "image": "profession"},
+        {"parent": "root", "type": "simple", "id": "100200070", "title": "Langues", "image": "language", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_3", "title": "Voyage", "id": "10030",
+      "title_short": "Voyage",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/travel.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100300010", "title": "À l'aéroport", "image": "plane"},
+        {"parent": "root", "type": "simple", "id": "100300020", "title": "À l'hôtel", "image": "hotel"},
+        {"parent": "root", "type": "simple", "id": "100300030", "title": "Vocabulaire", "unlocked": "false"}
+
+      ]
+    },
+
+    {"tag": "section_4", "title": "Ville", "id": "10040",
+      "title_short": "Ville",
+      "desc": "",
+      "desc_short": "",
+      "image": "picto/section_city.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100400010", "title": "Dans la ville", "image": "city"},
+        {"parent": "root", "type": "simple", "id": "100400020", "title": "Ville", "image": "town"},
+        {"parent": "root", "type": "simple", "id": "100400030", "title": "Organisations", "image": "house"},
+        {"parent": "root", "type": "simple", "id": "100400040", "title": "Sites touristiques", "image": "sightseeing"},
+        {"parent": "root", "type": "simple", "id": "100400050", "title": "Transport", "image": "transport", "unlocked": "false"}
+
+      ]
+    },
+
+    {"tag": "section_5", "title": "Achats", "id": "10050",
+      "title_short": "Achats",
+      "desc": "",
+      "desc_short": "",
+      "image": "cat/shop.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100500010", "title": "Magasins", "image": "store"},
+        {"parent": "root", "type": "simple", "id": "100500030", "title": "Vêtements", "image": "clothes"},
+        {"parent": "root", "type": "simple", "id": "100500040", "title": "Couleurs", "image": "colors"},
+        {"parent": "root", "type": "simple", "id": "100500050", "title": "Taille", "image": "size"},
+        {"parent": "root", "type": "simple", "id": "100500060", "title": "Qualité", "image": "quality", "unlocked": "false"}
+
+      ]
+    },
+
+    {"tag": "section_6", "title": "Repas", "id": "10060",
+      "desc": "",
+      "title_short": "Repas",
+      "desc_short": "",
+      "image": "cat/food.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "100600010", "title": "Dans un restaurant", "image": "resto"},
+        {"parent": "root", "type": "simple", "id": "100600020", "title": "Repas", "image": "food"},
+        {"parent": "root", "type": "simple", "id": "100600030", "title": "Viande", "image": "meat"},
+        {"parent": "root", "type": "simple", "id": "100600040", "title": "Poisson et fruits de mer", "image": "fish"},
+        {"parent": "root", "type": "simple", "id": "100600050", "title": "Légumes", "image": "vegetable"},
+        {"parent": "root", "type": "simple", "id": "100600060", "title": "Fruits, baies, noix", "image": "fruit"},
+        {"parent": "root", "type": "simple", "id": "100600070", "title": "Boissons", "image": "drink"},
+        {"parent": "root", "type": "simple", "id": "100600080", "title": "Desserts", "image": "dessert"},
+        {"parent": "root", "type": "simple", "id": "100600090", "title": "Vaisselle et argenterie", "image": "utensil", "unlocked": "false"}
+
+      ]
+    },
+
+    {"tag": "section_7", "title": "Santé", "id": "10070",
+      "desc": "",
+      "title_short": "Santé",
+      "desc_short": "",
+      "image": "cat/health.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100700010", "title": "Consulter un médecin", "image": "sick"},
+        {"parent": "root", "type": "simple", "id": "100700020", "title": "Parties du corps", "image": "arm"},
+        {"parent": "root", "type": "simple", "id": "100700030", "title": "Organes et tissus", "image": "organ"},
+        {"parent": "root", "type": "simple", "id": "100700040", "title": "À la pharmacie", "image": "pharmacy"},
+        {"parent": "root", "type": "simple", "id": "100700050", "title": "Pharmacie (vocabulaire)", "image": "pill", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_8", "title": "Urgence", "id": "10080",
+      "desc": "",
+      "title_short": "Urgence",
+      "desc_short": "",
+      "image": "cat/emergency.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100800010", "title": "Urgence", "image":  "sad"},
+        {"parent": "root", "type": "simple", "id": "100800020", "title": "Police", "image": "police", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_9", "title": "Panneaux, inscriptions", "id": "10090",
+      "desc": "",
+      "title_short": "Panneaux",
+      "desc_short": "",
+      "image": "cat/sign.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "100900010", "title": "Panneaux et inscriptions", "image":  "sign"},
+        {"parent": "root", "type": "simple", "id": "100900020", "title": "Panneaux routiers", "image": "roadsign", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_10", "title": "Temps", "id": "10100",
+      "desc": "",
+      "title_short": "Temps",
+      "desc_short": "",
+      "image": "cat/time.png",
+      "categories":
+      [
+
+        {"parent": "root", "type": "simple", "id": "101000010", "title": "Temps", "image":  "time"},
+        {"parent": "root", "type": "simple", "id": "101000020", "title": "Durée", "image":  "timer"},
+        {"parent": "root", "type": "simple", "id": "101000030", "title": "Jours de la semaine", "image":  "day"},
+        {"parent": "root", "type": "simple", "id": "101000040", "title": "Mois", "image":  "calendar"}
+
+      ]
+    },
+
+    {"tag": "section_10", "title": "Pronoms, questions", "id": "10110",
+      "desc": "",
+      "title_short": "Pronoms, questions",
+      "desc_short": "",
+      "image": "cat/questions.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "101100010", "title": "Pronoms personnels", "image":  "person"},
+        {"parent": "root", "type": "simple", "id": "101100020", "title": "Pronoms possessifs"},
+        {"parent": "root", "type": "simple", "id": "101100030", "title": "Questions", "image":  "quest", "unlocked": "false"}
+      ]
+    },
+
+    {"tag": "section_12", "title": "Nombres", "id": "10120",
+      "desc": "",
+      "title_short": "Nombres",
+      "desc_short": "",
+      "image": "cat/numbers.png",
+      "categories":
+      [
+        {"parent": "root", "type": "simple", "id": "101200010", "title": "Nombres de 1 à 10", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200020", "title": "Nombres de 11 to 100", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200030", "title": "Nombres supérieurs à 100", "image":  "number"},
+        {"parent": "root", "type": "simple", "id": "101200040", "title": "Nombres ordinaux", "image":  "counter", "unlocked": "false"}
+      ]
+    }
+
+
+  ]
+
+
+
+
+
+
+}
+

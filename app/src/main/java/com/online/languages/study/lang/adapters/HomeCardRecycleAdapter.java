@@ -59,6 +59,7 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         View itemView;
 
         itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_grid_item, parent, false);
+
         if (viewType == 2) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_card_item, parent, false);
         }
@@ -79,20 +80,17 @@ public class HomeCardRecycleAdapter extends RecyclerView.Adapter<HomeCardRecycle
         if (type == 2)  viewType = 2;
         if (type == 3)  viewType = 3;
 
-
         return viewType;
     }
-
 
 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-
         NavSection section = sections.get(position);
 
-        holder.title.setText(section.title);
+        holder.title.setText(section.title_short);
 
         if (shortDesc) holder.desc.setText(section.desc_short);
         else holder.desc.setText(section.desc);

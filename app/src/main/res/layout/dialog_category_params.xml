@@ -61,7 +61,6 @@
 
                     <LinearLayout
                         android:orientation="vertical"
-
                         android:layout_marginTop="20dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="5dp"
@@ -71,6 +70,7 @@
                         tools:ignore="UselessParent">
 
                         <LinearLayout
+                            android:id="@+id/transcription_wrap"
                             style="@style/practice_param_item_wrap"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
@@ -91,6 +91,7 @@
                                 />
 
                             <TextView
+                                android:id="@+id/tv_transcription_summary"
                                 android:text="@string/dialog_param_transcript_desc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -120,6 +121,7 @@
                                 />
 
                             <TextView
+                                android:id="@+id/tv_display_status_summary"
                                 android:text="@string/dialog_param_status_display_desc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

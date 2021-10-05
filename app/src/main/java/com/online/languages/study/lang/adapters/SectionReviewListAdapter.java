@@ -58,8 +58,6 @@ public class SectionReviewListAdapter extends RecyclerView.Adapter<SectionReview
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.section_review_list_item, parent, false);
         }
 
-
-
         return new MyViewHolder(itemView);
     }
 

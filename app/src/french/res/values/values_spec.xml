@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_name" translatable="false">@string/french_phrasebook_app_title</string>
+    <string name="nav_header_txt" translatable="false">@string/french_phrasebook_app_title</string>
+
+    <bool name="display_grammar">true</bool>
+    <bool name="display_mode">false</bool>
+
     <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~3943472061</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/1962523591</string>
 
     <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQoM5r73RUBbeBt+c0JbayyjPrOZ7ovbz94UCgxXlseebTxGzP6fnj1MY9W8EjsA3cYhrJOcQGjZKpWKFUC1rBAziNVE6Rn9PA0scNDtAVHAl+ZQfI77O6f2ZdxhE+JmT4zYBuhs3fIWVk7XMZUJ6FKNN9ZgHbip+mEQcQbvQy7f6iaxMmweCTv3wypWmPvNJQBTvgdOZt+v/rPioSbprihbllTn9bzl4Cuu4TwRaFhLa7cE3HWe5qNkKBZ1Dee2U6mgYZoMy1HFC64cYaqNjneXQdJV7hDamjY3LIJbU02e2a42XjA2uT7KU/HSuYFx6fDc6O0Ja+GuQa1xJfqpUQIDAQAB</string>
 
-    <string name="app_market_link" translatable="false">com.study.languages.french</string>
+    <string name="app_market_link" translatable="false">com.study.languages.phrasebook.french</string>
 
     <string name="app_data_file" translatable="false">french/data_en.json</string>
     <string name="app_structure_file" translatable="false">french/navstructure_en.json</string>
@@ -19,17 +25,15 @@
     <string name="backup_file_name" translatable="false">FRDB_backup.jpg</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
-    <string name="app_name" translatable="false">French for Everyone</string>
-    <string name="nav_header_txt" translatable="false">French for Everyone</string>
+
     <string name="app_info_file" translatable="false">info_en</string>
 
-    <string name="msg_version_name">(LF, version %s)</string>
+    <string name="msg_version_name">(FP, version %s)</string>
 
     <string name="voc_ex_link_first_desc" translatable="false">French/English translation</string>
     <string name="voc_ex_link_second_desc" translatable="false">English/French translation </string>
 
     <string name="dialog_edit_item_text">French text</string>
-
     <string name="tabs_starred_display" translatable="false">always</string>
 
     <string-array name="set_transcript_values" >
@@ -46,5 +50,45 @@
     <bool name="showReview">false</bool>
 
     <integer name="ru_app_visibility">@integer/attr_view_visible</integer>
+
+
+    <color name="colorPrimary">#758FEC</color>
+    <color name="colorPrimaryDark">#667FD8</color>
+    <color name="colorAccent">#FF5F84</color>
+
+    <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
+    <color name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red</color>
+
+    <color name="colorCreateFabBtn">#F36F94</color>
+    <color name="colorCreateFabIcon">#FFFFFF</color>
+
+    <color name="colorNavBgStart">#D3436C</color>
+    <color name="colorNavBgCenter">#E35878</color>
+    <color name="colorNavBgEnd">#FD6D8F</color>
+
+    <color name="colorContactIcon">#757474</color>
+    <color name="colorPrimaryDialog">#505050</color>
+
+    <style name="DefaultNightThemeModes" parent="NightTheme">
+        <item name="ToolBarStyle">@style/ToolBarStyle_red_n</item>
+        <item name="colorToolbarIcon">@color/colorToolbarText_red_n</item>
+        <item name="colorAccent">@color/colorAccent_red_n</item>
+        <item name="colorBtmNav_active">@color/colorBtmNav_active_red_n</item>
+        <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red_n</item>
+
+        <item name="colorNavBgStart">@color/colorNavBgStart_red_n</item>
+        <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
+        <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
+
+        <item name="colorCreateFabBtn">@color/colorCreateFabBtn_red_n</item>
+        <item name="colorCreateFabIcon">@color/colorCreateFabIcon_red_n</item>
+
+    </style>
+
+    <string name="title_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
+    <string name="nav_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
+    <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
+
+    <bool name="display_transcription_settings">true</bool>
 
 </resources>

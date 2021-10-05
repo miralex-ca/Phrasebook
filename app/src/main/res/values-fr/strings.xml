@@ -1,7 +1,14 @@
 <resources>
 
+    <string name="app_name_basic">Guide de conversation</string>
+    <string name="nav_header_txt_basic">Guide de conversation</string>
 
-    <string name="app_name">Apprenez des langues</string>
+    <string name="spanish_phrasebook_app_title">Guide de conversation espagnol</string>
+    <string name="german_phrasebook_app_title">Guide de conversation allemand</string>
+    <string name="italian_phrasebook_app_title">Guide de conversation italien</string>
+    <string name="french_phrasebook_app_title">Guide de conversation français</string>
+    <string name="english_phrasebook_app_title">Guide de conversation anglais</string>
+
 
     <string name="action_settings">Settings</string>
 
@@ -11,18 +18,18 @@
     <string name="contact_rate">Évaluer l’application</string>
     <string name="contact_website">Visiter le site web</string>
 
-    <string name="nav_home_txt">Accueil</string>
+
     <string name="nav_gallery_txt">Galerie</string>
     <string name="nav_starred_txt">Favoris</string>
-    <string name="nav_stats_txt">Statistiques</string>
+    <string name="nav_stats_txt">Mes thèmes</string>
     <string name="nav_settings_txt">Paramètres</string>
     <string name="nav_info_txt">Information</string>
     <string name="nav_contact_txt">Contacts/commentaires</string>
 
-    <string name="title_home_txt">Accueil</string>
+
     <string name="title_gallery_txt">Galerie</string>
     <string name="title_starred_txt">Favoris</string>
-    <string name="title_stats_txt">Statistiques</string>
+    <string name="title_stats_txt">Vocabulaire personnel</string>
     <string name="title_settings_txt">Paramètres</string>
     <string name="title_info_txt">Information</string>
     <string name="title_contact_txt">Contacts/commentaires</string>
@@ -225,7 +232,7 @@
     <string name="msg_mail_subject_error">Signaler une erreur</string>
     <string name="msg_no_browser">Browser is not installed.</string>
     <string name="no_data_msg">Il n’y a pas de données</string>
-    <string name="nav_header_txt">Apprenez des langues! \nC’est cool!</string>
+
     <string name="correct_errors">Corriger les erreurs</string>
     <string name="errors_box_title">Erreurs faites dans les tests</string>
 
@@ -237,7 +244,7 @@
          \n- Entrées maîtrisées: + 20% (si tous les entrées ont le statut Maîtrisé)\n</string>
 
     <string name="progress_info">Ici, vous pouvez voir les statistiques sur les statuts des entrées dans toute l’application ou dans chaque section.
-        \n\n Une entrée peut avoir différents statuts selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points. Les statuts des articles incluent:
+        \n\n Une entrée peut avoir différents statuts selon le score obtenu aux tests et exercices. Le score est calculé comme suit: +1 point pour chaque réponse correcte, -1 pour chaque réponse incorrecte. Le score maximal est de 4 points. Les statuts des entrées incluent:
         \n\n — Nouveau (0 points)\n — Familier (1-2 points)\n — Maîtrisé (3-4 points) </string>
 
     <string name="easy_mode_dialog_title">Mode simplifié</string>
@@ -263,10 +270,10 @@
     <string name="get_premium_activity">Version PLUS</string>
     <string name="purchase_txt"> </string>
 
-    <string name="purchase_txt_1">Créez un nombre illimité de thèmes!</string>
-    <string name="purchase_txt_2">Créez un nombre illimité de sections!</string>
-    <string name="purchase_txt_3">Ajoutez jusqu’à 100 entrées dans un thème!</string>
-    <string name="purchase_txt_4">Pas de pubs!</string>
+    <string name="purchase_txt_1">Pas de pubs!</string>
+    <string name="purchase_txt_2">Obtenez l’accès à tous les thèmes!</string>
+    <string name="purchase_txt_3">Créez un nombre illimité de thèmes et sections!</string>
+    <string name="purchase_txt_4">Ajoutez jusqu’à 100 entrées dans un thème!</string>
 
     <string name="get_premium_thank">Merci beaucoup!</string>
     <string name="get_premium_continue">Continuer</string>
@@ -727,11 +734,11 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="empty_topics_list_hint">Vous pouvez créer vos propres thèmes avec de nouvelles entrées. Vous pouvez également créer des sections pour regrouper plusieurs thèmes.</string>
 
     <string name="new_topic_hint">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page.</string>
-    <string name="new_topic_hint_unpaid">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page. La version basique permet d’ajouter jusqu’à 4 thèmes.</string>
+    <string name="new_topic_hint_unpaid">Vous pouvez créer vos propres thèmes et ajouter de nouvelles entrées. On peut ajouter un nouveau thème à l’aide du bouton ＋ sur cette page. La version basique permet d’ajouter jusqu’à 5 thèmes.</string>
     <string name="new_topic">＋ Nouveau thème</string>
 
     <string name="new_section_hint">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page.</string>
-    <string name="new_section_hint_unpaid">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page. La version basique permet d’ajouter 2 sections.</string>
+    <string name="new_section_hint_unpaid">Vous pouvez également créer des sections pour regrouper plusieurs thèmes. On peut ajouter une section à partir du menu de cette page. La version basique permet d’ajouter 3 sections.</string>
     <string name="new_section">＋ Nouvelle section</string>
 
     <string name="ucat_limit_hint">Entrées ajoutées: %d / %d</string>
@@ -793,7 +800,7 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
 
     <string name="downgrade_priority_section">Réduire la priorité de la section \n «%s» </string>
     <string name="tasks_clear_section">Effacer les réglages pour la section \n «%s» </string>
-    <string name="nav_tasks_txt">Tâches</string>
+    <string name="nav_addition_txt">Additions</string>
     <string name="task_dialog_hide">Ne pas afficher cette tâche</string>
     <string name="task_dialog_postpone">Reporter cette tâche</string>
     <string name="task_continue_topic">Continuez à apprendre le thème</string>
@@ -887,16 +894,16 @@ Les tâches viseront des thèmes et des sections que vous pouvez commencer ou co
     <string name="studied_topcs_count">"Sujets étudiés: "</string>
     <string name="practice_tasks_limit">"Limite de tâches: "</string>
     <string name="practice_last_result">"Dernier résultat:  "</string>
-    <string name="practice_last_date">"       Date: "</string>
+    <string name="practice_last_date">\nComplété:\u00A0</string>
 
-    <string name="practice_vocab_test">Test de vocabulaire</string>
-    <string name="practice_vocab_test_desc">Choisissez la traduction des mots et expressions de cette section</string>
-    <string name="practice_translate_test">Traduction de phrases</string>
-    <string name="practice_translate_test_desc">Choisissez la traduction des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_vocab_test">Test de traduction</string>
+    <string name="practice_vocab_test_desc">Choisissez la traduction des mots et des expressions de ce thème.</string>
+    <string name="practice_translate_test">Traduction inverse</string>
+    <string name="practice_translate_test_desc">Choisissez la traduction des mots et des expressions de ce thème.</string>
     <string name="practice_audio_test">Test d’écoute</string>
-    <string name="practice_audio_test_desc">Écoutez et traduisez des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_audio_test_desc">Écoutez et traduisez des des mots et des expressions de ce thème.</string>
     <string name="practice_buid_test">Construisez des phrases</string>
-    <string name="practice_build_test_desc">Construisez des phrases comprenant des mots et des expressions de cette section</string>
+    <string name="practice_build_test_desc">Construisez des phrases comprenant des mots et des expressions de e thème.</string>
     <string name="practice_tests_settings">Paramètres d’entraînement</string>
     <string name="practice_settings_dialog_title">Paramètres d’entraînement</string>
     <string name="practice_setting_difficulty_level">Niveau de difficulté</string>
@@ -924,6 +931,39 @@ Les tâches viseront des thèmes et des sections que vous pouvez commencer ou co
 
     <string name="pr_unstudied_mixed">Ajoutés</string>
     <string name="pr_unstudied_mixed_not">Pas ajoutés</string>
+
+    <string name="info_star_review_txt">\nVous pouvez marquer des entrées spécifiques pour les trouver plus tard dans la section Favoris du menu principal. Vous pouvez ajouter une entrée aux Favoris en cliquant sur l’icône de l’étoile dans la fenêtre qui apparaît lorsque vous appuyez sur cette entrée dans une liste.\n</string>
+
+    <string name="date_format_with_time">yyyy-MM-dd à H:mm</string>
+
+    <string name="topic_access_in_plus_version">\nL’acces est disponible dans la version PLUS.\n</string>
+
+    <string name="practice_cards_title">Cartes éclair</string>
+
+    <string name="practice_cards_desc">Révisez et apprenez des mots et des expressions de ce thème.</string>
+    <string name="dialog_param_transcript_title">Transcription</string>
+
+    <string name="dialog_param_status_display_title">Statut du niveau de maîtrise</string>
+
+    <string name="dialog_param_results_title">Résultats des tests</string>
+    <string name="dialog_param_result_checkbox_text">Afficher les résultats</string>
+
+    <string name="dialog_param_transcript_desc">Options d’affichage de la transcription dans l’appli.</string>
+    <string name="dialog_param_transcription_1">Options d’affichage de la transcription dans l’appli. Actuellement, la transcription API (alphabet phonétique international) est affichée.</string>
+    <string name="dialog_param_transcription_2">Options pour afficher la transcription dans l’appli. Actuellement, la transcription n’est pas affichée.</string>
+    <string name="dialog_param_transcription_3">Options d’affichage de la transcription dans l’appli.</string>
+
+    <string name="dialog_param_status_display_desc">Options pour afficher les niveaux de maîtrise (inconnu, familier, maîtrisé) dans l’appli.</string>
+    <string name="dialog_param_status_1">Seuls les statuts Familier et Maîtrisé sont affichés dans l’application.</string>
+    <string name="dialog_param_status_2">Tous les statuts (Inconnu, Familier, Maîtrisé) sont affichés dans l’application.</string>
+    <string name="dialog_param_status_3">Les statuts du niveau de maîtrise (inconnu, familier, maîtrisé) ne s’afficheront pas dans l’appli.</string>
+
+    <string name="dialog_param_results_desc">Paramètre d’affichage des résultats dans la description des tests.</string>
+    <string name="dialog_param_results_display">Les derniers résultats et le temps d’accomplissement sont affichés dans la description des tests.</string>
+    <string name="dialog_param_results_hide">La description des tests ne comprend pas les résultats et le temps d’accomplissement.</string>
+
+    <string name="nav_menu_home_text">Accueil</string>
+    <string name="nav_menu_phrasebook_text">Guide de conversation</string>
 
 
 </resources>

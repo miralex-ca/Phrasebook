@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.study.languages.english",
-  "variantName": "processEnglishReleaseResources",
+  "applicationId": "com.study.languages.phrasebook.english",
+  "variantName": "englishRelease",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 60,
-      "versionName": "3.3.0",
+      "versionCode": 76,
+      "versionName": "3.4.6",
       "outputFile": "app-english-release.apk"
     }
   ]

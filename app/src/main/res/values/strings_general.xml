@@ -20,7 +20,6 @@
     <string name="app_detail_file" translatable="false">details.json</string>
     <string name="app_structure_file">navstructure.json</string>
 
-    <string name="app_info_file">info</string>
 
     <string name="tabs_starred_order" translatable="false">normal</string>
     <string name="tabs_starred_display" translatable="false">item_prior</string>
@@ -88,7 +87,6 @@
     <string name="maps_list_title" translatable="false">Карты</string>
 
     <string name="sort_pers_dialog_title" translatable="false">Сортировка</string>
-
 
     <string name="note_title" translatable="false"> Название заметки </string>
 

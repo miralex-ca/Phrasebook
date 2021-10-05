@@ -1,10 +1,9 @@
 package com.online.languages.study.lang;
 
-
 public class Constants {
 
-    public static final boolean PRO = true;  // TODO change in PRO
-    public static final boolean DEBUG = true;  /// should be true to see ads in debug
+    public static final boolean PRO = false;  // TODO change in PRO
+    public static final boolean DEBUG = false;  /// should be true to see ads in debug
     public static final boolean SCREEN_SHOW = false;
 
     public static final String SET_VERSION_TXT = "full_version"; /// check text in settings
@@ -212,8 +211,8 @@ public class Constants {
     public static final int UCAT_LIST_LIMIT = 20;  // normal 20
     public static final int NOTES_LIST_LIMIT = 30;  // normal 30
 
-    public static final int UCATS_UNPAID_LIMIT = 4;  // normal 4
-    public static final int GROUPS_UNPAID_LIMIT = 2;  // normal 2
+    public static final int UCATS_UNPAID_LIMIT = 5;  // normal 4
+    public static final int GROUPS_UNPAID_LIMIT = 3;  // normal 2
 
     public static final int UDATA_LIMIT_UNPAID = 20;  // normal 20
     public static final int UDATA_LIMIT = 100;    // normal 100
@@ -238,5 +237,8 @@ public class Constants {
     public static final String PRACTICE_EXCLUDED_SETTING = "pr_excluded_param_";
 
     public static final int SECTION_REVIEW_MAX_MODE = 1;
+
+    public static final boolean DATA_MODE_HINT_DEFAULT = false;
+
 
 }

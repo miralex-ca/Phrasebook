@@ -44,13 +44,15 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
 
     var sectionTopicsList = ArrayList<Array<String>>()
 
+    var displayTranscriptionSettings = true
+
 
     init {
 
         appSettings = PreferenceManager.getDefaultSharedPreferences(context)
         levelValues = context.resources.getStringArray(R.array.practice_level_array_values)
         levelTitles = context.resources.getStringArray(R.array.practice_level_array)
-
+        displayTranscriptionSettings = context.resources.getBoolean(R.bool.display_transcription_settings)
     }
 
     fun showParams() {
@@ -65,8 +67,16 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
         val statusSpinner = binding!!.statusSpinner
         initStatusSpinner(statusSpinner)
 
-        val transcriptionSpinner = binding!!.transcriptionSpinner
-        initTranscriptionSpinner(transcriptionSpinner)
+        if (displayTranscriptionSettings) {
+            val transcriptionSpinner = binding!!.transcriptionSpinner
+            initTranscriptionSpinner(transcriptionSpinner)
+        } else {
+            binding!!.transcriptionWrap.visibility = View.GONE
+        }
+
+
+
+
 
 
         val builder = AlertDialog.Builder(context)
@@ -90,7 +100,7 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
 
         checkDisplayResultStatus()
 
-        binding!!.checkboxDisplayResults.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding!!.checkboxDisplayResults.setOnCheckedChangeListener { _, isChecked ->
             saveCategoryResult(isChecked)
             resultDisplayStatus(isChecked)
         }
@@ -106,7 +116,12 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
     }
 
     private fun resultDisplayStatus(checked: Boolean) {
-       // TODO check the text
+
+        if (checked) {
+            binding!!.tvResultsSummary.text = context.getString(R.string.dialog_param_results_display)
+        } else {
+            binding!!.tvResultsSummary.text = context.getString(R.string.dialog_param_results_hide)
+        }
     }
 
     private fun saveCategoryResult(value: Boolean) {
@@ -152,7 +167,20 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
     }
 
     private fun checkStatusDisplayDesc(position: Int) {
-       // TODO("Not yet implemented")
+        when (position) {
+            0 -> {
+                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_1)
+            }
+            1 -> {
+                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_2)
+            }
+            2 -> {
+                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_3)
+            }
+            else -> {
+                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_display_desc)
+            }
+        }
     }
 
     //// transcription settings
@@ -194,7 +222,18 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
     }
 
     private fun checkTranscriptionStatusDesc(position: Int) {
-        // TODO("Not yet implemented")
+
+        when (position) {
+            0 -> {
+                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_1)
+            }
+            1 -> {
+                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_2)
+            }
+            else -> {
+                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_3)
+            }
+        }
     }
 
     inner class TranscriptionOnItemSelectedListener : AdapterView.OnItemSelectedListener {

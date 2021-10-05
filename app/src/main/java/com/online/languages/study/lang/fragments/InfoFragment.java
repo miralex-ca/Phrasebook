@@ -47,17 +47,14 @@ public class InfoFragment extends Fragment {
 
         View rootview = inflater.inflate(R.layout.fragment_info, container, false);
 
-
         appSettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
         themeTitle = appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
 
         WebView webView = rootview.findViewById(R.id.webView);
 
         DataManager dataManager  = new DataManager(getActivity(), true);
 
         String resName = getString(R.string.app_info_file);
-
 
         Context context = getActivity().getBaseContext(); //получаем контекст
 

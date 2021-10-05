@@ -48,6 +48,7 @@ import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.DATA_MODE_HINT_DEFAULT;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
@@ -377,22 +378,12 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
             if (speaking) speakWords("");
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    showAlertDialog(view,
-                            position);
-                }
-            }, 50);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> showAlertDialog(view,
+                    position), 50);
 
             open = false;
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    open = true;
-                }
-            }, 200);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> open = true, 200);
         }
     }
 
@@ -517,10 +508,9 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         categoryParamsDialog.showParams();
     }
 
-
     private void checkHint() {
 
-        displayModeHint = appSettings.getBoolean("set_mode_hint", true);
+        displayModeHint = appSettings.getBoolean("set_mode_hint", DATA_MODE_HINT_DEFAULT);
         if (categoryID.contains(UC_PREFIX)) displayModeHint = false;
 
        if (displayModeHint)  {
@@ -531,7 +521,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
        }
 
        hintMenuItem.setVisible(displayModeHint);
-
     }
 
     private void saveModeHintDisplay() {
@@ -540,7 +529,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         editor.putBoolean("set_mode_hint", false);
         editor.apply();
     }
-
 
     private void easyModeHint() {
         //dataModeDialog.openDialog();
@@ -556,8 +544,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         dataMode.createModeHint(getString(R.string.mode_dialog_title),
                 getString(R.string.mode_dialog_info), getString(R.string.mode_dialog_info_2));
     }
-
-
 
     private void listModeDialog() {
         DataMode dataMode = new DataMode(this);

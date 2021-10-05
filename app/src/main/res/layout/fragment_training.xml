@@ -291,6 +291,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/audio_test_box"
                     style="@style/CardViewStyle.Widget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

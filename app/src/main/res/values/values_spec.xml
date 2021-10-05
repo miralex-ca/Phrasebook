@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    <string name="app_name" translatable="false">@string/app_name_basic</string>
+    <string name="nav_header_txt" translatable="false">@string/nav_header_txt_basic</string>
+
+
     <string name="app_reference_file" translatable="false">reference</string>
     <string name="backup_file_format" translatable="false">endb</string>
 
+    <string name="app_info_file" translatable="false">info_en</string>
 
     <integer name="section_id_length">9</integer>
 
-    <string name="msg_version_abr" translatable="false">LE</string>
+    <string name="msg_version_abr" translatable="false">SP</string>
 
     <style name="DefaultNightThemeModes" parent="NightTheme">
         <item name="ToolBarStyle">@style/ToolBarStyle_red_n</item>
@@ -26,9 +32,8 @@
         <item>data_fr.json</item>
     </string-array>
 
-
-    <string name="tests_file" >tests/test_quests.json</string>
-    <string name="build_tests_file" >tests/test_quests_build.json</string>
+    <string name="tests_file" translatable="false">tests/test_quests.json</string>
+    <string name="build_tests_file" translatable="false">tests/test_quests_build.json</string>
 
     <string name="locale_string" translatable="false">english</string>
 
@@ -44,7 +49,28 @@
     <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
 
     <bool name="display_section_practice">false</bool>
-
     <bool name="display_mode">true</bool>
+
+    <bool name="display_additions">false</bool>
+    <bool name="display_grammar">false</bool>
+
+    <bool name="display_transcription_settings">false</bool>
+
+    <string-array name="additions">
+    </string-array>
+
+
+    <string name="title_home_txt" translatable="false">@string/title_home_txt_basic</string>
+    <string name="nav_home_txt" translatable="false">@string/nav_home_txt_basic</string>
+    <string name="nav_home_txt_btm" translatable="false">@string/nav_home_txt_btm_basic</string>
+
+    <string name="title_home_txt_basic" translatable="false">@string/nav_menu_home_text</string>
+    <string name="nav_home_txt_basic" translatable="false">@string/nav_menu_home_text</string>
+    <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
+
+
+
+
+
 
 </resources>
