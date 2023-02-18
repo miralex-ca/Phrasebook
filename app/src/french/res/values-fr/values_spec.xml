@@ -14,7 +14,8 @@
     <string name="voc_ex_link_first_desc">Tradiction anglais-français</string>
     <string name="voc_ex_link_second_desc">Traduction français-anglais </string>
 
-    <string name="msg_version_name">(LF, version %s)</string>
+    <integer name="fr_pr_visibility">@integer/attr_view_gone</integer>
+    <integer name="en_pr_visibility">@integer/attr_view_visible</integer>
 
 
 </resources>

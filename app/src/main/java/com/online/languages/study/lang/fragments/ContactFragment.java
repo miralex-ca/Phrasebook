@@ -28,6 +28,12 @@ public class ContactFragment extends Fragment {
     public static final String PARAM_APP_RU = "ru";
     public static final String PARAM_APP_HIST = "hist";
 
+    public static final String PARAM_APP_PR_FR = "pr_fr";
+    public static final String PARAM_APP_PR_ES = "pr_es";
+    public static final String PARAM_APP_PR_DE = "pr_de";
+    public static final String PARAM_APP_PR_EN = "pr_en";
+    public static final String PARAM_APP_PR_IT = "pr_it";
+
     private FragmentContactBinding binding;
     private ContactAction contactAction;
 
@@ -63,6 +69,12 @@ public class ContactFragment extends Fragment {
         binding.list.appRussianLink.setOnClickListener(v -> openAppLink(PARAM_APP_RU));
         binding.list.appJapaneseLink.setOnClickListener(v -> openAppLink(PARAM_APP_JP));
         binding.list.appHistoryLink.setOnClickListener(v -> openAppLink(PARAM_APP_HIST));
+
+        binding.list.appPrEsLink.setOnClickListener(v -> openAppLink(PARAM_APP_PR_ES));
+        binding.list.appPrFrLink.setOnClickListener(v -> openAppLink(PARAM_APP_PR_FR));
+        binding.list.appPrEnLink.setOnClickListener(v -> openAppLink(PARAM_APP_PR_EN));
+        binding.list.appPrItLink.setOnClickListener(v -> openAppLink(PARAM_APP_PR_IT));
+        binding.list.appPrDeLink.setOnClickListener(v -> openAppLink(PARAM_APP_PR_DE));
 
     }
 
@@ -101,6 +113,21 @@ public class ContactFragment extends Fragment {
                 break;
             case PARAM_APP_JP:
                 appLink = getString(R.string.jp_market_link);
+                break;
+            case PARAM_APP_PR_ES:
+                appLink = getString(R.string.es_pr_market_link);
+                break;
+            case PARAM_APP_PR_EN:
+                appLink = getString(R.string.en_pr_market_link);
+                break;
+            case PARAM_APP_PR_FR:
+                appLink = getString(R.string.fr_pr_market_link);
+                break;
+            case PARAM_APP_PR_IT:
+                appLink = getString(R.string.it_pr_market_link);
+                break;
+            case PARAM_APP_PR_DE:
+                appLink = getString(R.string.de_pr_market_link);
                 break;
         }
 

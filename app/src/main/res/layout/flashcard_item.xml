@@ -25,6 +25,7 @@
                 android:id="@+id/fCardText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 style="@style/fTextBox"/>
 
             <TextView
@@ -181,6 +182,7 @@
                     style="@style/fTextWrapMirror">
 
                     <TextView
+                        android:fontFamily="sans-serif-light"
                         android:id="@+id/fCardTextMirror"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

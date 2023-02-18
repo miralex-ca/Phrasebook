@@ -35,4 +35,6 @@
 
     <string name="set_transcript_default" translatable="false">@string/set_transcript_alternative</string>
 
+    <integer name="en_pr_visibility">@integer/attr_view_visible</integer>
+
 </resources>

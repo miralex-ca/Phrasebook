@@ -7,6 +7,7 @@
     <color name="colorPrimaryDark">#198BED</color>
     <color name="colorAccent">#1E88E5</color>
     <color name="colorButtonNormal">#F1F1F1</color>
+    <color name="colorButtonHihglight">#D3D3D3</color>
 
 
     <color name="colorBtmNav_active">#0A7BDD</color>
@@ -74,6 +75,7 @@
     <color name="colorCardDivider">#72818181</color>
     <color name="colorMainText">#333</color>
     <color name="colorMainTextDisabled">#c08e8e8e</color>
+    <color name="colorCatCardText">#555</color>
 
     <color name="colorSecondaryText">#bd333333</color>
 

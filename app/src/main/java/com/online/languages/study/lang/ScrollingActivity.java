@@ -277,16 +277,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
         } else {
 
-
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-                    }
-                }, 100);
+            new Handler().postDelayed(() -> startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE), 100);
 
         }
     }
@@ -490,19 +481,29 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
 
 
     private void checkStarStatus(String tag) {
+        checkStarStatus(tag, true);
+    }
+
+    private void checkStarStatus(String tag, boolean delay) {
         Boolean starred = checkStarred(tag);
 
         if (starred) {
-            starMenuItem.setIcon(R.drawable.ic_star_detail);
+            setAppBarIcon(R.drawable.ic_star_detail, delay);
         } else {
-            starMenuItem.setIcon(R.drawable.ic_star_detail_inactive);
+            setAppBarIcon(R.drawable.ic_star_detail_inactive, delay);
         }
+    }
+
+    private void setAppBarIcon(int p, boolean delay) {
+        int time = 1;
+        if (delay) time = 260;
+
+        new Handler().postDelayed(() -> starMenuItem.setIcon(p), time);
     }
 
 
     private Boolean checkStarred(String text) {
-        Boolean starred = dbHelper.checkStarred(text);
-        return starred;
+        return dbHelper.checkStarred(text);
     }
 
 
@@ -510,7 +511,7 @@ public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnIn
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_detailed, menu);
         starMenuItem = menu.findItem(R.id.star);
-        checkStarStatus(detailItem.id);
+        checkStarStatus(detailItem.id, false);
 
         return true;
 

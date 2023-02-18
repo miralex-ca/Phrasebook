@@ -22,13 +22,10 @@
     </string-array>
 
     <bool name="display_mode">false</bool>
+    <string name="msg_version_abr" translatable="false">EN</string>
 
     <string name="backup_file_name" translatable="false">EPDB_backup.jpg</string>
     <string name="backup_file_format" translatable="false">epdb</string>
-
-
-
-    <string name="msg_version_name">(EP, version %s)</string>
 
     <string name="tabs_starred_display" translatable="false">always</string>
 
@@ -87,5 +84,8 @@
     <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
 
     <bool name="display_transcription_settings">true</bool>
+
+
+    <integer name="en_pr_visibility">@integer/attr_view_gone</integer>
 
 </resources>

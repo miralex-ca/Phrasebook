@@ -44,8 +44,8 @@ android {
         applicationId "com.study.languages.phrasebook.master"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 73
-        versionName '3.4.1'
+        versionCode 74
+        versionName '3.4.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.config
@@ -88,8 +88,8 @@ android {
         }
 
         english {
-            versionCode 76
-            versionName '3.4.6'
+            versionCode 82
+            versionName '3.5.5'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.english'
             resValue("string", "applicationId", applicationId)
@@ -102,8 +102,8 @@ android {
         }
 
         french {
-            versionCode 77
-            versionName '3.4.7'
+            versionCode 82
+            versionName '3.5.5'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.french'
             resValue("string", "applicationId", applicationId)
@@ -116,8 +116,8 @@ android {
         }
 
         spanish {
-            versionCode 79
-            versionName '3.4.9'
+            versionCode 83
+            versionName '3.5.6'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.spanish'
             resValue("string", "applicationId", applicationId)
@@ -130,8 +130,8 @@ android {
         }
 
         german {
-            versionCode 78
-            versionName '3.4.8'
+            versionCode 82
+            versionName '3.5.5'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.german'
             resValue("string", "applicationId", applicationId)
@@ -144,8 +144,8 @@ android {
         }
 
         italian {
-            versionCode 79
-            versionName '3.4.9'
+            versionCode 82
+            versionName '3.5.5'
             dimension "mode"
             applicationId 'com.study.languages.phrasebook.italian'
             resValue("string", "applicationId", applicationId)
@@ -154,6 +154,20 @@ android {
             manifestPlaceholders = [
                     appIcon: "@mipmap/ic_launcher_it",
                     appIconRound: "@mipmap/ic_launcher_it"
+            ]
+        }
+
+        japanese {
+            versionCode 82
+            versionName '3.5.5'
+            dimension "mode"
+            applicationId 'com.study.languages.phrasebook.japanese'
+            resValue("string", "applicationId", applicationId)
+            resConfigs 'en', 'ru', 'fr'
+
+            manifestPlaceholders = [
+                    appIcon: "@mipmap/ic_launcher_es",
+                    appIconRound: "@mipmap/ic_launcher_es"
             ]
         }
 
@@ -188,6 +202,7 @@ android {
             buildConfigField ("boolean", "GALLERY", "false")
         }
     }
+    buildToolsVersion '31.0.0'
 
     applicationVariants.all { variant ->
         variant.resValue  "string", "app_package", variant.applicationId

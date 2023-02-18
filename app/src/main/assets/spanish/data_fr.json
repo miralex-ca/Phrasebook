@@ -233,7 +233,7 @@
     {"id": "1004000100180", "item": "Lléveme, por favor al hotel...", "info": "S'il vous plaît, emmenez-moi à l'hôtel ...", "ipa": "ˈɟʝeβeme poɾ faˈβoɾ al oˈtɛl", "tr_ru": "ˈйэвэмэ пор фаˈвор аль оˈтэль"},
     {"id": "1004000100190", "mode": "1", "item": "¿Cuánto es?", "info": "Combien ça coûte?", "ipa": "ˈkwãn̪to ˈɛs", "tr_ru": "ˈкуанто ˈэс"},
     {"id": "1004000100200", "item": "Aquí tiene usted. Está bien.", "info": "Voici. Gardez la monnaie.", "ipa": "aˈki ˈtjene u̯sˈtɛð ɛsˈta ˈβjɛ̃n", "tr_ru": "аˈки ˈтьенэ усˈтэд эсˈта ˈбьен"},
-    {"id": "1004000100210"},
+
     {"id": "1004000200010", "mode": "1", "item": "calle", "info": "rue", "ipa": "ˈkaʝe", "tr_ru": "ˈкайэ"},
     {"id": "1004000200020", "item": "centro", "info": "centre", "ipa": "ˈsɛ̃n̪tɾo", "tr_ru": "ˈсэнтро"},
     {"id": "1004000200030", "mode": "1", "item": "cruce", "info": "carrefour", "ipa": "ˈkɾuse", "tr_ru": "ˈкрусэ"},

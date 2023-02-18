@@ -21,7 +21,6 @@
         <item name="colorAccent">@color/colorAccent_red_n</item>
         <item name="colorBtmNav_active">@color/colorBtmNav_active_red_n</item>
         <item name="colorBtmNav_inactive">@color/colorBtmNav_inactive_red_n</item>
-
         <item name="colorNavBgStart">@color/colorNavBgStart_red_n</item>
         <item name="colorNavBgCenter">@color/colorNavBgCenter_red_n</item>
         <item name="colorNavBgEnd">@color/colorNavBgEnd_red_n</item>
@@ -43,10 +42,23 @@
     <string name="jp_market_link" translatable="false">com.study_languages_online.kanji</string>
     <string name="hist_market_link" translatable="false">com.online.languages.study.ruhistory</string>
 
+    <string name="en_pr_market_link" translatable="false">com.study.languages.phrasebook.english</string>
+    <string name="es_pr_market_link" translatable="false">com.study.languages.phrasebook.spanish</string>
+    <string name="fr_pr_market_link" translatable="false">com.study.languages.phrasebook.french</string>
+    <string name="it_pr_market_link" translatable="false">com.study.languages.phrasebook.italian</string>
+    <string name="de_pr_market_link" translatable="false">com.study.languages.phrasebook.german</string>
+
     <integer name="fr_app_visibility">@integer/attr_view_gone</integer>
     <integer name="en_app_visibility">@integer/attr_view_gone</integer>
     <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
     <integer name="hist_app_visibility">@integer/attr_view_gone</integer>
+
+    <integer name="es_pr_visibility">@integer/attr_view_visible</integer>
+    <integer name="en_pr_visibility">@integer/attr_view_gone</integer>
+    <integer name="fr_pr_visibility">@integer/attr_view_visible</integer>
+    <integer name="de_pr_visibility">@integer/attr_view_visible</integer>
+    <integer name="it_pr_visibility">@integer/attr_view_visible</integer>
+
 
     <bool name="display_section_practice">false</bool>
     <bool name="display_mode">true</bool>

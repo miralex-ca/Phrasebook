@@ -6,9 +6,6 @@
 
     <string name="app_info_file">info</string>
 
-
-    <string name="msg_version_name">(LI, версия %s)</string>
-
     <string name="dialog_edit_item_text">итальянский текст</string>
 
     <string-array name="set_transcript_values" tools:ignore="InconsistentArrays">
@@ -30,6 +27,8 @@
     <integer name="ru_app_visibility">@integer/attr_view_gone</integer>
     <integer name="hist_app_visibility">@integer/attr_view_visible</integer>
     <integer name="en_app_visibility">@integer/attr_view_visible</integer>
+
+    <integer name="en_pr_visibility">@integer/attr_view_visible</integer>
 
 
 </resources>

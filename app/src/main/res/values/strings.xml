@@ -10,6 +10,10 @@
     <string name="italian_phrasebook_app_title">Italian Phrasebook</string>
     <string name="french_phrasebook_app_title">French Phrasebook</string>
     <string name="english_phrasebook_app_title">English Phrasebook</string>
+    <string name="japanese_phrasebook_app_title">Japanese Phrasebook</string>
+    <string name="portuguese_phrasebook_app_title">Portuguese Phrasebook</string>
+    <string name="russian_phrasebook_app_title">Russian Phrasebook</string>
+    <string name="greek_phrasebook_app_title">Greek Phrasebook</string>
 
     <string name="voc_ex_link_first_desc">Choose the translation</string>
     <string name="voc_ex_link_second_desc">Choose the translation</string>

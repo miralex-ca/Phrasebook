@@ -107,6 +107,7 @@
     <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
 
     <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
+    <integer name="it_pr_visibility">@integer/attr_view_gone</integer>
 
 
 </resources>

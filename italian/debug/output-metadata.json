@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.study.languages.phrasebook.german",
-  "variantName": "germanRelease",
+  "applicationId": "com.study.languages.phrasebook.italian.demo",
+  "variantName": "italianDebug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "versionCode": 82,
       "versionName": "3.5.5",
-      "outputFile": "app-german-release.apk"
+      "outputFile": "app-italian-debug.apk"
     }
   ]
 }

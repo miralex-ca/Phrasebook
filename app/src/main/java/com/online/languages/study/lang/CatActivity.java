@@ -727,10 +727,14 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         editor.putString(CAT_LIST_VIEW, listType);
         editor.apply();
 
-        CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
-        if (fragment != null)   fragment.updateLayoutStatus();
+        new Handler().postDelayed(() -> {
 
-        applyLayoutStatus();
+            CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
+            if (fragment != null)   fragment.updateLayoutStatus();
+
+        }, 500);
+
+        new Handler().postDelayed(this::applyLayoutStatus, 700);
     }
 
 

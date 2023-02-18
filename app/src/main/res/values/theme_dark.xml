@@ -270,6 +270,7 @@
 
         <item name="colorHomeTabTxt">?attr/colorTabIndicator</item>
         <item name="colorHomeTabTxtInactive">?attr/colorSecondaryText</item>
+        <item name="colorCatCardText">?attr/colorMainText</item>
 
 
     </style>

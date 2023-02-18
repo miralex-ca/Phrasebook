@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="6dp"
+    app:cardBackgroundColor="?attr/colorDetailBtmBg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinator"
     style="@style/DetailSize.Width"
-    android:background="?attr/colorDetailBtmBg"
+    android:background="@color/transparent"
     android:fitsSystemWindows="true"
     tools:context="com.online.languages.study.lang.ScrollingActivity">
-
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -214,3 +219,5 @@
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.cardview.widget.CardView>

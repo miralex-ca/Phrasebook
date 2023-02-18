@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-
-
     <string name="app_info_file">info</string>
 
     <string name="app_structure_file" translatable="false">german/navstructure_ru.json</string>
@@ -26,5 +24,7 @@
         <item>@string/set_transcript_2</item>
         <item>@string/set_transcript_0</item>
     </string-array>
+
+    <integer name="en_pr_visibility">@integer/attr_view_visible</integer>
 
 </resources>

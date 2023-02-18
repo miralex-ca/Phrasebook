@@ -7,10 +7,10 @@
     <bool name="display_grammar">true</bool>
     <bool name="display_mode">false</bool>
 
-    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~3943472061</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/1962523591</string>
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~9883327631</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/7257164297</string>
 
-    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwQoM5r73RUBbeBt+c0JbayyjPrOZ7ovbz94UCgxXlseebTxGzP6fnj1MY9W8EjsA3cYhrJOcQGjZKpWKFUC1rBAziNVE6Rn9PA0scNDtAVHAl+ZQfI77O6f2ZdxhE+JmT4zYBuhs3fIWVk7XMZUJ6FKNN9ZgHbip+mEQcQbvQy7f6iaxMmweCTv3wypWmPvNJQBTvgdOZt+v/rPioSbprihbllTn9bzl4Cuu4TwRaFhLa7cE3HWe5qNkKBZ1Dee2U6mgYZoMy1HFC64cYaqNjneXQdJV7hDamjY3LIJbU02e2a42XjA2uT7KU/HSuYFx6fDc6O0Ja+GuQa1xJfqpUQIDAQAB</string>
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnMEp3fQWh/R/tT28ewV64TYfsByAJ53mKTjQyXFSn3QL1FigLw5P4YxhX75FpmfLici4XBz6UIkDcgJS+UJwaX15sj9iBbdwF6DiaR9bJigKCZBbUP2EZg46k3GsM3VnL/pv62XN/52F8bXe8RBk+Nd4wo4TKsNnqznLMyVpX5OeDF3KFHpAGq9qhpMzJkzFdDGZra4zFvv4TI04jnF8nfkf2Pp5byfnGU52H8zcVO/jXwag1sYfbxIZ2Qclb3wXyroipLdHCcNNBHEr3ykwzANKEo9lYGIfuySvaoTZgfGrNiEfI7kVRuu3Z5UR3V3ym4MSos0BHBZ95gDvhgk+cwIDAQAB</string>
 
     <string name="app_market_link" translatable="false">com.study.languages.phrasebook.french</string>
 
@@ -28,7 +28,7 @@
 
     <string name="app_info_file" translatable="false">info_en</string>
 
-    <string name="msg_version_name">(FP, version %s)</string>
+    <string name="msg_version_abr" translatable="false">FR</string>
 
     <string name="voc_ex_link_first_desc" translatable="false">French/English translation</string>
     <string name="voc_ex_link_second_desc" translatable="false">English/French translation </string>
@@ -90,5 +90,7 @@
     <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
 
     <bool name="display_transcription_settings">true</bool>
+
+    <integer name="fr_pr_visibility">@integer/attr_view_gone</integer>
 
 </resources>

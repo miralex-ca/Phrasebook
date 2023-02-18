@@ -385,7 +385,7 @@ class ExercisePagerAdapter extends PagerAdapter {
         if (type == 2) {
             textView.setTypeface(null, Typeface.NORMAL);
         } else {
-            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTypeface(Typeface.create("sans-serif-light", Typeface.BOLD));
         }
 
         int questLongTextSize = textLongSize(text);
@@ -433,7 +433,7 @@ class ExercisePagerAdapter extends PagerAdapter {
     private void setTextStyleAndSize(String optionTxt, View radio, boolean textBold) {
 
         if ( textBold ) {
-            ((TextView)radio.findViewById(R.id.option_text)).setTypeface(null, Typeface.BOLD);
+            ((TextView)radio.findViewById(R.id.option_text)).setTypeface(Typeface.create("sans-serif-light", Typeface.BOLD));
         } else {
             ((TextView)radio.findViewById(R.id.option_text)).setTypeface(null, Typeface.NORMAL);
         }

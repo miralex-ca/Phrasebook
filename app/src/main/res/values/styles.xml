@@ -25,7 +25,7 @@
         <item name="colorStarDetail">@color/colorStarDetail</item>
 
         <item name="colorDialogBg">@color/colorDialogBg_lite</item>
-
+        <item name="colorCatCardText">@color/colorCatCardText</item>
 
         <item name="colorHomeTabBg">@color/white</item>
         <item name="colorHomeTabTxt">?attr/colorMainText</item>
@@ -279,7 +279,6 @@
         <item name="preferenceFragmentCompatStyle">@style/AppPreferenceFragmentCompatStyle</item>
         <item name="preferenceCategoryStyle">@style/CustomPreferenceCategory</item>
         <!-- item name="colorControlHighlight">@color/colorAccent</item -->
-
     </style>
 
     <style name="CustomPreferenceCategory" parent="MyTextViewStyle">
@@ -943,6 +942,7 @@
         <item name="android:paddingBottom">@dimen/ex_btn_padding</item>
         <item name="android:layout_marginTop">@dimen/ex_btn_container_padding</item>
         <item name="android:layout_marginBottom">@dimen/ex_btn_container_padding</item>
+        <item name="rippleColor">@color/colorButtonHihglight</item>
     </style>
 
     <style name="exBtns.Left">

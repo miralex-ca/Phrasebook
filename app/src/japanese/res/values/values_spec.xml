@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">@string/german_phrasebook_app_title</string>
-    <string name="nav_header_txt" translatable="false">@string/german_phrasebook_app_title</string>
+    <string name="app_name" translatable="false">@string/japanese_phrasebook_app_title</string>
+    <string name="nav_header_txt" translatable="false">@string/japanese_phrasebook_app_title</string>
 
-    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~6646935992</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/9195694827</string>
+    <string name="admob_ap_id" translatable="false">ca-app-pub-4215105690061587~4500458263</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-4215105690061587/3990511747</string>
 
-    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnABUdIpAtessfziEc1PLTKdiI9gg93TsODdTsEET9Pd2Dscr/aQxhFF+iuEggEw3AX48qDkgLk8mq2y8SxLky+UP0x4r9j/S9xd1ETFSeE4aYzKcarzqsCW+i3qX3wSHx2bVyHZKLQn5rbIfTraqpTJox73HLzTN6zX70wBtgs8UfPjno/3OBNOzRU6kFBWFhC77Wlr0n2SYbk7YJ/mLrv1rucDnPEk8G2baNvOr6yECStt4ijfBczSi0ZqNT1DKdT2FrLwOHZp3Teh6WLbFm1cCQMSSv2iS5JgBE3OORysuwwmC+An74RlqQCZqvAeO5M/+tXZhU0OJmumDRHkxqQIDAQAB</string>
+    <string name="encoded_key" translatable="false" >MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgG7HznR9FAxXefDkhLEFD505D1hYN/zViN2Ff8B4g6TrTfHFZOr9cctwh0QrlIEo9ytCTbbFpzpnAgtc6Wmr1F4RYgb03HdHeR8KYmyAzkEcuXcAmu5wCAZppsx7HBWPyZchC4YeUATduWhvDKtv43btVbfPDNtxITvTS9Zcm9XYkD9qDhpfq40IOTVEuru58wCui+K10BnlvKhGgz7LI4d3mw6KOINzGvzMFUNHffmuV655dCemJ+Mxww0WaKovH6wP0FS3Dq+mzy10XGXIgLtiXfGBgcNZF4EU6hsnmFGjD2MOKwhHMS2VZGDHD4rpXDWONK5FnaBFT6EQ/xqGhwIDAQAB</string>
 
-    <string name="app_market_link" translatable="false">com.study.languages.phrasebook.german</string>
+    <string name="app_market_link" translatable="false">com.study.languages.phrasebook.japanese</string>
 
-    <string name="app_data_file" translatable="false">german/data_en.json</string>
-    <string name="app_structure_file" translatable="false">german/navstructure_en.json</string>
+    <string name="app_data_file" translatable="false">spanish/data_en.json</string>
+    <string name="app_structure_file" translatable="false">spanish/navstructure_en.json</string>
 
-    <string name="locale_string" translatable="false">german</string>
-    <string name="msg_version_abr" translatable="false">GE</string>
+    <string name="locale_string" translatable="false">japanese</string>
 
-    <string name="backup_file_name" translatable="false">GEDB_backup.jpg</string>
-    <string name="backup_file_format" translatable="false">gedb</string>
+    <string name="backup_file_name" translatable="false">JPDB_backup.jpg</string>
+    <string name="backup_file_format" translatable="false">jpdb</string>
 
+    <string name="app_info_file" translatable="false">info_en</string>
 
-    <string name="app_info_file">info_en</string>
-
-    <string name="dialog_edit_item_text">German text</string>
+    <string name="dialog_edit_item_text">Spanish text</string>
 
     <string name="tabs_starred_display" translatable="false">always</string>
-
     <bool name="display_transcription_settings">true</bool>
-    <bool name="display_grammar">false</bool>
+
 
     <string-array name="set_transcript_values" >
         <item>ipa</item>
@@ -52,8 +49,8 @@
     <bool name="display_section_practice">true</bool>
     <bool name="display_mode">false</bool>
 
-    <color name="colorPrimary">#595959</color>
-    <color name="colorPrimaryDark">#4A4A4A</color>
+    <color name="colorPrimary">#FF7158</color>
+    <color name="colorPrimaryDark">#EF6351</color>
     <color name="colorAccent">#FF7F5F</color>
 
     <color name="colorBtmNav_active">@color/colorBtmNav_active_red</color>
@@ -93,19 +90,9 @@
     <string name="nav_home_txt_basic" translatable="false">@string/nav_menu_phrasebook_text</string>
     <string name="nav_home_txt_btm_basic" translatable="false">@string/nav_menu_home_text</string>
 
-
- <!--
-    <color name="colorToolbarText_de">#FFF6A8</color>
-    <color name="colorToolbarIcon">@color/colorToolbarText_de</color>
-
-    <style name="ToolBarStyle">
-        <item name="android:textColorPrimary">@color/colorToolbarText_de</item>
-        <item name="android:textColorSecondary">@color/colorToolbarText_de</item>
-    </style>
--->
-
     <integer name="fr_app_visibility">@integer/attr_view_visible</integer>
-    <integer name="de_pr_visibility">@integer/attr_view_gone</integer>
+    <integer name="es_pr_visibility">@integer/attr_view_gone</integer>
+
 
 
 </resources>

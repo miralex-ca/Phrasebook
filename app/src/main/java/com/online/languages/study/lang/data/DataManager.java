@@ -1020,6 +1020,10 @@ public class DataManager {
             locale = new Locale("ru");
         }
 
+        if (localString.equals("japanese")) {
+            locale = Locale.JAPANESE;
+        }
+
         return locale;
     }
 

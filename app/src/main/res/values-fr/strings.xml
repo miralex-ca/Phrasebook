@@ -9,6 +9,11 @@
     <string name="french_phrasebook_app_title">Guide de conversation français</string>
     <string name="english_phrasebook_app_title">Guide de conversation anglais</string>
 
+    <string name="japanese_phrasebook_app_title">Guide de conversation japonais</string>
+    <string name="portuguese_phrasebook_app_title">Guide de conversation portugais</string>
+    <string name="russian_phrasebook_app_title">Guide de conversation russe</string>
+    <string name="greek_phrasebook_app_title">Guide de conversation grec</string>
+
 
     <string name="action_settings">Settings</string>
 
@@ -869,6 +874,7 @@ Les tâches viseront des thèmes et des sections que vous pouvez commencer ou co
       <br/> <br/>
 
       <i> ATTENTION! Cette section est en cours de développement, il est donc possible qu’à l’avenir certaines fonctions (ou même une section entière) soient modifiées ou supprimées. </i>
+        <br/><br/> <br/>
 
 
     ]]></string>

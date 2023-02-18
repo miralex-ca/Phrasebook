@@ -192,6 +192,7 @@
                                     android:layout_height="wrap_content">
 
                                     <TextView
+                                        android:textColor="?attr/colorCatCardText"
                                         android:minHeight="30dp"
                                         android:fontFamily="sans-serif-light"
                                         android:id="@+id/itemText"

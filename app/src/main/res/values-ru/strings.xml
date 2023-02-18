@@ -10,6 +10,11 @@
     <string name="french_phrasebook_app_title">Французский разговорник</string>
     <string name="english_phrasebook_app_title">Английский разговорник</string>
 
+    <string name="japanese_phrasebook_app_title">Японский разговорник</string>
+    <string name="portuguese_phrasebook_app_title">Португальский разговорник</string>
+    <string name="russian_phrasebook_app_title">Русский разговорник</string>
+    <string name="greek_phrasebook_app_title">Греческий разговорник</string>
+
     <string name="action_settings">Settings</string>
 
     <string name="contact_error">Сообщить об ошибке</string>

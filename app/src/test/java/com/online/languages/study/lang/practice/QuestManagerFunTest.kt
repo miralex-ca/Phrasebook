@@ -52,7 +52,6 @@ class QuestManagerFunTest {
         assertThat(matrix[0]).isEqualTo(12)
         assertThat(matrix[1]).isEqualTo(5)
 
-
     }
 
 

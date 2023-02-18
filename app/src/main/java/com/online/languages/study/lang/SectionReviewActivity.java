@@ -403,9 +403,14 @@ public class SectionReviewActivity extends ThemedActivity {
     }
 
     private void changeLayoutAndApply() {
+
         changeLayoutStatus();
-        itemsList.removeAllViews();
-        organizeSection();
+
+        new Handler().postDelayed(() -> {
+            itemsList.removeAllViews();
+            organizeSection();
+        }, 500);
+
     }
 
 
@@ -423,7 +428,9 @@ public class SectionReviewActivity extends ThemedActivity {
         editor.putString(SECTION_LIST_VIEW, listType);
         editor.apply();
 
-        applyLayoutStatus();
+        new Handler().postDelayed(this::applyLayoutStatus, 700);
+
+
     }
 
     private void applyLayoutStatus() {

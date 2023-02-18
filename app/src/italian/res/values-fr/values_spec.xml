@@ -5,4 +5,7 @@
     <string name="app_structure_file" translatable="false">italian/navstructure_fr.json</string>
     <string name="app_data_file" translatable="false">italian/data_fr.json</string>
 
+    <integer name="fr_pr_visibility">@integer/attr_view_gone</integer>
+    <integer name="en_pr_visibility">@integer/attr_view_visible</integer>
+
 </resources>

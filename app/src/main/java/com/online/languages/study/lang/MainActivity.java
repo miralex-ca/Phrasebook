@@ -825,22 +825,31 @@ public class MainActivity extends BaseActivity
     }
 
     public void onMenuItemClicker(int position) {
-        openPageFromMenu(position);
+        onMenuItemClicker(position, false);
+    }
+
+    public void onMenuItemClicker(int position, boolean bottom) {
+        openPageFromMenu(position, bottom);
         updateMenuList(position);
     }
 
 
-    private void openPageFromMenu(int position) {
+    private void openPageFromMenu(int position, boolean bottom) {
+
+        int delay = 390;
+
+        if (bottom) {
+            delay = 200;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) delay = 100;
+        }
+
         if (menuActiveItem != position) {
             menuActiveItem = position;
             final int act = position;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    openPage(act);
-                }
-            }, 390);
+            new Handler().postDelayed(() -> openPage(act), delay);
         }
+
+
         updateMenuList(menuActiveItem);
     }
 
@@ -1025,8 +1034,6 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-
-
         if (position == 9) {
 
             getShareIntent();
@@ -1059,17 +1066,15 @@ public class MainActivity extends BaseActivity
                 position  = 100;
             }
 
-
             if (position == 100) {
 
                 openNavDialog();
                 return false;
 
             } else {
-                onMenuItemClicker(position);
+                onMenuItemClicker(position, true);
                 return true;
             }
-
 
         }
     };
