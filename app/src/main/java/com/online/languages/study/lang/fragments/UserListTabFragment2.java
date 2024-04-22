@@ -21,7 +21,7 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ExRecycleAdapter;
-import com.online.languages.study.lang.presentation.UserListActivity;
+import com.online.languages.study.lang.presentation.usercategories.UserListActivity;
 
 import java.util.ArrayList;
 

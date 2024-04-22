@@ -22,7 +22,7 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.databinding.FragmentAdditionsBinding;
-import com.online.languages.study.lang.presentation.TextActivity;
+import com.online.languages.study.lang.presentation.activities.TextActivity;
 import com.online.languages.study.lang.tools.AdditionsData;
 
 import java.util.ArrayList;

@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.databinding.FragmentTrainingBinding;
-import com.online.languages.study.lang.presentation.CatActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
 
 import java.util.ArrayList;
 

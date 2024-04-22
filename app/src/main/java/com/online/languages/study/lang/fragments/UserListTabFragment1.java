@@ -38,7 +38,7 @@ import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataItem;
-import com.online.languages.study.lang.presentation.UserListActivity;
+import com.online.languages.study.lang.presentation.usercategories.UserListActivity;
 
 import java.util.ArrayList;
 import java.util.Iterator;

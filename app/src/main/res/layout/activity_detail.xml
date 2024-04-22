@@ -12,7 +12,7 @@
     style="@style/DetailSize.Width"
     android:background="@color/transparent"
     android:fitsSystemWindows="true"
-    tools:context="com.online.languages.study.lang.presentation.ScrollingActivity">
+    tools:context="com.online.languages.study.lang.presentation.details.ScrollingActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout

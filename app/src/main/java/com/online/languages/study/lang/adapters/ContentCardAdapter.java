@@ -18,8 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.CatActivity;
-import com.online.languages.study.lang.presentation.UserListActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
+import com.online.languages.study.lang.presentation.usercategories.UserListActivity;
 
 import java.util.ArrayList;
 

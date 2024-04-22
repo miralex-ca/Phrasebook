@@ -32,8 +32,8 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.data.ViewSection;
 import com.online.languages.study.lang.databinding.FragmentSectionBinding;
-import com.online.languages.study.lang.presentation.CatActivity;
-import com.online.languages.study.lang.presentation.SectionStatsActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
+import com.online.languages.study.lang.presentation.stats.SectionStatsActivity;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;

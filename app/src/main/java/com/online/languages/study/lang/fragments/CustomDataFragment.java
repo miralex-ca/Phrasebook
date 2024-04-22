@@ -23,7 +23,7 @@ import com.online.languages.study.lang.adapters.CustomDataListAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.CustomDataActivity;
+import com.online.languages.study.lang.presentation.stats.CustomDataActivity;
 
 import java.util.ArrayList;
 

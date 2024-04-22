@@ -20,15 +20,15 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.practice.CallActivity;
-import com.online.languages.study.lang.presentation.CatActivity;
-import com.online.languages.study.lang.presentation.CatSimpleListActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
+import com.online.languages.study.lang.presentation.activities.CatSimpleListActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.presentation.activities.GalleryActivity;
-import com.online.languages.study.lang.presentation.ImageListActivity;
+import com.online.languages.study.lang.presentation.activities.ImageListActivity;
 import com.online.languages.study.lang.presentation.activities.MapActivity;
 import com.online.languages.study.lang.presentation.activities.MapListActivity;
-import com.online.languages.study.lang.presentation.SubSectionActivity;
-import com.online.languages.study.lang.presentation.TextActivity;
+import com.online.languages.study.lang.presentation.activities.SubSectionActivity;
+import com.online.languages.study.lang.presentation.activities.TextActivity;
 
 import org.jetbrains.annotations.NotNull;
 

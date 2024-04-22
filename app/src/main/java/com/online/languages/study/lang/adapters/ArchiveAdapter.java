@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.presentation.UCatsArchiveActivity;
+import com.online.languages.study.lang.presentation.usercategories.UCatsArchiveActivity;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

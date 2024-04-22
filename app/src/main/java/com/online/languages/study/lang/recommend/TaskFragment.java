@@ -29,10 +29,10 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.databinding.FragmentTaskBinding;
-import com.online.languages.study.lang.presentation.CustomDataListActivity;
+import com.online.languages.study.lang.presentation.stats.CustomDataListActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
-import com.online.languages.study.lang.presentation.SectionActivity;
-import com.online.languages.study.lang.presentation.SectionStatsActivity;
+import com.online.languages.study.lang.presentation.section.SectionActivity;
+import com.online.languages.study.lang.presentation.stats.SectionStatsActivity;
 
 import org.jetbrains.annotations.NotNull;
 

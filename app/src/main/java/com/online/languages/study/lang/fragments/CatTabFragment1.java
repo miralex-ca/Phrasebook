@@ -32,7 +32,7 @@ import com.online.languages.study.lang.adapters.ContentAdapter;
 import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.CatActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
 
 import java.util.ArrayList;
 

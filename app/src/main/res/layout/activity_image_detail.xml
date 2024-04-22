@@ -12,7 +12,7 @@
     android:background="?attr/colorDialogBackground"
 
     android:fitsSystemWindows="true"
-    tools:context="com.online.languages.study.lang.presentation.ScrollingActivity">
+    tools:context="com.online.languages.study.lang.presentation.details.ScrollingActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.online.languages.study.lang.presentation.ScrollingActivity"
+            tools:context="com.online.languages.study.lang.presentation.details.ScrollingActivity"
             tools:showIn="@layout/activity_detail">
 
 

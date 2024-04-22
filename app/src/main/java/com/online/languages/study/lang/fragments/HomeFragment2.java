@@ -51,9 +51,9 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.presentation.CatActivity;
-import com.online.languages.study.lang.presentation.MyCatEditActivity;
-import com.online.languages.study.lang.presentation.UCatsListActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
+import com.online.languages.study.lang.presentation.usercategories.MyCatEditActivity;
+import com.online.languages.study.lang.presentation.usercategories.UCatsListActivity;
 import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
