@@ -42,9 +42,9 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.presentation.NoteActivity;
-import com.online.languages.study.lang.presentation.NoteEditActivity;
-import com.online.languages.study.lang.presentation.NotesArchiveActivity;
+import com.online.languages.study.lang.presentation.notes.NoteActivity;
+import com.online.languages.study.lang.presentation.notes.NoteEditActivity;
+import com.online.languages.study.lang.presentation.notes.NotesArchiveActivity;
 
 import java.util.ArrayList;
 import java.util.Objects;

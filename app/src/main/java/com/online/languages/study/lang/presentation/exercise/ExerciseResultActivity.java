@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.exercise;
 
 
 import static com.online.languages.study.lang.adapters.ViewAnimatorSlideUpDown.slideUp;
@@ -27,6 +27,7 @@ import com.online.languages.study.lang.adapters.TestResultAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.TestResult;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 import java.util.ArrayList;
 

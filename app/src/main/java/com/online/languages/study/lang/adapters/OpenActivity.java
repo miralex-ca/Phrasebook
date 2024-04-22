@@ -22,11 +22,11 @@ import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.practice.CallActivity;
 import com.online.languages.study.lang.presentation.CatActivity;
 import com.online.languages.study.lang.presentation.CatSimpleListActivity;
-import com.online.languages.study.lang.presentation.ExerciseActivity;
-import com.online.languages.study.lang.presentation.GalleryActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
+import com.online.languages.study.lang.presentation.activities.GalleryActivity;
 import com.online.languages.study.lang.presentation.ImageListActivity;
-import com.online.languages.study.lang.presentation.MapActivity;
-import com.online.languages.study.lang.presentation.MapListActivity;
+import com.online.languages.study.lang.presentation.activities.MapActivity;
+import com.online.languages.study.lang.presentation.activities.MapListActivity;
 import com.online.languages.study.lang.presentation.SubSectionActivity;
 import com.online.languages.study.lang.presentation.TextActivity;
 

@@ -16,7 +16,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.CardsActivity;
+import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
 
 import java.util.ArrayList;
 

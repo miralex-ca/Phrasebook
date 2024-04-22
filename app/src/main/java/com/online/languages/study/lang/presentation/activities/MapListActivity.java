@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +36,7 @@ import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.data.ViewSection;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 import java.util.ArrayList;
 

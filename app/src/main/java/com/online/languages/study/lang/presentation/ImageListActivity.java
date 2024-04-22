@@ -45,6 +45,8 @@ import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.data.ViewSection;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 
 import java.util.ArrayList;
 

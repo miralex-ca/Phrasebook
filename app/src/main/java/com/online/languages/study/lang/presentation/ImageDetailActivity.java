@@ -31,6 +31,8 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailItem;
+import com.online.languages.study.lang.presentation.activities.MapActivity;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 public class ImageDetailActivity extends BaseActivity {

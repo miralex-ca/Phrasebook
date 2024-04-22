@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.main;
 
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
@@ -66,6 +66,20 @@ import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
 import com.online.languages.study.lang.fragments.StatsFragment;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.CustomDataListActivity;
+import com.online.languages.study.lang.presentation.activities.GalleryActivity;
+import com.online.languages.study.lang.presentation.activities.GetPremium;
+import com.online.languages.study.lang.presentation.ProgressStatsActivity;
+import com.online.languages.study.lang.presentation.ReferenceActivity;
+import com.online.languages.study.lang.presentation.SearchActivity;
+import com.online.languages.study.lang.presentation.SectionReviewActivity;
+import com.online.languages.study.lang.presentation.SectionStatsActivity;
+import com.online.languages.study.lang.presentation.SectionStatsListActivity;
+import com.online.languages.study.lang.presentation.StarredBookmarksActivity;
+import com.online.languages.study.lang.presentation.UserListActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;

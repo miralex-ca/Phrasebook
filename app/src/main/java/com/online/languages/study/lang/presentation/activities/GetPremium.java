@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +16,9 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.main.MainActivity;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
 import com.online.languages.study.lang.util.Inventory;

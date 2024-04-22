@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.activities;
 
 
 import android.content.Context;
@@ -31,6 +31,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailItem;
 import com.online.languages.study.lang.data.ImageData;
 import com.online.languages.study.lang.data.ImageMapsData;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 public class MapActivity extends BaseActivity {

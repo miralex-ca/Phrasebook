@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.notes;
 
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
@@ -39,6 +39,7 @@ import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 import java.util.ArrayList;
 

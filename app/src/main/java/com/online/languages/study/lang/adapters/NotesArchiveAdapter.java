@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.presentation.NotesArchiveActivity;
+import com.online.languages.study.lang.presentation.notes.NotesArchiveActivity;
 
 import java.util.ArrayList;
 

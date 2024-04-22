@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#000000"
     android:layout_gravity="center"
-    tools:context=".presentation.MapActivity"
+    tools:context=".presentation.activities.MapActivity"
     tools:showIn="@layout/activity_map">
 
 

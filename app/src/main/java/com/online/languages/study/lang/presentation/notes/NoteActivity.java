@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.notes;
 
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
@@ -21,6 +21,7 @@ import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.databinding.ActivityNoteBinding;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.online.languages.study.lang.view_models.NoteViewModel;
 import com.online.languages.study.lang.view_models.NoteViewModelFactory;
 import com.squareup.picasso.Picasso;

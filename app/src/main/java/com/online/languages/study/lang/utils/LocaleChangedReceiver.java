@@ -1,4 +1,4 @@
-package com.online.languages.study.lang;
+package com.online.languages.study.lang.utils;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;

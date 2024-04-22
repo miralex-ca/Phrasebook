@@ -51,6 +51,9 @@ import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.TrainingFragment;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
+import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;

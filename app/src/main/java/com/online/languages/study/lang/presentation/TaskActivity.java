@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.online.languages.study.lang.recommend.TaskFragment;
 
 public class TaskActivity extends ThemedActivity {

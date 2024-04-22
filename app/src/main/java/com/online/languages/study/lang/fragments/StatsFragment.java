@@ -29,7 +29,7 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.UserStats;
-import com.online.languages.study.lang.presentation.MainActivity;
+import com.online.languages.study.lang.presentation.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;

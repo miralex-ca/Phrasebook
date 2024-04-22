@@ -40,6 +40,8 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.notes.NoteActivity;
 
 import java.util.ArrayList;
 

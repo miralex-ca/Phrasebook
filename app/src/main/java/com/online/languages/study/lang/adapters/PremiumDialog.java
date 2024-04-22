@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.presentation.GetPremium;
+import com.online.languages.study.lang.presentation.activities.GetPremium;
 
 
 public class PremiumDialog {

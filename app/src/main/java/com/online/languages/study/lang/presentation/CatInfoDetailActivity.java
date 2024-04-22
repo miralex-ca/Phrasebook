@@ -25,6 +25,7 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DetailFromJson;
 import com.online.languages.study.lang.data.DetailItem;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 

@@ -27,6 +27,7 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.CustomDataFragment;
 import com.online.languages.study.lang.fragments.CustomTabFragment2;
 import com.online.languages.study.lang.fragments.CustomTabFragment3;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 import java.util.ArrayList;
 

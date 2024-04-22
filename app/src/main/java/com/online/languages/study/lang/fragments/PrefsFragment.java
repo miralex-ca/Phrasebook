@@ -21,7 +21,7 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.MainActivity;
+import com.online.languages.study.lang.presentation.main.MainActivity;
 
 
 public class PrefsFragment extends PreferenceFragmentCompat {

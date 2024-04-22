@@ -1,10 +1,11 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.core;
 
 import static com.online.languages.study.lang.Constants.SET_THEME_DEFAULT;
 
 import android.os.Bundle;
 
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 public class ThemedActivity extends BaseActivity {
     ThemeAdapter themeAdapter;

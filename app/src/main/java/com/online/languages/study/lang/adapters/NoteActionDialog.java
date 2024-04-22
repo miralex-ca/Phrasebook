@@ -16,7 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.fragments.NotesFragment;
-import com.online.languages.study.lang.presentation.MainActivity;
+import com.online.languages.study.lang.presentation.main.MainActivity;
 
 
 public class NoteActionDialog {

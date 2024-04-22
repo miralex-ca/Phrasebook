@@ -14,6 +14,7 @@ import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.presentation.main.MainActivity;
 
 public class AppStart extends AppCompatActivity {
 

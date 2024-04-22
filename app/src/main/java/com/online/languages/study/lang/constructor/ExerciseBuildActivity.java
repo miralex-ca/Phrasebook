@@ -53,8 +53,8 @@ import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.online.languages.study.lang.practice.QuestCollector;
-import com.online.languages.study.lang.presentation.ExerciseResultActivity;
-import com.online.languages.study.lang.presentation.ThemedActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseResultActivity;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

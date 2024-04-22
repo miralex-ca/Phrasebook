@@ -37,6 +37,9 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.fragments.UserListTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment2;
 import com.online.languages.study.lang.fragments.UserListTrainingFragment;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
+import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;

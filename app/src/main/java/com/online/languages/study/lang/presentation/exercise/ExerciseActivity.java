@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation.exercise;
 
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
@@ -8,7 +8,7 @@ import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
 import static com.online.languages.study.lang.Constants.PRACTICE_MIXED_PARAM;
 import static com.online.languages.study.lang.Constants.PRACTICE_MIX_SETTING;
 import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
-import static com.online.languages.study.lang.presentation.ExercisePagerAdapter.CLICK_SOURCE_BUTTON;
+import static com.online.languages.study.lang.presentation.exercise.ExercisePagerAdapter.CLICK_SOURCE_BUTTON;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -59,6 +59,7 @@ import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.online.languages.study.lang.practice.QuestCollector;
 import com.online.languages.study.lang.practice.VocCollectManager;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

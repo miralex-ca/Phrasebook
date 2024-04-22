@@ -30,6 +30,8 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.databinding.ActivityRecommendBinding;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.recommend.RecommendListAdapter;
 import com.online.languages.study.lang.recommend.RecommendTask;
 import com.online.languages.study.lang.recommend.TaskActionDialog;
