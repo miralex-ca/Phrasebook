@@ -1,19 +1,17 @@
 package com.online.languages.study.lang.recommend;
 
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+import static com.online.languages.study.lang.recommend.Task.TASK_TYPE_COMPLETED;
+
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -23,11 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.CustomDataListActivity;
-import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.SectionActivity;
-import com.online.languages.study.lang.SectionStatsActivity;
 import com.online.languages.study.lang.adapters.HintDialog;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
@@ -35,14 +29,14 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.databinding.FragmentTaskBinding;
-
+import com.online.languages.study.lang.presentation.CustomDataListActivity;
+import com.online.languages.study.lang.presentation.ExerciseActivity;
+import com.online.languages.study.lang.presentation.SectionActivity;
+import com.online.languages.study.lang.presentation.SectionStatsActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
-import static com.online.languages.study.lang.recommend.Task.TASK_TYPE_COMPLETED;
 
 
 public class TaskFragment extends Fragment {

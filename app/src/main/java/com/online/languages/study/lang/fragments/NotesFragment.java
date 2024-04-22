@@ -1,41 +1,5 @@
 package com.online.languages.study.lang.fragments;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-
-import androidx.fragment.app.Fragment;
-import androidx.core.view.ViewCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import android.view.GestureDetector;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-
-import com.online.languages.study.lang.NoteActivity;
-import com.online.languages.study.lang.NoteEditActivity;
-import com.online.languages.study.lang.NotesArchiveActivity;
-import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.NoteActionDialog;
-import com.online.languages.study.lang.adapters.NotesAdapter;
-import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ResizeHeight;
-import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.NoteData;
-
-import java.util.ArrayList;
-import java.util.Objects;
-
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
@@ -48,6 +12,42 @@ import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED;
 import static com.online.languages.study.lang.Constants.STATUS_UPDATED_SORT;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.adapters.NoteActionDialog;
+import com.online.languages.study.lang.adapters.NotesAdapter;
+import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.adapters.ResizeHeight;
+import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.presentation.NoteActivity;
+import com.online.languages.study.lang.presentation.NoteEditActivity;
+import com.online.languages.study.lang.presentation.NotesArchiveActivity;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class NotesFragment extends Fragment {

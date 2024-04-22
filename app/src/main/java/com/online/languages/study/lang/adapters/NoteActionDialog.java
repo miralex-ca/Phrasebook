@@ -1,11 +1,9 @@
 package com.online.languages.study.lang.adapters;
 
 
-
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import androidx.appcompat.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -13,10 +11,12 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.online.languages.study.lang.MainActivity;
+import androidx.appcompat.app.AlertDialog;
+
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.fragments.NotesFragment;
+import com.online.languages.study.lang.presentation.MainActivity;
 
 
 public class NoteActionDialog {

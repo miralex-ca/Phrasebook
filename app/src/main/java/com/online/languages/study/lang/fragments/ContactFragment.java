@@ -1,6 +1,7 @@
 package com.online.languages.study.lang.fragments;
 
-import android.content.Intent;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +10,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.online.languages.study.lang.BuildConfig;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.RecommendActivity;
-import com.online.languages.study.lang.TaskActivity;
 import com.online.languages.study.lang.databinding.FragmentContactBinding;
 import com.online.languages.study.lang.tools.ContactAction;
-
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
 public class ContactFragment extends Fragment {
 

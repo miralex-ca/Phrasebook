@@ -14,22 +14,12 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.data.DataItem;
-import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.NavCategory;
-import com.online.languages.study.lang.data.NavSection;
-import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.databinding.FragmentConstructorBinding;
-import com.online.languages.study.lang.databinding.FragmentPracticeBinding;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
 
 
 public class ConstructorFragment extends Fragment {

@@ -1,5 +1,12 @@
 package com.online.languages.study.lang.practice;
 
+import static com.online.languages.study.lang.Constants.PRACTICE_AUTOLEVEL_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_EXCLUDED_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_LEVEL_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
+import static com.online.languages.study.lang.practice.PracticeParamsDialog.LEVEL_UNKNOWN;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,17 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.HintDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.constructor.ConstructorActivity;
 import com.online.languages.study.lang.constructor.ExerciseBuildActivity;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
@@ -28,16 +31,10 @@ import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.databinding.FragmentPracticeBinding;
+import com.online.languages.study.lang.presentation.ExerciseActivity;
 
 import java.util.ArrayList;
 import java.util.Map;
-
-import static com.online.languages.study.lang.Constants.PRACTICE_AUTOLEVEL_SETTING;
-import static com.online.languages.study.lang.Constants.PRACTICE_EXCLUDED_SETTING;
-import static com.online.languages.study.lang.Constants.PRACTICE_LEVEL_SETTING;
-import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
-import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
-import static com.online.languages.study.lang.practice.PracticeParamsDialog.LEVEL_UNKNOWN;
 
 
 public class PracticeFragment extends Fragment {

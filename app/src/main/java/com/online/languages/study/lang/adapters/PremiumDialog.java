@@ -1,12 +1,10 @@
 package com.online.languages.study.lang.adapters;
 
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -16,8 +14,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.online.languages.study.lang.GetPremium;
+import androidx.appcompat.app.AlertDialog;
+
 import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.presentation.GetPremium;
 
 
 public class PremiumDialog {

@@ -1,12 +1,7 @@
 package com.online.languages.study.lang.adapters;
 
 
-
 import android.content.Context;
-import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -14,10 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.ExerciseActivity;
 import com.online.languages.study.lang.R;
 
 public class DataModeDialog implements OnModeSelector {

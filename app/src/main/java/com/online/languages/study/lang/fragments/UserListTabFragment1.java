@@ -1,5 +1,12 @@
 package com.online.languages.study.lang.fragments;
 
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.SHOW_DIVIDER;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -8,13 +15,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-
-import androidx.fragment.app.Fragment;
-import androidx.core.view.ViewCompat;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -24,26 +24,24 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UserListActivity;
 import com.online.languages.study.lang.adapters.ContentAdapter;
 import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.data.DataItem;
-
+import com.online.languages.study.lang.presentation.UserListActivity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
-import static com.online.languages.study.lang.Constants.SHOW_DIVIDER;
 
 
 public class UserListTabFragment1 extends Fragment {

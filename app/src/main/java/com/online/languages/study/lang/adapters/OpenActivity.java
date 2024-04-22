@@ -1,6 +1,12 @@
 package com.online.languages.study.lang.adapters;
 
 
+import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
+import static com.online.languages.study.lang.Constants.CAT_SPEC_TEXT;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
+import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,31 +14,25 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.preference.PreferenceManager;
 
-import com.online.languages.study.lang.CatActivity;
-import com.online.languages.study.lang.CatSimpleListActivity;
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.ExerciseActivity;
-import com.online.languages.study.lang.GalleryActivity;
-import com.online.languages.study.lang.ImageListActivity;
-import com.online.languages.study.lang.MapActivity;
-import com.online.languages.study.lang.MapListActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.SubSectionActivity;
-import com.online.languages.study.lang.TextActivity;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.practice.CallActivity;
+import com.online.languages.study.lang.presentation.CatActivity;
+import com.online.languages.study.lang.presentation.CatSimpleListActivity;
+import com.online.languages.study.lang.presentation.ExerciseActivity;
+import com.online.languages.study.lang.presentation.GalleryActivity;
+import com.online.languages.study.lang.presentation.ImageListActivity;
+import com.online.languages.study.lang.presentation.MapActivity;
+import com.online.languages.study.lang.presentation.MapListActivity;
+import com.online.languages.study.lang.presentation.SubSectionActivity;
+import com.online.languages.study.lang.presentation.TextActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
-import static com.online.languages.study.lang.Constants.CAT_SPEC_TEXT;
-import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
 public class OpenActivity  implements CallActivity {
 

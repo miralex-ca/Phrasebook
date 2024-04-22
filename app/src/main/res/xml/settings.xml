@@ -16,7 +16,7 @@
             android:summary="@string/set_version_plus_summary">
             <intent
                 android:targetPackage="@string/app_package"
-                android:targetClass="com.online.languages.study.lang.GetPremium"/>
+                android:targetClass="com.online.languages.study.lang.presentation.GetPremium"/>
         </Preference>
 
 

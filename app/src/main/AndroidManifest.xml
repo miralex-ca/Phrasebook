@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.online.languages.study.lang.MainActivity"
+            android:name="com.online.languages.study.lang.presentation.MainActivity"
             android:screenOrientation="behind"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
@@ -39,31 +39,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.online.languages.study.lang.CatActivity"
+            android:name="com.online.languages.study.lang.presentation.CatActivity"
             android:screenOrientation="behind"
             android:label="@string/title_activity_cat"
             android:theme="@style/AppTheme" />
         <activity
             android:screenOrientation="behind"
-            android:name="com.online.languages.study.lang.CatSimpleListActivity"
+            android:name="com.online.languages.study.lang.presentation.CatSimpleListActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.SampleActivity"
+            android:name="com.online.languages.study.lang.presentation.SampleActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.ScrollingActivity"
+            android:name="com.online.languages.study.lang.presentation.ScrollingActivity"
             android:theme="@style/AppTheme.Dialog" />
         <activity
-            android:name="com.online.languages.study.lang.ExerciseResultActivity"
+            android:name="com.online.languages.study.lang.presentation.ExerciseResultActivity"
             android:theme="@style/AppTheme.Dialog" />
         <activity
-            android:name="com.online.languages.study.lang.CardsActivity"
+            android:name="com.online.languages.study.lang.presentation.CardsActivity"
             android:screenOrientation="behind"
             android:label="@string/title_activity_cards"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.ExerciseActivity"
+            android:name="com.online.languages.study.lang.presentation.ExerciseActivity"
             android:screenOrientation="behind"
             android:label="@string/title_activity_exericse"
             android:theme="@style/AppTheme" />
@@ -74,69 +74,69 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.UserListActivity"
+            android:name="com.online.languages.study.lang.presentation.UserListActivity"
             android:screenOrientation="behind"
             android:label="@string/title_activity_user_list"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SectionStatsActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionStatsActivity"
             android:screenOrientation="behind"
             android:label="@string/title_activity_cat_stats"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SectionStatsListActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionStatsListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.CustomDataListActivity"
+            android:name="com.online.languages.study.lang.presentation.CustomDataListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.CatListActivity"
+            android:name="com.online.languages.study.lang.presentation.CatListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.CustomDataActivity"
+            android:name="com.online.languages.study.lang.presentation.CustomDataActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.ReferenceActivity"
+            android:name="com.online.languages.study.lang.presentation.ReferenceActivity"
             android:label="@string/title_activity_reference"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.GetPremium"
+            android:name="com.online.languages.study.lang.presentation.GetPremium"
             android:screenOrientation="behind"
             android:label="@string/title_activity_get_premium"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SectionActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.SectionReviewActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionReviewActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.SectionActivitySimple"
+            android:name="com.online.languages.study.lang.presentation.SectionActivitySimple"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.SubSectionActivity"
+            android:name="com.online.languages.study.lang.presentation.SubSectionActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SectionListActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SectionTestActivity"
+            android:name="com.online.languages.study.lang.presentation.SectionTestActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.SearchActivity"
+            android:name="com.online.languages.study.lang.presentation.SearchActivity"
             android:screenOrientation="behind"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
@@ -150,30 +150,30 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name="com.online.languages.study.lang.ProgressStatsActivity"
+            android:name="com.online.languages.study.lang.presentation.ProgressStatsActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.MapActivity"
+            android:name="com.online.languages.study.lang.presentation.MapActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.online.languages.study.lang.MapListActivity"
-            android:theme="@style/AppTheme" />
-
-        <activity
-            android:name="com.online.languages.study.lang.GalleryActivity"
+            android:name="com.online.languages.study.lang.presentation.MapListActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-        android:name="com.online.languages.study.lang.ImageListActivity"
+            android:name="com.online.languages.study.lang.presentation.GalleryActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+        android:name="com.online.languages.study.lang.presentation.ImageListActivity"
         android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.StarredGalleryActivity"
+            android:name="com.online.languages.study.lang.presentation.StarredGalleryActivity"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.StarredBookmarksActivity"
+            android:name="com.online.languages.study.lang.presentation.StarredBookmarksActivity"
             android:theme="@style/AppTheme" />
 
         <activity
@@ -182,41 +182,41 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name="com.online.languages.study.lang.FinderActivity"
+            android:name="com.online.languages.study.lang.presentation.FinderActivity"
             android:theme="@style/AppTheme.Finder" />
 
         <activity
-            android:name="com.online.languages.study.lang.FinderDialogActivity"
+            android:name="com.online.languages.study.lang.presentation.FinderDialogActivity"
             android:theme="@style/AppTheme.FinderDialog" />
 
 
         <activity
-            android:name="com.online.languages.study.lang.ImageDetailActivity"
+            android:name="com.online.languages.study.lang.presentation.ImageDetailActivity"
             android:theme="@style/AppTheme.Dialog" />
 
         <activity android:name="com.online.languages.study.lang.presentation.BaseActivity" />
 
-        <activity android:name="com.online.languages.study.lang.InfoListActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.InfoListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.TextActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.TextActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.NoteActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.NoteActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.RecommendActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.RecommendActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.TaskActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.TaskActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
@@ -231,27 +231,27 @@
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.NoteEditActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.NoteEditActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.MyCatEditActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.MyCatEditActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.UCatsListActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.UCatsListActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.UCatsArchiveActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.UCatsArchiveActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />
 
-        <activity android:name="com.online.languages.study.lang.NotesArchiveActivity"
+        <activity android:name="com.online.languages.study.lang.presentation.NotesArchiveActivity"
             android:screenOrientation="behind"
             android:theme="@style/AppTheme"
             />

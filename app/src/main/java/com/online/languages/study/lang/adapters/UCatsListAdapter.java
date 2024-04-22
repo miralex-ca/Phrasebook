@@ -1,33 +1,6 @@
 package com.online.languages.study.lang.adapters;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.preference.PreferenceManager;
-
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-
-import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UCatsListActivity;
-import com.online.languages.study.lang.data.DataObject;
-import com.squareup.picasso.Picasso;
-
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
-
 import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
 import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
@@ -37,6 +10,32 @@ import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.UCAT_PARAM_BOOKMARK_ON;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.data.DataObject;
+import com.online.languages.study.lang.presentation.UCatsListActivity;
+import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class UCatsListAdapter extends RecyclerView.Adapter<UCatsListAdapter.MyViewHolder> {

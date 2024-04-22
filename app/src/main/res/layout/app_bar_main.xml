@@ -8,7 +8,7 @@
     android:background="?attr/colorBaseBg"
 
 
-    tools:context="com.online.languages.study.lang.MainActivity">
+    tools:context="com.online.languages.study.lang.presentation.MainActivity">
 
 
 

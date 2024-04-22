@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
 import androidx.core.view.ViewCompat;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -13,16 +16,12 @@ import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreferenceCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
-
-import java.util.Objects;
+import com.online.languages.study.lang.presentation.MainActivity;
 
 
 public class PrefsFragment extends PreferenceFragmentCompat {

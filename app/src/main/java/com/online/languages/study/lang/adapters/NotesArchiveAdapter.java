@@ -1,10 +1,13 @@
 package com.online.languages.study.lang.adapters;
 
 
+import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+import static com.online.languages.study.lang.Constants.PARAM_GROUP;
+
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +15,13 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.online.languages.study.lang.NotesArchiveActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
+import com.online.languages.study.lang.presentation.NotesArchiveActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 
 
 public class NotesArchiveAdapter extends RecyclerView.Adapter<NotesArchiveAdapter.MyViewHolder>    {

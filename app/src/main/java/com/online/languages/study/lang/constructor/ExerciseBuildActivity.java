@@ -43,7 +43,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.snackbar.Snackbar;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
-import com.online.languages.study.lang.ExerciseResultActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
@@ -54,6 +53,7 @@ import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.online.languages.study.lang.practice.QuestCollector;
+import com.online.languages.study.lang.presentation.ExerciseResultActivity;
 import com.online.languages.study.lang.presentation.ThemedActivity;
 
 import java.util.ArrayList;

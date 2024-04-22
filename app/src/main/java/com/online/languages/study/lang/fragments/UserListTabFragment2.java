@@ -6,21 +6,22 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import androidx.fragment.app.Fragment;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UserListActivity;
 import com.online.languages.study.lang.adapters.ExRecycleAdapter;
+import com.online.languages.study.lang.presentation.UserListActivity;
 
 import java.util.ArrayList;
 

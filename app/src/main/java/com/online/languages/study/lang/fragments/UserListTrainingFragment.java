@@ -1,12 +1,12 @@
 package com.online.languages.study.lang.fragments;
 
 
+import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
+
 import android.os.Handler;
 import android.os.Looper;
 
-import com.online.languages.study.lang.UserListActivity;
-
-import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
+import com.online.languages.study.lang.presentation.UserListActivity;
 
 public class UserListTrainingFragment extends TrainingFragment {
 

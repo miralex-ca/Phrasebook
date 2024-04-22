@@ -6,13 +6,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
-import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.data.CheckData;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
 

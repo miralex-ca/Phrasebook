@@ -1,5 +1,7 @@
 package com.online.languages.study.lang.fragments;
 
+import static com.online.languages.study.lang.adapters.CategoryParamsDialog.CATEGORY_RESULT_DISPLAY;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,14 +15,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.online.languages.study.lang.CatActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.databinding.FragmentTrainingBinding;
+import com.online.languages.study.lang.presentation.CatActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.adapters.CategoryParamsDialog.CATEGORY_RESULT_DISPLAY;
 
 
 public class TrainingFragment extends Fragment implements TrainingFragmentMethods {

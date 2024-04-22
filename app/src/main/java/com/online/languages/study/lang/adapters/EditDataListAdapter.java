@@ -1,13 +1,14 @@
 package com.online.languages.study.lang.adapters;
 
 
+import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
+import static com.online.languages.study.lang.Constants.ACTION_DELETE;
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+import static com.online.languages.study.lang.Constants.ACTION_VIEW;
+
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.view.menu.MenuPopupHelper;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,17 +16,13 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.online.languages.study.lang.MyCatEditActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.presentation.MyCatEditActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.ACTION_CHANGE_ORDER;
-import static com.online.languages.study.lang.Constants.ACTION_DELETE;
-import static com.online.languages.study.lang.Constants.ACTION_MOVE;
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.ACTION_VIEW;
 
 
 public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapter.MyViewHolder> {

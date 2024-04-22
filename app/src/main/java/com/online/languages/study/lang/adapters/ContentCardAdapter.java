@@ -1,27 +1,27 @@
 package com.online.languages.study.lang.adapters;
 
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.online.languages.study.lang.CatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.UserListActivity;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.presentation.CatActivity;
+import com.online.languages.study.lang.presentation.UserListActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 
 
 

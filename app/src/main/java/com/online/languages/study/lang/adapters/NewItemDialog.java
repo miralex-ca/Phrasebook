@@ -1,9 +1,12 @@
 package com.online.languages.study.lang.adapters;
 
+import static com.online.languages.study.lang.Constants.ACTION_CREATE;
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
-import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -14,13 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.online.languages.study.lang.MyCatEditActivity;
+import androidx.appcompat.app.AlertDialog;
+
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataItem;
-
-import static com.online.languages.study.lang.Constants.ACTION_CREATE;
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.VALUE_SOUND_OFF;
+import com.online.languages.study.lang.presentation.MyCatEditActivity;
 
 public class NewItemDialog {
 

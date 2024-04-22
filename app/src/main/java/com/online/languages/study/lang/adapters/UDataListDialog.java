@@ -1,8 +1,11 @@
 package com.online.languages.study.lang.adapters;
 
 
+import static com.online.languages.study.lang.Constants.ACTION_CREATE;
+import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+
 import android.content.Context;
-import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -20,15 +23,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.online.languages.study.lang.MyCatEditActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataObject;
+import com.online.languages.study.lang.presentation.MyCatEditActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.ACTION_CREATE;
-import static com.online.languages.study.lang.Constants.ACTION_EDIT_GROUP;
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 
 
 public class UDataListDialog {

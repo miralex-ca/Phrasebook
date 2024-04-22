@@ -1,32 +1,33 @@
 package com.online.languages.study.lang.fragments;
 
+import static com.online.languages.study.lang.Constants.NAV_GALLERY_SPEC;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import androidx.fragment.app.Fragment;
-import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.MainActivity;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.HomeCardRecycleAdapter;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.presentation.MainActivity;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.NAV_GALLERY_SPEC;
 
 public class HomeFragment extends Fragment {
 
