@@ -1,26 +1,29 @@
 package com.online.languages.study.lang;
 
+import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
 import com.online.languages.study.lang.databinding.ActivityNoteBinding;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 import com.online.languages.study.lang.view_models.NoteViewModel;
 import com.online.languages.study.lang.view_models.NoteViewModelFactory;
 import com.squareup.picasso.Picasso;
-
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
-import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
 
 public class NoteActivity extends ThemedActivity {
 

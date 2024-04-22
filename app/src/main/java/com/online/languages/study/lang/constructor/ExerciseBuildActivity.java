@@ -1,5 +1,14 @@
 package com.online.languages.study.lang.constructor;
 
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
+import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIXED_PARAM;
+import static com.online.languages.study.lang.Constants.PRACTICE_MIX_SETTING;
+import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
+import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,10 +43,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.snackbar.Snackbar;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
-
 import com.online.languages.study.lang.ExerciseResultActivity;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.ThemedActivity;
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
@@ -47,19 +54,11 @@ import com.online.languages.study.lang.data.ExerciseController;
 import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.online.languages.study.lang.practice.QuestCollector;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
-
-import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
-import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
-import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;
-import static com.online.languages.study.lang.Constants.PRACTICE_MIXED_PARAM;
-import static com.online.languages.study.lang.Constants.PRACTICE_MIX_SETTING;
-import static com.online.languages.study.lang.Constants.TASK_REVISE_TEST_LIMIT;
-import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
 
 public class ExerciseBuildActivity extends ThemedActivity implements TextToSpeech.OnInitListener {
 

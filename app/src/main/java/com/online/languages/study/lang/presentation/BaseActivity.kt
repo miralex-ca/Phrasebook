@@ -1,34 +1,37 @@
-package com.online.languages.study.lang.presentation;
+package com.online.languages.study.lang.presentation
 
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.BroadcastReceiver
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.online.languages.study.lang.App
+import com.online.languages.study.lang.AppContainer
+import com.online.languages.study.lang.LocaleChangedReceiver
+import com.online.languages.study.lang.adapters.OpenActivity
+import com.online.languages.study.lang.repository.getAppSettings
 
-import com.online.languages.study.lang.LocaleChangedReceiver;
+open class BaseActivity : AppCompatActivity() {
+    lateinit var openActivity: OpenActivity
+    lateinit var appSettings: SharedPreferences
+    lateinit var appContainer: AppContainer
 
-public class BaseActivity extends AppCompatActivity {
+    private var br: BroadcastReceiver? = null
 
-    BroadcastReceiver br;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        br = LocaleChangedReceiver()
+        val filter = IntentFilter(Intent.ACTION_LOCALE_CHANGED)
+        registerReceiver(br, filter)
 
-    @Override
-    protected void onDestroy() {
-
-        unregisterReceiver(br);
-
-        super.onDestroy();
-
+        appContainer = (application as App).appContainer
+        openActivity = appContainer.getOpenActivity(this)
+        appSettings = appContainer.repository.getAppSettings()
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
-        br = new LocaleChangedReceiver();
-        IntentFilter filter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
-        registerReceiver(br, filter);
-
+    override fun onDestroy() {
+        unregisterReceiver(br)
+        super.onDestroy()
     }
 }

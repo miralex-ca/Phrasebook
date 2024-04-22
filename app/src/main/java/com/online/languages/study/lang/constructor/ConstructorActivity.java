@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.ThemedActivity;
 import com.online.languages.study.lang.practice.PracticeFragment;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 
 
 public class ConstructorActivity extends ThemedActivity {

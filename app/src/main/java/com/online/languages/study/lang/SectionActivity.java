@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -19,6 +18,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.practice.PracticeFragment;
 import com.online.languages.study.lang.practice.SectionPagerAdapter;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 
 public class SectionActivity extends ThemedActivity {
 

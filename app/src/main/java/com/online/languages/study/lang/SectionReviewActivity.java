@@ -1,5 +1,10 @@
 package com.online.languages.study.lang;
 
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
+import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,12 +13,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Vibrator;
-import android.preference.PreferenceManager;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,40 +24,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.DividerItemDecoration;
-import com.online.languages.study.lang.adapters.GalleryAdapter;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.PremiumDialog;
 import com.online.languages.study.lang.adapters.SectionListAdapter;
 import com.online.languages.study.lang.adapters.SectionReviewListAdapter;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.data.ViewCategory;
-import com.online.languages.study.lang.fragments.CatTabFragment1;
-import com.online.languages.study.lang.fragments.GalleryFragment;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 import com.online.languages.study.lang.tools.CheckPlusVersion;
 import com.online.languages.study.lang.tools.TopicIcons;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
-import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
-import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 
 public class SectionReviewActivity extends ThemedActivity {
 

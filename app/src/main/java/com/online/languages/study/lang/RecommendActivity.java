@@ -1,5 +1,12 @@
 package com.online.languages.study.lang;
 
+import static com.online.languages.study.lang.recommend.Task.TASK_TYPE_COMPLETED;
+import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_BLOCK;
+import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_CLEAR_DATA;
+import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_DOWNGRADE;
+import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_SECTION_STATS;
+import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_SUGGEST;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,30 +22,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
-import com.online.languages.study.lang.recommend.TaskItem;
-import com.online.languages.study.lang.recommend.RecommendListAdapter;
-import com.online.languages.study.lang.recommend.RecommendTask;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.databinding.ActivityRecommendBinding;
+import com.online.languages.study.lang.presentation.ThemedActivity;
+import com.online.languages.study.lang.recommend.RecommendListAdapter;
+import com.online.languages.study.lang.recommend.RecommendTask;
 import com.online.languages.study.lang.recommend.TaskActionDialog;
-import com.online.languages.study.lang.recommend.TaskCompleteDialog;
+import com.online.languages.study.lang.recommend.TaskItem;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-
-import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
-import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
-import static com.online.languages.study.lang.recommend.Task.TASK_TYPE_COMPLETED;
-import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_BLOCK;
-import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_CLEAR_DATA;
-import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_DOWNGRADE;
-import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_SECTION_STATS;
-import static com.online.languages.study.lang.recommend.TaskFragment.ACTION_SUGGEST;
 
 public class RecommendActivity extends ThemedActivity {
 

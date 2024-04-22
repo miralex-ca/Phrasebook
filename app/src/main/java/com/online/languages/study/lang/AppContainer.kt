@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.online.languages.study.lang.adapters.OpenActivity
+import com.online.languages.study.lang.repository.Repository
+import com.online.languages.study.lang.utils.Vibration
 
 class AppContainer(val context: Context) {
-//    val repository = Repository(context)
-//    val vibration = Vibration(context)
+    val repository = Repository(context)
+    val vibration = Vibration(context)
     val models = ViewModelsHelper(this)
 
     fun getOpenActivity(context: Activity) = OpenActivity(context)

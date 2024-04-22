@@ -1,29 +1,28 @@
 package com.online.languages.study.lang;
 
+import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_NAV_STRUCTURE;
+import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.presentation.ThemedActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
-import static com.online.languages.study.lang.Constants.EXTRA_NAV_STRUCTURE;
-import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 
 public class TextActivity extends ThemedActivity {
 
