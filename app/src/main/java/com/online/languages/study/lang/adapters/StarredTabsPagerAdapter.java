@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-import com.online.languages.study.lang.fragments.StarredBookmarkTab;
-import com.online.languages.study.lang.fragments.StarredTabOne;
+import com.online.languages.study.lang.presentation.main.fragments.StarredBookmarkTab;
+import com.online.languages.study.lang.presentation.main.fragments.StarredTabOne;
 
 
 public class StarredTabsPagerAdapter extends FragmentStatePagerAdapter {

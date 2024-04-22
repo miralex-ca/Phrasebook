@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.fragments.NotesFragment;
+import com.online.languages.study.lang.presentation.main.fragments.NotesFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

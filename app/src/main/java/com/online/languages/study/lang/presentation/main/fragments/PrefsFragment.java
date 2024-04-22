@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.fragments;
+package com.online.languages.study.lang.presentation.main.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

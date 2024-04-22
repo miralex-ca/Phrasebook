@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.fragments;
+package com.online.languages.study.lang.presentation.main.fragments;
 
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
