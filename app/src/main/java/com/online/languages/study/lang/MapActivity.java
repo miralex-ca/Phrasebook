@@ -28,6 +28,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailItem;
 import com.online.languages.study.lang.data.ImageData;
 import com.online.languages.study.lang.data.ImageMapsData;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 public class MapActivity extends BaseActivity {

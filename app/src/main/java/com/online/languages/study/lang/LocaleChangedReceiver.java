@@ -8,6 +8,8 @@ import android.content.Intent;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
+import com.online.languages.study.lang.presentation.AppStart;
+
 public class LocaleChangedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {

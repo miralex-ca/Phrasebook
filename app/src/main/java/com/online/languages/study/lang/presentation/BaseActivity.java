@@ -1,10 +1,12 @@
-package com.online.languages.study.lang;
+package com.online.languages.study.lang.presentation;
 
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.online.languages.study.lang.LocaleChangedReceiver;
 
 public class BaseActivity extends AppCompatActivity {
 

@@ -19,11 +19,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.presentation.AppStart;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -32,7 +31,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;

@@ -31,6 +31,7 @@ import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;

@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 public class SampleActivity extends BaseActivity {
 

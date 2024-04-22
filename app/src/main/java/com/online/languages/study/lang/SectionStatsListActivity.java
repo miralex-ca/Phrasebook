@@ -28,6 +28,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 public class SectionStatsListActivity extends BaseActivity {
 

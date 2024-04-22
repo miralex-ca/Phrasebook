@@ -12,6 +12,7 @@ import android.webkit.WebView;
 
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -28,6 +28,7 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.UserStats;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 
 public class ProgressStatsActivity extends BaseActivity {

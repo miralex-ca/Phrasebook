@@ -29,6 +29,7 @@ import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

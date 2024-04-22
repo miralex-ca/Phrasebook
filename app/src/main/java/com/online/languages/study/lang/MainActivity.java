@@ -58,6 +58,8 @@ import com.online.languages.study.lang.fragments.PrefsFragment;
 import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.fragments.StarredFragment;
 import com.online.languages.study.lang.fragments.StatsFragment;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;

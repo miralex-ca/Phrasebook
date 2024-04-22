@@ -20,7 +20,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.SectionListAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -28,6 +27,7 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 

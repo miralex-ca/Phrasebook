@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.presentation.AppStart;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

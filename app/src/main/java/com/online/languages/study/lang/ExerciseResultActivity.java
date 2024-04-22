@@ -23,6 +23,7 @@ import com.online.languages.study.lang.adapters.TestResultAdapter;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.TestResult;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 

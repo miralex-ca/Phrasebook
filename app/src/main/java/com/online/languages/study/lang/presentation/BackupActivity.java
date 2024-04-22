@@ -1,4 +1,4 @@
-package com.online.languages.study.lang;
+package com.online.languages.study.lang.presentation;
 
 import android.Manifest;
 import android.content.Context;
@@ -21,6 +21,9 @@ import android.view.View;
 import android.widget.TextView;
 
 
+import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.DBHelper;
+import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -30,9 +33,8 @@ import com.online.languages.study.lang.files.DBImport;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Pattern;
 
-import static com.online.languages.study.lang.AppStart.APP_LAUNCHES;
+import static com.online.languages.study.lang.presentation.AppStart.APP_LAUNCHES;
 
 
 public class BackupActivity extends BaseActivity {

@@ -25,13 +25,13 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DetailItem;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_TAG;
 import static com.online.languages.study.lang.Constants.INFO_TAG;
-import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
 
 public class ScrollingActivity extends BaseActivity implements TextToSpeech.OnInitListener {

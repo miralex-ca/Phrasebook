@@ -4,9 +4,7 @@ import com.online.languages.study.lang.data.DataObject
 
 class AdditionsData {
 
-
     private val resourcesMap = HashMap<String, DataObject>()
-
     var pagesTagsList: Array<String> = emptyArray()
 
     var additionsList =  ArrayList<DataObject>()
@@ -17,15 +15,11 @@ class AdditionsData {
 
 
     fun processData() {
-
         pagesTagsList.forEach {
-
             val found = resourcesMap[it]
 
             if (found != null)
-
-            additionsList.add(found)
-
+                additionsList.add(found)
         }
     }
 

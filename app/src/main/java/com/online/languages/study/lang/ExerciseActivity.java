@@ -19,7 +19,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
@@ -31,7 +30,6 @@ import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +45,7 @@ import com.online.languages.study.lang.data.ExerciseDataCollect;
 import com.online.languages.study.lang.data.ExerciseTask;
 import com.online.languages.study.lang.practice.QuestCollector;
 import com.online.languages.study.lang.practice.VocCollectManager;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

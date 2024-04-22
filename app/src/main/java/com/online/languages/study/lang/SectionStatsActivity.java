@@ -28,7 +28,7 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
-import com.online.languages.study.lang.practice.PracticeActivity;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

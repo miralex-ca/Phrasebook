@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import androidx.core.view.ViewCompat;
+
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +32,7 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 

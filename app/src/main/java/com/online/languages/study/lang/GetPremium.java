@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
 import com.online.languages.study.lang.util.Inventory;

@@ -19,6 +19,7 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.GalleryFragment;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;

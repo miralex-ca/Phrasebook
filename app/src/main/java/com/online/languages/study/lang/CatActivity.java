@@ -37,8 +37,9 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
-import com.online.languages.study.lang.fragments.CatTabFragment2;
 import com.online.languages.study.lang.fragments.TrainingFragment;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;

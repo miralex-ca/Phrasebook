@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.online.languages.study.lang.adapters.CatsListAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
@@ -30,6 +29,7 @@ import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.data.ViewSection;
+import com.online.languages.study.lang.presentation.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;

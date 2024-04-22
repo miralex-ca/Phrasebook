@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
+import com.online.languages.study.lang.presentation.BaseActivity;
+
 import static com.online.languages.study.lang.Constants.SET_THEME_DEFAULT;
 
 public class ThemedActivity extends BaseActivity {

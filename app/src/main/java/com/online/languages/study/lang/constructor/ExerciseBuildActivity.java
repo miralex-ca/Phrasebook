@@ -1,9 +1,6 @@
 package com.online.languages.study.lang.constructor;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -22,13 +19,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,9 +31,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.snackbar.Snackbar;
-import com.online.languages.study.lang.BaseActivity;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 
@@ -49,8 +41,6 @@ import com.online.languages.study.lang.ThemedActivity;
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ResizeHeight;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.ExerciseController;
@@ -63,7 +53,6 @@ import java.util.Collections;
 import java.util.Locale;
 
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
-import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
 import static com.online.languages.study.lang.Constants.EX_IMG_TYPE;
 import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_DEFAULT;
 import static com.online.languages.study.lang.Constants.PRACTICE_LIMIT_SETTING;

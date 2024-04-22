@@ -20,7 +20,7 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity
-            android:name="com.online.languages.study.lang.AppStart"
+            android:name="com.online.languages.study.lang.presentation.AppStart"
             android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
@@ -178,7 +178,7 @@
 
         <activity
             android:screenOrientation="behind"
-            android:name="com.online.languages.study.lang.BackupActivity"
+            android:name="com.online.languages.study.lang.presentation.BackupActivity"
             android:theme="@style/AppTheme" />
 
         <activity
@@ -194,7 +194,7 @@
             android:name="com.online.languages.study.lang.ImageDetailActivity"
             android:theme="@style/AppTheme.Dialog" />
 
-        <activity android:name="com.online.languages.study.lang.BaseActivity" />
+        <activity android:name="com.online.languages.study.lang.presentation.BaseActivity" />
 
         <activity android:name="com.online.languages.study.lang.InfoListActivity"
             android:screenOrientation="behind"
