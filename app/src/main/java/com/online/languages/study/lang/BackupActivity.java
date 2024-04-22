@@ -20,8 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.nbsp.materialfilepicker.MaterialFilePicker;
-import com.nbsp.materialfilepicker.ui.FilePickerActivity;
+
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -147,14 +146,14 @@ public class BackupActivity extends BaseActivity {
 
        // File exportDir =  getDir("backups", Context.MODE_PRIVATE);
 
-        new MaterialFilePicker()
-                .withActivity(this)
-                .withCustomActivity(FinderDialogActivity.class)
-                .withRequestCode(10)
-                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)|(.*\\.jpg$)"))
-                .withHiddenFiles(false)
-                .withPath(uri.getPath())
-                .start();
+//        new MaterialFilePicker()
+//                .withActivity(this)
+//                .withCustomActivity(FinderDialogActivity.class)
+//                .withRequestCode(10)
+//                .withFilter(Pattern.compile("(.*\\."+fileFormat+"$)|(.*\\.csv$)|(.*\\.jpg$)"))
+//                .withHiddenFiles(false)
+//                .withPath(uri.getPath())
+//                .start();
 
     }
 
@@ -166,8 +165,8 @@ public class BackupActivity extends BaseActivity {
         if (requestCode == 10) {
             if (resultCode == RESULT_OK) {
 
-                String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
-                proImportCSV(Uri.fromFile(new File(filePath)));
+//                String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
+//                proImportCSV(Uri.fromFile(new File(filePath)));
 
             }
         }

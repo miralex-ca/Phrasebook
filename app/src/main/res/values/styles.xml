@@ -743,7 +743,7 @@
         <item name="colorPrimary">@color/colorFinderPrimary</item>
         <item name="colorPrimaryDark">@color/colorFinderPrimaryDark</item>
         <item name="colorAccent">@color/colorFinderAccent</item>
-        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>
+<!--        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>-->
     </style>
 
     <color name="colorFinderPrimary">#424242</color>
@@ -758,7 +758,7 @@
         <item name="colorPrimary">@color/colorFinderPrimary</item>
         <item name="colorPrimaryDark">@color/colorFinderPrimaryDark</item>
         <item name="colorAccent">@color/colorFinderAccent</item>
-        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>
+<!--        <item name="mfp_toolbar_theme">@style/MFP_BaseToolbarTheme</item>-->
 
         <!-- item name="android:windowBackground">@color/colorFinderWindowBg</item -->
         <item name="android:textColor">@color/colorFinderText</item>

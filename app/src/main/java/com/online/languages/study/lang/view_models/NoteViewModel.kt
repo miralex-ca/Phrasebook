@@ -104,7 +104,7 @@ class NoteViewModel(application: Application, _noteId: String) : ViewModel() {
 
 
 class NoteViewModelFactory(private val mApplication: Application, private val mParam: String) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NoteViewModel(mApplication, mParam) as T
     }
 }

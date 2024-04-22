@@ -4,10 +4,9 @@ package com.online.languages.study.lang;
 import android.os.Bundle;
 import android.view.View;
 
-import com.nbsp.materialfilepicker.ui.FilePickerActivity;
+import androidx.fragment.app.FragmentActivity;
 
-
-public class FinderDialogActivity extends FilePickerActivity {
+public class FinderDialogActivity extends FragmentActivity {
     // activity used to customize FilePickerActivity styles
 
     @Override
