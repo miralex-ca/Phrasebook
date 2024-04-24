@@ -4,15 +4,14 @@ import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_SOURCE;
 import static com.online.languages.study.lang.Constants.FOLDER_PICS;
 import static com.online.languages.study.lang.Constants.NOTE_PIC_DEFAULT_INDEX;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -35,23 +34,15 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ImgPickerAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedCornersTransformation;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.squareup.picasso.Picasso;
 
-public class NoteEditActivity extends BaseActivity {
+import java.util.Objects;
 
-
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
-
-    OpenActivity openActivity;
-    TextView title, content;
+public class NoteEditActivity extends ThemedActivity {
     ImageView noteIcon;
 
     private TextView titleCharCounter;
@@ -71,40 +62,28 @@ public class NoteEditActivity extends BaseActivity {
 
     String noteId;
     String noteAction;
+    String noteSource;
 
     DataManager dataManager;
     NoteData note;
 
     AlertDialog imgPickerDialog;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
-
-        openActivity = new OpenActivity(this);
         openActivity.setOrientation();
-
         setContentView(R.layout.activity_note_edit);
-
 
         noteAction = getIntent().getStringExtra(EXTRA_NOTE_ACTION);
         noteId = getIntent().getStringExtra(EXTRA_NOTE_ID);
+        noteSource = getIntent().getStringExtra(EXTRA_NOTE_SOURCE);
 
         dataManager = new DataManager(this);
-
         pics = getResources().getStringArray(R.array.note_pics_list);
 
         folder = getString(R.string.notes_pics_folder);
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -117,7 +96,6 @@ public class NoteEditActivity extends BaseActivity {
         titleCharCounter = findViewById(R.id.titleCharCounter);
         contentCharCounter = findViewById(R.id.contentCharCounter);
 
-
         titleCharCounter.setText("0/"+titleCharMax);
         contentCharCounter.setText("0/"+ contentCharMax);
 
@@ -126,7 +104,6 @@ public class NoteEditActivity extends BaseActivity {
 
         titleEditText.addTextChangedListener(titleEditorWatcher);
         contentEditText.addTextChangedListener(contentEditorWatcher);
-
 
         noteIcon = findViewById(R.id.editNoteIcon);
 
@@ -167,47 +144,32 @@ public class NoteEditActivity extends BaseActivity {
 
 
     private int getIconIndex(String pic) {
-
         int index = -1;
-
         for (int i = 0; i < pics.length; i ++) {
             if (pics[i].equals(pic)) index = i;
         }
         return index;
     }
 
-
-
     private String textSanitizer(String text) {
-
         text = text.replace("\n", " ").replace("\r", " ");
-
         text = text.trim();
         return text;
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                return true;
 
-            case R.id.save_note:
-                editNote();
-                return true;
-
-            case R.id.info_item:
-                showInfo();
-                return true;
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        } else if (id == R.id.save_note) {
+            editNote();
+            return true;
+        } else if (id == R.id.info_item) {
+            showInfo();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -215,14 +177,10 @@ public class NoteEditActivity extends BaseActivity {
     private void showInfo() {
         InfoDialog infoDialog = new InfoDialog(this);
         infoDialog.simpleDialog(getString(R.string.info_notes_title), getString(R.string.info_notes_text));
-
     }
 
     private void editNote() {
-
         NoteData note = new NoteData();
-
-
         note.id = noteId;
 
         String title = titleEditText.getText().toString();
@@ -235,27 +193,29 @@ public class NoteEditActivity extends BaseActivity {
             note.image = pics[picIndex];
         }
 
-
-        if (note.title.equals("") && note.content.trim().equals("")) {
-
+        if (note.title.isEmpty() && note.content.trim().isEmpty()) {
             InfoDialog infoDialog = new InfoDialog(this);
-
             infoDialog.simpleDialog(getString(R.string.savaing_note_title), getString(R.string.empty_note_msg));
-
             return;
         }
 
-
-
         if (noteAction.equals(ACTION_UPDATE)) {
             dataManager.dbHelper.updateNote(note);
-            //Toast.makeText(this, "Сохранено", Toast.LENGTH_SHORT).show();
         }
 
         if (noteAction.equals(ACTION_CREATE)) dataManager.dbHelper.createNote(note);
 
-
         finish();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        if (Objects.equals(noteSource, Constants.NOTE_SOURCE_NOTE)) {
+            openActivity.pageTransitionClose();
+        } else {
+            openActivity.pageBackTransition();
+        }
     }
 
     @Override
@@ -265,10 +225,7 @@ public class NoteEditActivity extends BaseActivity {
         return true;
     }
 
-
-
     private final TextWatcher titleEditorWatcher = new TextWatcher() {
-
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         }
 
@@ -283,7 +240,6 @@ public class NoteEditActivity extends BaseActivity {
     };
 
     private final TextWatcher contentEditorWatcher = new TextWatcher() {
-
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         }
 
@@ -297,28 +253,17 @@ public class NoteEditActivity extends BaseActivity {
     };
 
 
-
     public void buildDialog(View view) {
-
         AlertDialog.Builder dialog = new AlertDialog.Builder(this );
-
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         View content = inflater.inflate(R.layout.picker_dialog, null);
-
-
         recyclerView = content.findViewById(R.id.recycler_view);
-
-
-
         int spanCount = getResources().getInteger(R.integer.img_picker_span);
 
         imgPickerAdapter = new ImgPickerAdapter(this, pics, picIndex);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, spanCount);
-
         recyclerView.setLayoutManager(mLayoutManager);
-
         recyclerView.setAdapter(imgPickerAdapter);
 
         ViewCompat.setNestedScrollingEnabled(recyclerView, false);
@@ -332,8 +277,6 @@ public class NoteEditActivity extends BaseActivity {
                         dialog.cancel();
                     }
                 });
-
-
         /*
 
         dialog.setPositiveButton(R.string.apply_btn,
@@ -347,12 +290,9 @@ public class NoteEditActivity extends BaseActivity {
          */
 
 
-
         imgPickerDialog = dialog.create();
 
         imgPickerDialog.show();
-
-
 
     }
 
@@ -362,30 +302,18 @@ public class NoteEditActivity extends BaseActivity {
     }
 
     public void checkPic(View view) {
-
         View icon = view.findViewById(R.id.icon);
         int t = (int) icon.getTag();
         picIndex = t;
         imgPickerAdapter = new ImgPickerAdapter(this, pics, t);
         recyclerView.setAdapter(imgPickerAdapter);
 
-
-
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                imgPickerDialog.dismiss();
-
-            }
+        new Handler().postDelayed(() -> {
+            imgPickerDialog.dismiss();
         }, 40);
-
 
         setIconImage(pics[picIndex]);
 
     }
-
-
 
 }

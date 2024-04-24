@@ -51,35 +51,34 @@ import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataFromJson;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.presentation.main.fragments.AdditionsFragment;
-import com.online.languages.study.lang.presentation.main.fragments.ContactFragment;
 import com.online.languages.study.lang.fragments.GalleryFragment;
-import com.online.languages.study.lang.presentation.main.fragments.HomeFragment;
 import com.online.languages.study.lang.fragments.HomeFragment2;
 import com.online.languages.study.lang.fragments.HomeTabsFragment;
+import com.online.languages.study.lang.fragments.SectionFragment;
+import com.online.languages.study.lang.fragments.StatsFragment;
+import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.activities.GalleryActivity;
+import com.online.languages.study.lang.presentation.activities.GetPremium;
+import com.online.languages.study.lang.presentation.activities.ReferenceActivity;
+import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
+import com.online.languages.study.lang.presentation.favorites.StarredBookmarksActivity;
+import com.online.languages.study.lang.presentation.main.fragments.AdditionsFragment;
+import com.online.languages.study.lang.presentation.main.fragments.ContactFragment;
 import com.online.languages.study.lang.presentation.main.fragments.InfoFragment;
 import com.online.languages.study.lang.presentation.main.fragments.NotesFragment;
 import com.online.languages.study.lang.presentation.main.fragments.PrefsFragment;
-import com.online.languages.study.lang.fragments.SectionFragment;
 import com.online.languages.study.lang.presentation.main.fragments.StarredFragment;
-import com.online.languages.study.lang.fragments.StatsFragment;
-import com.online.languages.study.lang.presentation.AppStart;
-import com.online.languages.study.lang.presentation.core.BaseActivity;
-import com.online.languages.study.lang.presentation.stats.CustomDataListActivity;
-import com.online.languages.study.lang.presentation.activities.GalleryActivity;
-import com.online.languages.study.lang.presentation.activities.GetPremium;
-import com.online.languages.study.lang.presentation.stats.ProgressStatsActivity;
-import com.online.languages.study.lang.presentation.activities.ReferenceActivity;
-import com.online.languages.study.lang.presentation.search.SearchActivity;
+import com.online.languages.study.lang.presentation.main.fragments.home.HomeFragment;
+import com.online.languages.study.lang.presentation.search.SearchingActivity;
 import com.online.languages.study.lang.presentation.section.SectionReviewActivity;
+import com.online.languages.study.lang.presentation.stats.CustomDataListActivity;
+import com.online.languages.study.lang.presentation.stats.ProgressStatsActivity;
 import com.online.languages.study.lang.presentation.stats.SectionStatsActivity;
 import com.online.languages.study.lang.presentation.stats.SectionStatsListActivity;
-import com.online.languages.study.lang.presentation.favorites.StarredBookmarksActivity;
 import com.online.languages.study.lang.presentation.usercategories.UserListActivity;
-import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.tools.ContactAction;
 import com.online.languages.study.lang.util.IabHelper;
 import com.online.languages.study.lang.util.IabResult;
@@ -870,37 +869,9 @@ public class MainActivity extends BaseActivity
     }
 
 
-    public void openCatActivity(View view, int position) {
-
-        NavSection navSection = navStructure.sections.get(position);
-
-        if (navSection.type.equals("simple")) {
-
-            NavCategory cat = navSection.navCategories.get(0);
-
-            openActivity.openCat(cat.id, cat.spec, cat.title, navSection.id);
-
-        } else {
-
-            if (navSection.type.equals("gallery")) {
-
-                if (navSection.spec.equals("gallery_simple")) {
-
-                    NavCategory cat = navSection.navCategories.get(0);
-
-                    openActivity.openImageList(navStructure, navSection.id, cat.id, cat.title);
-
-                    return;
-
-                } else {
-                    openGallery(navSection);
-                    return;
-                }
-            }
-
-            Intent i = new Intent(MainActivity.this, SectionReviewActivity.class); /// TODO check the links
-            openActivity.openSection(i, navStructure, navSection.id, "root");
-        }
+    public void openCatActivity(String sectionId) {
+        Intent i = new Intent(MainActivity.this, SectionReviewActivity.class);
+        openActivity.openSection(i, navStructure, sectionId, "root");
 
     }
 
@@ -1159,9 +1130,10 @@ public class MainActivity extends BaseActivity
 
 
     private void openSearch() {
-        Intent i = new Intent(MainActivity.this, SearchActivity.class);
+        Intent i = new Intent(MainActivity.this, SearchingActivity.class);
         i.putExtra(Constants.EXTRA_NAV_STRUCTURE, navStructure);
         startActivityForResult(i, 10);
+        openActivity.pageTransitionOpen();
     }
 
 

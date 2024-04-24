@@ -8,7 +8,6 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-
         android:id="@+id/adSpace"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -34,7 +33,6 @@
                     android:gravity="center_horizontal"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/main_card_top"
-
                     style="@style/CardWrapper.Width"
                     >
 
@@ -48,35 +46,17 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler_view_home"
-
                             android:clipToPadding="false"
                             android:nestedScrollingEnabled="false"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:paddingBottom="10dp"
-                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                            />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view_cards"
-
-                            android:clipToPadding="false"
-                            android:nestedScrollingEnabled="false"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingBottom="10dp"
-                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            android:layout_height="wrap_content"
                             />
-
 
                     </LinearLayout>
-
-
                 </LinearLayout>
 
-
             </RelativeLayout>
-
 
         </androidx.core.widget.NestedScrollView>
 

@@ -16,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.online.languages.study.lang.R;
@@ -50,7 +51,6 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
         }
     }
 
-
     public EditDataListAdapter(Context context, ArrayList<DataItem> dataList, MyCatEditActivity activity) {
         this.context  = context;
         this.dataList = dataList;
@@ -59,7 +59,7 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
     }
 
 
-
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -81,14 +81,11 @@ public class EditDataListAdapter extends RecyclerView.Adapter<EditDataListAdapte
 
         final  View v = holder.settings;
 
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View view = v.findViewById(R.id.position);
-                popupwindow_obj = popupDisplay(dataItem, position);
-                popupwindow_obj.showAsDropDown(view,0, 0);
-                clickActive = true;
-            }
+        v.setOnClickListener(v1 -> {
+            View view = v1.findViewById(R.id.position);
+            popupwindow_obj = popupDisplay(dataItem, position);
+            popupwindow_obj.showAsDropDown(view,0, 0);
+            clickActive = true;
         });
 
         holder.wrap.setOnClickListener(new View.OnClickListener() {

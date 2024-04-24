@@ -8,15 +8,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.online.languages.study.lang.App
 import com.online.languages.study.lang.AppContainer
-import com.online.languages.study.lang.utils.LocaleChangedReceiver
 import com.online.languages.study.lang.adapters.OpenActivity
 import com.online.languages.study.lang.repository.getAppSettings
+import com.online.languages.study.lang.utils.LocaleChangedReceiver
 
 open class BaseActivity : AppCompatActivity() {
     lateinit var openActivity: OpenActivity
     lateinit var appSettings: SharedPreferences
     lateinit var appContainer: AppContainer
-
     private var br: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,12 +4,14 @@ package com.online.languages.study.lang.fragments;
 import static android.app.Activity.RESULT_OK;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_UCAT_SOURCE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 import static com.online.languages.study.lang.Constants.PARAM_GROUP;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_PARENT;
 import static com.online.languages.study.lang.Constants.PARAM_UCAT_ROOT;
 import static com.online.languages.study.lang.Constants.SAVED_IMG_LINK;
 import static com.online.languages.study.lang.Constants.UCATS_UNPAID_LIMIT;
+import static com.online.languages.study.lang.Constants.UCAT_SOURCE_LIST;
 import static com.online.languages.study.lang.Constants.UCAT_WIDGET_LIMIT;
 
 import android.content.Context;
@@ -339,7 +341,9 @@ public class HomeFragment2 extends Fragment   {
     public void openNewCat( ) {
         Intent i = new Intent(getActivity(), MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, "new");
+        i.putExtra(EXTRA_UCAT_SOURCE, UCAT_SOURCE_LIST);
         startActivityForResult(i, 10);
+        openActivity.pageTransition();
     }
 
     public void openUcatList( ) {

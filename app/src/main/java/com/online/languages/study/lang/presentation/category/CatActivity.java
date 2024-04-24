@@ -8,7 +8,9 @@ import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
 import static com.online.languages.study.lang.Constants.DATA_MODE_HINT_DEFAULT;
 import static com.online.languages.study.lang.Constants.EXTRA_CAT_ID;
 import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_UCAT_SOURCE;
 import static com.online.languages.study.lang.Constants.OUTCOME_ADDED;
+import static com.online.languages.study.lang.Constants.UCAT_SOURCE_EDIT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 
 import android.content.Context;
@@ -52,11 +54,11 @@ import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.fragments.CatTabFragment1;
 import com.online.languages.study.lang.fragments.TrainingFragment;
 import com.online.languages.study.lang.presentation.AppStart;
-import com.online.languages.study.lang.presentation.usercategories.MyCatEditActivity;
-import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
+import com.online.languages.study.lang.presentation.usercategories.MyCatEditActivity;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -660,11 +662,12 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void openEditCat() {
-
         Intent i = new Intent(this, MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, categoryID);
         i.putExtra("view_ucat", "hide");
+        i.putExtra(EXTRA_UCAT_SOURCE, UCAT_SOURCE_EDIT);
         startActivityForResult(i, 10);
+        openActivity.pageTransitionOpen();
 
     }
 

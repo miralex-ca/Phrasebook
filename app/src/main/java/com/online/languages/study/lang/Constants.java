@@ -13,6 +13,8 @@ public class Constants {
     public static final String SET_THEME_DEFAULT = "default";
     public static final String SET_THEME_DARK = "dark";
 
+    public static final Object DB_LOCK = new Object();
+
     public static final String SET_GALLERY_LAYOUT = "gallery_layout";
     public static final int SET_GALLERY_LAYOUT_DEFAULT = 1;
 
@@ -181,6 +183,10 @@ public class Constants {
 
     public static final String EXTRA_NOTE_ID = "note_id";
     public static final String EXTRA_NOTE_ACTION = "note_action";
+    public static final String EXTRA_NOTE_SOURCE = "note_source";
+
+    public static final String NOTE_SOURCE_NOTE = "note";
+    public static final String NOTE_SOURCE_LIST = "list";
 
     public static final int NOTE_PIC_DEFAULT_INDEX = 1;
 
@@ -202,6 +208,10 @@ public class Constants {
     public static final String UCAT_PARAM_SORT = "sort";
     public static final String UCAT_PARAM_SORT_ASC = "sortup";
     public static final String UCAT_PARAM_SORT_DESC = "sortdown";
+
+    public static final String EXTRA_UCAT_SOURCE = "ucat_source";
+    public static final String UCAT_SOURCE_EDIT = "edit";
+    public static final String UCAT_SOURCE_LIST = "list";
 
     public static final String UCAT_PARAM_BOOKMARK_ON = "bookmarkon";
     public static final String UCAT_PARAM_BOOKMARK_OFF = "bookmarkoff";

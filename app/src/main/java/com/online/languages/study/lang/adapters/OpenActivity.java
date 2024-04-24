@@ -7,6 +7,7 @@ import static com.online.languages.study.lang.Constants.EXTRA_SECTION_ID;
 import static com.online.languages.study.lang.Constants.GALLERY_REQUESTCODE;
 import static com.online.languages.study.lang.Constants.PARAM_EMPTY;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,15 +21,15 @@ import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;
 import com.online.languages.study.lang.practice.CallActivity;
-import com.online.languages.study.lang.presentation.category.CatActivity;
 import com.online.languages.study.lang.presentation.activities.CatSimpleListActivity;
-import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.presentation.activities.GalleryActivity;
 import com.online.languages.study.lang.presentation.activities.ImageListActivity;
 import com.online.languages.study.lang.presentation.activities.MapActivity;
 import com.online.languages.study.lang.presentation.activities.MapListActivity;
 import com.online.languages.study.lang.presentation.activities.SubSectionActivity;
 import com.online.languages.study.lang.presentation.activities.TextActivity;
+import com.online.languages.study.lang.presentation.category.CatActivity;
+import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -88,9 +89,7 @@ public class OpenActivity  implements CallActivity {
 
     }
 
-
-
-
+    @SuppressLint("SourceLockedOrientationActivity")
     public void setOrientation() {
         if(context.getResources().getBoolean(R.bool.portrait_only)){
             ((Activity)context).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
@@ -100,10 +99,8 @@ public class OpenActivity  implements CallActivity {
 
     public void pageTransition() {
         if ( !  context.getApplicationContext().getResources().getBoolean(R.bool.wide_width)) {
-
             switch (transition) {
                 case "none":
-
                     ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
                     break;
                 case "fade":
@@ -115,14 +112,19 @@ public class OpenActivity  implements CallActivity {
                     ((Activity) context).overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     break;
             }
-
-
         }
+    }
+
+    public void pageTransitionOpen() {
+        ((Activity) context).overridePendingTransition(R.anim.fade_in_quick, R.anim.anim_none);
+    }
+
+    public void pageTransitionClose() {
+        ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.fade_out_transition_quick);
     }
 
     public void pageBackTransition() {
         if ( !context.getResources().getBoolean(R.bool.wide_width)) {
-
             switch (transition) {
                 case "none":
                     ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
@@ -269,4 +271,5 @@ public class OpenActivity  implements CallActivity {
     public void callActivityWithIntent(@NotNull Intent intent) {
 
     }
+
 }

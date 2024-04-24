@@ -37,8 +37,8 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.fragments.UserListTabFragment1;
 import com.online.languages.study.lang.fragments.UserListTabFragment2;
 import com.online.languages.study.lang.fragments.UserListTrainingFragment;
-import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
 
@@ -188,13 +188,9 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
     public void openDetailDialog(final View view) {
-
         if (open) {
-
             if (speaking) speakWords("");
-
             new Handler(Looper.getMainLooper()).postDelayed(() -> showAlertDialog(view), 50);
-
             open = false;
 
             new Handler(Looper.getMainLooper()).postDelayed(() -> open = true, 200);
@@ -203,7 +199,6 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     public void showAlertDialog(View view) {
-
         Intent intent = new Intent(UserListActivity.this, ScrollingActivity.class);
         String tag = view.getTag().toString();
         intent.putExtra("starrable", true);
@@ -211,7 +206,6 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
         startActivityForResult(intent,1);
         overridePendingTransition(R.anim.slide_in_down, 0);
     }
-
 
     private void getVocab() {
         topicData = dataManager.getStarredWords(true);

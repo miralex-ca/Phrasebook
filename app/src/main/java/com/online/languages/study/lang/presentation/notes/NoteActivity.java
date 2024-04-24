@@ -3,6 +3,8 @@ package com.online.languages.study.lang.presentation.notes;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_SOURCE;
+import static com.online.languages.study.lang.Constants.NOTE_SOURCE_NOTE;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -108,17 +110,17 @@ public class NoteActivity extends ThemedActivity {
         }
     }
 
-
     private void editNote() {
         Intent i = new Intent(this, NoteEditActivity.class);
         i.putExtra(EXTRA_NOTE_ID, note.id);
         i.putExtra(EXTRA_NOTE_ACTION, ACTION_UPDATE);
+        i.putExtra(EXTRA_NOTE_SOURCE, NOTE_SOURCE_NOTE);
         startActivityForResult(i, 20);
+        openActivity.pageTransitionOpen();
     }
 
 
     private void deleteNote() {
-
         DataManager dataManager = new DataManager(this);
         dataManager.dbHelper.deleteNote(note);
         finish();
@@ -126,7 +128,6 @@ public class NoteActivity extends ThemedActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         setNote();
 
@@ -173,7 +174,6 @@ public class NoteActivity extends ThemedActivity {
         }
 
         super.finish();
-
     }
 
 

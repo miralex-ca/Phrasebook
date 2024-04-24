@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.online.languages.study.lang.adapters.OpenActivity
+import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModel
+import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModelFactory
 import com.online.languages.study.lang.repository.Repository
 import com.online.languages.study.lang.utils.Vibration
 
@@ -23,10 +25,10 @@ class ViewModelsHelper(private val appContainer: AppContainer) {
         return ViewModelProvider(owner, factory)[VM::class.java]
     }
 
-//    fun provideHomeViewModel(owner: ViewModelStoreOwner): HomeViewModel {
-//        val factory = HomeViewModelFactory(appContainer.repository)
-//        return provideViewModel(owner, factory)
-//    }
+    fun provideHomeViewModel(owner: ViewModelStoreOwner): HomeViewModel {
+        val factory = HomeViewModelFactory(appContainer.repository)
+        return provideViewModel(owner, factory)
+    }
 //
 //    fun provideSectionViewModel(owner: ViewModelStoreOwner): SectionViewModel {
 //        val factory = SectionViewModelFactory(appContainer.repository)

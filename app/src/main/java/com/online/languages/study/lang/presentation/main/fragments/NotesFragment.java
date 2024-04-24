@@ -4,9 +4,11 @@ import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_SOURCE;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_ANIMATION;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_LIMIT;
 import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
+import static com.online.languages.study.lang.Constants.NOTE_SOURCE_LIST;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
@@ -194,8 +196,9 @@ public class NotesFragment extends Fragment {
         Intent i = new Intent(getActivity(), NoteEditActivity.class);
         i.putExtra(EXTRA_NOTE_ID, note.id );
         i.putExtra(EXTRA_NOTE_ACTION, ACTION_UPDATE );
-
+        i.putExtra(EXTRA_NOTE_SOURCE, NOTE_SOURCE_LIST);
         startActivityForResult(i, 20);
+        openActivity.pageTransition();
     }
 
     public void deleteConfirmDialog(final NoteData noteData) {
@@ -554,7 +557,9 @@ public class NotesFragment extends Fragment {
         Intent i = new Intent(getActivity(), NoteEditActivity.class);
         i.putExtra(EXTRA_NOTE_ID, "" );
         i.putExtra(EXTRA_NOTE_ACTION, ACTION_CREATE );
+        i.putExtra(EXTRA_NOTE_SOURCE, NOTE_SOURCE_LIST);
         startActivityForResult(i, 20);
+        openActivity.pageTransition();
     }
 
 

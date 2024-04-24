@@ -27,7 +27,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.GestureDetector;
@@ -56,40 +55,28 @@ import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.GroupPickerAdapter;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.adapters.NewGroupDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
 import com.online.languages.study.lang.adapters.PremiumDialog;
 import com.online.languages.study.lang.adapters.ResizeHeight;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.adapters.UCatsListAdapter;
 import com.online.languages.study.lang.data.BookmarkItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.presentation.category.CatActivity;
-import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 
 import java.util.ArrayList;
 
 
-public class UCatsListActivity extends BaseActivity {
-
-
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
-
+public class UCatsListActivity extends ThemedActivity {
     RecyclerView recyclerView;
-
     LinearLayoutManager mLayoutManager;
-
     ArrayList<BookmarkItem> dataItems;
 
     NavStructure navStructure;
 
     DBHelper dbHelper;
     DataManager dataManager;
-
-    OpenActivity openActivity;
 
     UCatsListAdapter adapter;
     ArrayList<DataObject> catsList;
@@ -113,7 +100,6 @@ public class UCatsListActivity extends BaseActivity {
     ArrayList<DataObject> groupsDataList;
     int groupIndexSelected;
 
-
     boolean typeGroup;
     DataObject groupObject;
 
@@ -124,27 +110,15 @@ public class UCatsListActivity extends BaseActivity {
     boolean listIsEmpty;
     int archiveListSize = 0;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
-
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_ucat_list);
 
-        openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
         listIsEmpty = false;
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -161,7 +135,6 @@ public class UCatsListActivity extends BaseActivity {
         helperView = findViewById(R.id.list_wrapper);
 
         emptyMsg = findViewById(R.id.empty_list_msg);
-
 
         dataManager = new DataManager(this, 1);
         dbHelper = dataManager.dbHelper;
@@ -203,32 +176,21 @@ public class UCatsListActivity extends BaseActivity {
             ((TextView)findViewById(R.id.newTopicHint)).setText(R.string.new_topic_hint_unpaid);
             ((TextView)findViewById(R.id.newSectionHint)).setText(R.string.new_section_hint_unpaid);
         }
-
-
-
     }
 
     private void setGroupData() {
-
         groupObject = dataManager.getGroupData(uGroup);
         setTitle(groupObject.title);
-
     }
 
-
     private void openListView() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 helperView.setVisibility(View.VISIBLE);
-
             }
         }, 30);
-
     }
-
 
     public void openCompleteList(View view) {
         cutList = false;
@@ -237,7 +199,6 @@ public class UCatsListActivity extends BaseActivity {
         setWrapContentHeight(helperView);
     }
 
-
     public void updateList() {
         catsList  = getCatList();
         adapter = new UCatsListAdapter(this, catsList, this);
@@ -245,54 +206,43 @@ public class UCatsListActivity extends BaseActivity {
         checkArchiveIcon();
     }
 
-
     public ArrayList<DataObject> getCatList() {
-
         setWrapContentHeight(helperView);
+        ArrayList<DataObject> completeList;
 
-       ArrayList<DataObject> completeList;
+        if (!dataManager.plus_Version) {
+            completeList = dataManager.getUcatsListForUnpaid(uGroup);
+        } else {
+            if (uGroup.contains(UC_PREFIX)) {
+                completeList = dataManager.getUcatsGroup(uGroup);
+            } else {
+                completeList = dataManager.getUcatsList();
+            }
+        }
 
-       if (!dataManager.plus_Version) {
-           completeList =   dataManager.getUcatsListForUnpaid(uGroup);
-       } else {
-           if (uGroup.contains(UC_PREFIX)) {
-               completeList = dataManager.getUcatsGroup(uGroup);
-           } else {
-               completeList = dataManager.getUcatsList();
-           }
+        ArrayList<DataObject> displayList = new ArrayList<>(completeList);
+        int limit = UCAT_LIST_LIMIT;
 
-       }
+        if (completeList.size() > limit) {
+            if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
+        }
 
-       ArrayList<DataObject> displayList = new ArrayList<>(completeList);
+        listIsEmpty = completeList.size() == 0;
 
-       int limit = UCAT_LIST_LIMIT;
-
-       if (completeList.size() > limit) {
-          if (cutList) displayList = new ArrayList<>(completeList.subList(0, limit));
-       }
-
-       listIsEmpty = completeList.size() == 0;
-
-       return addLast(displayList, completeList);
+        return addLast(displayList, completeList);
 
     }
 
 
     private ArrayList<DataObject> addLast(ArrayList<DataObject> displayList, ArrayList<DataObject> completeList) {
-
         DataObject lastObject = checkMoreItem(displayList, completeList);
-
         displayList.add( lastObject );
-
         return displayList;
     }
 
-
     private DataObject checkMoreItem(ArrayList<DataObject> displayList, ArrayList<DataObject> completeList) {
-
         DataObject lastObject = new DataObject();
         lastObject.id = "last";
-
 
         int dif = completeList.size() - displayList.size();
 
@@ -304,18 +254,13 @@ public class UCatsListActivity extends BaseActivity {
         }
 
         return  lastObject;
-
     }
 
     private void updateMoreIem() {
         adapter.notifyItemChanged(catsList.size()-1);
-
     }
 
-
-
     private void checkArchiveIcon() {
-
        int archiveSize = dataManager.getUcatsForArchive().size();
 
        if (! dataManager.plus_Version) {
@@ -332,15 +277,12 @@ public class UCatsListActivity extends BaseActivity {
        }
 
         checkEmptyMsg();
-
     }
 
     private void checkEmptyMsg()  {
-
         if (listIsEmpty && archiveListSize <1) {
             emptyMsg.setAlpha(0.0f);
             emptyMsg.setVisibility(View.VISIBLE);
-
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -358,15 +300,11 @@ public class UCatsListActivity extends BaseActivity {
             emptyMsg.setAlpha(0.0f);
 
         }
-
     }
 
 
-
     private void listLayoutDialog() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         listLayout = appSettings.getString("set_ucat_list", getString(R.string.set_ucat_layout_default));
 
         int checkedItem = 0;
@@ -396,11 +334,9 @@ public class UCatsListActivity extends BaseActivity {
 
         AlertDialog alert = builder.create();
         alert.show();
-
     }
 
     private void saveListLayout(int num) {
-
         String orderValue = getResources().getStringArray(R.array.set_ucat_layout_values)[0];
         if (num == 1) orderValue  = getResources().getStringArray(R.array.set_ucat_layout_values)[1];
         if (num == 2) orderValue  = getResources().getStringArray(R.array.set_ucat_layout_values)[2];
@@ -414,28 +350,22 @@ public class UCatsListActivity extends BaseActivity {
     }
 
 
-
     public void openMyCat(DataObject dataObject) {
-
         if (dataObject.type.equals(PARAM_GROUP)) {
             openGroup(dataObject);
             return;
         }
 
         if (dataObject.count > 0 ) {
-
             String id = dataObject.id;
             String title = dataObject.title;
-
             Intent i = new Intent(this, CatActivity.class);
-
             i.putExtra(EXTRA_SECTION_ID, PARAM_UCAT_PARENT);
             i.putExtra(Constants.EXTRA_CAT_ID, id);
             i.putExtra("cat_title", title);
             i.putExtra(Constants.EXTRA_CAT_SPEC, PARAM_EMPTY);
 
             startActivityForResult(i, 10);
-
             openActivity.pageTransition();
 
         } else {
@@ -857,7 +787,6 @@ public class UCatsListActivity extends BaseActivity {
                 catsList.get(i).title = updateGroupObject.title;
                 catsList.get(i).desc = updateGroupObject.desc;
                 catsList.get(i).image = updateGroupObject.image;
-
                 adapter.notifyItemChanged(i);
             }
 
@@ -869,16 +798,14 @@ public class UCatsListActivity extends BaseActivity {
         Intent i = new Intent(this, MyCatEditActivity.class);
         i.putExtra(EXTRA_CAT_ID, dataObject.id);
         startActivityForResult(i, 10);
+        openActivity.pageTransition();
     }
-
 
     public void openArchive() {
         Intent i = new Intent(this, UCatsArchiveActivity.class);
         startActivityForResult(i, 10);
         openActivity.pageTransition();
     }
-
-
 
 
     @Override
@@ -927,7 +854,6 @@ public class UCatsListActivity extends BaseActivity {
     }
 
     private void newGroup() {
-
         int count = dataManager.getGroupsCount();
 
         if (!dataManager.plus_Version && count >= GROUPS_UNPAID_LIMIT  ) {
@@ -938,66 +864,43 @@ public class UCatsListActivity extends BaseActivity {
             premiumDialog.createDialog(getString(R.string.create_dialog_unpaid_title), getString(R.string.limit_groups_for_unpaid));
 
         } else {
-
             newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
             newGroupDialog.showCustomDialog(getString(R.string.create_group_title));
-
         }
     }
 
     private void editGroup() {
-
         newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
-
         newGroupDialog.showCustomDialog(getString(R.string.edit_group_title), ACTION_UPDATE, groupObject );
-
     }
 
     private void editGroupFromList(DataObject group) {
-
         newGroupDialog = new NewGroupDialog(this, UCatsListActivity.this);
-
         newGroupDialog.showCustomDialog(getString(R.string.edit_group_title), ACTION_EDIT_GROUP, group );
-
     }
 
 
     public void checkPic(View view) {
-
         View icon = view.findViewById(R.id.icon);
-
         int t = (int) icon.getTag();
-
         newGroupDialog.updateList( t);
-
     }
 
     private void deleteGroup() {
-
-
         DataObject group = dataManager.getGroupData(uGroup);
-
         if (group.count > 0) {
             infoDialog.simpleDialog(getString(R.string.delete_group_title), getString(R.string.delete_group_msg));
         } else {
-
             confirmDeletion(uGroup);
-
         }
-
     }
 
 
     private void confirmDeletion(final String id) {
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setTitle(R.string.confirmation_txt);
         builder.setMessage(R.string.delete_groupt_confirm);
-
         builder.setCancelable(false);
-
         builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -1009,30 +912,23 @@ public class UCatsListActivity extends BaseActivity {
         builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 
         builder.show();
-
     }
 
 
     private void deleteUCat(String id) {
-
         int num =  dataManager.dbHelper.deleteUCat(id);
-
         Toast.makeText(this, R.string.delete_process , Toast.LENGTH_SHORT).show();
-
         finish();
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_ucat_list, menu);
-
         archiveMenuIcon = menu.findItem(R.id.archive_icon);
         newGroupMenuIcon = menu.findItem(R.id.new_group);
         editGroupMenuIcon = menu.findItem(R.id.edit_group);
@@ -1062,16 +958,12 @@ public class UCatsListActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 10) {
             updateList();
         }
-
     }
-
-
 
     public interface ClickListener {
         void onClick(View view, int position);
@@ -1117,10 +1009,5 @@ public class UCatsListActivity extends BaseActivity {
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         }
     }
-
-
-
-
-
 
 }

@@ -4,7 +4,9 @@ import static com.online.languages.study.lang.Constants.ACTION_ARCHIVE;
 import static com.online.languages.study.lang.Constants.ACTION_UPDATE;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ACTION;
 import static com.online.languages.study.lang.Constants.EXTRA_NOTE_ID;
+import static com.online.languages.study.lang.Constants.EXTRA_NOTE_SOURCE;
 import static com.online.languages.study.lang.Constants.NOTES_LIST_LIMIT;
+import static com.online.languages.study.lang.Constants.NOTE_SOURCE_LIST;
 import static com.online.languages.study.lang.Constants.STATUS_DELETED;
 import static com.online.languages.study.lang.Constants.STATUS_NEW;
 import static com.online.languages.study.lang.Constants.STATUS_NORM;
@@ -420,8 +422,9 @@ public class NotesArchiveActivity extends BaseActivity {
         Intent i = new Intent(this, NoteEditActivity.class);
         i.putExtra(EXTRA_NOTE_ID, id );
         i.putExtra(EXTRA_NOTE_ACTION, ACTION_UPDATE );
-
+        i.putExtra(EXTRA_NOTE_SOURCE, NOTE_SOURCE_LIST);
         startActivityForResult(i, 10);
+        openActivity.pageTransition();
     }
 
 

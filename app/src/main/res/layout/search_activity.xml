@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/AppBarOverlayTheme">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:contentInsetEnd="10dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:theme="?attr/ToolBarStyle"
+                app:popupTheme="?attr/PopupOverlayTheme">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="0dp"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="-8dp"
+                    android:queryHint="@string/search_hint"
+                    app:queryBackground="@null"
+                    app:queryHint="@string/search_hint"
+                    app:searchHintIcon="@null"
+                    tools:ignore="RtlSymmetry" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/search_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:hideAnimationBehavior="inward"
+                app:indicatorColor="?attr/colorToolbarIcon"
+                app:showAnimationBehavior="outward"
+                app:trackCornerRadius="2dp" />
+
+        </FrameLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/container_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorBaseBg"
+        android:fillViewport="true"
+        android:gravity="center_horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:focusableInTouchMode="true"
+            android:gravity="center_horizontal">
+
+            <RelativeLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    style="@style/CardWrapper.Width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:descendantFocusability="blocksDescendants"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:padding="30dp"
+                        android:alpha="0.8"
+                        android:gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        android:id="@+id/searcTxt"
+                        android:text="@string/search_no_result"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card"
+                        style="@style/CardViewStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="12dp"
+                        android:visibility="gone"
+                        app:contentPadding="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:animateLayoutChanges="false"
+                                android:nestedScrollingEnabled="false"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                />
+
+                            <TextView
+
+                                android:background="?android:attr/selectableItemBackground"
+                                android:padding="10dp"
+                                android:onClick="loadMore"
+                                android:layout_below="@+id/recycler_view"
+                                android:visibility="gone"
+                                android:layout_centerHorizontal="true"
+                                android:id="@+id/loadMoreTxt"
+                                android:fontFamily="sans-serif-light"
+                                android:textStyle="bold"
+                                android:text="@string/search_load_more"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"  />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

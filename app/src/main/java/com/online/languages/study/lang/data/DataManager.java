@@ -1,33 +1,5 @@
 package com.online.languages.study.lang.data;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Vibrator;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.online.languages.study.lang.Constants;
-import com.online.languages.study.lang.DBHelper;
-import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.practice.QuestData;
-import com.online.languages.study.lang.practice.QuestManager;
-import com.online.languages.study.lang.tools.Computer;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 import static com.online.languages.study.lang.Constants.BOOKMARKS_LIMIT;
 import static com.online.languages.study.lang.Constants.NOTE_ARCHIVE;
 import static com.online.languages.study.lang.Constants.OUTCOME_LIMIT;
@@ -52,6 +24,32 @@ import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
 import static com.online.languages.study.lang.Constants.VIBRO_FAIL;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.online.languages.study.lang.Constants;
+import com.online.languages.study.lang.DBHelper;
+import com.online.languages.study.lang.R;
+import com.online.languages.study.lang.practice.QuestData;
+import com.online.languages.study.lang.practice.QuestManager;
+import com.online.languages.study.lang.tools.Computer;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 public class DataManager {
 
@@ -103,7 +101,6 @@ public class DataManager {
     public ArrayList<DataItem> getCatDBList(String cat) {
 
         ArrayList<DataItem> items = new ArrayList<>();
-
         if (cat.contains(UC_PREFIX)) {
             items =  getUDataList(cat);
         } else {
