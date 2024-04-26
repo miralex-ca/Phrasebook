@@ -75,7 +75,7 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
     }
 
     private fun openLayoutDialog() {
-        viewController!!.showLayoutDialog()
+        viewController?.showLayoutDialog()
     }
 
     private fun openInfoMessage() {
@@ -136,7 +136,7 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_section_review, menu)
         changeLayoutBtn = menu.findItem(R.id.list_layout)
-        viewController!!.showLayoutStatus()
+        viewController?.showLayoutStatus()
         return true
     }
 
@@ -164,7 +164,6 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
         openActivity.pageBackTransition()
     }
 
-    @Deprecated("Deprecated in Java")
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         dialogStatus = DIALOG_UNLOCKED
@@ -176,7 +175,7 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
                 }
             }
         }
-        if (requestCode == 2) {
+        if (requestCode == CATEGORY_REQUEST_CODE) {
             if (data?.hasExtra(Constants.EXTRA_CAT_ID) == true) {
                 val cat = data.getStringExtra(Constants.EXTRA_CAT_ID)
                 refreshList(cat)
