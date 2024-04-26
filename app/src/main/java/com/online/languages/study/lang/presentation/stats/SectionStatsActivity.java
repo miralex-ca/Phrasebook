@@ -33,10 +33,10 @@ import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.Section;
 import com.online.languages.study.lang.presentation.category.CatActivity;
-import com.online.languages.study.lang.presentation.section.SectionActivity;
-import com.online.languages.study.lang.presentation.section.SectionListActivity;
-import com.online.languages.study.lang.presentation.section.SectionTestActivity;
 import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.section.activities.SectionActivity;
+import com.online.languages.study.lang.presentation.section.activities.SectionListActivity;
+import com.online.languages.study.lang.presentation.section.activities.SectionTestActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

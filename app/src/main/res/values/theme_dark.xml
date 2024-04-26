@@ -320,9 +320,6 @@
         <!-- Used for the buttons -->
         <item name="colorAccent">@color/colorAccent_dk</item>
 
-
-
-
         <item name="android:theme">@style/SelectableItemTheme</item>
 
         <!-- item name="colorPrimary">?attr/colorPrimary</item>

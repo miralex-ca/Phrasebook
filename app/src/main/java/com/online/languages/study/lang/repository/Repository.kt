@@ -6,21 +6,43 @@ import com.online.languages.study.lang.Constants
 import com.online.languages.study.lang.DBHelper
 import com.online.languages.study.lang.data.DataItem
 import com.online.languages.study.lang.data.DataManager
+import com.online.languages.study.lang.data.NavCategory
 import com.online.languages.study.lang.data.NavSection
 import com.online.languages.study.lang.data.NavStructure
+import com.online.languages.study.lang.tools.CheckPlusVersion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+
 class Repository(val appContext: Context) {
     val localSettings = LocalSettings(appContext)
-    val dbHelper = DBHelper(appContext)
     val dataManager = DataManager(appContext)
+    val dbHelper: DBHelper = dataManager.dbHelper
+    val appNavigation: AppNavigation = getAppNavigation(dataManager)
 
     val backgroundDispatcher = Dispatchers.IO
 
     var navSections: List<NavSection>? = null
 
     fun provideAppSettings() = localSettings.settings
+    fun provideCheckPlusVersion() = CheckPlusVersion(appContext)
+}
+
+
+
+private fun getAppNavigation(dataManager: DataManager) : AppNavigation {
+    val structure = dataManager.provideNavStructure()
+    return AppNavigation(
+        structure = structure,
+        categories = structure.getUniqueCats()
+    )
+}
+
+class AppNavigation(
+    val structure: NavStructure,
+    val categories: List<NavCategory>
+) {
+
 }
 
 fun Repository.getAppSettings() = localSettings.settings
@@ -33,13 +55,10 @@ suspend fun Repository.getNavSections(): List<NavSection> = withContext(backgrou
 suspend fun Repository.searchData(query: String): List<DataItem> =
     withContext(backgroundDispatcher) {
         val list = try {
-            val navStructure: NavStructure = dataManager.getNavStructure()
+            val navStructure = appNavigation.structure
             val data = dbHelper.searchData(navStructure.getUniqueCats(), query)
-
             val resultList = dbHelper.checkStarredList(data)
-
             resultList
-
         } catch (e: Exception) {
             emptyList()
         }

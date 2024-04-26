@@ -306,12 +306,9 @@ public class UCatsListActivity extends ThemedActivity {
     private void listLayoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         listLayout = appSettings.getString("set_ucat_list", getString(R.string.set_ucat_layout_default));
-
         int checkedItem = 0;
-
-        if (listLayout.equals("compact"))  checkedItem = 1;
-        if (listLayout.equals("mixed"))  checkedItem = 2;
-
+        if (listLayout.equals("compact")) checkedItem = 1;
+        if (listLayout.equals("mixed")) checkedItem = 2;
         builder.setTitle(getString(R.string.set_ucat_layout_dialog_title))
 
                 .setSingleChoiceItems(R.array.set_ucat_layout_list, checkedItem, new DialogInterface.OnClickListener() {
@@ -325,13 +322,9 @@ public class UCatsListActivity extends ThemedActivity {
                 .setCancelable(true)
 
                 .setNegativeButton(R.string.dialog_close_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
+                        (dialog, id) -> {
+                            dialog.cancel();
                         });
-
-
         AlertDialog alert = builder.create();
         alert.show();
     }

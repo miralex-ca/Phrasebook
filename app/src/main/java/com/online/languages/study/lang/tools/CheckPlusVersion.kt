@@ -7,11 +7,8 @@ import androidx.preference.PreferenceManager
 import com.online.languages.study.lang.Constants
 
 class CheckPlusVersion {
-
-    var plusVersion = false
-
-    var context: Context
-    var appSettings: SharedPreferences
+    private var plusVersion = false
+    private var appSettings: SharedPreferences
 
     constructor(context: Context) : this(
             context,
@@ -19,7 +16,6 @@ class CheckPlusVersion {
     )
 
     constructor(context: Context, appSettings: SharedPreferences) {
-        this.context = context
         this.appSettings = appSettings
         checkPlusVersion()
     }
@@ -30,10 +26,12 @@ class CheckPlusVersion {
     }
 
     fun isPlusVersion(): Boolean {
+        checkPlusVersion()
         return plusVersion
     }
 
     fun isNotPlusVersion(): Boolean {
+        checkPlusVersion()
         return !plusVersion
     }
 

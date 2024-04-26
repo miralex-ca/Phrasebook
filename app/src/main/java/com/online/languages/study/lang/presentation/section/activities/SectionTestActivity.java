@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation.section;
+package com.online.languages.study.lang.presentation.section.activities;
 
 import static com.online.languages.study.lang.Constants.DATA_SELECT_BASIC;
 import static com.online.languages.study.lang.Constants.SET_DATA_SELECT;

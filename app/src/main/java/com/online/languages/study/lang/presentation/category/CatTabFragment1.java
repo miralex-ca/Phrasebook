@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.fragments;
+package com.online.languages.study.lang.presentation.category;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
@@ -32,7 +32,6 @@ import com.online.languages.study.lang.adapters.ContentAdapter;
 import com.online.languages.study.lang.adapters.ContentCardAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.presentation.category.CatActivity;
 
 import java.util.ArrayList;
 

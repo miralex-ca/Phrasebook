@@ -1,5 +1,8 @@
 package com.online.languages.study.lang.data;
 
+import static com.online.languages.study.lang.Constants.DATA_MODE_DEFAULT;
+import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
+
 import android.content.Context;
 
 import com.online.languages.study.lang.R;
@@ -16,9 +19,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.online.languages.study.lang.Constants.DATA_MODE_DEFAULT;
-import static com.online.languages.study.lang.Constants.SET_DATA_LEVELS_DEFAULT;
-
 public class DataFromJson {
 
     Context context;
@@ -32,19 +32,14 @@ public class DataFromJson {
     public DataFromJson(Context _context) {
         context = _context;
         categoryFile = context.getString(R.string.app_data_file);
-
         navStructureFile = context.getString(R.string.app_structure_file);
-
         dataNode = "data";
-
     }
 
 
     public ArrayList<Section> getSectionsList() {
         ArrayList<Section> dataList = new ArrayList<>();
-
         try {
-
             JSONArray sections = new JSONArray(loadJSONFromAsset(navStructureFile));
 
             for (int i = 0; i < sections.length(); i++) {
@@ -91,20 +86,13 @@ public class DataFromJson {
         }
 
         return paramsList;
-
     }
 
 
-
-
     public NavStructure getStructure() {
-
         NavStructure navStructure = new NavStructure(context);
-
         try {
-
             JSONObject structure = new JSONObject(loadJSONFromAsset(navStructureFile));
-
             JSONArray sections = structure.getJSONArray("sections");
 
             for (int i = 0; i < sections.length(); i++) {
@@ -121,28 +109,19 @@ public class DataFromJson {
 
 
     public ArrayList<NavCategory> getAllUniqueCats() {
-
         ArrayList<NavCategory> uniqueCats = new ArrayList<>();
-
         try {
-
             JSONObject structure = new JSONObject(loadJSONFromAsset(navStructureFile));
             JSONArray sections = structure.getJSONArray("sections");
             uniqueCats = getUniqueCatsFromJson(sections);
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
-
         return uniqueCats;
     }
 
-
     private ArrayList<NavCategory> getUniqueCatsFromJson(JSONArray sections) {
-
         ArrayList<NavCategory> uniqueCats = new ArrayList<>();
         HashSet<String> set = new HashSet<>();
 
@@ -150,9 +129,7 @@ public class DataFromJson {
 
         for (int i = 0; i < sections.length(); i++) {
             JSONObject sectionObject = sections.getJSONObject(i);
-
             JSONArray categories = sectionObject.getJSONArray("categories");
-
 
             for (int n = 0; n < categories.length(); n++) {
 

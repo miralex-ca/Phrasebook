@@ -23,7 +23,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,16 +44,12 @@ import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.CatViewPagerAdapter;
 import com.online.languages.study.lang.adapters.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
-import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
-import com.online.languages.study.lang.fragments.CatTabFragment1;
-import com.online.languages.study.lang.fragments.TrainingFragment;
 import com.online.languages.study.lang.presentation.AppStart;
-import com.online.languages.study.lang.presentation.core.BaseActivity;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
 import com.online.languages.study.lang.presentation.flashcards.CardsActivity;
@@ -64,18 +59,12 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class CatActivity extends BaseActivity implements TextToSpeech.OnInitListener {
-
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
-
+public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitListener {
     CatViewPagerAdapter adapter;
     ViewPager viewPager;
 
     public ArrayList<DataItem> exerciseData = new ArrayList<>();
     public ArrayList<DataItem> cardData = new ArrayList<>();
-
 
     public static String categoryID;
     public static String catSpec;
@@ -92,13 +81,10 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     Boolean showAd;
     AdView mAdView;
 
-    OpenActivity openActivity;
-
     MenuItem sortMenuItem;
     private MenuItem bookmarkRadio;
     MenuItem modeMenuItem;
     MenuItem hintMenuItem;
-
 
     DataManager dataManager;
     private MenuItem changeLayoutBtn;
@@ -106,7 +92,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     NavStructure navStructure;
 
     boolean showDelStats;
-
     boolean open;
 
     private TextToSpeech myTTS;
@@ -116,36 +101,22 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     boolean fromEdit;
     boolean displayModeHint;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
-
         setContentView(R.layout.activity_cat);
-
 
         dataManager = new DataManager(this);
         open = true;
-
-
         easy_mode = dataManager.easyMode();
         dataModeDialog = new DataModeDialog(this);
 
         fromEdit = getIntent().hasExtra("from_edit");
 
         showDelStats = appSettings.getBoolean("set_del_stats_cat", false);
-
         navStructure = dataManager.getNavStructure();
 
-        openActivity = new OpenActivity(this);
         openActivity.setOrientation();
 
         categoryID = getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
@@ -154,7 +125,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         String title = getIntent().getStringExtra("cat_title");
 
         parentSectionId = getIntent().getStringExtra(EXTRA_SECTION_ID);
-
 
         setTitle(title);
 
@@ -191,9 +161,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-
                 checkIconDisplay(tab.getPosition());
-
             }
 
             @Override
@@ -204,7 +172,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
 
         placeholder = findViewById(R.id.placeholder);
         adContainer = findViewById(R.id.adContainer);
@@ -232,11 +199,9 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
 
         speaking = appSettings.getBoolean("set_speak", true);
         checkTTSIntent();
-
     }
 
     private void checkTTSIntent() {
-
         if (! speaking ) return;
 
         PackageManager pm = getPackageManager();
@@ -248,30 +213,15 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         if( resolveInfo == null ) {
             Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
             speaking = false;
-
         } else {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-                }
+            new Handler().postDelayed(() -> {
+                startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
             }, 100);
-
         }
     }
 
-
-
-
-
     private void  checkIconDisplay(int position) {
-
-
         if (position == 1) {
-
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -280,16 +230,13 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             }, 400);
 
         } else {
-
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     changeLayoutBtn.setVisible(true);
                 }
             }, 400);
-
         }
-
     }
 
     private void getDataItems() {
@@ -299,28 +246,18 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         cardData = data;
     }
 
-
     private void sortDialog() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         String sort = appSettings.getString("sort_pers", getString(R.string.set_sort_pers_default));
-
         int checkedItem = 0;
-
-        if (sort.equals("alphabet"))  checkedItem = 1;
-
+        if (sort.equals("alphabet")) checkedItem = 1;
         builder.setTitle(getString(R.string.sort_pers_dialog_title))
-
                 .setSingleChoiceItems(R.array.set_sort_pers_list, checkedItem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                         dialog.dismiss();
                     }
                 })
-
                 .setCancelable(true)
-
                 .setNegativeButton(R.string.dialog_close_txt,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -328,15 +265,11 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
                             }
                         });
 
-
         AlertDialog alert = builder.create();
         alert.show();
-
     }
 
-
     private void chekMenuItem() {
-
         String sort = appSettings.getString("sort_pers", getString(R.string.set_sort_pers_default));
         if (sort.contains("alphabet")) {
             sortMenuItem.setIcon(R.drawable.ic_sort_alphabet);
@@ -346,82 +279,53 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     public void changeStarred(View view) { // from xml star icon
-
         changeStarred( view, false);
     }
 
     public void changeStarred(View view, boolean vibe) {
-
         DataItem dataItem = (DataItem) view.getTag();
-
         CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
         if (fragment != null) {
             fragment.changeStarred(dataItem.id, vibe);
         }
     }
 
-
     public void play(View view) {
-
         DataItem dataItem = (DataItem) view.getTag();
-
         //Toast.makeText(this, "Play: " + dataItem.item, Toast.LENGTH_SHORT).show();
-
         speakReading(dataItem);
-
     }
 
     public void openCard(View view) {
-
         View animObj = view.findViewById(R.id.animObj);
         int position = (int) view.getTag();
-
         if (open) openDetailDialog(animObj, position);
-
     }
 
-
     public void openDetailDialog(final View view, final int position) {
-
         if (open) {
-
             if (speaking) speakWords("");
-
             new Handler(Looper.getMainLooper()).postDelayed(() -> showAlertDialog(view,
                     position), 50);
-
             open = false;
-
             new Handler(Looper.getMainLooper()).postDelayed(() -> open = true, 200);
         }
     }
 
-
-
-
-
     public void showAlertDialog(View view, int position) {
-
         String id = view.getTag().toString();
-
         if (id.equals("divider")) return;
-
         Intent intent = new Intent(CatActivity.this, ScrollingActivity.class);
-
         intent.putExtra("starrable", true);
         intent.putExtra("id", id );
         intent.putExtra("position", position);
-
         startActivityForResult(intent,1);
-
         overridePendingTransition(R.anim.slide_in_down, 0);
-
     }
 
     private void checkModeIcon() {
         easy_mode = dataManager.easyMode();
         modeMenuItem.setVisible(easy_mode);
-
     }
 
 
@@ -457,17 +361,14 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
             menu.findItem(R.id.mode_from_menu).setVisible(false);
         }
 
-
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
-            backTransition();
             return true;
         } else if (id == R.id.easy_mode) {
             easyModeHint();
@@ -505,11 +406,9 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void settingsDialog() {
-
         CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this){
             @Override
             public void practiceDialogCloseCallback() {
-
                 new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
             }
         };
@@ -518,7 +417,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void checkHint() {
-
         displayModeHint = appSettings.getBoolean("set_mode_hint", DATA_MODE_HINT_DEFAULT);
         if (categoryID.contains(UC_PREFIX)) displayModeHint = false;
 
@@ -533,7 +431,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void saveModeHintDisplay() {
-
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putBoolean("set_mode_hint", false);
         editor.apply();
@@ -561,7 +458,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private class DataMode extends DataModeDialog {
-
         public DataMode(Context _context) {  super(_context);  }
 
         @Override
@@ -576,34 +472,25 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
 
-
     private void saveListMode(int num) {
-
         String orderValue = getResources().getStringArray(R.array.set_data_mode_values)[0];
         if (num == 1) orderValue  = getResources().getStringArray(R.array.set_data_mode_values)[1];
-
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putString(Constants.SET_DATA_MODE, orderValue);
         editor.apply();
-
         updateCatData();
-
     }
 
 
     public void updateCatData() {
-
         getDataItems();
-
         checkModeIcon();
         checkHint();
-
         updateFragmentsData();
     }
 
     private void updateFragmentsData() {
         CatTabFragment1 fragment1 = (CatTabFragment1) adapter.getFragmentOne();
-
         if (fragment1 != null) {
             fragment1.updateList();
         }
@@ -614,46 +501,32 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         }
     }
 
-
     public void deleteConfirmDialog() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-
         builder.setTitle(R.string.confirmation_txt);
-
         builder.setMessage(R.string.delete_stats_confirm_text);
-
         builder.setCancelable(true);
 
         builder.setPositiveButton(R.string.continue_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
                 deleteCatResults();
-
             }
         });
 
         builder.setNegativeButton(R.string.cancel_txt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
             }
         });
 
         builder.show();
-
     }
-
 
     private void deleteCatResults() {
         String catId = categoryID;
-        
         Toast.makeText(this, R.string.delete_stats_process, Toast.LENGTH_LONG).show();
-
         dataManager.removeCatData(catId);
-
         updateDataList();
     }
 
@@ -668,25 +541,18 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         i.putExtra(EXTRA_UCAT_SOURCE, UCAT_SOURCE_EDIT);
         startActivityForResult(i, 10);
         openActivity.pageTransitionOpen();
-
     }
 
 
     private void applyBookmarkStatus() {
-
-         boolean status = dataManager.dbHelper.checkBookmark(categoryID, parentSectionId);
-
+        boolean status = dataManager.dbHelper.checkBookmark(categoryID, parentSectionId);
         if (status) bookmarkRadio.setIcon(R.drawable.ic_bookmark_active);
         else bookmarkRadio.setIcon(R.drawable.ic_bookmark_inactive);
-
-         bookmarkRadio.setChecked(status);
+        bookmarkRadio.setChecked(status);
     }
 
     private void changeBookmark() {
-
-
         int status = dataManager.setBookmark(categoryID, parentSectionId, navStructure );
-
         boolean radioChecked;
 
         if (status == OUTCOME_ADDED) {
@@ -701,9 +567,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     private void applyLayoutStatus() {
-
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
-
         switch (listType) {
             case CAT_LIST_VIEW_COMPACT:
                 changeLayoutBtn.setIcon(R.drawable.ic_view_list_card);
@@ -718,7 +582,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
     }
 
     public void changeLayoutStatus() {
-
         String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
         switch (listType) {
@@ -747,18 +610,32 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         new Handler().postDelayed(this::applyLayoutStatus, 700);
     }
 
-
     private void infoMessage() {
         dataModeDialog.createDialog(getString(R.string.info_txt), getString(R.string.info_star_txt));
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        backTransition();
+//    }
 
+//    @Override
+//    public void finish() {
+//        super.finish();
+//        openActivity.pageBackTransition();
+//    }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        backTransition();
+    public void finish() {
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(EXTRA_CAT_ID, categoryID);
+        setResult(RESULT_OK,returnIntent);
+        if (speaking) speakWords("");
+        super.finish();
+        openActivity.pageBackTransition();
     }
+
 
     public void backTransition() {
        if (!fromEdit) openActivity.pageBackTransition();
@@ -769,7 +646,6 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         open = true;
 
         super.onActivityResult(requestCode, resultCode, data);
-
 
         if (requestCode == 1) {  /// return from detail dialog
 
@@ -988,18 +864,7 @@ public class CatActivity extends BaseActivity implements TextToSpeech.OnInitList
         }
     }
 
-    @Override
-    public void finish() {
 
-        Intent returnIntent = new Intent();
-        returnIntent.putExtra(EXTRA_CAT_ID, categoryID);
-        setResult(RESULT_OK,returnIntent);
-
-        if (speaking) speakWords("");
-        super.finish();
-
-
-    }
 
 
 }

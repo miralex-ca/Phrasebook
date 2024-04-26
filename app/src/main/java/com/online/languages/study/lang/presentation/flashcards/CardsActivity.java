@@ -206,61 +206,46 @@ public class CardsActivity extends BaseActivity implements TextToSpeech.OnInitLi
     }
 
 
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        openActivity.pageBackTransition();
-    }
-
-
     @Override
     public void finish() {
-
         if (speaking) {
           //  myTTS.stop();
             speakWords("");
         }
-
         super.finish();
+        openActivity.pageBackTransition();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                openActivity.pageBackTransition();
-                return true;
-
-            case R.id.fShowTranslate:
-                changeShowTranslateStatus();
-                return true;
-            case R.id.fRemixWords:
-                changeFRemixStatus();
-                return true;
-            case R.id.fReflectInfo:
-                changeReverseDataStatus();
-                return true;
-            case R.id.fRestart:
-                startFlashcard(true);
-                return true;
-            case R.id.exBtnSettings:
-                changeExBtnStatus();
-                return true;
-            case R.id.fAutoplay:
-                autoPlayDialog();
-                return true;
-            case R.id.easy_mode:
-                dataModeDialog.openDialog();
-                return true;
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        } else if (id == R.id.fShowTranslate) {
+            changeShowTranslateStatus();
+            return true;
+        } else if (id == R.id.fRemixWords) {
+            changeFRemixStatus();
+            return true;
+        } else if (id == R.id.fReflectInfo) {
+            changeReverseDataStatus();
+            return true;
+        } else if (id == R.id.fRestart) {
+            startFlashcard(true);
+            return true;
+        } else if (id == R.id.exBtnSettings) {
+            changeExBtnStatus();
+            return true;
+        } else if (id == R.id.fAutoplay) {
+            autoPlayDialog();
+            return true;
+        } else if (id == R.id.easy_mode) {
+            dataModeDialog.openDialog();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 

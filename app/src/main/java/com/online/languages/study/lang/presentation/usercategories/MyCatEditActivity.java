@@ -402,7 +402,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setAdapter(adapter);
-
         checkItemsCount(dataItems.size());
     }
 
@@ -449,7 +448,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
         });
 
         builder.show();
-
     }
 
     private void deleteUCat(String id) {
@@ -458,7 +456,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
         setResult(50);
         finish();
     }
-
 
     private String textSanitizer(String text) {
         text = text.replace("\n", " ").replace("\r", " ");
@@ -524,9 +521,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
     private void openAddListDialog() {
         int limit = !dataManager.plus_Version ? UDATA_LIMIT_UNPAID : UDATA_LIMIT;
         limit = limit - dataItems.size();
-
-        //Toast.makeText(this, "Plus: " + limit, Toast.LENGTH_SHORT ).show();
-
         if (checkUcatLimits()) {
 
             showLimit();
@@ -546,7 +540,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
             DataObject dataObject = dataObjects.get(i);
             DataItem dataItem = new DataItem(dataObject.text, dataObject.info);
             dataItem.trans1 = dataObject.desc;
-
             dataItem.cat = categoryObject.id;
             items.add(dataItem);
         }
@@ -562,7 +555,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
         Toast.makeText(this, hint, Toast.LENGTH_SHORT).show();
 
         updateItemsList();
-
     }
 
 
@@ -668,52 +660,35 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
         outState.putParcelable("categoryObject", categoryObject );
-
         super.onSaveInstanceState(outState);
-
     }
 
 
     public void sortDialog(View view) {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         categoryObject = dataManager.getUcatParams(categoryObject);
-
         String paramSort = dataManager.readParam(categoryObject.params, UCAT_PARAM_SORT);
-
-       // Toast.makeText(this, "S: " + paramSort, Toast.LENGTH_SHORT).show();
-
         int checkedItem = 0;
 
-        if (paramSort.equals(UCAT_PARAM_SORT_ASC))  checkedItem = 1;
+        if (paramSort.equals(UCAT_PARAM_SORT_ASC)) checkedItem = 1;
 
         builder.setTitle(getString(R.string.sort_udata_dialog_title))
-
                 .setSingleChoiceItems(R.array.set_sort_ucat_list, checkedItem, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                         showSort(which);
                         dialog.dismiss();
                     }
                 })
-
                 .setCancelable(true)
-
                 .setNegativeButton(R.string.dialog_close_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
+                        (dialog, id) -> {
+                            dialog.cancel();
                         });
-        
+
         AlertDialog alert = builder.create();
         alert.show();
-
     }
-
 
     private void showSort(int num) {
         String orderValue = UCAT_PARAM_SORT_DESC;
@@ -729,12 +704,9 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
 
 
     private void viewUCat() {
-
         String id = categoryObject.id;
         String title = categoryObject.title;
-
         Intent i = new Intent(this, CatActivity.class);
-
         i.putExtra(EXTRA_SECTION_ID, PARAM_UCAT_PARENT);
         i.putExtra(Constants.EXTRA_CAT_ID, id);
         i.putExtra("cat_title", title);
@@ -742,9 +714,6 @@ public class MyCatEditActivity extends ThemedActivity implements TextToSpeech.On
         i.putExtra("from_edit", PARAM_EMPTY);
 
         startActivityForResult(i, 10);
-
-
+        openActivity.pageTransition();
     }
-
-
 }

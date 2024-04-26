@@ -16,19 +16,13 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 
 public class DataModeDialog implements OnModeSelector {
-
     Context context;
     SharedPreferences appSettings;
 
-
-
     public DataModeDialog(Context _context) {
         context = _context;
-
         appSettings = PreferenceManager.getDefaultSharedPreferences(context);
     }
-
-
 
     public void openDialog() {
         createDialog(

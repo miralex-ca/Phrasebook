@@ -73,7 +73,6 @@
 
         <ImageView
             tools:visibility="visible"
-
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"

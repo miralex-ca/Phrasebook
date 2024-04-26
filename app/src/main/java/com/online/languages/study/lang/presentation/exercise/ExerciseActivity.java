@@ -1071,21 +1071,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        openActivity.pageBackTransition();
-    }
-
-    @Override
     public void finish() {
-
-
         if (speaking) {
             speakWords("");
         }
-
-
         super.finish();
+        openActivity.pageBackTransition();
     }
 
     @Override
@@ -1094,7 +1085,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         switch(id) {
             case android.R.id.home:
                 finish();
-                openActivity.pageBackTransition();
                 return true;
             case R.id.restart_from_menu:
 

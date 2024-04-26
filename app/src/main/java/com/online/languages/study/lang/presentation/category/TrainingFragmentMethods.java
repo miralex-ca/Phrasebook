@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.fragments;
+package com.online.languages.study.lang.presentation.category;
 
 public interface TrainingFragmentMethods {
 

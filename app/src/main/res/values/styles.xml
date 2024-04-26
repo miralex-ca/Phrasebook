@@ -171,8 +171,6 @@
         <item name="colorUcatFamiliar">@color/colorUcatFamiliar</item>
         <item name="colorUcatMastered">@color/colorUcatMastered</item>
 
-
-
         <item name="colorStudiedBox">@color/colorStudiedBox</item>
         <item name="colorKnownBox">@color/colorKnownBox</item>
         <item name="colorUnknownBox">@color/colorUnknownBox</item>
@@ -199,9 +197,6 @@
         <item name="colorIconReviewBg">@color/colorIconReviewBg</item>
         <item name="colorIconTest">@color/colorIconTest</item>
         <item name="colorIconTestBg">@color/colorIconTestBg</item>
-
-
-        <item name="alertDialogTheme">@style/AppCompatAlert</item>
 
         <item name="map_thumbnail_alpha">@dimen/mapThumbAlpha</item>
         <item name="colorMapTitleBox">@color/colorMapTitleBox</item>
@@ -241,6 +236,11 @@
         <item name="colorCreateFabIcon">@color/colorCreateFabIcon</item>
 
         <!-- item name="android:listDivider">?attr/colorPrimary</item -->
+
+        <item name="alertDialogTheme">@style/AppCompatAlert</item>
+    <!--        <item name="alertDialogTheme">@style/AppTheme.AlertDialogTheme</item>-->
+
+
 
     </style>
 
@@ -301,8 +301,6 @@
     <style name="AppPreferenceFragmentCompatStyle">
         <item name="android:layout">@layout/pref_screen</item>
         <!-- item name="android:divider">?attr/settingsDivider</item -->
-
-
     </style>
 
     <style name="AppTheme.FixForPreferenceFragmentList">
@@ -311,7 +309,19 @@
         <item name="android:paddingLeft">@dimen/prefs_padding_side</item>
         <item name="android:paddingRight">@dimen/prefs_padding_side</item -->
         <item name="android:background">?attr/colorSettingsBg</item>
+    </style>
 
+    <!-- Alert Dialog Theme -->
+    <style name="AppCompatAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColorPrimary">@color/colorMainText</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="dialogCornerRadius">6dp</item>
+        <!-- Used for the background -->
+        <!-- item name="android:background">?attr/colorDialogBg</item -->
+        <!-- Used for the buttons -->
+        <!--item name="colorControlHighlight">@color/dialog_control_highlight</item -->
+        <!-- item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item -->
 
     </style>
 
@@ -329,28 +339,6 @@
         <item name="colorPrimary">?attr/colorPrimary</item>
         <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
     </style>
-
-
-
-
-
-
-    <!-- Alert Dialog Theme -->
-    <style name="AppCompatAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColorPrimary">@color/colorMainText</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <!-- Used for the background -->
-        <!-- item name="android:background">?attr/colorDialogBg</item -->
-        <!-- Used for the buttons -->
-
-
-        <!--item name="colorControlHighlight">@color/dialog_control_highlight</item -->
-
-        <!-- item name="colorPrimary">?attr/colorPrimary</item>
-        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item -->
-
-    </style>
-
 
     <style name="ImageDetail" parent="AppTheme">
 

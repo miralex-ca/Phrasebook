@@ -950,9 +950,12 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="dialog_param_results_display">Last results and completion time are displayed in the tests description.</string>
     <string name="dialog_param_results_hide">Tests description won\'t include the completion results.</string>
 
-
     <string name="nav_menu_home_text">Home</string>
     <string name="nav_menu_phrasebook_text">Phrasebook</string>
+
+    <string name="set_section_layout_title">List layout</string>
+    <string name="set_section_layout_1">Normal</string>
+    <string name="set_section_layout_2">Compact</string>
 
 
 </resources>

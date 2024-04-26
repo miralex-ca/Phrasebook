@@ -111,12 +111,7 @@
 
     <string name="ex_result_txt">Réponses correctes: %1$d from %2$d \n Résultat:\u00A0\u00A0\u00A0 %3$d%%</string>
 
-
-
     <string name="starred_ex_notif">Il faut ajouter plus de favoris pour que les exercices soient disponibles.</string>
-
-
-
 
     <string name="starred_limit">La limite de favoris est atteinte.</string>
     <string name="dialog_close_txt">Fermer</string>
@@ -512,6 +507,10 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="set_ucat_layout_dialog_title">Affichage de la liste</string>
     <string name="set_ucat_layout_1">Normal</string>
     <string name="set_ucat_layout_2">Compact</string>
+
+    <string name="set_section_layout_title">Affichage de la liste</string>
+    <string name="set_section_layout_1">Normal</string>
+    <string name="set_section_layout_2">Compact</string>
 
     <string name="user_content_title">Mes thèmes</string>
     <string name="export_notification">"Export: "</string>

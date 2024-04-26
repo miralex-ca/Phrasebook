@@ -6,6 +6,7 @@ import static com.online.languages.study.lang.Constants.STARRED_CAT_TAG;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.online.languages.study.lang.presentation.category.TrainingFragment;
 import com.online.languages.study.lang.presentation.usercategories.UserListActivity;
 
 public class UserListTrainingFragment extends TrainingFragment {

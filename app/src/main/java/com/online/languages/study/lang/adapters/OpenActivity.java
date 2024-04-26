@@ -96,9 +96,8 @@ public class OpenActivity  implements CallActivity {
         }
     }
 
-
     public void pageTransition() {
-        if ( !  context.getApplicationContext().getResources().getBoolean(R.bool.wide_width)) {
+        if (!context.getApplicationContext().getResources().getBoolean(R.bool.wide_width)) {
             switch (transition) {
                 case "none":
                     ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
@@ -124,7 +123,7 @@ public class OpenActivity  implements CallActivity {
     }
 
     public void pageBackTransition() {
-        if ( !context.getResources().getBoolean(R.bool.wide_width)) {
+        if (!context.getResources().getBoolean(R.bool.wide_width)) {
             switch (transition) {
                 case "none":
                     ((Activity) context).overridePendingTransition(R.anim.anim_none, R.anim.anim_none);
@@ -142,11 +141,8 @@ public class OpenActivity  implements CallActivity {
     }
 
     public void openMultiTest(String cat_id, String title, int testType) {
-
         Intent intent = createIntent(context, ExerciseActivity.class);
-
         intent.putExtra(Constants.EXTRA_CAT_TAG, cat_id);
-
         intent.putExtra("ex_type", testType);
         intent.putExtra("cat_title", title);
         intent.putExtra("multichoice", true);

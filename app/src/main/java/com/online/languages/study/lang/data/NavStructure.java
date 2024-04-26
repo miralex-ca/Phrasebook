@@ -1,5 +1,8 @@
 package com.online.languages.study.lang.data;
 
+import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
+import static com.online.languages.study.lang.Constants.UD_PREFIX;
+
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,36 +12,23 @@ import com.online.languages.study.lang.R;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
-import static com.online.languages.study.lang.Constants.UD_PREFIX;
-
 public class NavStructure implements Parcelable {
-
-
-   public ArrayList<NavSection> sections;
-
+    public ArrayList<NavSection> sections;
     public ArrayList<NavCategory> categories;
 
     private Context context;
 
-
     public NavStructure(Context context) {
-       sections = new ArrayList<>();
-       categories = new ArrayList<>();
-       this.context = context;
-
+        sections = new ArrayList<>();
+        categories = new ArrayList<>();
+        this.context = context;
     }
 
     public ArrayList<NavCategory> getUniqueCats() {
-
         categories = new ArrayList<>();
-
         HashSet<String> set = new HashSet<>();
-
         for (NavSection section: sections) {
-
             for (NavCategory cat: section.uniqueCategories) {
-
                 if (!cat.type.equals("group") && !cat.type.equals("set") && !cat.spec.equals(CAT_SPEC_MAPS)) {
                     if (!set.contains(cat.id)) {
                         categories.add(cat);
@@ -72,9 +62,7 @@ public class NavStructure implements Parcelable {
     }
 
     public NavSection getNavSectionByID (String sectionID) {
-
         NavSection navSection = new NavSection();
-
         for (NavSection section : sections) {
             if (section.id.equals(sectionID)) {
                 navSection = section;
@@ -86,17 +74,13 @@ public class NavStructure implements Parcelable {
 
 
     public NavStructure(Parcel parcel){
-
         sections = new ArrayList<>();
         parcel.readTypedList(sections, NavSection.CREATOR);
-
     }
 
 
     public NavCategory getNavCatFromSection(String sectionId, String catId) {
-
         NavSection navSection = getNavSectionByID(sectionId);
-
         NavCategory navCategory = new NavCategory();
 
         for (NavCategory category: navSection.navCategories){

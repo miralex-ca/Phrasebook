@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.presentation.section;
+package com.online.languages.study.lang.presentation.section.activities;
 
 import android.content.Context;
 import android.content.Intent;

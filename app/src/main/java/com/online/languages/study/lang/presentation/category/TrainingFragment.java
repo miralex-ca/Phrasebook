@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.fragments;
+package com.online.languages.study.lang.presentation.category;
 
 import static com.online.languages.study.lang.adapters.CategoryParamsDialog.CATEGORY_RESULT_DISPLAY;
 
@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.databinding.FragmentTrainingBinding;
-import com.online.languages.study.lang.presentation.category.CatActivity;
 
 import java.util.ArrayList;
 
@@ -143,7 +142,6 @@ public class TrainingFragment extends Fragment implements TrainingFragmentMethod
     private void openAudioTest() {
         openExercise(3);
     }
-
 
     private void checkAudioTestDisplay() {
 

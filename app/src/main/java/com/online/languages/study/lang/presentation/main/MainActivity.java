@@ -195,6 +195,7 @@ public class MainActivity extends BaseActivity
 
 
         openActivity = new OpenActivity(this);
+
         dataManager = new DataManager(this, true);
 
         openActivity.setOrientation();
@@ -872,11 +873,10 @@ public class MainActivity extends BaseActivity
     public void openCatActivity(String sectionId) {
         Intent i = new Intent(MainActivity.this, SectionReviewActivity.class);
         openActivity.openSection(i, navStructure, sectionId, "root");
-
+        openActivity.pageTransition();
     }
 
     public void openGallery(NavSection navSection) {
-
         Intent i;
         i = new Intent(MainActivity.this, GalleryActivity.class);
         i.putExtra(Constants.EXTRA_CAT_ID, "root");

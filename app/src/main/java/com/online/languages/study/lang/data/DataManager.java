@@ -52,9 +52,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class DataManager {
-
-    private Context context;
-
+    private final Context context;
     public DBHelper dbHelper;
     public ArrayList<NavCategory> navCategories;
     public SharedPreferences appSettings;
@@ -63,7 +61,6 @@ public class DataManager {
     public long timer = 0;
     private String alternativeTranscription = "";
     private String currentTranscriptionType = "";
-
 
     public DataManager(Context _context) {
         context = _context;
@@ -92,6 +89,11 @@ public class DataManager {
         navCategories = dataFromJson.getAllUniqueCats();
     }
 
+    public NavStructure provideNavStructure() {
+        DataFromJson dataFromJson = new DataFromJson(context);
+        return dataFromJson.getStructure();
+    }
+
     public void checkAlternativeTranscription() {
         // get alternative transcription value
         alternativeTranscription = context.getResources().getString(R.string.set_transcript_alternative);
@@ -99,15 +101,12 @@ public class DataManager {
     }
 
     public ArrayList<DataItem> getCatDBList(String cat) {
-
         ArrayList<DataItem> items = new ArrayList<>();
         if (cat.contains(UC_PREFIX)) {
             items =  getUDataList(cat);
         } else {
             items =  dbHelper.getCatByTag(cat);
         }
-
-
         return items;
     }
 
@@ -192,28 +191,18 @@ public class DataManager {
 
 
     public ArrayList<DataItem> getDataForSectionReview(ArrayList<DataItem> dataItems) {
-
         ArrayList<DataItem> checkedData = new ArrayList<>();
-
-
         for (DataItem dataItem: dataItems) {
-
             if (dataItem.mode == -1  || dataItem.type.equals("group_title")) {
-
                 checkedData.add(dataItem);
             }
-
         }
-
         return checkedData;
     }
 
     public ArrayList<DataItem> getCatCustomList(ArrayList<NavCategory> categories, int type) {
-
         ArrayList<DataItem> dataItems = dbHelper.getDataItemsByCats(categories);
-
         ArrayList<DataItem> resultDataItems = new ArrayList<>();
-
         for (DataItem dataItem : dataItems) {
             if (type == 0) { // studied
                 if (dataItem.rate > 2) resultDataItems.add(dataItem);
@@ -227,36 +216,24 @@ public class DataManager {
         if (type == 1) {
             Collections.sort(resultDataItems, new ScoreCountComparator());
         }
-
         return resultDataItems;
-
     }
 
 
     public UserStatsData getSectionsDataFromDB(UserStatsData userStatsData) {
-
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
         for (Section section : userStatsData.sectionsDataList) {
-
-
             section = dbHelper.selectSectionDataFromDB(db, section);
-
             section.calculateProgress();
         }
 
         db.close();
         return userStatsData;
-
     }
 
-
     public ArrayList<DataItem> getCatCustomList(String cat, int type) {
-
-
         ArrayList<DataItem> dataItems = getCatDBList(cat);
         ArrayList<DataItem> resultDataItems = new ArrayList<>();
-
         ArrayList<DataItem> helperDataItems = new ArrayList<>();
 
         for (DataItem dataItem : dataItems) {
@@ -264,63 +241,46 @@ public class DataManager {
                 if (dataItem.rate > 2) resultDataItems.add(dataItem);
             } else if (type == 1) { // familiar
                 if (dataItem.rate > 0 && dataItem.rate < 3) resultDataItems.add(dataItem);
-
                 if (dataItem.rate > 2) helperDataItems.add(dataItem);
-
             } else if (type == 2) { // unknown
                 if (dataItem.rate < 1) resultDataItems.add(dataItem);
             }
         }
 
         if (type == 1) resultDataItems.addAll(helperDataItems);
-
         return resultDataItems;
     }
 
 
     public Map<String, String> getCatProgress(ArrayList<String> catIds) {
-
         boolean speaking = appSettings.getBoolean("set_speak", true);
-
         String mode = "sound";
         if (!speaking) mode = "nosound";
 
         Map<String, String> catMapWithProgress = new HashMap<>();
-
         Map<String, ArrayList<String>> catMapWithTests = getExResults(catIds); /// got all tests of the sections
 
         for (String catId: catIds) {
-
             ArrayList<String> results = catMapWithTests.get(catId);
-
             assert results != null;
             int  progress = calculateProgressByList(results, mode);
-
             catMapWithProgress.put(catId, String.valueOf(progress));
         }
-
         return catMapWithProgress;
     }
 
 
-
     private String getFilterValue(DataItem dataItem, String filterTag) {
-
         String dataFilter = dataItem.filter;
-
         String filterValue = "3000";
-
         String[] filters = dataFilter.split("&");
 
         for (String filter: filters) {
-
             if (filter.contains(filterTag)) {
                 String[] filterSplit = filter.split("=");
                if (filterSplit.length >1) filterValue = filterSplit[1];
             }
-
         }
-
         return filterValue;
     }
 
@@ -396,14 +356,11 @@ public class DataManager {
     }
 
     public void getScreenSize() {
-
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-
         Toast.makeText(context, "H: " + dpHeight + ": W"+ dpWidth, Toast.LENGTH_SHORT).show();
     }
-
 
     public Map<String, ArrayList<String>> getExResults(ArrayList<String> catIdsList) {
         Map<String, String> testsMap =  dbHelper.getTestsByCatId(catIdsList);
@@ -420,37 +377,25 @@ public class DataManager {
         return calculateProgressByList(results, mode);
     }
 
-
     public int calculateProgressByList(ArrayList<String> results, String mode) {
         return computer.calculateProgressByList(results, mode);
     }
 
     public int setBookmark(String catId, String sectionId, NavStructure navStructure) {
-
         String param = PARAM_EMPTY;
-
         int bookmarksSize = getBookmarks(navStructure, PARAM_EMPTY).size();
-
         if (bookmarksSize >= BOOKMARKS_LIMIT) param = PARAM_LIMIT_REACHED;
-
         int outcome = dbHelper.setBookmark(catId, sectionId, param );
 
-
         if (outcome == OUTCOME_LIMIT) {
-
             Toast.makeText(context, R.string.starred_limit, Toast.LENGTH_SHORT).show(); /// TODO check for bookmarks
-
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-
             assert v != null;
             v.vibrate(VIBRO_FAIL);
         }
 
         return outcome;
-
     }
-
-
 
     public int getBookmarksSize(NavStructure structure) {
         ArrayList<BookmarkItem> bookmarkItems = getBookmarks(structure, "");
@@ -463,28 +408,17 @@ public class DataManager {
 
 
     public ArrayList<BookmarkItem> getBookmarks(NavStructure structure, String param) {
-
         ArrayList<BookmarkItem> bookmarkItems = dbHelper.getBookmarks();
-
-
         ArrayList<BookmarkItem> bookmarksToReturn = new ArrayList<>();
-        
         String sectionTxt = context.getString(R.string.bookmarks_section_txt);
 
         for (BookmarkItem bookmarkItem: bookmarkItems) {
-
             BookmarkItem bookmark = new BookmarkItem();
-
             boolean found = false;
-
             NavSection navSection = structure.getNavSectionByID(bookmarkItem.parent);
-
             for (NavCategory category: navSection.uniqueCategories){
-
                 if (category.id.equals(bookmarkItem.item)) {
-
                     bookmark = bookmarkItem;
-
                     if (param.equals(PARAM_POPULATE)) {
                         bookmark.item = bookmarkItem.item;
                         bookmark.parent = bookmarkItem.parent;
@@ -496,50 +430,35 @@ public class DataManager {
 
                     found = true;
                     break;
-
                 }
             }
 
             if (found) bookmarksToReturn.add(bookmark);
-
         }
 
         ArrayList<BookmarkItem> ucats = dbHelper.getUCatsBookmarks();
-
         bookmarksToReturn.addAll(ucats);
 
-
         Collections.sort(bookmarksToReturn, new TimeBookmarkComparator());
-
         return bookmarksToReturn;
     }
-
 
     public NavStructure getNavStructure() {
         DataFromJson dataFromJson = new DataFromJson(context);
         return dataFromJson.getStructure();
     }
 
-
     public ArrayList<NoteData> getNotes() {
-
         ArrayList<NoteData> notes = dbHelper.getNotes();
-
         //Collections.sort(notes, new TimeNoteComparator());
-
          Collections.sort(notes, new TimeUpdateNoteComparator());
-
         return notes;
     }
 
     public ArrayList<DataObject> getNotesForArchive() {
-
         ArrayList<NoteData> notes = dbHelper.getNotesListForSet(NOTE_ARCHIVE);
-
         //Collections.sort(notes, new TimeNoteComparator());
-
         Collections.sort(notes, new TimeUpdateNoteComparator());
-
         return convertNotesToObjects(notes);
     }
 
@@ -557,82 +476,55 @@ public class DataManager {
         }
     }
 
-
     public String formatTime (long time) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return  sdf.format(new Date(time));
     }
 
     public ArrayList<DataObject> convertNotesToObjects(ArrayList<NoteData> notesList) {
-
         ArrayList<DataObject> list = new ArrayList<>();
-
         for (NoteData noteData: notesList) {
-
             list.add(new DataObject(noteData));
         }
 
         return list;
     }
 
-
     public String[] getTotalCounts() {
-
         return dbHelper.getUCatsCounts();
 
     }
 
     public ArrayList<DataObject> getUcatsList() {
-
         ArrayList<DataObject> list = dbHelper.getUCatsList();
-
         list = dbHelper.getUCatsListItemsCount(list);
-
         return list;
-
     }
 
     public ArrayList<DataObject> getUcatsGroup(String group_id) {
-
         ArrayList<DataObject> list = dbHelper.getUCatsListForSet(group_id);
-
         list = dbHelper.getUCatsListItemsCount(list);
-
         return list;
-
     }
 
     public boolean checkPlusVersion() {
-
         boolean plusVersion = appSettings.getBoolean(Constants.SET_VERSION_TXT, false);
-
         if (PRO) plusVersion = true;
-
         return plusVersion;
     }
 
 
     public ArrayList<DataObject> getUcatsListForUnpaid(String parent) {
-
-
         int limit = UCATS_UNPAID_LIMIT;
-
         ArrayList<DataObject> list = dbHelper.getUCatsListUnpaid(limit);
-
         for (DataObject ucat: list) {
-
             Log.d("UCAT", ucat.title + ": type: " + ucat.type + ", parent: " + ucat.parent);
-
             if (ucat.type.equals(PARAM_GROUP)) {
-
                 if (!ucat.parent.equals(PARAM_UCAT_ARCHIVE)) {
                     ucat.parent = PARAM_UCAT_ROOT;
                 }
-
             } else {
-
                 boolean found = false;
-
                 if (ucat.parent.equals(PARAM_UCAT_ARCHIVE)) found = true;
 
                 /// searching for cats in a GROUP that is not displayed
@@ -644,80 +536,55 @@ public class DataManager {
                         }
                     }
                 }
-
                 /// not sure why that is here, maybe for debug to see all
                 if (!found) {
                     ucat.parent = PARAM_UCAT_ROOT;
                 }
             }
-
-
         }
-
 
         //Toast.makeText(context, "Size: " + list.size(), Toast.LENGTH_SHORT).show();
 
         ArrayList<DataObject> cutList = new ArrayList<>();
-
         if (parent.equals("root")) {
-
             for (DataObject ucat: list) {
-
                 if (!ucat.parent.contains(UC_PREFIX)) {
                     cutList.add(ucat);
 
                 }
             }
-
         } else {
-
             for (DataObject ucat: list) {
                 if (ucat.parent.equals(parent)) cutList.add(ucat);
             }
-
         }
 
-
         cutList = dbHelper.getUCatsListItemsCount(cutList);
-
         return cutList;
 
     }
 
 
-
-
-
     public ArrayList<DataObject> getUcatsForArchive() {
-
         ArrayList<DataObject> list = dbHelper.getUCatsListForSet(PARAM_UCAT_ARCHIVE);
-
         list = dbHelper.getUCatsListItemsCount(list);
-
         return list;
 
     }
 
-
     public DataObject getUcatParams(DataObject dataObject) {
-
         dataObject = dbHelper.getUCatParams(dataObject);
-
         return dataObject;
     }
 
     public void saveUcatParams(DataObject dataObject) {
-
         dbHelper.updateUCatParams(dataObject);
-
     }
 
 
     public String readParam(String paramString, String searchedParam) {
-
         String[] params = paramString.split("&");
         String paramValue = "";
-
         for (String param: params) {
             if (param.contains(searchedParam)) {
                 paramValue = param;
@@ -725,27 +592,16 @@ public class DataManager {
         }
 
         return paramValue;
-
     }
 
-
     public String addValueToParams(String paramString, String searchedParam, String value) {
-
         String newParamString = "";
-
         String[] params = paramString.split("&");
-
         if (paramString.trim().length() == 0) {
-
             newParamString = value;
-
-
         } else {
-
             boolean found = false;
-
             for (int i = 0; i < params.length; i ++) {
-
                 String tParam = params[i].trim();
 
                 if (tParam.contains(searchedParam)) {
@@ -758,7 +614,6 @@ public class DataManager {
                 } else {
                     newParamString = newParamString + "&" + tParam;
                 }
-
             }
 
             if (!found) {
@@ -767,54 +622,36 @@ public class DataManager {
         }
 
         return newParamString;
-
     }
-
-
 
     public ArrayList<DataItem> getUDataList(String ucat_id) {
-
         DataObject ucat = dbHelper.getUCat(ucat_id);
-
         String sortParam = readParam(ucat.params, UCAT_PARAM_SORT);
-
         return dbHelper.getUDataList(ucat_id, sortParam);
-
     }
 
-
     public boolean easyMode(String categoryId) {
-
         boolean easyMode = easyMode();
-
         if (categoryId.contains(UC_PREFIX) || categoryId.equals(STARRED_CAT_TAG)) easyMode = false;
-
         Toast.makeText(context, "Levels: " + dataLevels, Toast.LENGTH_SHORT).show();
-
         return easyMode;
     }
 
     public boolean easyMode() {
-
         getParams();
-
         String defaultModeValue = context.getResources().getString(R.string.set_data_mode_default_value);
         String easyModeValue = context.getResources().getStringArray(R.array.set_data_mode_values)[0];
         boolean easyMode = appSettings.getString(Constants.SET_DATA_MODE, defaultModeValue).equals(easyModeValue);
-
         if (!dataLevels) easyMode = false;
 
         return easyMode;
     }
 
-
     public int checkUcatLimit(String ucat_id) {
         return  dbHelper.checkUcaDataListSize(ucat_id);
     }
 
-
     public ArrayList<DataItem> getSectionItems(String tSectionID) {
-
         NavStructure navStructure = getNavStructure();
         Section section = new Section(navStructure.getNavSectionByID(tSectionID), context);
 
@@ -828,14 +665,11 @@ public class DataManager {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<DataItem> data = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
         db.close();
-
         return  data;
     }
 
     public ArrayList<DataItem> getCatsItems(String[] cats) {
-
         ArrayList<String> catIdsForTests = new ArrayList<>(Arrays.asList(cats));
-
         if (catIdsForTests.size() > TEST_CATS_MAX_FOR_BEST) {
             Collections.shuffle(catIdsForTests);
           //  catIdsForTests = new ArrayList<>(catIdsForTests.subList(0, TEST_CATS_MAX_FOR_BEST));
@@ -844,63 +678,41 @@ public class DataManager {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         ArrayList<DataItem> data = dbHelper.selectSimpleDataItemsByIds(db, catIdsForTests);
         db.close();
-
         return  data;
     }
-
 
     public ArrayList<DataItem> getItemsByCatIds(String[] cats) {
-
         ArrayList<String> catIdsForTests = new ArrayList<>(Arrays.asList(cats));
-
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
         ArrayList<DataItem> data = dbHelper.getDataItemsByCatIds(db, catIdsForTests);
-
         db.close();
-
         return  data;
     }
-
 
     public void getTime(String msg) {
         getTime(msg, false);
     }
 
-
     public void getTime(String msg, boolean dif) {
       long time =  System.currentTimeMillis();
 
-
-
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss.SSS");
         String date = sdf.format(time);
-
         String info  = msg +": " + date;
 
         if (dif) {
-
             long diff = time - timer;
-
             SimpleDateFormat difForm = new SimpleDateFormat("mm:ss.SSS");
-
             info += " dif: "  + difForm.format(diff);
         }
 
-
         timer = time;
-
         Log.d("Timing", info);
-
     }
 
     public ArrayList<DataItem> getAllItems() {
-
         ArrayList<DataItem> data = new ArrayList<>();
-
         NavStructure navStructure = getNavStructure();
-
-
         ArrayList<String> checkIds = new ArrayList<>();
 
         for (NavSection navSection:  navStructure.sections ) {
@@ -909,7 +721,6 @@ public class DataManager {
         }
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
         if (checkIds.size() > TEST_CATS_MAX_FOR_BEST) {
             Collections.shuffle(checkIds);
             checkIds = new ArrayList<>(checkIds.subList(0, TEST_CATS_MAX_FOR_BEST));
@@ -918,28 +729,22 @@ public class DataManager {
         //Toast.makeText(context, "Cats count: " + checkIds.size(), Toast.LENGTH_SHORT).show();
 
         data = dbHelper.selectSimpleDataItemsByIds(db, checkIds);
-
         db.close();
-
         return  data;
     }
 
     public void removeCatData(String catId) {
-
        dbHelper.deleteCatResult(catId);
-
     }
 
 
     public ArrayList<DataObject> getGroupsForDialog(String currentGroup) {
-
         DataObject mainListGroup = new DataObject();
         mainListGroup.title = context.getString(R.string.main_list_txt);
         mainListGroup.id = PARAM_UCAT_ROOT;
 
         ArrayList<DataObject> groups =  new ArrayList<>();
         groups.add(mainListGroup);
-
         groups.addAll(dbHelper.getUGroupsListForSet(PARAM_UCAT_ROOT));
 
         ArrayList<DataObject> groupsForDialog = new ArrayList<>();
@@ -952,11 +757,9 @@ public class DataManager {
         }
 
         return groupsForDialog;
-
     }
 
     public DataObject getGroupData(String group_id) {
-
         DataObject groupObject = dbHelper.getUCat(group_id);
         ArrayList<DataObject> helpArrayForCount = new ArrayList<>();
         helpArrayForCount.add(groupObject);
@@ -970,16 +773,12 @@ public class DataManager {
 
     public int getGroupsCount() {
         int count = 0;
-
         count = dbHelper.getGroupsCount();
-
         return count;
-
     }
 
 
     public void addNewNote(String title, String content, String image) {
-
        NoteData note = new NoteData();
        note.title = title;
        note.content = content;
@@ -990,7 +789,6 @@ public class DataManager {
     }
 
     public Locale getLocale() {
-
         String localString = context.getString(R.string.locale_string);
 
         Locale locale = Locale.ENGLISH;
@@ -1031,26 +829,17 @@ public class DataManager {
 
 
     public ArrayList<ExerciseTask> getQuestsByCatIds(String[] strIds) {
-
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
-
         ArrayList<QuestData> questsByCatIds = dbHelper.getQuestsByCatIds(ids);
-
         ArrayList<ExerciseTask> tasks = new ArrayList<>();
 
         for (QuestData quest: questsByCatIds) {
-
-
-
             ExerciseTask exerciseTask = getExerciseTaskFromQuest(quest);
-
             tasks.add(exerciseTask);
-
         }
 
         return tasks;
     }
-
 
     public ArrayList<ExerciseTask> getSortedQuestsByCatIds( String[] strIds, int exerciseType,
                                                             String[] unstudiedIds, int level) {
@@ -1070,26 +859,20 @@ public class DataManager {
 
         QuestManager questManager = new QuestManager(questsByCatIds);
         questManager.setExerciseType(exerciseType);
-
         questManager.processData();
 
         ArrayList<QuestData>  quests = questManager.getMainList();
-
         ArrayList<ExerciseTask> tasks = new ArrayList<>();
 
         for (QuestData quest: quests) {
-
             ExerciseTask exerciseTask = getExerciseTaskFromQuest(quest);
-
             tasks.add(exerciseTask);
-
         }
 
         return tasks;
     }
 
     public ArrayList<ExerciseTask> getSortedBuildQuestsByCatIds(String[] strIds, int exerciseType, String[] unstudiedIds) {
-
         ArrayList<String> ids = new ArrayList<>(Arrays.asList(strIds));
         ArrayList<String> unstudied = new ArrayList<>(Arrays.asList(unstudiedIds));
 
@@ -1101,30 +884,18 @@ public class DataManager {
 
         QuestManager questManager = new QuestManager(questsByCatIds);
         questManager.setExerciseType(exerciseType);
-
         questManager.processData();
 
         ArrayList<QuestData>  quests = questManager.getMainList();
-
-
         ArrayList<ExerciseTask> tasks = new ArrayList<>();
 
         for (QuestData quest: quests) {
-
             ExerciseTask exerciseTask = getBuildExerciseTaskFromQuest(quest);
-
-
             tasks.add(exerciseTask);
-
         }
-
-
 
         return tasks;
     }
-
-
-
 
 
     private ExerciseTask getExerciseTaskFromQuest(QuestData quest) {
@@ -1132,17 +903,14 @@ public class DataManager {
 
         exerciseTask.quest = quest.getQuest();
         exerciseTask.questInfo = quest.getCorrect();
-
         exerciseTask.data = new DataItem();
         exerciseTask.data.item = exerciseTask.quest ;
 
         exerciseTask.data.pronounce = !quest.getPronounce().equals("")? quest.getPronounce(): exerciseTask.quest;
-
         exerciseTask.option = quest.getOptions();
 
         exerciseTask.options = new ArrayList<>();
         exerciseTask.answers = new ArrayList<>();
-
         String optString = quest.getOptions();
         String[] options = optString.split("\\|");
 
@@ -1156,29 +924,22 @@ public class DataManager {
         }
 
         exerciseTask.options.add(0, quest.getCorrect());
-
         exerciseTask.savedInfo = quest.getId();
 
         DataItem dataItem = new DataItem(exerciseTask.quest, exerciseTask.questInfo);
         dataItem.id = exerciseTask.savedInfo;
-
 
         return exerciseTask;
     }
 
 
     private ExerciseTask getBuildExerciseTaskFromQuest(QuestData quest) {
-
         ExerciseTask exerciseTask = new ExerciseTask();
-
         exerciseTask.quest = quest.getQuest();
         exerciseTask.questInfo = quest.getCorrect();
-
         exerciseTask.data = new DataItem();
         exerciseTask.data.item = exerciseTask.quest ;
-
         exerciseTask.option = quest.getOptions();
-
         exerciseTask.params = quest.getParams();
 
         exerciseTask.response = quest.getCorrect();
@@ -1196,7 +957,6 @@ public class DataManager {
         }
 
         Collections.addAll(exerciseTask.answers, answers);
-
         exerciseTask.savedInfo = quest.getId();
 
         DataItem dataItem = new DataItem(exerciseTask.quest, exerciseTask.questInfo);
@@ -1207,9 +967,7 @@ public class DataManager {
 
 
     public String getQuestParamValue(String paramsString, String searchedParam) {
-
         String paramValue = "";
-
         String[] params = paramsString.split("&");
 
         for (String param: params) {
@@ -1226,7 +984,6 @@ public class DataManager {
     }
 
     public int checkPracticeLevel(ArrayList<String> catIdsList) {
-
         int requiredLevel = 1;
         int levelsCount = 6;
 
@@ -1236,7 +993,6 @@ public class DataManager {
         for (int i = 0; i < levelsCount; i++) {
 
             int progress = dbHelper.checkSectionPracticeLevelProgress(db, catIdsList, i+1);
-
             if (progress == -1) break;
 
             if (progress < 80 ) {
@@ -1253,9 +1009,7 @@ public class DataManager {
 
 
     public ArrayList<String[]> getPracticeTests(String[] testIds) {
-
         ArrayList<String[]> data = new ArrayList<>();
-
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         for (String testId : testIds) {
@@ -1265,7 +1019,6 @@ public class DataManager {
             long time = Long.parseLong(testData[2]);
             String replace = "replace";
 
-
             if (time == 0)  {
                 replace = "none";
             }
@@ -1274,23 +1027,16 @@ public class DataManager {
             }
 
            // Log.i("Quest", "res"  + testData[1] + "% , time " + time + " - " + replace);
-
-
             data.add(new String[]{testId, desc, replace });
         }
 
-
         db.close();
-
         return data;
     }
 
     public String testDateFormat (long time) {
-
         String format = context.getString(R.string.date_format_with_time);
-
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.CANADA);
-
         return  sdf.format(new Date(time));
     }
 
@@ -1298,6 +1044,5 @@ public class DataManager {
     public ArrayList<String[]> getCategoryTestsResult(String[] testIds) {
         return getPracticeTests(testIds);
     }
-
 
 }

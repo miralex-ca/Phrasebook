@@ -1,49 +1,5 @@
 package com.online.languages.study.lang;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.util.Range;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.online.languages.study.lang.practice.QuestData;
-import com.online.languages.study.lang.recommend.TaskItem;
-import com.online.languages.study.lang.data.BookmarkItem;
-import com.online.languages.study.lang.data.Category;
-import com.online.languages.study.lang.data.DataFromJson;
-import com.online.languages.study.lang.data.DataItem;
-import com.online.languages.study.lang.data.DataManager;
-import com.online.languages.study.lang.data.DataObject;
-import com.online.languages.study.lang.data.DetailFromJson;
-import com.online.languages.study.lang.data.DetailItem;
-import com.online.languages.study.lang.data.InfoNotesManager;
-import com.online.languages.study.lang.data.NavCategory;
-import com.online.languages.study.lang.data.NoteData;
-import com.online.languages.study.lang.data.Section;
-import com.online.languages.study.lang.data.UserStats;
-import com.online.languages.study.lang.data.UserStatsData;
-import com.online.languages.study.lang.files.DBImport;
-import com.online.languages.study.lang.tools.Computer;
-
-import java.text.Normalizer;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-
-import kotlin.ranges.IntRange;
-
 import static com.online.languages.study.lang.Constants.ACTION_CREATE;
 import static com.online.languages.study.lang.Constants.ACTION_DELETE;
 import static com.online.languages.study.lang.Constants.EX_AUDIO_TYPE;
@@ -73,6 +29,44 @@ import static com.online.languages.study.lang.Constants.UCAT_PARAM_SORT_ASC;
 import static com.online.languages.study.lang.Constants.UC_PREFIX;
 import static com.online.languages.study.lang.Constants.UD_PREFIX;
 import static com.online.languages.study.lang.practice.QuestCollector.TEST_BUILD;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.online.languages.study.lang.data.BookmarkItem;
+import com.online.languages.study.lang.data.Category;
+import com.online.languages.study.lang.data.DataFromJson;
+import com.online.languages.study.lang.data.DataItem;
+import com.online.languages.study.lang.data.DataManager;
+import com.online.languages.study.lang.data.DataObject;
+import com.online.languages.study.lang.data.DetailFromJson;
+import com.online.languages.study.lang.data.DetailItem;
+import com.online.languages.study.lang.data.InfoNotesManager;
+import com.online.languages.study.lang.data.NavCategory;
+import com.online.languages.study.lang.data.NoteData;
+import com.online.languages.study.lang.data.Section;
+import com.online.languages.study.lang.data.UserStats;
+import com.online.languages.study.lang.data.UserStatsData;
+import com.online.languages.study.lang.files.DBImport;
+import com.online.languages.study.lang.practice.QuestData;
+import com.online.languages.study.lang.recommend.TaskItem;
+import com.online.languages.study.lang.tools.Computer;
+
+import java.text.Normalizer;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -2891,7 +2885,6 @@ public class DBHelper extends SQLiteOpenHelper {
             status = 0;
             //Toast.makeText(cntx, "Starred limit", Toast.LENGTH_SHORT).show();
         }
-        db.close();
 
         return status;
     }
@@ -2984,8 +2977,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public ArrayList<DataItem> searchData(ArrayList<NavCategory> navCategories, String searchTerm) {
         SQLiteDatabase db = getReadableDatabase();
-
-
         StringBuilder conditionLike = new StringBuilder("");
 
         for (int i = 0; i < navCategories.size(); i++) {
@@ -3472,7 +3463,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<ArrayList<DataItem>> getSectionGroupsDataItems(ArrayList<NavCategory> navCategories) {
 
         ArrayList<ArrayList<DataItem>> groups = new ArrayList<>();
-
         SQLiteDatabase db = this.getWritableDatabase();
 
         String query =  "SELECT * FROM "
@@ -3481,31 +3471,23 @@ public class DBHelper extends SQLiteOpenHelper {
                 +" WHERE (a."+KEY_ITEM_ID + " LIKE ?) AND (a."+KEY_ITEM_MODE+" <= "+SECTION_REVIEW_MAX_MODE+") ORDER BY a.id";
 
         for (int i = 0; i < navCategories.size(); i++) {
-
             NavCategory navCategory = navCategories.get(i);
             ArrayList<DataItem> items = new ArrayList<>();
 
             if (navCategory.review) {
-
                 Cursor cursor = db.rawQuery(query, new String[]{navCategory.id + "%"});
-
                 try {
                     while (cursor.moveToNext()) {
-
                         DataItem item = getItemFromCursor(cursor);
                         item.cat = navCategory.id;
                         items.add(item);
-
-
                     }
                 } finally {
                     cursor.close();
                 }
             }
-
             groups.add(items);
         }
-
         db.close();
 
         return groups;
@@ -4668,8 +4650,6 @@ public class DBHelper extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-        db.close();
-
         return words;
     }
 

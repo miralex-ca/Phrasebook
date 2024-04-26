@@ -298,6 +298,11 @@
 
     <string name="set_ucat_layout_default" translatable="false">normal</string>
 
+    <string-array name="set_section_layout_list">
+        <item>@string/set_section_layout_1</item>
+        <item>@string/set_section_layout_2</item>
+    </string-array>
+
 
     <string-array name="set_transition_list">
         <item>Slide</item>
@@ -369,8 +374,6 @@
         <item>@string/pr_unstudied_mixed</item>
         <item>@string/pr_unstudied_mixed_not</item>
     </string-array>
-
-
 
     <string-array name="practice_mix_array_values">
         <item>mixed</item>

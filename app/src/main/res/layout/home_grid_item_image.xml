@@ -11,7 +11,7 @@
       android:layout_margin="3dp"
       android:layout_height="wrap_content"
       app:contentPadding="0dp"
-      app:cardCornerRadius="4dp"
+      app:cardCornerRadius="6dp"
       style="@style/CardViewStyle"
       >
 
