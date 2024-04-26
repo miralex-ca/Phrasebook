@@ -21,7 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.DataModeDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;

@@ -34,7 +34,7 @@ import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.adapters.NotesArchiveAdapter;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.BookmarkItem;

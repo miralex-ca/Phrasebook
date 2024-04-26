@@ -45,7 +45,8 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.MenuListAdapter;
 import com.online.languages.study.lang.adapters.NavigationDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.presentation.section.SectionReviewActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.RateDialog;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DataFromJson;
@@ -73,7 +74,6 @@ import com.online.languages.study.lang.presentation.main.fragments.PrefsFragment
 import com.online.languages.study.lang.presentation.main.fragments.StarredFragment;
 import com.online.languages.study.lang.presentation.main.fragments.home.HomeFragment;
 import com.online.languages.study.lang.presentation.search.SearchingActivity;
-import com.online.languages.study.lang.presentation.section.SectionReviewActivity;
 import com.online.languages.study.lang.presentation.stats.CustomDataListActivity;
 import com.online.languages.study.lang.presentation.stats.ProgressStatsActivity;
 import com.online.languages.study.lang.presentation.stats.SectionStatsActivity;

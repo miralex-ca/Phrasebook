@@ -8,7 +8,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.online.languages.study.lang.App
 import com.online.languages.study.lang.AppContainer
-import com.online.languages.study.lang.adapters.OpenActivity
+import com.online.languages.study.lang.utils.OpenActivity
 import com.online.languages.study.lang.repository.getAppSettings
 import com.online.languages.study.lang.utils.LocaleChangedReceiver
 

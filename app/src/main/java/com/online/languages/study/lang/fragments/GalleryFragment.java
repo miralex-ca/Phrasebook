@@ -26,7 +26,7 @@ import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.DividerItemDecoration;
 import com.online.languages.study.lang.adapters.GalleryAdapter;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.data.ViewCategory;

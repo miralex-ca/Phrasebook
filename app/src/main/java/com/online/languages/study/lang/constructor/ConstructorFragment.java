@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.databinding.FragmentConstructorBinding;
 
 import java.util.ArrayList;

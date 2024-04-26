@@ -14,7 +14,7 @@ import android.webkit.WebView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.data.NavCategory;
 import com.online.languages.study.lang.data.NavSection;
 import com.online.languages.study.lang.data.NavStructure;

@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import com.online.languages.study.lang.adapters.OpenActivity
+import com.online.languages.study.lang.utils.OpenActivity
 import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModel
 import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModelFactory
 import com.online.languages.study.lang.presentation.section.SectionViewModel
@@ -18,7 +18,8 @@ class AppContainer(val context: Context) {
     val vibration = Vibration(context)
     val models = ViewModelsHelper(this)
 
-    fun getOpenActivity(context: Activity) = OpenActivity(context)
+    fun getOpenActivity(context: Activity) =
+        OpenActivity(context)
 }
 
 class ViewModelsHelper(private val appContainer: AppContainer) {

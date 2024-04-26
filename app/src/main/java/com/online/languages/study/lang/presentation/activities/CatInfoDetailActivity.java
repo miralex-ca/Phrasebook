@@ -21,7 +21,7 @@ import androidx.interpolator.view.animation.FastOutLinearInInterpolator;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.DetailFromJson;
 import com.online.languages.study.lang.data.DetailItem;

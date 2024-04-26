@@ -23,7 +23,7 @@ import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.ColorProgress;
 import com.online.languages.study.lang.adapters.InfoDialog;
-import com.online.languages.study.lang.adapters.OpenActivity;
+import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.RoundedTransformation;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
 import com.online.languages.study.lang.data.Category;

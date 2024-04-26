@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.adapters;
+package com.online.languages.study.lang.utils;
 
 
 import static com.online.languages.study.lang.Constants.CAT_SPEC_MAPS;
@@ -138,6 +138,10 @@ public class OpenActivity  implements CallActivity {
                     break;
             }
         }
+    }
+
+    public void detailTransitionOpen() {
+        ((Activity) context).overridePendingTransition(R.anim.slide_in_down, 0);
     }
 
     public void openMultiTest(String cat_id, String title, int testType) {
