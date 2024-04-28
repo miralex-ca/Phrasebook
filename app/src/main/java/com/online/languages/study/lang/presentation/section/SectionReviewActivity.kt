@@ -63,7 +63,7 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
     }
 
     private fun refreshList(data: String?) {
-        viewController?.getSectionList(data!!)
+        data?.let { viewController?.getSectionList(it) }
     }
 
     private fun openPremiumDialog() {
@@ -124,7 +124,7 @@ class SectionReviewActivity : ThemedActivity(), SectionViewActions {
         intent.putExtra("item", dataItem)
         intent.putExtra(Constants.EXTRA_CAT_ID, dataItem.cat)
         startActivityForResult(intent, DETAIL_DIALOG_REQUEST_CODE)
-        openActivity.detailTransitionOpen()
+        openActivity.detailOpenTransition()
 
         dialogStatus = DIALOG_LOCKED
         lifecycleScope.launch {

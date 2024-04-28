@@ -498,6 +498,11 @@ This will allow to restore your data from a previous backup. Note that this will
     <string name="set_section_layout_1">Normal</string>
     <string name="set_section_layout_2">Compact</string>
 
+    <string name="set_category_layout_title">List layout</string>
+    <string name="set_category_layout_1">Normal</string>
+    <string name="set_category_layout_2">Compact</string>
+    <string name="set_category_layout_3">Cards</string>
+
     <string name="user_content_title">My topics</string>
     <string name="export_notification">"Export: "</string>
 

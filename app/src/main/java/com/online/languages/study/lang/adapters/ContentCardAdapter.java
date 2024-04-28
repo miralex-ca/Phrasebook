@@ -66,7 +66,10 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
             helperView =  itemView.findViewById(R.id.animObj);
             itemWrap =  itemView.findViewById(R.id.itemWrap);
             starIcon = itemView.findViewById(R.id.voclistStar);
-            statusView = itemView.findViewById(R.id.status_wrap);
+
+            View includedLayout = itemView.findViewById(R.id.stats_wrap);
+            statusView = includedLayout.findViewById(R.id.status_wrap);
+
             divider = itemView.findViewById(R.id.catItemDivider);
 
             grammar = itemView.findViewById(R.id.itemGrammar);
@@ -314,23 +317,23 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
 
         if (errorsCount > 0) {
             errorsTxt.setVisibility(View.VISIBLE);
-           statuses.setVisibility(View.VISIBLE);
+            statuses.setVisibility(View.VISIBLE);
 
-            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
-                View errorIcon = statusBox.findViewById(R.id.errorIcon);
-                errorsTxt.setVisibility(View.GONE);
-                errorIcon.setVisibility(View.VISIBLE);
-            }
+//            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+//                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+//                errorsTxt.setVisibility(View.GONE);
+//                errorIcon.setVisibility(View.VISIBLE);
+//            }
 
         } else {
             errorsTxt.setVisibility(View.GONE);
             statuses.setVisibility(View.VISIBLE);
 
-
-            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
-                View errorIcon = statusBox.findViewById(R.id.errorIcon);
-                errorIcon.setVisibility(View.GONE);
-            }
+//
+//            if (layoutType.equals(CAT_LIST_VIEW_COMPACT)) {
+//                View errorIcon = statusBox.findViewById(R.id.errorIcon);
+//                errorIcon.setVisibility(View.GONE);
+//            }
         }
 
 

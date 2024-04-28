@@ -27,7 +27,7 @@ class SectionViewModel(
         } else {
             Constants.CAT_LIST_VIEW_COMPACT
         }
-        repository.localSettings.setSectionLayout(layout)
+        repository.setSectionLayout(layout)
     }
 
     fun setSectionId(id: String) {

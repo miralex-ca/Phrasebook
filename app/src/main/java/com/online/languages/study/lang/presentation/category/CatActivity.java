@@ -41,7 +41,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.CatViewPagerAdapter;
 import com.online.languages.study.lang.adapters.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.data.DataItem;
@@ -49,6 +48,8 @@ import com.online.languages.study.lang.data.DataManager;
 import com.online.languages.study.lang.data.DataObject;
 import com.online.languages.study.lang.data.NavStructure;
 import com.online.languages.study.lang.presentation.AppStart;
+import com.online.languages.study.lang.presentation.category.category_exercise.TrainingFragment;
+import com.online.languages.study.lang.presentation.category.category_list.CatTabFragment1;
 import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.online.languages.study.lang.presentation.details.ScrollingActivity;
 import com.online.languages.study.lang.presentation.exercise.ExerciseActivity;
@@ -161,7 +162,6 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                checkIconDisplay(tab.getPosition());
             }
 
             @Override
@@ -286,7 +286,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
         DataItem dataItem = (DataItem) view.getTag();
         CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
         if (fragment != null) {
-            fragment.changeStarred(dataItem.id, vibe);
+           // fragment.changeStarred(dataItem.id, vibe);
         }
     }
 
@@ -315,7 +315,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
     public void showAlertDialog(View view, int position) {
         String id = view.getTag().toString();
         if (id.equals("divider")) return;
-        Intent intent = new Intent(CatActivity.this, ScrollingActivity.class);
+        Intent intent = new Intent(this, ScrollingActivity.class);
         intent.putExtra("starrable", true);
         intent.putExtra("id", id );
         intent.putExtra("position", position);
@@ -336,8 +336,8 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
         modeMenuItem = menu.findItem(R.id.easy_mode);
         checkModeIcon();
 
-        changeLayoutBtn = menu.findItem(R.id.list_layout);
-        applyLayoutStatus();
+//        changeLayoutBtn = menu.findItem(R.id.list_layout);
+//        applyLayoutStatus();
 
         bookmarkRadio = menu.findItem(R.id.bookmark);
         applyBookmarkStatus();
@@ -376,10 +376,12 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
         } else if (id == R.id.sort_from_menu) {
             sortDialog();
             return true;
-        } else if (id == R.id.list_layout) {
-            changeLayoutStatus();
-            return true;
-        } else if (id == R.id.bookmark) {
+        }
+//        else if (id == R.id.list_layout) {
+//            changeLayoutStatus();
+//            return true;
+//        }
+        else if (id == R.id.bookmark) {
             changeBookmark();
             return true;
         } else if (id == R.id.info_from_menu) {
@@ -406,7 +408,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
     }
 
     private void settingsDialog() {
-        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this){
+        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this, appContainer.getRepository()){
             @Override
             public void practiceDialogCloseCallback() {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
@@ -581,50 +583,12 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
         }
     }
 
-    public void changeLayoutStatus() {
-        String listType = appSettings.getString(CAT_LIST_VIEW, CAT_LIST_VIEW_DEFAULT);
 
-        switch (listType) {
-            case CAT_LIST_VIEW_NORM:
-                listType = CAT_LIST_VIEW_COMPACT;
-                break;
-            case CAT_LIST_VIEW_COMPACT:
-                listType = CAT_LIST_VIEW_CARD;
-                break;
-            case CAT_LIST_VIEW_CARD:
-                listType = CAT_LIST_VIEW_NORM;
-                break;
-        }
-
-        SharedPreferences.Editor editor = appSettings.edit();
-        editor.putString(CAT_LIST_VIEW, listType);
-        editor.apply();
-
-        new Handler().postDelayed(() -> {
-
-            CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
-            if (fragment != null)   fragment.updateLayoutStatus();
-
-        }, 500);
-
-        new Handler().postDelayed(this::applyLayoutStatus, 700);
-    }
 
     private void infoMessage() {
         dataModeDialog.createDialog(getString(R.string.info_txt), getString(R.string.info_star_txt));
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        backTransition();
-//    }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        openActivity.pageBackTransition();
-//    }
 
     @Override
     public void finish() {
@@ -647,18 +611,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1) {  /// return from detail dialog
-
-            if(resultCode == RESULT_OK){
-
-                int result=data.getIntExtra("result", -1);
-
-                CatTabFragment1 fragment = (CatTabFragment1) adapter.getFragmentOne();
-                if (fragment != null) {
-                    fragment.checkStarred(result, 180);
-                }
-            }
-        } else if (requestCode == 10) {  ///// editing category
+        if  (requestCode == 10) {  ///// editing category
 
             if(resultCode == 50) {
 

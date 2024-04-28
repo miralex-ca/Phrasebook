@@ -38,10 +38,6 @@ class SectionViewControllerImpl(
 
     override fun getTitle() = viewModel.getTitle()
 
-    override fun showLayoutStatus() {
-        viewActions.applyLayoutStatus(viewModel.isSectionCompact())
-    }
-
     private fun initSectionList() {
         viewModel.getCategoriesData {
             setupList(it.toSectionUi())
@@ -81,6 +77,10 @@ class SectionViewControllerImpl(
                 sectionReviewAdapter.updateItem(index, it)
             }
         }
+    }
+
+    override fun showLayoutStatus() {
+        viewActions.applyLayoutStatus(viewModel.isSectionCompact())
     }
 
     override fun showLayoutDialog() {

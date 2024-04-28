@@ -540,6 +540,11 @@
     <string name="set_section_layout_1">Обычный</string>
     <string name="set_section_layout_2">Компактный</string>
 
+    <string name="set_category_layout_title">Вид списка</string>
+    <string name="set_category_layout_1">Обычный</string>
+    <string name="set_category_layout_2">Компактный</string>
+    <string name="set_category_layout_3">Карточки</string>
+
     <string name="user_content_title">Мои темы</string>
     <string name="export_notification">"Экспорт: "</string>
 

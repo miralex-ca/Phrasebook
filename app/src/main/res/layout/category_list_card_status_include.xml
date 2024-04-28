@@ -8,7 +8,6 @@
     android:visibility="gone"
     android:layout_marginTop="0dp">
 
-
     <RelativeLayout
         android:id="@+id/itemStatus"
         android:layout_marginLeft="16dp"
@@ -41,28 +40,21 @@
             android:textColor="?attr/colorStudied"
             android:background="@drawable/status_green_bg"
             />
-
     </RelativeLayout>
 
-
     <RelativeLayout
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-
 
         <TextView
             android:visibility="gone"
             style="@style/cat_item_status.detail"
             android:ellipsize="middle"
-
             android:singleLine="true"
             android:id="@+id/errorsCount"
             android:textColor="?attr/colorErrors"
             android:background="@drawable/status_red_bg"
             />
-
 
     <ImageView
         android:layout_marginTop="19dp"
@@ -74,6 +66,5 @@
         android:layout_height="14dp" />
 
     </RelativeLayout>
-
 
 </LinearLayout>

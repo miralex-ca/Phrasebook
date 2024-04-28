@@ -19,7 +19,8 @@ interface ListItemClicksListener {
 enum class ClickAction {
     Click,
     LongClick,
-    ClickToLoadMore
+    ClickToLoadMore,
+    ClickStar
 }
 
 interface ListItemDataClickListener {

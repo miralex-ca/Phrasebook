@@ -11,6 +11,7 @@
     android:background="?android:attr/selectableItemBackground">
 
     <View
+        android:visibility="gone"
         android:id="@+id/catItemDivider"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
@@ -56,6 +57,7 @@
                     android:layout_height="14dp" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/statusStudied"
                     app:srcCompat="@drawable/ic_tick_circle_green"
                     android:layout_width="14dp"
@@ -64,6 +66,7 @@
             </RelativeLayout>
 
             <TextView
+                android:visibility="gone"
                 android:gravity="center"
                 android:background="@drawable/text_round_red_bg_er"
                 android:layout_marginLeft="0dp"
@@ -128,7 +131,7 @@
                     />
 
                 <TextView
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:text="fm"
                     android:maxLines="1"
                     android:layout_marginLeft="8dp"

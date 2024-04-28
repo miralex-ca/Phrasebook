@@ -25,12 +25,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:gravity="center_horizontal"
-        android:scrollbars="vertical"
+        android:scrollbars="none"
         android:background="?attr/colorBaseBg"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
@@ -38,12 +37,10 @@
         <LinearLayout
             android:focusableInTouchMode="true"
             android:layout_height="wrap_content"
-
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/main_card_top"
-
             style="@style/CardWrapper.Width"
             >
 

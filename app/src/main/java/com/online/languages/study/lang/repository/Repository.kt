@@ -24,11 +24,9 @@ class Repository(val appContext: Context) {
 
     var navSections: List<NavSection>? = null
 
-    fun provideAppSettings() = localSettings.settings
+    fun provideAppSettings() = localSettings.prefs
     fun provideCheckPlusVersion() = CheckPlusVersion(appContext)
 }
-
-
 
 private fun getAppNavigation(dataManager: DataManager) : AppNavigation {
     val structure = dataManager.provideNavStructure()
@@ -45,12 +43,24 @@ class AppNavigation(
 
 }
 
-fun Repository.getAppSettings() = localSettings.settings
+fun Repository.getAppSettings() = localSettings.prefs
 
 suspend fun Repository.getNavSections(): List<NavSection> = withContext(backgroundDispatcher) {
     val navStructure: NavStructure =  dataManager.getNavStructure()
     navStructure.sections
 }
+
+suspend fun Repository.getCategoryItems(categoryId: String): List<DataItem> =
+    withContext(backgroundDispatcher) {
+        val list = try {
+            val resultList = dataManager.getCatDBList(categoryId)
+            resultList
+        } catch (e: Exception) {
+            emptyList()
+        }
+        list
+    }
+
 
 suspend fun Repository.searchData(query: String): List<DataItem> =
     withContext(backgroundDispatcher) {
@@ -87,4 +97,12 @@ suspend fun Repository.changeStarred(item: DataItem): Int = withContext(backgrou
             -1
         }
     }
+}
+
+fun Repository.getTranscription(dataItem: DataItem): String {
+    return dataManager.getTranscriptFromData(dataItem)
+}
+
+fun Repository.updateTranscriptionParams() {
+    dataManager.checkAlternativeTranscription()
 }

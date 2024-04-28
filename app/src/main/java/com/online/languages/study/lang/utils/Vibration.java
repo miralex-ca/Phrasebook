@@ -20,4 +20,10 @@ public class Vibration {
             vibrator.vibrate(vibLen);
         }
     }
+
+    public void vibrate(int duration) {
+        if (vibrator != null) {
+            vibrator.vibrate(duration);
+        }
+    }
 }

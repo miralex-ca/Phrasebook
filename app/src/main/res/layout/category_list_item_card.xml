@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,15 +9,12 @@
 
     >
 
-
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
-
                 app:contentPadding="0dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
                 style="@style/CardViewStyle.Widget"
-
                 >
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -27,24 +23,16 @@
                     />
 
                 <RelativeLayout
-
                     android:onClick="openCard"
-
                     android:id="@+id/itemWrap"
                     android:hapticFeedbackEnabled="false"
-
                     android:paddingLeft="@dimen/cat_list_card_side_padding"
                     android:paddingRight="@dimen/cat_list_card_side_padding"
-
                     android:paddingTop="@dimen/cat_list_card_tb_padding"
                     android:paddingBottom="@dimen/cat_list_card_tb_padding"
-
-
                     android:background="?android:attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-
 
                     <View
                         android:visibility="gone"
@@ -71,67 +59,46 @@
 
                         <RelativeLayout
                             android:id="@+id/playHolder"
-
                             android:layout_alignParentRight="true"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-
                             <ImageView
-
                                 android:layout_centerInParent="true"
-
                                 app:srcCompat="@drawable/ic_speaker"
                                 android:id="@+id/speakerIcon"
                                 android:alpha="0.9"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp" />
 
-
                             <ImageView
-
                                 android:id="@+id/playButton"
-
                                 android:focusable="true"
                                 android:clickable="true"
-
                                 android:layout_centerInParent="true"
                                 android:background="?selectableItemBackgroundBorderless"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
-
                                 android:onClick="play"
-
                                 />
 
                         </RelativeLayout>
 
 
-
                         <RelativeLayout
-
-
                             android:id="@+id/starHolder"
-
                             android:layout_marginBottom="3dp"
-
                             android:layout_marginRight="3dp"
                             android:layout_alignParentRight="true"
-
                             android:layout_above="@+id/bottomView"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
-
-
 
                             <ImageView
 
                                 android:layout_centerInParent="true"
                                 app:srcCompat="@drawable/ic_star_borded_inactive"
                                 android:alpha="0.8"
-
                                 android:layout_width="22dp"
                                 android:layout_height="22dp" />
 
@@ -139,36 +106,22 @@
 
                                 android:layout_centerInParent="true"
                                 app:srcCompat="@drawable/ic_star_borded"
-
                                 android:id="@+id/voclistStar"
                                 android:visibility="invisible"
                                 android:layout_width="22dp"
                                 android:layout_height="22dp" />
 
-
                             <ImageView
-
                                 android:id="@+id/changeStar"
-                                android:onClick="changeStarred"
-
                                 android:focusable="true"
                                 android:clickable="true"
-
                                 android:layout_centerInParent="true"
                                 android:background="?selectableItemBackgroundBorderless"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-
-
                                 />
 
-
                         </RelativeLayout>
-
-
-
-
-
 
                         <LinearLayout
                             android:id="@+id/textWrapper"
@@ -198,12 +151,9 @@
                                         android:id="@+id/itemText"
                                         android:layout_height="wrap_content"
                                         android:layout_width="wrap_content"
-
                                         android:textSize="23sp"
-
                                         style="@style/cat_list_item_title.norm"
                                         />
-
 
                                     <TextView
                                         android:visibility="gone"
@@ -219,13 +169,10 @@
                                         android:alpha=".7"
                                         />
 
-
                                 </LinearLayout>
-
 
                                 <TextView
                                     android:alpha="0.8"
-
                                     android:layout_marginRight="6dp"
                                     android:layout_marginLeft="3dp"
                                     android:layout_marginTop="2dp"
@@ -233,10 +180,8 @@
                                     android:id="@+id/itemTrans"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
                                     android:textSize="14sp"
                                     android:fontFamily="sans-serif-light"
-
                                     />
 
                                 <TextView
@@ -248,29 +193,93 @@
                                     android:id="@+id/itemInfo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-
                                     android:textColor="?attr/colorCatSecondaryText"
                                     style="@style/cat_list_item_info"
-
                                     android:textSize="17sp"
                                     />
 
                             </LinearLayout>
 
                             <RelativeLayout
+                                android:id="@+id/stats_wrap"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-                                    <include layout="@layout/category_list_card_status_include" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:orientation="horizontal"
+                                    android:id="@+id/status_wrap"
+                                    android:visibility="gone"
+                                    android:layout_marginTop="0dp">
+
+                                    <RelativeLayout
+                                        android:id="@+id/itemStatus"
+                                        android:layout_marginLeft="16dp"
+                                        android:layout_marginRight="6dp"
+                                        android:layout_marginBottom="8dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:alpha=".8"
+                                            style="@style/cat_item_status.detail"
+                                            android:text="@string/item_status_unknown_short"
+                                            android:id="@+id/statusUnknown"
+                                            android:textColor="?attr/colorUnknown"
+                                            android:background="@drawable/status_gray_bg"
+                                            />
+
+                                        <TextView
+                                            style="@style/cat_item_status.detail"
+                                            android:text="@string/item_status_familiar_short"
+                                            android:id="@+id/statusKnown"
+                                            android:textColor="?attr/colorKnown"
+                                            android:background="@drawable/status_blue_bg"
+                                            />
+
+                                        <TextView
+                                            style="@style/cat_item_status.detail"
+                                            android:text="@string/item_status_studied_short"
+                                            android:id="@+id/statusStudied"
+                                            android:textColor="?attr/colorStudied"
+                                            android:background="@drawable/status_green_bg"
+                                            />
+                                    </RelativeLayout>
+
+                                    <RelativeLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:visibility="gone"
+                                            style="@style/cat_item_status.detail"
+                                            android:ellipsize="middle"
+                                            android:singleLine="true"
+                                            android:id="@+id/errorsCount"
+                                            android:textColor="?attr/colorErrors"
+                                            android:background="@drawable/status_red_bg"
+                                            />
+
+                                        <ImageView
+                                            android:layout_marginTop="19dp"
+                                            android:visibility="gone"
+                                            android:layout_marginLeft="1dp"
+                                            android:id="@+id/errorIcon"
+                                            app:srcCompat="@drawable/ic_tick_circle_error"
+                                            android:layout_width="14dp"
+                                            android:layout_height="14dp" />
+
+                                    </RelativeLayout>
+
+                                </LinearLayout>
 
                             </RelativeLayout>
-
                         </LinearLayout>
 
                         <View
-
                             android:layout_alignParentRight="true"
-
                             android:layout_below="@+id/textWrapper"
                             android:id="@+id/bottomView"
                             android:layout_width="100dp"

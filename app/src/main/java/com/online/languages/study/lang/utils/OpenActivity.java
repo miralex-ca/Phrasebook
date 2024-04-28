@@ -140,7 +140,7 @@ public class OpenActivity  implements CallActivity {
         }
     }
 
-    public void detailTransitionOpen() {
+    public void detailOpenTransition() {
         ((Activity) context).overridePendingTransition(R.anim.slide_in_down, 0);
     }
 

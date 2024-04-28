@@ -10,11 +10,9 @@ import com.online.languages.study.lang.R;
 
 
 public class ColorProgress {
-
     Context context;
 
-
-    private int[] progressColors = {
+    private final int[] progressColors = {
             R.attr.colorMainText,
             R.attr.colorVeryBadText,
             R.attr.colorBadText,
@@ -23,7 +21,7 @@ public class ColorProgress {
             R.attr.colorGreatText
     };
 
-    private int[] progressColorsTxt = {
+    private final int[] progressColorsTxt = {
             R.attr.colorMainText,
             R.attr.colorVeryBadTextCat,
             R.attr.colorBadTextCat,
@@ -33,13 +31,13 @@ public class ColorProgress {
     };
 
 
-    private int[] statusColors = {
+    private final int[] statusColors = {
             R.attr.colorUnknown,
             R.attr.colorKnown,
             R.attr.colorStudied
     };
 
-    private int[] colorStatus = {
+    private final int[] colorStatus = {
             R.attr.colorStatusUnknown,
             R.attr.colorStatusKnown,
             R.attr.colorStatusStudied
@@ -64,14 +62,10 @@ public class ColorProgress {
     }
 
     public int getColorFromAttr(int result) {
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-
         theme.resolveAttribute( defineColorByResult(result), typedValue, true);
-
         @ColorInt int color = typedValue.data;
-
         return color;
     }
 
@@ -97,14 +91,10 @@ public class ColorProgress {
 
 
     public int setCatColorFromAttr(int result) {
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-
         theme.resolveAttribute( defineCatColorByResult(result), typedValue, true);
-
         @ColorInt int color = typedValue.data;
-
         return color;
     }
 
@@ -129,17 +119,11 @@ public class ColorProgress {
     }
 
 
-
-
     public int getStatusColorFromAttr(int result) {
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-
         theme.resolveAttribute( getStatusColorByResult(result), typedValue, true);
-
         @ColorInt int color = typedValue.data;
-
         return color;
     }
 
@@ -153,26 +137,19 @@ public class ColorProgress {
 
 
     public int setStatusColorFromAttr(int result) {
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-
         theme.resolveAttribute( defineStatusColorByResult(result), typedValue, true);
-
         @ColorInt int color = typedValue.data;
-
         return color;
     }
 
 
     public void setStatusColors(TextView textView, int result) {
-
         textView.setTextColor(  setStatusColorFromAttr(result) );
         //textView.setBackgroundResource(defineStatusBGByResult(result));
 
     }
-
-
 
     private int defineStatusColorByResult(int result) {
         int color = statusColors[0];

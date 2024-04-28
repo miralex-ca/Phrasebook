@@ -303,6 +303,12 @@
         <item>@string/set_section_layout_2</item>
     </string-array>
 
+    <string-array name="set_category_layout_list">
+        <item>@string/set_category_layout_1</item>
+        <item>@string/set_category_layout_2</item>
+        <item>@string/set_category_layout_3</item>
+    </string-array>
+
 
     <string-array name="set_transition_list">
         <item>Slide</item>

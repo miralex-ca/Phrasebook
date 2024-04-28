@@ -8,7 +8,6 @@ import kotlinx.coroutines.withContext
 
 suspend fun Repository.getCategoriesData(sectionId: String): List<CategoryReview> =
     withContext(backgroundDispatcher) {
-
         val navSection = appNavigation.structure.getNavSectionByID(sectionId)
         val uniqueCategories = navSection.uniqueCategories
         synchronized(Constants.DB_LOCK) {

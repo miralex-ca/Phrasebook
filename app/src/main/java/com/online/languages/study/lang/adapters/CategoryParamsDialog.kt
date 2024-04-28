@@ -15,40 +15,38 @@ import com.online.languages.study.lang.R
 import com.online.languages.study.lang.databinding.DialogCategoryParamsBinding
 import com.online.languages.study.lang.databinding.DialogPracticeParamsBinding
 import com.online.languages.study.lang.practice.PracticeParamsDialogCallback
+import com.online.languages.study.lang.repository.Repository
+import com.online.languages.study.lang.repository.setTranscription
 import java.util.*
 
 
-open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCallback {
-
+open class CategoryParamsDialog(
+    val context: Context,
+    val repository: Repository?
+) : PracticeParamsDialogCallback {
 
     companion object {
         const val LEVEL_UNKNOWN = "unknown"
         const val CATEGORY_RESULT_DISPLAY = "cat_result"
-
         const val TRANSCRIPTION_SETTING =  "set_transript"
-
     }
 
     var sectionId = ""
-
     var binding: DialogCategoryParamsBinding? = null
-
     var appSettings: SharedPreferences? = null
 
     var autoLevelValue = LEVEL_UNKNOWN
 
-    var levelValues:Array<String> = emptyArray()
-    var levelTitles:Array<String> = emptyArray()
+    private var levelValues:Array<String> = emptyArray()
+    private var levelTitles:Array<String> = emptyArray()
 
     var sectionStudiedIds = ArrayList<Array<String>>()
-
     var sectionTopicsList = ArrayList<Array<String>>()
 
-    var displayTranscriptionSettings = true
+    private var displayTranscriptionSettings = true
 
 
     init {
-
         appSettings = PreferenceManager.getDefaultSharedPreferences(context)
         levelValues = context.resources.getStringArray(R.array.practice_level_array_values)
         levelTitles = context.resources.getStringArray(R.array.practice_level_array)
@@ -71,12 +69,8 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
             val transcriptionSpinner = binding!!.transcriptionSpinner
             initTranscriptionSpinner(transcriptionSpinner)
         } else {
-            binding!!.transcriptionWrap.visibility = View.GONE
+            binding?.transcriptionWrap?.visibility = View.GONE
         }
-
-
-
-
 
 
         val builder = AlertDialog.Builder(context)
@@ -90,37 +84,31 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
             practiceDialogCloseCallback()
         }
 
-        binding!!.btnCloseDialog.setOnClickListener {
+        binding?.btnCloseDialog?.setOnClickListener {
             alert.cancel()
         }
     }
 
 
     private fun initResultDisplayStatus() {
-
         checkDisplayResultStatus()
-
-        binding!!.checkboxDisplayResults.setOnCheckedChangeListener { _, isChecked ->
+        binding?.checkboxDisplayResults?.setOnCheckedChangeListener { _, isChecked ->
             saveCategoryResult(isChecked)
             resultDisplayStatus(isChecked)
         }
     }
 
     private fun checkDisplayResultStatus() {
-
         val resultDisplay = appSettings!!.getBoolean(CATEGORY_RESULT_DISPLAY, true)
-
-        binding!!.checkboxDisplayResults.isChecked = resultDisplay
-
+        binding?.checkboxDisplayResults?.isChecked = resultDisplay
         resultDisplayStatus(resultDisplay)
     }
 
     private fun resultDisplayStatus(checked: Boolean) {
-
         if (checked) {
-            binding!!.tvResultsSummary.text = context.getString(R.string.dialog_param_results_display)
+            binding?.tvResultsSummary?.text = context.getString(R.string.dialog_param_results_display)
         } else {
-            binding!!.tvResultsSummary.text = context.getString(R.string.dialog_param_results_hide)
+            binding?.tvResultsSummary?.text = context.getString(R.string.dialog_param_results_hide)
         }
     }
 
@@ -132,7 +120,6 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
 
     ///// status settings
     private fun initStatusSpinner(spinner: Spinner) {
-
         ArrayAdapter.createFromResource(
             context,
             R.array.set_show_status_list,
@@ -143,15 +130,12 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
         }
 
         spinner.onItemSelectedListener = StatusOnItemSelectedListener()
-
         val limit =  appSettings!!.getString("show_status", "1")
 
         val values: Array<String>  = context.resources.getStringArray(R.array.set_show_status_values)
         val position = getPositionFromArrayByValue( limit!! , values)
         spinner.setSelection(position)
-
         checkStatusDisplayDesc(position)
-
     }
 
     private fun saveStatusParam(pos: Int) {
@@ -167,25 +151,18 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
     }
 
     private fun checkStatusDisplayDesc(position: Int) {
-        when (position) {
-            0 -> {
-                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_1)
-            }
-            1 -> {
-                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_2)
-            }
-            2 -> {
-                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_3)
-            }
-            else -> {
-                binding!!.tvDisplayStatusSummary.text = context.getString(R.string.dialog_param_status_display_desc)
+        binding?.apply {
+            tvDisplayStatusSummary.text = when (position) {
+                0 -> context.getString(R.string.dialog_param_status_1)
+                1 -> context.getString(R.string.dialog_param_status_2)
+                2 -> context.getString(R.string.dialog_param_status_3)
+                else -> context.getString(R.string.dialog_param_status_display_desc)
             }
         }
     }
 
     //// transcription settings
     private fun initTranscriptionSpinner(spinner: Spinner) {
-
         ArrayAdapter.createFromResource(
             context,
             R.array.set_transcript_list,
@@ -206,19 +183,15 @@ open class CategoryParamsDialog(var context: Context) : PracticeParamsDialogCall
         spinner.setSelection(position)
 
         checkTranscriptionStatusDesc(position)
-
     }
 
     fun saveTranscriptionParam(pos: Int) {
         val values = context.resources.getStringArray(R.array.set_transcript_values)
         saveTranscription(values[pos])
-        checkTranscriptionStatusDesc(pos)
     }
 
-    fun saveTranscription(value: String) {
-        val editor = appSettings!!.edit()
-        editor.putString(TRANSCRIPTION_SETTING, value)
-        editor.apply()
+    private fun saveTranscription(value: String) {
+        repository?.setTranscription(value)
     }
 
     private fun checkTranscriptionStatusDesc(position: Int) {

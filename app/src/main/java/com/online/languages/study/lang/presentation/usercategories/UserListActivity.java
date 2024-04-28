@@ -319,7 +319,7 @@ public class UserListActivity extends BaseActivity implements TextToSpeech.OnIni
 
     private void settingsDialog() {
 
-        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this){
+        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this, null){
             @Override
             public void practiceDialogCloseCallback() {
 

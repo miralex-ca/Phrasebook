@@ -131,11 +131,9 @@ public class DataManager {
     }
 
     public String getTranscriptFromData(DataItem dataItem) {
-
         String text = dataItem.trans1;
         if (currentTranscriptionType.equals(alternativeTranscription)) text = dataItem.trans2;
         if (currentTranscriptionType.equals("none") && !dataItem.id.contains(UD_PREFIX)) text = "";
-
         return text;
     }
 

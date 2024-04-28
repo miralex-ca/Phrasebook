@@ -512,6 +512,12 @@ Ceci vous permettra de restaurer vos données à partir d’une précédente sau
     <string name="set_section_layout_1">Normal</string>
     <string name="set_section_layout_2">Compact</string>
 
+
+    <string name="set_category_layout_title">Affichage de la liste</string>
+    <string name="set_category_layout_1">Normal</string>
+    <string name="set_category_layout_2">Compact</string>
+    <string name="set_category_layout_3">Cartes</string>
+
     <string name="user_content_title">Mes thèmes</string>
     <string name="export_notification">"Export: "</string>
 

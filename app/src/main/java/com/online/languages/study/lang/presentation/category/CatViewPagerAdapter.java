@@ -1,4 +1,4 @@
-package com.online.languages.study.lang.adapters;
+package com.online.languages.study.lang.presentation.category;
 
 import android.util.SparseArray;
 import android.view.ViewGroup;
@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.online.languages.study.lang.presentation.category.CatTabFragment1;
-import com.online.languages.study.lang.presentation.category.TrainingFragment;
+import com.online.languages.study.lang.presentation.category.category_list.CatTabFragment1;
+import com.online.languages.study.lang.presentation.category.category_exercise.TrainingFragment;
 
 
 public class CatViewPagerAdapter extends FragmentStatePagerAdapter {
