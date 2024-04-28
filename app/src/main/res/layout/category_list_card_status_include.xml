@@ -10,8 +10,8 @@
 
     <RelativeLayout
         android:id="@+id/itemStatus"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="6dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -59,11 +59,11 @@
     <ImageView
         android:layout_marginTop="19dp"
         android:visibility="gone"
-        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
         android:id="@+id/errorIcon"
         app:srcCompat="@drawable/ic_tick_circle_error"
         android:layout_width="14dp"
-        android:layout_height="14dp" />
+        android:layout_height="14dp"/>
 
     </RelativeLayout>
 

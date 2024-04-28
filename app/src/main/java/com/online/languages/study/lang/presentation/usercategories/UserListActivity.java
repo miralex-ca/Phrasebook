@@ -27,7 +27,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.CategoryParamsDialog;
+import com.online.languages.study.lang.presentation.category.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.InfoDialog;
 import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.ThemeAdapter;

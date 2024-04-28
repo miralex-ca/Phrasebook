@@ -93,9 +93,7 @@ class CategoryListViewControllerImpl(
         val isCompact = listLayoutType() == ListType.COMPACT
 
         val list = viewModel.getListToDisplay()
-        listAdapter.apply {
-            setCompact(isCompact)
-        }
+        listAdapter.setCompact(isCompact)
 
         listAdapter.submitList(list.applyUi())
         binding.myRecyclerView.adapter?.notifyDataSetChanged()

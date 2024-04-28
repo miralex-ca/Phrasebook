@@ -1,19 +1,14 @@
-package com.online.languages.study.lang.adapters
+package com.online.languages.study.lang.presentation.category
 
-import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Vibrator
 import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.children
-import com.online.languages.study.lang.Constants.*
 import com.online.languages.study.lang.R
 import com.online.languages.study.lang.databinding.DialogCategoryParamsBinding
-import com.online.languages.study.lang.databinding.DialogPracticeParamsBinding
 import com.online.languages.study.lang.practice.PracticeParamsDialogCallback
 import com.online.languages.study.lang.repository.Repository
 import com.online.languages.study.lang.repository.setTranscription
@@ -71,7 +66,6 @@ open class CategoryParamsDialog(
         } else {
             binding?.transcriptionWrap?.visibility = View.GONE
         }
-
 
         val builder = AlertDialog.Builder(context)
         builder
@@ -198,13 +192,13 @@ open class CategoryParamsDialog(
 
         when (position) {
             0 -> {
-                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_1)
+                binding?.tvTranscriptionSummary?.setText(R.string.dialog_param_transcription_1)
             }
             1 -> {
-                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_2)
+                binding?.tvTranscriptionSummary?.setText(R.string.dialog_param_transcription_2)
             }
             else -> {
-                binding!!.tvTranscriptionSummary.text = context.getString(R.string.dialog_param_transcription_3)
+                binding?.tvTranscriptionSummary?.setText(R.string.dialog_param_transcription_3)
             }
         }
     }

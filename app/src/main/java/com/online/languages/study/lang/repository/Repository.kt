@@ -52,15 +52,30 @@ suspend fun Repository.getNavSections(): List<NavSection> = withContext(backgrou
 
 suspend fun Repository.getCategoryItems(categoryId: String): List<DataItem> =
     withContext(backgroundDispatcher) {
-        val list = try {
-            val resultList = dataManager.getCatDBList(categoryId)
-            resultList
-        } catch (e: Exception) {
-            emptyList()
+        synchronized(Constants.DB_LOCK) {
+            val list = try {
+                val resultList = dataManager.getCatDBList(categoryId)
+                resultList
+            } catch (e: Exception) {
+                emptyList()
+            }
+            list
         }
-        list
     }
 
+suspend fun Repository.getCategoryTestsData(categoryId: String): List<Array<String>> =
+    withContext(backgroundDispatcher) {
+        synchronized(Constants.DB_LOCK) {
+            val list: List<Array<String>> = try {
+                val testIds = arrayOf(categoryId + "_1", categoryId + "_2", categoryId + "_3")
+                val results = dataManager.getCategoryTestsResult(testIds)
+                results
+            } catch (e: Exception) {
+                emptyList()
+            }
+            list
+        }
+    }
 
 suspend fun Repository.searchData(query: String): List<DataItem> =
     withContext(backgroundDispatcher) {
@@ -106,3 +121,4 @@ fun Repository.getTranscription(dataItem: DataItem): String {
 fun Repository.updateTranscriptionParams() {
     dataManager.checkAlternativeTranscription()
 }
+

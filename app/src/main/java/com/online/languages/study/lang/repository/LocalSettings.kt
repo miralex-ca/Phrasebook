@@ -12,6 +12,7 @@ class LocalSettings (val context: Context) {
     companion object {
         const val SECTION_LIST_VIEW = "section_list_layout"
         const val TRANSCRIPTION_KEY =  "set_transript"
+        const val CATEGORY_RESULT_DISPLAY = "cat_result"
     }
 }
 
@@ -57,6 +58,11 @@ fun Repository.setTranscription(value: String) {
     }
     dataManager.checkAlternativeTranscription()
 }
+
+fun Repository.getResultDisplayParam() : Boolean {
+    return localSettings.prefs.getBoolean(LocalSettings.CATEGORY_RESULT_DISPLAY, true)
+}
+
 
 
 fun LocalSettings.getTranscriptShow() = prefs.getBoolean("transcript_show", true)

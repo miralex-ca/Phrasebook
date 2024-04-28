@@ -1,7 +1,6 @@
 package com.online.languages.study.lang.presentation.category;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_CARD;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_NORM;
@@ -41,7 +40,6 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.tabs.TabLayout;
 import com.online.languages.study.lang.Constants;
 import com.online.languages.study.lang.R;
-import com.online.languages.study.lang.adapters.CategoryParamsDialog;
 import com.online.languages.study.lang.adapters.DataModeDialog;
 import com.online.languages.study.lang.data.DataItem;
 import com.online.languages.study.lang.data.DataManager;
@@ -101,6 +99,8 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
     boolean speaking;
     boolean fromEdit;
     boolean displayModeHint;
+
+    CategoryParamsDialog categoryParamsDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,6 +199,13 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
 
         speaking = appSettings.getBoolean("set_speak", true);
         checkTTSIntent();
+
+        categoryParamsDialog = new CategoryParamsDialog(this, appContainer.getRepository()){
+            @Override
+            public void practiceDialogCloseCallback() {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
+            }
+        };
     }
 
     private void checkTTSIntent() {
@@ -395,7 +402,6 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
             return true;
         } else if (id == R.id.settings_from_menu) {
             settingsDialog();
-
             return true;
         } else if (id == R.id.hint_from_menu) {
             modeHint();
@@ -408,14 +414,10 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
     }
 
     private void settingsDialog() {
-        CategoryParamsDialog categoryParamsDialog = new CategoryParamsDialog(this, appContainer.getRepository()){
-            @Override
-            public void practiceDialogCloseCallback() {
-                new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
-            }
-        };
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            categoryParamsDialog.showParams();
+        }, 280);
 
-        categoryParamsDialog.showParams();
     }
 
     private void checkHint() {

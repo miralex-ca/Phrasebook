@@ -1024,7 +1024,6 @@ public class DataManager {
                 desc += context.getString(R.string.practice_last_date) + testDateFormat(time) ;
             }
 
-           // Log.i("Quest", "res"  + testData[1] + "% , time " + time + " - " + replace);
             data.add(new String[]{testId, desc, replace });
         }
 
@@ -1039,7 +1038,7 @@ public class DataManager {
     }
 
 
-    public ArrayList<String[]> getCategoryTestsResult(String[] testIds) {
+    public ArrayList<String[]>  getCategoryTestsResult(String[] testIds) {
         return getPracticeTests(testIds);
     }
 

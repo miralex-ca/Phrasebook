@@ -9,16 +9,13 @@ import com.online.languages.study.lang.adapters.ColorProgress
 import com.online.languages.study.lang.data.DataItem
 import com.online.languages.study.lang.presentation.category.category_list.ListType
 import com.online.languages.study.lang.repository.*
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
 class CategoryViewModel(
     private val repository: Repository,
 ) : ViewModel() {
-    private var requestJob: Job? = null
     private var allCategoryItemsList: List<CategoryUiItem> = emptyList()
-    private var showRate: Boolean? = null
     private var listParams: ListParams = ListParams.from(repository)
 
     fun getLayout() = repository.getCategoryLayout()
@@ -27,10 +24,11 @@ class CategoryViewModel(
         return allCategoryItemsList
     }
 
+    fun checkSpeaking() = repository.getSpeakingParam()
+
     fun getData(categoryId: String, callback: () -> Unit) {
         listParams.update()
-        requestJob?.cancel()
-        requestJob = viewModelScope.launch {
+        viewModelScope.launch {
             val list = repository.getCategoryItems(categoryId)
             setAllItemsList(list.toCategoryUiItems())
             callback()
@@ -50,9 +48,12 @@ class CategoryViewModel(
         allCategoryItemsList = list
     }
 
-    fun getExercisesData(topicTag: String, callback: (CategoryExUiSchema) -> Unit) {
+    fun displayTestResults() = repository.getResultDisplayParam()
+
+    fun getExercisesData(categoryId: String, callback: (List<Array<String>>) -> Unit) {
         viewModelScope.launch {
-           // callback(schema)
+            val results = repository.getCategoryTestsData(categoryId)
+            callback(results)
         }
     }
 

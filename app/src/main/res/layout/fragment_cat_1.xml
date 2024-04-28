@@ -110,7 +110,6 @@
 
             </RelativeLayout>
 
-
             <RelativeLayout
                 android:id="@+id/listContainerCard"
                 android:layout_width="match_parent"

@@ -34,8 +34,6 @@ public class CatTabFragment1 extends BaseFragment implements CategoryListViewAct
 
         categoryID = requireActivity().getIntent().getStringExtra(Constants.EXTRA_CAT_ID);
 
-        View rootView = mBinding.getRoot();
-
         SimpleItemAnimator listAnimator = ((SimpleItemAnimator) mBinding.myRecyclerView.getItemAnimator());
         if (listAnimator != null) {
             listAnimator.setSupportsChangeAnimations(false);
@@ -49,7 +47,7 @@ public class CatTabFragment1 extends BaseFragment implements CategoryListViewAct
         initViewController();
 
         setHasOptionsMenu(true);
-        return rootView;
+        return mBinding.getRoot();
     }
 
     @Override
