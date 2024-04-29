@@ -1,8 +1,6 @@
 package com.online.languages.study.lang.presentation.category.category_exercise
 
 import android.widget.TextView
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.coroutineScope
 import com.online.languages.study.lang.R
 import com.online.languages.study.lang.databinding.FragmentTrainingBinding
 import com.online.languages.study.lang.presentation.category.CategoryViewModel
@@ -32,11 +30,13 @@ class CategoryExListViewControllerImpl(
     }
 
     override fun getExercisesData() {
-        setTestsDesc()
         if (viewModel.displayTestResults()) {
             viewModel.getExercisesData(categoryId) {
+                setTestsDesc()
                 handleTestsData(it)
             }
+        } else {
+            setTestsDesc()
         }
     }
 

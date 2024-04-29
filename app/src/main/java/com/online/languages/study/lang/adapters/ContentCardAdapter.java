@@ -1,7 +1,6 @@
 package com.online.languages.study.lang.adapters;
 
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW;
-import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_COMPACT;
 import static com.online.languages.study.lang.Constants.CAT_LIST_VIEW_DEFAULT;
 
 import android.content.Context;
@@ -216,13 +215,12 @@ public class ContentCardAdapter extends RecyclerView.Adapter<ContentCardAdapter.
         if (activityType == STARRED_ACTIVITY) {
             attachLongClickToStarred(holder.itemWrap, holder.changeStar);
         }
-
     }
 
     private void attachLongClickToCat(final View view, final View infoView) {
         view.setOnLongClickListener(new View.OnLongClickListener() {
             public boolean onLongClick(View arg0) {
-                catActivity.changeStarred(infoView, true);
+                //catActivity.changeStarred(infoView, true);
                 return true;    // <- set to true
             }
         });

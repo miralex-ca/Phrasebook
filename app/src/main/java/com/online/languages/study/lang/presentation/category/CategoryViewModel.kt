@@ -18,6 +18,11 @@ class CategoryViewModel(
     private var allCategoryItemsList: List<CategoryUiItem> = emptyList()
     private var listParams: ListParams = ListParams.from(repository)
 
+    fun getTitle(sectionId: String) : String {
+
+        return ""
+    }
+
     fun getLayout() = repository.getCategoryLayout()
 
     fun getListToDisplay(): List<CategoryUiItem> {
