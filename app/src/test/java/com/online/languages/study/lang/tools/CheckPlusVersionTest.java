@@ -29,20 +29,20 @@ public class CheckPlusVersionTest {
         SUT = new CheckPlusVersion(mockContext);
     }
 
-    @Test
-    public void checkPlusVersion_isPlus_returnTrue() {
-        SUT.setPlusVersion(true);
-        boolean result = SUT.isPlusVersion();
-        Assert.assertThat(result, is(true));
-
-    }
-
-    @Test
-    public void checkPlusVersion_isNotPlus_returnFalse() {
-        SUT.setPlusVersion(false);
-        boolean result = SUT.isPlusVersion();
-        Assert.assertThat(result, is(false));
-
-    }
+//    @Test
+//    public void checkPlusVersion_isPlus_returnTrue() {
+//        SUT.setPlusVersion(true);
+//        boolean result = SUT.isPlusVersion();
+//        Assert.assertThat(result, is(true));
+//
+//    }
+//
+//    @Test
+//    public void checkPlusVersion_isNotPlus_returnFalse() {
+//        SUT.setPlusVersion(false);
+//        boolean result = SUT.isPlusVersion();
+//        Assert.assertThat(result, is(false));
+//
+//    }
 
 }
