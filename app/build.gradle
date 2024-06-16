@@ -209,9 +209,7 @@ android {
     }
 }
 
-
 dependencies {
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     implementation "androidx.core:core-ktx:1.13.1"
@@ -238,12 +236,11 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
 
     androidTestImplementation "com.android.support.test:runner:1.0.2"
-    androidTestImplementation 'androidx.test:rules:1.4.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.5.1'
     testImplementation 'junit:junit:4.13.2'
 
-
-    testImplementation 'androidx.test:core:1.4.0'
+    testImplementation 'androidx.test:core:1.5.0'
     testImplementation 'org.mockito:mockito-core:1.10.19'
     testImplementation 'org.robolectric:robolectric:4.4'
     testImplementation "com.google.truth:truth:1.1.3"
@@ -255,8 +252,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 

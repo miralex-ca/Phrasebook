@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.online.languages.study.lang.presentation.category.CategoryViewModel
 import com.online.languages.study.lang.presentation.category.CategoryViewModelFactory
+import com.online.languages.study.lang.presentation.exercise.ExerciseViewModel
+import com.online.languages.study.lang.presentation.exercise.ExerciseViewModelFactory
 import com.online.languages.study.lang.utils.OpenActivity
 import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModel
 import com.online.languages.study.lang.presentation.main.fragments.home.HomeViewModelFactory
@@ -45,9 +47,8 @@ class ViewModelsHelper(private val appContainer: AppContainer) {
         return provideViewModel(owner, factory)
     }
 
-//
-//    fun provideExerciseViewModel(owner: ViewModelStoreOwner): ExerciseViewModel {
-//        val factory = ExerciseViewModelFactory(appContainer.repository)
-//        return provideViewModel(owner, factory)
-//    }
+    fun provideExerciseViewModel(owner: ViewModelStoreOwner): ExerciseViewModel {
+        val factory = ExerciseViewModelFactory(appContainer.repository)
+        return provideViewModel(owner, factory)
+    }
 }

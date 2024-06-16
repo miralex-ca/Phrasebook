@@ -200,7 +200,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
         categoryParamsDialog = new CategoryParamsDialog(this, appContainer.getRepository()){
             @Override
             public void practiceDialogCloseCallback() {
-                new Handler(Looper.getMainLooper()).postDelayed(() -> updateCatData(), 50);
+                updateCatData();
             }
         };
     }
@@ -217,9 +217,7 @@ public class CatActivity extends ThemedActivity implements TextToSpeech.OnInitLi
             Toast.makeText(this, "TTS not available", Toast.LENGTH_SHORT).show();
             speaking = false;
         } else {
-            new Handler().postDelayed(() -> {
-                startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-            }, 100);
+            startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
         }
     }
 

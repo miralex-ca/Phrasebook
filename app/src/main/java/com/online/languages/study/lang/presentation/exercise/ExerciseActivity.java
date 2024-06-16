@@ -38,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -49,6 +50,11 @@ import com.online.languages.study.lang.DBHelper;
 import com.online.languages.study.lang.R;
 import com.online.languages.study.lang.adapters.CustomViewPager;
 import com.online.languages.study.lang.adapters.DataModeDialog;
+import com.online.languages.study.lang.databinding.ActivityCatBinding;
+import com.online.languages.study.lang.databinding.ActivityExerciseBinding;
+import com.online.languages.study.lang.presentation.category.CategoryViewController;
+import com.online.languages.study.lang.presentation.category.CategoryViewControllerImpl;
+import com.online.languages.study.lang.presentation.core.ThemedActivity;
 import com.online.languages.study.lang.utils.OpenActivity;
 import com.online.languages.study.lang.adapters.ResizeHeight;
 import com.online.languages.study.lang.adapters.ThemeAdapter;
@@ -65,11 +71,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
-public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnInitListener {
+public class ExerciseActivity extends ThemedActivity implements TextToSpeech.OnInitListener, ExerciseViewActions {
 
-    ThemeAdapter themeAdapter;
-    SharedPreferences appSettings;
-    public String themeTitle;
+    private ExerciseViewController viewController;
+    private ActivityExerciseBinding mBinding;
 
 
     static String topicTag;
@@ -145,13 +150,8 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     static Boolean saveStats;
 
-
     ExerciseDataCollect exerciseAllData;
-
-
     DataModeDialog dataModeDialog;
-
-    OpenActivity openActivity;
 
 
     private static TextToSpeech myTTS;
@@ -165,30 +165,21 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-        //Toast.makeText(this, "Len: " , Toast.LENGTH_SHORT).show();
-
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
-        themeTitle= appSettings.getString("theme", Constants.SET_THEME_DEFAULT);
-
-        themeAdapter = new ThemeAdapter(this, themeTitle, false);
-        themeAdapter.getTheme();
-
-        dataManager = new DataManager(this);
+        mBinding = ActivityExerciseBinding.inflate(getLayoutInflater());
 
 
-        setContentView(R.layout.activity_exercise);
-
-        openActivity = new OpenActivity(this);
-
+        setContentView(mBinding.getRoot());
         openActivity.setOrientation();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        setupToolbar();
         setTitle(R.string.title_test_txt);
 
+        topicTag = getIntent().getStringExtra(Constants.EXTRA_CAT_TAG);
+
+        initViewController(topicTag);
+        initViewPager();
+
+        dataManager = new DataManager(this);
 
         exButtonShow = true;
         exCheckedStatus = false;
@@ -197,8 +188,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         resultShow = false;
 
-
-        topicTag = getIntent().getStringExtra(Constants.EXTRA_CAT_TAG);
+        context = this;
 
         initSpeak = 0;
         autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default)); // TODO
@@ -217,23 +207,15 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             forceSave = true;
         }
 
-
         exType = getIntent().getIntExtra("ex_type", 1); /* 1 - voc, 2 - phrase*/
-        // exType = 2;
-
 
         fShowTranscript = true;
-        context = this;
 
-        appSettings = PreferenceManager.getDefaultSharedPreferences(this);
+
         exButtonShow = appSettings.getBoolean("ex_buttons_show", false);
-        Boolean showTranscript = appSettings.getBoolean("transcript_show", true) && appSettings.getBoolean("transcript_show_ex", true);
-
+        boolean showTranscript = appSettings.getBoolean("transcript_show", true) && appSettings.getBoolean("transcript_show_ex", true);
         saveStats = appSettings.getBoolean("test_all_save", true);
-
-
         exShowTranscript = showTranscript;
-
 
         fCounterInfoBox = findViewById(R.id.testInfoBox);
 
@@ -243,11 +225,9 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         btnGroupBox = findViewById(R.id.btnBox);
         exQuestWrapper = findViewById(R.id.exTestWrapper);
         btnBoxWrapper = findViewById(R.id.btnBoxWrapper);
-
         exResultBox = findViewById(R.id.exResultBox);
         exResultTxt = findViewById(R.id.exResultTxt);
         exMarkTxt = findViewById(R.id.exResultMark);
-
         buttonsContainer = findViewById(R.id.btnContainer);
         exerciseField = findViewById(R.id.exField);
 
@@ -263,7 +243,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
         exTxtHeight = getResources().getInteger(R.integer.ex_text_wrap);
         exTxtMoreHeight = getResources().getInteger(R.integer.ex_text_wrap_high);
-
         exCardHeight = getResources().getInteger(R.integer.ex_card_wrap);
         exCardMoreHeight = getResources().getInteger(R.integer.ex_card_wrap_high);
 
@@ -273,8 +252,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
           //  exTxtMoreHeight -= 0;
         }
 
-        viewPager = findViewById(R.id.testPager);
-        viewPager.setPagingEnabled(false);
 
         btnGroupBox = findViewById(R.id.btnBox);
 
@@ -324,25 +301,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-            @Override
-            public void onPageSelected(int position) {
-                showPage(position);
-
-               // Toast.makeText(getApplicationContext(), "Checked: "+ taskCheckedStatus, Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {}
-        });
-
-
-
-
         if (exType == EX_AUDIO_TYPE) {
             speaking = true;
         } else {
@@ -356,15 +314,51 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     }
 
+    private void setupToolbar() {
+        Toolbar toolbar = mBinding.toolbar;
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    private void initViewPager() {
+        viewPager = findViewById(R.id.testPager);
+        viewPager.setPagingEnabled(false);
+
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                showPage(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+    }
+
+
+    private void initViewController(String categoryId) {
+        viewController = new ExerciseViewControllerImpl(
+                mBinding,
+                appContainer.getModels().provideExerciseViewModel(this),
+                this
+        );
+        viewController.setup(categoryId);
+    }
+
 
     private void checkTTSIntent() {
-
         if (! speaking ) return;
-
         PackageManager pm = getPackageManager();
         final Intent checkTTSIntent = new Intent();
         checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-
         ResolveInfo resolveInfo = pm.resolveActivity( checkTTSIntent, PackageManager.MATCH_DEFAULT_ONLY );
 
         if( resolveInfo == null ) {
@@ -372,21 +366,13 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             speaking = false;
 
         } else {
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
-
-                }
+            new Handler().postDelayed(() -> {
+                startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
             }, 100);
-
         }
     }
 
     private void restaureChecked (int type) {
-
         if (type == 1) {
             disableButton(checkButton); //checkButton.setEnabled(false);
             exCheckedStatus = true;
@@ -395,18 +381,14 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             btnGroupBox.setVisibility(View.GONE);
 
             exCheckedStatus = true;
-
         }
-
     }
 
 
     public void openResult(View view) {
-
         Intent intent = new Intent(ExerciseActivity.this, ExerciseResultActivity.class);
 
         if (getIntent().hasExtra("practice"))  intent.putExtra("multichoice", true);
-
 
         ArrayList<DataItem> results = new ArrayList<>();
 
@@ -435,18 +417,16 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
 
-
     private void getTasks () {
+
+
+
         int limit = Constants.QUEST_NUM;
-
-
 
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
             String lim =  appSettings.getString("test_all_limit", getString(R.string.set_test_all_limit_default));
             limit = Integer.parseInt(lim);
         }
-
-
 
         Collections.shuffle(originWordsList);
 
@@ -471,16 +451,13 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         }
 
         if (topicTag.equals(Constants.ALL_CAT_TAG)) {
-
             data = dataManager.getAllItems();
             exerciseAllData = new ExerciseDataCollect(context, data, exType);
         }
 
 
         if (topicTag.contains("revise")) {
-
             limit = TASK_REVISE_TEST_LIMIT;
-
             if (getIntent().hasExtra("ids")) {
                 data = dataManager.getCatsItems(getIntent().getStringArrayExtra("ids"));
                 exerciseAllData = new ExerciseDataCollect(context, data, exType);
@@ -488,7 +465,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         }
 
         if (topicTag.contains("_vocab")) {
-
             limit = Integer.parseInt(appSettings.getString(PRACTICE_LIMIT_SETTING, String.valueOf(PRACTICE_LIMIT_DEFAULT)));
 
             if (getIntent().hasExtra("ids")) {
@@ -742,7 +718,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
 
     public void changeHeightAnimated(int height) {
-
         View tView = viewPager.findViewWithTag("myview" + viewPager.getCurrentItem());
         LinearLayout  exQuest = (LinearLayout) tView.findViewById(R.id.exQuest);
 
@@ -1020,12 +995,10 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         exShowBtnRadio =  menu.findItem(R.id.exBtnSettings);
         exSaveStatsRadio =  menu.findItem(R.id.test_save);
 
-
         exShowBtnRadio.setChecked(exButtonShow);
 
         MenuItem autoplayMenuItem = menu.findItem(R.id.fAutoplay);
-        if (speaking) autoplayMenuItem.setVisible(true);
-        else autoplayMenuItem.setVisible(false);
+        autoplayMenuItem.setVisible(speaking);
 
         // if (tablet) manageCardHeightAndButtons();
        // else applyExBtnStatus(exButtonShow, false);
@@ -1033,7 +1006,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         applySaveStatsStatus(saveStats);
 
         setSaveStatsForAll();
-
 
         return true;
 
@@ -1082,31 +1054,27 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch(id) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.restart_from_menu:
 
-                restartFromMenu();
-                return true;
-            case R.id.exBtnSettings:
-                changeExBtnStatus();
-                return true;
-            case R.id.test_save:
-                changeSaveStatsStatus();
-                return true;
-            case R.id.fAutoplay:
-                autoPlayDialog();
-                return true;
-
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        } else if (id == R.id.restart_from_menu) {
+            restartFromMenu();
+            return true;
+        } else if (id == R.id.exBtnSettings) {
+            changeExBtnStatus();
+            return true;
+        } else if (id == R.id.test_save) {
+            changeSaveStatsStatus();
+            return true;
+        } else if (id == R.id.fAutoplay) {
+            autoPlayDialog();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void restartFromMenu() {
-
         int delay = 300;
         if (originWordsList.size() > 50) delay = 350;
 
@@ -1115,8 +1083,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
                 restartExercise();
             }
         }, delay);
-
-
     }
 
 
@@ -1138,7 +1104,6 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
         editor.putBoolean("ex_buttons_show", exButtonShow);
         editor.apply();
         applyExBtnStatus(exButtonShow, true);
-
     }
 
     private void changeSaveStatsStatus() {
@@ -1151,80 +1116,54 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     private void applySaveStatsStatus(Boolean status) {
         exSaveStatsRadio.setChecked(status);
-
         if (!restore) if (!status) notifyNotSaved ();
-
     }
 
     public void notifyNotSaved() {
-
         final String statsMsg = getString(R.string.stats_not_saved_msg);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Snackbar.make(fCounterInfoBox, Html.fromHtml("<font color=\"#ffffff\">"+ statsMsg +"</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
+        new Handler().postDelayed(() -> {
+            Snackbar.make(fCounterInfoBox,
+                    Html.fromHtml("<font color=\"#ffffff\">" + statsMsg + "</font>"), Snackbar.LENGTH_SHORT).setAction("Action", null).show();
         }, 250);
-
     }
 
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         if (resultShow) viewPager.setCurrentItem(0);
-
-        //---save whatever you need to persist—
-        // outState.putParcelable("controller", control );
         outState.putParcelable("controller", exerciseController );
-
         outState.putParcelableArrayList(Constants.EXTRA_KEY_WORDS, wordList);
         outState.putInt("correct", correctAnswers);
-
         outState.putParcelableArrayList("completed", completed);
-
         outState.putBoolean("result_show", resultShow);
-
         outState.putInt("checked_status", taskCheckedStatus);
-
         super.onSaveInstanceState(outState);
 
     }
 
 
-
-
     //// TTS integration
-
 
     static public void speak(String text) {
         speakWords(text);
     }
 
-
     private static void speakWords(String speech) {
-        //speak straight away
-
         if (myTTS != null) {
-            myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+            myTTS.speak(speech, TextToSpeech.QUEUE_FLUSH, null, null);
             initSpeak++;
         }
-
     }
 
     //act on result of TTS data check
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == MY_DATA_CHECK_CODE) {
-
             if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
                 //the user has the necessary data - create the TTS
                 myTTS = new TextToSpeech(this, this);
             } else {
-                //no data - install it now
                 Intent installTTSIntent = new Intent();
                 installTTSIntent.setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
                 startActivity(installTTSIntent);
@@ -1234,10 +1173,7 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
 
     //setup TTS
     public void onInit(int initStatus) {
-
-
         final Locale locale = dataManager.getLocale();
-
         if (initStatus == TextToSpeech.SUCCESS) {
             if(myTTS.isLanguageAvailable(locale)==TextToSpeech.LANG_AVAILABLE)
                 myTTS.setLanguage(locale);
@@ -1249,71 +1185,41 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
 
-
     private void autoPlay(final int position) {
 
         if (autoPlay.equals("none")) return;
         if (!speaking) return;
 
-
         final String text = dataManager.getPronounce(exerciseController.tasks.get(position).data);
-
         if (position == 0 ) {
-
             if (initSpeak == 0 ) {
-
                 new android.os.Handler().postDelayed(new Runnable() {
                     public void run() {
-
                         if (initSpeak == 0) speakWords(text);
-
                     }
                 }, 500);
-
             } else {
-
                 speakWords(text);
-
             }
-
         } else {
-
             speakWords(text);
         }
-
-
     }
 
-
     private void autoPlayDialog() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         autoPlay = appSettings.getString("set_test_autoplay", getString(R.string.set_flash_autoplay_default));
-
         int checkedItem = 0;
 
         if (autoPlay.equals("none"))  checkedItem = 1;
-
         builder.setTitle(getString(R.string.set_flash_autoplay_dialog_title))
-
-                .setSingleChoiceItems(R.array.set_flash_autoplay_list, checkedItem, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        saveAutoplay(which);
-                        dialog.dismiss();
-                    }
+                .setSingleChoiceItems(R.array.set_flash_autoplay_list, checkedItem, (dialog, which) -> {
+                    saveAutoplay(which);
+                    dialog.dismiss();
                 })
-
                 .setCancelable(true)
-
                 .setNegativeButton(R.string.dialog_close_txt,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
+                        (dialog, id) -> dialog.cancel());
 
         AlertDialog alert = builder.create();
         alert.show();
@@ -1321,17 +1227,12 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
     }
 
     private void saveAutoplay(int num) {
-
         String orderValue = getResources().getStringArray(R.array.set_flash_autoplay_values)[0];
         if (num == 1) orderValue  = getResources().getStringArray(R.array.set_flash_autoplay_values)[1];
-
         SharedPreferences.Editor editor = appSettings.edit();
         editor.putString("set_test_autoplay", orderValue);
         editor.apply();
-
         autoPlay = orderValue;
-
-
     }
 
     @Override
@@ -1343,7 +1244,5 @@ public class ExerciseActivity extends BaseActivity implements TextToSpeech.OnIni
             myTTS.shutdown();
         }
     }
-
-
 
 }
